@@ -3,16 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
-language:
+title: A learing trainee's Blog.
+subtitle: 脚踏实地
+description: 笔记 随笔
+author: Sean10
+email: sean10reborn@gmail.com
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://sean10.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -63,9 +64,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yelee
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: git@github.com:Sean10/sean10.github.io.git
+  branch: master
