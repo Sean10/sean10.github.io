@@ -15,7 +15,7 @@ menu:
 avatar: /img/avatar.jpg
 
 # Small icon of Your site | 站点小图标地址
-favicon: /favicon.png
+favicon: /img/favicon.png
 
 # Internationalization | 主题语言
 ## Change Language in SITE's _config.yml | 在站点配置中切换语言
@@ -67,8 +67,8 @@ subnav:
 # Chose ONE as your comment system and keep others disable.
 # 选一个作为网站评论系统，其他保持禁用。
 
-disqus: true
-  #on: true
+disqus: 
+  on: true
   shortname: seanrebn
   # https://help.disqus.com/customer/en/portal/articles/466208-what-s-a-shortname-
   # It is unnecessary to enable disqus here if 
@@ -151,9 +151,9 @@ tagcloud: true
 
 # Blogroll, Link exchange | 友情链接
 friends: false
-  Hexo: https://hexo.io
-  GitHub: https://pages.github.com/
-  MOxFIVE: http://moxfive.xyz/
+  #Hexo: https://hexo.io
+  #GitHub: https://pages.github.com/
+  #MOxFIVE: http://moxfive.xyz/
 #friends: false
 
 #是否开启“关于我”。
