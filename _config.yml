@@ -45,8 +45,10 @@ highlight:
   tab_replace:
 
 # Category & Tag
-default_category: uncategorized
+default_category: categorized
 category_map:
+  专业: pro
+  随想: thinking
 tag_map:
 
 # Date / Time format
