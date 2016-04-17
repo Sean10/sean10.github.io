@@ -47,6 +47,7 @@ highlight:
 # Category & Tag
 default_category: categorized
 category_map:
+  算法: algorithm
   专业: pro
   随想: thinking
 tag_map:
