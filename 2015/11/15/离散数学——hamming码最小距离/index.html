@@ -1,0 +1,855 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="离散数学,校验码," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1：给定H(读取文件方式，第一行两个整数m,n，第二行 m\times (n-m)个0或1，也就是矩阵H的上半部分，下半部单位矩阵自行生成)，计算群码编码函数e_H。计算该编码函数能检测到多少位错误，交互输出字的码字。 输入文件：in.txt，示例：第一行两个整数，第二行累计mxr个整数。所有整数都用一个空格分隔。 3 5 1 0 1 0 0 1 无输出文件。  2：针对(8,12)编码e，找出最">
+<meta name="keywords" content="离散数学,校验码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散数学——hamming码最小距离">
+<meta property="og:url" content="http://sean10.com/2015/11/15/离散数学——hamming码最小距离/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="1：给定H(读取文件方式，第一行两个整数m,n，第二行 m\times (n-m)个0或1，也就是矩阵H的上半部分，下半部单位矩阵自行生成)，计算群码编码函数e_H。计算该编码函数能检测到多少位错误，交互输出字的码字。 输入文件：in.txt，示例：第一行两个整数，第二行累计mxr个整数。所有整数都用一个空格分隔。 3 5 1 0 1 0 0 1 无输出文件。  2：针对(8,12)编码e，找出最">
+<meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="离散数学——hamming码最小距离">
+<meta name="twitter:description" content="1：给定H(读取文件方式，第一行两个整数m,n，第二行 m\times (n-m)个0或1，也就是矩阵H的上半部分，下半部单位矩阵自行生成)，计算群码编码函数e_H。计算该编码函数能检测到多少位错误，交互输出字的码字。 输入文件：in.txt，示例：第一行两个整数，第二行累计mxr个整数。所有整数都用一个空格分隔。 3 5 1 0 1 0 0 1 无输出文件。  2：针对(8,12)编码e，找出最">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://sean10.com/2015/11/15/离散数学——hamming码最小距离/"/>
+
+
+
+
+
+  <title>离散数学——hamming码最小距离 | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/15/离散数学——hamming码最小距离/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">离散数学——hamming码最小距离</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-15T00:12:00+08:00">
+                2015-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pro/" itemprop="url" rel="index">
+                    <span itemprop="name">专业</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/11/15/离散数学——hamming码最小距离/" class="leancloud_visitors" data-flag-title="离散数学——hamming码最小距离">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1：给定H(读取文件方式，第一行两个整数m,n，第二行 m\times (n-m)个0或1，也就是矩阵H的上半部分，下半部单位矩阵自行生成)，计算群码编码函数e_H。计算该编码函数能检测到多少位错误，交互输出字的码字。</p>
+<p>输入文件：in.txt，示例：第一行两个整数，第二行累计mxr个整数。所有整数都用一个空格分隔。</p>
+<p>3 5</p>
+<p>1 0 1 0 0 1</p>
+<p>无输出文件。</p>
+<hr>
+<p>2：针对(8,12)编码e，找出最小距离最大的群码编码函数，输出H及最小距离。</p>
+<p>无输入文件</p>
+<p>输出文件：out.txt，示例，矩阵按行输出</p>
+<p>1 1 0 0</p>
+<p>0 0 1 0 </p>
+<p>….</p>
+<p>0 1 0 1</p>
+<p>(以上总共256行，此行为说明，程序不输出)</p>
+<p>H的最小距离是：3</p>
+<hr>
+<p>以下是代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">int int_pow(int x,int e)&#123;</div><div class="line">    int ans = 1;</div><div class="line">    while(e--)</div><div class="line">        ans*=x;</div><div class="line">    return ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void GetBinary(int* mb,int m, int i)&#123;</div><div class="line">    for(int j = m;j &gt;= 1;j--)&#123;</div><div class="line">        mb[j] = i%2;</div><div class="line">        i/=2;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void CntBinary(int *mb, int n ,int &amp;min)&#123;</div><div class="line">    int cnt = 0;</div><div class="line">    for(int i = 1;i &lt;= n;i++)&#123;</div><div class="line">        if(mb[i] == 1)</div><div class="line">            cnt++;</div><div class="line">    &#125;</div><div class="line">    if(cnt &lt; min)</div><div class="line">        min = cnt;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    FILE *fp = fopen(&quot;in.txt&quot;,&quot;r&quot;);</div><div class="line">    if(fp == NULL) printf(&quot;ERROR OPEN.\n&quot;);</div><div class="line">    int m,n;</div><div class="line">    int ma[100][100];</div><div class="line">    fscanf(fp,&quot; %d %d&quot;,&amp;m,&amp;n);</div><div class="line">    for(int i = 1;i &lt;= m;i++)&#123;//行列互换</div><div class="line">        for(int j = 1;j &lt;= n-m;j++)&#123;</div><div class="line">            fscanf(fp,&quot; %d&quot;,&amp;ma[i][j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    /*</div><div class="line">    for(int i = 1;i &lt;= m;i++)&#123;</div><div class="line">        for(int j = 1;j &lt;= n-m;j++)</div><div class="line">            printf(&quot;%d&quot;,ma[i][j]);</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    int mb[100];</div><div class="line">    int mc[100];</div><div class="line">    int min = m;</div><div class="line">    for(int i = 1;i &lt; int_pow(2,m);i++)&#123;</div><div class="line">        GetBinary(mb,m,i);</div><div class="line">        for(int j = m+1;j &lt;= n;j++)</div><div class="line">            mc[j] = 0;</div><div class="line">        for(int j = 1;j &lt;= m;j++)</div><div class="line">            mc[j]=mb[j];</div><div class="line">        for(int j = m+1;j &lt;= n;j++)&#123;</div><div class="line">            for(int k = 1;k &lt;= m;k++)&#123;</div><div class="line">                mc[j] += mb[k]*ma[k][j-m];</div><div class="line">            &#125;</div><div class="line">            mc[j] %= 2;</div><div class="line">        &#125;</div><div class="line">        CntBinary(mc,n,min);</div><div class="line">    &#125;</div><div class="line">    printf(&quot;The minimum hamming distance is:%d\n&quot;,min);</div><div class="line"></div><div class="line">    for(int i = 1;i &lt;= m;i++)</div><div class="line">        scanf(&quot; %d&quot;,&amp;mb[i]);</div><div class="line">    for(int i = 0;i &lt;= n;i++)</div><div class="line">        mc[i] = 0;</div><div class="line">    for(int i = 1;i &lt;= m;i++)</div><div class="line">        mc[i]=mb[i];</div><div class="line"></div><div class="line">    for(int i = m+1;i &lt;= n;i++)&#123;</div><div class="line">        for(int j = 1;j &lt;= m;j++)&#123;</div><div class="line">            mc[i] += mb[j]*ma[j][i-m];</div><div class="line">        &#125;</div><div class="line">        mc[i] %= 2;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    printf(&quot;The code word is:&quot;);</div><div class="line">    for(int i = 1;i &lt;= n;i++)</div><div class="line">        printf(&quot;%d&quot;,mc[i]);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第二题这里，依照以下定理自己手算奇偶校验矩阵就比较简单了，最小距离最大的充要条件是奇偶校验矩阵任意两行线性无关。</p>
+<p>定理是(n,k)线性分组码的最小Hamming距离为d的充要条件是，H矩阵中任意d-1列线性无关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;string.h&gt;</div><div class="line">#define N 256</div><div class="line"></div><div class="line">int int_pow(int x,int e)&#123;</div><div class="line">    int ans = 1;</div><div class="line">    while(e--)</div><div class="line">        ans*=x;</div><div class="line">    return ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void GetBinary(int* mb,int m, int i)&#123;</div><div class="line">    for(int j = m;j &gt;= 1;j--)&#123;</div><div class="line">        mb[j] = i%2;</div><div class="line">        i/=2;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void CntBinary(int *mb, int m ,int &amp;min)&#123;</div><div class="line">    int cnt = 0;</div><div class="line">    for(int i = 1;i &lt;= m;i++)&#123;</div><div class="line">        if(mb[i] == 1)</div><div class="line">            cnt++;</div><div class="line">    &#125;</div><div class="line">    if(cnt &lt; min)</div><div class="line">        min = cnt;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    FILE *fp=fopen(&quot;out.txt&quot;,&quot;w&quot;);</div><div class="line">    int m = 8,n = 12;</div><div class="line">    int ma[N][5]=&#123;&#123;0,0,0,0,0&#125;,</div><div class="line">              &#123;0,1,1,0,0&#125;,</div><div class="line">              &#123;0,0,1,1,0&#125;,</div><div class="line">              &#123;0,1,1,0,1&#125;,</div><div class="line">              &#123;0,1,1,1,0&#125;,</div><div class="line">              &#123;0,1,0,0,1&#125;,</div><div class="line">              &#123;0,0,1,0,1&#125;,</div><div class="line">              &#123;0,1,0,1,0&#125;,</div><div class="line">              &#123;0,0,0,1,1&#125;&#125;;</div><div class="line">    /*</div><div class="line">    for(int i = 0;i &lt; 8;i++)&#123;</div><div class="line">        for(int j = 0;j &lt; 4;j++)&#123;</div><div class="line">            printf(&quot;%d&quot;,H[i][j]);</div><div class="line">        &#125;</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    int mb[N];</div><div class="line">    int mc[N];</div><div class="line">    int min = m;</div><div class="line">    for(int i = 1;i &lt; int_pow(2,m);i++)&#123;</div><div class="line">        GetBinary(mb,m,i);</div><div class="line">        for(int j = m+1;j &lt;= n;j++)</div><div class="line">            mc[j] = 0;</div><div class="line">        for(int j = 1;j &lt;= m;j++)</div><div class="line">            mc[j]=mb[j];</div><div class="line"></div><div class="line">        for(int j = m+1;j &lt;= n;j++)&#123;</div><div class="line">            for(int k = 1;k &lt;= m;k++)&#123;</div><div class="line">                mc[j] += mb[k]*ma[k][j-m];</div><div class="line">            &#125;</div><div class="line">            mc[j] %= 2;</div><div class="line">        &#125;</div><div class="line">        for(int j = m+1;j &lt;= n;j++)</div><div class="line">            fprintf(fp,&quot;%d\t&quot;,mc[j]);</div><div class="line">        fprintf(fp,&quot;\n&quot;);</div><div class="line"></div><div class="line">        CntBinary(mc,n,min);</div><div class="line">    &#125;</div><div class="line">    fprintf(fp,&quot;The maximum of all the minimum distance is:%d\n&quot;,min);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/离散数学/" rel="tag"># 离散数学</a>
+          
+            <a href="/tags/校验码/" rel="tag"># 校验码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/14/十二年小说、游戏杂忆/" rel="next" title="十二年小说、游戏杂忆">
+                <i class="fa fa-chevron-left"></i> 十二年小说、游戏杂忆
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" rel="prev" title="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">
+                关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Sean10" />
+          <p class="site-author-name" itemprop="name">Sean10</p>
+           
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

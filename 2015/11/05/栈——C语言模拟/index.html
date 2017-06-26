@@ -1,0 +1,860 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="栈," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="##栈——C语言模拟 一、定义根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种限制访问端口的线性表。 栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop). 推入:将数据放入栈的顶端，top+1.弹出:将顶端数据资料输出，top-1.也就是所谓的先进后出(LIFO，Last In First Out)">
+<meta name="keywords" content="栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈——C语言模拟">
+<meta property="og:url" content="http://sean10.com/2015/11/05/栈——C语言模拟/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="##栈——C语言模拟 一、定义根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种限制访问端口的线性表。 栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop). 推入:将数据放入栈的顶端，top+1.弹出:将顶端数据资料输出，top-1.也就是所谓的先进后出(LIFO，Last In First Out)">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG">
+<meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="栈——C语言模拟">
+<meta name="twitter:description" content="##栈——C语言模拟 一、定义根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种限制访问端口的线性表。 栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop). 推入:将数据放入栈的顶端，top+1.弹出:将顶端数据资料输出，top-1.也就是所谓的先进后出(LIFO，Last In First Out)">
+<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://sean10.com/2015/11/05/栈——C语言模拟/"/>
+
+
+
+
+
+  <title>栈——C语言模拟 | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/05/栈——C语言模拟/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">栈——C语言模拟</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-05T13:37:00+08:00">
+                2015-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/11/05/栈——C语言模拟/" class="leancloud_visitors" data-flag-title="栈——C语言模拟">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##栈——C语言模拟</p>
+<p><strong>一、定义</strong><br>根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种<em>限制访问端口</em>的线性表。</p>
+<p>栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop).</p>
+<p>推入:将数据放入栈的顶端，top+1.<br>弹出:将顶端数据资料输出，top-1.<br>也就是所谓的先进后出(LIFO，Last In First Out).</p>
+<blockquote>
+<p><img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG" alt="stack"></p>
+</blockquote>
+<p><strong>栈的存在价值</strong><br>虽然说，栈实现的功能用数组和链表也可以实现，不过你不得不分神到考虑数组的下标增减、链表的指针指向等问题。</p>
+<p>引用原作者的例子，就像我们明明有两只脚可以走路，算上游泳，理论上可以去到全球任何一个地方，那么为什么我们还要有汽车、火车、飞机一样。在向未来的发展过程中，我们需要考虑的更多的是在在抵达目的地之后的发展，这个抵达的过程已经成了我们继续发展的拖累。这时，优化移动方式就成了必然，让我们得以关注结果之后。</p>
+<p>所以说，栈的引入简化了程序设计的问题，划分了不同关注层次，让人更聚焦于问题本身。比如C++，JAVA等的标准库都封装了栈的结构。</p>
+<p><strong>栈分为顺序栈和链式栈</strong><br><strong>两者的差别在哪里呢？为什么要特别用两种方法模拟呢？</strong><br>时间复杂度上，两者都没有任何其他的操作，均为O(1)；<br>而空间复杂度上，顺序栈只存储了数据和表头标记；而链式栈对每个数据都建立了一个节点，存储数据之外还存储了指向下一个节点的指针，空间较顺序栈多了一倍。</p>
+<p>所以顺序栈优点，空间占用小，存取定位还是比较方便的，在使用小空间的；而链式栈可以</p>
+<p><strong>以下是栈的抽象数据类型的定义：</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">ADT Stack&#123;</div><div class="line">    数据对象:D=&#123;ai|ai \in ElemSet,i = <span class="number">1</span>,<span class="number">2</span>,...,n, n &gt;= <span class="number">0</span>&#125;</div><div class="line">    数据关系:R1=&#123;&lt;a(i<span class="number">-1</span>),ai&gt;|a(i<span class="number">-1</span>),ai \in D, i = <span class="number">2</span>,..,n&#125;</div><div class="line">        约定an端为栈顶，ai端为栈底.</div><div class="line">    基本操作:</div><div class="line">        InitStack(&amp;S)</div><div class="line">        操作结果:构造一个空栈S</div><div class="line"></div><div class="line">        Destroy(&amp;S)</div><div class="line">        初始条件:栈S已存在。</div><div class="line">        操作结果:栈S被销毁。</div><div class="line"></div><div class="line">        ClearStack(&amp;S)</div><div class="line">        初始条件:栈S已存在。</div><div class="line">        操作结果:将S清为空栈。</div><div class="line"></div><div class="line">        StackEmpty(S)</div><div class="line">        初始条件:栈S已存在。</div><div class="line">        操作结果:若栈S为空栈，则返回TRUE，否则FALSE。</div><div class="line"></div><div class="line">        StackLength(S)</div><div class="line">        初始条件:栈S已存在。</div><div class="line">        操作结果:返回S的元素个数，即栈的长度。</div><div class="line"></div><div class="line">        GetTop(S,&amp;e)</div><div class="line">        初始条件:栈S已存在且非空。</div><div class="line">        操作结果:用e返回S的栈顶元素。</div><div class="line"></div><div class="line">        Push(&amp;S,e)</div><div class="line">        初始条件:栈S已存在。</div><div class="line">        操作结果:插入元素e为新的栈顶指针。</div><div class="line"></div><div class="line">        Pop(&amp;S,&amp;e)</div><div class="line">        初始条件:栈S已存在且非空。</div><div class="line">        操作结果:删除S的栈顶元素，并用e返回其值。</div><div class="line"></div><div class="line">        StackTraverse(S,visit())</div><div class="line">        初始条件:栈S已存在且非空。</div><div class="line">        操作结果:从栈底到栈顶依次对S的每个数据元素调用函数visit()。一旦visit()失败，则操作失效。</div><div class="line">&#125;ADT Stack</div></pre></td></tr></table></figure></p>
+<p><strong>二、顺序栈</strong></p>
+<p>定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">typedef struct&#123;</div><div class="line">    SElemType *base;</div><div class="line">    SElemType *top;</div><div class="line">    int stacksize;</div><div class="line">&#125;SqStack;</div></pre></td></tr></table></figure></p>
+<p>接下来是顺序栈的模块说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">#define STACK_INIT_SIZE 100 //存储空间初始分配量</div><div class="line">#define STACKINCREMENT 10   //存储空间分配增量</div><div class="line">#define ERROR 0</div><div class="line">#define OK 1</div><div class="line">#define OVERFLOW -1</div><div class="line"></div><div class="line">typedef struct&#123;</div><div class="line">    SElemType *base;    //在栈构造之前和压栈之后，base的值为NULL</div><div class="line">    SElemType *top;     //栈顶指针，指向栈顶的下一个位置</div><div class="line">    int stacksize;      //当前已分配的存储空间，以元素为单位</div><div class="line">&#125;SqStack;</div><div class="line">//------基本操作的函数原型说明------</div><div class="line">Status InitStack(SqStack &amp;S);</div><div class="line">//构造一个空栈S</div><div class="line"></div><div class="line">Status DestroyStack(SqStack &amp;S);</div><div class="line">//销毁栈S，S不再存在</div><div class="line"></div><div class="line">Status ClearStack(SqStack &amp;S);</div><div class="line">//把S置为空栈</div><div class="line"></div><div class="line">Status StackEmpty(SqStack S);</div><div class="line">//若栈S为空栈，则返回TRUE,否则返回FALSE</div><div class="line"></div><div class="line">int StackLength(SqStack S);</div><div class="line">//返回S的元素个数，即栈的长度</div><div class="line"></div><div class="line">Status GetTop(SqStack S,SElemType &amp;e);</div><div class="line">//若栈不空，则用e返回S的栈顶元素，并返回OK；否则返回ERROR</div><div class="line"></div><div class="line">Status Push(SqStack &amp;S,SElemType e);</div><div class="line">//插入元素e为新的栈顶元素</div><div class="line"></div><div class="line">Status Pop(SqStack &amp;S,SElemType &amp;e);</div><div class="line">//若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR</div><div class="line"></div><div class="line">Status StackTraverse(SqStack S,Stack (*visit()));</div><div class="line">//从栈底到栈顶一次对栈中每个元素调用函数visit().一旦visit()失败，则操作失败</div><div class="line"></div><div class="line">/***************基本操作的算法描述**********/</div><div class="line">Status InitStack(SqStack &amp;S)&#123;</div><div class="line">    //构造一个空栈</div><div class="line">    S.base = (SElemType *)malloc(STACK_INIT_SIZE * sizeof(SElemType));</div><div class="line">    if(!S.base) exit(OVERFLOW);</div><div class="line">    S.top = S.base;</div><div class="line">    S.stacksize = STACK_INIT_SIZE;</div><div class="line">    return OK;</div><div class="line">&#125;//InitStack</div><div class="line"></div><div class="line">Status GetTop(SqStack S, SElemType &amp;e)&#123;</div><div class="line">//若站不空，则用e返回S的栈顶元素，并返回OK；否则返回ERROR</div><div class="line">    if(S.top == S.base) return ERROR;</div><div class="line">    e = *(S.top-1);</div><div class="line">    return OK;</div><div class="line">&#125;//GetTop</div><div class="line"></div><div class="line">Status Push(SqStack &amp;S,SElemType e)&#123;</div><div class="line">//插入元素e为新的栈顶元素</div><div class="line">    if(S.top-S.base &gt;= S.stacksize)&#123;</div><div class="line">        //栈满，追加存储空间</div><div class="line">        S.base=(SElemType *)realloc(S.base,(S.stacksize+STACKINCREMENT)*sizeof(SElemType));</div><div class="line">        if(!S.base) exit(OVERFLOW);//存储分配失败</div><div class="line">        S.top=S.base+S.stacksize;</div><div class="line">        S.stacksize+=STACKINCREMENT;</div><div class="line">    &#125;</div><div class="line">    *S.top++ = e;</div><div class="line">    return OK;</div><div class="line">&#125;//push_back</div><div class="line"></div><div class="line">Status Pop(SqStack &amp;S,SElemType &amp;e)&#123;</div><div class="line">//若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK，否则返回ERROR</div><div class="line">    if(S.top == S.base) return ERROR;</div><div class="line">    e = * --S.top;</div><div class="line">    return OK;</div><div class="line">&#125;//pop</div></pre></td></tr></table></figure></p>
+<p>顺序栈是为栈预先分配一个大小固定且较合适的空间，最常见的做法是Stack结构中含一个数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> data[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> top;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>以下是数组实现的各函数代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> STACK_POP_ERR 42</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> stack struct Stack;</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> val[<span class="number">10</span>]; </div><div class="line">  	<span class="keyword">int</span> top; <span class="comment">//栈顶</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/* 检查栈是否为空 */</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">empty</span><span class="params">(<span class="built_in">stack</span> *stk)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> stk-&gt;top == <span class="number">0</span>; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 推入资料 */</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="built_in">stack</span> *stk, <span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	stk-&gt;top=stk-&gt;top+<span class="number">1</span>;</div><div class="line">	stk-&gt;val[stk-&gt;top]=x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 弹出并返回资料 */</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(<span class="built_in">stack</span> *stk)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span>(empty(stk)) </div><div class="line">		<span class="keyword">return</span> STACK_POP_ERR; <span class="comment">// 不能弹出</span></div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		stk-&gt;top=stk-&gt;top<span class="number">-1</span>;</div><div class="line">		<span class="keyword">return</span> stk-&gt;val[stk-&gt;top+<span class="number">1</span>];<span class="comment">//这里使用了复用技术</span></div><div class="line">  	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">// 宣告并初始化空间</span></div><div class="line">	<span class="built_in">stack</span> stk;</div><div class="line">	stk.top=<span class="number">0</span>;</div><div class="line">	<span class="comment">// 推入四个</span></div><div class="line">	push(&amp;stk, <span class="number">3</span>);</div><div class="line">	push(&amp;stk, <span class="number">4</span>);</div><div class="line">	push(&amp;stk, <span class="number">1</span>);</div><div class="line">	push(&amp;stk, <span class="number">9</span>);</div><div class="line">	<span class="comment">// 弹出三个</span></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>三、链式栈</strong><br>链式栈是定义一个结构体，去掉表头（表头是指一个空节点只带有一个指向存储栈顶数据的空间的指针，即首节点就开始存储数据）</p>
+<p>链式栈这里我用二进制转八进制的程序来说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define ERROR 0</div><div class="line">#define OK 1</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">	int data;</div><div class="line">	struct node* nextPtr;</div><div class="line">&#125;Stack,*LinkStack;</div><div class="line"></div><div class="line">int StackDel(LinkStack &amp;s)&#123;</div><div class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</div><div class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</div><div class="line">	s = s-&gt;nextPtr;//</div><div class="line">	free(temp);</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int pop(LinkStack &amp;s)&#123;</div><div class="line">	int e;</div><div class="line">	if (NULL == s)</div><div class="line">		return ERROR;</div><div class="line">	e = s-&gt;data;//存储从栈中取出的值</div><div class="line">	StackDel(s);//删除已取出的栈的空间</div><div class="line">	return e;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int push(LinkStack &amp;s, int e)&#123;</div><div class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</div><div class="line">	if (!p)&#123;</div><div class="line">		printf(&quot;Error calloc_push&quot;);</div><div class="line">		return ERROR;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = e;</div><div class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</div><div class="line">	s = p;</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void transform(LinkStack &amp;s)&#123;</div><div class="line">	int e, temp = 0, pow = 1;</div><div class="line">	while (NULL != s)&#123;//直到栈空</div><div class="line">		e = pop(s);</div><div class="line">		temp += e*pow;//进行二进制转十进制的计算</div><div class="line">		pow *= 2;//进行位权的累乘</div><div class="line">	&#125;</div><div class="line">	printf(&quot;The octonary answer is:(&quot;);</div><div class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</div><div class="line">	printf(&quot;)8\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void input(LinkStack &amp;s)&#123;</div><div class="line">	char ch;</div><div class="line">	printf(&quot;Please input the binary string:&quot;);</div><div class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</div><div class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</div><div class="line">	&#125;</div><div class="line">	return;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</div><div class="line">	LinkStack s = NULL;//栈的头结点指针</div><div class="line">	input(s);</div><div class="line">	transform(s);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>四、栈的应用<br>1.表达式求值<br>2.由递归到非递归<br>3.深度优先搜索(bfs)</p>
+<p>参考资料：<br>[1].kelinlin.<a href="http://www.lai18.com/content/423601.html" target="_blank" rel="external">为什么要使用栈这种数据结构.</a><br>[2]<a href="https://zh.wikipedia.org/zh/%E5%A0%86%E6%A0%88" target="_blank" rel="external">Wikipedia Definition.</a><br>[3]《数据结构》，严蔚敏</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/栈/" rel="tag"># 栈</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/04/读《弗洛伊德：作家与白日梦》/" rel="next" title="读《弗洛伊德：作家与白日梦》">
+                <i class="fa fa-chevron-left"></i> 读《弗洛伊德：作家与白日梦》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/08/《爱的艺术》人类超越了本能/" rel="prev" title="《爱的艺术》人类超越了本能">
+                《爱的艺术》人类超越了本能 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Sean10" />
+          <p class="site-author-name" itemprop="name">Sean10</p>
+           
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
