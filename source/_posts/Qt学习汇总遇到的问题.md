@@ -2,7 +2,7 @@
 title: Qt学习汇总遇到的问题
 date: 2017-06-15 16:42:46
 tags: [Qt], [C++]
-categories: [专业]
+categories: 专业
 ---
 
 使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO
