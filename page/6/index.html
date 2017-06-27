@@ -96,7 +96,7 @@
 <meta name="description" content="笔记 随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.com/page/6/index.html">
+<meta property="og:url" content="http://sean10.github.io/page/6/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="笔记 随笔">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://sean10.com/page/6/"/>
+  <link rel="canonical" href="http://sean10.github.io/page/6/"/>
 
 
 
@@ -276,7 +276,457 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/22/二叉树——UVA679/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/23/二叉树——实现堆结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/23/二叉树——实现堆结构/" itemprop="url">二叉树——实现堆结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-23T09:46:00+08:00">
+                2015-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/11/23/二叉树——实现堆结构/" class="leancloud_visitors" data-flag-title="二叉树——实现堆结构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week5/2/" target="_blank" rel="external">题目链接</a><br>总时间限制: 3000ms 内存限制: 65535kB<br>描述<br>定义一个数组，初始化为空。在数组上执行两种操作：</p>
+<p>1、增添1个元素，把1个新的元素放入数组。</p>
+<p>2、输出并删除数组中最小的数。</p>
+<p>使用堆结构实现上述功能的高效算法。</p>
+<p>输入<br>第一行输入一个整数t，代表测试数据的组数。<br>对于每组测试数据，第一行输入一个整数n，代表操作的次数。<br>每次操作首先输入一个整数type。<br>当type=1，增添操作，接着输入一个整数u，代表要插入的元素。<br>当type=2，输出删除操作，输出并删除数组中最小的元素。<br>1&lt;=n&lt;=100000。<br>输出<br>每次删除操作输出被删除的数字。<br>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">5</div><div class="line">1 1</div><div class="line">1 2</div><div class="line">1 3</div><div class="line">2</div><div class="line">2</div><div class="line">4</div><div class="line">1 5</div><div class="line">1 1</div><div class="line">1 7</div><div class="line">2</div></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>提示<br>每组测试数据的复杂度为O(nlgn)的算法才能通过本次，否则会返回TLE(超时)<br>需要使用最小堆结构来实现本题的算法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int heap[100010];</div><div class="line">int len;</div><div class="line">//int maxsize;</div><div class="line"></div><div class="line">void Init()&#123;</div><div class="line">    //maxsize = 0;</div><div class="line">    len = 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Insert(int x)&#123;</div><div class="line">    //heap[len] = x;</div><div class="line">    len++;</div><div class="line"></div><div class="line">    int i = len -1;</div><div class="line"></div><div class="line">    while(i &gt; 0)&#123;</div><div class="line">        int j = (i-1)/2;</div><div class="line">        if(x &gt; heap[j])</div><div class="line">            break;</div><div class="line">        heap[i] = heap[j];</div><div class="line">        i = j;</div><div class="line">    &#125;</div><div class="line">    heap[i] = x;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int Del()&#123;</div><div class="line">    if(0 == len)&#123;</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int temp = heap[0];</div><div class="line">    len--;</div><div class="line"></div><div class="line">    if(0 == len)&#123;</div><div class="line">        return temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int x = heap[len];</div><div class="line">    int i = 0;</div><div class="line">    int j = 2*i+1;</div><div class="line">    while(j &lt;= len-1)&#123;</div><div class="line">        if((j &lt; len-1)&amp;&amp; (heap[j] &gt; heap[j+1]))&#123;</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">        if(x &lt; heap[j])&#123;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        heap[i] = heap[j];</div><div class="line">        i = j;</div><div class="line">        j = 2*i+1;</div><div class="line">    &#125;</div><div class="line">    heap[i] = x;</div><div class="line">    return temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int t,n,type,x;</div><div class="line">    scanf(&quot;%d&quot;,&amp;t);</div><div class="line">    while(t--)&#123;</div><div class="line">        scanf(&quot;%d&quot;,&amp;n);</div><div class="line">        //struct node p;</div><div class="line">        Init();</div><div class="line">        while(n--)&#123;</div><div class="line">            scanf(&quot;%d&quot;,&amp;type);</div><div class="line">            if(type == 1)&#123;</div><div class="line">                scanf(&quot;%d&quot;,&amp;x);</div><div class="line">                Insert(x);</div><div class="line">            &#125;</div><div class="line">            else if(type == 2)</div><div class="line">                printf(&quot;%d\n&quot;,Del());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" itemprop="url">二叉树——由中根序列和后根序列重建二叉树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T21:48:00+08:00">
+                2015-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" class="leancloud_visitors" data-flag-title="二叉树——由中根序列和后根序列重建二叉树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week5/1/" target="_blank" rel="external">题目链接</a><br>总时间限制: 500ms 内存限制: 65535kB<br>描述<br>我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。</p>
+<p>用不同的整数来唯一标识二叉树的每一个结点</p>
+<p>中根序列是9 5 32 67</p>
+<p>后根序列9 32 67 5</p>
+<p>前根序列5 9 67 32</p>
+<p>输入<br>两行。第一行是二叉树的中根序列，第二行是后根序列。每个数字表示的结点之间用空格隔开。结点数字范围0～65535。暂不必考虑不合理的输入数据。<br>输出<br>一行。由输入中的中根序列和后根序列重建的二叉树的前根序列。每个数字表示的结点之间用空格隔开。<br>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">9 5 32 67</div><div class="line">9 32 67 5</div></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">5 9 67 32</div></pre></td></tr></table></figure></p>
+<p>关键在于利用通过后序找到每个子树的根节点，以此为界找到左、右子树，从而进行递归。<br>链式算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#define N 65536</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node * lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">int sLDR[N],sLRD[N];</div><div class="line"></div><div class="line">BitTree BuildTree(int coStart,int coEnd,int loStart, int loEnd)&#123;</div><div class="line">    BitTree root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    root-&gt;data = sLRD[loEnd];</div><div class="line">    root-&gt;lc = NULL;</div><div class="line">    root-&gt;rc = NULL;</div><div class="line">    int i;</div><div class="line"></div><div class="line">    if(coStart == coEnd)</div><div class="line">        return root;</div><div class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</div><div class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i&gt;=1) root-&gt;lc = BuildTree(coStart,coStart+i-1,loStart,loStart+i-1);</div><div class="line">    if(coEnd&gt;=coStart+i+1) root-&gt;rc = BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1);</div><div class="line">    return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int visit(BitTree T)&#123;</div><div class="line">    printf(&quot;%d &quot;,T-&gt;data);</div><div class="line">    return T-&gt;data;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int PreTranverse(BitTree T)&#123;</div><div class="line">    if(T)&#123;</div><div class="line">        visit(T);</div><div class="line">        if(T-&gt;lc)</div><div class="line">            PreTranverse(T-&gt;lc);</div><div class="line">        if(T-&gt;rc)</div><div class="line">            PreTranverse(T-&gt;rc);</div><div class="line">    &#125;</div><div class="line">    return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int s[N];</div><div class="line">    int order = 0;</div><div class="line">    int ch;</div><div class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</div><div class="line">        s[++order] = ch;</div><div class="line">    &#125;</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLDR[i] = s[i];</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLRD[i] = s[order/2+i];</div><div class="line">    BitTree root = BuildTree(1,order/2,1,order/2);</div><div class="line">    PreTranverse(root);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>顺序算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#define N 65536</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node * lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">int sLDR[N],sLRD[N];</div><div class="line">int tree[N];</div><div class="line"></div><div class="line">void BuildTree(int coStart,int coEnd,int loStart, int loEnd,int k)&#123;</div><div class="line">    //BitTree root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    tree[k] = sLRD[loEnd];</div><div class="line">    tree[2*k] = 0;</div><div class="line">    tree[2*k+1] = 0;</div><div class="line">    //root-&gt;lc = NULL;</div><div class="line">    //root-&gt;rc = NULL;</div><div class="line">    int i;</div><div class="line"></div><div class="line">    if(coStart == coEnd)</div><div class="line">        return ;</div><div class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</div><div class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i&gt;=1) BuildTree(coStart,coStart+i-1,loStart,loStart+i-1,2*k);</div><div class="line">    if(coEnd&gt;=coStart+i+1) BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1,2*k+1);</div><div class="line">    //return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int visit(int i)&#123;</div><div class="line">    printf(&quot;%d &quot;,tree[i]);</div><div class="line">    return tree[i];</div><div class="line">&#125;</div><div class="line"></div><div class="line">int PreTranverse(int i)&#123;</div><div class="line">    if(tree[i])&#123;</div><div class="line">        visit(i);</div><div class="line">        if(tree[2*i])</div><div class="line">            PreTranverse(2*i);</div><div class="line">        if(tree[2*i+1])</div><div class="line">            PreTranverse(2*i+1);</div><div class="line">    &#125;</div><div class="line">    return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int s[N];</div><div class="line">    int order = 0;</div><div class="line">    int ch;</div><div class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</div><div class="line">        s[++order] = ch;</div><div class="line">    &#125;</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLDR[i] = s[i];</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLRD[i] = s[order/2+i];</div><div class="line">    BuildTree(1,order/2,1,order/2,1);</div><div class="line">    PreTranverse(1);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/二叉树——UVA122/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/22/二叉树——UVA122/" itemprop="url">二叉树——UVA122</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T19:23:00+08:00">
+                2015-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/11/22/二叉树——UVA122/" class="leancloud_visitors" data-flag-title="二叉树——UVA122">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>二叉树的层次遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">struct Node&#123;</div><div class="line">    bool have_value;</div><div class="line">    int v;</div><div class="line">    struct Node* left,*right;</div><div class="line">    Node():have_value(false),left(NULL),right(NULL)&#123;&#125;</div><div class="line">&#125;;</div><div class="line">const int maxn = 256;</div><div class="line">bool failed;</div><div class="line">char s[10000];</div><div class="line"></div><div class="line">Node *root = NULL;</div><div class="line"></div><div class="line">Node* newnode()&#123;</div><div class="line">    return new Node();</div><div class="line">&#125;</div><div class="line"></div><div class="line">void addnode(int v,char *s)&#123;</div><div class="line">    int n = strlen(s);</div><div class="line">    Node* u = root;</div><div class="line">    for(int i = 0;i &lt;n;i++)</div><div class="line">        if(s[i] == &apos;L&apos;)&#123;</div><div class="line">            if(u-&gt;left == NULL) u-&gt;left = newnode();</div><div class="line">            u = u-&gt;left;</div><div class="line">        &#125;</div><div class="line">        else if(s[i] == &apos;R&apos;)&#123;</div><div class="line">            if(u-&gt;right == NULL) u-&gt;right = newnode();</div><div class="line">            u = u-&gt;right;</div><div class="line">        &#125;</div><div class="line">    if(u-&gt;have_value) failed = true;</div><div class="line">    u-&gt;v = v;</div><div class="line">    u -&gt;have_value = true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool bfs(vector&lt;int&gt;&amp; ans)&#123;</div><div class="line">    queue&lt;Node*&gt; q;</div><div class="line">    ans.clear();</div><div class="line">    q.push(root);</div><div class="line">    while(!q.empty())&#123;</div><div class="line">        Node * u = q.front();</div><div class="line">        q.pop();</div><div class="line">        if(!u-&gt;have_value) return false;</div><div class="line">        ans.push_back(u-&gt;v);</div><div class="line">        if(u-&gt;left != NULL)</div><div class="line">            q.push(u-&gt;left);</div><div class="line">        if(u-&gt;right != NULL)</div><div class="line">            q.push(u-&gt;right);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool read()&#123;</div><div class="line">    failed = false;</div><div class="line">    root = newnode();</div><div class="line">    for(;;)&#123;</div><div class="line">        if(scanf(&quot;%s&quot;,&amp;s) != 1)  return false;</div><div class="line">        if(!strcmp(s,&quot;()&quot;)) break;</div><div class="line">        int v;</div><div class="line">        sscanf(&amp;s[1],&quot;%d&quot;,&amp;v);</div><div class="line">        addnode(v,strchr(s,&apos;,&apos;)+1);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void remove_tree(Node *u)&#123;</div><div class="line">    if(u == NULL) return ;</div><div class="line">    remove_tree(u-&gt;left);</div><div class="line">    remove_tree(u-&gt;right);</div><div class="line">    delete u;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[maxn];</div><div class="line">    while(1)&#123;</div><div class="line">        if(!read()) break;</div><div class="line">        vector&lt;int&gt;ans;</div><div class="line">        if(!failed &amp;&amp; bfs(ans))&#123;</div><div class="line">            int len = ans.size();</div><div class="line">            for(int i = 0;i &lt; len;i++)</div><div class="line">                printf(&quot;%d%c&quot;,ans[i],i == len-1?&apos;\n&apos;:&apos; &apos;);</div><div class="line">        &#125;else printf(&quot;not complete\n&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    remove_tree(root);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>参考资料：<br>[1].《算法竞赛入门经典（第二版）》<br>[2].<a href="http://blog.csdn.net/u014800748/article/details/44733017" target="_blank" rel="external">http://blog.csdn.net/u014800748/article/details/44733017</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/二叉树——UVA679/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -423,7 +873,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/22/线性表——约瑟夫问题（递推未完）/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/线性表——约瑟夫问题（递推未完）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -579,7 +1029,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/19/栈——HDU1022/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/19/栈——HDU1022/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -725,7 +1175,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/18/栈——出栈序列统计/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/18/栈——出栈序列统计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -875,7 +1325,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/18/栈——密码翻译/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/18/栈——密码翻译/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -1024,7 +1474,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -1180,7 +1630,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/15/离散数学——hamming码最小距离/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/15/离散数学——hamming码最小距离/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -1334,464 +1784,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/14/十二年小说、游戏杂忆/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/14/十二年小说、游戏杂忆/" itemprop="url">十二年小说、游戏杂忆</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-14T00:24:00+08:00">
-                2015-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/11/14/十二年小说、游戏杂忆/" class="leancloud_visitors" data-flag-title="十二年小说、游戏杂忆">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##十二年小说、游戏杂忆</p>
-<p>还留有印象的小说，应该是预备班时看的了。那时，似乎是刚尝试用电脑看小说，那个时候看的第一本书应该是心梦无痕的《七界传说》。现在脑海里还留有一个印象，那时相当懵懂的我看到里面男主和女主的交流就很害羞，快速跳过。现在想来，那个时代的我们还真是单纯。现在再看，这类的文字过眼即忘了。</p>
-<p>虽说印象里只剩下初中看的书了，不过小学的时候去图书馆也很频繁，那个时候记得一天差不多要去图书馆3、4次，除了图书管理员的任务之外，经常去借各种各样的书。印象里还有一本翻了整整一系列，当时最后好像也没看懂的小说《头重脚轻》。</p>
-<p>虽然当时的图书馆拥有的书量相比现在去的图书馆数百乃至数千个书架不能比，记得图书馆只有8个书架，不过对于小时候的我来说足够看很久了。印象最深的就是有一个月因为上课也在偷偷的看书，一天要去借好几次，一次3本，最终月借书量达到了红色警戒线（150左右吧）。（貌似也因为这个，学校的大队长第一次和我聊了会，印象颇深呢！）</p>
-<p>很可惜初中虽然图书库存不少，不过对于学生的开放实在是不人性。图书室开放时间只有工作日的中午20分钟，加上初中很注重抓紧中午时间上课讲题，也就不再有机会去图书馆了。也就在那个时候，似乎网络游戏开始流行了，原本那时看书似乎就只是为了打磨时间，作为一种休闲，自然游戏在初中替代了我心目中书的地位。</p>
-<p>印象里，在小学的时候在同学的带领下玩过一段时间的QQ幻想，不过因为点卡要收费，也没玩多久。</p>
-<p>初中看不了纸质书以后，有空就在电脑上看小说。一次看小说时，一个游戏的广告始终停留在页首，然后就去玩了《昆仑世界》（那个时候还叫《昆仑》），似乎玩了整整一两年，最后还是被迫离开（因为注册时还没有验证邮箱、验证密保之说，最后账号密码被人修改，无法找回）。</p>
-<p>因为游戏数年的努力都化成飞灰，无心重头再来，毕竟所在服务器大家也都是养老休闲的了。大家都是熟人了。没什么新颖的花样了。我便转投了同平台的《三国风云》，同样持续了一年多的样子。这次的离开是因为玩了好多个新区了，对于游戏模式摸得比较清楚了，对RMB的作用无力了之后离开的。</p>
-<p>最后一个网页策略游戏，是腾讯的七雄争霸了。之前的游戏里因为可接触游戏的工作时间只有周末，经常被同期的人甩开很多，时间和RMB都不如其他人，自然毫无竞争力。在这个游戏里，因为支持手机网页登陆进行操作，我似乎一直坚持玩到了高一。最后的战绩也还算是不错的，进入了同服务器的次强的联盟。那个时候早上玩一次，晚上玩一次，投入的时间毕竟不少。</p>
-<p>在玩网页游戏的过程中也去接触了不少腾讯的客户端游戏（因为懒，熟悉的平台的游戏最方便了），DNF\QQ飞车\三国等等都玩的差不多一个月就弃了。现在想来，自己的游戏经历还真是挺丰富的，可惜唯一真正投入去研究发展攻略、甚至写过游戏攻略的只有第一、第二个网页游戏了。后面就没有用过心了。</p>
-<p>回到书，初中因为硬性条件的不支持，加上外界的吸引，就远离了书。而电子书（那时不懂有pdf扫描本，主要看的就是网络小说），接触的倒也不能算是多。</p>
-<p>严格来说，接触最多的时间应该是高中的时候了，那个时候似乎智能手机渐渐开始普及，在移动终端上看小说的网页阅读器似乎也被完成了。我就在手机上看了各式各样的网络小说。当时起点、红袖添香等小说网站的排行榜、完本小说榜等等数十页目录喜欢的都被刷尽了。</p>
-<p>不过，这些小说的内容都极其雷同。即便是现在的小说的内容，其实和3、4年前也完全没有什么成长。唯一的变化恐怕就是内容的细节变得更加丰满了吧，添加了越来越多的设定。比如，宿敌的猪队友呀，高智商的宿敌呀。</p>
-<p>因为剧情比较简单，内容之间唯一的衔接也就是时间和地点了。并没有太多的伏笔。</p>
-<p>当时看的比较多的是玄幻、奇幻、游戏之类的小说。玄幻、奇幻这两本小说的基本内容都是升级练功、扮猪吃虎、男主智商最高呀之类的。从正常的小说的角度来说，围绕着主角来描写内容，剧情主线这样发展是无可厚非的。</p>
-<p>我看过的三少、西红柿、辰东等人的书都是这般。现在想来，这些小说并没有太多的泪点，对自己可以说是一点经验都没有收获了。</p>
-<p>那个时候，无人引领，在庞杂的书海中肆意，丢失的时间实在是太多了。</p>
-<p>话虽如此，现在依旧偶尔会在做自己的事的时候刷一下同人小说。</p>
-<p>小说仿佛一股瘾，开始了便停不下来。</p>
-<p>尤其，我还挺喜欢看动漫的，现在看动漫同人小说，好多都能满足我希望在原作中看到的剧情（顺带一提，因为我看到喜欢的动漫，剧情不全的话，基本我都会去看他的轻小说本，没有轻小说就去看看漫画本）。也有不少动漫是游戏改编的，没有时间去体验游戏，便藉由其他专业的宅的小说中体会剧情了。</p>
-<p>基于这样的原因下，我恐怕也只能克制一下阅读的频率和时间，把重心放在学习上了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/11/数据结构之稀疏矩阵——稀疏矩阵加法和乘法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/11/数据结构之稀疏矩阵——稀疏矩阵加法和乘法/" itemprop="url">数据结构之稀疏矩阵——稀疏矩阵加法和乘法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-11T22:47:00+08:00">
-                2015-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/11/11/数据结构之稀疏矩阵——稀疏矩阵加法和乘法/" class="leancloud_visitors" data-flag-title="数据结构之稀疏矩阵——稀疏矩阵加法和乘法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>题目：假设稀疏矩阵A和B均以三元组表作为存储结构，试写出矩阵相加和相乘的算法，另设三元组表C存放结果矩阵。<br>要求：<br>从键盘输入稀疏矩阵A和B<br>检测A和B能否相加/相乘<br>如能，做矩阵相加和相乘运算，并打印运算结果<br>如不能，应显示出原因</p>
-<p>这里主要就是三元组的运用，比较基础，详情见代码中的注释。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define OK 1    //函数结果状态</div><div class="line">#define ERROR 0</div><div class="line">#define MAX 100</div><div class="line">typedef int Status;//函数结果状态类型</div><div class="line"></div><div class="line">typedef struct&#123;</div><div class="line">    int i,j;    //三元组的行号、列号；</div><div class="line">    int e;      //三元组的值;</div><div class="line">&#125;Triple;</div><div class="line"></div><div class="line">typedef struct&#123;</div><div class="line">    Triple data[MAX];//非零元三元组表示</div><div class="line">    int rpos[MAX];  //稀疏矩阵三元组各行起始坐标</div><div class="line">    int mu,nu,tu;   //矩阵的行数、列数和非零元个数</div><div class="line">&#125;Matrix;</div><div class="line"></div><div class="line">void Input(Matrix *M,Matrix *N);</div><div class="line">Status CreateMatrix(Matrix *M);</div><div class="line">Status PrintMatrix(Matrix M);</div><div class="line">Status PlusMatrix(Matrix M, Matrix N, Matrix *D);</div><div class="line">Status MultMatrix(Matrix M, Matrix N, Matrix *Q);</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</div><div class="line">    Matrix M,N,D,Q;</div><div class="line">    Input(&amp;M,&amp;N);</div><div class="line">    if(!PlusMatrix(M,N,&amp;D))</div><div class="line">        printf(&quot;They cannot be added.\n&quot;);</div><div class="line">    if(!MultMatrix(M,N,&amp;Q))</div><div class="line">        printf(&quot;They cannot be multiplied.\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Input(Matrix *M,Matrix *N)&#123;</div><div class="line">    printf(&quot;Please input the rows and cols and number of the nonzero element:&quot;);</div><div class="line">    if(!CreateMatrix(M))</div><div class="line">        printf(&quot;Error Create M!\n&quot;);</div><div class="line">    PrintMatrix(*M);</div><div class="line"></div><div class="line">    printf(&quot;Please input the rows and cols and number of the nonzero element:&quot;);</div><div class="line">    if(!CreateMatrix(N))</div><div class="line">        printf(&quot;Error Create N!\n&quot;);</div><div class="line">    PrintMatrix(*N);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status CreateMatrix(Matrix *M)&#123;//创建稀疏矩阵，采取三元组存储</div><div class="line">    int num[MAX]=&#123;0&#125;; //对应行非零元个数</div><div class="line">    int flag[MAX][MAX]=&#123;0&#125;;//标记对应位置是否已有非零元</div><div class="line">    int i,j,e;  //非零元三元组的临时存储变量</div><div class="line">    scanf(&quot; %d%d%d&quot;,&amp;M-&gt;mu,&amp;M-&gt;nu,&amp;M-&gt;tu);</div><div class="line">    while(M-&gt;mu &lt; 0 || M-&gt;nu &lt; 0 || M-&gt;tu &gt; M-&gt;mu * M-&gt;nu)&#123;//判断矩阵行数、列数和非零元个数是否合法</div><div class="line">        printf(&quot;The rows,cols and number of nonzero element is out of normal range!!\n&quot;);</div><div class="line">        printf(&quot;Please input again:&quot;);</div><div class="line">        scanf(&quot; %d%d%d&quot;,&amp;M-&gt;mu,&amp;M-&gt;nu,&amp;M-&gt;tu);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(!M-&gt;tu) return OK;//全部为零元素，直接返回</div><div class="line"></div><div class="line">    for(int k = 1;k &lt;= M-&gt;tu;k++)&#123;//输入非零元</div><div class="line">        printf(&quot;Please input the row,col,and data of element:&quot;);</div><div class="line">        scanf(&quot; %d%d%d&quot;,&amp;i,&amp;j,&amp;e);</div><div class="line">        while(i &lt;= 0 || i &gt; M-&gt;mu || j &lt;= 0 || j &gt; M-&gt;nu)&#123;//判断输入非零元行号、列号合法</div><div class="line">            printf(&quot;The row,col and data of element is out of normal range!!\n&quot;);</div><div class="line">            printf(&quot;Please input again:&quot;);</div><div class="line">            scanf(&quot; %d%d%d&quot;,&amp;i,&amp;j,&amp;e);</div><div class="line">        &#125;</div><div class="line">        while(!e)&#123;//判断是否非零元</div><div class="line">            printf(&quot;Zero element occurs!\n&quot;);</div><div class="line">            scanf(&quot; %d&quot;,&amp;e);</div><div class="line">        &#125;</div><div class="line">        if(!flag[i][j])&#123;//判断该位置是否已有非零元</div><div class="line">            flag[i][j] = 1;</div><div class="line">        &#125;</div><div class="line">        else&#123;</div><div class="line">            printf(&quot;Here exists!\n&quot;);</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        int l,m;</div><div class="line">        //寻找该三元组的位置</div><div class="line">        if(k==1)&#123;</div><div class="line">            M-&gt;data[k].i = i;</div><div class="line">            M-&gt;data[k].j = j;</div><div class="line">            M-&gt;data[k].e = e;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        for(l = 1;l &lt; k &amp;&amp; (i &gt; M-&gt;data[l].i || (i == M-&gt;data[l].i &amp;&amp; j &gt; M-&gt;data[l].j));l++);</div><div class="line">        for(m = k-1;m &gt;= l;m--)&#123;//依次向后移动</div><div class="line">            M-&gt;data[m+1] = M-&gt;data[m];</div><div class="line">            //printf(&quot;%d\n&quot;,M-&gt;data[m+1].i);</div><div class="line">        &#125;</div><div class="line">        //保存数据</div><div class="line">        M-&gt;data[l].i = i;</div><div class="line">        M-&gt;data[l].j = j;</div><div class="line">        M-&gt;data[l].e = e;</div><div class="line">        //printf(&quot;%d\t%d\t%d&quot;,M-&gt;data[k].i,M-&gt;data[k].j,M-&gt;data[k].e);</div><div class="line">        //printf(&quot;%d\n&quot;,k);</div><div class="line">    &#125;</div><div class="line">    //求各行非零元起始位置</div><div class="line">    if(M-&gt;tu)&#123;//判断非零元个数是否为0</div><div class="line">        for(int m = 1;m &lt;= M-&gt;tu;m++)</div><div class="line">            ++num[M-&gt;data[m].i];//求M中每行非零元素个数</div><div class="line">        M-&gt;rpos[1] = 1;//起始位置赋值</div><div class="line">        for(int m = 2;m &lt;= M-&gt;tu;m++)</div><div class="line">            M-&gt;rpos[m] = M-&gt;rpos[m-1] + num[m-1];</div><div class="line">    &#125;</div><div class="line">    return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status PlusMatrix(Matrix M, Matrix N, Matrix *D)&#123;//求稀疏矩阵的和Q=M+N</div><div class="line">    if(M.mu != N.mu || M.nu != N.nu)//检查稀疏矩阵M和N的行数和列数是否对应相等</div><div class="line">        return ERROR;</div><div class="line">    int i = 1,j = 1,k = 1;//各矩阵三元组移动临时变量</div><div class="line">    D-&gt;mu = M.mu;</div><div class="line">    D-&gt;nu = M.nu;</div><div class="line">    D-&gt;tu = 0;</div><div class="line">    if(M.tu*N.tu == 0)//零矩阵，直接返回</div><div class="line">        return OK;</div><div class="line">    while(i &lt;= M.tu &amp;&amp; j &lt;= N.tu)&#123;//M和N均不为空</div><div class="line">        if(M.data[i].i &lt; N.data[j].i || (M.data[i].i == N.data[j].i &amp;&amp; M.data[i].j &lt; N.data[j].j))&#123;//以行为主序，M中的节点在N前</div><div class="line">            D-&gt;tu++;</div><div class="line">            D-&gt;data[k++] = M.data[i++];//结构体赋值</div><div class="line">        &#125;</div><div class="line">        else if(M.data[i].i == N.data[j].i &amp;&amp; M.data[i].j == N.data[j].j)&#123;//M和N节点对应</div><div class="line">            if(M.data[i].e+N.data[j].e)&#123;//M和N相加之和不为0</div><div class="line">                D-&gt;data[k].i=M.data[i].i;</div><div class="line">                D-&gt;data[k].j=M.data[i].j;</div><div class="line">                D-&gt;data[k++].e=M.data[i].e+N.data[j].e;</div><div class="line">                D-&gt;tu++;</div><div class="line">                //printf(&quot;%d\n&quot;,D-&gt;data[k-1].e);</div><div class="line">            &#125;</div><div class="line">            i++;</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">        else if(M.data[i].i &gt; N.data[j].i ||(M.data[i].i == N.data[j].i &amp;&amp; M.data[i].j &gt; N.data[j].j))&#123;//N节点在M前</div><div class="line">            D-&gt;tu++;</div><div class="line">            D-&gt;data[k++] = N.data[j++];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    while(i &lt;= M.tu)&#123;//将矩阵N的剩余元素插入矩阵</div><div class="line">        D-&gt;tu++;</div><div class="line">        D-&gt;data[k++] = M.data[i++];</div><div class="line">    &#125;</div><div class="line">    while(j &lt;= N.tu)&#123;//将矩阵M的剩余元素插入矩阵</div><div class="line">        D-&gt;tu++;</div><div class="line">        D-&gt;data[k++] = N.data[j++];</div><div class="line">    &#125;</div><div class="line">    //printf(&quot;%d\n&quot;,k);</div><div class="line">    printf(&quot;Matrix A plus Matrix B is D:\n&quot;);</div><div class="line">    PrintMatrix(*D);</div><div class="line">    return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status MultMatrix(Matrix M, Matrix N, Matrix *Q)&#123;//进行矩阵M和N相乘</div><div class="line">    int arow,brow,ccol,ctemp[MAX];</div><div class="line">    int p,q,tp,i,t;//p,q,i为中间变量；tp,t分别为M的各行位置上限</div><div class="line">    if(M.nu != N.mu)//判断M的列数和N的行数是否相等</div><div class="line">        return ERROR;</div><div class="line">    Q-&gt;mu = M.mu;</div><div class="line">    Q-&gt;nu = N.nu;</div><div class="line">    Q-&gt;tu = 0;</div><div class="line">    if(M.tu*N.tu == 0)//判断矩阵是否为非零矩阵</div><div class="line">        return OK;</div><div class="line">    for(arow = 1;arow &lt;= M.mu;arow++)&#123;//处理M的每一行</div><div class="line">        for(i = 1;i &lt;= N.nu;i++)//元素累加清零</div><div class="line">            ctemp[i] = 0;</div><div class="line">        Q-&gt;rpos[arow] = Q-&gt;tu+1;//起始坐标赋值</div><div class="line">        if(arow &lt; M.mu)//找到该行移动次数上限</div><div class="line">            tp = M.rpos[arow+1];</div><div class="line">        else</div><div class="line">            tp = M.tu+1;</div><div class="line">        for(p = M.rpos[arow];p &lt; tp;p++)&#123;//求Q中第arow行的非零元</div><div class="line">            brow = M.data[p].j;</div><div class="line">            if(brow &lt; N.mu)//找到N中该行移动次数上限</div><div class="line">                t = N.rpos[brow+1];</div><div class="line">            else</div><div class="line">                t = N.tu+1;</div><div class="line">            for(q = N.rpos[brow];q &lt; t;q++)&#123;</div><div class="line">                ccol = N.data[q].j;//成绩元素在N中列号</div><div class="line">                ctemp[ccol] += M.data[p].e * N.data[q].e;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(ccol = 1;ccol &lt;= Q-&gt;nu;ccol++)&#123;//存储非零元</div><div class="line">            if(ctemp[ccol])&#123;</div><div class="line">                Q-&gt;tu++;</div><div class="line">                Q-&gt;data[Q-&gt;tu].i = arow;</div><div class="line">                Q-&gt;data[Q-&gt;tu].j = ccol;</div><div class="line">                Q-&gt;data[Q-&gt;tu].e = ctemp[ccol];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    printf(&quot;Matrix A multiply Matrix B is Q:\n&quot;);</div><div class="line">    PrintMatrix(*Q);</div><div class="line">    return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Status PrintMatrix(Matrix M)&#123;//打印矩阵</div><div class="line">    int i,j,k = 1;//临时中间变量</div><div class="line">    printf(&quot;The matrix is:\n&quot;);</div><div class="line">    for(i = 1;i &lt;= M.mu;i++)&#123;//遍历矩阵</div><div class="line">        for(j = 1;j &lt;= M.nu;j++)&#123;</div><div class="line">            if(i == M.data[k].i &amp;&amp; j == M.data[k].j)&#123;//存在三元组匹配，输出</div><div class="line">                printf(&quot;%d\t&quot;,M.data[k].e);</div><div class="line">                k++;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">                printf(&quot;0\t&quot;);</div><div class="line">        &#125;</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    printf(&quot;The matrix has %d rows, %d cols ,and %d nonzero elements.\n&quot;,M.mu ,M.nu, M.tu);</div><div class="line">    return OK;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/11/数据结构之链表——加里森的任务（循环链表）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/" itemprop="url">数据结构之链表——加里森的任务（循环链表）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-11T17:45:00+08:00">
-                2015-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/" class="leancloud_visitors" data-flag-title="数据结构之链表——加里森的任务（循环链表）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>题目：加里森的任务</p>
-<p>有n个加里森敢死队的队员要炸掉敌人的一个军火库，谁都不想去，队长加里森决定用轮回数数的办法来决定哪个战士去执行任务。规则如下：如果前一个战士没完成任务，则要再派一个战士上去。现给每个战士编一个号，大家围坐成一圈，随便从某一个编号为x的战士开始计数，当数到y时，对应的战士就去执行任务，且此战士不再参加下一轮计数。如果此战士没完成任务，再从下一个战士开始数数，被数到第y时，此战士接着去执行任务。以此类推，直到任务完成为止。<br>加里森本人是不愿意去的，假设加里森为1号，请你设计一程序为加里森支招，求出n,x,y满足何种条件时,加里森能留到最后而不用去执行任务;。<br>要求：<br>主要数据结构采用链式结构存储。<br>自拟1个实验实例验证程序正确性（即：n,x,y自拟）。</p>
-<p>循环链表的运用，最常见的一种，时间复杂度是O(n^3).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">//#include &quot;stdafx.h&quot;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">typedef struct node&#123;			//加里森队员链表结构</div><div class="line">	int data;</div><div class="line">	struct node* next;</div><div class="line">&#125;Linknode, *Link;</div><div class="line"></div><div class="line">Link ListCreate(int n)&#123;</div><div class="line">	Link head = NULL, curr = NULL, last = NULL;</div><div class="line">	while (n)&#123;					//对n个成员进行创建链表并编号</div><div class="line">		head = (Link)calloc(1, sizeof(Linknode));</div><div class="line">		if (NULL == head)</div><div class="line">			cout &lt;&lt; &quot;Error in calloc.&quot; &lt;&lt; endl;</div><div class="line">		head-&gt;data = n;</div><div class="line">		head-&gt;next = curr;</div><div class="line">		curr = head;</div><div class="line">		if (NULL == last)&#123;//保存最后一个节点的地址</div><div class="line">			last = head;</div><div class="line">		&#125;</div><div class="line">		n--;</div><div class="line">	&#125;</div><div class="line">	last-&gt;next = head;//进行首尾链接</div><div class="line">	return head;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Link ListDel(Link prev)&#123;</div><div class="line">	if (NULL == prev-&gt;next)&#123;//一种情况执行完毕，进行最后的节点空间释放。</div><div class="line">		free(prev);</div><div class="line">		return NULL;</div><div class="line">	&#125;</div><div class="line">	Link curr = prev-&gt;next;</div><div class="line">	prev-&gt;next = curr-&gt;next;</div><div class="line">	free(curr);</div><div class="line">	return prev;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Link Josephus(Link head, int x, int y)&#123;</div><div class="line">	Link prev = NULL;</div><div class="line">	while (head-&gt;next-&gt;data != x)//进行遍历，直到指针的下一个节点的编号为x</div><div class="line">		head = head-&gt;next;</div><div class="line">	while (head != head-&gt;next)&#123;//循环直到只剩下一个节点</div><div class="line">		for (int i = 0; i &lt; y; i++)&#123;</div><div class="line">			prev = head;</div><div class="line">			head = head-&gt;next;</div><div class="line">		&#125;</div><div class="line">		head = ListDel(prev);</div><div class="line">	&#125;</div><div class="line">	head-&gt;next = NULL;//将无限循环单节点链表断开</div><div class="line">	return head;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void ListPrintSol(Link head,int n, int i, int j)&#123;</div><div class="line">	if (1 == head-&gt;data)&#123;</div><div class="line">		cout &lt;&lt; &quot;The solution of &quot; &lt;&lt; n &lt;&lt; &quot; is: from &quot; &lt;&lt; i &lt;&lt; &quot; by &quot; &lt;&lt; j &lt;&lt; endl;</div><div class="line">		//cout &lt;&lt; &quot;The last of the list is: &quot; &lt;&lt; head-&gt;data &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	int n;</div><div class="line">	//FILE *stream;</div><div class="line">	//freopen_s(&amp;stream,&quot;op.txt&quot;, &quot;w&quot;, stdout);</div><div class="line">	Link head = NULL;</div><div class="line">	cout &lt;&lt; &quot;Please input the number of members n:&quot;;</div><div class="line">	cin &gt;&gt; n;</div><div class="line">	for (int i = 1; i &lt;= n; i++)&#123;</div><div class="line">		for (int j = 1; j &lt;= n; j++)&#123;</div><div class="line">			head = ListCreate(n);//创建链表</div><div class="line">			head = Josephus(head,i,j );//调用约瑟夫函数进行编号计数抽选，派遣队员，直到最后一人</div><div class="line">			ListPrintSol(head,n,i,j);//输出使加里森成为最后一人的x,y</div><div class="line">			head = ListDel(head);//释放空间</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1841,7 +1833,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1863,7 +1855,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

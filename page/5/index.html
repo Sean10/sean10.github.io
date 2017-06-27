@@ -96,7 +96,7 @@
 <meta name="description" content="笔记 随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.com/page/5/index.html">
+<meta property="og:url" content="http://sean10.github.io/page/5/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="笔记 随笔">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://sean10.com/page/5/"/>
+  <link rel="canonical" href="http://sean10.github.io/page/5/"/>
 
 
 
@@ -276,7 +276,558 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/29/非递归判断完全二叉树！递归？No-answer/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/有限概率（拉普拉斯概率）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/02/有限概率（拉普拉斯概率）/" itemprop="url">有限概率（拉普拉斯概率）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-02T19:44:00+08:00">
+                2015-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pro/" itemprop="url" rel="index">
+                    <span itemprop="name">专业</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/12/02/有限概率（拉普拉斯概率）/" class="leancloud_visitors" data-flag-title="有限概率（拉普拉斯概率）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###有限概率（拉普拉斯概率）</p>
+<blockquote>
+<p>定义1.如果$S$是一个等可能结构的有限非空样本空间，$E$是一个作为$S$的子集的一个事件，那么$E$的概率为$p(E)=\cfrac{|E|}{|S|}$.</p>
+<p>定理1.让$E$成为一个样本空间$S$中的一个事件。事件$\overline{E}=S-E$发生的概率，即事件$E$的补全事件，由以下公式给出$$p(\overline{E})=1-p(E)$$.</p>
+</blockquote>
+<p>###事件补全、联合概率</p>
+<blockquote>
+<p>定理2.让$E_1$和$E_2$成为样本空间$S$中的时间，那么$p(E_1 \cup E_2)=p(E_1)+p(E_2)-p(E_1 \cap E_2)$.</p>
+</blockquote>
+<p>###概率性原因<br>没什么内容，都是概率之前学过的基础，就下面这个问题比较有意思。</p>
+<p>####蒙提霍尔问题</p>
+<blockquote>
+<p>蒙提霍尔问题就是在一个游戏中，有三扇门，一扇门背后是奖品，两扇门背后是山羊，参加者可以在上台前选择其中一扇门，上台之后，主持人会从剩下的两扇门中选择一扇背后没有奖品的门打开，然后给参加者一个更换选择的机会。<br>问：如果你更换，会不会有更大的概率拿到奖品。</p>
+</blockquote>
+<p>这里的问题以前看到过流言终结者，那里面采用的方法是统计概率，得到的结果是2/3的中签率。</p>
+<p><em>在更换之前的是先验概率，为1/3。</em><br><em>得到一扇门打开之后的是后验概率（条件概率）。</em></p>
+<p>举个例子：<br>比如10个人抽一个人值日，这是一个事件，概率是1/10.<br>如果一个人打开了他的签，他并不值日，他的事件和你的事件是两回事，概率并不相关。<br>但如果你知道了他的未中签，给你再选择的机会，那就是1/9.</p>
+<p>（概率永远会变）变了一定是事件变了。</p>
+<p>回到这个例子，如果你始终不更换你的选择，你的中签率就是1/3，这里就算主持人打开了门，但你不重新选择，所以你始终是1/3.这是不相关的两件事。</p>
+<p>如果你会更改选择，那么简单地来说，因为事件改变为了剩下两个一扇奖品一扇山羊，这样你的概率一定会大于等于1/2.</p>
+<p>假如我选两扇门，中奖概率一定是2/3.这是确定的事件，确定的概率。<br>不让你选择两个，其实换个角度，就是比如有ABC三扇门，我想选AB，我就先选C，然后主持人会在AB里选择一扇门，然后我就可以更换到AB中的那扇没被打开的门了。这样事件没有改变，很明显， 中奖概率都是2/3.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/01/二叉树——森林的带度数层次序列存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/01/二叉树——森林的带度数层次序列存储/" itemprop="url">二叉树——森林的带度数层次序列存储</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-01T18:09:00+08:00">
+                2015-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/12/01/二叉树——森林的带度数层次序列存储/" class="leancloud_visitors" data-flag-title="二叉树——森林的带度数层次序列存储">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week7/1/" target="_blank" rel="external">题目链接</a><br>总时间限制: 1000ms 内存限制: 65536kB<br>描述<br>对于树和森林等非线性结构，我们往往需要将其序列化以便存储。有一种树的存储方式称为带度数的层次序列。我们可以通过层次遍历的方式将森林序列转化为多个带度数的层次序列。</p>
+<p>例如对于以下森林：<br><img src="http://media.openjudge.cn/images/upload/1401904592.png" alt="img"></p>
+<p>两棵树的层次遍历序列分别为：C E F G K H J / D X I</p>
+<p>每个结点对应的度数为：3 3 0 0 0 0 0 / 2 0 0</p>
+<p>我们将以上序列存储起来，就可以在以后的应用中恢复这个森林。在存储中，我们可以将第一棵树表示为C 3 E 3 F 0 G 0 K 0 H 0 J 0，第二棵树表示为D 2 X 0 I 0。</p>
+<p>现在有一些通过带度数的层次遍历序列存储的森林数据，为了能够对这些数据进行进一步处理，首先需要恢复他们。</p>
+<p>输入<br>输入数据的第一行包括一个正整数n，表示森林中非空的树的数目。<br>随后的 n 行，每行给出一棵树的带度数的层次序列。<br>树的节点名称为A-Z的单个大写字母。<br>输出<br>输出包括一行，输出对应森林的后根遍历序列。<br>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">C 3 E 3 F 0 G 0 K 0 H 0 J 0</div><div class="line">D 2 X 0 I 0</div></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">K H J E F G C X I D</div></pre></td></tr></table></figure></p>
+<p>这道题，主要就是用队列存下根节点，根据其子节点数目判断是不是叶子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    char data;</div><div class="line">    struct node *child[26];</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">void Init(BitTree &amp;root, char ch)&#123;</div><div class="line">    for(int i = 0;i &lt; 26;i++)&#123;</div><div class="line">        root-&gt;child[i] = NULL;</div><div class="line">    &#125;</div><div class="line">    root-&gt;data = ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Create(BitTree &amp;root)&#123;</div><div class="line">    queue &lt;BitTree&gt;qRoot;</div><div class="line">    queue&lt;int&gt;qSeq;</div><div class="line">    BitTree temp,tempHead;</div><div class="line">    char ch;</div><div class="line">    int i = 0;</div><div class="line">    int degree = 0;//树的度</div><div class="line">    int childNum;</div><div class="line">    cin &gt;&gt; ch &gt;&gt; childNum;</div><div class="line">    root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    Init(root,ch);</div><div class="line">    qRoot.push(root);</div><div class="line">    qSeq.push(childNum);</div><div class="line">    while(!qRoot.empty())&#123;</div><div class="line">        while(degree == i)&#123;</div><div class="line">            if(qRoot.empty())</div><div class="line">                return ;</div><div class="line">            degree = qSeq.front();</div><div class="line">            qSeq.pop();</div><div class="line">            tempHead = qRoot.front();</div><div class="line">            qRoot.pop();</div><div class="line">            i = 0;</div><div class="line">        &#125;</div><div class="line">        cin &gt;&gt; ch &gt;&gt; childNum;</div><div class="line">        temp = (BitTree)malloc(sizeof(BitNode));</div><div class="line">        Init(temp,ch);</div><div class="line">        qRoot.push(temp);</div><div class="line">        qSeq.push(childNum);</div><div class="line">        tempHead-&gt;child[i] = temp;</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void AftTranverse(BitTree root)&#123;</div><div class="line">    for(int i = 0;i &lt; 26 &amp;&amp; root-&gt;child[i];i++)</div><div class="line">        AftTranverse(root-&gt;child[i]);</div><div class="line">    cout &lt;&lt; root-&gt;data &lt;&lt; &apos; &apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    BitTree root;</div><div class="line">    int n;</div><div class="line">    cin &gt;&gt; n;</div><div class="line">    while(n--)&#123;</div><div class="line">        Create(root);</div><div class="line">        AftTranverse(root);</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &apos;\n&apos;;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/30/大学物理实验-考点总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/30/大学物理实验-考点总结/" itemprop="url">大学物理实验 考点总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-30T22:42:00+08:00">
+                2015-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pro/" itemprop="url" rel="index">
+                    <span itemprop="name">专业</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/11/30/大学物理实验-考点总结/" class="leancloud_visitors" data-flag-title="大学物理实验 考点总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="大物实验-考点总结"><a href="#大物实验-考点总结" class="headerlink" title="大物实验 考点总结"></a>大物实验 考点总结</h1><!--toc-->
+<h3 id="误差"><a href="#误差" class="headerlink" title="误差"></a>误差</h3><p><strong>测量误差</strong>可以用绝对误差，也可以用相对误差表示：<br>$$绝对误差=测量结果-真值$$<br>$$相对误差=\cfrac{绝对误差}{真值}$$</p>
+<h4 id="误差分类："><a href="#误差分类：" class="headerlink" title="误差分类："></a>误差分类：</h4><p>(1)系统误差(2)随机误差(3)粗大误差</p>
+<h4 id="测量结果的评价"><a href="#测量结果的评价" class="headerlink" title="测量结果的评价"></a>测量结果的评价</h4><p>评价测量结果，反应测量误差大小，常用到精密度、正确度和准确度3个概念。<br><strong>精密度</strong>反映随机误差大小的程度，它是对测量结果的重复性的评价。精密度高是指测量的重复性好，各次测量值的分布密集，随机误差小。但是，精密度不能反映系统误差的大小。<strong>精密度反映测量值离散程度</strong>。<br><strong>正确度</strong>反映系统误差大小的程度。正确度高是指测量数据的算术平均值偏离真值较小，测量的系统误差小。但是正确度不能确定数据分散的情况，即不能反映随机误差的大小。<br><strong>准确度</strong>反映系统误差与随机误差综合大小的程度。准确度高是指测量结果既精密又正确，即随机误差与系统误差均小。</p>
+<p><strong>常用的测量方法</strong>有异号法、<strong>交换法</strong>、替代法、<strong>对称法</strong>。</p>
+<h4 id="服从正态分布的随机误差"><a href="#服从正态分布的随机误差" class="headerlink" title="服从正态分布的随机误差"></a>服从正态分布的随机误差</h4><p>服从正态分布的随机误差具有下列特点：<br>(1)单峰性——绝对值小的误差比绝对值大的误差出现的概率答；<br>(2)对称性——大小相等而符号相反的误差出现的概率相同；<br>(3)有界性——在一定的测量条件下，误差的绝对值不超过一定的限度；<br>(4)抵偿性——误差的算术平均值随测量次数$n$的增加而趋于零。</p>
+<p>当测量次数无穷多或足够多时，测量值的误差分布才接近正态分布，但是当测量次数较少时（例如，少于10次，物理实验教学中一般取$n=6\sim 10$次），测量值的误差分布将明显偏离正态分布，而遵从<strong>$t$分布</strong>，又称为<strong>学生分布</strong>。$t$分布曲线与正态分布曲线的形状类似，但是$t$分布曲线的峰值低于正态分布；而且$t$分布曲线上部较窄，下部较宽。</p>
+<p><strong>为什么置信概率取0.95</strong><br>不确定度的$A$类（采用统计方法评定的$A$类不确定度）分量用$u_A(x)$表示。物理实验中$u_A(x)$一般用多次测量平均值的标准偏差$s(\overline{x})$与$t$因子$t_p$的乘积来估算，即$$u_A(x)=t_ps(\overline x)$$<br>式中，$t$因子$t<em>p$是与测量次数$n$和对应的置信概率$p$有关，当置信概率为$p=0.95$，测量次数$n=6$时，我们可以查到$t</em>{0.95}/\sqrt{n} \approx 1$，则有$$u_A(x)=s(x)$$<br>即在置信概率为$0.95$的前提下，测量次数$n=6$，$A$类不确定度可以直接用测量值的标准偏差$s(x)$估算。<br>因此，在未加说明时，普遍采取置信概率$p=0.95$。</p>
+<h3 id="测量不确定度和结果的表达"><a href="#测量不确定度和结果的表达" class="headerlink" title="测量不确定度和结果的表达"></a>测量不确定度和结果的表达</h3><h4 id="不确定度由两类不确定度合成"><a href="#不确定度由两类不确定度合成" class="headerlink" title="不确定度由两类不确定度合成"></a>不确定度由两类不确定度合成</h4><p>1. A类不确定度：采用统计方法评定的不确定度，即对多次测量的数据进行处理而得到的不确定度，以$u_A(x)$表示。<br>2. B类不确定度：采用非统计方法评定的不确定度，即$u<em>A(x)$,常常用仪器误差$\Delta</em>仪$来表示。<br>（一般来说这个仪器误差会给出，所以不需要背）</p>
+<h4 id="合成不确定度与测量结果的表达"><a href="#合成不确定度与测量结果的表达" class="headerlink" title="合成不确定度与测量结果的表达"></a>合成不确定度与测量结果的表达</h4><p>下式就是不确定度的合成公式：<br>$$u(x)=\sqrt{u^2_A(x)+u^2_B(x)}\tag {1.1}$$<br>完整的数据处理结果，标准形式如下：<br>$$\begin{cases}x=\overline {x} \pm u(x) \\<br>u_r=\cfrac{u(x)}{\overline {x}} \times 100\%<br> \end{cases}\tag{1.2}$$<br>式中，$\overline x$为多次测量的平均值，$u(x)$为合成不确定度，$u_r$是两者的比值，称为测量的相对不确定度。</p>
+<h4 id="不确定度的求解"><a href="#不确定度的求解" class="headerlink" title="不确定度的求解"></a>不确定度的求解</h4><h5 id="直接测量不确定度的求解过程"><a href="#直接测量不确定度的求解过程" class="headerlink" title="直接测量不确定度的求解过程"></a>直接测量不确定度的求解过程</h5><p>1.单次测量<br>因为我们的实验过程都是指定的，并不需要我们自己来构思实验过程，所以对于测量单次或者多次无需判断，这部分不在考点内。<br>当遇到测量结果是单次测量时，我们的不确定度只有$u_B(x)$一项。它的取值有两种，一种是仪器标定的最大误差限（暂时没遇到，如果有应该会在型号说明那把），第二种是实验室给出的最大允许误差$u(x)=u<em>B(x)=\Delta</em>仪$。如果两种都有，取较大者。<br>2.多次测量<br>多次测量时，不确定度一般按照下列过程进行计算：</p>
+<ul>
+<li>求多次的测量数据的平均值$\overline{x}=\sum \frac{x_i}{n}$;</li>
+<li>修正已知系统误差，得到测量值，例如，已知螺旋测微仪的零点误差为$d<em>0$，修正后的测量结果为$d=d</em>测-d_0$；</li>
+<li>用贝塞尔公式计算标准误差$$s(x)=\sqrt{\cfrac{\sum_{i=1}^{n} (x_i-\overline{x})^2}{n-1}}$$</li>
+<li>根据仪器标定的最大误差限，或实验室给出的最大允许误差，确定$u_B(x)$；</li>
+<li>根据$u_A(x)和u_B(x)求合成不确定度 $$u(x)=\sqrt{u^2_A(x)+u^2_B(x)}$ ；</li>
+<li>计算相对不确定度$u_r(x)=\cfrac{u(x)}{\overline {x}} \times 100 \%$;</li>
+<li>给出测量结果$$\begin{cases}x=\overline{x}\pm u(x) \\<br>u_r=\cfrac{u(x)}{\overline x}\times 100 \%<br>\end{cases}$$</li>
+</ul>
+<h4 id="间接测量的不确定度"><a href="#间接测量的不确定度" class="headerlink" title="间接测量的不确定度"></a>间接测量的不确定度</h4><p>在实际测量中，我们遇到的往往是间接测量，因此间接测量具有非常重要的意义。假设物理量$F$是$n$个独立的直接测量量$x,y,z,\cdots$的函数，即$F=f(x,y,z,\cdots)$，如果它们相互独立，则$F$的不确定度可由各直接测量量的不确定度合成，即$$u(F)=\sqrt{\left(\cfrac {\partial{f}}{\partial {x}}\right)^2 u^2 (x)+\left(\cfrac {\partial{f}}{\partial {y}}\right)^2 u^2 (y)+\left(\cfrac {\partial{f}}{\partial {z}}\right)^2 u^2 (z)+\cdots}$$<br>式中，$u(x),u(y),u(z)$为各直接测量量$x,y,z,\cdots$的不确定度。</p>
+<p>当$F=f(x,y,z,\cdots)$中各观测量之间的关系是乘、除或方幂时，采用相对不确定度的表达方式，可以大大简化合成不确定度的运算。<br> 方法是先取自然对数，然后作不确定度的合成，即<br> $$u(F)=\sqrt{\left(\cfrac{\partial{lnf}}{\partial x}\right)^2u^2 (x)+\left(\cfrac{\partial{lnf}}{\partial y}\right)^2u^2 (y)+\left(\cfrac{\partial{lnf}}{\partial z}\right)^2u^2 (z)+\cdots}$$</p>
+<p> 间接测量不确定度的计算过程类似直接测量的计算过程，这里就不写了，只是将$u(x)$替换成$u(F)$。</p>
+<hr>
+<h3 id="有效数字及其运算法则"><a href="#有效数字及其运算法则" class="headerlink" title="有效数字及其运算法则"></a>有效数字及其运算法则</h3><h4 id="有效数字"><a href="#有效数字" class="headerlink" title="有效数字"></a>有效数字</h4><p> 对于有效数字注意以下几点即可<br> <em>有效数字位数多少的计算是从测量结果的第一位（最高位）非零数字开始，到最后一位数。
+ </em>数字结尾的0不应随便取舍，因为它与有效数字密切相关。例如，$103000$与$1.03\times 10^5$不一样，前者有6位有效数字，而后者只剩下3位。<br> <em>常用数学常数的有效位数（即$e$、$\pi等$)，可根据需要进行取舍，一般取位应比参加运算各数中有效位数最多的数再多一位。
+ </em>在仪器上直接读取测量结果时，有效数字的多少是由被测量的大小及仪器的精度决定。正确的读数，应在仪器最小分度以下再估读一位，除非有特殊说明该仪器不需要估读。如千分尺等指针式器具，加上我们估读的那位，才读到千分位。而精密数字显示仪器和游标仪器就不用估读。</p>
+<h4 id="有效数字的近似运算法则"><a href="#有效数字的近似运算法则" class="headerlink" title="有效数字的近似运算法则"></a>有效数字的近似运算法则</h4><p><em>在加减法运算中，有效数字取决于参与运算的数字中末位位数最高的那个数。
+</em>乘除法运算的有效位数取决于参与运算数字中有效位数最少的那个数，必要时可多取一位。(当两个乘数的第一位数相乘大于10，则多取一位）<br>四则运算的基本原则与以上相同。</p>
+<hr>
+<h4 id="特殊函数的运算（三角函数、对数）"><a href="#特殊函数的运算（三角函数、对数）" class="headerlink" title="特殊函数的运算（三角函数、对数）"></a>特殊函数的运算（三角函数、对数）</h4><p>这里一定是个考点。<br>例：已知角度为$15^\circ21’$，求$sinx$。<br>答：在x的最后一位数上取1个单位作为$x$的不确定度，即$u_{min}=\Delta=1’$，将它化为弧度有$\Delta x=0.000\ 29rad$；设$y=sinx$,并对其求微分，得$\Delta y=cosx\Delta x \approx 0.000\ 28$，不准确位是小数点后的第4位，因此$sin x$应取到小数点后的第4位，即$sinx=0.264\ 7$。<br>如果上述角度是$15^\circ21’10’’$,则$\Delta x=1’’=0.000\ 004\ 85 rad$，可算出$u(y)=cosx \Delta x \approx 0.000\ 004\ 7$,不准确位是小数点后第6位，因此$sinx$应取到小数点后的第6位，即$sinx = 0.264\ 761$。</p>
+<p>例：已知$x=57.8$,求$lg\ x$。<br>答：设$y=lg\ x$,已知$u_{min}=\Delta x=0.1$,有$\Delta y=\Delta(ln\ x/ln\ 10)=0.434\ 3\Delta x /x \approx0.000\ 75$,因此$lg\ x$应取到小数点后第4位，即$lg\ x =1.761\ 9$。</p>
+<p><strong>综上所述，总结如下：</strong><br><em>加、减法运算，以参加运算各量中有效数字末位最高的为准，并与之对齐；
+</em>乘、除法运算，以参加运算各量中有效数字最少的为准，必要时可多取一位。(当两个乘数的第一位数相乘大于10，则多取一位）<br><em>混合四则运算按以上原则进行；
+</em>特殊函数运算，通过微分关系进行；</p>
+<hr>
+<h4 id="数据的修约和测量结果的表述"><a href="#数据的修约和测量结果的表述" class="headerlink" title="数据的修约和测量结果的表述"></a>数据的修约和测量结果的表述</h4><p><strong>不确定度的有效位数在一般情况下，保留一位，至多不超过两位。</strong><br>具体：如果不确定度有效位数的第一位数小于或等于3，允许保留2位有效数字；如果不确定度有效位数的第一位数大于3，则只能保留一位有效数字<br>（<em>在实际中经常会遇到测量结果与不确定度的有效位数发生矛盾的情况，原则是以不确定度的有效位数确定测量结果的有效位数，因此在计算测量结果时不要过早地将数字截断</em>）</p>
+<p><strong>数据截断时，剩余的尾数按”小于5舍弃，大于5进位，等于5凑偶”</strong><br>等于5凑偶的意思是当尾数等于5，且5后没有其他不为零的数字时，如果它前面的数是奇数，则加1，将其凑成偶数，如果是偶数则不变。</p>
+<hr>
+<h3 id="常用数据处理方法"><a href="#常用数据处理方法" class="headerlink" title="常用数据处理方法"></a>常用数据处理方法</h3><h4 id="作图法"><a href="#作图法" class="headerlink" title="作图法"></a>作图法</h4><p><strong>1.选择合适的坐标分度值，确定坐标纸的大小:</strong><br>坐标分度值的选取应能反映测量值的有效位数，一般以 1～2mm对应于测量仪表的最小分度值或对应于测量值的次末位数）。<br><strong>2. 标明坐标轴：</strong><br>用粗实线画坐标轴，用箭头标轴方向，标坐标轴的名称或符号、单位,再按顺序标出坐标轴整分格上的量值。<br><strong>3.标实验点：</strong><br>实验点可用“+”、 “$\times$”、“$\circ$”等符号标出（同一坐标系下不同曲线用不同的符号）。<br><strong>4. 连成图线：</strong><br>用直尺、曲线板等把点连成直线、光滑曲线。一般不强求直线或曲线通过每个实验点，应使图线线正穿过实验点时可以在两边的实验点与图线最为接近且分布大体均匀。图点处断开。<br><strong>5.标出图线特征：</strong><br>在图上空白位置标明实验条件或从图上得出的某些参数。如利用所绘直线可给出被测电阻R大小：从所绘直线上读取两点 A、B 的坐标就可求出 R 值。<br><strong>6.标出图名：</strong><br>在图线下方或空白位置写出图线的名称及某些必要的说明。<br>至此一张图完成<br><strong>注意点</strong><br>*问题：曲线太粗，不均匀，不光滑<br>应该用直尺、曲线板等工具把实验点连成光滑、均匀的细实线。</p>
+<p>*问题：横轴坐标分度选取不当<br>横轴以3 cm 代表1 V，使作图和读图都很困难。实际在选择坐标分度值时，应既满足有效数字的要求又便于作图和读图，一般以1 mm 代表的量值是10的整数次幂或是其2倍或5倍。</p>
+<hr>
+<h4 id="图解法"><a href="#图解法" class="headerlink" title="图解法"></a>图解法</h4><p>实验曲线作出后，可由曲线求出经验公式及所含参数，称为图解法。物理实验中常见的有：直线，指数曲线，抛物线等。其中直线是最简单的一种。<br> 建立经验公式的一般步骤：<br> <em>第一步：根据曲线的形状判断曲线的类型；
+ </em>第二步：由曲线的类型判断公式的特点，建立经验公式；<br> *第三步：用实验数据来检验公式的准确度。<br>由曲线图直接建立经验公式是困难的，我们可以用变数置换法把曲线图改成直线图，再按建立直线方程的办法建立经验公式。<br>（1）确定直线图形的斜率和截距求测量结果<br>图线$y=kx+b$，可在图线上选取两点$P_1(x_1,y_1)$和$P_2(x_2,y_2)$（不能用原来测量的点）计算其斜率：$$k=\cfrac{y_2-y_1}{x_2-x_1}$$<br>$P_1$和$P_2$不要太靠近，以减小误差。其截距b是当$x=0$时的y值；或选取图上的任一点$P_3(x_3,y_3)$，带入$y=kx+b$中，并利用斜率公式得：$$b=y3-\cfrac{y_2-y_1}{x_2-x_1}x_3$$<br>确定直线图形的斜率和截距以后，再根据斜率或截距求出所含的参量，从而得出测量结果。<br>（2）根据图线求出经验公式<br>这个就只是将函数适当转换成线性关系，不多说，这个初高中做得挺多的。</p>
+<hr>
+<h4 id="逐差法"><a href="#逐差法" class="headerlink" title="逐差法"></a>逐差法</h4><p>在使用逐差法计算时，必须把测量数据分成高、低两组，对这两组实行对应项相减，不能采取逐项相减的办法处理数据。<br>为了保持多次测量的优点，体现出多次测量减小随机误差的目的，将一组等间隔连续测量数据（共$2n$次）按次序分成高低两组（两组次数应相同）。<br>一组为$x_0,x_1,\cdots,x_n-1$，另一组为$x<em>n,x</em>{n+1},\cdots,x<em>{2n-1}$,取对应项的差值后再求平均值：$$\delta=\frac 1n \sum</em>{i=0}^{n-1}(x_{n+i}-x<em>i)$$<br>标准偏差（即不确定度）为$$s(\delta)=\sqrt{\cfrac {\sum</em>{i=0}^{n-1}[(x_{n+i}-x_i)-\delta]^2}{n-1}}$$</p>
+<hr>
+<h4 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h4><p>设已知函数的形式为$$y=bx+a$$<br>式中，a和b为两个待定系数，成为回归系数；只有$x$为变量，由于只有一个变量，因此称为一元线性回归。<br>（1）回归系数的确定<br>回归系数a与b为$$\begin{cases} b=\cfrac{\overline{xy}-\overline{x}\overline{y}}{\overline{x^2}-\overline{x} ^2}\\<br>a=\overline{y}-b\overline{x}<br>\end{cases}$$</p>
+<p>(2)相关系数的确定<br>为了判断所作的线性回归结果是否合理，引入线性回归相关系数的概念，相关系数以$r$表示，定义公式为$$r=\cfrac {\overline{xy}-\overline{x}\overline{y}}{\sqrt{(\overline{x}^2-\overline{x^2})(\overline{y}^2-\overline{y^2})}}$$<br>相关系数$r$的取值范围为$-1<r<+1$。当$r>0$时，回归直线的斜率为正，称为正相关。当$r&lt;0$时，回归直线的斜率为负，称为负相关。且$|r|$越接近1，说明数据点越靠近拟合曲线，即设定的回归方程越合理。</r<+1$。当$r></p>
+<hr>
+<h3 id="实验报告思考题"><a href="#实验报告思考题" class="headerlink" title="实验报告思考题"></a>实验报告思考题</h3><h4 id="3-1示波器的使用"><a href="#3-1示波器的使用" class="headerlink" title="3.1示波器的使用"></a>3.1示波器的使用</h4><p><strong>思考题：</strong><br><strong>1.如果波形不稳，总是向左或向右移动，该如何调节？</strong><br>答：检查触发源是否正确，如正确，调节触发电平，当Trig’D灯亮，波形稳定。</p>
+<p><strong>2.示波器“电平”旋钮的作用是什么？什么时候需要调节它？观察李萨如图时，能否用它把图形稳定下来？</strong><br>答：点评是使观测喜好在屏幕上稳定显示的电位器；波形在屏幕上左右滚动时，调节此电平，波形可稳定；观测李萨如图时不起作用。</p>
+<p><strong>3.如果打开示波器后，只看到一个或两个移动的点而没有扫描线，是什么原因？应如何调整？如果看到的是一个或两个固定不动的点呢？</strong><br>答：扫描速度较低，将扫描时间因数往快调；处于X-Y状态，调到扫描A状态即可。</p>
+<h4 id="3-2空气中的声速测定"><a href="#3-2空气中的声速测定" class="headerlink" title="3.2空气中的声速测定"></a>3.2空气中的声速测定</h4><p><strong>思考题：</strong><br><strong>1.调整信号的频率和移动接受换能器的位置（振幅法）都是为了使接受换能器的输出达到极大，并且都被称为共振，它们是一回事吗？</strong><br>答：不是。调整频率达到共振是指探头的谐振频率，使探头有最大输出功率。移动接收换能器的位置达到共振是使超声波在两探头间形成驻波。</p>
+<p><strong>2.行波比较测量声速实验中，将发送换能器的信号输入到CH1通道，接受换能器的信号输入到CH2通道，此时，示波器的触发源应如何选择？</strong><br>答：选择CH1通道，因为发生换能器的信号更强，更稳定。</p>
+<p><strong>3.在振幅法中，示波器上看不到接受换能器的输出波形，但连线无误，仪器和导线（电缆）无故障，以下三种分析是否合理？如原因属实，应当如何处理？</strong><br><strong>（1）信号源的频率偏离换能器共振频率太远；</strong><br><strong>（2）激励发生器的信号幅度太小；</strong><br><strong>（3）VOLTS/DIV选择不当。</strong><br>答：<br>（1）合理。调整信号源频率，使换能器工作在谐振频率上。<br>（2）合理。增加信号源的输出电压。<br>（3）合理。可能电压分度值过高，改变接收换能器信号输出端的VOLTS/DIV，放大接收信号。</p>
+<p><strong>4.振幅法中，如果极大值振幅超过荧光屏显示范围，有人认为以下三种调节方法可使信号不超出范围，你认为可行吗？</strong><br><strong>（1）改变示波器VOLTS/DIV旋钮的档位；</strong><br><strong>（2）调节信号发生器的输出幅度；</strong><br><strong>（3）调节信号发生器的频率；</strong><br>答：（1）、（2）可行，仍能保证实验数据的准确性。（3）不行，频率变化，幅度仍不变。</p>
+<p><strong>5.实验中，能否固定发射器与接收器之间的距离，利用改变频率测声速？</strong><br>答：不行，$v=f\lambda$,无法测出波长。</p>
+<p><strong>6.利用目前的仪器设备可以实现对移动距离的测量吗？</strong><br>答：可以</p>
+<h4 id="3-3惠斯通电桥测量中值电阻"><a href="#3-3惠斯通电桥测量中值电阻" class="headerlink" title="3.3惠斯通电桥测量中值电阻"></a>3.3惠斯通电桥测量中值电阻</h4><p><strong>思考题：</strong><br><strong>1.使用交换法测未知电阻时$R_1,R_2$的阻值在交换前后是否可以改变？为什么？例如交换前$R_1=R_2=100.0 \Omega$,交换后$R_1’=R_2’=500.0\Omega$。</strong><br>答：不可以改变。因为改变没有意义。由数据处理可知，交换法的优势在于：消除$R_1,R_2$对测量$R_x$的影响，使之只与$R_s、R_s’$有关，以下证明：<br>$$R_x=\frac{R_1}{R_2}R_s，R_x=\frac{R_2}{R_1}R_s’ \\<br> \Rightarrow R_x=\sqrt{\cfrac{R_1}{R_2} \cdot \cfrac{R_2}{R_1} \cdot R_s \cdot R_s’}$$.<br> 如果改变$R_1,R_2$，生成$R_1’,R_2’$,在计算$u(x)$时会加入新的元素，增大误差；即使保证$\cfrac{R_1’}{R_2’}=\cfrac{R_1}{R_2}$，既增大了复杂度，在交换过程中也可能出错。</p>
+<p><strong>2.$AC5/3$检流计的“电计”和“短路”键的作用是什么？调零键下方的锁扣在什么位置才可以进行调零和测量（说明是露出红点还是白点），使用后应置于什么位置（是露出红点还是白点）？</strong><br>答：“电计”键：按下后检流计接通，相当于检流计的开关。<br>“短路”键：可以将检流计的两端短路，增大电磁阻尼作用，使指针停止摆动。<br>露出红点时可以调零和测量，使用后露出白点。</p>
+<p><strong>3.说明测量电路中滑线变阻器的作用</strong><br>答：实验中，电键闭合前将滑线变阻器调至最大，方便检流计调节平衡，待基本调节平衡，再逐渐将其阻值调零，使电路中电流增大，提高精确度。</p>
+<p><strong>4.下列因素是否会加大测量误差</strong><br><strong>（1）电源电压大幅下降</strong><br><strong>（2）电源电压稍有波动</strong><br><strong>（3）检流计零点没有调准</strong><br><strong>（4）检流计灵敏度不够高</strong><br>答：（1）会。电源电动势越低，电桥灵敏度越低，误差越大。<br>（2）不会。稍有波动的电源电压对电桥灵敏度的影响可忽略。<br>（3）会。电桥没有到达平衡状态，测量读数会有较大误差<br>（4）会，因为电桥灵敏度与检流计灵敏度成正比，检流计灵敏度不高，电桥灵敏度也不高，误差较大。</p>
+<p><strong>5.用给出的仪器自组单臂电桥，并用其测量表头（微安表）内阻。要求：</strong><br><strong>（1）画出线路图；</strong><br><strong>（2）写出设计思想及表头内阻的计算公式。</strong><br><strong>仪器：0.1级电阻箱一个：电阻箱有四个接线柱分别标有：$0.9\Omega$,$9.9\Omega$,$99999.9\Omega$.滑线变阻器一个：$500\Omega$,允许$2A$电流。微安表一个：$100\mu A$，1.5级，内阻约为$1000\Omega$。电源：3V干电池。开关导线若干。</strong><br>答：（1）<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_ewb.PNG" alt="ewb"><br>无视滑线变阻器和电源上的参数吧，这是用ewb画的，不要介意。<br>（2）利用电阻箱结构，将电阻箱拆成3个桥臂电阻，设为$R_1,R_2,R_3$，微安表内阻为$r$,使$R_1:R_2=1：10$,再调整$R_3$使电桥平衡，则$r=\frac{R_1}{R_2}R_3$。k开关变化时，$\mu A$示数不变，则平衡。</p>
+<h4 id="3-4开尔文电桥测量低值电阻"><a href="#3-4开尔文电桥测量低值电阻" class="headerlink" title="3.4开尔文电桥测量低值电阻"></a>3.4开尔文电桥测量低值电阻</h4><p><strong>思考题：</strong><br><strong>1.写出金、银、铜、铁等常见金属的电阻率，试判断我们测量的材料可能是哪一种？</strong><br>答：$\rho<em>金=0.024\mu \Omega\cdot m$;$\rho</em>银=0.0175\mu \Omega\cdot m$;$\rho<em>铜=0.016\mu \Omega\cdot m$;$\rho</em>铁=0.0978\mu\Omega\cdot m$;<br>所以可能是铁棒。</p>
+<p><strong>2.比较单臂电桥与双臂电桥有何不同，至少给出三处</strong><br>答：（1）单臂电桥是两端钮接法；双臂电桥是四端钮接法；<br>（2）单臂电桥测量中值电阻；双臂电桥测量低值电阻；<br>（3）双臂电桥比单臂电桥多一组桥壁。</p>
+<p><strong>3.用双臂电桥测量$1\Omega$以下电阻时，如被测电阻$R_x$的两电压端引线电阻较大，对测量结果有无影响？若电流端引线电阻较大，对测量结果有无影响？</strong><br>答：电压端引线电阻较大对测量结果有影响，电流端引线电阻较大无影响。</p>
+<h4 id="3-5霍尔元件测磁场"><a href="#3-5霍尔元件测磁场" class="headerlink" title="3.5霍尔元件测磁场"></a>3.5霍尔元件测磁场</h4><p><strong>思考题：</strong><br><strong>1. 为什么霍尔元件要选用半导体材料制作？</strong><br>答：霍尔效应是磁敏效应。霍尔系数的大小也决定霍尔效应的明显程度，已知霍尔系数$K_H=\cfrac1{nqd}$，若载流子密度$n$较大时，霍尔系数$K_H$较小，则发生霍尔效应不明显。由于金属材料的载流子密度较大，而半导体的载流子密度比金属要小得多，为了让霍尔效应更明显，故选择半导体材料制作霍尔元件。</p>
+<p><strong>2.为什么霍尔元件通常做成薄片状？</strong><br>答：霍尔系数$K_H=\cfrac1{nqd}$，当霍尔元件的厚度$d$越小，则霍尔系数$K_H=\cfrac1{nqd}$越大。霍尔系数越大，霍尔效应越明显。故霍尔元件通常做成薄片状。</p>
+<p><strong>3. 如何判断实验中所用的霍尔元件是N型还是P型半导体材料？</strong><br>答：实验中的霍尔元件是$N$型半导体材料制作的。在半导体材料中，$N$型半导体材料的载流子迁移率比$P$型半导体材料答。判断实验中所用的霍尔元件是$N$型还是$P$型半导体材料关键看载流子的迁移率。（有更好的，希望能说一下）</p>
+<p><strong>4.霍尔元件的摆放方向和位置对霍尔效应测磁场的结果会有何影响？</strong><br>答：霍尔效应测磁场只能测出垂直于电流方向的磁场。<br>所以，必须保证电流方向与磁场方向垂直，不然测出的磁场只是垂直于电流方向的分量，测量值偏小。</p>
+<h4 id="3-6集成霍尔传感器与简谐振动"><a href="#3-6集成霍尔传感器与简谐振动" class="headerlink" title="3.6集成霍尔传感器与简谐振动"></a>3.6集成霍尔传感器与简谐振动</h4><p><strong>思考题：</strong><br><strong>1.测量弹簧的变化量时，如何从加有反射镜的游标尺上正确读数？</strong><br>答：调整底脚螺钉使实验装置铅直，调节砝码盘指针靠近游标卡尺的反射镜，读数时使反射镜上的刻线和砝码盘指针及其像重合，加减砝码应该保持砝码盘水平。</p>
+<p><strong>2.为使周期的测量更准确，测量时应注意什么？</strong><br>答：<br>(1)测弹簧振子振动50次所用的时间，不再是10次。<br>(2)拉的时候一定要竖直向下，以保证弹簧振子只在竖直方向震动。<br>(3)调节霍尔片与磁钢之间的距离，尽量减小振动系统的震动幅度。<br>(4)保证振动过程中小灯泡交替亮、灭。</p>
+<p><strong>3.集成霍尔传感器有哪两种类型？其输出特点有什么不同？</strong><br>答：集成霍尔传感器按输出特点分为开关型输出和线性输出。<br>开关型输出其输出信号只有两种状态， 高电平或低电平。<br>线性输出指其输出信号的电压值随着磁场极性以及强度的变化而变化。</p>
+<h4 id="3-12液压拉伸法测量弹性模量"><a href="#3-12液压拉伸法测量弹性模量" class="headerlink" title="3.12液压拉伸法测量弹性模量"></a>3.12液压拉伸法测量弹性模量</h4><p><strong>思考题：</strong><br><strong>1.如果实验中钢丝直径加倍，而其他条件不变，弹性模量将变为原来的几倍？</strong><br>答：直径加倍，弹性模量不变，因为弹性模量只与材料本身属性有关。</p>
+<p><strong>2.测量时，光杠杆的后脚应放在什么位置？</strong><br>答：测量时，光杠杆的后脚应置于与钢丝固定的圆形托盘上。</p>
+<p><strong>3.为什么实验中对不同的物理量采用不同的长度测量仪器来进行测量？</strong><br>答:不同的物理量大小范围不同，精度也不同，故物理量应寻找合适的测量仪器进行测量</p>
+<p><strong>4.能否用光杠杆法测量一块薄金属片的厚度？试作图说明。</strong><br>答：如图所示，OA为平面镜，OB在平面上，OA与OB相固定，可绕O在竖直方向转动，$OB=S$，M点处有一光源，经平面镜反射到P点，$ON=L$,在B下方未知金属片，其未知厚度d.<br>得如图关系。<br><img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_draw.png" alt=""><br>$L、X、S$已知，则$tan2\alpha=\frac XL$，$2\alpha \to 0$<br>$\alpha = \frac X{2L}$,so$d=S tan\alpha=s\alpha=\cfrac{XS}{2L}$.</p>
+<h4 id="3-15分光计的调整和使用"><a href="#3-15分光计的调整和使用" class="headerlink" title="3.15分光计的调整和使用"></a>3.15分光计的调整和使用</h4><p><strong>思考题：</strong><br><strong>1.调节望远镜光轴与分光计的中心轴相垂直，应该调节哪些螺钉？如何判断望远镜光轴与分光计的中心轴已经垂直？</strong><br>答：用望远镜通倾角调平螺钉和载物台调平螺钉进行调节。<br>若望远镜光轴与分光计中心轴垂直，光学平行平板或三棱镜两个光学面反射的亮十字像，都能与望远镜分划板叉丝刻线上焦点重合。</p>
+<p><strong>2.调整平行光管能够发出平行光，应调节哪些螺钉？如何判断平行光管已经发出平行光？</strong><br>答：松开夹缝套筒锁紧螺钉，前后移动狭缝筒，能看到清晰地狭缝像。</p>
+<p><strong>3.调节载物台法线方向与分光计中心轴平行时，三棱镜为什么要按照下图在载物台上摆放？说明理由。</strong><br>答：因为需要达到调整一个光学面的法线方向时，尽量不对另一个光学面的倾斜度产生影响。调节螺钉Z，改变光学面AB的法线方向，对光学面AC的法线方向无影响。调节螺钉X可改变光学面AC的法线方向而不会对光学面AB的倾斜度产生影响。</p>
+<p><strong>4.调节望远镜光轴与分光计的中心轴相垂直时，如果只在一个光学面观察到十字像，如何调节？</strong><br>答：当望远镜光轴和载物台都倾斜，但望远镜的光轴垂直或大致垂直于光学平行平板的镜面时，从望远镜中可观察到反射的十字像。将光学平行平板随载物台转过$180^\circ$后，望远镜的光轴与光学平行平板不再有垂直或大致垂直的关系，反射的十字像则可能无法进入望远镜。因此，只能观察到一个光学平面反射的十字像。（粗调）<br>根据望远镜、光轴和载物台的倾斜方向，可分别判断反射的为进入望远镜的十字像，是在望远镜筒外的上方还是下方。由此，可决定进一步的调节方向，或者重新进行粗调。</p>
+<p><strong>5.为什么分光计采用双游标度数？两个度数之间有什么关系？</strong><br>答：为消除度盘与分光计中心轴轴之间的偏心差，两个游标相差约$180^\circ$.</p>
+<p><strong>6.三棱镜的分光原理是什么？</strong><br>答：根据入射光的不同波长，三棱镜的折射率不同，不同波长的出射光线的偏向角不同，因而形成色散光谱，达成分光。</p>
+<h4 id="4-9用非线性电路研究混沌现象"><a href="#4-9用非线性电路研究混沌现象" class="headerlink" title="4.9用非线性电路研究混沌现象"></a>4.9用非线性电路研究混沌现象</h4><p><strong>思考题：</strong><br><strong>1.如何理解“混沌是确定系统中的随机性行为”？</strong><br>答：混沌现象是指发生在确定性系统中的貌似随机的不规则运动，一个确定性理论描述的系统，其行为却表现为不确定性，即不可重复、不可预测性。</p>
+<p><strong>2.产生混沌的条件是什么？产生混沌现象有几种途径？</strong><br>答：产生混沌的必要条件是系统具有非线性因素，充分条件是描述系统的状态方程若是非自治的，则为二阶的；若自治，则至少需要3个以上变量。<br>产生途径：(1)倍周期分叉进入混沌<br>(2)阵发性途径<br>(3)准周期途径</p>
+<p><strong>3.通过本实验尝试阐述倍周期分叉、混沌、奇怪吸引子等概念的物理意义。</strong><br>答：倍周期分叉：倍周期分叉是一个映射的稳定的周期，随着参数增大而加分叉的现象，是从周期窗口进入混沌的一种“方式”（老师划了条线，不知道什么意思）<br>混沌：确定的宏观的非线性系统在一定条件下所呈现的不确定的或不可预测的随机现象。<br>奇怪吸引子：把相空间中一定体积的点都取为初值时，这个区域的形状在演化过程中虽然改变可使体积不变。耗散的系统不同，相体积在演化过程中不断收缩，最终趋向于名为“吸引子”的某一局域空间内。</p>
+<p><strong>4.混沌现象的特征</strong><br>答：(1)初值敏感性、长时间不可预测性：对具有内在随机性的混沌系统而言，从两个非常接近的初值出发的两个轨线在经过长时间演化之后，可能相距极远。一个细微的变化，可能系统的运动轨迹就会有大的变化，表现出其对初值的极度敏感、长时间不可预测性。<br>(2)内在随机性：从非线性系统变化的图像观察他们在混沌区的行为表现出随机不确定性。然而这种不确定性不是来源于外部环境的随机因素对系统运动的影响，二是由系统自发产生的。<br>(3)非规则的有序：混沌不是纯粹的无序，而是另一种类型的有序运动，混沌区的系统行为往往体现在无穷嵌套自相似（分形），这种不同层次上的结构相似性是标度变换下的不变形，体现出混沌运动的规律。</p>
+<p>以上是个人的答案<br>原本在页面源码里的彩蛋放出来了。<br>&lt;彩蛋：链接: <a href="http://pan.baidu.com/s/1qW29mAK" target="_blank" rel="external">http://pan.baidu.com/s/1qW29mAK</a> 密码: ag63&gt;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/29/非递归判断完全二叉树！递归？No-answer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -428,7 +979,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/28/偏序集、格/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/28/偏序集、格/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -595,7 +1146,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/27/《沉默的大多数》跳出手掌心/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/27/《沉默的大多数》跳出手掌心/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -749,7 +1300,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/26/《沉默的大多数》序言/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/《沉默的大多数》序言/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -903,7 +1454,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/26/并查集——HDU1213/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/并查集——HDU1213/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -1048,7 +1599,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/26/二叉树——Huffman树求最短路径和/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -1200,7 +1751,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/26/二叉树——文本二叉树/">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/二叉树——文本二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
@@ -1349,456 +1900,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/23/二叉树——实现堆结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/23/二叉树——实现堆结构/" itemprop="url">二叉树——实现堆结构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-23T09:46:00+08:00">
-                2015-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/11/23/二叉树——实现堆结构/" class="leancloud_visitors" data-flag-title="二叉树——实现堆结构">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/2/" target="_blank" rel="external">题目链接</a><br>总时间限制: 3000ms 内存限制: 65535kB<br>描述<br>定义一个数组，初始化为空。在数组上执行两种操作：</p>
-<p>1、增添1个元素，把1个新的元素放入数组。</p>
-<p>2、输出并删除数组中最小的数。</p>
-<p>使用堆结构实现上述功能的高效算法。</p>
-<p>输入<br>第一行输入一个整数t，代表测试数据的组数。<br>对于每组测试数据，第一行输入一个整数n，代表操作的次数。<br>每次操作首先输入一个整数type。<br>当type=1，增添操作，接着输入一个整数u，代表要插入的元素。<br>当type=2，输出删除操作，输出并删除数组中最小的元素。<br>1&lt;=n&lt;=100000。<br>输出<br>每次删除操作输出被删除的数字。<br>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">5</div><div class="line">1 1</div><div class="line">1 2</div><div class="line">1 3</div><div class="line">2</div><div class="line">2</div><div class="line">4</div><div class="line">1 5</div><div class="line">1 1</div><div class="line">1 7</div><div class="line">2</div></pre></td></tr></table></figure></p>
-<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">1</div></pre></td></tr></table></figure></p>
-<p>提示<br>每组测试数据的复杂度为O(nlgn)的算法才能通过本次，否则会返回TLE(超时)<br>需要使用最小堆结构来实现本题的算法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int heap[100010];</div><div class="line">int len;</div><div class="line">//int maxsize;</div><div class="line"></div><div class="line">void Init()&#123;</div><div class="line">    //maxsize = 0;</div><div class="line">    len = 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Insert(int x)&#123;</div><div class="line">    //heap[len] = x;</div><div class="line">    len++;</div><div class="line"></div><div class="line">    int i = len -1;</div><div class="line"></div><div class="line">    while(i &gt; 0)&#123;</div><div class="line">        int j = (i-1)/2;</div><div class="line">        if(x &gt; heap[j])</div><div class="line">            break;</div><div class="line">        heap[i] = heap[j];</div><div class="line">        i = j;</div><div class="line">    &#125;</div><div class="line">    heap[i] = x;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int Del()&#123;</div><div class="line">    if(0 == len)&#123;</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int temp = heap[0];</div><div class="line">    len--;</div><div class="line"></div><div class="line">    if(0 == len)&#123;</div><div class="line">        return temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int x = heap[len];</div><div class="line">    int i = 0;</div><div class="line">    int j = 2*i+1;</div><div class="line">    while(j &lt;= len-1)&#123;</div><div class="line">        if((j &lt; len-1)&amp;&amp; (heap[j] &gt; heap[j+1]))&#123;</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">        if(x &lt; heap[j])&#123;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        heap[i] = heap[j];</div><div class="line">        i = j;</div><div class="line">        j = 2*i+1;</div><div class="line">    &#125;</div><div class="line">    heap[i] = x;</div><div class="line">    return temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int t,n,type,x;</div><div class="line">    scanf(&quot;%d&quot;,&amp;t);</div><div class="line">    while(t--)&#123;</div><div class="line">        scanf(&quot;%d&quot;,&amp;n);</div><div class="line">        //struct node p;</div><div class="line">        Init();</div><div class="line">        while(n--)&#123;</div><div class="line">            scanf(&quot;%d&quot;,&amp;type);</div><div class="line">            if(type == 1)&#123;</div><div class="line">                scanf(&quot;%d&quot;,&amp;x);</div><div class="line">                Insert(x);</div><div class="line">            &#125;</div><div class="line">            else if(type == 2)</div><div class="line">                printf(&quot;%d\n&quot;,Del());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" itemprop="url">二叉树——由中根序列和后根序列重建二叉树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T21:48:00+08:00">
-                2015-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" class="leancloud_visitors" data-flag-title="二叉树——由中根序列和后根序列重建二叉树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/1/" target="_blank" rel="external">题目链接</a><br>总时间限制: 500ms 内存限制: 65535kB<br>描述<br>我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。</p>
-<p>用不同的整数来唯一标识二叉树的每一个结点</p>
-<p>中根序列是9 5 32 67</p>
-<p>后根序列9 32 67 5</p>
-<p>前根序列5 9 67 32</p>
-<p>输入<br>两行。第一行是二叉树的中根序列，第二行是后根序列。每个数字表示的结点之间用空格隔开。结点数字范围0～65535。暂不必考虑不合理的输入数据。<br>输出<br>一行。由输入中的中根序列和后根序列重建的二叉树的前根序列。每个数字表示的结点之间用空格隔开。<br>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">9 5 32 67</div><div class="line">9 32 67 5</div></pre></td></tr></table></figure></p>
-<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">5 9 67 32</div></pre></td></tr></table></figure></p>
-<p>关键在于利用通过后序找到每个子树的根节点，以此为界找到左、右子树，从而进行递归。<br>链式算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#define N 65536</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node * lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">int sLDR[N],sLRD[N];</div><div class="line"></div><div class="line">BitTree BuildTree(int coStart,int coEnd,int loStart, int loEnd)&#123;</div><div class="line">    BitTree root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    root-&gt;data = sLRD[loEnd];</div><div class="line">    root-&gt;lc = NULL;</div><div class="line">    root-&gt;rc = NULL;</div><div class="line">    int i;</div><div class="line"></div><div class="line">    if(coStart == coEnd)</div><div class="line">        return root;</div><div class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</div><div class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i&gt;=1) root-&gt;lc = BuildTree(coStart,coStart+i-1,loStart,loStart+i-1);</div><div class="line">    if(coEnd&gt;=coStart+i+1) root-&gt;rc = BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1);</div><div class="line">    return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int visit(BitTree T)&#123;</div><div class="line">    printf(&quot;%d &quot;,T-&gt;data);</div><div class="line">    return T-&gt;data;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int PreTranverse(BitTree T)&#123;</div><div class="line">    if(T)&#123;</div><div class="line">        visit(T);</div><div class="line">        if(T-&gt;lc)</div><div class="line">            PreTranverse(T-&gt;lc);</div><div class="line">        if(T-&gt;rc)</div><div class="line">            PreTranverse(T-&gt;rc);</div><div class="line">    &#125;</div><div class="line">    return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int s[N];</div><div class="line">    int order = 0;</div><div class="line">    int ch;</div><div class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</div><div class="line">        s[++order] = ch;</div><div class="line">    &#125;</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLDR[i] = s[i];</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLRD[i] = s[order/2+i];</div><div class="line">    BitTree root = BuildTree(1,order/2,1,order/2);</div><div class="line">    PreTranverse(root);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>顺序算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#define N 65536</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node * lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">int sLDR[N],sLRD[N];</div><div class="line">int tree[N];</div><div class="line"></div><div class="line">void BuildTree(int coStart,int coEnd,int loStart, int loEnd,int k)&#123;</div><div class="line">    //BitTree root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    tree[k] = sLRD[loEnd];</div><div class="line">    tree[2*k] = 0;</div><div class="line">    tree[2*k+1] = 0;</div><div class="line">    //root-&gt;lc = NULL;</div><div class="line">    //root-&gt;rc = NULL;</div><div class="line">    int i;</div><div class="line"></div><div class="line">    if(coStart == coEnd)</div><div class="line">        return ;</div><div class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</div><div class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i&gt;=1) BuildTree(coStart,coStart+i-1,loStart,loStart+i-1,2*k);</div><div class="line">    if(coEnd&gt;=coStart+i+1) BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1,2*k+1);</div><div class="line">    //return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int visit(int i)&#123;</div><div class="line">    printf(&quot;%d &quot;,tree[i]);</div><div class="line">    return tree[i];</div><div class="line">&#125;</div><div class="line"></div><div class="line">int PreTranverse(int i)&#123;</div><div class="line">    if(tree[i])&#123;</div><div class="line">        visit(i);</div><div class="line">        if(tree[2*i])</div><div class="line">            PreTranverse(2*i);</div><div class="line">        if(tree[2*i+1])</div><div class="line">            PreTranverse(2*i+1);</div><div class="line">    &#125;</div><div class="line">    return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int s[N];</div><div class="line">    int order = 0;</div><div class="line">    int ch;</div><div class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</div><div class="line">        s[++order] = ch;</div><div class="line">    &#125;</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLDR[i] = s[i];</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLRD[i] = s[order/2+i];</div><div class="line">    BuildTree(1,order/2,1,order/2,1);</div><div class="line">    PreTranverse(1);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.com/2015/11/22/二叉树——UVA122/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/二叉树——UVA122/" itemprop="url">二叉树——UVA122</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T19:23:00+08:00">
-                2015-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/11/22/二叉树——UVA122/" class="leancloud_visitors" data-flag-title="二叉树——UVA122">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>二叉树的层次遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">struct Node&#123;</div><div class="line">    bool have_value;</div><div class="line">    int v;</div><div class="line">    struct Node* left,*right;</div><div class="line">    Node():have_value(false),left(NULL),right(NULL)&#123;&#125;</div><div class="line">&#125;;</div><div class="line">const int maxn = 256;</div><div class="line">bool failed;</div><div class="line">char s[10000];</div><div class="line"></div><div class="line">Node *root = NULL;</div><div class="line"></div><div class="line">Node* newnode()&#123;</div><div class="line">    return new Node();</div><div class="line">&#125;</div><div class="line"></div><div class="line">void addnode(int v,char *s)&#123;</div><div class="line">    int n = strlen(s);</div><div class="line">    Node* u = root;</div><div class="line">    for(int i = 0;i &lt;n;i++)</div><div class="line">        if(s[i] == &apos;L&apos;)&#123;</div><div class="line">            if(u-&gt;left == NULL) u-&gt;left = newnode();</div><div class="line">            u = u-&gt;left;</div><div class="line">        &#125;</div><div class="line">        else if(s[i] == &apos;R&apos;)&#123;</div><div class="line">            if(u-&gt;right == NULL) u-&gt;right = newnode();</div><div class="line">            u = u-&gt;right;</div><div class="line">        &#125;</div><div class="line">    if(u-&gt;have_value) failed = true;</div><div class="line">    u-&gt;v = v;</div><div class="line">    u -&gt;have_value = true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool bfs(vector&lt;int&gt;&amp; ans)&#123;</div><div class="line">    queue&lt;Node*&gt; q;</div><div class="line">    ans.clear();</div><div class="line">    q.push(root);</div><div class="line">    while(!q.empty())&#123;</div><div class="line">        Node * u = q.front();</div><div class="line">        q.pop();</div><div class="line">        if(!u-&gt;have_value) return false;</div><div class="line">        ans.push_back(u-&gt;v);</div><div class="line">        if(u-&gt;left != NULL)</div><div class="line">            q.push(u-&gt;left);</div><div class="line">        if(u-&gt;right != NULL)</div><div class="line">            q.push(u-&gt;right);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool read()&#123;</div><div class="line">    failed = false;</div><div class="line">    root = newnode();</div><div class="line">    for(;;)&#123;</div><div class="line">        if(scanf(&quot;%s&quot;,&amp;s) != 1)  return false;</div><div class="line">        if(!strcmp(s,&quot;()&quot;)) break;</div><div class="line">        int v;</div><div class="line">        sscanf(&amp;s[1],&quot;%d&quot;,&amp;v);</div><div class="line">        addnode(v,strchr(s,&apos;,&apos;)+1);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void remove_tree(Node *u)&#123;</div><div class="line">    if(u == NULL) return ;</div><div class="line">    remove_tree(u-&gt;left);</div><div class="line">    remove_tree(u-&gt;right);</div><div class="line">    delete u;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[maxn];</div><div class="line">    while(1)&#123;</div><div class="line">        if(!read()) break;</div><div class="line">        vector&lt;int&gt;ans;</div><div class="line">        if(!failed &amp;&amp; bfs(ans))&#123;</div><div class="line">            int len = ans.size();</div><div class="line">            for(int i = 0;i &lt; len;i++)</div><div class="line">                printf(&quot;%d%c&quot;,ans[i],i == len-1?&apos;\n&apos;:&apos; &apos;);</div><div class="line">        &#125;else printf(&quot;not complete\n&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    remove_tree(root);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>参考资料：<br>[1].《算法竞赛入门经典（第二版）》<br>[2].<a href="http://blog.csdn.net/u014800748/article/details/44733017" target="_blank" rel="external">http://blog.csdn.net/u014800748/article/details/44733017</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1848,7 +1949,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1870,7 +1971,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
