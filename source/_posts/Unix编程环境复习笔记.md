@@ -1,7 +1,7 @@
 ---
 title: Unix编程环境复习笔记
+tags: [Unix, Linux]
 date: 2017-06-27 14:36:03
-tags: [Unix], [Linux]
 categories: 专业
 ---
 

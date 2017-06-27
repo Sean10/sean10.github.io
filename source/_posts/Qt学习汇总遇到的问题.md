@@ -1,7 +1,7 @@
 ---
 title: Qt学习汇总遇到的问题
 date: 2017-06-15 16:42:46
-tags: [Qt], [C++]
+tags: [Qt, C++]
 categories: 专业
 ---
 
