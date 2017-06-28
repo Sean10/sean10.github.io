@@ -158,10 +158,15 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh16e0gi0cj315q0vm496.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh16fzm21aj30xy06gn0i.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh16otya5jj31160cqad1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh17birrf6j30re0n2q7u.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh17k44ua3j31560pcq93.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qfd6p0kj30w40wk113.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg">
@@ -169,7 +174,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg">
-<meta property="og:updated_time" content="2017-06-28T11:22:14.000Z">
+<meta property="og:updated_time" content="2017-06-28T13:38:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机系统结构复习note">
 <meta name="twitter:description" content="仅供参考~">
@@ -506,6 +511,11 @@
 <p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量<br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"></p>
 <p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg" alt=""><br> 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率)<br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg" alt=""></p>
+<p><strong>静态处理分支指令的基本方法</strong>：</p>
+<ul>
+<li>预测成功</li>
+<li>延迟分支</li>
+</ul>
 <p><strong>降低流水线分支损失的方法有哪些？</strong><br>（1）在流水线中尽早判断出分支转移是否成功；<br>（2）尽早计算出分支转移成功时的PC值（即分支的目标地址）</p>
 <ul>
 <li>“冻结”或“排空”流水线的方法</li>
@@ -616,13 +626,107 @@
 <h5 id="半性能向量长度-n-frac-1-2"><a href="#半性能向量长度-n-frac-1-2" class="headerlink" title="半性能向量长度 $n_{\frac{1}{2}}$"></a>半性能向量长度 $n_{\frac{1}{2}}$</h5><p>半性能向量长度 $n<em>{\frac12}$ 是指向量处理机的性能为其最大性能的一半时所需的向量长度。<br>$n</em>{\frac12}$ 小表示流水线建立的时间少。<br>$n_{\frac12}$ 越小， 对给定的向量处理，流水线性能越好。反映为建立流水线而导致的性能损失。<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1385ja86j314c0rqdnz.jpg" alt="半性能长度计算"></p>
 <h5 id="长度向量临界值-n-v-同样不是重点"><a href="#长度向量临界值-n-v-同样不是重点" class="headerlink" title="长度向量临界值 $n_v$(同样不是重点)"></a>长度向量临界值 $n_v$(同样不是重点)</h5><h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg" alt=""><br>题目补充：各功能部件的启动时间为：取数和存数部件为12个时钟周期、乘法部件为7个时钟周期，执行标量代码的开销 $T_{loop} = 15$ 个时钟周期，对一个向量元素执行一次操作的时间Tg=一个时钟周期。</p>
-<h3 id="第五章-指令集并行"><a href="#第五章-指令集并行" class="headerlink" title="第五章 指令集并行"></a>第五章 指令集并行</h3><h4 id="记分牌-Scoreboard-算法"><a href="#记分牌-Scoreboard-算法" class="headerlink" title="记分牌(Scoreboard)算法"></a>记分牌(Scoreboard)算法</h4><h4 id="Tomasulo算法"><a href="#Tomasulo算法" class="headerlink" title="Tomasulo算法"></a>Tomasulo算法</h4><p><strong>记分牌算法中，记分牌中记录的信息由哪三部分构成</strong></p>
+<h3 id="第五章-指令集并行"><a href="#第五章-指令集并行" class="headerlink" title="第五章 指令集并行"></a>第五章 指令集并行</h3><h4 id="指令级并行度ILP"><a href="#指令级并行度ILP" class="headerlink" title="指令级并行度ILP"></a>指令级并行度ILP</h4><p>指令间存在的一种固有的并行性，计算机可以并行执行两条或两条以上的指令。</p>
+<p>开发指令级并行度可以降低指令执行的平均周期数CPI</p>
+<h4 id="开发ILP的方法可以分为两大类"><a href="#开发ILP的方法可以分为两大类" class="headerlink" title="开发ILP的方法可以分为两大类"></a>开发ILP的方法可以分为两大类</h4><ul>
+<li>主要基于硬件的动态开发方法（动态调度）<ul>
+<li>记分牌动态调度算法</li>
+<li>Tomasulo算法</li>
+</ul>
+</li>
+<li>基于软件的静态开发方法（静态调度）</li>
+</ul>
+<h5 id="记分牌-Scoreboard-算法"><a href="#记分牌-Scoreboard-算法" class="headerlink" title="记分牌(Scoreboard)算法"></a>记分牌(Scoreboard)算法</h5><p><strong>基本思想</strong>:记分牌硬件实现了对指令的动态调度。支持乱序执行，在没有结构冲突时尽早地执行没有数据冲突的指令，使多条指令同时处于执行阶段。</p>
+<p><strong>记分牌维护3张表</strong>：</p>
+<ul>
+<li>指令状态表<br>记录正在执行的各条指令已经到了哪一段</li>
+<li><p>功能部件状态表<br>记录各个功能部件的状态。每个功能部件有一项，每一项由以下9个字段组成：</p>
+<ul>
+<li>Busy：忙标志，指出功能部件是否忙。初值为“no”；</li>
+<li>Op：该功能部件正在执行或将要执行的操作；</li>
+<li>$F_i$：目的寄存器编号；</li>
+<li>$F_j$，$F_k$：源寄存器编号；</li>
+<li>$Q_j$，$Q_k$：指出向源寄存器 $F_j$、 $F_k$写数据的功能部件 ；</li>
+<li>$R_j$，$R_k$：标志位，“yes”表示 $F_j$，$F_k$ 中的操作数就绪且还未被取走。否则就被置为“no”。</li>
+</ul>
+</li>
+<li><p>结果寄存器状态表<br>指出哪个功能部件将把结果写入该寄存器<br><strong>为了乱序执行，译码段ID分解成流出和读操作数</strong><br>流出：指令译码，检查是否存在结构冲突。<br>读操作数：等待数据冲突消失，然后读操作数。</p>
+</li>
+</ul>
+<p>第3章的5段流水线局限性:只能按序流出(In-order Issue)和按序执行(In-order Execution)  </p>
+<p><strong>每条指令的执行过程分为4段（主要考虑浮点操作）</strong></p>
+<ul>
+<li>流出：如果当前流出指令所需的功能部件空闲，并且所有其他正在执行的指令的目的寄存器与该指令的不同，就向功能部件流出该指令，并修改记分牌内部记录表。  <strong>解决了WAW冲突</strong></li>
+<li>读操作数： 监测源操作数的可用性，如果数据可用，就从寄存器中读出源操作数并开始执行。        <strong>解决了RAW冲突，导致乱序执行。</strong></li>
+<li>执行： 取到操作数后，功能部件开始执行。当产生出结果后，就通知记分牌它已经完成执行。<pre><code>**在浮点流水线中，这一段要占用多个时钟周期。**
+</code></pre></li>
+<li>写结果 <strong>执行前会检测是否存在WAR冲突</strong></li>
+</ul>
+<p><strong>WAR冲突可能发生在以下情况:</strong></p>
+<ol>
+<li>前面的某条指令（按顺序流出）还没有读取操作数；而且,其中某个源操作数寄存器与本指令的目的寄存器相同。  </li>
+<li>在这种情况下，记分牌必须等待，直到该冲突消失。</li>
+</ol>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg" alt="记分牌MIPS处理器基本结构"></p>
+<p><strong>性能受限</strong>(不考)</p>
+<ul>
+<li>程序代码中可开发的并行性，即是否存在可以并行执行的不相关的指令。</li>
+<li>记分牌的容量（寄存器大小？）<br>记分牌的容量决定了流水线能在多大范围内寻找不相关指令。流水线中可以同时容纳的指令数量称为指令窗口</li>
+<li>功能部件的数目和种类<br>功能部件的总数决定了结构冲突的严重程度</li>
+<li>反相关和输出相关<br>它们引起记分牌中WAR和WAW冲突。</li>
+</ul>
+<h5 id="Tomasulo算法"><a href="#Tomasulo算法" class="headerlink" title="Tomasulo算法"></a>Tomasulo算法</h5><p><strong>基本思想</strong>:  </p>
+<ul>
+<li>通过分散控制处理数据相关和乱序执行。记录和检测指令相关，将发生RAW的可能性减少到最小</li>
+<li>通过寄存器换名(通过保留站和流出逻辑实现)来消除WAR冲突和WAW冲突<br><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh16e0gi0cj315q0vm496.jpg" alt="结构图"><br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh16fzm21aj30xy06gn0i.jpg" alt=""></li>
+</ul>
+<p>保留站：保存已经流出并等待到本功能部件执行的指令，在保留站通过流出逻辑来完成的寄存器换名（顺序流出，乱序执行）<br>公共数据总线CDB :所有功能部件计算结果都送到CDB，由它把这些结果直接送到各个需要该结果的地方（乱序完成）</p>
+<p>具体算法（可选，暂时不看）</p>
+<h4 id="相关与流水线冲突"><a href="#相关与流水线冲突" class="headerlink" title="相关与流水线冲突"></a>相关与流水线冲突</h4><p><strong>相关</strong>: 程序中指令之间的一种相互依赖关系。是程序固有的属性。  </p>
+<p><strong>流水线冲突</strong>: 由于相关的存在，使得流水线指令流中的下一条指令不能在指定的时钟周期执行。</p>
+<p><strong>三种相关</strong>:</p>
+<ul>
+<li>数据相关</li>
+<li>名相关</li>
+<li>控制相关</li>
+</ul>
+<p><strong>三种流水线冲突</strong>:</p>
+<ul>
+<li>结构冲突</li>
+<li>数据冲突</li>
+<li>控制冲突<h5 id="数据相关及其处理技术-其余相关都不是重点"><a href="#数据相关及其处理技术-其余相关都不是重点" class="headerlink" title="数据相关及其处理技术(其余相关都不是重点)"></a>数据相关及其处理技术(其余相关都不是重点)</h5></li>
+</ul>
+<h4 id="理想流水线的CPI加上各类停顿的时钟周期数："><a href="#理想流水线的CPI加上各类停顿的时钟周期数：" class="headerlink" title="理想流水线的CPI加上各类停顿的时钟周期数："></a>理想流水线的CPI加上各类停顿的时钟周期数：</h4><p>$$CPI<em>{流水线} = CPI</em>{理想} + 停顿<em>{结构冲突} + 停顿</em>{数据冲突} + 停顿_{控制冲突}$$</p>
+<p>IPC：Instructions Per Cycle(每个时钟周期完成的指令条数)<br>$$CPI = \frac{1}{IPC}$$</p>
+<h4 id="动态分支预测技术"><a href="#动态分支预测技术" class="headerlink" title="动态分支预测技术"></a>动态分支预测技术</h4><ul>
+<li>分支历史表BHT<br>用二进制数10、11、01、00来表示转移预测状态的转换图<br><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh16otya5jj31160cqad1.jpg" alt="BHT状态转换"><br>从图中可以看出，只有连续两次预测错误，才会改变对分支去向的预测</li>
+</ul>
+<p>优点: 转移预测提前到取指阶段。预测正确，则没有延迟损失。</p>
+<p>缺点:仅提供转移目标指令信息,未提供转移目标指令地址信息。</p>
+<p>所以它只有在以下情况下才有用: 判定分支是否成功所需的时间大于确定分支目标地址所需的时间。在前述5段流水线中，由于判定分支是否成功和计算分支目标地址都是在ID段完成的，所以BHT方法不会给该流水线带来好处。（用BHT时，上一条指令的EX在执行，分支预测的判定和取指是同时在进行的，判定时间(上一条指令的执行时间)更长时才可以保证存在开销减少的价值，否则预测成功，也是需要多花一个周期来进行译码）</p>
+<p><em>预测不正确，则清除指令预取(队列)缓冲器。会产生延迟时间损失。</em></p>
+<p><em>BHT方法可以同 I-cache（指令cache）结合起来</em></p>
+<p>对于前述5段流水线来说，BHT方法是在ID段对BHT进行访问，所以在ID段的末尾，能够获得分支目标地址(在ID段计算出)、顺序下一条指令地址以及预测的结果。如果能再提前一拍，即在IF段就知道这些信息，那么分支开销就可以减少为0.BTB能够实现这一点。<br>（BHT方法不像静态分支预测技术会直接加载预测的分支指令地址，所以导致即便预测成功也需要一个时钟周期来取得地址）</p>
+<ul>
+<li>分支目标缓冲器BTB（有时也称为分支目标Cache）<ul>
+<li>将分支成功的分支指令的地址和它的分支目标地址都放到一个缓冲区中保存  </li>
+<li>缓冲区以分支指令的地址作为标识</li>
+<li>得到转移目标指令地址信息<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh17birrf6j30re0n2q7u.jpg" alt="结构图"></li>
+</ul>
+</li>
+</ul>
+<p>流水线各阶段进行的操作<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh17k44ua3j31560pcq93.jpg" alt=""></p>
+<h4 id="超标量处理机"><a href="#超标量处理机" class="headerlink" title="超标量处理机"></a>超标量处理机</h4><p>在每个时钟周期内流出多条指令， CPI＜1<br>在每个时钟周期流出的指令条数不固定,但有上限，依代码的具体情况而定。<br>设这个上限为n，就称该处理机为n-流出(发射)。<br>可以通过编译器进行静态调度，也可以基于Tomasulo算法进行动态调度。  </p>
+<h4 id="超流水线处理机"><a href="#超流水线处理机" class="headerlink" title="超流水线处理机"></a>超流水线处理机</h4><p>将每个流水段进一步细分，这样在一个时钟周期内能够分时流出多条指令。这种处理机称为超流水线处理机。<br>对于一台每个时钟周期能流出n条指令的超流水线计算机来说，这n条指令不是同时流出，而是每隔1/n个时钟周期流出一条指令。<br>实际上该超流水线计算机的流水线周期为1/n个时钟周期。   </p>
+<h4 id="超长指令字（VLIW-处理机"><a href="#超长指令字（VLIW-处理机" class="headerlink" title="超长指令字（VLIW)处理机"></a>超长指令字（VLIW)处理机</h4><p>在每个时钟周期流出的指令条数是固定的，这些指令构成一条长指令或者一个指令包。<br>指令包中，指令之间的并行性是通过指令显式地表示出来的。<br>指令调度是由编译器静态完成的。    </p>
+<p><strong>流水线时空图必考。</strong><br>超标量流水线调度策略及时空图<br>1.按序流出按序完成；2.按序流出无序完成；3.无序流出<br>第1条是无调度<br>第2条是动态调度，考上述的记分牌算法吧<br>第3条可能是考多流出技术</p>
+<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><p><strong>记分牌算法中，记分牌中记录的信息由哪三部分构成</strong></p>
 <p>答: 指令状态表、功能部件状态表、结果寄存器状态表</p>
-<h4 id="动态分支预测技术"><a href="#动态分支预测技术" class="headerlink" title="动态分支预测技术"></a>动态分支预测技术</h4><p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg" alt=""></p>
-<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg" alt="5.8 分支延迟"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg" alt="5.9 "><br>又是不同的答案<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qfd6p0kj30w40wk113.jpg" alt=""></p>
+<h4 id="动态分支预测技术-1"><a href="#动态分支预测技术-1" class="headerlink" title="动态分支预测技术"></a>动态分支预测技术</h4><p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg" alt="5.8 分支延迟"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg" alt="5.9 "></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg" alt="画超标量处理机时空图"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg" alt=""></p>
 <h3 id="第九章-互联网络"><a href="#第九章-互联网络" class="headerlink" title="第九章 互联网络"></a>第九章 互联网络</h3><p>PM2I听说是重点？</p>
-<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
+<h4 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h4><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
 <p>**在有16个处理器的混洗交换网络中，若要使第0号处理器与第15号处理器相连，需要经过多少次混洗和交换？</p>
 <p>答：我的答案错误</p>
 <p><strong>设Cube为立方体互联函数， $\sigma$ 为均匀洗牌函数， $\beta$ 为蝶式函数， $\rho$ 为反位序函数，分别求 $Cube<em>{3}(0110)$ 、 $\sigma</em>{(3)}(0110)$ 、 $\beta(0110)$ 、 $\rho^{(2)}(0110)$ .</strong></p>
@@ -845,7 +949,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器、虚拟机器、透明性、编译、解释"><span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构、组织和实现"><span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-text">大概率事件优先原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Amdahl定律、加速比定义"><span class="nav-text">Amdahl定律、加速比定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序访存的局部性原理"><span class="nav-text">程序访存的局部性原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU性能公式"><span class="nav-text">CPU性能公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU时间"><span class="nav-text">CPU时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每条指令执行的平均时钟周期数CPI"><span class="nav-text">每条指令执行的平均时钟周期数CPI</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-text">第三章 流水线技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）"><span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间-复习课件中未作为重点"><span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-R-infty"><span class="nav-text">向量流水线的最大性能 $R_{\infty}$</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n-frac-1-2"><span class="nav-text">半性能向量长度 $n_{\frac{1}{2}}$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n-v-同样不是重点"><span class="nav-text">长度向量临界值 $n_v$(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#记分牌-Scoreboard-算法"><span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tomasulo算法"><span class="nav-text">Tomasulo算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-text">第十章 多处理机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-text">第十三章 阵列处理机</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器、虚拟机器、透明性、编译、解释"><span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构、组织和实现"><span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-text">大概率事件优先原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Amdahl定律、加速比定义"><span class="nav-text">Amdahl定律、加速比定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序访存的局部性原理"><span class="nav-text">程序访存的局部性原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU性能公式"><span class="nav-text">CPU性能公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU时间"><span class="nav-text">CPU时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每条指令执行的平均时钟周期数CPI"><span class="nav-text">每条指令执行的平均时钟周期数CPI</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-text">第三章 流水线技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）"><span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间-复习课件中未作为重点"><span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-R-infty"><span class="nav-text">向量流水线的最大性能 $R_{\infty}$</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n-frac-1-2"><span class="nav-text">半性能向量长度 $n_{\frac{1}{2}}$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n-v-同样不是重点"><span class="nav-text">长度向量临界值 $n_v$(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行度ILP"><span class="nav-text">指令级并行度ILP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发ILP的方法可以分为两大类"><span class="nav-text">开发ILP的方法可以分为两大类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记分牌-Scoreboard-算法"><span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo算法"><span class="nav-text">Tomasulo算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据相关及其处理技术-其余相关都不是重点"><span class="nav-text">数据相关及其处理技术(其余相关都不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理想流水线的CPI加上各类停顿的时钟周期数："><span class="nav-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超标量处理机"><span class="nav-text">超标量处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超流水线处理机"><span class="nav-text">超流水线处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超长指令字（VLIW-处理机"><span class="nav-text">超长指令字（VLIW)处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术-1"><span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-3"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-text">第十章 多处理机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-text">第十三章 阵列处理机</span></a></li></ol></div>
             
 
           </div>
