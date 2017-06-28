@@ -276,6 +276,151 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-1039-字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/18/Hdu-1039-字符串/" itemprop="url">Hdu 1039 字符串</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-18T23:08:00+08:00">
+                2015-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/12/18/Hdu-1039-字符串/" class="leancloud_visitors" data-flag-title="Hdu 1039 字符串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本来以为是正则，结果只是字符串水题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char str[22];</div><div class="line"></div><div class="line">    char vowel[26]=&quot;aeiou&quot;;</div><div class="line">    char consonants[26]=&quot;bcdfghjklmnpqrstvwxyz&quot;;</div><div class="line"></div><div class="line">    while(scanf(&quot;%s&quot;,str) &amp;&amp; strcmp(str,&quot;end&quot;))&#123;</div><div class="line">        int tag[3];</div><div class="line">        tag[0] = 0;</div><div class="line">        int len = strlen(str);</div><div class="line">        for(int i = 0;i &lt; len;i++)&#123;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i] == vowel[j])&#123;</div><div class="line">                    tag[0] = 1;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //char ch[3];</div><div class="line">        //ch[0] = str[0];</div><div class="line">        tag[1] = 1;</div><div class="line">        int flag[3] = &#123;1,1,1&#125;;</div><div class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</div><div class="line">            flag[0] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i] == consonants[j])</div><div class="line">                    flag[0] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[1] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i+1] == consonants[j])</div><div class="line">                    flag[1] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[2] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i+2] == consonants[j])</div><div class="line">                    flag[2] = 1;</div><div class="line">            &#125;</div><div class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</div><div class="line">                tag[1] = 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</div><div class="line">            flag[0] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i] == vowel[j])</div><div class="line">                    flag[0] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[1] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i+1] == vowel[j])</div><div class="line">                    flag[1] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[2] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i+2] == vowel[j])</div><div class="line">                    flag[2] = 1;</div><div class="line">            &#125;</div><div class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</div><div class="line">                tag[1] = 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //char ch = str[0];</div><div class="line">        tag[2] = 1;</div><div class="line">        for(int i = 1;i &lt; len;i++)&#123;</div><div class="line">            if(str[i-1] == str[i])</div><div class="line">                if(str[i] != &apos;e&apos; &amp;&amp; str[i] != &apos;o&apos;)</div><div class="line">                    tag[2] = 0;</div><div class="line">            //ch = str[i];</div><div class="line">        &#125;</div><div class="line">        if(tag[0] == 1 &amp;&amp; tag[1] == 1 &amp;&amp; tag[2] == 1)</div><div class="line">            printf(&quot;&lt;%s&gt; is acceptable.\n&quot;,str);</div><div class="line">        else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;,str);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/15/《starting-over重启人生》/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1597,186 +1742,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/条件概率/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/02/条件概率/" itemprop="url">条件概率</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-02T21:19:00+08:00">
-                2015-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/12/02/条件概率/" class="leancloud_visitors" data-flag-title="条件概率">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>定义1.假设$S$是一个有$n$个元素的集合，均匀分布分配给$S$的每个元素$\frac1n$的概率。</p>
-<p>定义2.事件$E$的概率是$E$中所有结果出现的概率之和。如下：$$p(E)=\sum<em>{s \in E}p(s)$$.<br>（注意：当$E$是一个有限集合时，$\sum</em>{s \in E}p(s)$是一个收敛有限级数。）</p>
-</blockquote>
-<p>这里事件的各个结果的概率计算依照拉普拉斯概率的计算即可。<br>从一个带有均匀分配（也可叫做一致分布）的样本空间中选择一个元素的实验叫做<em>随机</em>选取元素$S$。</p>
-<p>在这个部分，带有数个结果的事件的补全概率的计算依旧遵循拉普拉斯的传统的计算。<br>$$p(E_1 \cup E_2)=p(E_1)+p(E_2)-p(E_1 \cap E_2)$$.</p>
-<blockquote>
-<p>定理1.如果$E_1,E_2,\dots$ 是一序列成对出现的样本空间$S$中的不相交的事件，那么$$p \left(\bigcup_i E_i \right)=\sum_i{p(E_i)}$$.<br>（注意这个定义在一序列事件$E_1,E_2,\dots$是由有限或可数数量的成对不想交的事件组成的时候应用）</p>
-</blockquote>
-<p>###条件概率</p>
-<blockquote>
-<p>定义3.令$E$和$F$作为$p(F)&gt;0$的事件。给出条件$F$的$E$的条件概率写作$p(E|F),定义为$$p(E|F)=\cfrac{p(E \cap F)}{p(F)}$$.<br>依照这个公式，目前来看，还是比较容易计算的。</p>
-</blockquote>
-<p>###独立性<br>一个硬币被掷3次，告诉我们第一次是背面，3次中出现奇数次背面的概率是多少？从上面的条件概率的公式中，我们可以得到$\cfrac{\cfrac14}{\cfrac48}=\cfrac12$.即便没有告诉我们第一次是背面，得到的概率同样也是$\cfrac12$。这样概率并没有受到影响的两个事件，就叫做独立事件。</p>
-<blockquote>
-<p>定义4.事件$E$和$F$是独立的，当且仅当$p(E \cap F)=p(E)p(F)$.</p>
-<p>定义5.当且仅当对于所有对整数$i$和$j$ $（1\leq i \leq j \leq n)$有$p(E_i \cap E_j)=p(E_i)p(E_j)$，事件$E_1,E_2,\dots,E_n$是成对独立的。如果对于$i_j,j=1,2,\dots,m $，是$1 \leq i_1 \leq i_2 \leq \dots \leq i<em>m \leq n$ 和$m \geq 2$的整数，那么$p(E</em>{i<em>1}\cap  E</em>{i<em>2}\cap \dots \cap E</em>{i<em>m})=p(E</em>{i<em>1})p(E</em>{i<em>2})\dots p(E</em>{i_m})$这些事件是相互独立的。</p>
-</blockquote>
-<p>从定义5，我们可以看到每个$n$个相互独立事件的集合也是成对独立的。然而$n$个成对独立的时间并不一定是相互独立的。<br>（成对独立只对于两个事件之前，而相互独立是$n$个之间之间均独立，差别就在这里了）</p>
-<p>###伯努利实验和二项分布（Bernoulli Trials and the Binomial Distribution)</p>
-<blockquote>
-<p>每个具有两个可能结果的实验表现称之为<em>伯努利实验</em>。<br>一般来说，伯努利实验的可能结果被称为<em>成功</em>或者<em>失败</em>.</p>
-<p>定理2.实际上在$n$格独立伯努利实践中$k$个成功的概率，在成功的概率为$p$、失败的概率为$q=1-p$的条件下是$$C(n,k)p^kq^{n-k}$$.</p>
-</blockquote>
-<p>我们也常写作$b(k;n,p)$.我们把这个函数(为什么叫function，不太明白）叫做二项分布。</p>
-<p>$$\sum^n_{k=0}C(n,k)p^kq^{n-k}=(p+q)^n=1.$$</p>
-<p>###随机变量</p>
-<blockquote>
-<p>定义6.一个<em>随机变量</em>是一个从实验的样本空间映射到实数集合的函数。因此，一个随机变量分配一个实数到每个可能结果。</p>
-</blockquote>
-<p>注意：随机变量并不是变量，也不随机。</p>
-<blockquote>
-<p>定义7.在样本空间$S$中的随机变量$X$的分配是对所有$r \in X(S),p(X=r)$是$X$取值$r$的概率的对$(r,p(X=r))$的集合。（在这个分配中的对的集合是由对$r \in X(S)$的概率$p(X=r)$决定的。）</p>
-</blockquote>
-<p>####生日问题<br>生日问题是寻找房间里最少的人数使得至少有2个人同一天生日的概率大于$\frac12$.<br>答：首先，我们列出几条假设。我们假设在一个房间里的人们的生日均是独立的。更进一步，我们假设每个生日是等可能的并且一年里有366天。（实际上，在一年里更多的人出生在一年里的相同的一些日子里，比如包括新年在内的一些节日后的9个月里）<br>为了找到这个可能性，我们首先计算这些人有全部都有不同生日的概率$p_n$。然后，至少2个人有相同生日的概率为$1-p_n$。为了计算$p_n$，我们姑且认定$n$个人的生日是遵循一定顺序的。想象一下，他们在一个时刻一个个进入房间；我们将会计算每个人进入房间时与已经在房间里的人的生日不同的概率。<br>第一个进入房间的人的生日当然不会匹配到任何在房间里的人的生日。第二个人的生日不同于第一个人的概率是$\cfrac{365}{366}因为当第二个人出生在除了第一个人的生日之外的$365$天里时，他们的生日是不同的。（这个对每个人出生在$366$天里任何一天等可能的假设保证了这个和后续步骤）<br>第三个人有不同生日的概率是$\cfrac{364}{366}。延伸开来，对于第$j$个人(2 \leq j \leq 366)，有一个不同于其他$n-1$个人的生日的概率是$$\cfrac{366-(j-1)}{366}=\cfrac{367-j}{366}.$$<br>因为已经假设在房间里的人的生日均是独立的，我们就可以得出结论这房间里的$n$个人有不同生日概率是$$p_n=\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.$$<br>随之，我们得到$$1-p_n=1-\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.$$<br>接下来为了找到最少的人数使得其概率大于$\cfrac12$，我们逐渐带入增大的$n$来计算（虽然可以用微积分，但是这里不使用。话说怎么用？我忘了）。我们会发现$n=22,1-p_n \approx 0.475;n=23,1-p_n \approx 0.506$。因此我们得知最少只要23个人即可使得房间内的人至少有2个人的生日相同的概率为$\cfrac12$。</p>
-<p>哈希的重合概率计算和生日问题类似。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1826,7 +1791,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1848,7 +1813,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -276,6 +276,150 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-260/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/19/leetcode-260/" itemprop="url">leetcode 260</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-19T20:27:00+08:00">
+                2015-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/12/19/leetcode-260/" class="leancloud_visitors" data-flag-title="leetcode 260">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Return an array of size *returnSize.</div><div class="line"> * Note: The returned array must be malloced, assume caller calls free().</div><div class="line"> */</div><div class="line">int* singleNumber(int* nums, int numsSize, int* returnSize) &#123;</div><div class="line">    int xor = 0;</div><div class="line">    for(int i = 0;i &lt; numsSize;i++)</div><div class="line">        xor ^= nums[i];</div><div class="line">    int temp = xor;</div><div class="line">    temp &amp;= ~temp+1;</div><div class="line">    int ansX = 0;</div><div class="line">    for(int i = 0;i &lt; numsSize;i++)</div><div class="line">        if(nums[i]&amp;temp)//这一行还有点纳闷，如果换成(nums[i]&amp;temp == temp)就会WA</div><div class="line">            ansX ^= nums[i];</div><div class="line">    int ansY = ansX^xor;</div><div class="line">    *returnSize = 2;</div><div class="line">    int *ans;</div><div class="line">    ans = malloc(sizeof(int)*2);</div><div class="line">    ans[0] = ansX;</div><div class="line">    ans[1] = ansY;</div><div class="line">    return ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-226/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1567,151 +1711,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-1039-字符串/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/18/Hdu-1039-字符串/" itemprop="url">Hdu 1039 字符串</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-18T23:08:00+08:00">
-                2015-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2015/12/18/Hdu-1039-字符串/" class="leancloud_visitors" data-flag-title="Hdu 1039 字符串">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本来以为是正则，结果只是字符串水题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char str[22];</div><div class="line"></div><div class="line">    char vowel[26]=&quot;aeiou&quot;;</div><div class="line">    char consonants[26]=&quot;bcdfghjklmnpqrstvwxyz&quot;;</div><div class="line"></div><div class="line">    while(scanf(&quot;%s&quot;,str) &amp;&amp; strcmp(str,&quot;end&quot;))&#123;</div><div class="line">        int tag[3];</div><div class="line">        tag[0] = 0;</div><div class="line">        int len = strlen(str);</div><div class="line">        for(int i = 0;i &lt; len;i++)&#123;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i] == vowel[j])&#123;</div><div class="line">                    tag[0] = 1;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //char ch[3];</div><div class="line">        //ch[0] = str[0];</div><div class="line">        tag[1] = 1;</div><div class="line">        int flag[3] = &#123;1,1,1&#125;;</div><div class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</div><div class="line">            flag[0] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i] == consonants[j])</div><div class="line">                    flag[0] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[1] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i+1] == consonants[j])</div><div class="line">                    flag[1] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[2] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i+2] == consonants[j])</div><div class="line">                    flag[2] = 1;</div><div class="line">            &#125;</div><div class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</div><div class="line">                tag[1] = 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</div><div class="line">            flag[0] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i] == vowel[j])</div><div class="line">                    flag[0] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[1] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i+1] == vowel[j])</div><div class="line">                    flag[1] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[2] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i+2] == vowel[j])</div><div class="line">                    flag[2] = 1;</div><div class="line">            &#125;</div><div class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</div><div class="line">                tag[1] = 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //char ch = str[0];</div><div class="line">        tag[2] = 1;</div><div class="line">        for(int i = 1;i &lt; len;i++)&#123;</div><div class="line">            if(str[i-1] == str[i])</div><div class="line">                if(str[i] != &apos;e&apos; &amp;&amp; str[i] != &apos;o&apos;)</div><div class="line">                    tag[2] = 0;</div><div class="line">            //ch = str[i];</div><div class="line">        &#125;</div><div class="line">        if(tag[0] == 1 &amp;&amp; tag[1] == 1 &amp;&amp; tag[2] == 1)</div><div class="line">            printf(&quot;&lt;%s&gt; is acceptable.\n&quot;,str);</div><div class="line">        else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;,str);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1761,7 +1760,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-count">78</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1783,7 +1782,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

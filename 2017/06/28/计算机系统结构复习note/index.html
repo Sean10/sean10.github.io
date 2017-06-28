@@ -1,0 +1,1004 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="系统结构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC] MIPS 每秒百万条指令数">
+<meta name="keywords" content="系统结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统结构复习note">
+<meta property="og:url" content="http://sean10.github.io/2017/06/28/计算机系统结构复习note/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="[TOC] MIPS 每秒百万条指令数">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh032zuou5j317o0vmdmo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qfd6p0kj30w40wk113.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg">
+<meta property="og:updated_time" content="2017-06-28T07:59:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机系统结构复习note">
+<meta name="twitter:description" content="[TOC] MIPS 每秒百万条指令数">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://sean10.github.io/2017/06/28/计算机系统结构复习note/"/>
+
+
+
+
+
+  <title>计算机系统结构复习note | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/28/计算机系统结构复习note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机系统结构复习note</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pro/" itemprop="url" rel="index">
+                    <span itemprop="name">专业</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/28/计算机系统结构复习note/" class="leancloud_visitors" data-flag-title="计算机系统结构复习note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<p>MIPS 每秒百万条指令数<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg" alt=""></p>
+<a id="more"></a>
+<h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt=""></p>
+<h3 id="第三章-流水线技术"><a href="#第三章-流水线技术" class="headerlink" title="第三章 流水线技术"></a>第三章 流水线技术</h3><p><strong>性能指标 ：   吞吐率、加速比、效率、 最佳段数</strong></p>
+<p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量<br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"></p>
+<p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg" alt=""><br> 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率)<br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg" alt=""></p>
+<p><strong>降低流水线分支损失的方法有哪些？</strong><br>（1）在流水线中尽早判断出分支转移是否成功；<br>（2）尽早计算出分支转移成功时的PC值（即分支的目标地址）</p>
+<ul>
+<li>“冻结”或“排空”流水线的方法</li>
+<li>预测分支失败</li>
+<li>预测分支成功</li>
+<li>延迟分支</li>
+</ul>
+<p><strong>请对延迟分支办法中的三种调度策略进行评价。</strong></p>
+<ol>
+<li>从前调动：分支必须不依赖于被调度的指令，总是可以有效提高流水线性能。</li>
+<li>从目标处调度：若分支转移失败，必须保证被调度的指令对程序的执行没有影响，可能需要复制被调度指令。分支转移成功时，可提高流水线性能。但由于复制指令，可能加大程序空间。</li>
+<li>从失败处调度：若分支转移成功，必须保证被调度的指令对程序的执行无影响。分支转移失败时，可提高流水线性能。</li>
+</ol>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg" alt=""></p>
+<p>这里的第二小题答案网上有不同意见。<br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh032zuou5j317o0vmdmo.jpg" alt="预测分支"><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg" alt=""></p>
+<p>条件转移，控制转移，检测分支跳转似乎是后面几章的？<br>还有命中Cache考不考？</p>
+<h3 id="第四章-向量处理机"><a href="#第四章-向量处理机" class="headerlink" title="第四章 向量处理机"></a>第四章 向量处理机</h3><h4 id="向量处理方法"><a href="#向量处理方法" class="headerlink" title="向量处理方法"></a>向量处理方法</h4><p>横向处理/ 纵向处理/ 纵横处理；</p>
+<h4 id="向量流水处理机结构"><a href="#向量流水处理机结构" class="headerlink" title="向量流水处理机结构"></a>向量流水处理机结构</h4><ol>
+<li>存储器-存储器结构：纵向处理</li>
+<li>寄存器寄存器结构 ：纵横处理<h4 id="提高向量处理机性能的方法"><a href="#提高向量处理机性能的方法" class="headerlink" title="提高向量处理机性能的方法"></a>提高向量处理机性能的方法</h4></li>
+</ol>
+<ul>
+<li>多功能部件的并行操作  </li>
+<li><p>链接技术      WD相关<br>链接技术：具有先写后读相关的两条指令，在不出现功能部件冲突和Vi冲突的情况下，可以把功能部件链接起来进行流水处理，以达到加快执行的目的。</p>
+</li>
+<li><p>分段开采  </p>
+</li>
+<li>多处理机系统结构<h4 id="向量处理机性能的主要参数"><a href="#向量处理机性能的主要参数" class="headerlink" title="向量处理机性能的主要参数"></a>向量处理机性能的主要参数</h4></li>
+<li>一条向量指令的处理时间</li>
+<li>每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</li>
+<li>一组向量指令的处理时间</li>
+<li>向量流水线的最大性能R∞<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg" alt=""></li>
+<li>半性能向量长度n1/2</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg" alt=""><br>题目补充：各功能部件的启动时间为：取数和存数部件为12个时钟周期、乘法部件为7个时钟周期，执行标量代码的开销 $T_{loop} = 15$ 个时钟周期，对一个向量元素执行一次操作的时间Tg=一个时钟周期。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg" alt=""></p>
+<h3 id="第五章-指令集并行"><a href="#第五章-指令集并行" class="headerlink" title="第五章 指令集并行"></a>第五章 指令集并行</h3><h4 id="记分牌-Scoreboard-算法"><a href="#记分牌-Scoreboard-算法" class="headerlink" title="记分牌(Scoreboard)算法"></a>记分牌(Scoreboard)算法</h4><h4 id="Tomasulo算法"><a href="#Tomasulo算法" class="headerlink" title="Tomasulo算法"></a>Tomasulo算法</h4><p><strong>记分牌算法中，记分牌中记录的信息由哪三部分构成</strong></p>
+<p>答: 指令状态表、功能部件状态表、结果寄存器状态表</p>
+<h4 id="动态分支预测技术"><a href="#动态分支预测技术" class="headerlink" title="动态分支预测技术"></a>动态分支预测技术</h4><p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg" alt="5.8 分支延迟"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg" alt="5.9 "><br>又是不同的答案<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qfd6p0kj30w40wk113.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg" alt="画超标量处理机时空图"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg" alt=""></p>
+<h3 id="第九章-互联网络"><a href="#第九章-互联网络" class="headerlink" title="第九章 互联网络"></a>第九章 互联网络</h3><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
+<p>**在有16个处理器的混洗交换网络中，若要使第0号处理器与第15号处理器相连，需要经过多少次混洗和交换？</p>
+<p>答：我的答案错误</p>
+<p><strong>设Cube为立方体互联函数， $\sigma$ 为均匀洗牌函数， $\beta$ 为蝶式函数， $\rho$ 为反位序函数，分别求 $Cube<em>{3}(0110)$ 、 $\sigma</em>{(3)}(0110)$ 、 $\beta(0110)$ 、 $\rho^{(2)}(0110)$ .</strong></p>
+<p>答:</p>
+<ul>
+<li>$Cube_3(0110) = 0010$</li>
+<li>$\sigma_{(3)}(0110) = 0101$</li>
+<li>$\beta(0110) = 0110$</li>
+<li>$\rho^{(2)}(0110) = 1010$</li>
+</ul>
+<p><strong>9.11 N=16的STARAN网络在级控制方式下实现分组交换置换，如果实现的分组交换置换是：首先是4组4元交换，然后是2组8元交换，最后是1组16元交换，写出网络实现的互联函数。</strong><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg" alt=""></p>
+<p><strong>9.12 具有 $N=2^n$ 个输入端的Omega网络，采用单元控制。<br>(1) N个输入总共应有多少种不同的排列？<br>(2) 该Omega网络通过一次可以实现的置换总共可有多少种？<br>(3) 若N=8, 计算一次通过能实现的置换数占全部排列的百分比。</strong></p>
+<p>答:<br>(1) N个输入可有N!种不同排列。<br>(2) 该Omega网络通过一关可以实现的置换有 $2^{\frac{N}{2}log_2N}=N^{\frac{N}{2}}$ 种不同。<br>(3) 若N=8, 通过Omega网络一次可以实现的不重复置换有 $8^4 = 4096$ 种。<br>    8个输入可实现的不重复排列有 $8! = 40320$ 种。<br>故，一次可实现的置换数占全部排列数的10.16%.</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg" alt="Omega网络"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg" alt=""></p>
+<h3 id="第十三章-阵列处理机"><a href="#第十三章-阵列处理机" class="headerlink" title="第十三章 阵列处理机"></a>第十三章 阵列处理机</h3><p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong><br>答:N为极其的处理单元(PE)数；<br>C为控制部件CU<br>I为由CU广播至所有PE进行并行执行的指令集<br>M为屏蔽方案集，其中每种屏蔽将所有PE划分成允许操作和禁止操作两种模式<br>R为数据寻径功能机，说明互联网络中PE间通信所需要的各种设置模式</p>
+<p><strong>13.3 简述阵列处理机的特点</strong><br>答：  </p>
+<ol>
+<li>阵列机是以单指令流多数据流方式工作的。</li>
+<li>阵列机是通过设置多个相同的处理单元来开发并行性的，它利用并行性的同时性，而不是并发性  </li>
+<li>阵列机是以某一类算法为背景的专用计算机</li>
+<li>阵列机的研究必须与并行算法的研究密切结合</li>
+<li>阵列机的控制器实质上是一台标量处理机</li>
+</ol>
+<p><strong>试分析与比较SIMD计算机与向量计算机的相同与不同</strong><br>答:<br>相同点: 都能对大量数据进行向量处理<br>不同点:</p>
+<ul>
+<li>SIMD获得高处理速度主要是采用资源重复的并行措施  </li>
+<li>各个处理单元并行工作  </li>
+<li>向量处理机依靠的是多功能流水线部件时间重叠，指高速度  </li>
+<li>另一区别是SIMD计算机有它的互联网络</li>
+</ul>
+<p><strong>简述SIMD计算机的分布式存储器与共享存储器的异同</strong><br>答: 相同点: 都存在互联网络<br>不同点:</p>
+<ul>
+<li>在共享方案中，共享的多体并行存储器通过对准网络与各处理单元相连</li>
+<li>在分布内存方案中，每个处理单元有自己的本地存储器，处理单元之间的数据通过数据寻径网络完成。</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg" alt="存储器"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/系统结构/" rel="tag"># 系统结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/27/Unix编程环境复习笔记/" rel="next" title="Unix编程环境复习笔记">
+                <i class="fa fa-chevron-left"></i> Unix编程环境复习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Sean10" />
+          <p class="site-author-name" itemprop="name">Sean10</p>
+           
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章"><span class="nav-text">第一章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-text">第三章 流水线技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-text">向量处理机性能的主要参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#记分牌-Scoreboard-算法"><span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tomasulo算法"><span class="nav-text">Tomasulo算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-text">第九章 互联网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-text">第十三章 阵列处理机</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
