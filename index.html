@@ -378,10 +378,17 @@
         
           
             <a id="more"></a>
-<h3 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h3><p>MIPS 每秒百万条指令数<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg" alt=""></p>
+<h3 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h3><h4 id="系统结构的相关概念"><a href="#系统结构的相关概念" class="headerlink" title="系统结构的相关概念"></a>系统结构的相关概念</h4><h5 id="计算机系统的层次结构概念"><a href="#计算机系统的层次结构概念" class="headerlink" title="计算机系统的层次结构概念"></a>计算机系统的层次结构概念</h5><h5 id="广义机器、虚拟机器、透明性、编译、解释"><a href="#广义机器、虚拟机器、透明性、编译、解释" class="headerlink" title="广义机器、虚拟机器、透明性、编译、解释"></a>广义机器、虚拟机器、透明性、编译、解释</h5><h5 id="计算机系统结构、组织和实现"><a href="#计算机系统结构、组织和实现" class="headerlink" title="计算机系统结构、组织和实现"></a>计算机系统结构、组织和实现</h5><h5 id="计算机系统分类方法-Flynn-分类法"><a href="#计算机系统分类方法-Flynn-分类法" class="headerlink" title="计算机系统分类方法\ Flynn 分类法"></a>计算机系统分类方法\ Flynn 分类法</h5><h4 id="系统分析技术"><a href="#系统分析技术" class="headerlink" title="系统分析技术"></a>系统分析技术</h4><p>  大概率事件优先原理<br>  Amdahl定律、加速比定义<br>  程序访存的局部性原理<br>  CPU性能公式  </p>
+<h4 id="性能评价标准"><a href="#性能评价标准" class="headerlink" title="性能评价标准"></a>性能评价标准</h4><p>  性能指标（CPU时间， CPI， MIPS,MFLOPS)<br>  性能比较</p>
+<p>MIPS 每秒百万条指令数<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg" alt=""></p>
 <h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg" alt=""></p>
-<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt=""><br><strong>1.11 假设浮点数指令FP指令的比例为30%，其中浮点数平方根FPSQR占全部指令的比例为4%, FP操作的CPI为5，FPSQR操作的CPI为20, 其他指令的平均CPI为1.25.现有两种改进方案，第一种是把FPSQR操作的CPI减至3, 第二种是把所有的FP操作的CPI减至3, 试比较两种方案对系统性能的提高程度。</strong><br>答:<br>改进之前，系统指令平均时钟周期CPI为<br>$$CPI=\sum{(CPI_i \times \frac{I_i}{I_c})}=(5 \times 30\% )+(1.25\times70\%) = 2.375$$</p>
+<p>如果采用A方案：FPSQR操作的CPI减至3，则整个系统的平均时钟周期数为:<br>$$CPI<em>A=CPI-(CPI</em>{FPSQR}-CPI_{FPSQR}^{‘}) \times 4\%=2.375-(20-3) \times 4\%=1.695$$</p>
+<p>如果采用B方案：把所有的FP操作的CPI减至3，则整个系统的平均时钟周期数为：<br> $$CPI<em>B=CPI-(CPI</em>{FP}-CPI_{FP}^{‘})\times4\%=2.375-(5-3)\times30\%=1.775$$</p>
+<p>从降低整个系统的指令平均时钟周期数的程度来看，方案A要优于B。</p>
+<p>另外，分别计算两种方案的加速比:<br>$$S_A=\frac{改进前CPU的执行时间}{A的CPU执行时间}=(I_C\times时钟周期\times CPI)/(I_c \times 时钟周期\times CPI_A)=\frac{CPI}{CPI_A}$$<br>$$S_A=\frac{2.375}{1.695}=1.4$$<br>$$S_B=\frac{2.375}{1.775}=1.34$$</p>
+<p>由此也可知，方案A优于方案B。</p>
 <h3 id="第三章-流水线技术"><a href="#第三章-流水线技术" class="headerlink" title="第三章 流水线技术"></a>第三章 流水线技术</h3><p><strong>性能指标 ：   吞吐率、加速比、效率、 最佳段数</strong></p>
 <p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量<br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"></p>
@@ -407,31 +414,102 @@
 <p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg" alt=""></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg" alt=""></p>
 <p>条件转移，控制转移，检测分支跳转似乎是后面几章的？<br>还有命中Cache考不考？</p>
-<h3 id="第四章-向量处理机"><a href="#第四章-向量处理机" class="headerlink" title="第四章 向量处理机"></a>第四章 向量处理机</h3><h4 id="向量处理方法"><a href="#向量处理方法" class="headerlink" title="向量处理方法"></a>向量处理方法</h4><p>横向处理/ 纵向处理/ 纵横处理；</p>
-<h4 id="向量流水处理机结构"><a href="#向量流水处理机结构" class="headerlink" title="向量流水处理机结构"></a>向量流水处理机结构</h4><ol>
-<li>存储器-存储器结构：纵向处理</li>
-<li>寄存器-寄存器结构：纵横处理<h4 id="提高向量处理机性能的方法"><a href="#提高向量处理机性能的方法" class="headerlink" title="提高向量处理机性能的方法"></a>提高向量处理机性能的方法</h4></li>
-</ol>
-<ul>
-<li>多功能部件的并行操作  </li>
-<li><strong>链接技术</strong>      WD相关<br>链接技术：具有先写后读相关的两条指令，在不出现功能部件冲突和Vi冲突的情况下，可以把功能部件链接起来进行流水处理，以达到加快执行的目的。  </li>
-<li>分段开采  </li>
-<li>多处理机系统结构<h4 id="向量处理机性能的主要参数"><a href="#向量处理机性能的主要参数" class="headerlink" title="向量处理机性能的主要参数"></a>向量处理机性能的主要参数</h4></li>
-<li>一条向量指令的处理时间</li>
-<li>每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</li>
-<li>一组向量指令的处理时间</li>
-<li>向量流水线的最大性能R∞<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg" alt=""></li>
-<li>半性能向量长度n1/2</li>
+<h3 id="第四章-向量处理机"><a href="#第四章-向量处理机" class="headerlink" title="第四章 向量处理机"></a>第四章 向量处理机</h3><h4 id="向量处理方法"><a href="#向量处理方法" class="headerlink" title="向量处理方法"></a>向量处理方法</h4><ul>
+<li>横向处理:   <ul>
+<li>N次数据相关、2N次功能相关  </li>
 </ul>
-<h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg" alt=""></p>
+</li>
+<li>纵向处理:  <ul>
+<li>1次数据相关、1次功能相关  </li>
+<li>当向量长度超过寄存器长度N时，可分组处理</li>
+</ul>
+</li>
+<li>纵横处理:<ul>
+<li>组内纵向处理, 组间横向处理</li>
+<li>适合”寄存器-寄存器结构”工作的向量处理机</li>
+</ul>
+</li>
+</ul>
+<h4 id="向量流水处理机结构"><a href="#向量流水处理机结构" class="headerlink" title="向量流水处理机结构"></a>向量流水处理机结构</h4><ol>
+<li>存储器-存储器结构：纵向处理<ul>
+<li>占据一般存储器的3倍带宽，一个时钟周期内读入2个操作数并写回1个结果</li>
+<li>延迟缓冲器</li>
+</ul>
+</li>
+<li>寄存器-寄存器结构：纵横处理<ul>
+<li>支持流水线链接技术</li>
+<li>不遭遇向量Vi冲突和功能部件冲突，就都能并行工作</li>
+</ul>
+</li>
+</ol>
+<h4 id="提高向量处理机性能的方法"><a href="#提高向量处理机性能的方法" class="headerlink" title="提高向量处理机性能的方法"></a>提高向量处理机性能的方法</h4><ul>
+<li>多个功能部件的并行操作</li>
+<li><strong>链接技术</strong>      WD相关<br>链接技术：具有先写后读相关的两条指令，在不出现功能部件冲突和Vi冲突的情况下，可以把功能部件链接起来进行流水处理，以达到加快执行的目的。  <ul>
+<li>空间方面约束条件<ul>
+<li>向量寄存器使用冲突<ul>
+<li>源寄存器冲突: 同时只能提供一个</li>
+<li>结果寄存器冲突: 同时只能写一个</li>
+</ul>
+</li>
+<li>功能部件冲突</li>
+</ul>
+</li>
+<li>时间方面约束条件<ul>
+<li>前一条指令的第一个结果分量送入寄存器的那一个时钟周期方可链接</li>
+<li>执行时间和寄存器长度必须相同</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>顺序执行时，一个向量的所有操作数执行完方才进行下一个向量的处理。而链接执行，就可以在一个向量的一个操作数得到结果后立即获得，对下一个向量立即进行处理。这样就可以免去等待第一个向量所有操作数完成运算的过程。</p>
+<ul>
+<li>分段开采(循环开采)  <ul>
+<li>流水线启动时间</li>
+</ul>
+</li>
+<li>多处理机系统结构</li>
+</ul>
+<h4 id="向量处理机性能的主要参数"><a href="#向量处理机性能的主要参数" class="headerlink" title="向量处理机性能的主要参数"></a>向量处理机性能的主要参数</h4><h5 id="一条向量指令的处理时间"><a href="#一条向量指令的处理时间" class="headerlink" title="一条向量指令的处理时间"></a>一条向量指令的处理时间</h5><ul>
+<li>执行一条向量长度为n的向量指令所需的时间:<br>  $$T<em>{vp} = T</em>{s} + T<em>{e} + (n-1)T</em>{c}$$<br>  <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh125jxoi7j30xg06sdgh.jpg" alt=""><br>$T_s$ : 流水线的建立时间为了使处理部件流水线能开始工作所需要的准备时间。<br>$T_e$ : 向量流水线的通过时间第一对向量元素通过流水线并产生第一个结果所花的时间。<br>$T_c$ : 流水线的时钟周期时间<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh13biyv2zj313o0tite3.jpg" alt="一条指令"><ul>
+<li>上式转换为时钟周期个数<br>$$T_{vp} = [s + e + (n-1)]T_c$$</li>
+<li>令 $T<em>{start} = s + e -1$ , 则<br>$$T</em>{vp} = (T_{start} + n)T<em>c$$<br>$T</em>{start}$ : 向量指令的启动时间。产生第一个结果的前一个时钟周期数。</li>
+</ul>
+</li>
+</ul>
+<h5 id="每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）"><a href="#每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）" class="headerlink" title="每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）"></a>每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</h5><p>$$MFLOPS = \frac{I_{FN}}{T<em>p \times 1000000}$$<br>$I</em>{FN}$ : 程序中浮点运算总次数<br>$T_p$ : 执行程序时间</p>
+<h5 id="一组向量指令的处理时间"><a href="#一组向量指令的处理时间" class="headerlink" title="一组向量指令的处理时间"></a>一组向量指令的处理时间</h5><ul>
+<li>影响因素:<ul>
+<li>向量的长度</li>
+<li>向量操作之间是否存在流水功能部件的使用冲突以及数据的相关性</li>
+<li>数据的相关性</li>
+</ul>
+</li>
+<li>编队: 能在一个时钟周期内一起开始执行的几条向量指令<ul>
+<li>流水功能部件冲突</li>
+<li>$V_i$ 冲突</li>
+<li>数据的相关性</li>
+</ul>
+</li>
+<li>编队后时间计算公式<br>  $$T<em>{all} = \sum</em>{i = 1}^{m}{T_{vp}^{(i)}}$$</li>
+<li>当一个编队是由若干条指令组成时，其执行时间就是该编队中各指令的执行时间的最大值</li>
+<li>一组向量指令、m个编队的处理时间<br>  $$T<em>{all} = \sum</em>{i = 1}^{m}{T<em>{vp}^{(i)}} = \sum</em>{i = 1}^{m}{(T_{start}^{(i)} + n)T<em>c} = (\sum</em>{i = 1}^{m}{T_{start}^{(i)} + mn)}T<em>c = (T</em>{start} +mn)T<em>c$$<br>  $T</em>{start}^{(i)}$: 第i编队中各指令的启动时间的最大值<ul>
+<li>表示成时钟周期个数<br>$$T<em>{all} = T</em>{start} + mn$$</li>
+</ul>
+</li>
+</ul>
+<h5 id="分段开采时一组向量指令的总执行时间-复习课件中未作为重点"><a href="#分段开采时一组向量指令的总执行时间-复习课件中未作为重点" class="headerlink" title="分段开采时一组向量指令的总执行时间(复习课件中未作为重点)"></a>分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</h5><h5 id="向量流水线的最大性能-R-infty"><a href="#向量流水线的最大性能-R-infty" class="headerlink" title="向量流水线的最大性能 $R_{\infty}$"></a>向量流水线的最大性能 $R_{\infty}$</h5><p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg" alt=""></p>
+<h6 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h6><p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh138y1719j31380sogtx.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg" alt="最大性能例题"></p>
+<h5 id="半性能向量长度-n-frac-1-2"><a href="#半性能向量长度-n-frac-1-2" class="headerlink" title="半性能向量长度 $n_{\frac{1}{2}}$"></a>半性能向量长度 $n_{\frac{1}{2}}$</h5><p>半性能向量长度 $n<em>{\frac12}$ 是指向量处理机的性能为其最大性能的一半时所需的向量长度。<br>$n</em>{\frac12}$ 小表示流水线建立的时间少。<br>$n_{\frac12}$ 越小， 对给定的向量处理，流水线性能越好。反映为建立流水线而导致的性能损失。<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1385ja86j314c0rqdnz.jpg" alt="半性能长度计算"></p>
+<h5 id="长度向量临界值-n-v-同样不是重点"><a href="#长度向量临界值-n-v-同样不是重点" class="headerlink" title="长度向量临界值 $n_v$(同样不是重点)"></a>长度向量临界值 $n_v$(同样不是重点)</h5><h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg" alt=""><br>题目补充：各功能部件的启动时间为：取数和存数部件为12个时钟周期、乘法部件为7个时钟周期，执行标量代码的开销 $T_{loop} = 15$ 个时钟周期，对一个向量元素执行一次操作的时间Tg=一个时钟周期。</p>
-<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg" alt=""></p>
 <h3 id="第五章-指令集并行"><a href="#第五章-指令集并行" class="headerlink" title="第五章 指令集并行"></a>第五章 指令集并行</h3><h4 id="记分牌-Scoreboard-算法"><a href="#记分牌-Scoreboard-算法" class="headerlink" title="记分牌(Scoreboard)算法"></a>记分牌(Scoreboard)算法</h4><h4 id="Tomasulo算法"><a href="#Tomasulo算法" class="headerlink" title="Tomasulo算法"></a>Tomasulo算法</h4><p><strong>记分牌算法中，记分牌中记录的信息由哪三部分构成</strong></p>
 <p>答: 指令状态表、功能部件状态表、结果寄存器状态表</p>
 <h4 id="动态分支预测技术"><a href="#动态分支预测技术" class="headerlink" title="动态分支预测技术"></a>动态分支预测技术</h4><p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg" alt=""></p>
 <p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg" alt="5.8 分支延迟"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg" alt="5.9 "><br>又是不同的答案<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qfd6p0kj30w40wk113.jpg" alt=""></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg" alt="画超标量处理机时空图"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg" alt=""></p>
-<h3 id="第九章-互联网络"><a href="#第九章-互联网络" class="headerlink" title="第九章 互联网络"></a>第九章 互联网络</h3><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
+<h3 id="第九章-互联网络"><a href="#第九章-互联网络" class="headerlink" title="第九章 互联网络"></a>第九章 互联网络</h3><p>PM2I听说是重点？</p>
+<h4 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h4><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
 <p>**在有16个处理器的混洗交换网络中，若要使第0号处理器与第15号处理器相连，需要经过多少次混洗和交换？</p>
 <p>答：我的答案错误</p>
 <p><strong>设Cube为立方体互联函数， $\sigma$ 为均匀洗牌函数， $\beta$ 为蝶式函数， $\rho$ 为反位序函数，分别求 $Cube<em>{3}(0110)$ 、 $\sigma</em>{(3)}(0110)$ 、 $\beta(0110)$ 、 $\rho^{(2)}(0110)$ .</strong></p>
@@ -446,6 +524,7 @@
 <p><strong>9.12 具有 $N=2^n$ 个输入端的Omega网络，采用单元控制。<br>(1) N个输入总共应有多少种不同的排列？<br>(2) 该Omega网络通过一次可以实现的置换总共可有多少种？<br>(3) 若N=8, 计算一次通过能实现的置换数占全部排列的百分比。</strong></p>
 <p>答:<br>(1) N个输入可有N!种不同排列。<br>(2) 该Omega网络通过一关可以实现的置换有 $2^{\frac{N}{2}log_2N}=N^{\frac{N}{2}}$ 种不同。<br>(3) 若N=8, 通过Omega网络一次可以实现的不重复置换有 $8^4 = 4096$ 种。<br>    8个输入可实现的不重复排列有 $8! = 40320$ 种。<br>故，一次可实现的置换数占全部排列数的10.16%.</p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg" alt="Omega网络"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg" alt=""></p>
+<h3 id="第十章-多处理机"><a href="#第十章-多处理机" class="headerlink" title="第十章 多处理机"></a>第十章 多处理机</h3><p>据说重点是一致性</p>
 <h3 id="第十三章-阵列处理机"><a href="#第十三章-阵列处理机" class="headerlink" title="第十三章 阵列处理机"></a>第十三章 阵列处理机</h3><p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong><br>答:N为极其的处理单元(PE)数；<br>C为控制部件CU<br>I为由CU广播至所有PE进行并行执行的指令集<br>M为屏蔽方案集，其中每种屏蔽将所有PE划分成允许操作和禁止操作两种模式<br>R为数据寻径功能机，说明互联网络中PE间通信所需要的各种设置模式</p>
 <p><strong>13.3 简述阵列处理机的特点</strong><br>答：  </p>
 <ol>
