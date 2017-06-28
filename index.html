@@ -376,15 +376,100 @@
 
       
         
-          <p>[TOC]</p>
-<p>MIPS 每秒百万条指令数<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/28/计算机系统结构复习note/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <a id="more"></a>
+<h3 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h3><p>MIPS 每秒百万条指令数<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg" alt=""></p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt=""></p>
+<h3 id="第三章-流水线技术"><a href="#第三章-流水线技术" class="headerlink" title="第三章 流水线技术"></a>第三章 流水线技术</h3><p><strong>性能指标 ：   吞吐率、加速比、效率、 最佳段数</strong></p>
+<p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量<br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"></p>
+<p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg" alt=""><br> 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率)<br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg" alt=""></p>
+<p><strong>降低流水线分支损失的方法有哪些？</strong><br>（1）在流水线中尽早判断出分支转移是否成功；<br>（2）尽早计算出分支转移成功时的PC值（即分支的目标地址）</p>
+<ul>
+<li>“冻结”或“排空”流水线的方法</li>
+<li>预测分支失败</li>
+<li>预测分支成功</li>
+<li>延迟分支</li>
+</ul>
+<p><strong>请对延迟分支办法中的三种调度策略进行评价。</strong></p>
+<ol>
+<li>从前调动：分支必须不依赖于被调度的指令，总是可以有效提高流水线性能。</li>
+<li>从目标处调度：若分支转移失败，必须保证被调度的指令对程序的执行没有影响，可能需要复制被调度指令。分支转移成功时，可提高流水线性能。但由于复制指令，可能加大程序空间。</li>
+<li>从失败处调度：若分支转移成功，必须保证被调度的指令对程序的执行无影响。分支转移失败时，可提高流水线性能。</li>
+</ol>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg" alt=""></p>
+<p>这里的第二小题答案网上有不同意见。<br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh032zuou5j317o0vmdmo.jpg" alt="预测分支"><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg" alt=""></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg" alt=""></p>
+<p>条件转移，控制转移，检测分支跳转似乎是后面几章的？<br>还有命中Cache考不考？</p>
+<h3 id="第四章-向量处理机"><a href="#第四章-向量处理机" class="headerlink" title="第四章 向量处理机"></a>第四章 向量处理机</h3><h4 id="向量处理方法"><a href="#向量处理方法" class="headerlink" title="向量处理方法"></a>向量处理方法</h4><p>横向处理/ 纵向处理/ 纵横处理；</p>
+<h4 id="向量流水处理机结构"><a href="#向量流水处理机结构" class="headerlink" title="向量流水处理机结构"></a>向量流水处理机结构</h4><ol>
+<li>存储器-存储器结构：纵向处理</li>
+<li>寄存器-寄存器结构：纵横处理<h4 id="提高向量处理机性能的方法"><a href="#提高向量处理机性能的方法" class="headerlink" title="提高向量处理机性能的方法"></a>提高向量处理机性能的方法</h4></li>
+</ol>
+<ul>
+<li>多功能部件的并行操作  </li>
+<li><strong>链接技术</strong>      WD相关<br>链接技术：具有先写后读相关的两条指令，在不出现功能部件冲突和Vi冲突的情况下，可以把功能部件链接起来进行流水处理，以达到加快执行的目的。  </li>
+<li>分段开采  </li>
+<li>多处理机系统结构<h4 id="向量处理机性能的主要参数"><a href="#向量处理机性能的主要参数" class="headerlink" title="向量处理机性能的主要参数"></a>向量处理机性能的主要参数</h4></li>
+<li>一条向量指令的处理时间</li>
+<li>每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</li>
+<li>一组向量指令的处理时间</li>
+<li>向量流水线的最大性能R∞<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg" alt=""></li>
+<li>半性能向量长度n1/2</li>
+</ul>
+<h4 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg" alt=""></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg" alt=""><br>题目补充：各功能部件的启动时间为：取数和存数部件为12个时钟周期、乘法部件为7个时钟周期，执行标量代码的开销 $T_{loop} = 15$ 个时钟周期，对一个向量元素执行一次操作的时间Tg=一个时钟周期。</p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg" alt=""></p>
+<h3 id="第五章-指令集并行"><a href="#第五章-指令集并行" class="headerlink" title="第五章 指令集并行"></a>第五章 指令集并行</h3><h4 id="记分牌-Scoreboard-算法"><a href="#记分牌-Scoreboard-算法" class="headerlink" title="记分牌(Scoreboard)算法"></a>记分牌(Scoreboard)算法</h4><h4 id="Tomasulo算法"><a href="#Tomasulo算法" class="headerlink" title="Tomasulo算法"></a>Tomasulo算法</h4><p><strong>记分牌算法中，记分牌中记录的信息由哪三部分构成</strong></p>
+<p>答: 指令状态表、功能部件状态表、结果寄存器状态表</p>
+<h4 id="动态分支预测技术"><a href="#动态分支预测技术" class="headerlink" title="动态分支预测技术"></a>动态分支预测技术</h4><p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg" alt="5.8 分支延迟"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg" alt="5.9 "><br>又是不同的答案<br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qfd6p0kj30w40wk113.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg" alt="画超标量处理机时空图"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg" alt=""></p>
+<h3 id="第九章-互联网络"><a href="#第九章-互联网络" class="headerlink" title="第九章 互联网络"></a>第九章 互联网络</h3><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
+<p>**在有16个处理器的混洗交换网络中，若要使第0号处理器与第15号处理器相连，需要经过多少次混洗和交换？</p>
+<p>答：我的答案错误</p>
+<p><strong>设Cube为立方体互联函数， $\sigma$ 为均匀洗牌函数， $\beta$ 为蝶式函数， $\rho$ 为反位序函数，分别求 $Cube<em>{3}(0110)$ 、 $\sigma</em>{(3)}(0110)$ 、 $\beta(0110)$ 、 $\rho^{(2)}(0110)$ .</strong></p>
+<p>答:</p>
+<ul>
+<li>$Cube_3(0110) = 0010$</li>
+<li>$\sigma_{(3)}(0110) = 0101$</li>
+<li>$\beta(0110) = 0110$</li>
+<li>$\rho^{(2)}(0110) = 1010$</li>
+</ul>
+<p><strong>9.11 N=16的STARAN网络在级控制方式下实现分组交换置换，如果实现的分组交换置换是：首先是4组4元交换，然后是2组8元交换，最后是1组16元交换，写出网络实现的互联函数。</strong><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg" alt=""></p>
+<p><strong>9.12 具有 $N=2^n$ 个输入端的Omega网络，采用单元控制。<br>(1) N个输入总共应有多少种不同的排列？<br>(2) 该Omega网络通过一次可以实现的置换总共可有多少种？<br>(3) 若N=8, 计算一次通过能实现的置换数占全部排列的百分比。</strong></p>
+<p>答:<br>(1) N个输入可有N!种不同排列。<br>(2) 该Omega网络通过一关可以实现的置换有 $2^{\frac{N}{2}log_2N}=N^{\frac{N}{2}}$ 种不同。<br>(3) 若N=8, 通过Omega网络一次可以实现的不重复置换有 $8^4 = 4096$ 种。<br>    8个输入可实现的不重复排列有 $8! = 40320$ 种。<br>故，一次可实现的置换数占全部排列数的10.16%.</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg" alt="Omega网络"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg" alt=""></p>
+<h3 id="第十三章-阵列处理机"><a href="#第十三章-阵列处理机" class="headerlink" title="第十三章 阵列处理机"></a>第十三章 阵列处理机</h3><p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong><br>答:N为极其的处理单元(PE)数；<br>C为控制部件CU<br>I为由CU广播至所有PE进行并行执行的指令集<br>M为屏蔽方案集，其中每种屏蔽将所有PE划分成允许操作和禁止操作两种模式<br>R为数据寻径功能机，说明互联网络中PE间通信所需要的各种设置模式</p>
+<p><strong>13.3 简述阵列处理机的特点</strong><br>答：  </p>
+<ol>
+<li>阵列机是以单指令流多数据流方式工作的。</li>
+<li>阵列机是通过设置多个相同的处理单元来开发并行性的，它利用并行性的同时性，而不是并发性  </li>
+<li>阵列机是以某一类算法为背景的专用计算机</li>
+<li>阵列机的研究必须与并行算法的研究密切结合</li>
+<li>阵列机的控制器实质上是一台标量处理机</li>
+</ol>
+<p><strong>试分析与比较SIMD计算机与向量计算机的相同与不同</strong><br>答:<br>相同点: 都能对大量数据进行向量处理<br>不同点:</p>
+<ul>
+<li>SIMD获得高处理速度主要是采用资源重复的并行措施  </li>
+<li>各个处理单元并行工作  </li>
+<li>向量处理机依靠的是多功能流水线部件时间重叠，指高速度  </li>
+<li>另一区别是SIMD计算机有它的互联网络</li>
+</ul>
+<p><strong>简述SIMD计算机的分布式存储器与共享存储器的异同</strong><br>答: 相同点: 都存在互联网络<br>不同点:</p>
+<ul>
+<li>在共享方案中，共享的多体并行存储器通过对准网络与各处理单元相连</li>
+<li>在分布内存方案中，每个处理单元有自己的本地存储器，处理单元之间的数据通过数据寻径网络完成。</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg" alt="存储器"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg" alt=""></p>
+
+          
         
       
     </div>
@@ -2432,6 +2517,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
