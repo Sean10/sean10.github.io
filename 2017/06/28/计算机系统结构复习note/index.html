@@ -112,6 +112,7 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg">
@@ -184,10 +185,16 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1snhy9wzj30x40l0ju6.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh1t1pdhllj30zg0lg461.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1et9ecwej30u20emwfo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1roxfqgsj30ak058wej.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1s7p9bwzj30eo0um416.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1rz5ro8jj30vu0leadn.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg">
-<meta property="og:updated_time" content="2017-06-28T17:09:14.000Z">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1sdwejxzj30lm07it9c.jpg">
+<meta property="og:updated_time" content="2017-06-29T01:46:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机系统结构复习note">
 <meta name="twitter:description" content="仅供参考~">
@@ -520,7 +527,20 @@
 <p>从降低整个系统的指令平均时钟周期数的程度来看，方案A要优于B。</p>
 <p>另外，分别计算两种方案的加速比:<br>$$S_A=\frac{改进前CPU的执行时间}{A的CPU执行时间}=(I_C\times时钟周期\times CPI)/(I_c \times 时钟周期\times CPI_A)=\frac{CPI}{CPI_A}$$<br>$$S_A=\frac{2.375}{1.695}=1.4$$<br>$$S_B=\frac{2.375}{1.775}=1.34$$</p>
 <p>由此也可知，方案A优于方案B。</p>
-<h3 id="第三章-流水线技术"><a href="#第三章-流水线技术" class="headerlink" title="第三章 流水线技术"></a>第三章 流水线技术</h3><p><strong>性能指标 ：   吞吐率、加速比、效率、 最佳段数</strong></p>
+<h3 id="第三章-流水线技术"><a href="#第三章-流水线技术" class="headerlink" title="第三章 流水线技术"></a>第三章 流水线技术</h3><h4 id="流水线的概念："><a href="#流水线的概念：" class="headerlink" title="流水线的概念："></a>流水线的概念：</h4><ul>
+<li>静（动）态流水线</li>
+<li>单（多）功能流水线</li>
+<li>线性流水线<br>流水线的各段串行连接，没有反馈回路。数据通过流水线中的各段时，每一个段最多只流过一次</li>
+<li>非线性流水线<br>流水线中除了有串行的连接外，还有反馈回路</li>
+</ul>
+<h5 id="单功能与多功能流水线"><a href="#单功能与多功能流水线" class="headerlink" title="单功能与多功能流水线"></a>单功能与多功能流水线</h5><pre><code>（按照流水线所完成的功能来分类）
+</code></pre><h6 id="单功能流水线：只能完成一种固定功能的流水线。"><a href="#单功能流水线：只能完成一种固定功能的流水线。" class="headerlink" title="单功能流水线：只能完成一种固定功能的流水线。"></a>单功能流水线：只能完成一种固定功能的流水线。</h6><h6 id="多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。"><a href="#多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。" class="headerlink" title="多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。"></a>多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</h6><p>例： 多功能流水线：加、乘流水线</p>
+<h4 id="流水线表示方法–时空图-、连接图"><a href="#流水线表示方法–时空图-、连接图" class="headerlink" title="流水线表示方法–时空图 、连接图"></a>流水线表示方法–时空图 、连接图</h4><p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg" alt=""></p>
+<h4 id="流水线特点：五段流水线（访存部件ME-转移EX"><a href="#流水线特点：五段流水线（访存部件ME-转移EX" class="headerlink" title="流水线特点：五段流水线（访存部件ME, 转移EX)"></a>流水线特点：五段流水线（访存部件ME, 转移EX)</h4><h4 id="性能指标-：-吞吐率、加速比、效率、-最佳段数"><a href="#性能指标-：-吞吐率、加速比、效率、-最佳段数" class="headerlink" title="性能指标 ：   吞吐率、加速比、效率、 最佳段数"></a>性能指标 ：   吞吐率、加速比、效率、 最佳段数</h4><h4 id="流水线相关与冲突及解决办法"><a href="#流水线相关与冲突及解决办法" class="headerlink" title="流水线相关与冲突及解决办法"></a>流水线相关与冲突及解决办法</h4><ul>
+<li>数据相关（真数据相关）/名相关/控制相关</li>
+<li>结构冲突、数据冲突、控制冲突：</li>
+</ul>
+<h5 id="数据冲突解决办法"><a href="#数据冲突解决办法" class="headerlink" title="数据冲突解决办法"></a>数据冲突解决办法</h5><h5 id="控制冲突解决办法"><a href="#控制冲突解决办法" class="headerlink" title="控制冲突解决办法"></a>控制冲突解决办法</h5><p><strong>多功能流水线时空图</strong></p>
 <p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量<br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"></p>
 <p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。<br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg" alt=""><br> 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率)<br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg" alt=""></p>
@@ -982,9 +1002,10 @@
 <li>通信时延用包的最长传输时间来表示。</li>
 </ul>
 <p>优化寻径网络以最小通道流量或通信时延为目标。</p>
-<h4 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h4><p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次魂系和 $\underline{3}$ 次交换</strong></p>
+<h4 id="实例-3"><a href="#实例-3" class="headerlink" title="实例"></a>实例</h4><p><strong>混洗交换题计算方法:</strong><br>在混洗交换网络中，最远的两个入、出端号 是全 “0” 和 全”1”, 它们的连接需要 n 次交换 和n-1 次混洗。 所以其 最大距离为2n - 1.</p>
+<p><strong>在有8个处理器的混洗交换网络中，若要使第0号处理器与第7号处理器相连，需要经过2次混洗和 $\underline{3}$ 次交换</strong></p>
 <p><strong>在有16个处理器的混洗交换网络中，若要使第0号处理器与第15号处理器相连，需要经过多少次混洗和交换</strong></p>
-<p>答：我的答案错误</p>
+<p>答：3次混洗和4次交换</p>
 <p><strong>设Cube为立方体互联函数， $\sigma$ 为均匀洗牌函数， $\beta$ 为蝶式函数， $\rho$ 为反位序函数，分别求 $Cube<em>{3}(0110)$ 、 $\sigma</em>{(3)}(0110)$ 、 $\beta(0110)$ 、 $\rho^{(2)}(0110)$ .</strong></p>
 <p>答:</p>
 <ul>
@@ -997,7 +1018,119 @@
 <p><strong>9.12 具有 $N=2^n$ 个输入端的Omega网络，采用单元控制。<br>(1) N个输入总共应有多少种不同的排列？<br>(2) 该Omega网络通过一次可以实现的置换总共可有多少种？<br>(3) 若N=8, 计算一次通过能实现的置换数占全部排列的百分比。</strong></p>
 <p>答:<br>(1) N个输入可有N!种不同排列。<br>(2) 该Omega网络通过一关可以实现的置换有 $2^{\frac{N}{2}log_2N}=N^{\frac{N}{2}}$ 种不同。<br>(3) 若N=8, 通过Omega网络一次可以实现的不重复置换有 $8^4 = 4096$ 种。<br>    8个输入可实现的不重复排列有 $8! = 40320$ 种。<br>故，一次可实现的置换数占全部排列数的10.16%.</p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg" alt="Omega网络"><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg" alt=""></p>
-<h3 id="第十章-多处理机"><a href="#第十章-多处理机" class="headerlink" title="第十章 多处理机"></a>第十章 多处理机</h3><p>据说重点是一致性</p>
+<h3 id="第十章-多处理机"><a href="#第十章-多处理机" class="headerlink" title="第十章 多处理机"></a>第十章 多处理机</h3><h4 id="多处理机概念"><a href="#多处理机概念" class="headerlink" title="多处理机概念:"></a>多处理机概念:</h4><ul>
+<li>由若干台独立的计算机或处理机(CU或PU)组成，每台计算机能独立执行自己程序。<strong>不同于并行处理机。</strong></li>
+<li>多个指令部件控制，统一操作系统，实现指令级以上(任务级、作业级）并行。<strong>MIMD结构。</strong></li>
+<li>多处理机通过互连网络连接，以共享某种设备（主存、输入输出或网络）方式，实现程序间数据交换和同步。</li>
+<li>算法上，开发、挖掘和实现更多通用算法中隐含的并行性；不限于向量数组处理.  依靠软件手段解决资源分配和管理问题，特别是处理机管理和进程调度等。</li>
+</ul>
+<h5 id="MIMD计算机的特点、分类"><a href="#MIMD计算机的特点、分类" class="headerlink" title="MIMD计算机的特点、分类"></a>MIMD计算机的特点、分类</h5><h6 id="Flynn分类法"><a href="#Flynn分类法" class="headerlink" title="Flynn分类法"></a>Flynn分类法</h6><p>SISD、SIMD、MISD、MIMD</p>
+<h6 id="MIMD已成为通用多处理机系统结构的选择，原因："><a href="#MIMD已成为通用多处理机系统结构的选择，原因：" class="headerlink" title="MIMD已成为通用多处理机系统结构的选择，原因："></a>MIMD已成为通用多处理机系统结构的选择，原因：</h6><ul>
+<li>MIMD具有灵活性；</li>
+<li>MIMD可以充分利用商品化微处理器在性能价格比方面的优势。<br>计算机机群系统（cluster）是一类广泛被采用的MIMD机器。</li>
+</ul>
+<h6 id="根据存储器的组织结构-，把现有的MIMD机器分为两类"><a href="#根据存储器的组织结构-，把现有的MIMD机器分为两类" class="headerlink" title="根据存储器的组织结构 ，把现有的MIMD机器分为两类"></a>根据存储器的组织结构 ，把现有的MIMD机器分为两类</h6><p>（每一类代表了一种存储器的结构和互连策略）</p>
+<ul>
+<li>集中式共享存储器结构  <ul>
+<li>最多由几十个处理器构成。</li>
+<li>共享一个集中式的物理存储器。</li>
+</ul>
+</li>
+<li>分布式存储器多处理机（DSM)<ul>
+<li>存储器在物理上是分布的。</li>
+<li>非均匀访存模型，NUMA。</li>
+</ul>
+</li>
+</ul>
+<h4 id="多处理机一致性问题"><a href="#多处理机一致性问题" class="headerlink" title="多处理机一致性问题"></a>多处理机一致性问题</h4><h5 id="Cache的一致性问题和原因"><a href="#Cache的一致性问题和原因" class="headerlink" title="Cache的一致性问题和原因"></a>Cache的一致性问题和原因</h5><ul>
+<li>允许共享数据进入Cache，就可能出现多个处理器的Cache中都有同一存储块的副本，</li>
+<li>当某个处理器对其Cache中的数据进行修改后，会使得其Cache中的数据与其他Cache中的数据不一致。</li>
+</ul>
+<p><strong>例　由两个处理器（A和B）读写引起的Cache一致性问题</strong><br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1snhy9wzj30x40l0ju6.jpg" alt=""></p>
+<h5 id="存储器的一致性"><a href="#存储器的一致性" class="headerlink" title="存储器的一致性"></a>存储器的一致性</h5><ul>
+<li>如果对某个数据项的任何读操作均可得到其最新写入的值，则认为这个存储系统是一致的。</li>
+<li>单处理机系统中，Cache一致性问题存在于Cache与主存之间，可通过全写法（write－through，写直达，写通过）解决。</li>
+<li>全写法：同时修改Cache和主存中值(或策略)。回写法：仅修改Cache值，不立即修改主存。</li>
+<li>全写法只能维持一个Cache和主存之间的一致性，不能更新其他处理机中的Cache的相同副本。<br><strong>解决Cache一致性问题是多处理机的重要问题。</strong></li>
+</ul>
+<h5 id="实现一致性的基本方案"><a href="#实现一致性的基本方案" class="headerlink" title="实现一致性的基本方案"></a>实现一致性的基本方案</h5><ul>
+<li>在一致的多处理机中，Cache提供迁移、复制两种功能：</li>
+<li>共享数据的迁移：把共享数据拷贝后迁入本地Cache<br>减少了对远程共享数据的访问延迟，也减少了对共享存储器带宽的要求。</li>
+<li>共享数据的复制：把共享数据多个副本拷放在多个处理器Cache<br>不仅减少了访问共享数据的延迟，也减少了访问共享数据所产生的冲突。<br>一般情况下，小规模多处理机是采用硬件的方法来实现Cache的一致性。</li>
+</ul>
+<h5 id="Cache一致性协议"><a href="#Cache一致性协议" class="headerlink" title="Cache一致性协议"></a>Cache一致性协议</h5><p>在多个处理器中用来维护一致性的协议。</p>
+<ul>
+<li>关键：跟踪记录共享数据块的状态</li>
+<li>两类协议（采用不同的技术跟踪共享数据的状态）<ul>
+<li>目录式协议（directory）：<br>存储器数据块的共享状态被保存在一个称为目录的地方</li>
+<li>监听式协议（snooping）<br>处理机向局部Cache 写数据通过总线广播，其他处理机对广播的写事务进行监视，如果某Cache中有数据副本，用写作废或写更新处理.</li>
+</ul>
+</li>
+</ul>
+<h5 id="采用两种方法来解决Cache一致性问题。"><a href="#采用两种方法来解决Cache一致性问题。" class="headerlink" title="采用两种方法来解决Cache一致性问题。"></a>采用两种方法来解决Cache一致性问题。</h5><ul>
+<li>写作废协议<br>在处理器对某个数据项进行写入之前，作废其它的副本(保证它拥有对该数据项的唯一的访问权)</li>
+<li>写更新协议<br>当一个处理器对某数据项进行写入时，通过广播使其它Cache中所有对应于该数据项的副本进行更新。</li>
+</ul>
+<h5 id="监听协议的实现"><a href="#监听协议的实现" class="headerlink" title="监听协议的实现"></a>监听协议的实现</h5><ul>
+<li>监听协议的基本实现技术</li>
+<li><p>实现监听协议的关键有3个方面</p>
+<ul>
+<li>处理器之间通过一个可以实现广播的互连机制相连。<br>通常采用的是总线。</li>
+<li>当一个Cache响应本地CPU的访问时，如果涉及到全局操作，就在总线上发出相应的消息。</li>
+<li>所有处理器都一直在监听总线，它们检测总线上的地址在它们的Cache中是否有副本。若有则响应，并进行相应的操作 。</li>
+</ul>
+</li>
+<li><p>Cache发送到总线上的消息主要有以下两种：  </p>
+<ul>
+<li>RdMiss——读不命中</li>
+<li>WtMiss——写不命中  </li>
+</ul>
+</li>
+<li><p>需要通过总线找到相应数据块的最新副本，然后调入本地Cache中。</p>
+<ul>
+<li>写直达Cache：因为所有写入的数据都同时被写回主存，所以从主存中总可以取到其最新值。</li>
+<li>对于写回Cache，得到数据的最新值会困难一些，因为最新值可能在某个Cache中，也可能在主存中。<br>（后面的讨论中，只考虑写回法Cache）</li>
+</ul>
+</li>
+</ul>
+<h5 id="目录协议的基本思想"><a href="#目录协议的基本思想" class="headerlink" title="目录协议的基本思想"></a>目录协议的基本思想</h5><p>监听一致性协议的可扩放性很差</p>
+<ul>
+<li>主存中设置一个中央目录，存放每个数据块状态位和指针位（位向量） ，指针位对应处理机Cache 。</li>
+<li><p>目录：一种集中的数据结构。对于存储器中的每一个可以调入Cache的数据块，在目录中设置一条目录项，用于记录该块的状态以及哪些Cache中有副本等相关信息。</p>
+</li>
+<li><p>任何一个数据块，都可以在目录表唯一的一个位置中找到相关的信息。使一致性协议避免了广播操作</p>
+</li>
+<li>状态位指示数据块状态，指针位（位向量）指向处理机Cache ，指出Cache中是否有数据块副本。</li>
+<li>当一个处理机写入本身Cache时，根据目录表有选择地通知存有数据块的处理机的Cache。避免Cache不一致性</li>
+</ul>
+<h5 id="目录协议的三种结构"><a href="#目录协议的三种结构" class="headerlink" title="目录协议的三种结构"></a>目录协议的三种结构</h5><ul>
+<li>不同目录协议的主要区别主要有两个  <ul>
+<li>所设置的存储器块的状态及其个数不同</li>
+<li>目录的结构</li>
+</ul>
+</li>
+<li>目录协议分为3类<br>全映象目录、有限映象目录、链式目录</li>
+</ul>
+<h4 id="多处理机分类"><a href="#多处理机分类" class="headerlink" title="多处理机分类"></a>多处理机分类</h4><h5 id="按多处理机之间物理连接的紧密程度与交互作用能力强弱"><a href="#按多处理机之间物理连接的紧密程度与交互作用能力强弱" class="headerlink" title="按多处理机之间物理连接的紧密程度与交互作用能力强弱"></a>按多处理机之间物理连接的紧密程度与交互作用能力强弱</h5><ul>
+<li>紧耦合系统       </li>
+<li>松耦合系统    </li>
+</ul>
+<h5 id="按处理机结构"><a href="#按处理机结构" class="headerlink" title="按处理机结构"></a>按处理机结构</h5><ul>
+<li>同构型多处理机系统       </li>
+<li>异构型多处理机系统</li>
+</ul>
+<h5 id="按系统组成结构"><a href="#按系统组成结构" class="headerlink" title="按系统组成结构"></a>按系统组成结构</h5><ul>
+<li>并行向量处理机(PVP)</li>
+<li>对称多处理机(SMP)</li>
+<li>分布共享存储器多处理机(DSM)</li>
+<li>大规模并行处理机(MPP)</li>
+<li>工作站机群(COW)</li>
+</ul>
+<p><strong>五类机器特征比较</strong><br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1t1pdhllj30zg0lg461.jpg" alt=""></p>
+<h5 id="按存储器组织结构"><a href="#按存储器组织结构" class="headerlink" title="按存储器组织结构"></a>按存储器组织结构</h5><ul>
+<li>集中式共享存储器结构(SMP)    </li>
+<li>分布式存储器结构（DSM)</li>
+</ul>
 <h3 id="第十三章-阵列处理机"><a href="#第十三章-阵列处理机" class="headerlink" title="第十三章 阵列处理机"></a>第十三章 阵列处理机</h3><h4 id="阵列处理机"><a href="#阵列处理机" class="headerlink" title="阵列处理机"></a>阵列处理机</h4><p>多处理单元(PE)按照一定互连方式，在同一控制部件(CU) 控制下，对各自数据完成同一条指令规定的操作。</p>
 <ul>
 <li>从CU看，指令串行执行。</li>
@@ -1036,11 +1169,33 @@
 </code></pre></li>
 </ul>
 </li>
-<li><p>阵列处理机的特点(与流水线向量对比)</p>
+</ul>
+<p><strong>阵列处理机的特点(与流水线向量对比)</strong></p>
+<ul>
+<li>阵列机是以单指令流多数据流方式工作的</li>
+<li>阵列机是通过设置多个相同的处理单元来开发并行性的，它利用并行性中的同时性，而不是并发性。所有处理单元必须同时进行相同的操作。这与利用时间重叠的向量流水处理机是不一样的。</li>
+<li>阵列机是以某一类算法为背景的专用计算机。这是因为阵列机通过都采用简单，规整的互联网络来实现处理单元间的连接操作，从而限定了它所使用的求解算法类别。</li>
+<li>阵列机的研究必须与并行算法的研究密切结合，以便能充分发挥它的处理能力。</li>
+<li>阵列机的控制器实质上是一台标量处理机，而为了完成I/O操作以及操作系统的管理，尚需一个前端机。因此实际的阵列机系统是由上述三部分构成的一个异构型多处理机系统。</li>
+</ul>
+<h4 id="SIMD机与并行算法的关系"><a href="#SIMD机与并行算法的关系" class="headerlink" title="SIMD机与并行算法的关系"></a>SIMD机与并行算法的关系</h4><p>以Illiac Ⅳ为例，讨论阵列处理机的算法。   </p>
+<h5 id="解有限差分方程（需要知道大致含义）"><a href="#解有限差分方程（需要知道大致含义）" class="headerlink" title="解有限差分方程（需要知道大致含义）"></a><strong>解有限差分方程</strong>（需要知道大致含义）</h5><p>把一个有规则的网格覆盖在整个场域上，用网格点上的变量值写出差分方程组以代替场方程来进行计算。<br>描述平面场的拉普拉斯方程<br><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1roxfqgsj30ak058wej.jpg" alt=""></p>
+<p>差分法求解的精度与网格间距有直接的关系，网格越小，精度越高，但求解所花费的时空开销越大。</p>
+<p>Illiac Ⅳ在计算时，是把内部网格点分配给各个处理单元的。因此，上述计算过程可以并行地完成，从而大幅度地提高处理速度。</p>
+<h5 id="矩阵加"><a href="#矩阵加" class="headerlink" title="矩阵加"></a>矩阵加</h5><h5 id="矩阵乘"><a href="#矩阵乘" class="headerlink" title="矩阵乘"></a>矩阵乘</h5><p>设A、B和C为3个8×8的二维矩阵。若给定A和B，则<br>C＝A*B的64个分量可利用下列公式计算。<br>$$c<em>{ij} = \sum</em>{k=0}^{7}{a<em>{ik}b</em>{kj}}$$<br>$$0 \leqslant i,j \leqslant 7$$</p>
+<p>FORTRAN 程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DO 10 I＝0，7</div><div class="line">	DO 10 J＝0，7</div><div class="line">		C（I，J）＝0</div><div class="line">		DO 10 K＝0，7</div><div class="line">		10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>在SISD计算机上求解，三重循环，每重循环执行8次，共需512次乘加的时间</li>
+<li>在SIMD阵列处理机上求解这个问题<br>执行下列FORTRAN程序：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DO 10 I＝0，7</div><div class="line">	C（I，J）＝0</div><div class="line">    DO 10 K＝0，7</div><div class="line">    10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="SIMD机与并行算法的关系"><a href="#SIMD机与并行算法的关系" class="headerlink" title="SIMD机与并行算法的关系"></a>SIMD机与并行算法的关系</h4><p>解有限差分方程</p>
-<h4 id="递归折叠求和算法"><a href="#递归折叠求和算法" class="headerlink" title="递归折叠求和算法"></a>递归折叠求和算法</h4><p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong><br>答:N为极其的处理单元(PE)数；<br>C为控制部件CU<br>I为由CU广播至所有PE进行并行执行的指令集<br>M为屏蔽方案集，其中每种屏蔽将所有PE划分成允许操作和禁止操作两种模式<br>R为数据寻径功能机，说明互联网络中PE间通信所需要的各种设置模式</p>
+<p>速度提高到原来的8倍，即每个处理单元的计算时间缩短为64次乘加时间。</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1s7p9bwzj30eo0um416.jpg" alt=""></p>
+<h4 id="递归折叠求和算法"><a href="#递归折叠求和算法" class="headerlink" title="递归折叠求和算法"></a>递归折叠求和算法</h4><p>一个将N个数的顺序相加转变为并行相加的问题。</p>
+<p>取N＝8。即有8个数A（I）要顺序累加（0≤I≤7）<br>这是一个串行程序，共要进行8次加法。</p>
+<p>在阵列处理机上采用成对递归相加的算法，则只需 $log_28＝3$ 次加法 。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1rz5ro8jj30vu0leadn.jpg" alt=""></p>
+<h4 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h4><p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong><br>答:N为极其的处理单元(PE)数；<br>C为控制部件CU<br>I为由CU广播至所有PE进行并行执行的指令集<br>M为屏蔽方案集，其中每种屏蔽将所有PE划分成允许操作和禁止操作两种模式<br>R为数据寻径功能机，说明互联网络中PE间通信所需要的各种设置模式</p>
 <p><strong>13.3 简述阵列处理机的特点</strong><br>答：  </p>
 <ol>
 <li>阵列机是以单指令流多数据流方式工作的。</li>
@@ -1061,7 +1216,20 @@
 <li>在共享方案中，共享的多体并行存储器通过对准网络与各处理单元相连</li>
 <li>在分布内存方案中，每个处理单元有自己的本地存储器，处理单元之间的数据通过数据寻径网络完成。</li>
 </ul>
-<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg" alt="存储器"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg" alt=""></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg" alt="存储器"><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg" alt=""><br>这道题，推算体号地址公式的知识点不在我们书上，理论上，我们应该只能一个个尝试填表。</p>
+<p><strong>例1．试分别在下面两种计算机系统上用最短的时间来计算表达式s=A1<em>B1+A2</em>B2+…A32*B32。假设加法和乘法分别需要两个和四个单位时间，从存储器取指令、取数据、译码的时间忽略不计，所有的指令和数据已装入有关的PE。试确定下列每种情况的最小计算时间：</strong>（重点，必考）</p>
+<ol>
+<li><strong>一台SISD串行计算机。</strong></li>
+<li><strong>一台有8个PE的SIMD计算机，8个PE用移数函数PM2I连接。每个PE用一个单位时间可以把数据直接送给它的相邻PE。操作数Ai和Bi最初存放在PEi mod 8中，其中i=1，2，…，32。每个PE可在不同时刻执行加法或乘法</strong></li>
+</ol>
+<p>答:</p>
+<ol>
+<li><p>在SISD计算机中,需要32次乘法和31次加法。<br>共需要时间：T=4<em>32+2</em>31=190单位时间</p>
+</li>
+<li><p>在SIMD计算机上计算的算法：<br>假定向量中的32对元素平均地分配到8个处理器中，每个处理器分配4对，则每个处理器计算时间为  4<em>4+3</em>2<br>总时间   =每个处理器计算时间+递归折叠求和算法<br>T=4<em>4+3</em>2+1+2+1+2+1+2=31</p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1sdwejxzj30lm07it9c.jpg" alt=""></p>
+</li>
+</ol>
 
       
     </div>
@@ -1247,7 +1415,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器、虚拟机器、透明性、编译、解释"><span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构、组织和实现"><span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-text">大概率事件优先原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Amdahl定律、加速比定义"><span class="nav-text">Amdahl定律、加速比定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序访存的局部性原理"><span class="nav-text">程序访存的局部性原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU性能公式"><span class="nav-text">CPU性能公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU时间"><span class="nav-text">CPU时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每条指令执行的平均时钟周期数CPI"><span class="nav-text">每条指令执行的平均时钟周期数CPI</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-text">第三章 流水线技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）"><span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间-复习课件中未作为重点"><span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-R-infty"><span class="nav-text">向量流水线的最大性能 $R_{\infty}$</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n-frac-1-2"><span class="nav-text">半性能向量长度 $n_{\frac{1}{2}}$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n-v-同样不是重点"><span class="nav-text">长度向量临界值 $n_v$(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行度ILP"><span class="nav-text">指令级并行度ILP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发ILP的方法可以分为两大类"><span class="nav-text">开发ILP的方法可以分为两大类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记分牌-Scoreboard-算法"><span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo算法"><span class="nav-text">Tomasulo算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据相关及其处理技术-其余相关都不是重点"><span class="nav-text">数据相关及其处理技术(其余相关都不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理想流水线的CPI加上各类停顿的时钟周期数："><span class="nav-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超标量处理机"><span class="nav-text">超标量处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超流水线处理机"><span class="nav-text">超流水线处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超长指令字（VLIW-处理机"><span class="nav-text">超长指令字（VLIW)处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术-1"><span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#互连网络相关概念"><span class="nav-text">互连网络相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大要素：互连结构、开关元件、控制方式"><span class="nav-text">三大要素：互连结构、开关元件、控制方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联函数"><span class="nav-text">互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本互联函数"><span class="nav-text">基本互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#恒等函数"><span class="nav-text">恒等函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交换函数"><span class="nav-text">交换函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#均匀洗牌函数"><span class="nav-text">均匀洗牌函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#蝶式函数"><span class="nav-text">蝶式函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反位序函数"><span class="nav-text">反位序函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#移数函数"><span class="nav-text">移数函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PM2I移数函数-重点"><span class="nav-text">PM2I移数函数(重点)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的结构参数"><span class="nav-text">互联网络的结构参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的性能指标"><span class="nav-text">互联网络的性能指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络"><span class="nav-text">互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#典型静态互联网络"><span class="nav-text">典型静态互联网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络"><span class="nav-text">动态互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总线网络"><span class="nav-text">总线网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交叉开关网络"><span class="nav-text">交叉开关网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级互联网络的构成"><span class="nav-text">多级互联网络的构成</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级立方体网络"><span class="nav-text">多级立方体网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Omega网络"><span class="nav-text">Omega网络</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络的比较"><span class="nav-text">动态互联网络的比较</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息传递机制（重点）"><span class="nav-text">消息传递机制（重点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由选择和消息传递方法式"><span class="nav-text">路由选择和消息传递方法式:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁与虚拟通道"><span class="nav-text">死锁与虚拟通道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流量控制策略"><span class="nav-text">流量控制策略</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#包冲突的解决"><span class="nav-text">包冲突的解决</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#确定性寻径和自适应寻径"><span class="nav-text">确定性寻径和自适应寻径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通信模式"><span class="nav-text">通信模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-3"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-text">第十章 多处理机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-text">第十三章 阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机"><span class="nav-text">阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阵列处理机的操作模型可用五元组表示"><span class="nav-text">阵列处理机的操作模型可用五元组表示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机的结构"><span class="nav-text">阵列处理机的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SIMD机与并行算法的关系"><span class="nav-text">SIMD机与并行算法的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归折叠求和算法"><span class="nav-text">递归折叠求和算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器、虚拟机器、透明性、编译、解释"><span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构、组织和实现"><span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-text">大概率事件优先原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Amdahl定律、加速比定义"><span class="nav-text">Amdahl定律、加速比定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序访存的局部性原理"><span class="nav-text">程序访存的局部性原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU性能公式"><span class="nav-text">CPU性能公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU时间"><span class="nav-text">CPU时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每条指令执行的平均时钟周期数CPI"><span class="nav-text">每条指令执行的平均时钟周期数CPI</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-text">第三章 流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的概念："><span class="nav-text">流水线的概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单功能与多功能流水线"><span class="nav-text">单功能与多功能流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线：只能完成一种固定功能的流水线。"><span class="nav-text">单功能流水线：只能完成一种固定功能的流水线。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。"><span class="nav-text">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线表示方法–时空图-、连接图"><span class="nav-text">流水线表示方法–时空图 、连接图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线特点：五段流水线（访存部件ME-转移EX"><span class="nav-text">流水线特点：五段流水线（访存部件ME, 转移EX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能指标-：-吞吐率、加速比、效率、-最佳段数"><span class="nav-text">性能指标 ：   吞吐率、加速比、效率、 最佳段数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线相关与冲突及解决办法"><span class="nav-text">流水线相关与冲突及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据冲突解决办法"><span class="nav-text">数据冲突解决办法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制冲突解决办法"><span class="nav-text">控制冲突解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）"><span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间-复习课件中未作为重点"><span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-R-infty"><span class="nav-text">向量流水线的最大性能 $R_{\infty}$</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n-frac-1-2"><span class="nav-text">半性能向量长度 $n_{\frac{1}{2}}$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n-v-同样不是重点"><span class="nav-text">长度向量临界值 $n_v$(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行度ILP"><span class="nav-text">指令级并行度ILP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发ILP的方法可以分为两大类"><span class="nav-text">开发ILP的方法可以分为两大类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记分牌-Scoreboard-算法"><span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tomasulo算法"><span class="nav-text">Tomasulo算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据相关及其处理技术-其余相关都不是重点"><span class="nav-text">数据相关及其处理技术(其余相关都不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理想流水线的CPI加上各类停顿的时钟周期数："><span class="nav-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超标量处理机"><span class="nav-text">超标量处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超流水线处理机"><span class="nav-text">超流水线处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超长指令字（VLIW-处理机"><span class="nav-text">超长指令字（VLIW)处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术-1"><span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#互连网络相关概念"><span class="nav-text">互连网络相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大要素：互连结构、开关元件、控制方式"><span class="nav-text">三大要素：互连结构、开关元件、控制方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联函数"><span class="nav-text">互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本互联函数"><span class="nav-text">基本互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#恒等函数"><span class="nav-text">恒等函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交换函数"><span class="nav-text">交换函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#均匀洗牌函数"><span class="nav-text">均匀洗牌函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#蝶式函数"><span class="nav-text">蝶式函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反位序函数"><span class="nav-text">反位序函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#移数函数"><span class="nav-text">移数函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PM2I移数函数-重点"><span class="nav-text">PM2I移数函数(重点)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的结构参数"><span class="nav-text">互联网络的结构参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的性能指标"><span class="nav-text">互联网络的性能指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络"><span class="nav-text">互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#典型静态互联网络"><span class="nav-text">典型静态互联网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络"><span class="nav-text">动态互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总线网络"><span class="nav-text">总线网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交叉开关网络"><span class="nav-text">交叉开关网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级互联网络的构成"><span class="nav-text">多级互联网络的构成</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级立方体网络"><span class="nav-text">多级立方体网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Omega网络"><span class="nav-text">Omega网络</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络的比较"><span class="nav-text">动态互联网络的比较</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息传递机制（重点）"><span class="nav-text">消息传递机制（重点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由选择和消息传递方法式"><span class="nav-text">路由选择和消息传递方法式:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁与虚拟通道"><span class="nav-text">死锁与虚拟通道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流量控制策略"><span class="nav-text">流量控制策略</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#包冲突的解决"><span class="nav-text">包冲突的解决</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#确定性寻径和自适应寻径"><span class="nav-text">确定性寻径和自适应寻径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通信模式"><span class="nav-text">通信模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-3"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-text">第十章 多处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机概念"><span class="nav-text">多处理机概念:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MIMD计算机的特点、分类"><span class="nav-text">MIMD计算机的特点、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Flynn分类法"><span class="nav-text">Flynn分类法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MIMD已成为通用多处理机系统结构的选择，原因："><span class="nav-text">MIMD已成为通用多处理机系统结构的选择，原因：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#根据存储器的组织结构-，把现有的MIMD机器分为两类"><span class="nav-text">根据存储器的组织结构 ，把现有的MIMD机器分为两类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机一致性问题"><span class="nav-text">多处理机一致性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache的一致性问题和原因"><span class="nav-text">Cache的一致性问题和原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储器的一致性"><span class="nav-text">存储器的一致性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现一致性的基本方案"><span class="nav-text">实现一致性的基本方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cache一致性协议"><span class="nav-text">Cache一致性协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用两种方法来解决Cache一致性问题。"><span class="nav-text">采用两种方法来解决Cache一致性问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监听协议的实现"><span class="nav-text">监听协议的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的基本思想"><span class="nav-text">目录协议的基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的三种结构"><span class="nav-text">目录协议的三种结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机分类"><span class="nav-text">多处理机分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按多处理机之间物理连接的紧密程度与交互作用能力强弱"><span class="nav-text">按多处理机之间物理连接的紧密程度与交互作用能力强弱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按处理机结构"><span class="nav-text">按处理机结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按系统组成结构"><span class="nav-text">按系统组成结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按存储器组织结构"><span class="nav-text">按存储器组织结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-text">第十三章 阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机"><span class="nav-text">阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阵列处理机的操作模型可用五元组表示"><span class="nav-text">阵列处理机的操作模型可用五元组表示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机的结构"><span class="nav-text">阵列处理机的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SIMD机与并行算法的关系"><span class="nav-text">SIMD机与并行算法的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解有限差分方程（需要知道大致含义）"><span class="nav-text">解有限差分方程（需要知道大致含义）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵加"><span class="nav-text">矩阵加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵乘"><span class="nav-text">矩阵乘</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归折叠求和算法"><span class="nav-text">递归折叠求和算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-4"><span class="nav-text">实例</span></a></li></ol></li></ol></div>
             
 
           </div>
