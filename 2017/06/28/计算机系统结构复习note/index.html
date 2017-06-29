@@ -194,7 +194,7 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1sdwejxzj30lm07it9c.jpg">
-<meta property="og:updated_time" content="2017-06-29T01:46:13.000Z">
+<meta property="og:updated_time" content="2017-06-29T05:37:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机系统结构复习note">
 <meta name="twitter:description" content="仅供参考~">
@@ -521,9 +521,9 @@
 </ul>
 <h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg" alt=""></p>
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg" alt=""></p>
-<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt=""><br><strong>1.11 假设浮点数指令FP指令的比例为30%，其中浮点数平方根FPSQR占全部指令的比例为4%, FP操作的CPI为5，FPSQR操作的CPI为20, 其他指令的平均CPI为1.25.现有两种改进方案，第一种是把FPSQR操作的CPI减至3, 第二种是把所有的FP操作的CPI减至3, 试比较两种方案对系统性能的提高程度。</strong><br>答:<br>改进之前，系统指令平均时钟周期CPI为<br>$$CPI=\sum{(CPI_i \times \frac{I_i}{I_c})}=(5 \times 30\% )+(1.25\times70\%) = 2.375$$</p>
-<p>如果采用A方案：FPSQR操作的CPI减至3，则整个系统的平均时钟周期数为:<br>$$CPI<em>A=CPI-(CPI</em>{FPSQR}-CPI_{FPSQR}^{‘}) \times 4\%=2.375-(20-3) \times 4\%=1.695$$</p>
-<p>如果采用B方案：把所有的FP操作的CPI减至3，则整个系统的平均时钟周期数为：<br> $$CPI<em>B=CPI-(CPI</em>{FP}-CPI_{FP}^{‘})\times4\%=2.375-(5-3)\times30\%=1.775$$</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt=""><br><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt=""><br><strong>1.11 假设浮点数指令FP指令的比例为30%，其中浮点数平方根FPSQR占全部指令的比例为4%, FP操作的CPI为5，FPSQR操作的CPI为20, 其他指令的平均CPI为1.25.现有两种改进方案，第一种是把FPSQR操作的CPI减至3, 第二种是把所有的FP操作的CPI减至3, 试比较两种方案对系统性能的提高程度。</strong><br>答:<br>改进之前，系统指令平均时钟周期CPI为<br>$$CPI=\sum{(CPI_i \times \frac{I_i}{I_c})}=(5 \times 30 % )+(1.25\times70 %) = 2.375$$</p>
+<p>如果采用A方案：FPSQR操作的CPI减至3，则整个系统的平均时钟周期数为:<br>$$CPI<em>A=CPI-(CPI</em>{FPSQR}-CPI_{FPSQR}^{‘}) \times 4 %=2.375-(20-3) \times 4 %=1.695$$</p>
+<p>如果采用B方案：把所有的FP操作的CPI减至3，则整个系统的平均时钟周期数为：<br> $$CPI<em>B=CPI-(CPI</em>{FP}-CPI_{FP}^{‘})\times4 %=2.375-(5-3)\times30 %=1.775$$</p>
 <p>从降低整个系统的指令平均时钟周期数的程度来看，方案A要优于B。</p>
 <p>另外，分别计算两种方案的加速比:<br>$$S_A=\frac{改进前CPU的执行时间}{A的CPU执行时间}=(I_C\times时钟周期\times CPI)/(I_c \times 时钟周期\times CPI_A)=\frac{CPI}{CPI_A}$$<br>$$S_A=\frac{2.375}{1.695}=1.4$$<br>$$S_B=\frac{2.375}{1.775}=1.34$$</p>
 <p>由此也可知，方案A优于方案B。</p>
@@ -536,7 +536,49 @@
 <h5 id="单功能与多功能流水线"><a href="#单功能与多功能流水线" class="headerlink" title="单功能与多功能流水线"></a>单功能与多功能流水线</h5><pre><code>（按照流水线所完成的功能来分类）
 </code></pre><h6 id="单功能流水线：只能完成一种固定功能的流水线。"><a href="#单功能流水线：只能完成一种固定功能的流水线。" class="headerlink" title="单功能流水线：只能完成一种固定功能的流水线。"></a>单功能流水线：只能完成一种固定功能的流水线。</h6><h6 id="多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。"><a href="#多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。" class="headerlink" title="多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。"></a>多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</h6><p>例： 多功能流水线：加、乘流水线</p>
 <h4 id="流水线表示方法–时空图-、连接图"><a href="#流水线表示方法–时空图-、连接图" class="headerlink" title="流水线表示方法–时空图 、连接图"></a>流水线表示方法–时空图 、连接图</h4><p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg" alt=""></p>
-<h4 id="流水线特点：五段流水线（访存部件ME-转移EX"><a href="#流水线特点：五段流水线（访存部件ME-转移EX" class="headerlink" title="流水线特点：五段流水线（访存部件ME, 转移EX)"></a>流水线特点：五段流水线（访存部件ME, 转移EX)</h4><h4 id="性能指标-：-吞吐率、加速比、效率、-最佳段数"><a href="#性能指标-：-吞吐率、加速比、效率、-最佳段数" class="headerlink" title="性能指标 ：   吞吐率、加速比、效率、 最佳段数"></a>性能指标 ：   吞吐率、加速比、效率、 最佳段数</h4><h4 id="流水线相关与冲突及解决办法"><a href="#流水线相关与冲突及解决办法" class="headerlink" title="流水线相关与冲突及解决办法"></a>流水线相关与冲突及解决办法</h4><ul>
+<h4 id="流水线特点：五段流水线（访存部件ME-转移EX"><a href="#流水线特点：五段流水线（访存部件ME-转移EX" class="headerlink" title="流水线特点：五段流水线（访存部件ME, 转移EX)"></a>流水线特点：五段流水线（访存部件ME, 转移EX)</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>ALU</th>
+<th>LOAD/STORE</th>
+<th>BRANCH(转移)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IF</td>
+<td>取指</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ID</td>
+<td>译码，读寄存器堆</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EX</td>
+<td>执行</td>
+<td>计算访存有效地址</td>
+<td>计算转移目标地址，设置条件码</td>
+</tr>
+<tr>
+<td>MEM</td>
+<td>(空操作)</td>
+<td>访问存储器(读或写)</td>
+<td>若条件成立，将转移目标地址送PC</td>
+</tr>
+<tr>
+<td>WB</td>
+<td>结果写回寄存器堆</td>
+<td>将读写的数据写入寄存器堆</td>
+<td>(空操作)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="性能指标-：-吞吐率、加速比、效率、-最佳段数"><a href="#性能指标-：-吞吐率、加速比、效率、-最佳段数" class="headerlink" title="性能指标 ：   吞吐率、加速比、效率、 最佳段数"></a>性能指标 ：   吞吐率、加速比、效率、 最佳段数</h4><h4 id="流水线相关与冲突及解决办法"><a href="#流水线相关与冲突及解决办法" class="headerlink" title="流水线相关与冲突及解决办法"></a>流水线相关与冲突及解决办法</h4><ul>
 <li>数据相关（真数据相关）/名相关/控制相关</li>
 <li>结构冲突、数据冲突、控制冲突：</li>
 </ul>
@@ -569,7 +611,7 @@
 <p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg" alt=""></p>
 <p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg" alt=""></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg" alt=""><br><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg" alt=""></p>
-<p>条件转移，控制转移，检测分支跳转似乎是后面几章的？<br>还有命中Cache考不考？</p>
+<p>命中Cache似乎不考</p>
 <h3 id="第四章-向量处理机"><a href="#第四章-向量处理机" class="headerlink" title="第四章 向量处理机"></a>第四章 向量处理机</h3><h4 id="向量处理方法"><a href="#向量处理方法" class="headerlink" title="向量处理方法"></a>向量处理方法</h4><ul>
 <li>横向处理:   <ul>
 <li>N次数据相关、2N次功能相关  </li>
@@ -803,7 +845,7 @@
 <p>均匀洗牌，蝶式函数不能单独实现任意结点间互连。它们与交换函数多级组合是构成复杂多级网络的基础</p>
 <h6 id="反位序函数"><a href="#反位序函数" class="headerlink" title="反位序函数"></a>反位序函数</h6><p>将输入端二进制编号的位序颠倒过来求得相应输出端的编号。</p>
 <p>$$\rho(x<em>{n-1}x</em>{n-2}\cdots x_1x_0) = x_0x<em>1\cdots x</em>{n-2}x_{n-1}$$</p>
-<h6 id="移数函数"><a href="#移数函数" class="headerlink" title="移数函数"></a>移数函数</h6><p>将各输入端都错开一定的位置（模N）后连到输出端。<br>$$\alpha(x) = (x\pm k)mod N$$<br>$$1\leqslant x\leqslant N-1, 1\leqslant k\leqslant N-1$$</p>
+<h6 id="移数函数"><a href="#移数函数" class="headerlink" title="移数函数"></a>移数函数</h6><p>将各输入端都错开一定的位置（模N）后连到输出端。<br>$$\alpha(x) = (x\pm k)mod N$$<br>$$1\leqslant x\leqslant N-1, 1\leqslant k\leqslant N-1$$  </p>
 <h6 id="PM2I移数函数-重点"><a href="#PM2I移数函数-重点" class="headerlink" title="PM2I移数函数(重点)"></a>PM2I移数函数(重点)</h6><p>该函数又称为“加减 $2^i$ ”函数</p>
 <p>$$PM2<em>{+i}(x) = (x +2^i)mod N$$<br>$$PM2</em>{-i}(x) = (x -2^i)mod N$$<br>$$1\leqslant x\leqslant N-1, 1\leqslant i\leqslant n-1, n=log_2N$$</p>
 <p>PM2I共有2n个互联函数(怎么算出来的?)</p>
@@ -886,7 +928,7 @@
 <li>都采用二功能（直送和交换）的2×2开关。</li>
 <li>当第i级（ $0\leqslant i\leqslant n-1$ ）交换开关处于交换状态时，实现的是 $Cube_i$ 互连函数。</li>
 </ul>
-<p>一个N输入的多级立方体网络有 $log_2N$ 级，每级用 $\frac N2$ 个2×2开关模块，共需要 $log_2\frac {N×N}{2}$ 个开关。</p>
+<p>一个N输入的多级立方体网络有 $log_2N$ 级，每级用 $\frac N2$ 个2×2开关模块，共需要 $log_2N\times\frac {N}{2}$ 个开关。</p>
 <p>一个8个入端的多级立方体网络<br><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1e0cszsgj30zk0liadb.jpg" alt=""></p>
 <p>STARAN网络采用级控制和部分级控制。</p>
 <ul>
