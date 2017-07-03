@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="总时间限制: 1000ms 内存限制: 65536kB描述有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法） 输入输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000,10">
+<meta name="description" content="总时间限制: 1000ms 内存限制: 65536kB 描述 有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法） 输入 输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组取数——限时排序">
 <meta property="og:url" content="http://sean10.github.io/2016/01/07/数组取数——限时排序/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="总时间限制: 1000ms 内存限制: 65536kB描述有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法） 输入输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000,10">
+<meta property="og:description" content="总时间限制: 1000ms 内存限制: 65536kB 描述 有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法） 输入 输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000">
 <meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组取数——限时排序">
-<meta name="twitter:description" content="总时间限制: 1000ms 内存限制: 65536kB描述有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法） 输入输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000,10">
+<meta name="twitter:description" content="总时间限制: 1000ms 内存限制: 65536kB 描述 有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法） 输入 输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>数组取数——限时排序 | 行路中.</title>
+  <title>数组取数——限时排序 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,10 +384,10 @@
       
 
       
-        <p>总时间限制: 1000ms 内存限制: 65536kB<br><strong>描述</strong><br>有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法）</p>
-<p><strong>输入</strong><br>输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000,1000000]。<br><strong>输出</strong><br>A中取出两个数之差为T的不同的取法的数目。<br><strong>样例输入</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">6 1</div><div class="line">1 3 2 1 2 2</div></pre></td></tr></table></figure></p>
-<p><strong>样例输出</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2</div></pre></td></tr></table></figure></p>
-<p>这道题式始终WA和TLE中徘徊，不知道怎么修改了暂时。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cmath&gt;</div><div class="line"></div><div class="line">#define N 100005</div><div class="line">typedef struct node&#123;</div><div class="line">    int x,y;</div><div class="line">&#125;Node;</div><div class="line"></div><div class="line">Node num[N];</div><div class="line">int start = 0;</div><div class="line"></div><div class="line">int cmp(const void* a,const void *b)&#123;</div><div class="line">    return *(int*)a-*(int*)b;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void func(int data[],int n,int T)&#123;</div><div class="line">    int flag ;</div><div class="line">    for(int i = n-1;i &gt; 0;i--)&#123;</div><div class="line">        int left = 0,right = i;</div><div class="line">        for(int j = (left+right)/2;j &gt;= left &amp;&amp; j &lt;= right &amp;&amp; left &lt;= right;j = (left+right)/2)&#123;</div><div class="line">            if(data[i]-data[j] == T)&#123;</div><div class="line">                flag = 0;</div><div class="line">                for(int k = 0;k &lt; start;k++)&#123;</div><div class="line">                    if((data[i] == num[k].x &amp;&amp; data[j] == num[k].y)</div><div class="line">                       || (data[i] == num[k].y &amp;&amp; data[j] == num[k].x))</div><div class="line">                        flag = 1;</div><div class="line">                &#125;</div><div class="line">                if(flag == 0)&#123;</div><div class="line">                    num[start].x = data[i];</div><div class="line">                    num[start++].y = data[j];</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            else if(data[i]-data[j] &gt; T)&#123;</div><div class="line">                left = j+1;</div><div class="line">                right = (j+1+right)/2;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                right = j-1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int data[N];</div><div class="line"></div><div class="line">    int n ,T;</div><div class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;T);</div><div class="line">    if(T &lt; 0)</div><div class="line">        T= -T;</div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;</div><div class="line">        scanf(&quot;%d&quot;,&amp;data[i]);</div><div class="line">    &#125;</div><div class="line">    qsort(data,n,sizeof(int),cmp);</div><div class="line"></div><div class="line">    func(data,n,T);</div><div class="line">    printf(&quot;%d\n&quot;,start);</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>总时间限制: 1000ms 内存限制: 65536kB <strong>描述</strong> 有一个整数数组A和一个目标整数T，希望从A中没有放回地取出两个数，使得两个数之差等于T。请问有多少种不同的取法？（取出的两个数分别相等时视为同一种取法）</p>
+<p><strong>输入</strong> 输入由两行组成。第一行为两个整型范围内的整数N和T，N为数组长度（N的范围是[2,100000]），T为目标整数。第二行为N个整数，表示数组A，每个整数的范围是[-1000000,1000000]。 <strong>输出</strong> A中取出两个数之差为T的不同的取法的数目。 <strong>样例输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">6 1</div><div class="line">1 3 2 1 2 2</div></pre></td></tr></table></figure></p>
+<p><strong>样例输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2</div></pre></td></tr></table></figure></p>
+<p>这道题式始终WA和TLE中徘徊，不知道怎么修改了暂时。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cmath&gt;</div><div class="line"></div><div class="line">#define N 100005</div><div class="line">typedef struct node&#123;</div><div class="line">    int x,y;</div><div class="line">&#125;Node;</div><div class="line"></div><div class="line">Node num[N];</div><div class="line">int start = 0;</div><div class="line"></div><div class="line">int cmp(const void* a,const void *b)&#123;</div><div class="line">    return *(int*)a-*(int*)b;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void func(int data[],int n,int T)&#123;</div><div class="line">    int flag ;</div><div class="line">    for(int i = n-1;i &gt; 0;i--)&#123;</div><div class="line">        int left = 0,right = i;</div><div class="line">        for(int j = (left+right)/2;j &gt;= left &amp;&amp; j &lt;= right &amp;&amp; left &lt;= right;j = (left+right)/2)&#123;</div><div class="line">            if(data[i]-data[j] == T)&#123;</div><div class="line">                flag = 0;</div><div class="line">                for(int k = 0;k &lt; start;k++)&#123;</div><div class="line">                    if((data[i] == num[k].x &amp;&amp; data[j] == num[k].y)</div><div class="line">                       || (data[i] == num[k].y &amp;&amp; data[j] == num[k].x))</div><div class="line">                        flag = 1;</div><div class="line">                &#125;</div><div class="line">                if(flag == 0)&#123;</div><div class="line">                    num[start].x = data[i];</div><div class="line">                    num[start++].y = data[j];</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            else if(data[i]-data[j] &gt; T)&#123;</div><div class="line">                left = j+1;</div><div class="line">                right = (j+1+right)/2;</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                right = j-1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int data[N];</div><div class="line"></div><div class="line">    int n ,T;</div><div class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;T);</div><div class="line">    if(T &lt; 0)</div><div class="line">        T= -T;</div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;</div><div class="line">        scanf(&quot;%d&quot;,&amp;data[i]);</div><div class="line">    &#125;</div><div class="line">    qsort(data,n,sizeof(int),cmp);</div><div class="line"></div><div class="line">    func(data,n,T);</div><div class="line">    printf(&quot;%d\n&quot;,start);</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -409,6 +409,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2016/01/07/数组取数——限时排序/" title="数组取数——限时排序">http://sean10.github.io/2016/01/07/数组取数——限时排序/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -518,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -540,7 +555,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -581,7 +596,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -878,7 +893,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

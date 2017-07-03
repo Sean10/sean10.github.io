@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>数据结构之栈——二进制转十进制 | 行路中.</title>
+  <title>数据结构之栈——二进制转十进制 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -388,12 +388,6 @@
 <p>题目： 2/8进制转换器</p>
 <p>编写程序，从终端输入一串0/1表示二进制数，以“#”结束，输出它的8进制表示形式。要求：采用栈来实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define ERROR 0</div><div class="line">#define OK 1</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">	int data;</div><div class="line">	struct node* nextPtr;</div><div class="line">&#125;Stack,*LinkStack;</div><div class="line"></div><div class="line">int StackDel(LinkStack &amp;s)&#123;</div><div class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</div><div class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</div><div class="line">	s = s-&gt;nextPtr;//</div><div class="line">	free(temp);</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int pop(LinkStack &amp;s)&#123;</div><div class="line">	int e;</div><div class="line">	if (NULL == s)</div><div class="line">		return ERROR;</div><div class="line">	e = s-&gt;data;//存储从栈中取出的值</div><div class="line">	StackDel(s);//删除已取出的栈的空间</div><div class="line">	return e;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int push(LinkStack &amp;s, int e)&#123;</div><div class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</div><div class="line">	if (!p)&#123;</div><div class="line">		printf(&quot;Error calloc_push&quot;);</div><div class="line">		return ERROR;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = e;</div><div class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</div><div class="line">	s = p;</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void transform(LinkStack &amp;s)&#123;</div><div class="line">	int e, temp = 0, pow = 1;</div><div class="line">	while (NULL != s)&#123;//直到栈空</div><div class="line">		e = pop(s);</div><div class="line">		temp += e*pow;//进行二进制转十进制的计算</div><div class="line">		pow *= 2;//进行位权的累乘</div><div class="line">	&#125;</div><div class="line">	printf(&quot;The octonary answer is:(&quot;);</div><div class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</div><div class="line">	printf(&quot;)8\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void input(LinkStack &amp;s)&#123;</div><div class="line">	char ch;</div><div class="line">	printf(&quot;Please input the binary string:&quot;);</div><div class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</div><div class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</div><div class="line">	&#125;</div><div class="line">	return;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</div><div class="line">	LinkStack s = NULL;//栈的头结点指针</div><div class="line">	input(s);</div><div class="line">	transform(s);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-
-    <div>
-      
-        
 
       
     </div>
@@ -408,6 +402,28 @@
     <div>
       
         
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2015/11/11/数据结构之栈——二进制转十进制/" title="数据结构之栈——二进制转十进制">http://sean10.github.io/2015/11/11/数据结构之栈——二进制转十进制/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -517,7 +533,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -539,7 +555,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -580,7 +596,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -877,7 +893,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

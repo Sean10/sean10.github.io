@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="题目链接 总时间限制: 1000ms 内存限制: 65536kB ####描述构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小：                                     Min( W1  L1 + W2  L2 + W3  L3 + … + Wn  Ln)Wi:每个节点的权值">
+<meta name="description" content="题目链接 总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外">
 <meta name="keywords" content="Huffman,二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树——Huffman树求最短路径和">
 <meta property="og:url" content="http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="题目链接 总时间限制: 1000ms 内存限制: 65536kB ####描述构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小：                                     Min( W1  L1 + W2  L2 + W3  L3 + … + Wn  Ln)Wi:每个节点的权值">
+<meta property="og:description" content="题目链接 总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外">
 <meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树——Huffman树求最短路径和">
-<meta name="twitter:description" content="题目链接 总时间限制: 1000ms 内存限制: 65536kB ####描述构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小：                                     Min( W1  L1 + W2  L2 + W3  L3 + … + Wn  Ln)Wi:每个节点的权值">
+<meta name="twitter:description" content="题目链接 总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>二叉树——Huffman树求最短路径和 | 行路中.</title>
+  <title>二叉树——Huffman树求最短路径和 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,13 +385,10 @@
 
       
         <p><a href="http://dsalgo.openjudge.cn/201409week6/1/" target="_blank" rel="external">题目链接</a></p>
-<p>总时间限制: 1000ms 内存限制: 65536kB</p>
-<p>####描述<br>构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小：<br>                                     Min( W1 <em> L1 + W2 </em> L2 + W3 <em> L3 + … + Wn </em> Ln)<br>Wi:每个节点的权值。<br>Li:根节点到第i个外部叶子节点的距离。<br>编程计算最小外部路径长度总和。</p>
-<p>####输入<br>第一行输入一个整数n，外部节点的个数。第二行输入n个整数，代表各个外部节点的权值。<br>2&lt;=N&lt;=100</p>
-<p>####输出<br>输出最小外部路径长度总和。<br>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">4</div><div class="line">1 1 3 5</div></pre></td></tr></table></figure></p>
-<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">17</div></pre></td></tr></table></figure></p>
+<p>总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外部路径长度总和。 ####输入 第一行输入一个整数n，外部节点的个数。第二行输入n个整数，代表各个外部节点的权值。 2&lt;=N&lt;=100 ####输出 输出最小外部路径长度总和。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">4</div><div class="line">1 1 3 5</div></pre></td></tr></table></figure></p>
+<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">17</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line"></div><div class="line">typedef struct tree&#123;</div><div class="line">    int weight;</div><div class="line">    int lc ,rc, parent;</div><div class="line">&#125;HufNode,*HufTree;</div><div class="line"></div><div class="line">int GetMin(HufTree H,int k)&#123;</div><div class="line">    int i = 0,min,minWeight;</div><div class="line">    while(H[i].parent != -1)&#123;</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">    min = i;</div><div class="line">    minWeight = H[i].weight;</div><div class="line"></div><div class="line">    for(;i&lt;k;i++)&#123;</div><div class="line">        if(minWeight &gt; H[i].weight &amp;&amp; H[i].parent == -1)&#123;</div><div class="line">            minWeight = H[i].weight;</div><div class="line">            min = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    H[min].parent = 1;</div><div class="line">    return min;</div><div class="line">&#125;</div><div class="line"></div><div class="line">HufTree Create(HufTree &amp;H,int *s,int n)&#123;</div><div class="line">    int total = 2*n-1;</div><div class="line">    H = (HufTree)malloc(total*sizeof(HufNode));</div><div class="line"></div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;</div><div class="line">        H[i].weight = *s;</div><div class="line">        H[i].lc = -1;</div><div class="line">        H[i].rc = -1;</div><div class="line">        H[i].parent = -1;</div><div class="line">        s++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for(int i = n;i &lt; total;i++)&#123;</div><div class="line">        H[i].weight = 0;</div><div class="line">        H[i].lc = -1;</div><div class="line">        H[i].rc = -1;</div><div class="line">        H[i].parent = -1;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int min1,min2;</div><div class="line">    for(int i = n;i &lt; total;i++)&#123;</div><div class="line">        min1 = GetMin(H,i);</div><div class="line">        min2 = GetMin(H,i);</div><div class="line">        H[min1].parent = i;</div><div class="line">        H[min2].parent = i;</div><div class="line">        H[i].lc = min1;</div><div class="line">        H[i].rc = min2;</div><div class="line">        H[i].weight = H[min1].weight+H[min2].weight;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return H;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int Trans(HufTree H,int n)&#123;</div><div class="line">    int ans = 0;</div><div class="line"></div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;</div><div class="line">        int deepth = 0;</div><div class="line">        int temp = i;</div><div class="line">        while(H[i].parent != -1)&#123;</div><div class="line">            deepth++;</div><div class="line">            i = H[i].parent;</div><div class="line">        &#125;</div><div class="line">        i = temp;</div><div class="line">        ans += deepth *H[i].weight;</div><div class="line">    &#125;</div><div class="line">    return ans;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int n;</div><div class="line">    scanf(&quot;%d&quot;,&amp;n);</div><div class="line">    int s[1000];</div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;</div><div class="line">        scanf(&quot;%d&quot;,&amp;s[i]);</div><div class="line">    &#125;</div><div class="line">    HufTree H = Create(H,s,n);</div><div class="line">    printf(&quot;%d\n&quot;,Trans(H,n));</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>参考资料：<br>[1]<a href="http://blog.csdn.net/ns_code/article/details/19174553" target="_blank" rel="external">http://blog.csdn.net/ns_code/article/details/19174553</a></p>
+<p>参考资料： [1]http://blog.csdn.net/ns_code/article/details/19174553</p>
 
       
     </div>
@@ -413,6 +410,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/" title="二叉树——Huffman树求最短路径和">http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -524,7 +536,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -546,7 +558,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -587,7 +599,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -884,7 +896,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

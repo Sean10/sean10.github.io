@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+<meta name="description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构之队列——回文字判断">
 <meta property="og:url" content="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+<meta property="og:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
 <meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构之队列——回文字判断">
-<meta name="twitter:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+<meta name="twitter:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>数据结构之队列——回文字判断 | 行路中.</title>
+  <title>数据结构之队列——回文字判断 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,14 +385,8 @@
 
       
         <p>题目：判别回文字符串</p>
-<p>正读和反读都一样的字符串称为回文字符串。<br>编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现</p>
+<p>正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define ERROR 0</div><div class="line">#define OK 1</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">	char data;</div><div class="line">	struct node *next;</div><div class="line">&#125;queue,stack,*LinkQueue,*LinkStack;</div><div class="line"></div><div class="line">int push(LinkStack &amp;sHead, char ch)&#123;//入栈操作</div><div class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(stack));</div><div class="line">	if (p == NULL)&#123;</div><div class="line">		printf(&quot;Error calloc.\n&quot;);</div><div class="line">		return ERROR;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = ch;</div><div class="line">	p-&gt;next = sHead;</div><div class="line">	sHead = p;</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char pop(LinkStack &amp;sHead)&#123;//出栈</div><div class="line">	if (NULL == sHead) return ERROR;</div><div class="line">	LinkStack temp = sHead;</div><div class="line">	char ch = sHead-&gt;data;</div><div class="line">	sHead = sHead-&gt;next;</div><div class="line">	free(temp);</div><div class="line">	return ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int enqueue(LinkQueue &amp;qHead, LinkQueue &amp;qRear, char ch)&#123;//进入队列操作</div><div class="line">	LinkQueue p = (LinkQueue)calloc(1, sizeof(queue));//动态分配空间并初始化</div><div class="line">	if (p == NULL)&#123;</div><div class="line">		printf(&quot;Error calloc_queue.\n&quot;);</div><div class="line">		return ERROR;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = ch;</div><div class="line">	p-&gt;next = NULL;</div><div class="line">	if (NULL != qRear)</div><div class="line">		qRear-&gt;next = p;</div><div class="line">	if (NULL == qHead)</div><div class="line">		qHead = qRear;</div><div class="line">	qRear = p;</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int queueDel(LinkQueue &amp;qHead)&#123;//进行队列删除</div><div class="line">	if (qHead == NULL) return OK;</div><div class="line">	LinkQueue temp = qHead;</div><div class="line">	qHead = qHead-&gt;next;</div><div class="line">	free(temp);</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char dequeue(LinkQueue &amp;qHead)&#123;//进行出队列操作</div><div class="line">	char ch = qHead-&gt;data;</div><div class="line">	LinkQueue temp = qHead;</div><div class="line">	qHead = qHead-&gt;next;</div><div class="line">	queueDel(temp);</div><div class="line">	return ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void input(LinkStack &amp;sHead, LinkQueue &amp;qHead,LinkQueue &amp;qRear,int &amp;len)&#123;</div><div class="line">	char ch;</div><div class="line">	printf(&quot;Please input the string which would be judged:&quot;);</div><div class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; &apos;#&apos; != ch)&#123;</div><div class="line">		push(sHead, ch);//推入栈</div><div class="line">		enqueue(qHead ,qRear, ch);//进入队列</div><div class="line">		len++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int compare(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</div><div class="line">    int cnt = 0;</div><div class="line">	while (sHead != NULL &amp;&amp; qHead != NULL &amp;&amp; cnt &lt;= len/2)&#123;//判断一半的栈和队列是否已空</div><div class="line">		if (pop(sHead) != dequeue(qHead))//比较对应字符是否相同</div><div class="line">			return ERROR;//不同直接退出比较</div><div class="line">        cnt++;</div><div class="line">	&#125;</div><div class="line">	return OK;//始终相同，匹配</div><div class="line">&#125;</div><div class="line"></div><div class="line">void output(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</div><div class="line">	if (compare(sHead, qHead,len))//调用判断函数进行判断是否满足</div><div class="line">		printf(&quot;It is a plalindrome.\n&quot;);</div><div class="line">	else printf(&quot;It isn&apos;t a plalindrome.\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</div><div class="line">    int len=0;</div><div class="line">	LinkStack sHead = NULL;//栈的头结点指针</div><div class="line">	LinkQueue qHead = NULL ,qRear = NULL;//队列的头结点和尾节点指针</div><div class="line">	input(sHead, qHead,qRear,len);</div><div class="line">	output(sHead, qHead,len);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-
-    <div>
-      
-        
 
       
     </div>
@@ -407,6 +401,28 @@
     <div>
       
         
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/" title="数据结构之队列——回文字判断">http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -516,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -538,7 +554,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -579,7 +595,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -876,7 +892,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

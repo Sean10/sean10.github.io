@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check:括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用  检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文">
+<meta name="description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
 <meta name="keywords" content="Unix,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unix编程环境复习笔记">
 <meta property="og:url" content="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check:括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用  检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文">
-<meta property="og:updated_time" content="2017-06-28T13:35:23.000Z">
+<meta property="og:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
+<meta property="og:updated_time" content="2017-07-03T15:04:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unix编程环境复习笔记">
-<meta name="twitter:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check:括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用  检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文">
+<meta name="twitter:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>Unix编程环境复习笔记 | 行路中.</title>
+  <title>Unix编程环境复习笔记 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,33 +384,41 @@
       
 
       
-        <p>关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？<br>难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。</p>
-<p>check:<br>括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用</p>
+        <p>关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。</p>
+<p>check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用</p>
+<a id="more"></a>
 <hr>
-<h6 id="检索目录src以及其子孙目录中的所有文件名后缀为-c和-h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。"><a href="#检索目录src以及其子孙目录中的所有文件名后缀为-c和-h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。" class="headerlink" title="检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。"></a>检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</h6><p>答：使用find命令和grep命令。find命令可以在指定的目录树<br>中查找满足某个条件的文件或目录，并对查找到的满足条件的对象执行一个动作。指定查找条件为“文件名后缀为.c和.h”，动作为“查找哪些文件中含有字符串TPDU，并列出在这文件中的行号”，分别是find的-name和-exec选项。完整的命令为：</p>
-<p><code>find src –name &quot;*.[ch]&quot; –exec grep –n TPDU {} /dev/null \;</code></p>
+<h6 id="检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件查找哪些文件中含有字符串tpdu并列出在这文件中的行号">检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</h6>
+<p>答：使用find命令和grep命令。find命令可以在指定的目录树 中查找满足某个条件的文件或目录，并对查找到的满足条件的对象执行一个动作。指定查找条件为“文件名后缀为.c和.h”，动作为“查找哪些文件中含有字符串TPDU，并列出在这文件中的行号”，分别是find的-name和-exec选项。完整的命令为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find src –name &quot;*.[ch]&quot; –exec grep –n TPDU &#123;&#125; /dev/null \;</div></pre></td></tr></table></figure>
 <p>这里是将grep的数据输出到/dev/null作为垃圾处理吧，但不用&gt;重定向符了？</p>
 <hr>
-<h6 id="统计出由用户liu创建并且正在运行的进程数目。"><a href="#统计出由用户liu创建并且正在运行的进程数目。" class="headerlink" title="统计出由用户liu创建并且正在运行的进程数目。"></a>统计出由用户liu创建并且正在运行的进程数目。</h6><p>答：使用ps命令列表出系统中所有进程，过滤后仅保留用户liu创建的进程（用grep），每个进程占一行，用wc命令统计一共有多少行即可。<br><code>ps –ef | grep liu | wc –l</code></p>
+<h6 id="统计出由用户liu创建并且正在运行的进程数目">统计出由用户liu创建并且正在运行的进程数目。</h6>
+<p>答：使用ps命令列表出系统中所有进程，过滤后仅保留用户liu创建的进程（用grep），每个进程占一行，用wc命令统计一共有多少行即可。 <code>ps –ef | grep liu | wc –l</code></p>
 <p>这里我感觉也可以用<code>ps -ef -u liu | wc -l</code>来替换吧，但是跑出来结果却不同，看来是进程创建者和使用者不同概念，-u只能检索出使用者。</p>
 <hr>
-<h6 id="去掉文件list-txt中的所有空行-所谓空行指：行内不含有任何除空格之外的字符-，存为新文件list-new-txt。"><a href="#去掉文件list-txt中的所有空行-所谓空行指：行内不含有任何除空格之外的字符-，存为新文件list-new-txt。" class="headerlink" title="去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。"></a>去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。</h6><p>答：使用grep命令可以用正则表达式对文本文件过滤，-v选项用于筛选掉能匹配指定正则表达式的行，描述一个空行的正则表达式为<code>^ *$</code>，即：从行首开始(^)，有零个到多个空格<code>( *)</code>，然后是行尾<code>($)</code>，命令为：<br><code>grep –v ’^ *$’ list.txt &gt; list-new.txt</code></p>
+<h6 id="去掉文件list.txt中的所有空行所谓空行指行内不含有任何除空格之外的字符存为新文件list-new.txt">去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。</h6>
+<p>答：使用grep命令可以用正则表达式对文本文件过滤，-v选项用于筛选掉能匹配指定正则表达式的行，描述一个空行的正则表达式为<code>^ *$</code>，即：从行首开始(^)，有零个到多个空格<code>( *)</code>，然后是行尾<code>($)</code>，命令为： <code>grep –v ’^ *$’ list.txt &gt; list-new.txt</code></p>
 <p>为什么我<code>man grep</code>得到的是–invert-match，显示不匹配的部分呢？，grep实际使用中不需要-v就能识别正则吧。</p>
 <hr>
-<p>增量备份<br><code>cp -ur test test.bak</code><br>不过我实际操作找不到-u，google用的人也不多，都用rsync</p>
+<p>增量备份 <code>cp -ur test test.bak</code> 不过我实际操作找不到-u，google用的人也不多，都用rsync</p>
 <hr>
-<h6 id="LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data-txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。"><a href="#LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data-txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。" class="headerlink" title="LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。"></a>LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。</h6><p>答：错误。可以利用SUID权限，用户sun将文件data.txt的读写权限设置为rw——-，由文件所有者sun自己编写程序以实现对文件的访问，程序中的访问当然可以限制只对文件的指定部分读，但是该程序文件的属性应当为rws–x–x，用户liu只有执行这个可程序程序文件才能实现对文件data.txt的访问。</p>
+<h6 id="linux文件权限设计为简单的三级控制用户liu对用户sun的文件data.txt要么具有全部的读权限要么不可以读因此没有办法限制liu只对文件的指定部分读">LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。</h6>
+<p>答：错误。可以利用SUID权限，用户sun将文件data.txt的读写权限设置为rw——-，由文件所有者sun自己编写程序以实现对文件的访问，程序中的访问当然可以限制只对文件的指定部分读，但是该程序文件的属性应当为rws–x–x，用户liu只有执行这个可程序程序文件才能实现对文件data.txt的访问。</p>
 <hr>
-<p>查看僵尸进程<br><code>ps -ef | grep defunct | wc -l</code></p>
+<p>查看僵尸进程 <code>ps -ef | grep defunct | wc -l</code></p>
 <hr>
-<p>查看进程表表项上限<br>MacOS下据说写在proc_internal.h中的PID上限是99999，下限是100.<br>而Linux下32位似乎是32768.</p>
-<p>参考资料：<a href="http://blog.csdn.net/gatieme/article/details/51058797" target="_blank" rel="external">http://blog.csdn.net/gatieme/article/details/51058797</a></p>
+<p>查看进程表表项上限 MacOS下据说写在proc_internal.h中的PID上限是99999，下限是100. 而Linux下32位似乎是32768.</p>
+<p>参考资料：http://blog.csdn.net/gatieme/article/details/51058797</p>
 <hr>
-<h6 id="Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。"><a href="#Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。" class="headerlink" title="Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。"></a>Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。</h6><p>答：错误。像信号量等，Linux仅给出了一组信号量操作的机制，如果应用程序设计的多个进程之间对信号量的操作处置不当，仍然可能导致死锁。操作系统没有办法检测出应用进程之间的逻辑操作不正确产生的死锁。使用管道等其他的进程之间通信的系统调用，也可能产生死锁。</p>
+<h6 id="linux操作系统被设计得非常健壮所以程序在运行过程中不会产生死锁">Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。</h6>
+<p>答：错误。像信号量等，Linux仅给出了一组信号量操作的机制，如果应用程序设计的多个进程之间对信号量的操作处置不当，仍然可能导致死锁。操作系统没有办法检测出应用进程之间的逻辑操作不正确产生的死锁。使用管道等其他的进程之间通信的系统调用，也可能产生死锁。</p>
 <hr>
-<h6 id="Windows用户使用命令行命令ftp从Linux下载文件ftas-c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。"><a href="#Windows用户使用命令行命令ftp从Linux下载文件ftas-c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。" class="headerlink" title="Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。"></a>Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。</h6><p>答：正确。这种情况是可能存在的， FTP支持ASCII方式和BINARY方式的文件传输。前者会把数据文件理解为文本文件，会在通信的两个机器之间进行文本文件格式的转换。LINUX和Windows对文本文件的定义方式不同，Windows行间保留“换行”和“回车”两个字符，但是LINUX行间仅包括“换行”一个字符。所以在使用ASCII方式在Windows和Linux间交换文件可能会导致下载的文件与原文件在文件大小（字节数）上不符的情况。</p>
+<h6 id="windows用户使用命令行命令ftp从linux下载文件ftas.c即使没有病毒破坏成功下载结束后下载的文件与原文件也有可能在文件大小字节数上不符">Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。</h6>
+<p>答：正确。这种情况是可能存在的， FTP支持ASCII方式和BINARY方式的文件传输。前者会把数据文件理解为文本文件，会在通信的两个机器之间进行文本文件格式的转换。LINUX和Windows对文本文件的定义方式不同，Windows行间保留“换行”和“回车”两个字符，但是LINUX行间仅包括“换行”一个字符。所以在使用ASCII方式在Windows和Linux间交换文件可能会导致下载的文件与原文件在文件大小（字节数）上不符的情况。</p>
 <hr>
-<h6 id="关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？"><a href="#关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？" class="headerlink" title="关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？"></a>关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？</h6><p>答：关于文本文件处理的实用程序有很多，如：head，tail，sort，grep，wc，cat，od，sed，awk，等等。<br>这些程序的共同特点是：每个小程序的功能设置简洁；当不指定处理对象时从标准输入获取处理数据；当指定文件名时，从指定的文件中获取处理数据，而且允许指定多于一个的文件名；处理结果在标准输出文件中输出。<br>这样设计这些命令的原因是：可以利用系统提供的输入、输出重定向和管道，连接和组合多个命令，提供灵活又丰富的使用功能；允许指定多于一个的文件作为处理对象可以和shell 的文件名通配符替换功能配合使用。体现了“策略和机制相分离”的设计理念。系统设计不复杂却可以提供强大的功能。</p>
+<h6 id="关于文本文件处理的实用程序都有哪些这些程序都有哪些共同的特点为什么要这样设计这些命令">关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？</h6>
+<p>答：关于文本文件处理的实用程序有很多，如：head，tail，sort，grep，wc，cat，od，sed，awk，等等。 这些程序的共同特点是：每个小程序的功能设置简洁；当不指定处理对象时从标准输入获取处理数据；当指定文件名时，从指定的文件中获取处理数据，而且允许指定多于一个的文件名；处理结果在标准输出文件中输出。 这样设计这些命令的原因是：可以利用系统提供的输入、输出重定向和管道，连接和组合多个命令，提供灵活又丰富的使用功能；允许指定多于一个的文件作为处理对象可以和shell 的文件名通配符替换功能配合使用。体现了“策略和机制相分离”的设计理念。系统设计不复杂却可以提供强大的功能。</p>
 <hr>
 <p>正则表达式中，一些配对的元字符使用转义时，只需要对开始的一个转义即可。</p>
 <blockquote>
@@ -418,7 +426,7 @@
 </blockquote>
 <hr>
 <p>正则表达式里，使用圆括号时，为什么前面必须要加<code>\</code>转义，变成<code>\(s+\)</code>这样呢？</p>
-<p><strong>(4) 将格式为“日-月-年”的日期数据，如：18-06-2010，替换为“年.月.日”格式，如：2010.06.18</strong><br><code>s/\([0-9][0-9]*\)-\([0-9][0-9]*\)-\([0-9][0-9]*\)/\3.\2.\1/</code></p>
+<p><strong>(4) 将格式为“日-月-年”的日期数据，如：18-06-2010，替换为“年.月.日”格式，如：2010.06.18</strong> <code>s/\([0-9][0-9]*\)-\([0-9][0-9]*\)-\([0-9][0-9]*\)/\3.\2.\1/</code></p>
 <hr>
 <p>正则表达式里，<code>[0-9][0-9]*</code>和<code>[0-9]+</code>有什么区别？</p>
 <hr>
@@ -426,14 +434,14 @@
 <p>好像是执行了一个重定向操作？</p>
 <p>并不是，是执行了一个cat命令，打印出一个二进制文件到终端，而这个二进制文件中某个字段可能刚好和某个命令相同，执行出来导致系统字符乱码。</p>
 <hr>
-<h6 id="select系统调用的主要作用是什么？"><a href="#select系统调用的主要作用是什么？" class="headerlink" title="select系统调用的主要作用是什么？"></a>select系统调用的主要作用是什么？</h6><p>答：使得用户进程可同时等待多个事件发生<br>用户进程告知内核多个事件，某一个或多个事件发生时select返回，否则，进程睡眠等待。例如：告知内核在rfds集合中的任何文件描述符“读准备好”，或在wfds集合中的任何文件描述符“写准备好”，或在efds集合中的任何文件描述符有“异常情况”发生，或者超时时间tm指定的时间间隔到。</p>
+<h6 id="select系统调用的主要作用是什么">select系统调用的主要作用是什么？</h6>
+<p>答：使得用户进程可同时等待多个事件发生 用户进程告知内核多个事件，某一个或多个事件发生时select返回，否则，进程睡眠等待。例如：告知内核在rfds集合中的任何文件描述符“读准备好”，或在wfds集合中的任何文件描述符“写准备好”，或在efds集合中的任何文件描述符有“异常情况”发生，或者超时时间tm指定的时间间隔到。</p>
 <hr>
-<h6 id="下列的脚本程序从键盘输入三个整数A-B-C，并且求出A-B-C-的值。"><a href="#下列的脚本程序从键盘输入三个整数A-B-C，并且求出A-B-C-的值。" class="headerlink" title="*下列的脚本程序从键盘输入三个整数A,B,C，并且求出A(B+C)的值。"></a><em>*下列的脚本程序从键盘输入三个整数A,B,C，并且求出A</em>(B+C)的值。</h6><p>在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。**<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">echo –n ”Input A:”; read A</div><div class="line">echo –n ”Input B:”; read B</div><div class="line">echo –n ”Input C:”; read C</div><div class="line">V=                         </div><div class="line">echo ”A*(B+C)=$V”</div></pre></td></tr></table></figure></p>
-<p>答：<code>expr $A  \*  \(  $B  +  $C  \)</code><br>由于星号和圆括号属于shell的元字符，所以前面增加反斜线，阻止shell对元字符的处理，而是将这些符号直接传递给expr命令。上述命令一共需要6个空格，空格起单词分界线的作用。如果丢失了相应的空格，expr命令将无法得到正确的参数输入，导致expr无法按预期的功能工作。</p>
+<h6 id="下列的脚本程序从键盘输入三个整数abc并且求出abc的值-在划线出填入适当的内容完成整个程序显式地标出你所添加的命令中必须有的空格和转义字符并解释为什么必须这些空格和转义">**下列的脚本程序从键盘输入三个整数A,B,C，并且求出A*(B+C)的值。 在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。** <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">echo –n ”Input A:”; read A</div><div class="line">echo –n ”Input B:”; read B</div><div class="line">echo –n ”Input C:”; read C</div><div class="line">V=                         </div><div class="line">echo ”A*(B+C)=$V”</div></pre></td></tr></table></figure></h6>
+<p>答：<code>expr $A  \*  \(  $B  +  $C  \)</code> 由于星号和圆括号属于shell的元字符，所以前面增加反斜线，阻止shell对元字符的处理，而是将这些符号直接传递给expr命令。上述命令一共需要6个空格，空格起单词分界线的作用。如果丢失了相应的空格，expr命令将无法得到正确的参数输入，导致expr无法按预期的功能工作。</p>
 <hr>
-<ol>
-<li>写出一段完整的C语言程序，使用fork()系统调用，创建两个子进程，第一个子进程打印HELLO后立刻终止，第二个子进程打印WELCOME后立刻终止，父进程等待两个子进程都终止后，打印BYE然后终止。<br>答：程序如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">main()</div><div class="line">&#123;</div><div class="line">	int sv;</div><div class="line">	if (fork() == 0) &#123;</div><div class="line">		printf(”HELLO\n”);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	if (fork() == 0) &#123;</div><div class="line">		printf(”WELCOME\n”);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	wait(&amp;sv);</div><div class="line">	wait(&amp;sv);</div><div class="line">	printf(”BYE\n”);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<ol start="10" style="list-style-type: decimal">
+<li>写出一段完整的C语言程序，使用fork()系统调用，创建两个子进程，第一个子进程打印HELLO后立刻终止，第二个子进程打印WELCOME后立刻终止，父进程等待两个子进程都终止后，打印BYE然后终止。 答：程序如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">main()</div><div class="line">&#123;</div><div class="line">	int sv;</div><div class="line">	if (fork() == 0) &#123;</div><div class="line">		printf(”HELLO\n”);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	if (fork() == 0) &#123;</div><div class="line">		printf(”WELCOME\n”);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	wait(&amp;sv);</div><div class="line">	wait(&amp;sv);</div><div class="line">	printf(”BYE\n”);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ol>
 <p>这里的sv是接收fork的子进程返回的结果，作为子进程的结束。</p>
 <hr>
@@ -442,17 +450,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">	execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0); //最后一个0是形同NULL,表示数组的结束</div><div class="line">	// for(int i = 0;i &lt; 1;i++)</div><div class="line">	// &#123;</div><div class="line">		printf(&quot;argv[0]:%s\n&quot;, argv[0]);</div><div class="line">		printf(&quot;argv[1]:%s\n&quot;, argv[1]);</div><div class="line">		printf(&quot;argv[2]:%s\n&quot;, argv[2]);</div><div class="line">	// &#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>我这样写执行结果和将第二个参数设置为ls是一样的，只是在查看进程时，名字显示为第二个</p>
 <hr>
-<p>管道完整程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">	int fd[2], sv;</div><div class="line">	pipe(fd);</div><div class="line">	//fd[0] = open(&quot;out.txt&quot;,O_RDONLY);</div><div class="line">	//fd[1] = open(&quot;out.txt&quot;, O_WRONLY);</div><div class="line">	if(fork() == 0)</div><div class="line">	&#123;</div><div class="line">		dup2(fd[1],1);</div><div class="line">		close(fd[1]);</div><div class="line">		close(fd[0]);</div><div class="line">		execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0);</div><div class="line">	&#125;else if(fork() == 0)</div><div class="line">	&#123;</div><div class="line">		dup2(fd[0], 0);</div><div class="line">		close(fd[1]);</div><div class="line">		close(fd[0]);</div><div class="line">		//execlp(&quot;ls&quot;, &quot;test2&quot;, &quot;-l&quot;, (char*)0);</div><div class="line">		execlp(&quot;grep&quot;, &quot;MtGrep&quot;, &quot;javaw&quot;, (char*)0);</div><div class="line">	&#125;</div><div class="line">	close(fd[1]);</div><div class="line">	close(fd[0]);</div><div class="line">	wait(&amp;sv);</div><div class="line">	wait(&amp;sv);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h6 id="linux-执行命令-先搜索Path，而windows先搜索当前目录-区别原因？"><a href="#linux-执行命令-先搜索Path，而windows先搜索当前目录-区别原因？" class="headerlink" title="linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？"></a>linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</h6><p>考虑到安全问题，如果本地路径下自己写的程序的操作是类似<code>rm -rf /</code>，那就没救了</p>
+<p>管道完整程序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">	int fd[2], sv;</div><div class="line">	pipe(fd);</div><div class="line">	//fd[0] = open(&quot;out.txt&quot;,O_RDONLY);</div><div class="line">	//fd[1] = open(&quot;out.txt&quot;, O_WRONLY);</div><div class="line">	if(fork() == 0)</div><div class="line">	&#123;</div><div class="line">		dup2(fd[1],1);</div><div class="line">		close(fd[1]);</div><div class="line">		close(fd[0]);</div><div class="line">		execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0);</div><div class="line">	&#125;else if(fork() == 0)</div><div class="line">	&#123;</div><div class="line">		dup2(fd[0], 0);</div><div class="line">		close(fd[1]);</div><div class="line">		close(fd[0]);</div><div class="line">		//execlp(&quot;ls&quot;, &quot;test2&quot;, &quot;-l&quot;, (char*)0);</div><div class="line">		execlp(&quot;grep&quot;, &quot;MtGrep&quot;, &quot;javaw&quot;, (char*)0);</div><div class="line">	&#125;</div><div class="line">	close(fd[1]);</div><div class="line">	close(fd[0]);</div><div class="line">	wait(&amp;sv);</div><div class="line">	wait(&amp;sv);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h6 id="linux-执行命令-先搜索path而windows先搜索当前目录-区别原因">linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</h6>
+<p>考虑到安全问题，如果本地路径下自己写的程序的操作是类似<code>rm -rf /</code>，那就没救了</p>
 <hr>
-<h6 id="linux-操作和-操作区别"><a href="#linux-操作和-操作区别" class="headerlink" title="linux ./操作和. 操作区别"></a>linux ./操作和. 操作区别</h6><p>./操作是fork一个子进程执行</p>
-<h2 id="操作就是用当前的进程直接执行"><a href="#操作就是用当前的进程直接执行" class="headerlink" title=". 操作就是用当前的进程直接执行"></a>. 操作就是用当前的进程直接执行</h2><h6 id="linux-如何显示出-所有的命令行参数与选项"><a href="#linux-如何显示出-所有的命令行参数与选项" class="headerlink" title="linux 如何显示出 所有的命令行参数与选项"></a><strong>linux 如何显示出 所有的命令行参数与选项</strong></h6><h2 id="据说是man-argv，不过我执行的是man-xargv"><a href="#据说是man-argv，不过我执行的是man-xargv" class="headerlink" title="据说是man argv，不过我执行的是man xargv"></a>据说是<code>man argv</code>，不过我执行的是<code>man xargv</code></h2>
-      
-    </div>
-
-    <div>
-      
-        
+<h6 id="linux-.操作和.-操作区别">linux ./操作和. 操作区别</h6>
+<p>./操作是fork一个子进程执行 . 操作就是用当前的进程直接执行 —</p>
+<h6 id="linux-如何显示出-所有的命令行参数与选项"><strong>linux 如何显示出 所有的命令行参数与选项</strong></h6>
+<h2 id="据说是man-argv不过我执行的是man-xargv">据说是<code>man argv</code>，不过我执行的是<code>man xargv</code></h2>
 
       
     </div>
@@ -467,6 +472,28 @@
     <div>
       
         
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/" title="Unix编程环境复习笔记">http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -587,7 +614,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -609,7 +636,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -644,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索目录src以及其子孙目录中的所有文件名后缀为-c和-h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。"><span class="nav-text">检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#统计出由用户liu创建并且正在运行的进程数目。"><span class="nav-text">统计出由用户liu创建并且正在运行的进程数目。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#去掉文件list-txt中的所有空行-所谓空行指：行内不含有任何除空格之外的字符-，存为新文件list-new-txt。"><span class="nav-text">去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data-txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。"><span class="nav-text">LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。"><span class="nav-text">Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Windows用户使用命令行命令ftp从Linux下载文件ftas-c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。"><span class="nav-text">Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？"><span class="nav-text">关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#select系统调用的主要作用是什么？"><span class="nav-text">select系统调用的主要作用是什么？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下列的脚本程序从键盘输入三个整数A-B-C，并且求出A-B-C-的值。"><span class="nav-text">*下列的脚本程序从键盘输入三个整数A,B,C，并且求出A(B+C)的值。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-执行命令-先搜索Path，而windows先搜索当前目录-区别原因？"><span class="nav-text">linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-操作和-操作区别"><span class="nav-text">linux ./操作和. 操作区别</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作就是用当前的进程直接执行"><span class="nav-text">. 操作就是用当前的进程直接执行</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-如何显示出-所有的命令行参数与选项"><span class="nav-text">linux 如何显示出 所有的命令行参数与选项</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#据说是man-argv，不过我执行的是man-xargv"><span class="nav-text">据说是man argv，不过我执行的是man xargv</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件查找哪些文件中含有字符串tpdu并列出在这文件中的行号"><span class="nav-text">检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#统计出由用户liu创建并且正在运行的进程数目"><span class="nav-text">统计出由用户liu创建并且正在运行的进程数目。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#去掉文件list.txt中的所有空行所谓空行指行内不含有任何除空格之外的字符存为新文件list-new.txt"><span class="nav-text">去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux文件权限设计为简单的三级控制用户liu对用户sun的文件data.txt要么具有全部的读权限要么不可以读因此没有办法限制liu只对文件的指定部分读"><span class="nav-text">LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux操作系统被设计得非常健壮所以程序在运行过程中不会产生死锁"><span class="nav-text">Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#windows用户使用命令行命令ftp从linux下载文件ftas.c即使没有病毒破坏成功下载结束后下载的文件与原文件也有可能在文件大小字节数上不符"><span class="nav-text">Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#关于文本文件处理的实用程序都有哪些这些程序都有哪些共同的特点为什么要这样设计这些命令"><span class="nav-text">关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#select系统调用的主要作用是什么"><span class="nav-text">select系统调用的主要作用是什么？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下列的脚本程序从键盘输入三个整数abc并且求出abc的值-在划线出填入适当的内容完成整个程序显式地标出你所添加的命令中必须有的空格和转义字符并解释为什么必须这些空格和转义"><span class="nav-text">**下列的脚本程序从键盘输入三个整数A,B,C，并且求出A*(B+C)的值。 在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。** 123456#!/bin/shecho –n ”Input A:”; read Aecho –n ”Input B:”; read Becho –n ”Input C:”; read CV=                         echo ”A*(B+C)=$V”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-执行命令-先搜索path而windows先搜索当前目录-区别原因"><span class="nav-text">linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-.操作和.-操作区别"><span class="nav-text">linux ./操作和. 操作区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-如何显示出-所有的命令行参数与选项"><span class="nav-text">linux 如何显示出 所有的命令行参数与选项</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#据说是man-argv不过我执行的是man-xargv"><span class="nav-text">据说是man argv，不过我执行的是man xargv</span></a></div>
             
 
           </div>
@@ -666,7 +693,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -963,7 +990,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="###蒙特卡洛算法(Monte Carlo Algorithm)在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。  A Monte Carlo algorithm">
+<meta name="description" content="蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。  A Monte Carlo algorithm f">
 <meta name="keywords" content="离散数学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蒙特卡洛算法（简单理解）">
 <meta property="og:url" content="http://sean10.github.io/2015/12/09/蒙特卡洛算法（简单理解）/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="###蒙特卡洛算法(Monte Carlo Algorithm)在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。  A Monte Carlo algorithm">
+<meta property="og:description" content="蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。  A Monte Carlo algorithm f">
 <meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="蒙特卡洛算法（简单理解）">
-<meta name="twitter:description" content="###蒙特卡洛算法(Monte Carlo Algorithm)在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。  A Monte Carlo algorithm">
+<meta name="twitter:description" content="蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。  A Monte Carlo algorithm f">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>蒙特卡洛算法（简单理解） | 行路中.</title>
+  <title>蒙特卡洛算法（简单理解） | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,16 +384,17 @@
       
 
       
-        <p>###蒙特卡洛算法(Monte Carlo Algorithm)<br>在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。</p>
+        <h3 id="蒙特卡洛算法monte-carlo-algorithm">蒙特卡洛算法(Monte Carlo Algorithm)</h3>
+<p>在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。</p>
 <blockquote>
 <p>A Monte Carlo algorithm for a decision problem uses a sequence of tests. The probability that the algorithm answers the decision problem correctly increases as more tests are carried out. At each step of the algorithm, possible responses are “true,” which means that the answer is “true” and no additional iterations are needed, or “unknown,” which means that the answer could be either “true” or “false.” After running all the iterations in such an algorithm, the final answer produced is “true” if at least one iteration yields the answer “true,” and the answer is “false” if every iteration yields the answer “unknown.” If the correct answer is “false,” then the algorithm answers “false,” because every iteration will yield “unknown.” However, if the correct answer is “true,” then the algorithm could answer either “true” or “false,” because it may be possible that each iteration produced the response “unknown” even though the correct response was “true.” We will show that this possibility becomes extremely unlikely as the number of tests increases.</p>
 </blockquote>
-<p>决策问题只有“对”与“错”两种答案。在每一步迭代中，如果决策是“对”，意味着回答是“对”，并且与算法的其他迭代无关；也可能回应“未知”，意味着答案可能是“对”也可能是“错”。在全部均迭代过后，如果至少有一次迭代中生成了结果“对”，那么结果就为”对“；如果每个重复生成的回答都是”未知“，那么结果就为”错“。<br>然而，如果正确答案是”对“，而算法可以回答”对“或”错“，有可能所有的迭代均得到的回答是”未知“。（这就是其中的小概率的错误概率。）<br>（这一段是我对书上的翻译，我理解下来，这段描述的其实是拉斯维加斯算法吧，是不是我理解错了，希望明白的人能指正一下）</p>
+<p>决策问题只有“对”与“错”两种答案。在每一步迭代中，如果决策是“对”，意味着回答是“对”，并且与算法的其他迭代无关；也可能回应“未知”，意味着答案可能是“对”也可能是“错”。在全部均迭代过后，如果至少有一次迭代中生成了结果“对”，那么结果就为”对“；如果每个重复生成的回答都是”未知“，那么结果就为”错“。 然而，如果正确答案是”对“，而算法可以回答”对“或”错“，有可能所有的迭代均得到的回答是”未知“。（这就是其中的小概率的错误概率。） （这一段是我对书上的翻译，我理解下来，这段描述的其实是拉斯维加斯算法吧，是不是我理解错了，希望明白的人能指正一下）</p>
 <p>对于蒙特卡洛算法，是实验样例越多，得到的结果也就愈发靠近正确的结果。</p>
 <p>与蒙特卡洛算法相对的另一种随机算法，叫做拉斯维加斯算法，同样是随机抽样，样本数越多，这个算法增加的只有找到正确结果的概率，他得到的只有对与错，没找到正确的结果就没有意义。</p>
 <p>参考其他资料对蒙特卡洛算法的理解是，蒙特卡洛算法是利用一种满足平均分布的随机抽样达成的计算数学期望的方法。其主要计算的是近似真值。也就是说他主要是从样本数中找对的结果，然后计算”对“的结果占全部样本数的概率，其方法重点是在于抽样的过程。</p>
 <p>Ps.果然《离散数学》里面的各方面内容都只是各领域最简单的内容，关于蒙特卡洛算法，这里连抽样(sample)的单词都并没有用到，用了一些常用（多义）的单词，不看其他资料，完全不能理解呀。</p>
-<p>参考资料：<br>[1]<a href="http://www.zhihu.com/question/20254139" target="_blank" rel="external">http://www.zhihu.com/question/20254139</a><br>[2]<a href="http://www.cnblogs.com/daniel-D/p/3388724.html" target="_blank" rel="external">http://www.cnblogs.com/daniel-D/p/3388724.html</a><br>[3]<a href="https://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank" rel="external">https://en.wikipedia.org/wiki/Monte_Carlo_method</a></p>
+<p>参考资料： [1]http://www.zhihu.com/question/20254139 [2]http://www.cnblogs.com/daniel-D/p/3388724.html [3]https://en.wikipedia.org/wiki/Monte_Carlo_method</p>
 
       
     </div>
@@ -415,6 +416,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2015/12/09/蒙特卡洛算法（简单理解）/" title="蒙特卡洛算法（简单理解）">http://sean10.github.io/2015/12/09/蒙特卡洛算法（简单理解）/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -508,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -524,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -546,7 +571,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -572,6 +597,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡洛算法monte-carlo-algorithm"><span class="nav-text">蒙特卡洛算法(Monte Carlo Algorithm)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -587,7 +628,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -884,7 +925,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

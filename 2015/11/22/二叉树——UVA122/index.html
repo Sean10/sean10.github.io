@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="二叉树的层次遍历12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &amp;lt;">
+<meta name="description" content="二叉树的层次遍历 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &amp;lt">
 <meta name="keywords" content="二叉树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树——UVA122">
 <meta property="og:url" content="http://sean10.github.io/2015/11/22/二叉树——UVA122/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="二叉树的层次遍历12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &amp;lt;">
+<meta property="og:description" content="二叉树的层次遍历 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &amp;lt">
 <meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树——UVA122">
-<meta name="twitter:description" content="二叉树的层次遍历12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &amp;lt;">
+<meta name="twitter:description" content="二叉树的层次遍历 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &amp;lt">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>二叉树——UVA122 | 行路中.</title>
+  <title>二叉树——UVA122 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,8 +384,8 @@
       
 
       
-        <p>二叉树的层次遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">struct Node&#123;</div><div class="line">    bool have_value;</div><div class="line">    int v;</div><div class="line">    struct Node* left,*right;</div><div class="line">    Node():have_value(false),left(NULL),right(NULL)&#123;&#125;</div><div class="line">&#125;;</div><div class="line">const int maxn = 256;</div><div class="line">bool failed;</div><div class="line">char s[10000];</div><div class="line"></div><div class="line">Node *root = NULL;</div><div class="line"></div><div class="line">Node* newnode()&#123;</div><div class="line">    return new Node();</div><div class="line">&#125;</div><div class="line"></div><div class="line">void addnode(int v,char *s)&#123;</div><div class="line">    int n = strlen(s);</div><div class="line">    Node* u = root;</div><div class="line">    for(int i = 0;i &lt;n;i++)</div><div class="line">        if(s[i] == &apos;L&apos;)&#123;</div><div class="line">            if(u-&gt;left == NULL) u-&gt;left = newnode();</div><div class="line">            u = u-&gt;left;</div><div class="line">        &#125;</div><div class="line">        else if(s[i] == &apos;R&apos;)&#123;</div><div class="line">            if(u-&gt;right == NULL) u-&gt;right = newnode();</div><div class="line">            u = u-&gt;right;</div><div class="line">        &#125;</div><div class="line">    if(u-&gt;have_value) failed = true;</div><div class="line">    u-&gt;v = v;</div><div class="line">    u -&gt;have_value = true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool bfs(vector&lt;int&gt;&amp; ans)&#123;</div><div class="line">    queue&lt;Node*&gt; q;</div><div class="line">    ans.clear();</div><div class="line">    q.push(root);</div><div class="line">    while(!q.empty())&#123;</div><div class="line">        Node * u = q.front();</div><div class="line">        q.pop();</div><div class="line">        if(!u-&gt;have_value) return false;</div><div class="line">        ans.push_back(u-&gt;v);</div><div class="line">        if(u-&gt;left != NULL)</div><div class="line">            q.push(u-&gt;left);</div><div class="line">        if(u-&gt;right != NULL)</div><div class="line">            q.push(u-&gt;right);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool read()&#123;</div><div class="line">    failed = false;</div><div class="line">    root = newnode();</div><div class="line">    for(;;)&#123;</div><div class="line">        if(scanf(&quot;%s&quot;,&amp;s) != 1)  return false;</div><div class="line">        if(!strcmp(s,&quot;()&quot;)) break;</div><div class="line">        int v;</div><div class="line">        sscanf(&amp;s[1],&quot;%d&quot;,&amp;v);</div><div class="line">        addnode(v,strchr(s,&apos;,&apos;)+1);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void remove_tree(Node *u)&#123;</div><div class="line">    if(u == NULL) return ;</div><div class="line">    remove_tree(u-&gt;left);</div><div class="line">    remove_tree(u-&gt;right);</div><div class="line">    delete u;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[maxn];</div><div class="line">    while(1)&#123;</div><div class="line">        if(!read()) break;</div><div class="line">        vector&lt;int&gt;ans;</div><div class="line">        if(!failed &amp;&amp; bfs(ans))&#123;</div><div class="line">            int len = ans.size();</div><div class="line">            for(int i = 0;i &lt; len;i++)</div><div class="line">                printf(&quot;%d%c&quot;,ans[i],i == len-1?&apos;\n&apos;:&apos; &apos;);</div><div class="line">        &#125;else printf(&quot;not complete\n&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    remove_tree(root);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>参考资料：<br>[1].《算法竞赛入门经典（第二版）》<br>[2].<a href="http://blog.csdn.net/u014800748/article/details/44733017" target="_blank" rel="external">http://blog.csdn.net/u014800748/article/details/44733017</a></p>
+        <p>二叉树的层次遍历 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">struct Node&#123;</div><div class="line">    bool have_value;</div><div class="line">    int v;</div><div class="line">    struct Node* left,*right;</div><div class="line">    Node():have_value(false),left(NULL),right(NULL)&#123;&#125;</div><div class="line">&#125;;</div><div class="line">const int maxn = 256;</div><div class="line">bool failed;</div><div class="line">char s[10000];</div><div class="line"></div><div class="line">Node *root = NULL;</div><div class="line"></div><div class="line">Node* newnode()&#123;</div><div class="line">    return new Node();</div><div class="line">&#125;</div><div class="line"></div><div class="line">void addnode(int v,char *s)&#123;</div><div class="line">    int n = strlen(s);</div><div class="line">    Node* u = root;</div><div class="line">    for(int i = 0;i &lt;n;i++)</div><div class="line">        if(s[i] == &apos;L&apos;)&#123;</div><div class="line">            if(u-&gt;left == NULL) u-&gt;left = newnode();</div><div class="line">            u = u-&gt;left;</div><div class="line">        &#125;</div><div class="line">        else if(s[i] == &apos;R&apos;)&#123;</div><div class="line">            if(u-&gt;right == NULL) u-&gt;right = newnode();</div><div class="line">            u = u-&gt;right;</div><div class="line">        &#125;</div><div class="line">    if(u-&gt;have_value) failed = true;</div><div class="line">    u-&gt;v = v;</div><div class="line">    u -&gt;have_value = true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool bfs(vector&lt;int&gt;&amp; ans)&#123;</div><div class="line">    queue&lt;Node*&gt; q;</div><div class="line">    ans.clear();</div><div class="line">    q.push(root);</div><div class="line">    while(!q.empty())&#123;</div><div class="line">        Node * u = q.front();</div><div class="line">        q.pop();</div><div class="line">        if(!u-&gt;have_value) return false;</div><div class="line">        ans.push_back(u-&gt;v);</div><div class="line">        if(u-&gt;left != NULL)</div><div class="line">            q.push(u-&gt;left);</div><div class="line">        if(u-&gt;right != NULL)</div><div class="line">            q.push(u-&gt;right);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">bool read()&#123;</div><div class="line">    failed = false;</div><div class="line">    root = newnode();</div><div class="line">    for(;;)&#123;</div><div class="line">        if(scanf(&quot;%s&quot;,&amp;s) != 1)  return false;</div><div class="line">        if(!strcmp(s,&quot;()&quot;)) break;</div><div class="line">        int v;</div><div class="line">        sscanf(&amp;s[1],&quot;%d&quot;,&amp;v);</div><div class="line">        addnode(v,strchr(s,&apos;,&apos;)+1);</div><div class="line">    &#125;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void remove_tree(Node *u)&#123;</div><div class="line">    if(u == NULL) return ;</div><div class="line">    remove_tree(u-&gt;left);</div><div class="line">    remove_tree(u-&gt;right);</div><div class="line">    delete u;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[maxn];</div><div class="line">    while(1)&#123;</div><div class="line">        if(!read()) break;</div><div class="line">        vector&lt;int&gt;ans;</div><div class="line">        if(!failed &amp;&amp; bfs(ans))&#123;</div><div class="line">            int len = ans.size();</div><div class="line">            for(int i = 0;i &lt; len;i++)</div><div class="line">                printf(&quot;%d%c&quot;,ans[i],i == len-1?&apos;\n&apos;:&apos; &apos;);</div><div class="line">        &#125;else printf(&quot;not complete\n&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    remove_tree(root);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>参考资料： [1].《算法竞赛入门经典（第二版）》 [2].http://blog.csdn.net/u014800748/article/details/44733017</p>
 
       
     </div>
@@ -407,6 +407,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2015/11/22/二叉树——UVA122/" title="二叉树——UVA122">http://sean10.github.io/2015/11/22/二叉树——UVA122/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -516,7 +531,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -538,7 +553,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -579,7 +594,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -876,7 +891,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

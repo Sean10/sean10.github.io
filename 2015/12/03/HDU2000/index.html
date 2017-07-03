@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。真的是代码打得太少了。123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt;c">
+<meta name="description" content="自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt">
 <meta name="keywords" content="水题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HDU2000">
 <meta property="og:url" content="http://sean10.github.io/2015/12/03/HDU2000/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。真的是代码打得太少了。123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt;c">
+<meta property="og:description" content="自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt">
 <meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDU2000">
-<meta name="twitter:description" content="自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。真的是代码打得太少了。123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt;c">
+<meta name="twitter:description" content="自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 123456789101112131415161718192021222324252627282930313233343536#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt">
 
 
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>HDU2000 | 行路中.</title>
+  <title>HDU2000 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -162,7 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,7 +384,7 @@
       
 
       
-        <p>自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。<br>真的是代码打得太少了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line"></div><div class="line">void swap(char *s,int j)&#123;</div><div class="line">    char temp = s[j];</div><div class="line">    s[j] = s[j+1];</div><div class="line">    s[j+1] = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Bubblesort(char *s)&#123;</div><div class="line">    char temp = s[0];</div><div class="line">    for(int i = 0;i &lt; 3;i++)&#123;</div><div class="line">        for(int j = 0;j &lt; 2;j++)&#123;</div><div class="line">            if(s[j] &gt; s[j+1])</div><div class="line">                swap(s,j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[4];</div><div class="line">    while(scanf(&quot;%s&quot;,s)!=EOF)&#123;</div><div class="line">        //getchar();</div><div class="line">        Bubblesort(s);</div><div class="line">        for(int i = 0;i &lt; 2;i++)&#123;</div><div class="line">            printf(&quot;%c&quot;,s[i]);</div><div class="line">            printf(&quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        printf(&quot;%c&quot;,s[2]);</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    //printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line"></div><div class="line">void swap(char *s,int j)&#123;</div><div class="line">    char temp = s[j];</div><div class="line">    s[j] = s[j+1];</div><div class="line">    s[j+1] = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Bubblesort(char *s)&#123;</div><div class="line">    char temp = s[0];</div><div class="line">    for(int i = 0;i &lt; 3;i++)&#123;</div><div class="line">        for(int j = 0;j &lt; 2;j++)&#123;</div><div class="line">            if(s[j] &gt; s[j+1])</div><div class="line">                swap(s,j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[4];</div><div class="line">    while(scanf(&quot;%s&quot;,s)!=EOF)&#123;</div><div class="line">        //getchar();</div><div class="line">        Bubblesort(s);</div><div class="line">        for(int i = 0;i &lt; 2;i++)&#123;</div><div class="line">            printf(&quot;%c&quot;,s[i]);</div><div class="line">            printf(&quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        printf(&quot;%c&quot;,s[2]);</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    //printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -406,6 +406,21 @@
     <div>
       
         
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      Sean10
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://sean10.github.io/2015/12/03/HDU2000/" title="HDU2000">http://sean10.github.io/2015/12/03/HDU2000/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
 
       
     </div>
@@ -515,7 +530,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">78</span>
+                <span class="site-state-item-count">80</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -537,7 +552,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -578,7 +593,7 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -875,7 +890,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
