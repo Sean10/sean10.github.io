@@ -276,6 +276,186 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/28/偏序集、格/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/28/偏序集、格/" itemprop="url">偏序集、格</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-28T23:44:00+08:00">
+                2015-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pro/" itemprop="url" rel="index">
+                    <span itemprop="name">专业</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/28/偏序集、格/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/28/偏序集、格/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/28/偏序集、格/" class="leancloud_visitors" data-flag-title="偏序集、格">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="重新看一下关于格的知识">重新看一下关于格的知识</h4>
+<p>具有极值性质的偏序集元素有许多重要应用。 其中偏序集的一个元素叫做极大的，当它不小于这个偏序集的任何其他元素，即在偏序集中是极大的。</p>
+<p>这里有个问题，什么叫做极大的？偏序集难道只有大小关系吗，不是说关系是任意的吗。难道说这个偏序集的大小关系其实就是是否满足这个偏序集所指定的关系，满足即为大，不满足即为小？这样的话又有一个问题，之前定义也说到了，满足即称为可比的，不满足即称为不可比的，那么在这里要求极大元素时，不可比的两个元素怎么说呢？</p>
+<p>这里所说的极大，其实就是在这个偏序集中不存在第二个元素可以使得他作为被处理的关系，即关系的受者。这样的元素称为该偏序集的极大元素。</p>
+<p>使用Hasse图可以很容易找到极大元素和极小元素，因为他们是这个图的顶和底。 那么为什么呢？通过这个图，我们得到的是一个各关系之间的比较，所以，图底的元素是已经消除了所有多余的必定存在的环和传递线的，剩下的既然他作为底或顶，就意味着他已经是唯一的运算的主体或完全的运算的客体存在的了。</p>
+<p>这里又出现了两个新的名词，最大元素和最小元素。这两个元素的出现有什么意义呢？这两个名词限定了一个性质，那就是这两个人最大和最小都一定是唯一的，如果在Hasse图中在最高层次和最低层次出现了两个及以上的数量的元素，那么这个偏序集就不存在最大元素和最小元素了。 这里保留一个问题，最大元素和最小元素的存在价值？</p>
+<p>上界和下界是完全不一样的，首先从关键性质上就已经发生了偏差。最大元素和最小元素有个性质是必定要是唯一的才行，而上界和下界就完全没有这样的性质，完全可以存在好多个，只要满足对该子集中所有的元素都满足关系，就可以称之为其上界和下界。</p>
+<p>其次从范围上，有所区别，比如最大元素和最小元素其实在定义中并没有提到可以用到偏序集的子集当中，而这里上界和下界主要就是用在偏序集的子集中。</p>
+<p>接下来，出现了两个关键新名词，最小上界和最大下界。</p>
+<p>而最大下界和最小上界就是意味着，在上界和下界中进行比较，其中最小的称之为最小上界，以此类推，最大的就称之为最大下界了。 最小上界和最大下界估计接下来会有很大的作用，因为在这里书上给了他一个定义GLB(A)和LUB(A)</p>
+<h4 id="好啦接下来整章中最重要的boss登场了格">好啦，接下来整章中最重要的BOSS登场了，格。</h4>
+<p>格的首先的性质就要求一个偏序集中的每对元素存在最小上界和最大下界。这里有个很重要的修饰词——每对，任意对元素的集合都必须得存在最小上界和最大下界。</p>
+<p>以字母序排列的偏序集长得我觉得就比较像格。</p>
+<p>这里稍微说道，格在布尔代数中起到了非常重要的性质。 这里可以让我们保留一下期盼。（待以后看到了补充）</p>
+<p>书上分析是否是格，出现了一个没见过的判断，用到的原因是说3个元素的任意一个的在这个偏序集中的序都不大于另两个。</p>
+<p>这里的序是不是就是所谓的链接的大小关系呢？就是说因为他们三个元素与他们以下的元素都形成了相等的3条线，故三者相等，不存在其中一个大于另两个之说，也就导致了最小上界不存在。故不为格？</p>
+<p>这是一个猜想，姑且保留先。</p>
+<h4 id="信息流的格模型">信息流的格模型</h4>
+<p>在许多设置中，从一个人或计算机程序到另一个人或计算机程序的信息流要受到限制，这可以通过安全权限来实现。 我们可以使用格的模型来表示不同的信息流策略。 （这句话是什么意思，不能理解，什么叫做策略，又怎么来表示） 例如，一个通用的信息流策略是用于政府或军事系统中的多级安全策略。为每组信息分配一个安全级别，并且每个安全级别用一个对（A,C）表示，其中A是权限级别，C是种类，然后允许人和计算机程序从一个被特别限制的安全类的集合中访问信息。 （感觉这里并咩有说清楚，A和C是如何形成了一个偏序集的）</p>
+<p>在美国政府中，使用的典型的权限级别是不保密（0）、秘密（1）、机密（2）和绝密（3）。在安全级别中使用的种类是一个集合的子集，这个集合含有与一个特定行业领域相关的所有的分布。每个分部表示一个指定的对象域。 （分部和对象域又是什么？完全没有提到） 例如，如果分部的集合是{间谍，鼹鼠，双重间谍}，那么存在8种不同的分类，分部集合有8个子集，对于每个子集有一类，例如{间谍，鼹鼠} （这里应该是根据关系进行了任意的组合，但是也没有说道这两个种类之间的关系）</p>
+<p>我们可以对安全类排序，规定 。信息允许从安全类（A1，C1}流向安全类（A2，C2）当且仅当（A1，C1）对(A2，C2)满足那个关系。例如，信息允许从安全类（机密，{间谍，鼹鼠}）流向安全类{绝密，{间谍，鼹鼠，双重间谍}}。反之，信息不允许从安全类（绝密，{间谍，鼹鼠}）流向安全类（机密，{间谍，鼹鼠，双重间谍}）或（绝密，{间谍}）；</p>
+<p>（暂时还是不理解）</p>
+<h4 id="拓扑排序">拓扑排序</h4>
+<p>假设一个项目由20个任务构成。某些人武只能在其他任务结束后完成。如何找到这些任务的顺序（感觉这个有点像路径了，比如CPM）</p>
+<p>定义，如果只要aRb就有a与b满足那样的关系，则称一个全序 与偏序R是相容的（相容又是一个新名词）。 从一个偏序构造一个相容的全序叫做拓扑排序，我们需要使用引理。（引理看起来很重要）</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/27/《沉默的大多数》跳出手掌心/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1727,173 +1907,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/线性表——约瑟夫问题（递推未完）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/线性表——约瑟夫问题（递推未完）/" itemprop="url">线性表——约瑟夫问题（递推未完）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T13:43:00+08:00">
-                2015-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/22/线性表——约瑟夫问题（递推未完）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/22/线性表——约瑟夫问题（递推未完）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/22/线性表——约瑟夫问题（递推未完）/" class="leancloud_visitors" data-flag-title="线性表——约瑟夫问题（递推未完）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week2/1/" target="_blank" rel="external">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 有n只猴子，按顺时针方向围成一圈选大王（编号从1到n），从第1号开始报数，一直数到m，数到m的猴子退出圈外，剩下的猴子再接着从1开始报数。就这样，直到圈内只剩下一只猴子时，这个猴子就是猴王，编程求输入n，m后，输出最后猴王的编号。</p>
-<p>输入 输入包含两个整数，第一个是n，第二个是m (0 &lt; m,n &lt;=300)。 输出 输出包含一行，即最后猴王的编号。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">12 4</div></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1</div></pre></td></tr></table></figure></p>
-<p>这道题是有好几种解法的。 首先是数组。</p>
-<p>1.链表模拟 分析：建立一个循环链表，递推，一个个删除直到只剩下一个，输出即可。</p>
-<p>2.静态链表模拟 分析：用数组模拟链表，就是数组里存的是下一个位置的下标。</p>
-<p>以上两种的时间复杂度均为O(n*m);</p>
-<p>3.数组模拟 分析：先初始化整个数组为1，接下来在循环中只对数值为1的进行计数，满n置0，最后遍历最后一个数值为1的数，输出其下标。 这种的时间复杂度最大，为O(n^2);</p>
-<p>4.递推算法 待考试周过去后写</p>
-<p>1.链表遍历算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define N 10000</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node* next;</div><div class="line">&#125;node,*nodePtr;</div><div class="line"></div><div class="line">void Create(nodePtr head, int n )&#123;</div><div class="line">    nodePtr temp, last = head;</div><div class="line">    for(int i = 1;i &lt;= n;i++)&#123;</div><div class="line">        temp = (nodePtr)calloc(1,sizeof(node));</div><div class="line">        if(temp == NULL) return ;</div><div class="line">        temp -&gt; data = i;</div><div class="line">        last -&gt; next = temp;</div><div class="line">        //printf(&quot;%p\t%p\t%p\t%p\n&quot;,NULL,head,last,last-&gt;next);</div><div class="line">        last = temp;</div><div class="line">        //printf(&quot;%d\n&quot;,last-&gt;data);</div><div class="line">    &#125;</div><div class="line">    last -&gt; next = head -&gt; next;</div><div class="line">    //printf(&quot;%p\t%p\t%p\t%p\n&quot;,NULL,head,last,last-&gt;next);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Del(nodePtr prev, nodePtr &amp;curr)&#123;</div><div class="line">    nodePtr temp = curr;</div><div class="line">    prev-&gt;next = curr -&gt; next;</div><div class="line">    curr = prev;</div><div class="line">    free(temp);</div><div class="line">&#125;</div><div class="line"></div><div class="line">nodePtr Josephus(nodePtr head,int m)&#123;</div><div class="line">    nodePtr temp = head,prev = NULL;</div><div class="line">    while(head-&gt;next != head)&#123;</div><div class="line">        for(int i = 0;i &lt; m;i++)&#123;</div><div class="line">            prev = head;</div><div class="line">            head = head -&gt; next;</div><div class="line">            //printf(&quot;%p\t%p\n&quot;,prev,head);</div><div class="line">        &#125;</div><div class="line">        //printf(&quot;%d\n&quot;,head-&gt;data);</div><div class="line">        Del(prev,head);</div><div class="line">    &#125;</div><div class="line">    free(temp);</div><div class="line">    return head;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int n,m;</div><div class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;</div><div class="line">        nodePtr head = NULL;</div><div class="line">        head = (nodePtr)malloc(sizeof(node));</div><div class="line">        head -&gt; next = NULL;</div><div class="line">        Create(head, n);</div><div class="line">        printf(&quot;%d\n&quot;,Josephus(head,m)-&gt;data);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2.静态链表算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line"></div><div class="line">#define N 10000</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    int a[N];</div><div class="line">    int n,m;</div><div class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</div><div class="line"></div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;</div><div class="line">        a[i] = i+1;</div><div class="line">    &#125;</div><div class="line">    a[n] = 1;</div><div class="line"></div><div class="line">    int k = 0;</div><div class="line">    int prev;</div><div class="line">    while(a[k] != k)&#123;</div><div class="line">        for(int i = 1;i &lt;= m;i++)&#123;</div><div class="line">            prev = k;</div><div class="line">            k = a[k];</div><div class="line">        &#125;</div><div class="line">        a[prev] = a[k];</div><div class="line">    &#125;</div><div class="line">    printf(&quot;%d\n&quot;,k);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>3.数组模拟算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define N 350</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    int n,m;</div><div class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</div><div class="line">    int a[N];</div><div class="line">    int cnt = 0;</div><div class="line">    int times = 0;</div><div class="line">    for(int i = 1;i &lt;= n;i++)</div><div class="line">        a[i] = 1;</div><div class="line"></div><div class="line">    int i = 1;</div><div class="line">    while(times!=n-1)&#123;</div><div class="line">        while(1)&#123;</div><div class="line">            if(a[i++] == 1)&#123;</div><div class="line">                cnt++;</div><div class="line">                if(cnt &gt; 0 &amp;&amp; cnt%m == 0)</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">            if(i &gt; n)</div><div class="line">                i = i%n;</div><div class="line">        &#125;</div><div class="line">        a[i-1] = 0;</div><div class="line">        if(i &gt; n)</div><div class="line">            i = i%n;</div><div class="line">        times++;</div><div class="line">    &#125;</div><div class="line">    for(i = 1;i&lt;=n;i++)</div><div class="line">        if(a[i] == 1)</div><div class="line">            break;</div><div class="line">    printf(&quot;%d\n&quot;,i);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1943,7 +1956,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">83</span>
+                <span class="site-state-item-count">84</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1965,7 +1978,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
