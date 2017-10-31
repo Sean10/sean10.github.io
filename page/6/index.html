@@ -276,6 +276,170 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/01/二叉树——森林的带度数层次序列存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/01/二叉树——森林的带度数层次序列存储/" itemprop="url">二叉树——森林的带度数层次序列存储</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-01T18:09:00+08:00">
+                2015-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/01/二叉树——森林的带度数层次序列存储/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/01/二叉树——森林的带度数层次序列存储/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/01/二叉树——森林的带度数层次序列存储/" class="leancloud_visitors" data-flag-title="二叉树——森林的带度数层次序列存储">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week7/1/" target="_blank" rel="external">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 对于树和森林等非线性结构，我们往往需要将其序列化以便存储。有一种树的存储方式称为带度数的层次序列。我们可以通过层次遍历的方式将森林序列转化为多个带度数的层次序列。</p>
+<p>例如对于以下森林： <img src="http://media.openjudge.cn/images/upload/1401904592.png" alt="img"></p>
+<p>两棵树的层次遍历序列分别为：C E F G K H J / D X I</p>
+<p>每个结点对应的度数为：3 3 0 0 0 0 0 / 2 0 0</p>
+<p>我们将以上序列存储起来，就可以在以后的应用中恢复这个森林。在存储中，我们可以将第一棵树表示为C 3 E 3 F 0 G 0 K 0 H 0 J 0，第二棵树表示为D 2 X 0 I 0。</p>
+<p>现在有一些通过带度数的层次遍历序列存储的森林数据，为了能够对这些数据进行进一步处理，首先需要恢复他们。</p>
+<p>输入 输入数据的第一行包括一个正整数n，表示森林中非空的树的数目。 随后的 n 行，每行给出一棵树的带度数的层次序列。 树的节点名称为A-Z的单个大写字母。 输出 输出包括一行，输出对应森林的后根遍历序列。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">C 3 E 3 F 0 G 0 K 0 H 0 J 0</div><div class="line">D 2 X 0 I 0</div></pre></td></tr></table></figure></p>
+<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">K H J E F G C X I D</div></pre></td></tr></table></figure></p>
+<p>这道题，主要就是用队列存下根节点，根据其子节点数目判断是不是叶子。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    char data;</div><div class="line">    struct node *child[26];</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">void Init(BitTree &amp;root, char ch)&#123;</div><div class="line">    for(int i = 0;i &lt; 26;i++)&#123;</div><div class="line">        root-&gt;child[i] = NULL;</div><div class="line">    &#125;</div><div class="line">    root-&gt;data = ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Create(BitTree &amp;root)&#123;</div><div class="line">    queue &lt;BitTree&gt;qRoot;</div><div class="line">    queue&lt;int&gt;qSeq;</div><div class="line">    BitTree temp,tempHead;</div><div class="line">    char ch;</div><div class="line">    int i = 0;</div><div class="line">    int degree = 0;//树的度</div><div class="line">    int childNum;</div><div class="line">    cin &gt;&gt; ch &gt;&gt; childNum;</div><div class="line">    root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    Init(root,ch);</div><div class="line">    qRoot.push(root);</div><div class="line">    qSeq.push(childNum);</div><div class="line">    while(!qRoot.empty())&#123;</div><div class="line">        while(degree == i)&#123;</div><div class="line">            if(qRoot.empty())</div><div class="line">                return ;</div><div class="line">            degree = qSeq.front();</div><div class="line">            qSeq.pop();</div><div class="line">            tempHead = qRoot.front();</div><div class="line">            qRoot.pop();</div><div class="line">            i = 0;</div><div class="line">        &#125;</div><div class="line">        cin &gt;&gt; ch &gt;&gt; childNum;</div><div class="line">        temp = (BitTree)malloc(sizeof(BitNode));</div><div class="line">        Init(temp,ch);</div><div class="line">        qRoot.push(temp);</div><div class="line">        qSeq.push(childNum);</div><div class="line">        tempHead-&gt;child[i] = temp;</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void AftTranverse(BitTree root)&#123;</div><div class="line">    for(int i = 0;i &lt; 26 &amp;&amp; root-&gt;child[i];i++)</div><div class="line">        AftTranverse(root-&gt;child[i]);</div><div class="line">    cout &lt;&lt; root-&gt;data &lt;&lt; &apos; &apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    BitTree root;</div><div class="line">    int n;</div><div class="line">    cin &gt;&gt; n;</div><div class="line">    while(n--)&#123;</div><div class="line">        Create(root);</div><div class="line">        AftTranverse(root);</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &apos;\n&apos;;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/30/大学物理实验-考点总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1862,170 +2026,6 @@ a=\overline{y}-b\overline{x}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" itemprop="url">二叉树——由中根序列和后根序列重建二叉树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-22T21:48:00+08:00">
-                2015-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" class="leancloud_visitors" data-flag-title="二叉树——由中根序列和后根序列重建二叉树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/1/" target="_blank" rel="external">题目链接</a> 总时间限制: 500ms 内存限制: 65535kB 描述 我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。</p>
-<p>用不同的整数来唯一标识二叉树的每一个结点</p>
-<p>中根序列是9 5 32 67</p>
-<p>后根序列9 32 67 5</p>
-<p>前根序列5 9 67 32</p>
-<p>输入 两行。第一行是二叉树的中根序列，第二行是后根序列。每个数字表示的结点之间用空格隔开。结点数字范围0～65535。暂不必考虑不合理的输入数据。 输出 一行。由输入中的中根序列和后根序列重建的二叉树的前根序列。每个数字表示的结点之间用空格隔开。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">9 5 32 67</div><div class="line">9 32 67 5</div></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">5 9 67 32</div></pre></td></tr></table></figure></p>
-<p>关键在于利用通过后序找到每个子树的根节点，以此为界找到左、右子树，从而进行递归。 链式算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#define N 65536</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node * lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">int sLDR[N],sLRD[N];</div><div class="line"></div><div class="line">BitTree BuildTree(int coStart,int coEnd,int loStart, int loEnd)&#123;</div><div class="line">    BitTree root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    root-&gt;data = sLRD[loEnd];</div><div class="line">    root-&gt;lc = NULL;</div><div class="line">    root-&gt;rc = NULL;</div><div class="line">    int i;</div><div class="line"></div><div class="line">    if(coStart == coEnd)</div><div class="line">        return root;</div><div class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</div><div class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i&gt;=1) root-&gt;lc = BuildTree(coStart,coStart+i-1,loStart,loStart+i-1);</div><div class="line">    if(coEnd&gt;=coStart+i+1) root-&gt;rc = BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1);</div><div class="line">    return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int visit(BitTree T)&#123;</div><div class="line">    printf(&quot;%d &quot;,T-&gt;data);</div><div class="line">    return T-&gt;data;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int PreTranverse(BitTree T)&#123;</div><div class="line">    if(T)&#123;</div><div class="line">        visit(T);</div><div class="line">        if(T-&gt;lc)</div><div class="line">            PreTranverse(T-&gt;lc);</div><div class="line">        if(T-&gt;rc)</div><div class="line">            PreTranverse(T-&gt;rc);</div><div class="line">    &#125;</div><div class="line">    return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int s[N];</div><div class="line">    int order = 0;</div><div class="line">    int ch;</div><div class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</div><div class="line">        s[++order] = ch;</div><div class="line">    &#125;</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLDR[i] = s[i];</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLRD[i] = s[order/2+i];</div><div class="line">    BitTree root = BuildTree(1,order/2,1,order/2);</div><div class="line">    PreTranverse(root);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>顺序算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#define N 65536</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    int data;</div><div class="line">    struct node * lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">int sLDR[N],sLRD[N];</div><div class="line">int tree[N];</div><div class="line"></div><div class="line">void BuildTree(int coStart,int coEnd,int loStart, int loEnd,int k)&#123;</div><div class="line">    //BitTree root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    tree[k] = sLRD[loEnd];</div><div class="line">    tree[2*k] = 0;</div><div class="line">    tree[2*k+1] = 0;</div><div class="line">    //root-&gt;lc = NULL;</div><div class="line">    //root-&gt;rc = NULL;</div><div class="line">    int i;</div><div class="line"></div><div class="line">    if(coStart == coEnd)</div><div class="line">        return ;</div><div class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</div><div class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i&gt;=1) BuildTree(coStart,coStart+i-1,loStart,loStart+i-1,2*k);</div><div class="line">    if(coEnd&gt;=coStart+i+1) BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1,2*k+1);</div><div class="line">    //return root;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int visit(int i)&#123;</div><div class="line">    printf(&quot;%d &quot;,tree[i]);</div><div class="line">    return tree[i];</div><div class="line">&#125;</div><div class="line"></div><div class="line">int PreTranverse(int i)&#123;</div><div class="line">    if(tree[i])&#123;</div><div class="line">        visit(i);</div><div class="line">        if(tree[2*i])</div><div class="line">            PreTranverse(2*i);</div><div class="line">        if(tree[2*i+1])</div><div class="line">            PreTranverse(2*i+1);</div><div class="line">    &#125;</div><div class="line">    return 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    int s[N];</div><div class="line">    int order = 0;</div><div class="line">    int ch;</div><div class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</div><div class="line">        s[++order] = ch;</div><div class="line">    &#125;</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLDR[i] = s[i];</div><div class="line">    for(int i = 1;i &lt;= order/2;i++)</div><div class="line">        sLRD[i] = s[order/2+i];</div><div class="line">    BuildTree(1,order/2,1,order/2,1);</div><div class="line">    PreTranverse(1);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2075,7 +2075,7 @@ a=\overline{y}-b\overline{x}
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">86</span>
+                <span class="site-state-item-count">87</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2097,7 +2097,7 @@ a=\overline{y}-b\overline{x}
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
