@@ -134,7 +134,6 @@
 
 
 <meta name="description" content="笔记 随笔">
-<meta name="keywords" content="Hexo, NexT">
 <meta property="og:type" content="website">
 <meta property="og:title" content="行路中.">
 <meta property="og:url" content="http://sean10.github.io/page/8/index.html">
@@ -297,6 +296,171 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/19/栈——HDU1022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/19/栈——HDU1022/" itemprop="url">栈——HDU1022</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-19T10:37:00+08:00">2015-11-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/19/栈——HDU1022/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/19/栈——HDU1022/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/19/栈——HDU1022/" class="leancloud_visitors" data-flag-title="栈——HDU1022">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目是栈的模拟进出。</p>
+<p>先用数组来模拟一下栈的指针移动。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int a[1000];</span><br><span class="line">    char c[1000];</span><br><span class="line">    char s1[1000],s2[1000];</span><br><span class="line">    int n;</span><br><span class="line">    //scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    while(scanf(&quot;%d %s%s&quot;,&amp;n,s1,s2)!=EOF)&#123;</span><br><span class="line">        int m = 0,j = 0,k = 0;</span><br><span class="line">        for(int i = 0; i &lt; n;i++)&#123;</span><br><span class="line">            a[j++] = 1;</span><br><span class="line">            c[k++] = s1[i];</span><br><span class="line">            while(c[k-1] == s2[m]&amp;&amp; k &gt;= 0)&#123;</span><br><span class="line">                a[j++] = -1;</span><br><span class="line">                m++;</span><br><span class="line">                k--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(k &lt;= 0)&#123;</span><br><span class="line">            printf(&quot;Yes.\n&quot;);</span><br><span class="line">            for(int i = 0;i &lt; j;i++)&#123;</span><br><span class="line">                if(a[i] == 1)</span><br><span class="line">                    printf(&quot;in\n&quot;);</span><br><span class="line">                else if(a[i] == -1) printf(&quot;out\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else</span><br><span class="line">            printf(&quot;No.\n&quot;);</span><br><span class="line">        printf(&quot;FINISH\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1806,181 +1970,6 @@
 <p>题目： 2/8进制转换器</p>
 <p>编写程序，从终端输入一串0/1表示二进制数，以“#”结束，输出它的8进制表示形式。要求：采用栈来实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct node* nextPtr;</span><br><span class="line">&#125;Stack,*LinkStack;</span><br><span class="line"></span><br><span class="line">int StackDel(LinkStack &amp;s)&#123;</span><br><span class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</span><br><span class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</span><br><span class="line">	s = s-&gt;nextPtr;//</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int pop(LinkStack &amp;s)&#123;</span><br><span class="line">	int e;</span><br><span class="line">	if (NULL == s)</span><br><span class="line">		return ERROR;</span><br><span class="line">	e = s-&gt;data;//存储从栈中取出的值</span><br><span class="line">	StackDel(s);//删除已取出的栈的空间</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;s, int e)&#123;</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</span><br><span class="line">	if (!p)&#123;</span><br><span class="line">		printf(&quot;Error calloc_push&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</span><br><span class="line">	s = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void transform(LinkStack &amp;s)&#123;</span><br><span class="line">	int e, temp = 0, pow = 1;</span><br><span class="line">	while (NULL != s)&#123;//直到栈空</span><br><span class="line">		e = pop(s);</span><br><span class="line">		temp += e*pow;//进行二进制转十进制的计算</span><br><span class="line">		pow *= 2;//进行位权的累乘</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;The octonary answer is:(&quot;);</span><br><span class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</span><br><span class="line">	printf(&quot;)8\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;s)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the binary string:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</span><br><span class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	LinkStack s = NULL;//栈的头结点指针</span><br><span class="line">	input(s);</span><br><span class="line">	transform(s);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/08/《爱的艺术》人类超越了本能/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/08/《爱的艺术》人类超越了本能/" itemprop="url">《爱的艺术》人类超越了本能</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-08T00:10:00+08:00">2015-11-08</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/08/《爱的艺术》人类超越了本能/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/08/《爱的艺术》人类超越了本能/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/08/《爱的艺术》人类超越了本能/" class="leancloud_visitors" data-flag-title="《爱的艺术》人类超越了本能">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<blockquote>
-<p><strong>第二章 爱情的理论</strong> <em>(一) 爱情是对人类生存问题的回答</em> 爱情的每一个理论必须要以人的理论、人的生存理论为前提。我们所能看到的动物的爱情或者更确切地说动物身上类似爱情的东西，主要是动物的一部分本 能。在人身上只能看到这一本能的残余。人的存在的根本要点是人超越了动物界，超越了本能的适应性，脱离了自然-尽管人永远不可能完全脱离自然。人继续是自然的一部分，但又同自然分离，永远不可能再同自然合二为一。人从天堂里被赶出来后失去了同自然的和谐状态，带有火剑的天神就挡住了人的归路。人只能继续前进，不断发展人的理智，用一种新的，充满人性的和谐去取代永不复返的类人猿时代的和谐。</p>
-</blockquote>
-<p>爱情的理论必须以人的理论、人的生存理论为前提，这时毋庸置疑的。唯有超越了本能的人类才能在超越了本能的范畴里讨论爱情。毕竟，假如在动物的本能的范畴内讨论爱情，那般的爱情就只是弗洛伊德所一直坚持着的性的爱。以性为根本的爱并不是本书所讨论的艺术的爱的范畴。</p>
-<p>人的存在的根本要点是人超越了动物界，超越了本能的适应性，脱离了自然。为什么说脱离了自然呢？这句话的理解恐怕不能从常规的现实性的接触与否来理解脱离的含义，这里的脱离只是指人已经不再为自然所操控，不再完全只是听从本能而行动。这同时也解释了下一句，为什么说“尽管人永远不可能完全脱离自然。人继续是自然的一部分，但又同自然分离，永远不可能再同自然合二为一。”</p>
-<p>人从天堂里被赶出来后失去了同自然的和谐状态。因为原本的动物性的人类遵循本能，而无需也不会考虑到寂寞、生存中的心灵的问题，以本能为心。而脱离了伊甸园无忧无虑本能状态的人类当前脱离了乌托邦，知道终究已经知道，不可能再回到无知的状态，火剑的天神就挡住了人的归路。人只有从另一个方向——全知的方向去找寻属于人类的新的和谐。</p>
-<blockquote>
-<p>人一生下来-亦指种族和个人-就从一个确定的环境，如本能，被推到一个不确定的，完全开放的环境中去。人只了解过去，对未来-除了知道要以死亡告终外-一无所知。</p>
-</blockquote>
-<p>人类离开已知的本能，来到了理智的世界。理智的世界便是所谓的未来，唯一的知晓仅是人终将体验到的死亡的经验。</p>
-<p>不过这里，其实人类对于过去也并不了解。经历过的终究只有现在的一瞬间，过去了终究就是过去了，过去并不会停滞。唯一停滞于我们脑海中的只有过去的现在的那些印象。印象只是过去的部分展开。因而，人类对过去和未来一无所知。</p>
 
           
         
