@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,23 +79,58 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
   <meta name="keywords" content="系统结构," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
-
 
 
 <meta name="description" content="仅供参考~ 看到了，没记住是最悲剧的……">
@@ -100,6 +140,7 @@
 <meta property="og:url" content="http://sean10.github.io/2017/06/28/计算机系统结构复习note/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="仅供参考~ 看到了，没记住是最悲剧的……">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh140p00wpj30kw0f8qfd.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg">
@@ -201,27 +242,6 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
 
 
 
@@ -229,9 +249,12 @@
 
 
 
-
-
-  <title>计算机系统结构复习note | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>计算机系统结构复习note | 行路中.</title>
   
 
 
@@ -242,10 +265,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -256,11 +301,11 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -294,51 +339,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -350,9 +375,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -369,7 +400,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/28/计算机系统结构复习note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -397,13 +434,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">
-                2017-06-28
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">2017-06-28</time>
             
 
+            
             
 
             
@@ -418,14 +454,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -456,7 +488,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -472,6 +504,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -577,10 +612,7 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <h6 id="多功能流水线流水线的各段可以进行不同的连接以实现不同的功能">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</h6>
 <p>例： 多功能流水线：加、乘流水线</p>
 <h4 id="流水线表示方法时空图-连接图">流水线表示方法–时空图 、连接图</h4>
-<div class="figure">
-<img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg">
-
-</div>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg"></p>
 <h4 id="流水线特点五段流水线访存部件me-转移ex">流水线特点：五段流水线（访存部件ME, 转移EX)</h4>
 <table>
 <thead>
@@ -634,10 +666,9 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <h5 id="控制冲突解决办法">控制冲突解决办法</h5>
 <p><strong>多功能流水线时空图</strong></p>
 <p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量 <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg"></p>
-<div class="figure">
-<img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题">
-<p class="caption">瓶颈问题</p>
-</div>
+<figure>
+<img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"><figcaption>瓶颈问题</figcaption>
+</figure>
 <p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。 <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg"> 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率) <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg"></p>
 <p><strong>静态处理分支指令的基本方法</strong>： * 预测成功 * 延迟分支</p>
 <p><strong>降低流水线分支损失的方法有哪些？</strong> （1）在流水线中尽早判断出分支转移是否成功； （2）尽早计算出分支转移成功时的PC值（即分支的目标地址） * “冻结”或“排空”流水线的方法 * 预测分支失败 * 预测分支成功 * 延迟分支</p>
@@ -645,14 +676,8 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg"></p>
 <p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg"></p>
 <p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg" alt="预测分支"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg"></p>
-<div class="figure">
-<img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg">
-
-</div>
-<div class="figure">
-<img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg">
-
-</div>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg"></p>
+<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg"></p>
 <p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg"></p>
 <p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg"></p>
 <p>命中Cache似乎不考</p>
@@ -677,7 +702,7 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 </ul></li>
 </ul>
 <h4 id="向量流水处理机结构">向量流水处理机结构</h4>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>存储器-存储器结构：纵向处理
 <ul>
 <li>占据一般存储器的3倍带宽，一个时钟周期内读入2个操作数并写回1个结果</li>
@@ -756,10 +781,7 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 </ul>
 <h5 id="分段开采时一组向量指令的总执行时间复习课件中未作为重点">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</h5>
 <h5 id="向量流水线的最大性能-r_infty">向量流水线的最大性能 <span class="math inline">\(R_{\infty}\)</span></h5>
-<div class="figure">
-<img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg">
-
-</div>
+<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg"></p>
 <h6 id="例题">例题</h6>
 <p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh138y1719j31380sogtx.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg" alt="最大性能例题"></p>
 <h5 id="半性能向量长度-n_frac12">半性能向量长度 <span class="math inline">\(n_{\frac{1}{2}}\)</span></h5>
@@ -797,10 +819,9 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <p><strong>每条指令的执行过程分为4段（主要考虑浮点操作）</strong> * 流出：如果当前流出指令所需的功能部件空闲，并且所有其他正在执行的指令的目的寄存器与该指令的不同，就向功能部件流出该指令，并修改记分牌内部记录表。 <strong>解决了WAW冲突</strong> * 读操作数： 监测源操作数的可用性，如果数据可用，就从寄存器中读出源操作数并开始执行。 <strong>解决了RAW冲突，导致乱序执行。</strong> * 执行： 取到操作数后，功能部件开始执行。当产生出结果后，就通知记分牌它已经完成执行。 <strong>在浮点流水线中，这一段要占用多个时钟周期。</strong> * 写结果 <strong>执行前会检测是否存在WAR冲突</strong></p>
 <p><strong>WAR冲突可能发生在以下情况:</strong> 1. 前面的某条指令（按顺序流出）还没有读取操作数；而且,其中某个源操作数寄存器与本指令的目的寄存器相同。<br>
 2. 在这种情况下，记分牌必须等待，直到该冲突消失。</p>
-<div class="figure">
-<img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg" alt="记分牌MIPS处理器基本结构">
-<p class="caption">记分牌MIPS处理器基本结构</p>
-</div>
+<figure>
+<img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg" alt="记分牌MIPS处理器基本结构"><figcaption>记分牌MIPS处理器基本结构</figcaption>
+</figure>
 <p><strong>性能受限</strong>(不考) * 程序代码中可开发的并行性，即是否存在可以并行执行的不相关的指令。 * 记分牌的容量（寄存器大小？）<br>
 记分牌的容量决定了流水线能在多大范围内寻找不相关指令。流水线中可以同时容纳的指令数量称为指令窗口 * 功能部件的数目和种类<br>
 功能部件的总数决定了结构冲突的严重程度 * 反相关和输出相关 它们引起记分牌中WAR和WAW冲突。</p>
@@ -878,26 +899,26 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <table>
 <thead>
 <tr class="header">
-<th align="center">拓扑结构</th>
-<th align="center">静态</th>
-<th align="center">动态</th>
+<th style="text-align: center;">拓扑结构</th>
+<th style="text-align: center;">静态</th>
+<th style="text-align: center;">动态</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">控制策略</td>
-<td align="center">集中式</td>
-<td align="center">分布式</td>
+<td style="text-align: center;">控制策略</td>
+<td style="text-align: center;">集中式</td>
+<td style="text-align: center;">分布式</td>
 </tr>
 <tr class="even">
-<td align="center">定时方式</td>
-<td align="center">同步</td>
-<td align="center">异步</td>
+<td style="text-align: center;">定时方式</td>
+<td style="text-align: center;">同步</td>
+<td style="text-align: center;">异步</td>
 </tr>
 <tr class="odd">
-<td align="center">交换方法</td>
-<td align="center">线路交换</td>
-<td align="center">分组交换</td>
+<td style="text-align: center;">交换方法</td>
+<td style="text-align: center;">线路交换</td>
+<td style="text-align: center;">分组交换</td>
 </tr>
 </tbody>
 </table>
@@ -979,10 +1000,7 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <p>一个8×8的Omega网络 * 每级由4个4功能的2×2开关构成 * 级间互连采用均匀洗牌连接方式 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1em87ixaj30so0hcwgp.jpg"></p>
 <p>一个N输入的Omega网络（重点） * 有 <span class="math inline">\(log_2N\)</span> 级，每级用 <span class="math inline">\(\frac N2\)</span>个2×2开关模块，共需要 <span class="math inline">\(\frac N2log_2{N}\)</span> 个开关。 * 每个开关模块均采用单元控制方式。 * 不同的开关状态组合可实现各种置换、广播或从输入到输出的其它连接。</p>
 <h5 id="动态互联网络的比较">动态互联网络的比较</h5>
-<div class="figure">
-<img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh1e295ct6j31300kwdmq.jpg">
-
-</div>
+<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh1e295ct6j31300kwdmq.jpg"></p>
 <h4 id="消息传递机制重点">消息传递机制（重点）</h4>
 <p>当源结点和目的结点之间没有直接的连接时，消息需要经过中间的结点进行传递。寻径就是用来实现这种传递的通信方法和算法。有的称之为路由</p>
 <h4 id="路由选择和消息传递方法式">路由选择和消息传递方法式:</h4>
@@ -1008,7 +1026,7 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 </ul></li>
 <li>当两个包到达同一个结点时，可能都在请求同一个接收缓冲器或者同一个输出通道，这时必须对两个问题进行仲裁。</li>
 <li>4种解决方案
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>后一个包暂存(在缓冲区)<br>
 优点:不会浪费已经分配了的资源，但要求结点中有一个足够大的缓冲器来存放整个信息包。</li>
 <li>阻塞后一个包<br>
@@ -1019,7 +1037,7 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <ul>
 <li>有可能会造成严重的资源浪费，而且要求重新进行被丢弃包的传输与确认。</li>
 </ul>
-<ol start="4" style="list-style-type: decimal">
+<ol start="4" type="1">
 <li>后一个包绕道<br>
 在包寻径方面有更多的灵活性，但为了到达目的结点，可能要花费 较多的通道资源，造成浪费。</li>
 </ol></li>
@@ -1227,26 +1245,20 @@ MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1f
 <h5 id="矩阵加">矩阵加</h5>
 <h5 id="矩阵乘">矩阵乘</h5>
 <p>设A、B和C为3个8×8的二维矩阵。若给定A和B，则 C＝A*B的64个分量可利用下列公式计算。 <span class="math display">\[c_{ij} = \sum_{k=0}^{7}{a_{ik}b_{kj}}\]</span> <span class="math display">\[0 \leqslant i,j \leqslant 7\]</span></p>
-<p>FORTRAN 程序 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">DO 10 I＝0，7</div><div class="line">	DO 10 J＝0，7</div><div class="line">		C（I，J）＝0</div><div class="line">		DO 10 K＝0，7</div><div class="line">		10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</div></pre></td></tr></table></figure></p>
+<p>FORTRAN 程序 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DO 10 I＝0，7</span><br><span class="line">	DO 10 J＝0，7</span><br><span class="line">		C（I，J）＝0</span><br><span class="line">		DO 10 K＝0，7</span><br><span class="line">		10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>在SISD计算机上求解，三重循环，每重循环执行8次，共需512次乘加的时间</li>
 <li>在SIMD阵列处理机上求解这个问题<br>
-执行下列FORTRAN程序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">DO 10 I＝0，7</div><div class="line">	C（I，J）＝0</div><div class="line">    DO 10 K＝0，7</div><div class="line">    10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</div></pre></td></tr></table></figure></li>
+执行下列FORTRAN程序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DO 10 I＝0，7</span><br><span class="line">	C（I，J）＝0</span><br><span class="line">    DO 10 K＝0，7</span><br><span class="line">    10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>速度提高到原来的8倍，即每个处理单元的计算时间缩短为64次乘加时间。</p>
-<div class="figure">
-<img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1s7p9bwzj30eo0um416.jpg">
-
-</div>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1s7p9bwzj30eo0um416.jpg"></p>
 <h4 id="递归折叠求和算法">递归折叠求和算法</h4>
 <p>一个将N个数的顺序相加转变为并行相加的问题。</p>
 <p>取N＝8。即有8个数A（I）要顺序累加（0≤I≤7）<br>
 这是一个串行程序，共要进行8次加法。</p>
 <p>在阵列处理机上采用成对递归相加的算法，则只需 <span class="math inline">\(log_28＝3\)</span> 次加法 。</p>
-<div class="figure">
-<img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1rz5ro8jj30vu0leadn.jpg">
-
-</div>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1rz5ro8jj30vu0leadn.jpg"></p>
 <h4 id="实例-4">实例</h4>
 <p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong><br>
 答:N为极其的处理单元(PE)数；<br>
@@ -1271,53 +1283,26 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
 这道题，推算体号地址公式的知识点不在我们书上，理论上，我们应该只能一个个尝试填表。</p>
 <p>**例1．试分别在下面两种计算机系统上用最短的时间来计算表达式s=A1<em>B1+A2</em>B2+…A32*B32。假设加法和乘法分别需要两个和四个单位时间，从存储器取指令、取数据、译码的时间忽略不计，所有的指令和数据已装入有关的PE。试确定下列每种情况的最小计算时间：<strong>（重点，必考） 1. </strong>一台SISD串行计算机。<strong> 2. </strong>一台有8个PE的SIMD计算机，8个PE用移数函数PM2I连接。每个PE用一个单位时间可以把数据直接送给它的相邻PE。操作数Ai和Bi最初存放在PEi mod 8中，其中i=1，2，…，32。每个PE可在不同时刻执行加法或乘法**</p>
 <p>答: 1. 在SISD计算机中,需要32次乘法和31次加法。 共需要时间：T=4<em>32+2</em>31=190单位时间</p>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>在SIMD计算机上计算的算法： 假定向量中的32对元素平均地分配到8个处理器中，每个处理器分配4对，则每个处理器计算时间为 4<em>4+3</em>2<br>
 总时间 =每个处理器计算时间+递归折叠求和算法 T=4<em>4+3</em>2+1+2+1+2+1+2=31</li>
 </ol>
-<div class="figure">
-<img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1sdwejxzj30lm07it9c.jpg">
-
-</div>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1sdwejxzj30lm07it9c.jpg"></p>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      Sean10
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="http://sean10.github.io/2017/06/28/计算机系统结构复习note/" title="计算机系统结构复习note">http://sean10.github.io/2017/06/28/计算机系统结构复习note/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -1357,6 +1342,10 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1376,18 +1365,18 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
           <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+
+  
+
 
 
         </div>
@@ -1403,81 +1392,48 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -1490,7 +1446,7 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器虚拟机器透明性编译解释"><span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构组织和实现"><span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-text">大概率事件优先原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-text">第三章 流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的概念"><span class="nav-text">流水线的概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单功能与多功能流水线"><span class="nav-text">单功能与多功能流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线只能完成一种固定功能的流水线"><span class="nav-text">单功能流水线：只能完成一种固定功能的流水线。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多功能流水线流水线的各段可以进行不同的连接以实现不同的功能"><span class="nav-text">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线表示方法时空图-连接图"><span class="nav-text">流水线表示方法–时空图 、连接图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线特点五段流水线访存部件me-转移ex"><span class="nav-text">流水线特点：五段流水线（访存部件ME, 转移EX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能指标-吞吐率加速比效率-最佳段数"><span class="nav-text">性能指标 ： 吞吐率、加速比、效率、 最佳段数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线相关与冲突及解决办法"><span class="nav-text">流水线相关与冲突及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据冲突解决办法"><span class="nav-text">数据冲突解决办法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制冲突解决办法"><span class="nav-text">控制冲突解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果mflop或一个浮点运算的时间"><span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间复习课件中未作为重点"><span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-r_infty"><span class="nav-text">向量流水线的最大性能 \(R_{\infty}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n_frac12"><span class="nav-text">半性能向量长度 \(n_{\frac{1}{2}}\)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n_v同样不是重点"><span class="nav-text">长度向量临界值 \(n_v\)(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行度ilp"><span class="nav-text">指令级并行度ILP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发ilp的方法可以分为两大类"><span class="nav-text">开发ILP的方法可以分为两大类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记分牌scoreboard算法"><span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tomasulo算法"><span class="nav-text">Tomasulo算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-text">相关与流水线冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理想流水线的cpi加上各类停顿的时钟周期数"><span class="nav-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-text">动态分支预测技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超标量处理机"><span class="nav-text">超标量处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超流水线处理机"><span class="nav-text">超流水线处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超长指令字vliw处理机"><span class="nav-text">超长指令字（VLIW)处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术-1"><span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#互连网络相关概念"><span class="nav-text">互连网络相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大要素互连结构开关元件控制方式"><span class="nav-text">三大要素：互连结构、开关元件、控制方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联函数"><span class="nav-text">互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本互联函数"><span class="nav-text">基本互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#恒等函数"><span class="nav-text">恒等函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交换函数"><span class="nav-text">交换函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#均匀洗牌函数"><span class="nav-text">均匀洗牌函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#蝶式函数"><span class="nav-text">蝶式函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反位序函数"><span class="nav-text">反位序函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#移数函数"><span class="nav-text">移数函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#pm2i移数函数重点"><span class="nav-text">PM2I移数函数(重点)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的结构参数"><span class="nav-text">互联网络的结构参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的性能指标"><span class="nav-text">互联网络的性能指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络"><span class="nav-text">互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络"><span class="nav-text">动态互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总线网络"><span class="nav-text">总线网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交叉开关网络"><span class="nav-text">交叉开关网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级互联网络的构成"><span class="nav-text">多级互联网络的构成</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级立方体网络"><span class="nav-text">多级立方体网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#omega网络"><span class="nav-text">Omega网络</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络的比较"><span class="nav-text">动态互联网络的比较</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息传递机制重点"><span class="nav-text">消息传递机制（重点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由选择和消息传递方法式"><span class="nav-text">路由选择和消息传递方法式:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁与虚拟通道"><span class="nav-text">死锁与虚拟通道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流量控制策略"><span class="nav-text">流量控制策略</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#包冲突的解决"><span class="nav-text">包冲突的解决</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#确定性寻径和自适应寻径"><span class="nav-text">确定性寻径和自适应寻径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通信模式"><span class="nav-text">通信模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-3"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-text">第十章 多处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机概念"><span class="nav-text">多处理机概念:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mimd计算机的特点分类"><span class="nav-text">MIMD计算机的特点、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#flynn分类法"><span class="nav-text">Flynn分类法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#mimd已成为通用多处理机系统结构的选择原因"><span class="nav-text">MIMD已成为通用多处理机系统结构的选择，原因：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#根据存储器的组织结构-把现有的mimd机器分为两类"><span class="nav-text">根据存储器的组织结构 ，把现有的MIMD机器分为两类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机一致性问题"><span class="nav-text">多处理机一致性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cache的一致性问题和原因"><span class="nav-text">Cache的一致性问题和原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储器的一致性"><span class="nav-text">存储器的一致性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现一致性的基本方案"><span class="nav-text">实现一致性的基本方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cache一致性协议"><span class="nav-text">Cache一致性协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用两种方法来解决cache一致性问题"><span class="nav-text">采用两种方法来解决Cache一致性问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监听协议的实现"><span class="nav-text">监听协议的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的基本思想"><span class="nav-text">目录协议的基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的三种结构"><span class="nav-text">目录协议的三种结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机分类"><span class="nav-text">多处理机分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按多处理机之间物理连接的紧密程度与交互作用能力强弱"><span class="nav-text">按多处理机之间物理连接的紧密程度与交互作用能力强弱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按处理机结构"><span class="nav-text">按处理机结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按系统组成结构"><span class="nav-text">按系统组成结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按存储器组织结构"><span class="nav-text">按存储器组织结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-text">第十三章 阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机"><span class="nav-text">阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阵列处理机的操作模型可用五元组表示"><span class="nav-text">阵列处理机的操作模型可用五元组表示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机的结构"><span class="nav-text">阵列处理机的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#simd机与并行算法的关系"><span class="nav-text">SIMD机与并行算法的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解有限差分方程需要知道大致含义"><span class="nav-text">解有限差分方程（需要知道大致含义）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵加"><span class="nav-text">矩阵加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵乘"><span class="nav-text">矩阵乘</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归折叠求和算法"><span class="nav-text">递归折叠求和算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-4"><span class="nav-text">实例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-number">1.</span> <span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器虚拟机器透明性编译解释"><span class="nav-number">1.1.2.</span> <span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构组织和实现"><span class="nav-number">1.1.3.</span> <span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-number">1.1.4.</span> <span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-number">1.2.</span> <span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-number">1.2.1.</span> <span class="nav-text">大概率事件优先原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-number">1.3.</span> <span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.4.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-number">2.</span> <span class="nav-text">第三章 流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的概念"><span class="nav-number">2.1.</span> <span class="nav-text">流水线的概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单功能与多功能流水线"><span class="nav-number">2.1.1.</span> <span class="nav-text">单功能与多功能流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线只能完成一种固定功能的流水线"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">单功能流水线：只能完成一种固定功能的流水线。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多功能流水线流水线的各段可以进行不同的连接以实现不同的功能"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线表示方法时空图-连接图"><span class="nav-number">2.2.</span> <span class="nav-text">流水线表示方法–时空图 、连接图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线特点五段流水线访存部件me-转移ex"><span class="nav-number">2.3.</span> <span class="nav-text">流水线特点：五段流水线（访存部件ME, 转移EX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能指标-吞吐率加速比效率-最佳段数"><span class="nav-number">2.4.</span> <span class="nav-text">性能指标 ： 吞吐率、加速比、效率、 最佳段数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线相关与冲突及解决办法"><span class="nav-number">2.5.</span> <span class="nav-text">流水线相关与冲突及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据冲突解决办法"><span class="nav-number">2.5.1.</span> <span class="nav-text">数据冲突解决办法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制冲突解决办法"><span class="nav-number">2.5.2.</span> <span class="nav-text">控制冲突解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-number">3.</span> <span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-number">3.1.</span> <span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-number">3.2.</span> <span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-number">3.3.</span> <span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-number">3.4.</span> <span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-number">3.4.1.</span> <span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果mflop或一个浮点运算的时间"><span class="nav-number">3.4.2.</span> <span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-number">3.4.3.</span> <span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间复习课件中未作为重点"><span class="nav-number">3.4.4.</span> <span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-r_infty"><span class="nav-number">3.4.5.</span> <span class="nav-text">向量流水线的最大性能 \(R_{\infty}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n_frac12"><span class="nav-number">3.4.6.</span> <span class="nav-text">半性能向量长度 \(n_{\frac{1}{2}}\)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n_v同样不是重点"><span class="nav-number">3.4.7.</span> <span class="nav-text">长度向量临界值 \(n_v\)(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-number">3.5.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-number">4.</span> <span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行度ilp"><span class="nav-number">4.1.</span> <span class="nav-text">指令级并行度ILP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发ilp的方法可以分为两大类"><span class="nav-number">4.2.</span> <span class="nav-text">开发ILP的方法可以分为两大类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记分牌scoreboard算法"><span class="nav-number">4.2.1.</span> <span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tomasulo算法"><span class="nav-number">4.2.2.</span> <span class="nav-text">Tomasulo算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-number">4.3.</span> <span class="nav-text">相关与流水线冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理想流水线的cpi加上各类停顿的时钟周期数"><span class="nav-number">4.4.</span> <span class="nav-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-number">4.5.</span> <span class="nav-text">动态分支预测技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超标量处理机"><span class="nav-number">4.6.</span> <span class="nav-text">超标量处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超流水线处理机"><span class="nav-number">4.7.</span> <span class="nav-text">超流水线处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超长指令字vliw处理机"><span class="nav-number">4.8.</span> <span class="nav-text">超长指令字（VLIW)处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-number">4.9.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术-1"><span class="nav-number">4.10.</span> <span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-number">5.</span> <span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#互连网络相关概念"><span class="nav-number">5.1.</span> <span class="nav-text">互连网络相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-number">5.1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大要素互连结构开关元件控制方式"><span class="nav-number">5.1.2.</span> <span class="nav-text">三大要素：互连结构、开关元件、控制方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-number">5.1.3.</span> <span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联函数"><span class="nav-number">5.2.</span> <span class="nav-text">互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本互联函数"><span class="nav-number">5.2.1.</span> <span class="nav-text">基本互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#恒等函数"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">恒等函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交换函数"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">交换函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#均匀洗牌函数"><span class="nav-number">5.2.1.3.</span> <span class="nav-text">均匀洗牌函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#蝶式函数"><span class="nav-number">5.2.1.4.</span> <span class="nav-text">蝶式函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反位序函数"><span class="nav-number">5.2.1.5.</span> <span class="nav-text">反位序函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#移数函数"><span class="nav-number">5.2.1.6.</span> <span class="nav-text">移数函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#pm2i移数函数重点"><span class="nav-number">5.2.1.7.</span> <span class="nav-text">PM2I移数函数(重点)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的结构参数"><span class="nav-number">5.3.</span> <span class="nav-text">互联网络的结构参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的性能指标"><span class="nav-number">5.4.</span> <span class="nav-text">互联网络的性能指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络"><span class="nav-number">5.5.</span> <span class="nav-text">互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络"><span class="nav-number">5.5.1.</span> <span class="nav-text">动态互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总线网络"><span class="nav-number">5.5.1.1.</span> <span class="nav-text">总线网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交叉开关网络"><span class="nav-number">5.5.1.2.</span> <span class="nav-text">交叉开关网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级互联网络的构成"><span class="nav-number">5.5.1.3.</span> <span class="nav-text">多级互联网络的构成</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级立方体网络"><span class="nav-number">5.5.1.4.</span> <span class="nav-text">多级立方体网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#omega网络"><span class="nav-number">5.5.1.5.</span> <span class="nav-text">Omega网络</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络的比较"><span class="nav-number">5.5.2.</span> <span class="nav-text">动态互联网络的比较</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息传递机制重点"><span class="nav-number">5.6.</span> <span class="nav-text">消息传递机制（重点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由选择和消息传递方法式"><span class="nav-number">5.7.</span> <span class="nav-text">路由选择和消息传递方法式:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁与虚拟通道"><span class="nav-number">5.7.1.</span> <span class="nav-text">死锁与虚拟通道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流量控制策略"><span class="nav-number">5.7.2.</span> <span class="nav-text">流量控制策略</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#包冲突的解决"><span class="nav-number">5.7.2.1.</span> <span class="nav-text">包冲突的解决</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#确定性寻径和自适应寻径"><span class="nav-number">5.7.2.2.</span> <span class="nav-text">确定性寻径和自适应寻径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通信模式"><span class="nav-number">5.7.3.</span> <span class="nav-text">通信模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-3"><span class="nav-number">5.8.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-number">6.</span> <span class="nav-text">第十章 多处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机概念"><span class="nav-number">6.1.</span> <span class="nav-text">多处理机概念:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mimd计算机的特点分类"><span class="nav-number">6.1.1.</span> <span class="nav-text">MIMD计算机的特点、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#flynn分类法"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">Flynn分类法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#mimd已成为通用多处理机系统结构的选择原因"><span class="nav-number">6.1.1.2.</span> <span class="nav-text">MIMD已成为通用多处理机系统结构的选择，原因：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#根据存储器的组织结构-把现有的mimd机器分为两类"><span class="nav-number">6.1.1.3.</span> <span class="nav-text">根据存储器的组织结构 ，把现有的MIMD机器分为两类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机一致性问题"><span class="nav-number">6.2.</span> <span class="nav-text">多处理机一致性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cache的一致性问题和原因"><span class="nav-number">6.2.1.</span> <span class="nav-text">Cache的一致性问题和原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储器的一致性"><span class="nav-number">6.2.2.</span> <span class="nav-text">存储器的一致性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现一致性的基本方案"><span class="nav-number">6.2.3.</span> <span class="nav-text">实现一致性的基本方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cache一致性协议"><span class="nav-number">6.2.4.</span> <span class="nav-text">Cache一致性协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用两种方法来解决cache一致性问题"><span class="nav-number">6.2.5.</span> <span class="nav-text">采用两种方法来解决Cache一致性问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监听协议的实现"><span class="nav-number">6.2.6.</span> <span class="nav-text">监听协议的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的基本思想"><span class="nav-number">6.2.7.</span> <span class="nav-text">目录协议的基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的三种结构"><span class="nav-number">6.2.8.</span> <span class="nav-text">目录协议的三种结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机分类"><span class="nav-number">6.3.</span> <span class="nav-text">多处理机分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按多处理机之间物理连接的紧密程度与交互作用能力强弱"><span class="nav-number">6.3.1.</span> <span class="nav-text">按多处理机之间物理连接的紧密程度与交互作用能力强弱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按处理机结构"><span class="nav-number">6.3.2.</span> <span class="nav-text">按处理机结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按系统组成结构"><span class="nav-number">6.3.3.</span> <span class="nav-text">按系统组成结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按存储器组织结构"><span class="nav-number">6.3.4.</span> <span class="nav-text">按存储器组织结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-number">7.</span> <span class="nav-text">第十三章 阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机"><span class="nav-number">7.1.</span> <span class="nav-text">阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阵列处理机的操作模型可用五元组表示"><span class="nav-number">7.1.1.</span> <span class="nav-text">阵列处理机的操作模型可用五元组表示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机的结构"><span class="nav-number">7.2.</span> <span class="nav-text">阵列处理机的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#simd机与并行算法的关系"><span class="nav-number">7.3.</span> <span class="nav-text">SIMD机与并行算法的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解有限差分方程需要知道大致含义"><span class="nav-number">7.3.1.</span> <span class="nav-text">解有限差分方程（需要知道大致含义）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵加"><span class="nav-number">7.3.2.</span> <span class="nav-text">矩阵加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵乘"><span class="nav-number">7.3.3.</span> <span class="nav-text">矩阵乘</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归折叠求和算法"><span class="nav-number">7.4.</span> <span class="nav-text">递归折叠求和算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-4"><span class="nav-number">7.5.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1510,30 +1466,41 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1544,6 +1511,8 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -1564,87 +1533,96 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://sean10.github.io/2017/06/28/计算机系统结构复习note/';
-          this.page.identifier = '2017/06/28/计算机系统结构复习note/';
-          this.page.title = '计算机系统结构复习note';
-        };
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sean10.github.io/2017/06/28/计算机系统结构复习note/';
+        this.page.identifier = '2017/06/28/计算机系统结构复习note/';
+        this.page.title = '计算机系统结构复习note';
+      };
+      function loadComments () {
         var d = document, s = d.createElement('script');
         s.src = 'https://seanrebn.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script>
-    
-
+      }
+      
+        loadComments();
+      
+    </script>
   
+
 
 
 
@@ -1661,8 +1639,6 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
 
 
 
-  
-
 
 
 
@@ -1679,7 +1655,7 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -1781,7 +1757,7 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -1790,28 +1766,13 @@ R为数据寻径功能机，说明互联网络中PE间通信所需要的各种�
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

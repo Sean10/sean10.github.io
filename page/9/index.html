@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,34 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="笔记 随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/page/9/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="笔记 随笔">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行路中.">
-<meta name="twitter:description" content="笔记 随笔">
+
+
+
 
 
 
@@ -110,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -128,14 +124,42 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="笔记 随笔">
+<meta name="keywords" content="Hexo, NexT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="行路中.">
+<meta property="og:url" content="http://sean10.github.io/page/9/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="笔记 随笔">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="行路中.">
+<meta name="twitter:description" content="笔记 随笔">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/page/9/"/>
 
 
 
-
-
-  <title>行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>行路中.</title>
   
 
 
@@ -146,10 +170,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -161,12 +207,11 @@
   
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -200,51 +245,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -256,9 +281,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -275,7 +306,202 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/05/栈——C语言模拟/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/05/栈——C语言模拟/" itemprop="url">栈——C语言模拟</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-05T13:37:00+08:00">2015-11-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/05/栈——C语言模拟/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/05/栈——C语言模拟/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/05/栈——C语言模拟/" class="leancloud_visitors" data-flag-title="栈——C语言模拟">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##栈——C语言模拟</p>
+<p><strong>一、定义</strong> 根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种_限制访问端口_的线性表。</p>
+<p>栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop).</p>
+<p>推入:将数据放入栈的顶端，top+1. 弹出:将顶端数据资料输出，top-1. 也就是所谓的先进后出(LIFO，Last In First Out).</p>
+<blockquote>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG" alt="stack"><figcaption>stack</figcaption>
+</figure>
+</blockquote>
+<p><strong>栈的存在价值</strong> 虽然说，栈实现的功能用数组和链表也可以实现，不过你不得不分神到考虑数组的下标增减、链表的指针指向等问题。</p>
+<p>引用原作者的例子，就像我们明明有两只脚可以走路，算上游泳，理论上可以去到全球任何一个地方，那么为什么我们还要有汽车、火车、飞机一样。在向未来的发展过程中，我们需要考虑的更多的是在在抵达目的地之后的发展，这个抵达的过程已经成了我们继续发展的拖累。这时，优化移动方式就成了必然，让我们得以关注结果之后。</p>
+<p>所以说，栈的引入简化了程序设计的问题，划分了不同关注层次，让人更聚焦于问题本身。比如C++，JAVA等的标准库都封装了栈的结构。</p>
+<p><strong>栈分为顺序栈和链式栈</strong> <strong>两者的差别在哪里呢？为什么要特别用两种方法模拟呢？</strong> 时间复杂度上，两者都没有任何其他的操作，均为O(1)； 而空间复杂度上，顺序栈只存储了数据和表头标记；而链式栈对每个数据都建立了一个节点，存储数据之外还存储了指向下一个节点的指针，空间较顺序栈多了一倍。</p>
+<p>所以顺序栈优点，空间占用小，存取定位还是比较方便的，在使用小空间的；而链式栈可以</p>
+<p><strong>以下是栈的抽象数据类型的定义：</strong> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ADT Stack&#123;</span><br><span class="line">    数据对象:D=&#123;ai|ai \in ElemSet,i = <span class="number">1</span>,<span class="number">2</span>,...,n, n &gt;= <span class="number">0</span>&#125;</span><br><span class="line">    数据关系:R1=&#123;&lt;a(i<span class="number">-1</span>),ai&gt;|a(i<span class="number">-1</span>),ai \in D, i = <span class="number">2</span>,..,n&#125;</span><br><span class="line">        约定an端为栈顶，ai端为栈底.</span><br><span class="line">    基本操作:</span><br><span class="line">        InitStack(&amp;S)</span><br><span class="line">        操作结果:构造一个空栈S</span><br><span class="line"></span><br><span class="line">        Destroy(&amp;S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:栈S被销毁。</span><br><span class="line"></span><br><span class="line">        ClearStack(&amp;S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:将S清为空栈。</span><br><span class="line"></span><br><span class="line">        StackEmpty(S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:若栈S为空栈，则返回TRUE，否则FALSE。</span><br><span class="line"></span><br><span class="line">        StackLength(S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:返回S的元素个数，即栈的长度。</span><br><span class="line"></span><br><span class="line">        GetTop(S,&amp;e)</span><br><span class="line">        初始条件:栈S已存在且非空。</span><br><span class="line">        操作结果:用e返回S的栈顶元素。</span><br><span class="line"></span><br><span class="line">        Push(&amp;S,e)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:插入元素e为新的栈顶指针。</span><br><span class="line"></span><br><span class="line">        Pop(&amp;S,&amp;e)</span><br><span class="line">        初始条件:栈S已存在且非空。</span><br><span class="line">        操作结果:删除S的栈顶元素，并用e返回其值。</span><br><span class="line"></span><br><span class="line">        StackTraverse(S,visit())</span><br><span class="line">        初始条件:栈S已存在且非空。</span><br><span class="line">        操作结果:从栈底到栈顶依次对S的每个数据元素调用函数visit()。一旦visit()失败，则操作失效。</span><br><span class="line">&#125;ADT Stack</span><br></pre></td></tr></table></figure></p>
+<p><strong>二、顺序栈</strong></p>
+<p>定义： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">    SElemType *base;</span><br><span class="line">    SElemType *top;</span><br><span class="line">    int stacksize;</span><br><span class="line">&#125;SqStack;</span><br></pre></td></tr></table></figure></p>
+<p>接下来是顺序栈的模块说明 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#define STACK_INIT_SIZE 100 //存储空间初始分配量</span><br><span class="line">#define STACKINCREMENT 10   //存储空间分配增量</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line">#define OVERFLOW -1</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">    SElemType *base;    //在栈构造之前和压栈之后，base的值为NULL</span><br><span class="line">    SElemType *top;     //栈顶指针，指向栈顶的下一个位置</span><br><span class="line">    int stacksize;      //当前已分配的存储空间，以元素为单位</span><br><span class="line">&#125;SqStack;</span><br><span class="line">//------基本操作的函数原型说明------</span><br><span class="line">Status InitStack(SqStack &amp;S);</span><br><span class="line">//构造一个空栈S</span><br><span class="line"></span><br><span class="line">Status DestroyStack(SqStack &amp;S);</span><br><span class="line">//销毁栈S，S不再存在</span><br><span class="line"></span><br><span class="line">Status ClearStack(SqStack &amp;S);</span><br><span class="line">//把S置为空栈</span><br><span class="line"></span><br><span class="line">Status StackEmpty(SqStack S);</span><br><span class="line">//若栈S为空栈，则返回TRUE,否则返回FALSE</span><br><span class="line"></span><br><span class="line">int StackLength(SqStack S);</span><br><span class="line">//返回S的元素个数，即栈的长度</span><br><span class="line"></span><br><span class="line">Status GetTop(SqStack S,SElemType &amp;e);</span><br><span class="line">//若栈不空，则用e返回S的栈顶元素，并返回OK；否则返回ERROR</span><br><span class="line"></span><br><span class="line">Status Push(SqStack &amp;S,SElemType e);</span><br><span class="line">//插入元素e为新的栈顶元素</span><br><span class="line"></span><br><span class="line">Status Pop(SqStack &amp;S,SElemType &amp;e);</span><br><span class="line">//若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR</span><br><span class="line"></span><br><span class="line">Status StackTraverse(SqStack S,Stack (*visit()));</span><br><span class="line">//从栈底到栈顶一次对栈中每个元素调用函数visit().一旦visit()失败，则操作失败</span><br><span class="line"></span><br><span class="line">/***************基本操作的算法描述**********/</span><br><span class="line">Status InitStack(SqStack &amp;S)&#123;</span><br><span class="line">    //构造一个空栈</span><br><span class="line">    S.base = (SElemType *)malloc(STACK_INIT_SIZE * sizeof(SElemType));</span><br><span class="line">    if(!S.base) exit(OVERFLOW);</span><br><span class="line">    S.top = S.base;</span><br><span class="line">    S.stacksize = STACK_INIT_SIZE;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//InitStack</span><br><span class="line"></span><br><span class="line">Status GetTop(SqStack S, SElemType &amp;e)&#123;</span><br><span class="line">//若站不空，则用e返回S的栈顶元素，并返回OK；否则返回ERROR</span><br><span class="line">    if(S.top == S.base) return ERROR;</span><br><span class="line">    e = *(S.top-1);</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//GetTop</span><br><span class="line"></span><br><span class="line">Status Push(SqStack &amp;S,SElemType e)&#123;</span><br><span class="line">//插入元素e为新的栈顶元素</span><br><span class="line">    if(S.top-S.base &gt;= S.stacksize)&#123;</span><br><span class="line">        //栈满，追加存储空间</span><br><span class="line">        S.base=(SElemType *)realloc(S.base,(S.stacksize+STACKINCREMENT)*sizeof(SElemType));</span><br><span class="line">        if(!S.base) exit(OVERFLOW);//存储分配失败</span><br><span class="line">        S.top=S.base+S.stacksize;</span><br><span class="line">        S.stacksize+=STACKINCREMENT;</span><br><span class="line">    &#125;</span><br><span class="line">    *S.top++ = e;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//push_back</span><br><span class="line"></span><br><span class="line">Status Pop(SqStack &amp;S,SElemType &amp;e)&#123;</span><br><span class="line">//若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK，否则返回ERROR</span><br><span class="line">    if(S.top == S.base) return ERROR;</span><br><span class="line">    e = * --S.top;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//pop</span><br></pre></td></tr></table></figure></p>
+<p>顺序栈是为栈预先分配一个大小固定且较合适的空间，最常见的做法是Stack结构中含一个数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> top;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以下是数组实现的各函数代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACK_POP_ERR 42</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> stack struct Stack;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val[<span class="number">10</span>]; </span><br><span class="line">  	<span class="keyword">int</span> top; <span class="comment">//栈顶</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 检查栈是否为空 */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">empty</span><span class="params">(<span class="built_in">stack</span> *stk)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> stk-&gt;top == <span class="number">0</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 推入资料 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="built_in">stack</span> *stk, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	stk-&gt;top=stk-&gt;top+<span class="number">1</span>;</span><br><span class="line">	stk-&gt;val[stk-&gt;top]=x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 弹出并返回资料 */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(<span class="built_in">stack</span> *stk)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(empty(stk)) </span><br><span class="line">		<span class="keyword">return</span> STACK_POP_ERR; <span class="comment">// 不能弹出</span></span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		stk-&gt;top=stk-&gt;top<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">return</span> stk-&gt;val[stk-&gt;top+<span class="number">1</span>];<span class="comment">//这里使用了复用技术</span></span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// 宣告并初始化空间</span></span><br><span class="line">	<span class="built_in">stack</span> stk;</span><br><span class="line">	stk.top=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 推入四个</span></span><br><span class="line">	push(&amp;stk, <span class="number">3</span>);</span><br><span class="line">	push(&amp;stk, <span class="number">4</span>);</span><br><span class="line">	push(&amp;stk, <span class="number">1</span>);</span><br><span class="line">	push(&amp;stk, <span class="number">9</span>);</span><br><span class="line">	<span class="comment">// 弹出三个</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>三、链式栈</strong> 链式栈是定义一个结构体，去掉表头（表头是指一个空节点只带有一个指向存储栈顶数据的空间的指针，即首节点就开始存储数据）</p>
+<p>链式栈这里我用二进制转八进制的程序来说明 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct node* nextPtr;</span><br><span class="line">&#125;Stack,*LinkStack;</span><br><span class="line"></span><br><span class="line">int StackDel(LinkStack &amp;s)&#123;</span><br><span class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</span><br><span class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</span><br><span class="line">	s = s-&gt;nextPtr;//</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int pop(LinkStack &amp;s)&#123;</span><br><span class="line">	int e;</span><br><span class="line">	if (NULL == s)</span><br><span class="line">		return ERROR;</span><br><span class="line">	e = s-&gt;data;//存储从栈中取出的值</span><br><span class="line">	StackDel(s);//删除已取出的栈的空间</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;s, int e)&#123;</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</span><br><span class="line">	if (!p)&#123;</span><br><span class="line">		printf(&quot;Error calloc_push&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</span><br><span class="line">	s = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void transform(LinkStack &amp;s)&#123;</span><br><span class="line">	int e, temp = 0, pow = 1;</span><br><span class="line">	while (NULL != s)&#123;//直到栈空</span><br><span class="line">		e = pop(s);</span><br><span class="line">		temp += e*pow;//进行二进制转十进制的计算</span><br><span class="line">		pow *= 2;//进行位权的累乘</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;The octonary answer is:(&quot;);</span><br><span class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</span><br><span class="line">	printf(&quot;)8\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;s)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the binary string:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</span><br><span class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	LinkStack s = NULL;//栈的头结点指针</span><br><span class="line">	input(s);</span><br><span class="line">	transform(s);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>四、栈的应用 1.表达式求值 2.由递归到非递归 3.深度优先搜索(bfs)</p>
+<p>参考资料： [1].kelinlin.<a href="http://www.lai18.com/content/423601.html" target="_blank" rel="noopener">为什么要使用栈这种数据结构.</a> [2][Wikipedia Definition.](https://zh.wikipedia.org/zh/%E5%A0%86%E6%A0%88) [3]《数据结构》，严蔚敏</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/04/读《弗洛伊德：作家与白日梦》/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,13 +531,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-04T18:31:00+08:00">
-                2015-11-04
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-04T18:31:00+08:00">2015-11-04</time>
             
 
+            
             
 
             
@@ -326,14 +551,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -364,7 +585,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -380,6 +601,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -388,7 +612,7 @@
       
         
           
-            <h2 id="读弗洛伊德作家与白日梦">读《弗洛伊德：作家与白日梦》</h2>
+            <p>##读《弗洛伊德：作家与白日梦》</p>
 <p>在弗洛伊德的这篇论文中，我的理解的含义是作家的作品便是他们的幻想的一种表达，只是借小说等形式展露而不必为让其他人窥探自己的内心自我而感到害羞。在弗洛伊德看来，这种白日梦依旧是符合他对梦的解析的，这里的幻想就如同孩童时期的梦，只是通过外加刺激唤醒了孩童时期的记忆。</p>
 <p>到文章最后，弗洛伊德将话题延伸至了对自我的分析，主体由第三者的作家转向了小说的读者——我们自己。他对于读者对小说的满足感的分析还只是处于找到方向、尚未完全深入的状态。至此，他提出了几种可能性。</p>
 <blockquote>
@@ -469,17 +693,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -493,6 +717,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -505,7 +733,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/04/《爱的艺术》爱的误解——对象，状态/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -535,13 +769,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-04T11:04:00+08:00">
-                2015-11-04
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-04T11:04:00+08:00">2015-11-04</time>
             
 
+            
             
 
             
@@ -556,14 +789,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -594,7 +823,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -610,6 +839,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -650,17 +882,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -674,6 +906,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -686,7 +922,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/03/商半群的计算总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -716,13 +958,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-03T20:06:00+08:00">
-                2015-11-03
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-03T20:06:00+08:00">2015-11-03</time>
             
 
+            
             
 
             
@@ -737,14 +978,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -775,7 +1012,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -791,6 +1028,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -799,77 +1039,67 @@
       
         
           
-            <h2 id="商半群的计算总结">商半群的计算总结</h2>
+            <p>##商半群的计算总结</p>
 <p>看商半群的题看了好久，一直没看懂几个条件是什么意思，重头翻书，总算找到一些思路，是自己的基础没学好的缘故。</p>
 <p>以下来分享以下我的计算方式，因为没有找到答案，我也不好说一定对。</p>
 <p>首先，必须要明白商集的相关基础知识。 &gt;<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition1.PNG" alt="huafen"></p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_explore1.PNG" alt="huafen2">
-<p class="caption">huafen2</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_explore1.PNG" alt="huafen2"><figcaption>huafen2</figcaption>
+</figure>
 </blockquote>
 <p>A的商集就是对集合A进行一个划分，所有划分的子集之间交集为空集，同时并集又为A。</p>
 <p>看下图就能理解他是如何划分的了</p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example1.PNG" alt="example1">
-<p class="caption">example1</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example1.PNG" alt="example1"><figcaption>example1</figcaption>
+</figure>
 </blockquote>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition2.PNG" alt="dingli1">
-<p class="caption">dingli1</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition2.PNG" alt="dingli1"><figcaption>dingli1</figcaption>
+</figure>
 </blockquote>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition3.PNG" alt="explore">
-<p class="caption">explore</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition3.PNG" alt="explore"><figcaption>explore</figcaption>
+</figure>
 </blockquote>
 <p>这两段讲的很清楚。</p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition4.png" alt="dingli2">
-<p class="caption">dingli2</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition4.png" alt="dingli2"><figcaption>dingli2</figcaption>
+</figure>
 </blockquote>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example2.png" alt="example2">
-<p class="caption">example2</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example2.png" alt="example2"><figcaption>example2</figcaption>
+</figure>
 </blockquote>
 <p>根据这个例子，我们理解了得到的集合的等价关系应该怎么写出来。 依据划分的块进行相关元素的全排列。</p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example3.PNG" alt="explore2">
-<p class="caption">explore2</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example3.PNG" alt="explore2"><figcaption>explore2</figcaption>
+</figure>
 </blockquote>
 <p>这个例子告诉了我们商集通过等价类应该如何表达。 &gt;<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_conten.PNG" alt="example2"></p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example4.PNG" alt="example3">
-<p class="caption">example3</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example4.PNG" alt="example3"><figcaption>example3</figcaption>
+</figure>
 </blockquote>
 <p>接下来回到群的内容</p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_group.PNG" alt="definition3">
-<p class="caption">definition3</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_group.PNG" alt="definition3"><figcaption>definition3</figcaption>
+</figure>
 </blockquote>
 <p>这一段的(a)给了我们进行商半群的运算表的计算的条件。 等价类的二元运算就是先计算方括号内的，得到的等价类就是所求等价类</p>
 <p>让我们来看一道题</p>
 <blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_question1.PNG" alt="question">
-<p class="caption">question</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_question1.PNG" alt="question"><figcaption>question</figcaption>
+</figure>
 </blockquote>
 <p>在这里我们只做a题，b题暂时不涉及</p>
 <p>我的答案是以下 &gt;<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capturexx.PNG" alt="ans"></p>
@@ -880,17 +1110,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -904,6 +1134,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -916,7 +1150,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/01/论勇气/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -946,13 +1186,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-01T21:50:00+08:00">
-                2015-11-01
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-01T21:50:00+08:00">2015-11-01</time>
             
 
+            
             
 
             
@@ -967,14 +1206,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1005,7 +1240,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1021,6 +1256,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1050,17 +1288,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1074,6 +1312,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1086,7 +1328,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/01/《爱的艺术》爱是艺术吗？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1116,13 +1364,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-01T00:00:00+08:00">
-                2015-11-01
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-01T00:00:00+08:00">2015-11-01</time>
             
 
+            
             
 
             
@@ -1137,14 +1384,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1175,7 +1418,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1191,6 +1434,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1198,12 +1444,12 @@
 
       
         
-          <h2 id="爱的艺术爱是艺术吗">《爱的艺术》爱是艺术吗？</h2>
+          <p>##《爱的艺术》爱是艺术吗？</p>
 <p>上一次翻开这本书还是2年前了，是它引领了我进入哲学的世界，不知现在再翻开能不能有新的理解。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/11/01/《爱的艺术》爱是艺术吗？/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1211,17 +1457,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1235,6 +1481,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1247,7 +1497,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1277,13 +1533,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-29T21:22:00+08:00">
-                2015-10-29
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-29T21:22:00+08:00">2015-10-29</time>
             
 
+            
             
 
             
@@ -1298,14 +1553,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1336,7 +1587,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1352,6 +1603,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1419,10 +1673,9 @@
 </blockquote>
 <p><strong>Chapter 9.3 representing relations</strong> Representing relations using Matrices</p>
 <p>A relation between finite sets can be represented using a zero–one matrix. Suppose that R is a relation from A = {a1, a2, . . . , am} to B = {b1, b2, . . . , bn}. (Here the elements of the sets A and B have been listed in a particular, but arbitrary, order. Furthermore, when A = B we use the same ordering for A and B.) The relation R can be represented by the matrix MR = [mij], where m(ij)={1 if(ai,bj)R,0 if(ai,bj)R}.</p>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_figure2.png" alt="matrix">
-<p class="caption">matrix</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_figure2.png" alt="matrix"><figcaption>matrix</figcaption>
+</figure>
 <p>Representing relations using Digraphs</p>
 <p>We have shown that a relation can be represented by listing all of its ordered pairs or by using a zero–one matrix. There is another important way of representing a relation using a pictorial representation. Each element of the set is represented by a point, and each ordered pair is represented using an arc with its direction indicated by an arrow. We use such pictorial representations when we think of relations on a finite set as <strong>directed graphs</strong>, or <strong>digraphs.</strong></p>
 <blockquote>
@@ -1450,10 +1703,9 @@
 <blockquote>
 <p><strong>Lemma2.</strong> <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture2.PNG"></p>
 </blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_algorithm.png" alt="algorithm">
-<p class="caption">algorithm</p>
-</div>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_algorithm.png" alt="algorithm"><figcaption>algorithm</figcaption>
+</figure>
 <p><strong>Chapter9.5 Equivalence Relations</strong></p>
 <blockquote>
 <p><strong>Definition1.</strong> A relation on a set A is called an <em>equivalence relation</em> if it is reflexive, symmetric, and transitive.</p>
@@ -1475,10 +1727,7 @@
 <blockquote>
 <p>a partition of a set S is a collection of disjoint nonempty subsets of S that have S as their union. In other words, the collection of subsets Ai, i ∈ I (where I is an index set) forms a partition of S if and only if Ai != 0 for i ∈ I, Ai ∩ Aj = 0 when i != j, and <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_1.png" alt="c"></p>
 </blockquote>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_2.png">
-
-</div>
+<p><img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_2.png"></p>
 <blockquote>
 <p><strong>Supplement</strong> A partition P1 is called a refinement of the partition P2 if every set in P1 is a subset of one of the sets in P2.</p>
 </blockquote>
@@ -1505,17 +1754,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1529,6 +1778,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1541,7 +1794,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/25/《龙珠之复活的F》休闲的龙珠/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1571,13 +1830,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-25T20:14:00+08:00">
-                2015-10-25
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-25T20:14:00+08:00">2015-10-25</time>
             
 
+            
             
 
             
@@ -1592,14 +1850,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1630,7 +1884,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1646,6 +1900,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1657,7 +1914,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/10/25/《龙珠之复活的F》休闲的龙珠/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1665,17 +1922,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1689,6 +1946,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1701,7 +1962,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1731,13 +1998,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-24T20:01:00+08:00">
-                2015-10-24
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-24T20:01:00+08:00">2015-10-24</time>
             
 
+            
             
 
             
@@ -1752,14 +2018,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1790,7 +2052,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1806,6 +2068,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1817,8 +2082,8 @@
             <p>这两天在学校计划装个linux以后用来写代码，windows下面就专心玩好了。 本来搜了下经验，以为很轻松（虽然事实上知道怎么弄，不出错就确实很轻松啦）。然后，就那么把原来的win7系统不自觉的全格了，直到花了1天半的时间之后，搜linux下怎么看不到win7的硬盘搜不到结果，忽然点开linux下的computer的property看了下之后，发现原本一直以为的linux只是在隔出来的50G下玩的，事实上是500G。 然后，明白了，数据全没了。（虽然已经备份，但是对于一些下载的计划看的资料丢了，也是比较难很快接受）。 OK，知道现在电脑里什么都没了以后，轻松了/</p>
 <p>因为觉得在Linux下装win7，事后的引导什么的可能会很麻烦，就依旧先刻个win7的U盘，在win7安装之后安装ubuntu。 这里的win7是从msdn里下载的应该说是最纯净的win7，因为连个网卡驱动都没有，还好周边有一台老式机，下载了一个拷过来才用上的网络。 接下来就是唯一导致这次安装错误的幕后黑手。</p>
 <p>windows下准备好ultraiso刻录好的ubuntu的U盘。 开机进入选择启动（lenovo是F12进入，我电脑已经设置为Legacybios，所以不太了解win8双系统uefi该怎么设置） 进入ubuntu安装界面以后，之前都按continue就可以，到分区前一步，如果显示出已检测到win7系统，那么就说明你硬盘格式和标识都是正确的，下一步也就不会出现下一步不显示win7已经分好的磁盘的问题了。</p>
-如果没有显示检测出win7，现在按照我查的资料来理解。 安装win7的时候是MBR分区模式，安装ubuntu时，自动识别为GPT分区模式，执行以下命令就可以让Ubuntu以MBR执行。 在试用版里输入一下命令即可
-<pre class="brush:bash" ;="">sudo dd if=/dev/zero of=/dev/sda bs=1 count=8 seek=512</pre>
+如果没有显示检测出win7，现在按照我查的资料来理解。 安装win7的时候是MBR分区模式，安装ubuntu时，自动识别为GPT分区模式，执行以下命令就可以让Ubuntu以MBR执行。 在试用版里输入一下命令即可 &lt;pre class=“brush:bash”;&gt;sudo dd if=/dev/zero of=/dev/sda bs=1 count=8 seek=512
+
 <p>这会抹去 Primary GPT header 里的 GPT signature。请不要输错任何一个字，包括空格。 有其他人说也可以在bios设置里设置Legacyonly.我电脑没有这个选项，不确定在什么上有那个。 以上。</p>
 
           
@@ -1826,17 +2091,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1850,6 +2115,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1862,7 +2131,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/24/Ubuntu下安装xampp总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1892,13 +2167,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-24T19:59:00+08:00">
-                2015-10-24
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-24T19:59:00+08:00">2015-10-24</time>
             
 
+            
             
 
             
@@ -1913,14 +2187,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1951,7 +2221,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1967,6 +2237,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1976,12 +2249,12 @@
         
           
             <p>初用linux，对于指令还不太熟悉，在安装xampp过程中，一部分情况和其他教程不太符合，摸索着弄了一下。</p>
-在一开始没有用wget下载，在图形界面下下载的。 然后移动入opt文件夹，这里一开始始终弄不到管理员权限，不安装其他软件的情况下好像图形界面下取得不到管理员权限。 我用的是
-<pre class="brush:bash" ;="">然后用cd进入该文件夹</pre>
-对文件权限设置可执行
-<pre class="brush:bash" ;="">chmod +x 文件名</pre>
-然后启动文件
-<pre class="brush:bash" ;="">./opt/文件名  </pre>
+在一开始没有用wget下载，在图形界面下下载的。 然后移动入opt文件夹，这里一开始始终弄不到管理员权限，不安装其他软件的情况下好像图形界面下取得不到管理员权限。 我用的是 &lt;pre class=“brush:bash”;&gt;然后用cd进入该文件夹
+
+对文件权限设置可执行 &lt;pre class=“brush:bash”;&gt;chmod +x 文件名
+
+然后启动文件 &lt;pre class=“brush:bash”;&gt;./opt/文件名
+
 <p>即可</p>
 
           
@@ -1989,17 +2262,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2013,163 +2286,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/24/F-lux——自动调整屏幕亮度与颜色，降低蓝光/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/24/F-lux——自动调整屏幕亮度与颜色，降低蓝光/" itemprop="url">F.lux——自动调整屏幕亮度与颜色，降低蓝光</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-24T19:48:00+08:00">
-                2015-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/24/F-lux——自动调整屏幕亮度与颜色，降低蓝光/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/24/F-lux——自动调整屏幕亮度与颜色，降低蓝光/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/10/24/F-lux——自动调整屏幕亮度与颜色，降低蓝光/" class="leancloud_visitors" data-flag-title="F.lux——自动调整屏幕亮度与颜色，降低蓝光">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>看电脑看的比较多，眼睛很容易干涩，这种方法，效果还不错。 linux下直接按照以下命令就可以了 <code>sudo add-apt-repository ppa:kilian/f.lux</code> <code>sudo apt-get update</code> <code>sudo apt-get install fluxgui</code></p>
-<p>windows下进入以下网址下载即可 https://justgetflux.com/dlwin.html</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -2186,9 +2306,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -2202,72 +2319,39 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -2284,30 +2368,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2318,6 +2413,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -2338,75 +2435,75 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
-
-    
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
+
+  
+
 
 
 
@@ -2423,8 +2520,6 @@
 
 
 
-  
-
 
 
 
@@ -2441,7 +2536,7 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -2543,7 +2638,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -2552,28 +2647,13 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

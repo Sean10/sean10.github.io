@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,34 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="笔记 随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/page/5/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="笔记 随笔">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行路中.">
-<meta name="twitter:description" content="笔记 随笔">
+
+
+
 
 
 
@@ -110,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -128,14 +124,42 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="笔记 随笔">
+<meta name="keywords" content="Hexo, NexT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="行路中.">
+<meta property="og:url" content="http://sean10.github.io/page/5/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="笔记 随笔">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="行路中.">
+<meta name="twitter:description" content="笔记 随笔">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/page/5/"/>
 
 
 
-
-
-  <title>行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>行路中.</title>
   
 
 
@@ -146,10 +170,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -161,12 +207,11 @@
   
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -200,51 +245,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -256,9 +281,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -275,7 +306,179 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode292/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/19/leetcode292/" itemprop="url">leetcode292</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T14:50:00+08:00">2015-12-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/19/leetcode292/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/19/leetcode292/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/19/leetcode292/" class="leancloud_visitors" data-flag-title="leetcode292">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。</p>
+<p>数学方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    return n%4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>传统递归 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    if(n &gt; 0 &amp;&amp; n &lt;= 3)</span><br><span class="line">        return true;</span><br><span class="line">    if(canWinNim(n-1)&amp;&amp;canWinNim(n-2)&amp;&amp;canWinNim(n-3))</span><br><span class="line">        return false;</span><br><span class="line">    else return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/poj-2752-前后缀匹配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,13 +508,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-19T14:16:00+08:00">
-                2015-12-19
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T14:16:00+08:00">2015-12-19</time>
             
 
+            
             
 
             
@@ -326,14 +528,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -364,7 +562,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -380,6 +578,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -388,24 +589,24 @@
       
         
           
-            <p>kmp才能保证不超时 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;stack&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void getNext(int next[],char str[])&#123;</div><div class="line">    int j = 0;</div><div class="line">    next[0] = -1;</div><div class="line">    int k = -1;</div><div class="line">    int len = strlen(str);</div><div class="line">    while(j &lt; len)&#123;</div><div class="line">        if(k == -1 || str[k] == str[j])&#123;</div><div class="line">            next[++j] = ++k;</div><div class="line">        &#125;</div><div class="line">        else k = next[k];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char str[400001];</div><div class="line">    int next[400001];</div><div class="line"></div><div class="line">    int j;</div><div class="line">    while(scanf(&quot;%s&quot;,str) != EOF)&#123;</div><div class="line">        memset(next,0,strlen(str));</div><div class="line">        getNext(next,str);</div><div class="line">        stack &lt;int&gt; q;</div><div class="line">        j =strlen(str);</div><div class="line">        while(j != 0)&#123;</div><div class="line">            q.push(j);</div><div class="line">            j = next[j];</div><div class="line">        &#125;</div><div class="line">        while(!q.empty())&#123;</div><div class="line">            printf(&quot;%d &quot;,q.top());</div><div class="line">            q.pop();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <p>kmp才能保证不超时 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void getNext(int next[],char str[])&#123;</span><br><span class="line">    int j = 0;</span><br><span class="line">    next[0] = -1;</span><br><span class="line">    int k = -1;</span><br><span class="line">    int len = strlen(str);</span><br><span class="line">    while(j &lt; len)&#123;</span><br><span class="line">        if(k == -1 || str[k] == str[j])&#123;</span><br><span class="line">            next[++j] = ++k;</span><br><span class="line">        &#125;</span><br><span class="line">        else k = next[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[400001];</span><br><span class="line">    int next[400001];</span><br><span class="line"></span><br><span class="line">    int j;</span><br><span class="line">    while(scanf(&quot;%s&quot;,str) != EOF)&#123;</span><br><span class="line">        memset(next,0,strlen(str));</span><br><span class="line">        getNext(next,str);</span><br><span class="line">        stack &lt;int&gt; q;</span><br><span class="line">        j =strlen(str);</span><br><span class="line">        while(j != 0)&#123;</span><br><span class="line">            q.push(j);</span><br><span class="line">            j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        while(!q.empty())&#123;</span><br><span class="line">            printf(&quot;%d &quot;,q.top());</span><br><span class="line">            q.pop();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -419,6 +620,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -431,7 +636,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-4018-正则表达式（简单）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -461,13 +672,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-18T23:32:00+08:00">
-                2015-12-18
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-18T23:32:00+08:00">2015-12-18</time>
             
 
+            
             
 
             
@@ -482,14 +692,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -520,7 +726,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -536,6 +742,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -544,24 +753,24 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char str[100];</div><div class="line">    char ch[100];</div><div class="line">    int n;</div><div class="line"></div><div class="line">    scanf(&quot;%d&quot;,&amp;n);</div><div class="line">    for(int j = 1;j &lt;= n;j++)&#123;</div><div class="line">        scanf(&quot;%s&quot;,str);</div><div class="line">        for(int i = 0;str[i+2] != &apos;\0&apos;;i++)&#123;</div><div class="line">            if(str[i] == &apos;/&apos;)&#123;</div><div class="line">                if(str[i+1] == &apos;/&apos;)&#123;</div><div class="line">                    strcpy(ch,&amp;str[i+2]);</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        for(int i = 0;ch[i] != &apos;\0&apos;;i++)&#123;</div><div class="line">            if(ch[i] == &apos;/&apos; || ch[i] == &apos;:&apos;)&#123;</div><div class="line">                ch[i] = &apos;\0&apos;;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        printf(&quot;Case #%d: %s\n&quot;,j,ch);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[100];</span><br><span class="line">    char ch[100];</span><br><span class="line">    int n;</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int j = 1;j &lt;= n;j++)&#123;</span><br><span class="line">        scanf(&quot;%s&quot;,str);</span><br><span class="line">        for(int i = 0;str[i+2] != &apos;\0&apos;;i++)&#123;</span><br><span class="line">            if(str[i] == &apos;/&apos;)&#123;</span><br><span class="line">                if(str[i+1] == &apos;/&apos;)&#123;</span><br><span class="line">                    strcpy(ch,&amp;str[i+2]);</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0;ch[i] != &apos;\0&apos;;i++)&#123;</span><br><span class="line">            if(ch[i] == &apos;/&apos; || ch[i] == &apos;:&apos;)&#123;</span><br><span class="line">                ch[i] = &apos;\0&apos;;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;Case #%d: %s\n&quot;,j,ch);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -575,6 +784,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -587,7 +800,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-1039-字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -617,13 +836,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-18T23:08:00+08:00">
-                2015-12-18
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-18T23:08:00+08:00">2015-12-18</time>
             
 
+            
             
 
             
@@ -638,14 +856,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -676,7 +890,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -692,6 +906,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -700,24 +917,24 @@
       
         
           
-            <p>本来以为是正则，结果只是字符串水题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char str[22];</div><div class="line"></div><div class="line">    char vowel[26]=&quot;aeiou&quot;;</div><div class="line">    char consonants[26]=&quot;bcdfghjklmnpqrstvwxyz&quot;;</div><div class="line"></div><div class="line">    while(scanf(&quot;%s&quot;,str) &amp;&amp; strcmp(str,&quot;end&quot;))&#123;</div><div class="line">        int tag[3];</div><div class="line">        tag[0] = 0;</div><div class="line">        int len = strlen(str);</div><div class="line">        for(int i = 0;i &lt; len;i++)&#123;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i] == vowel[j])&#123;</div><div class="line">                    tag[0] = 1;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //char ch[3];</div><div class="line">        //ch[0] = str[0];</div><div class="line">        tag[1] = 1;</div><div class="line">        int flag[3] = &#123;1,1,1&#125;;</div><div class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</div><div class="line">            flag[0] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i] == consonants[j])</div><div class="line">                    flag[0] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[1] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i+1] == consonants[j])</div><div class="line">                    flag[1] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[2] = 0;</div><div class="line">            for(int j = 0;j &lt; 21;j++)&#123;</div><div class="line">                if(str[i+2] == consonants[j])</div><div class="line">                    flag[2] = 1;</div><div class="line">            &#125;</div><div class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</div><div class="line">                tag[1] = 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</div><div class="line">            flag[0] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i] == vowel[j])</div><div class="line">                    flag[0] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[1] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i+1] == vowel[j])</div><div class="line">                    flag[1] = 1;</div><div class="line">            &#125;</div><div class="line">            flag[2] = 0;</div><div class="line">            for(int j = 0;j &lt; 5;j++)&#123;</div><div class="line">                if(str[i+2] == vowel[j])</div><div class="line">                    flag[2] = 1;</div><div class="line">            &#125;</div><div class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</div><div class="line">                tag[1] = 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //char ch = str[0];</div><div class="line">        tag[2] = 1;</div><div class="line">        for(int i = 1;i &lt; len;i++)&#123;</div><div class="line">            if(str[i-1] == str[i])</div><div class="line">                if(str[i] != &apos;e&apos; &amp;&amp; str[i] != &apos;o&apos;)</div><div class="line">                    tag[2] = 0;</div><div class="line">            //ch = str[i];</div><div class="line">        &#125;</div><div class="line">        if(tag[0] == 1 &amp;&amp; tag[1] == 1 &amp;&amp; tag[2] == 1)</div><div class="line">            printf(&quot;&lt;%s&gt; is acceptable.\n&quot;,str);</div><div class="line">        else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;,str);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <p>本来以为是正则，结果只是字符串水题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[22];</span><br><span class="line"></span><br><span class="line">    char vowel[26]=&quot;aeiou&quot;;</span><br><span class="line">    char consonants[26]=&quot;bcdfghjklmnpqrstvwxyz&quot;;</span><br><span class="line"></span><br><span class="line">    while(scanf(&quot;%s&quot;,str) &amp;&amp; strcmp(str,&quot;end&quot;))&#123;</span><br><span class="line">        int tag[3];</span><br><span class="line">        tag[0] = 0;</span><br><span class="line">        int len = strlen(str);</span><br><span class="line">        for(int i = 0;i &lt; len;i++)&#123;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i] == vowel[j])&#123;</span><br><span class="line">                    tag[0] = 1;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //char ch[3];</span><br><span class="line">        //ch[0] = str[0];</span><br><span class="line">        tag[1] = 1;</span><br><span class="line">        int flag[3] = &#123;1,1,1&#125;;</span><br><span class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</span><br><span class="line">            flag[0] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i] == consonants[j])</span><br><span class="line">                    flag[0] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[1] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i+1] == consonants[j])</span><br><span class="line">                    flag[1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[2] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i+2] == consonants[j])</span><br><span class="line">                    flag[2] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</span><br><span class="line">                tag[1] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</span><br><span class="line">            flag[0] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i] == vowel[j])</span><br><span class="line">                    flag[0] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[1] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i+1] == vowel[j])</span><br><span class="line">                    flag[1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[2] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i+2] == vowel[j])</span><br><span class="line">                    flag[2] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</span><br><span class="line">                tag[1] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //char ch = str[0];</span><br><span class="line">        tag[2] = 1;</span><br><span class="line">        for(int i = 1;i &lt; len;i++)&#123;</span><br><span class="line">            if(str[i-1] == str[i])</span><br><span class="line">                if(str[i] != &apos;e&apos; &amp;&amp; str[i] != &apos;o&apos;)</span><br><span class="line">                    tag[2] = 0;</span><br><span class="line">            //ch = str[i];</span><br><span class="line">        &#125;</span><br><span class="line">        if(tag[0] == 1 &amp;&amp; tag[1] == 1 &amp;&amp; tag[2] == 1)</span><br><span class="line">            printf(&quot;&lt;%s&gt; is acceptable.\n&quot;,str);</span><br><span class="line">        else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;,str);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -731,6 +948,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -743,7 +964,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/15/《starting-over重启人生》/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -773,13 +1000,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-15T23:48:00+08:00">
-                2015-12-15
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-15T23:48:00+08:00">2015-12-15</time>
             
 
+            
             
 
             
@@ -794,14 +1020,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -832,7 +1054,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -848,6 +1070,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -855,12 +1080,12 @@
 
       
         
-          <h3 id="starting-over重启人生">starting over重启人生</h3>
+          <p>###starting over重启人生</p>
 <p>这是这一个月来看的第一本质量感觉不错的轻小说。 初看完，我觉得从小说的方向上来说是引起我们对自己人生的反思的，我之前看过的《我将死去，你将重生》感觉和这本类似的感觉，同样值得一看。
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/12/15/《starting-over重启人生》/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -868,17 +1093,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -892,6 +1117,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -904,7 +1133,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/13/huffman编码实现压缩与解压缩/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -934,13 +1169,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-13T21:23:00+08:00">
-                2015-12-13
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-13T21:23:00+08:00">2015-12-13</time>
             
 
+            
             
 
             
@@ -955,14 +1189,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -993,7 +1223,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1009,6 +1239,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1031,24 +1264,24 @@
 <p>这里对于补充的编码长度如何写入呢？</p>
 <p>程序优化： 可以对哈夫曼树进行压缩</p>
 <p>参考资料: [1].http://blog.csdn.net/u013275340/article/details/38778497?utm_source=tuicool&amp;utm_medium=referral [2].http://zzh87615.blog.163.com/blog/static/1178207282009516271866</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line"></div><div class="line">#define MAX 99999999</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    unsigned char data;</div><div class="line">    int weight;</div><div class="line">    int parent,lchild,rchild;</div><div class="line">    //unsigned char *bit;</div><div class="line">    unsigned char *bit;</div><div class="line">&#125;HuffmanNode,HuffmanTree[512];</div><div class="line">/*</div><div class="line">typedef struct bit&#123;//设立位域，用于解码进行数字比对</div><div class="line">    unsigned a:1;</div><div class="line">    unsigned b:6;</div><div class="line">    unsigned c:1;</div><div class="line">&#125;Bit;</div><div class="line">*/</div><div class="line"></div><div class="line">void Select(HuffmanTree HT,int k,int &amp;s1,int &amp;s2)&#123;//选取最小的两个未链入哈弗曼树中的节点</div><div class="line">    int minHuf1 = MAX,minHuf2 = MAX;</div><div class="line">    s1 = 99999999,s2 = 99999999;</div><div class="line">    for(int i = 1;i &lt;= k;i++)&#123;</div><div class="line">        if(HT[i].weight &lt; minHuf1 &amp;&amp; HT[i].parent == 0)&#123;</div><div class="line">            minHuf2 = minHuf1;</div><div class="line">            s2 = s1;</div><div class="line">            minHuf1 = HT[i].weight;</div><div class="line">            s1 = i;</div><div class="line">        &#125;else if(HT[i].weight &lt; minHuf2 &amp;&amp; HT[i].parent == 0)&#123;</div><div class="line">            s2 = i;</div><div class="line">            minHuf2 = HT[i].weight;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Encode(HuffmanTree HT,int nReal)&#123;//进行字符编码</div><div class="line">    unsigned char *cd;</div><div class="line">    cd = (unsigned char*)malloc(nReal*sizeof(unsigned char));</div><div class="line">    cd[nReal-1] = &apos;\0&apos;;</div><div class="line">    for(int i = 1;i &lt;= nReal;i++)&#123;</div><div class="line">        int start = nReal-1;</div><div class="line">        for(int curr = i,parent = HT[i].parent;parent != 0 &amp;&amp; 0 &lt; parent &amp;&amp; parent &lt;= 2*nReal-1;curr = parent,parent = HT[parent].parent)&#123;</div><div class="line">            if(curr == HT[parent].lchild)</div><div class="line">                cd[--start] = &apos;0&apos;;</div><div class="line">            else</div><div class="line">                cd[--start] = &apos;1&apos;;</div><div class="line">        &#125;</div><div class="line">        HT[i].bit = (unsigned char*)malloc((nReal-start+1)*sizeof(unsigned char));</div><div class="line">        int x = 0;</div><div class="line">        do&#123;</div><div class="line">            HT[i].bit[x++] = cd[start++];</div><div class="line">        &#125;while(cd[start-1] != &apos;\0&apos;);</div><div class="line">        HT[i].bit[x] = &apos;\0&apos;;</div><div class="line">        //strcpy(HT[i].bit,&amp;cd[start]);</div><div class="line">    &#125;</div><div class="line">    free(cd);</div><div class="line">    /*</div><div class="line">    if(nReal == 1)</div><div class="line">        HT[1].bit[0] = &apos;0&apos;;</div><div class="line">        */</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Init(FILE *fpR,HuffmanTree &amp;HT,int &amp;nReal,int &amp;n)&#123;//初始化哈夫曼树</div><div class="line">    nReal = 0;</div><div class="line">    HuffmanNode *p;</div><div class="line">    int i;</div><div class="line">    unsigned char ch;</div><div class="line"></div><div class="line">    for(p = HT,i = 1;i &lt;= 511;i++,p++)</div><div class="line">        *p = &#123;&apos;\0&apos;,0,0,0,0&#125;;</div><div class="line">    int start = 1;</div><div class="line">    while(true)&#123;</div><div class="line">        fread(&amp;ch,1,1,fpR);</div><div class="line">        if(feof(fpR))</div><div class="line">            return;</div><div class="line">        int tag = 0;</div><div class="line">        n++;</div><div class="line">        for(int j = 1;j &lt;= nReal;j++)&#123;</div><div class="line">            if(ch == HT[j].data)&#123;</div><div class="line">                HT[j].weight++;</div><div class="line">                tag = 1;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if(tag == 0)&#123;</div><div class="line">            HT[start].data = ch;</div><div class="line">            HT[start++].weight++;</div><div class="line">            nReal++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void BuildTree(HuffmanTree &amp;HT,int nReal)&#123;//建树</div><div class="line">    int m = 2*nReal-1;</div><div class="line">    for(int i = nReal+1;i &lt;= m;i++)&#123;</div><div class="line">        int s1,s2;</div><div class="line">        Select(HT,i-1,s1,s2);</div><div class="line">        HT[s1].parent = i;</div><div class="line">        HT[s2].parent = i;</div><div class="line">        HT[i].lchild = s1;</div><div class="line">        HT[i].rchild = s2;</div><div class="line">        HT[i].weight = HT[s1].weight + HT[s2].weight;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Decode(HuffmanTree &amp;HT,int &amp;n,int &amp;nReal,FILE *fpR,FILE *fpW)&#123;//解码</div><div class="line">    int sup;</div><div class="line">    fread(&amp;sup,sizeof(int),1,fpR);</div><div class="line"></div><div class="line">    fread(&amp;n,sizeof(int),1,fpR);</div><div class="line">    fread(&amp;nReal,sizeof(int),1,fpR);</div><div class="line">    int i;</div><div class="line">    HuffmanNode *p;</div><div class="line">    for(p = HT,i = 1;i &lt;= 511;i++,p++)</div><div class="line">        *p = &#123;&apos;\0&apos;,0,0,0,0&#125;;</div><div class="line"></div><div class="line">    for(i = 1;i &lt;= 2*nReal-1;i++)&#123;</div><div class="line">        fread(&amp;HT[i].data,sizeof(unsigned char),1,fpR);</div><div class="line">        fread(&amp;HT[i].weight,sizeof(int),1,fpR);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    BuildTree(HT,nReal);</div><div class="line"></div><div class="line">    unsigned char c;</div><div class="line">    unsigned char str;</div><div class="line">    int root = 2*nReal-1;</div><div class="line">    //i = 0;</div><div class="line">    int length = 0;//对字符读取数量的计数，判断是否已经结束一次字符串读取</div><div class="line">    int flagSup = 0;</div><div class="line">    while(true)&#123;</div><div class="line">        fread(&amp;c,1,1,fpR);</div><div class="line">        if(feof(fpR))</div><div class="line">            return;</div><div class="line">        //fseek(fpR,len,SEEK_CUR);</div><div class="line">        for(int k = 0;k &lt; 8;k++)&#123;</div><div class="line">            if(HT[root].lchild == 0 &amp;&amp; HT[root].rchild == 0)&#123;//哈弗曼树不存在度为1的节点，故用and或者or均可</div><div class="line">                //if(HT[root].data == &apos;\0&apos;)</div><div class="line">                  //  fprintf(stderr,&quot;Error str\n&quot;);</div><div class="line">                str = HT[root].data;</div><div class="line">                root = 2*nReal-1;</div><div class="line">                fwrite(&amp;str,1,1,fpW);</div><div class="line">                length++;</div><div class="line">            &#125;</div><div class="line">            if(length == n)</div><div class="line">                break;</div><div class="line">            if((c&amp;128) == 0)</div><div class="line">                root = HT[root].lchild;</div><div class="line">            else if((c&amp;128) == 128)&#123;</div><div class="line">                root = HT[root].rchild;</div><div class="line">            &#125;</div><div class="line">            c = c &lt;&lt; 1;</div><div class="line">            if(length == n)</div><div class="line">                flagSup++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void EncodeOutput(HuffmanTree HT,FILE *fpR, FILE *fpW,int n,int nReal)&#123;//输出编码</div><div class="line">    fseek(fpW,4,SEEK_SET);</div><div class="line">    fwrite(&amp;n,sizeof(int),1,fpW);</div><div class="line">    fwrite(&amp;nReal,sizeof(int),1,fpW);</div><div class="line">    for(int i = 1;i &lt;= 2*nReal-1;i++)&#123;</div><div class="line">        fwrite(&amp;HT[i].data,sizeof(unsigned char),1,fpW);</div><div class="line">        fwrite(&amp;HT[i].weight,sizeof(int),1,fpW);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int length = 0;</div><div class="line">    unsigned char c = 0;//编码变量</div><div class="line">    unsigned char ch;//输入字符变量，作为文件顺序参照</div><div class="line">    int sup = 0;</div><div class="line">    int start = 0;</div><div class="line">    fseek(fpR,0,SEEK_SET);</div><div class="line">    for(int i = 0;i &lt; n;i++)&#123;//进行逐个字符编码写入</div><div class="line">        fread(&amp;ch,1,1,fpR);</div><div class="line">        for(int j = 1;j &lt;= nReal;j++)&#123;//进行逐个匹配，寻找对应字符哈弗曼节点</div><div class="line">            if(HT[j].data == ch)&#123;</div><div class="line">                int StrLen = 0;</div><div class="line">                while(HT[j].bit[StrLen] != &apos;\0&apos;)//计算该节点字符的编码比特数</div><div class="line">                    StrLen++;</div><div class="line">                //fprintf(fpW,&quot;%s&quot;,HT[j].bit);</div><div class="line">                for(int k = 0;k &lt; StrLen;k++)&#123;</div><div class="line">                    if(HT[j].bit[k] == &apos;0&apos;)</div><div class="line">                        c = c &lt;&lt; 1;</div><div class="line">                    else if(HT[j].bit[k] == &apos;1&apos;)</div><div class="line">                        c = (c &lt;&lt; 1)|1;</div><div class="line">                    else fprintf(stderr,&quot;Bit output error!\n&quot;);</div><div class="line">                    length++;</div><div class="line">                    if(i == n-1 &amp;&amp; length % 8 != 0)&#123;//最后一个节点需要记录补充编码数</div><div class="line">                        while(length%8!=0)&#123;</div><div class="line">                            c = c &lt;&lt; 1;</div><div class="line">                            length++;</div><div class="line">                            sup++;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    if(length % 8 == 0 &amp;&amp; length &gt; 0)</div><div class="line">                        fwrite(&amp;c,1,1,fpW);</div><div class="line">                &#125;</div><div class="line">                //fwrite(HT[i].bit,1,sizeof(HT[i].bit),fpW);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    fseek(fpW,0,SEEK_SET);</div><div class="line">    //fwrite(&amp;length,sizeof(int),1,fpW);</div><div class="line">    fwrite(&amp;sup,sizeof(int),1,fpW);</div><div class="line">    //fwrite(str,sizeof(unsigned char),length,fpW);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void InterfaceFile(char *infile,char *outfile)&#123;</div><div class="line">    fprintf(stdout,&quot;***Welcome to the Huffman Encoding/Decoding System:***\n&quot;);</div><div class="line">    fprintf(stdout,&quot;***                                                ***\n&quot;);</div><div class="line">    fprintf(stdout,&quot;Please input the input file name(including the postfix):&quot;);</div><div class="line">    gets(infile);</div><div class="line">    fprintf(stdout,&quot;Please input the output file name(including the postfix):&quot;);</div><div class="line">    gets(outfile);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void InterfaceNum(int &amp;num)&#123;</div><div class="line">    fprintf(stdout,&quot;***Please choose which operation you&apos;d like to do:****\n&quot;);</div><div class="line">    fprintf(stdout,&quot;***                                                ***\n&quot;);</div><div class="line">    fprintf(stdout,&quot;***1_Encoding          2_Decoding                  ***\n&quot;);</div><div class="line">    while(fscanf(stdin,&quot;%d&quot;,&amp;num) &amp;&amp; (num != 1 &amp;&amp; num != 2))&#123;</div><div class="line">        fprintf(stdout,&quot;The number is out of range.\nPlease input again:&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line"></div><div class="line">    FILE *fpR,*fpW;</div><div class="line">    char infile[255],outfile[255];</div><div class="line">    InterfaceFile(infile,outfile);</div><div class="line">    if((fpR = fopen(infile,&quot;ab+&quot;)) == NULL)&#123;</div><div class="line">        fprintf(stderr,&quot;File_Read open error!\n&quot;);</div><div class="line">        exit(1);</div><div class="line">    &#125;</div><div class="line">    if((fpW = fopen(outfile,&quot;wb+&quot;)) == NULL)&#123;</div><div class="line">        fprintf(stderr,&quot;File_Write open error!\n&quot;);</div><div class="line">        exit(2);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    HuffmanTree HT;</div><div class="line">    //unsigned char ch;//编码字符</div><div class="line">    int n = 0,nReal = 0;//文件中字符数量n，哈弗曼节点数量nReal</div><div class="line"></div><div class="line">    int num = 0;//选择方案</div><div class="line">    InterfaceNum(num);</div><div class="line">    switch(num)&#123;</div><div class="line">        case 1:</div><div class="line">            Init(fpR,HT,nReal,n);</div><div class="line">            BuildTree(HT,nReal);</div><div class="line">            Encode(HT,nReal);</div><div class="line">            EncodeOutput(HT,fpR,fpW,n,nReal);</div><div class="line">            break;</div><div class="line">        case 2:</div><div class="line">            Decode(HT,n,nReal,fpR,fpW);</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fclose(fpR);</div><div class="line">    fclose(fpW);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">#define MAX 99999999</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    unsigned char data;</span><br><span class="line">    int weight;</span><br><span class="line">    int parent,lchild,rchild;</span><br><span class="line">    //unsigned char *bit;</span><br><span class="line">    unsigned char *bit;</span><br><span class="line">&#125;HuffmanNode,HuffmanTree[512];</span><br><span class="line">/*</span><br><span class="line">typedef struct bit&#123;//设立位域，用于解码进行数字比对</span><br><span class="line">    unsigned a:1;</span><br><span class="line">    unsigned b:6;</span><br><span class="line">    unsigned c:1;</span><br><span class="line">&#125;Bit;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">void Select(HuffmanTree HT,int k,int &amp;s1,int &amp;s2)&#123;//选取最小的两个未链入哈弗曼树中的节点</span><br><span class="line">    int minHuf1 = MAX,minHuf2 = MAX;</span><br><span class="line">    s1 = 99999999,s2 = 99999999;</span><br><span class="line">    for(int i = 1;i &lt;= k;i++)&#123;</span><br><span class="line">        if(HT[i].weight &lt; minHuf1 &amp;&amp; HT[i].parent == 0)&#123;</span><br><span class="line">            minHuf2 = minHuf1;</span><br><span class="line">            s2 = s1;</span><br><span class="line">            minHuf1 = HT[i].weight;</span><br><span class="line">            s1 = i;</span><br><span class="line">        &#125;else if(HT[i].weight &lt; minHuf2 &amp;&amp; HT[i].parent == 0)&#123;</span><br><span class="line">            s2 = i;</span><br><span class="line">            minHuf2 = HT[i].weight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Encode(HuffmanTree HT,int nReal)&#123;//进行字符编码</span><br><span class="line">    unsigned char *cd;</span><br><span class="line">    cd = (unsigned char*)malloc(nReal*sizeof(unsigned char));</span><br><span class="line">    cd[nReal-1] = &apos;\0&apos;;</span><br><span class="line">    for(int i = 1;i &lt;= nReal;i++)&#123;</span><br><span class="line">        int start = nReal-1;</span><br><span class="line">        for(int curr = i,parent = HT[i].parent;parent != 0 &amp;&amp; 0 &lt; parent &amp;&amp; parent &lt;= 2*nReal-1;curr = parent,parent = HT[parent].parent)&#123;</span><br><span class="line">            if(curr == HT[parent].lchild)</span><br><span class="line">                cd[--start] = &apos;0&apos;;</span><br><span class="line">            else</span><br><span class="line">                cd[--start] = &apos;1&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">        HT[i].bit = (unsigned char*)malloc((nReal-start+1)*sizeof(unsigned char));</span><br><span class="line">        int x = 0;</span><br><span class="line">        do&#123;</span><br><span class="line">            HT[i].bit[x++] = cd[start++];</span><br><span class="line">        &#125;while(cd[start-1] != &apos;\0&apos;);</span><br><span class="line">        HT[i].bit[x] = &apos;\0&apos;;</span><br><span class="line">        //strcpy(HT[i].bit,&amp;cd[start]);</span><br><span class="line">    &#125;</span><br><span class="line">    free(cd);</span><br><span class="line">    /*</span><br><span class="line">    if(nReal == 1)</span><br><span class="line">        HT[1].bit[0] = &apos;0&apos;;</span><br><span class="line">        */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Init(FILE *fpR,HuffmanTree &amp;HT,int &amp;nReal,int &amp;n)&#123;//初始化哈夫曼树</span><br><span class="line">    nReal = 0;</span><br><span class="line">    HuffmanNode *p;</span><br><span class="line">    int i;</span><br><span class="line">    unsigned char ch;</span><br><span class="line"></span><br><span class="line">    for(p = HT,i = 1;i &lt;= 511;i++,p++)</span><br><span class="line">        *p = &#123;&apos;\0&apos;,0,0,0,0&#125;;</span><br><span class="line">    int start = 1;</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        fread(&amp;ch,1,1,fpR);</span><br><span class="line">        if(feof(fpR))</span><br><span class="line">            return;</span><br><span class="line">        int tag = 0;</span><br><span class="line">        n++;</span><br><span class="line">        for(int j = 1;j &lt;= nReal;j++)&#123;</span><br><span class="line">            if(ch == HT[j].data)&#123;</span><br><span class="line">                HT[j].weight++;</span><br><span class="line">                tag = 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(tag == 0)&#123;</span><br><span class="line">            HT[start].data = ch;</span><br><span class="line">            HT[start++].weight++;</span><br><span class="line">            nReal++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void BuildTree(HuffmanTree &amp;HT,int nReal)&#123;//建树</span><br><span class="line">    int m = 2*nReal-1;</span><br><span class="line">    for(int i = nReal+1;i &lt;= m;i++)&#123;</span><br><span class="line">        int s1,s2;</span><br><span class="line">        Select(HT,i-1,s1,s2);</span><br><span class="line">        HT[s1].parent = i;</span><br><span class="line">        HT[s2].parent = i;</span><br><span class="line">        HT[i].lchild = s1;</span><br><span class="line">        HT[i].rchild = s2;</span><br><span class="line">        HT[i].weight = HT[s1].weight + HT[s2].weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Decode(HuffmanTree &amp;HT,int &amp;n,int &amp;nReal,FILE *fpR,FILE *fpW)&#123;//解码</span><br><span class="line">    int sup;</span><br><span class="line">    fread(&amp;sup,sizeof(int),1,fpR);</span><br><span class="line"></span><br><span class="line">    fread(&amp;n,sizeof(int),1,fpR);</span><br><span class="line">    fread(&amp;nReal,sizeof(int),1,fpR);</span><br><span class="line">    int i;</span><br><span class="line">    HuffmanNode *p;</span><br><span class="line">    for(p = HT,i = 1;i &lt;= 511;i++,p++)</span><br><span class="line">        *p = &#123;&apos;\0&apos;,0,0,0,0&#125;;</span><br><span class="line"></span><br><span class="line">    for(i = 1;i &lt;= 2*nReal-1;i++)&#123;</span><br><span class="line">        fread(&amp;HT[i].data,sizeof(unsigned char),1,fpR);</span><br><span class="line">        fread(&amp;HT[i].weight,sizeof(int),1,fpR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BuildTree(HT,nReal);</span><br><span class="line"></span><br><span class="line">    unsigned char c;</span><br><span class="line">    unsigned char str;</span><br><span class="line">    int root = 2*nReal-1;</span><br><span class="line">    //i = 0;</span><br><span class="line">    int length = 0;//对字符读取数量的计数，判断是否已经结束一次字符串读取</span><br><span class="line">    int flagSup = 0;</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        fread(&amp;c,1,1,fpR);</span><br><span class="line">        if(feof(fpR))</span><br><span class="line">            return;</span><br><span class="line">        //fseek(fpR,len,SEEK_CUR);</span><br><span class="line">        for(int k = 0;k &lt; 8;k++)&#123;</span><br><span class="line">            if(HT[root].lchild == 0 &amp;&amp; HT[root].rchild == 0)&#123;//哈弗曼树不存在度为1的节点，故用and或者or均可</span><br><span class="line">                //if(HT[root].data == &apos;\0&apos;)</span><br><span class="line">                  //  fprintf(stderr,&quot;Error str\n&quot;);</span><br><span class="line">                str = HT[root].data;</span><br><span class="line">                root = 2*nReal-1;</span><br><span class="line">                fwrite(&amp;str,1,1,fpW);</span><br><span class="line">                length++;</span><br><span class="line">            &#125;</span><br><span class="line">            if(length == n)</span><br><span class="line">                break;</span><br><span class="line">            if((c&amp;128) == 0)</span><br><span class="line">                root = HT[root].lchild;</span><br><span class="line">            else if((c&amp;128) == 128)&#123;</span><br><span class="line">                root = HT[root].rchild;</span><br><span class="line">            &#125;</span><br><span class="line">            c = c &lt;&lt; 1;</span><br><span class="line">            if(length == n)</span><br><span class="line">                flagSup++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void EncodeOutput(HuffmanTree HT,FILE *fpR, FILE *fpW,int n,int nReal)&#123;//输出编码</span><br><span class="line">    fseek(fpW,4,SEEK_SET);</span><br><span class="line">    fwrite(&amp;n,sizeof(int),1,fpW);</span><br><span class="line">    fwrite(&amp;nReal,sizeof(int),1,fpW);</span><br><span class="line">    for(int i = 1;i &lt;= 2*nReal-1;i++)&#123;</span><br><span class="line">        fwrite(&amp;HT[i].data,sizeof(unsigned char),1,fpW);</span><br><span class="line">        fwrite(&amp;HT[i].weight,sizeof(int),1,fpW);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int length = 0;</span><br><span class="line">    unsigned char c = 0;//编码变量</span><br><span class="line">    unsigned char ch;//输入字符变量，作为文件顺序参照</span><br><span class="line">    int sup = 0;</span><br><span class="line">    int start = 0;</span><br><span class="line">    fseek(fpR,0,SEEK_SET);</span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;//进行逐个字符编码写入</span><br><span class="line">        fread(&amp;ch,1,1,fpR);</span><br><span class="line">        for(int j = 1;j &lt;= nReal;j++)&#123;//进行逐个匹配，寻找对应字符哈弗曼节点</span><br><span class="line">            if(HT[j].data == ch)&#123;</span><br><span class="line">                int StrLen = 0;</span><br><span class="line">                while(HT[j].bit[StrLen] != &apos;\0&apos;)//计算该节点字符的编码比特数</span><br><span class="line">                    StrLen++;</span><br><span class="line">                //fprintf(fpW,&quot;%s&quot;,HT[j].bit);</span><br><span class="line">                for(int k = 0;k &lt; StrLen;k++)&#123;</span><br><span class="line">                    if(HT[j].bit[k] == &apos;0&apos;)</span><br><span class="line">                        c = c &lt;&lt; 1;</span><br><span class="line">                    else if(HT[j].bit[k] == &apos;1&apos;)</span><br><span class="line">                        c = (c &lt;&lt; 1)|1;</span><br><span class="line">                    else fprintf(stderr,&quot;Bit output error!\n&quot;);</span><br><span class="line">                    length++;</span><br><span class="line">                    if(i == n-1 &amp;&amp; length % 8 != 0)&#123;//最后一个节点需要记录补充编码数</span><br><span class="line">                        while(length%8!=0)&#123;</span><br><span class="line">                            c = c &lt;&lt; 1;</span><br><span class="line">                            length++;</span><br><span class="line">                            sup++;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(length % 8 == 0 &amp;&amp; length &gt; 0)</span><br><span class="line">                        fwrite(&amp;c,1,1,fpW);</span><br><span class="line">                &#125;</span><br><span class="line">                //fwrite(HT[i].bit,1,sizeof(HT[i].bit),fpW);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fseek(fpW,0,SEEK_SET);</span><br><span class="line">    //fwrite(&amp;length,sizeof(int),1,fpW);</span><br><span class="line">    fwrite(&amp;sup,sizeof(int),1,fpW);</span><br><span class="line">    //fwrite(str,sizeof(unsigned char),length,fpW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void InterfaceFile(char *infile,char *outfile)&#123;</span><br><span class="line">    fprintf(stdout,&quot;***Welcome to the Huffman Encoding/Decoding System:***\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;***                                                ***\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;Please input the input file name(including the postfix):&quot;);</span><br><span class="line">    gets(infile);</span><br><span class="line">    fprintf(stdout,&quot;Please input the output file name(including the postfix):&quot;);</span><br><span class="line">    gets(outfile);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void InterfaceNum(int &amp;num)&#123;</span><br><span class="line">    fprintf(stdout,&quot;***Please choose which operation you&apos;d like to do:****\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;***                                                ***\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;***1_Encoding          2_Decoding                  ***\n&quot;);</span><br><span class="line">    while(fscanf(stdin,&quot;%d&quot;,&amp;num) &amp;&amp; (num != 1 &amp;&amp; num != 2))&#123;</span><br><span class="line">        fprintf(stdout,&quot;The number is out of range.\nPlease input again:&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line"></span><br><span class="line">    FILE *fpR,*fpW;</span><br><span class="line">    char infile[255],outfile[255];</span><br><span class="line">    InterfaceFile(infile,outfile);</span><br><span class="line">    if((fpR = fopen(infile,&quot;ab+&quot;)) == NULL)&#123;</span><br><span class="line">        fprintf(stderr,&quot;File_Read open error!\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    if((fpW = fopen(outfile,&quot;wb+&quot;)) == NULL)&#123;</span><br><span class="line">        fprintf(stderr,&quot;File_Write open error!\n&quot;);</span><br><span class="line">        exit(2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    HuffmanTree HT;</span><br><span class="line">    //unsigned char ch;//编码字符</span><br><span class="line">    int n = 0,nReal = 0;//文件中字符数量n，哈弗曼节点数量nReal</span><br><span class="line"></span><br><span class="line">    int num = 0;//选择方案</span><br><span class="line">    InterfaceNum(num);</span><br><span class="line">    switch(num)&#123;</span><br><span class="line">        case 1:</span><br><span class="line">            Init(fpR,HT,nReal,n);</span><br><span class="line">            BuildTree(HT,nReal);</span><br><span class="line">            Encode(HT,nReal);</span><br><span class="line">            EncodeOutput(HT,fpR,fpW,n,nReal);</span><br><span class="line">            break;</span><br><span class="line">        case 2:</span><br><span class="line">            Decode(HT,n,nReal,fpR,fpW);</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fclose(fpR);</span><br><span class="line">    fclose(fpW);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1062,6 +1295,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1074,7 +1311,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/13/用先序递归过程建立二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1104,13 +1347,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-13T21:21:00+08:00">
-                2015-12-13
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-13T21:21:00+08:00">2015-12-13</time>
             
 
+            
             
 
             
@@ -1125,14 +1367,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -1163,7 +1401,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1179,6 +1417,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1187,25 +1428,25 @@
       
         
           
-            <p>用先序递归过程建立二叉树 (存储结构：二叉链表) 输入数据按先序遍历所得序列输入，当某结点左子树或右子树为空时，输入<code>‘*’</code>号，如输入<code>abc**d**e**</code>得到的二叉树如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  a</div><div class="line"> b e</div><div class="line">c d</div></pre></td></tr></table></figure></p>
-<p>代码如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line"></div><div class="line">typedef struct tree&#123;//二叉树结构</div><div class="line">    char data;</div><div class="line">    struct tree *lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">typedef struct queu&#123;//先序序列存储队列，包含&apos;*&apos;</div><div class="line">    char data;</div><div class="line">    struct queu *next;</div><div class="line">&#125;QueueNode,*Queue;</div><div class="line">Queue head = NULL,rear = head;</div><div class="line"></div><div class="line">void enqueue(Queue &amp;head, Queue &amp;rear,char ch)&#123;//入队</div><div class="line">    Queue p = (Queue)malloc(sizeof(QueueNode));</div><div class="line">    p-&gt;data = ch;</div><div class="line">    p-&gt;next = NULL;</div><div class="line">    if(head == NULL)&#123;</div><div class="line">        head = p;</div><div class="line">        rear = p;</div><div class="line">    &#125;</div><div class="line">    else&#123;</div><div class="line">        rear-&gt;next = p;</div><div class="line">        rear = p;</div><div class="line">    &#125;</div><div class="line">    return ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Queue Del(Queue head)&#123;//删除节点操作</div><div class="line">    Queue temp = head -&gt; next;</div><div class="line">    free(head);</div><div class="line">    return temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char dequeue(Queue &amp;head)&#123;//出队</div><div class="line">    if(head == NULL)</div><div class="line">        return NULL;</div><div class="line">    char ch = head-&gt;data;</div><div class="line">    head = Del(head);</div><div class="line">    return ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void BuildTree(BitTree &amp;root)&#123;//根据带&apos;*&apos;先序序列建树</div><div class="line">    char ch = dequeue(head);</div><div class="line">    if(ch == &apos;*&apos; || ch == &apos;\0&apos;)//遇到&apos;*&apos;，直接返回</div><div class="line">        return;</div><div class="line">    root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    root-&gt;data = ch;</div><div class="line">    root-&gt;lc = NULL;</div><div class="line">    root-&gt;rc = NULL;</div><div class="line"></div><div class="line">    BuildTree(root-&gt;lc);</div><div class="line">    BuildTree(root-&gt;rc);</div><div class="line">    return ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void PreOrder(BitTree root)&#123;//先序遍历输出</div><div class="line">    printf(&quot;%c&quot;,root-&gt;data);</div><div class="line">    if(root-&gt;lc)</div><div class="line">        PreOrder(root-&gt;lc);</div><div class="line">    if(root-&gt;rc)</div><div class="line">        PreOrder(root-&gt;rc);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void MidOrder(BitTree root)&#123;//中序遍历输出</div><div class="line">    if(root-&gt;lc)</div><div class="line">        PreOrder(root-&gt;lc);</div><div class="line">    printf(&quot;%c&quot;,root-&gt;data);</div><div class="line">    if(root-&gt;rc)</div><div class="line">        PreOrder(root-&gt;rc);</div><div class="line">&#125;</div><div class="line"></div><div class="line">void AftOrder(BitTree root)&#123;//后续遍历输出</div><div class="line">    if(root-&gt;lc)</div><div class="line">        AftOrder(root-&gt;lc);</div><div class="line">    if(root-&gt;rc)</div><div class="line">        AftOrder(root-&gt;rc);</div><div class="line">    printf(&quot;%c&quot;,root-&gt;data);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    //freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout);</div><div class="line">    char ch[10000];</div><div class="line"></div><div class="line">    scanf(&quot;%s&quot;,ch);</div><div class="line">    for(int i = 0;ch[i] != &apos;\0&apos;;i++)</div><div class="line">        enqueue(head,rear,ch[i]);</div><div class="line">    BitTree root;</div><div class="line">    BuildTree(root);</div><div class="line">    PreOrder(root);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    MidOrder(root);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    AftOrder(root);</div><div class="line">    printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <p>用先序递归过程建立二叉树 (存储结构：二叉链表) 输入数据按先序遍历所得序列输入，当某结点左子树或右子树为空时，输入<code>‘*’</code>号，如输入<code>abc**d**e**</code>得到的二叉树如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  a</span><br><span class="line"> b e</span><br><span class="line">c d</span><br></pre></td></tr></table></figure></p>
+<p>代码如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">typedef struct tree&#123;//二叉树结构</span><br><span class="line">    char data;</span><br><span class="line">    struct tree *lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">typedef struct queu&#123;//先序序列存储队列，包含&apos;*&apos;</span><br><span class="line">    char data;</span><br><span class="line">    struct queu *next;</span><br><span class="line">&#125;QueueNode,*Queue;</span><br><span class="line">Queue head = NULL,rear = head;</span><br><span class="line"></span><br><span class="line">void enqueue(Queue &amp;head, Queue &amp;rear,char ch)&#123;//入队</span><br><span class="line">    Queue p = (Queue)malloc(sizeof(QueueNode));</span><br><span class="line">    p-&gt;data = ch;</span><br><span class="line">    p-&gt;next = NULL;</span><br><span class="line">    if(head == NULL)&#123;</span><br><span class="line">        head = p;</span><br><span class="line">        rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        rear-&gt;next = p;</span><br><span class="line">        rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Queue Del(Queue head)&#123;//删除节点操作</span><br><span class="line">    Queue temp = head -&gt; next;</span><br><span class="line">    free(head);</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char dequeue(Queue &amp;head)&#123;//出队</span><br><span class="line">    if(head == NULL)</span><br><span class="line">        return NULL;</span><br><span class="line">    char ch = head-&gt;data;</span><br><span class="line">    head = Del(head);</span><br><span class="line">    return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void BuildTree(BitTree &amp;root)&#123;//根据带&apos;*&apos;先序序列建树</span><br><span class="line">    char ch = dequeue(head);</span><br><span class="line">    if(ch == &apos;*&apos; || ch == &apos;\0&apos;)//遇到&apos;*&apos;，直接返回</span><br><span class="line">        return;</span><br><span class="line">    root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    root-&gt;data = ch;</span><br><span class="line">    root-&gt;lc = NULL;</span><br><span class="line">    root-&gt;rc = NULL;</span><br><span class="line"></span><br><span class="line">    BuildTree(root-&gt;lc);</span><br><span class="line">    BuildTree(root-&gt;rc);</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void PreOrder(BitTree root)&#123;//先序遍历输出</span><br><span class="line">    printf(&quot;%c&quot;,root-&gt;data);</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        PreOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        PreOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MidOrder(BitTree root)&#123;//中序遍历输出</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        PreOrder(root-&gt;lc);</span><br><span class="line">    printf(&quot;%c&quot;,root-&gt;data);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        PreOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AftOrder(BitTree root)&#123;//后续遍历输出</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        AftOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        AftOrder(root-&gt;rc);</span><br><span class="line">    printf(&quot;%c&quot;,root-&gt;data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    char ch[10000];</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%s&quot;,ch);</span><br><span class="line">    for(int i = 0;ch[i] != &apos;\0&apos;;i++)</span><br><span class="line">        enqueue(head,rear,ch[i]);</span><br><span class="line">    BitTree root;</span><br><span class="line">    BuildTree(root);</span><br><span class="line">    PreOrder(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    MidOrder(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    AftOrder(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1219,6 +1460,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1231,7 +1476,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/09/蒙特卡洛算法（简单理解）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1261,13 +1512,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-09T17:23:00+08:00">
-                2015-12-09
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-09T17:23:00+08:00">2015-12-09</time>
             
 
+            
             
 
             
@@ -1282,14 +1532,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1320,7 +1566,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1336,6 +1582,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1344,8 +1593,7 @@
       
         
           
-            <h3 id="蒙特卡洛算法monte-carlo-algorithm">蒙特卡洛算法(Monte Carlo Algorithm)</h3>
-<p>在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。</p>
+            <p>###蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。</p>
 <blockquote>
 <p>A Monte Carlo algorithm for a decision problem uses a sequence of tests. The probability that the algorithm answers the decision problem correctly increases as more tests are carried out. At each step of the algorithm, possible responses are “true,” which means that the answer is “true” and no additional iterations are needed, or “unknown,” which means that the answer could be either “true” or “false.” After running all the iterations in such an algorithm, the final answer produced is “true” if at least one iteration yields the answer “true,” and the answer is “false” if every iteration yields the answer “unknown.” If the correct answer is “false,” then the algorithm answers “false,” because every iteration will yield “unknown.” However, if the correct answer is “true,” then the algorithm could answer either “true” or “false,” because it may be possible that each iteration produced the response “unknown” even though the correct response was “true.” We will show that this possibility becomes extremely unlikely as the number of tests increases.</p>
 </blockquote>
@@ -1361,17 +1609,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1385,6 +1633,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1397,7 +1649,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2004/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1427,13 +1685,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-03T15:43:00+08:00">
-                2015-12-03
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:43:00+08:00">2015-12-03</time>
             
 
+            
             
 
             
@@ -1448,14 +1705,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -1486,7 +1739,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1502,6 +1755,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1510,24 +1766,24 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    int x;</div><div class="line">    while(scanf(&quot;%d&quot;,&amp;x)!=EOF)&#123;</div><div class="line">        if(x &gt;= 90 &amp;&amp; x&lt;= 100)</div><div class="line">            printf(&quot;A&quot;);</div><div class="line">        else if(x &gt;= 80&amp;&amp; x&lt;=89)</div><div class="line">            printf(&quot;B&quot;);</div><div class="line">        else if(x &gt;= 70 &amp;&amp; x &lt;= 79)</div><div class="line">            printf(&quot;C&quot;);</div><div class="line">        else if(x &gt;= 60 &amp;&amp; x &lt;= 69)</div><div class="line">            printf(&quot;D&quot;);</div><div class="line">        else if(x &gt;= 0 &amp;&amp; x &lt;= 59)</div><div class="line">            printf(&quot;E&quot;);</div><div class="line">        else printf(&quot;Score is error!&quot;);</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int x;</span><br><span class="line">    while(scanf(&quot;%d&quot;,&amp;x)!=EOF)&#123;</span><br><span class="line">        if(x &gt;= 90 &amp;&amp; x&lt;= 100)</span><br><span class="line">            printf(&quot;A&quot;);</span><br><span class="line">        else if(x &gt;= 80&amp;&amp; x&lt;=89)</span><br><span class="line">            printf(&quot;B&quot;);</span><br><span class="line">        else if(x &gt;= 70 &amp;&amp; x &lt;= 79)</span><br><span class="line">            printf(&quot;C&quot;);</span><br><span class="line">        else if(x &gt;= 60 &amp;&amp; x &lt;= 69)</span><br><span class="line">            printf(&quot;D&quot;);</span><br><span class="line">        else if(x &gt;= 0 &amp;&amp; x &lt;= 59)</span><br><span class="line">            printf(&quot;E&quot;);</span><br><span class="line">        else printf(&quot;Score is error!&quot;);</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1541,6 +1797,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1553,7 +1813,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2003/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1583,13 +1849,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-03T15:39:00+08:00">
-                2015-12-03
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:39:00+08:00">2015-12-03</time>
             
 
+            
             
 
             
@@ -1604,14 +1869,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -1642,7 +1903,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1658,6 +1919,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1666,24 +1930,24 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    double x;</div><div class="line">    while(scanf(&quot;%lf&quot;,&amp;x)!=EOF)&#123;</div><div class="line">        if(x&lt;0)</div><div class="line">            x=-x;</div><div class="line">        printf(&quot;%lf\n&quot;,x);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    double x;</span><br><span class="line">    while(scanf(&quot;%lf&quot;,&amp;x)!=EOF)&#123;</span><br><span class="line">        if(x&lt;0)</span><br><span class="line">            x=-x;</span><br><span class="line">        printf(&quot;%lf\n&quot;,x);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1697,162 +1961,10 @@
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2002/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/03/HDU2002/" itemprop="url">HDU2002</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-03T15:31:00+08:00">
-                2015-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/03/HDU2002/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/03/HDU2002/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/03/HDU2002/" class="leancloud_visitors" data-flag-title="HDU2002">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>严格来说，到最后我还是没找到为什么我本机的CB运行出来就是0，上传就能AC的原因。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;math.h&gt;</div><div class="line"></div><div class="line">#define PI 3.1415927</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    double r;</div><div class="line">    while(scanf(&quot;%lf&quot;,&amp;r)!=EOF)&#123;</div><div class="line">        printf(&quot;%.3lf\n&quot;,4.0/3.0*PI*r*r*r);</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -1869,9 +1981,6 @@
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -1885,72 +1994,39 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -1967,30 +2043,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2001,6 +2088,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -2021,75 +2110,75 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
-
-    
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
+
+  
+
 
 
 
@@ -2106,8 +2195,6 @@
 
 
 
-  
-
 
 
 
@@ -2124,7 +2211,7 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -2226,7 +2313,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -2235,28 +2322,13 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

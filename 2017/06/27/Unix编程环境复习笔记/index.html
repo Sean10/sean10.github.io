@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,36 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Unix,Linux," />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
-<meta name="keywords" content="Unix,Linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Unix编程环境复习笔记">
-<meta property="og:url" content="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
-<meta property="og:updated_time" content="2017-07-03T15:04:15.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unix编程环境复习笔记">
-<meta name="twitter:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
+
+
+
 
 
 
@@ -112,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -130,14 +124,43 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="Unix,Linux," />
+
+
+<meta name="description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
+<meta name="keywords" content="Unix,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unix编程环境复习笔记">
+<meta property="og:url" content="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-03T15:04:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unix编程环境复习笔记">
+<meta name="twitter:description" content="关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。 check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/"/>
 
 
 
-
-
-  <title>Unix编程环境复习笔记 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>Unix编程环境复习笔记 | 行路中.</title>
   
 
 
@@ -148,10 +171,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -162,11 +207,11 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -200,51 +245,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -256,9 +281,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -275,7 +306,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,13 +340,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T14:36:03+08:00">
-                2017-06-27
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T14:36:03+08:00">2017-06-27</time>
             
 
+            
             
 
             
@@ -324,14 +360,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -362,7 +394,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -378,6 +410,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -390,7 +425,7 @@
 <hr>
 <h6 id="检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件查找哪些文件中含有字符串tpdu并列出在这文件中的行号">检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</h6>
 <p>答：使用find命令和grep命令。find命令可以在指定的目录树 中查找满足某个条件的文件或目录，并对查找到的满足条件的对象执行一个动作。指定查找条件为“文件名后缀为.c和.h”，动作为“查找哪些文件中含有字符串TPDU，并列出在这文件中的行号”，分别是find的-name和-exec选项。完整的命令为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find src –name &quot;*.[ch]&quot; –exec grep –n TPDU &#123;&#125; /dev/null \;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find src –name &quot;*.[ch]&quot; –exec grep –n TPDU &#123;&#125; /dev/null \;</span><br></pre></td></tr></table></figure>
 <p>这里是将grep的数据输出到/dev/null作为垃圾处理吧，但不用&gt;重定向符了？</p>
 <hr>
 <h6 id="统计出由用户liu创建并且正在运行的进程数目">统计出由用户liu创建并且正在运行的进程数目。</h6>
@@ -437,20 +472,20 @@
 <h6 id="select系统调用的主要作用是什么">select系统调用的主要作用是什么？</h6>
 <p>答：使得用户进程可同时等待多个事件发生 用户进程告知内核多个事件，某一个或多个事件发生时select返回，否则，进程睡眠等待。例如：告知内核在rfds集合中的任何文件描述符“读准备好”，或在wfds集合中的任何文件描述符“写准备好”，或在efds集合中的任何文件描述符有“异常情况”发生，或者超时时间tm指定的时间间隔到。</p>
 <hr>
-<h6 id="下列的脚本程序从键盘输入三个整数abc并且求出abc的值-在划线出填入适当的内容完成整个程序显式地标出你所添加的命令中必须有的空格和转义字符并解释为什么必须这些空格和转义">**下列的脚本程序从键盘输入三个整数A,B,C，并且求出A*(B+C)的值。 在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。** <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">echo –n ”Input A:”; read A</div><div class="line">echo –n ”Input B:”; read B</div><div class="line">echo –n ”Input C:”; read C</div><div class="line">V=                         </div><div class="line">echo ”A*(B+C)=$V”</div></pre></td></tr></table></figure></h6>
+<h6 id="下列的脚本程序从键盘输入三个整数abc并且求出abc的值-在划线出填入适当的内容完成整个程序显式地标出你所添加的命令中必须有的空格和转义字符并解释为什么必须这些空格和转义">**下列的脚本程序从键盘输入三个整数A,B,C，并且求出A*(B+C)的值。 在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。** <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">echo –n ”Input A:”; read A</span><br><span class="line">echo –n ”Input B:”; read B</span><br><span class="line">echo –n ”Input C:”; read C</span><br><span class="line">V=                         </span><br><span class="line">echo ”A*(B+C)=$V”</span><br></pre></td></tr></table></figure></h6>
 <p>答：<code>expr $A  \*  \(  $B  +  $C  \)</code> 由于星号和圆括号属于shell的元字符，所以前面增加反斜线，阻止shell对元字符的处理，而是将这些符号直接传递给expr命令。上述命令一共需要6个空格，空格起单词分界线的作用。如果丢失了相应的空格，expr命令将无法得到正确的参数输入，导致expr无法按预期的功能工作。</p>
 <hr>
-<ol start="10" style="list-style-type: decimal">
-<li>写出一段完整的C语言程序，使用fork()系统调用，创建两个子进程，第一个子进程打印HELLO后立刻终止，第二个子进程打印WELCOME后立刻终止，父进程等待两个子进程都终止后，打印BYE然后终止。 答：程序如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">main()</div><div class="line">&#123;</div><div class="line">	int sv;</div><div class="line">	if (fork() == 0) &#123;</div><div class="line">		printf(”HELLO\n”);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	if (fork() == 0) &#123;</div><div class="line">		printf(”WELCOME\n”);</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	wait(&amp;sv);</div><div class="line">	wait(&amp;sv);</div><div class="line">	printf(”BYE\n”);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<ol start="10" type="1">
+<li>写出一段完整的C语言程序，使用fork()系统调用，创建两个子进程，第一个子进程打印HELLO后立刻终止，第二个子进程打印WELCOME后立刻终止，父进程等待两个子进程都终止后，打印BYE然后终止。 答：程序如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	int sv;</span><br><span class="line">	if (fork() == 0) &#123;</span><br><span class="line">		printf(”HELLO\n”);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	if (fork() == 0) &#123;</span><br><span class="line">		printf(”WELCOME\n”);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	wait(&amp;sv);</span><br><span class="line">	wait(&amp;sv);</span><br><span class="line">	printf(”BYE\n”);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>这里的sv是接收fork的子进程返回的结果，作为子进程的结束。</p>
 <hr>
 <p><code>int execlp(const char * file,const char * arg,……);</code></p>
 <p>execlp的第一个参数是用来在PATH或者路径中查找可执行文件，第二个参数是作为显示的进程名，我设置为aaa，则在<code>ps -ef | grep test</code>中可以查看到这个名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">	execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0); //最后一个0是形同NULL,表示数组的结束</div><div class="line">	// for(int i = 0;i &lt; 1;i++)</div><div class="line">	// &#123;</div><div class="line">		printf(&quot;argv[0]:%s\n&quot;, argv[0]);</div><div class="line">		printf(&quot;argv[1]:%s\n&quot;, argv[1]);</div><div class="line">		printf(&quot;argv[2]:%s\n&quot;, argv[2]);</div><div class="line">	// &#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0); //最后一个0是形同NULL,表示数组的结束</span><br><span class="line">	// for(int i = 0;i &lt; 1;i++)</span><br><span class="line">	// &#123;</span><br><span class="line">		printf(&quot;argv[0]:%s\n&quot;, argv[0]);</span><br><span class="line">		printf(&quot;argv[1]:%s\n&quot;, argv[1]);</span><br><span class="line">		printf(&quot;argv[2]:%s\n&quot;, argv[2]);</span><br><span class="line">	// &#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我这样写执行结果和将第二个参数设置为ls是一样的，只是在查看进程时，名字显示为第二个</p>
 <hr>
-<p>管道完整程序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#include &lt;unistd.h&gt;</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;fcntl.h&gt;</div><div class="line"></div><div class="line"></div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">	int fd[2], sv;</div><div class="line">	pipe(fd);</div><div class="line">	//fd[0] = open(&quot;out.txt&quot;,O_RDONLY);</div><div class="line">	//fd[1] = open(&quot;out.txt&quot;, O_WRONLY);</div><div class="line">	if(fork() == 0)</div><div class="line">	&#123;</div><div class="line">		dup2(fd[1],1);</div><div class="line">		close(fd[1]);</div><div class="line">		close(fd[0]);</div><div class="line">		execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0);</div><div class="line">	&#125;else if(fork() == 0)</div><div class="line">	&#123;</div><div class="line">		dup2(fd[0], 0);</div><div class="line">		close(fd[1]);</div><div class="line">		close(fd[0]);</div><div class="line">		//execlp(&quot;ls&quot;, &quot;test2&quot;, &quot;-l&quot;, (char*)0);</div><div class="line">		execlp(&quot;grep&quot;, &quot;MtGrep&quot;, &quot;javaw&quot;, (char*)0);</div><div class="line">	&#125;</div><div class="line">	close(fd[1]);</div><div class="line">	close(fd[0]);</div><div class="line">	wait(&amp;sv);</div><div class="line">	wait(&amp;sv);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>管道完整程序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	int fd[2], sv;</span><br><span class="line">	pipe(fd);</span><br><span class="line">	//fd[0] = open(&quot;out.txt&quot;,O_RDONLY);</span><br><span class="line">	//fd[1] = open(&quot;out.txt&quot;, O_WRONLY);</span><br><span class="line">	if(fork() == 0)</span><br><span class="line">	&#123;</span><br><span class="line">		dup2(fd[1],1);</span><br><span class="line">		close(fd[1]);</span><br><span class="line">		close(fd[0]);</span><br><span class="line">		execlp(&quot;ls&quot;, &quot;test&quot;, &quot;-al&quot;,(char*)0);</span><br><span class="line">	&#125;else if(fork() == 0)</span><br><span class="line">	&#123;</span><br><span class="line">		dup2(fd[0], 0);</span><br><span class="line">		close(fd[1]);</span><br><span class="line">		close(fd[0]);</span><br><span class="line">		//execlp(&quot;ls&quot;, &quot;test2&quot;, &quot;-l&quot;, (char*)0);</span><br><span class="line">		execlp(&quot;grep&quot;, &quot;MtGrep&quot;, &quot;javaw&quot;, (char*)0);</span><br><span class="line">	&#125;</span><br><span class="line">	close(fd[1]);</span><br><span class="line">	close(fd[0]);</span><br><span class="line">	wait(&amp;sv);</span><br><span class="line">	wait(&amp;sv);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h6 id="linux-执行命令-先搜索path而windows先搜索当前目录-区别原因">linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</h6>
 <p>考虑到安全问题，如果本地路径下自己写的程序的操作是类似<code>rm -rf /</code>，那就没救了</p>
 <hr>
@@ -462,41 +497,17 @@
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      Sean10
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/" title="Unix编程环境复习笔记">http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -538,6 +549,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -557,18 +572,18 @@
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
           <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+
+  
+
 
 
         </div>
@@ -584,81 +599,48 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -671,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件查找哪些文件中含有字符串tpdu并列出在这文件中的行号"><span class="nav-text">检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#统计出由用户liu创建并且正在运行的进程数目"><span class="nav-text">统计出由用户liu创建并且正在运行的进程数目。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#去掉文件list.txt中的所有空行所谓空行指行内不含有任何除空格之外的字符存为新文件list-new.txt"><span class="nav-text">去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux文件权限设计为简单的三级控制用户liu对用户sun的文件data.txt要么具有全部的读权限要么不可以读因此没有办法限制liu只对文件的指定部分读"><span class="nav-text">LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux操作系统被设计得非常健壮所以程序在运行过程中不会产生死锁"><span class="nav-text">Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#windows用户使用命令行命令ftp从linux下载文件ftas.c即使没有病毒破坏成功下载结束后下载的文件与原文件也有可能在文件大小字节数上不符"><span class="nav-text">Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#关于文本文件处理的实用程序都有哪些这些程序都有哪些共同的特点为什么要这样设计这些命令"><span class="nav-text">关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#select系统调用的主要作用是什么"><span class="nav-text">select系统调用的主要作用是什么？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下列的脚本程序从键盘输入三个整数abc并且求出abc的值-在划线出填入适当的内容完成整个程序显式地标出你所添加的命令中必须有的空格和转义字符并解释为什么必须这些空格和转义"><span class="nav-text">**下列的脚本程序从键盘输入三个整数A,B,C，并且求出A*(B+C)的值。 在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。** 123456#!/bin/shecho –n ”Input A:”; read Aecho –n ”Input B:”; read Becho –n ”Input C:”; read CV=                         echo ”A*(B+C)=$V”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-执行命令-先搜索path而windows先搜索当前目录-区别原因"><span class="nav-text">linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-.操作和.-操作区别"><span class="nav-text">linux ./操作和. 操作区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-如何显示出-所有的命令行参数与选项"><span class="nav-text">linux 如何显示出 所有的命令行参数与选项</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#据说是man-argv不过我执行的是man-xargv"><span class="nav-text">据说是man argv，不过我执行的是man xargv</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件查找哪些文件中含有字符串tpdu并列出在这文件中的行号"><span class="nav-number">1.</span> <span class="nav-text">检索目录src以及其子孙目录中的所有文件名后缀为.c和.h文件，查找哪些文件中含有字符串TPDU，并列出在这文件中的行号。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#统计出由用户liu创建并且正在运行的进程数目"><span class="nav-number">2.</span> <span class="nav-text">统计出由用户liu创建并且正在运行的进程数目。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#去掉文件list.txt中的所有空行所谓空行指行内不含有任何除空格之外的字符存为新文件list-new.txt"><span class="nav-number">3.</span> <span class="nav-text">去掉文件list.txt中的所有空行(所谓空行指：行内不含有任何除空格之外的字符)，存为新文件list-new.txt。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux文件权限设计为简单的三级控制用户liu对用户sun的文件data.txt要么具有全部的读权限要么不可以读因此没有办法限制liu只对文件的指定部分读"><span class="nav-number">4.</span> <span class="nav-text">LINUX文件权限设计为简单的三级控制，用户liu对用户sun的文件data.txt要么具有全部的读权限，要么不可以读。因此，没有办法限制liu只对文件的指定部分读。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux操作系统被设计得非常健壮所以程序在运行过程中不会产生死锁"><span class="nav-number">5.</span> <span class="nav-text">Linux操作系统被设计得非常健壮，所以程序在运行过程中不会产生死锁。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#windows用户使用命令行命令ftp从linux下载文件ftas.c即使没有病毒破坏成功下载结束后下载的文件与原文件也有可能在文件大小字节数上不符"><span class="nav-number">6.</span> <span class="nav-text">Windows用户使用命令行命令ftp从Linux下载文件ftas.c，即使没有病毒破坏，成功下载结束后，下载的文件与原文件也有可能在文件大小（字节数）上不符。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#关于文本文件处理的实用程序都有哪些这些程序都有哪些共同的特点为什么要这样设计这些命令"><span class="nav-number">7.</span> <span class="nav-text">关于文本文件处理的实用程序都有哪些？这些程序都有哪些共同的特点？为什么要这样设计这些命令？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#select系统调用的主要作用是什么"><span class="nav-number">8.</span> <span class="nav-text">select系统调用的主要作用是什么？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下列的脚本程序从键盘输入三个整数abc并且求出abc的值-在划线出填入适当的内容完成整个程序显式地标出你所添加的命令中必须有的空格和转义字符并解释为什么必须这些空格和转义"><span class="nav-number">9.</span> <span class="nav-text">**下列的脚本程序从键盘输入三个整数A,B,C，并且求出A*(B+C)的值。 在划线出填入适当的内容，完成整个程序。显式地标出你所添加的命令中必须有的空格和转义字符，并解释为什么必须这些空格和转义。** 123456#!/bin/shecho –n ”Input A:”; read Aecho –n ”Input B:”; read Becho –n ”Input C:”; read CV=                         echo ”A*(B+C)=$V”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-执行命令-先搜索path而windows先搜索当前目录-区别原因"><span class="nav-number">10.</span> <span class="nav-text">linux 执行命令 先搜索Path，而windows先搜索当前目录 区别原因？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-.操作和.-操作区别"><span class="nav-number">11.</span> <span class="nav-text">linux ./操作和. 操作区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#linux-如何显示出-所有的命令行参数与选项"><span class="nav-number">12.</span> <span class="nav-text">linux 如何显示出 所有的命令行参数与选项</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#据说是man-argv不过我执行的是man-xargv"><span class="nav-number"></span> <span class="nav-text">据说是man argv，不过我执行的是man xargv</span></a></div>
             
 
           </div>
@@ -691,30 +673,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -725,6 +718,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -745,87 +740,96 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/';
-          this.page.identifier = '2017/06/27/Unix编程环境复习笔记/';
-          this.page.title = 'Unix编程环境复习笔记';
-        };
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/';
+        this.page.identifier = '2017/06/27/Unix编程环境复习笔记/';
+        this.page.title = 'Unix编程环境复习笔记';
+      };
+      function loadComments () {
         var d = document, s = d.createElement('script');
         s.src = 'https://seanrebn.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script>
-    
-
+      }
+      
+        loadComments();
+      
+    </script>
   
+
 
 
 
@@ -842,8 +846,6 @@
 
 
 
-  
-
 
 
 
@@ -860,7 +862,7 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -962,7 +964,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -971,28 +973,13 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,34 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="笔记 随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/page/2/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="笔记 随笔">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行路中.">
-<meta name="twitter:description" content="笔记 随笔">
+
+
+
 
 
 
@@ -110,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -128,14 +124,42 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="笔记 随笔">
+<meta name="keywords" content="Hexo, NexT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="行路中.">
+<meta property="og:url" content="http://sean10.github.io/page/2/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="笔记 随笔">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="行路中.">
+<meta name="twitter:description" content="笔记 随笔">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/page/2/"/>
 
 
 
-
-
-  <title>行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>行路中.</title>
   
 
 
@@ -146,10 +170,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -161,12 +207,11 @@
   
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -200,51 +245,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -256,9 +281,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -275,7 +306,181 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/08/24/未来镜像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/24/未来镜像/" itemprop="url">未来镜像</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-24T15:03:07+08:00">2017-08-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/24/未来镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/24/未来镜像/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/08/24/未来镜像/" class="leancloud_visitors" data-flag-title="未来镜像">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这本作品原来中外合作的意思是双语啊，看完才知道……很赞</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/24/未来镜像/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/08/04/克苏鲁神话/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,13 +510,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T15:24:18+08:00">
-                2017-08-04
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T15:24:18+08:00">2017-08-04</time>
             
 
+            
             
 
             
@@ -326,14 +530,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -364,7 +564,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -380,6 +580,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -391,7 +594,7 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/04/克苏鲁神话/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -399,17 +602,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -423,6 +626,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -435,7 +642,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/07/01/更换markdown渲染引擎/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,13 +678,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T17:01:14+08:00">
-                2017-07-01
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-01T17:01:14+08:00">2017-07-01</time>
             
 
+            
             
 
             
@@ -486,14 +698,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -524,7 +732,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -540,6 +748,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -563,7 +774,7 @@ at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</anonym
 <blockquote>
 <p>See http://johnmacfarlane.net/pandoc/README.html#yaml-metadata-block</p>
 <p>There must be something in your document that looks like a YAML metadata block, but isn’t. Such a block would start with—on a line by itself and end with—or…on a line by itself. The line numbers in the error message refer to lines inside the metadata block, not to lines of the document.<br>
-By the way, you can turn off YAML metadata block parsing entirely by putting <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">--from markdown-yaml_metadata_block</div></pre></td></tr></table></figure></p>
+By the way, you can turn off YAML metadata block parsing entirely by putting <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--from markdown-yaml_metadata_block</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <blockquote>
 <p>in your pandoc command line.</p>
@@ -574,11 +785,11 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <blockquote>
 <p>Extension: blank_before_header</p>
 <p>始 markdown 語法在標題之前並不需要預留空白行。Pandoc 則需要（除非標題位於文件最開始的地方）。這是因為以 # 符號開頭的情況在一般文字段落中相當常見，這會導致非預期的標題。例如下面的例子：</p>
-<p>I like several of their flavors of ice cream: <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#22, for example, and #5.</div></pre></td></tr></table></figure></p>
+<p>I like several of their flavors of ice cream: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#22, for example, and #5.</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h1 id="参考文献">参考文献</h1>
-<ol style="list-style-type: decimal">
-<li><a href="https://stackoverflow.com/questions/19520463/pandoc-cannot-parse-yaml-header-when-converting-md-to-pdf" target="_blank" rel="external">parse yaml</a></li>
+<ol type="1">
+<li><a href="https://stackoverflow.com/questions/19520463/pandoc-cannot-parse-yaml-header-when-converting-md-to-pdf" target="_blank" rel="noopener">parse yaml</a></li>
 </ol>
 
           
@@ -586,17 +797,17 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -610,6 +821,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -622,7 +837,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/28/计算机系统结构复习note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -652,13 +873,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">
-                2017-06-28
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">2017-06-28</time>
             
 
+            
             
 
             
@@ -673,14 +893,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -711,7 +927,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -727,6 +943,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -739,7 +958,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/28/计算机系统结构复习note/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -747,17 +966,17 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -771,6 +990,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -783,7 +1006,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/27/Unix编程环境复习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -813,13 +1042,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T14:36:03+08:00">
-                2017-06-27
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-27T14:36:03+08:00">2017-06-27</time>
             
 
+            
             
 
             
@@ -834,14 +1062,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -872,7 +1096,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -888,6 +1112,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -900,7 +1127,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/27/Unix编程环境复习笔记/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -908,17 +1135,17 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -932,6 +1159,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -944,7 +1175,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/26/图形学复习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -974,13 +1211,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T16:35:28+08:00">
-                2017-06-26
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-26T16:35:28+08:00">2017-06-26</time>
             
 
+            
             
 
             
@@ -995,14 +1231,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1033,7 +1265,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1049,6 +1281,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1061,10 +1296,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <h3 id="比较计算机图形学与图象处理技术相同点和不同点">1． 比较计算机图形学与图象处理技术相同点和不同点。</h3>
 <p>Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。</p>
 <p>图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，多维像素数组。 而图像处理技术输入的是图像，输出的也是图像。</p>
-<div class="figure">
-<img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg">
-
-</div>
+<p><img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg"></p>
 <h3 id="列举三个计算机图形的应用实例">2． 列举三个计算机图形的应用实例。</h3>
 <ul>
 <li>CAx领域 计算机辅助设计CAD; 计算机辅助制造CAM; 计算机辅助教学CAI; 等</li>
@@ -1097,10 +1329,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <h3 id="输入设备可有哪几种逻辑功能请举出各自对应的物理设备">2． 输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</h3>
 <p>共有6类逻辑输入设备： * 定位(locator): 指定一个坐标点。对应的物理设备有鼠标器、键盘、数字化仪、触摸屏等。 * 笔划(stroke): 指示一个坐标点系列, 如指定一条曲线的控制点等。主要物理设备有数字化仪 * 送值(valuator): 输入一个数值。最常用的物理设备是键盘的数字键。 * 字符串(string)：输入一个字符串。最基本的物理设备是键盘的数字字母键 * 拾取(pick)：选择一个显示对象, 为应用程序处理确定目标。常用的物理设备是各种定位设备 * 选择(choice)：在一个可选动作或选项中进行选择, 如选择菜单项。典型的物理设备是鼠标器、数字化仪、键盘的功能键等。</p>
 <h3 id="画出图形软件的层次结构及主要组成">3． 画出图形软件的层次结构及主要组成。</h3>
-<div class="figure">
-<img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg">
-
-</div>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg"></p>
 <h3 id="颜色查找表的概念及实现原理">4． 颜色查找表的概念及实现原理。</h3>
 <p>彩色表又称为调色板, 用来定义图像的 不同颜色。 <strong>彩色表的工作原理</strong> 代号-颜色RGB值对照表</p>
 <h3 id="光栅扫描显示器结构与工作原理">5. 光栅扫描显示器结构与工作原理。</h3>
@@ -1188,7 +1417,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <p>几何信息－物体大小、尺寸、位置、形状等</p>
 <p>拓扑信息－物体上所有顶点、棱边、表面间连接关系</p>
 <p>几何信息和拓扑信息分开表示的优点:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>便于具体查询物体中各元素、获取它们的信息;</p></li>
 <li><p>容易支持对物体的各种局部操作;</p></li>
 <li><p>对于具有相同拓扑结构而只是大小、尺寸不同 的物体,可以用统一的数据结构加以表示;</p></li>
@@ -1219,19 +1448,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <h3 id="简述区域子分消隐算法思想和描述">2. 简述区域子分消隐算法思想和描述。</h3>
 <p>区域子分算法是针对光栅扫描式图象显示器上 填色产生图形的。它是一种所谓分而治之的算 法。</p>
 <p>整个屏幕称为窗口, 每一次把矩形的窗口等分成 4个相等的小矩形,分成的矩形也称为窗口, 见图 8.2。</p>
-<div class="figure">
-<img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg">
-
-</div>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg"></p>
 <p>每一次子分, 均要把要显示的多边形和窗口的 关系做一次判断。这种关系有以下4种:</p>
 <p>–多边形包围了窗口(图8.3中情况1);</p>
 <p>–多边形和窗口相交(图8.3中情况2);</p>
 <p>–窗口包围了多边形(图8.3中情况3);</p>
 <p>–窗口和多边形分离(图8.3中情况4)。</p>
-<div class="figure">
-<img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg">
-
-</div>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg"></p>
 <p>窗口和每个多边形的关系确定之后, 有些窗口 内的图形便可显示了, 它们属于下列情况:</p>
 <p>(1)所有多边形都和窗口分离。这时只要把窗口 内所有的象素填上背景颜色。</p>
 <p>(2)只有一个多边形和窗口相交,或这个多边形 包含在窗口内。这时先对窗口内每一象素填 上背景颜色, 再对窗口内多边形部分用扫描 线算法填色。</p>
@@ -1269,10 +1492,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <h3 id="何为全局光照模型典型的模型举例">4. 何为全局光照模型，典型的模型举例。</h3>
 <p>Phong模型仅考虑光源直接照射在景物表面产生 的反射光能, 因而是一种局部光照模型。 • 局部光照模型忽略了光能在环境景物之间的传 递, 很难生成高质量真实感图形。 原因: 未能考虑环境的漫射、镜面反射和规则透 射对景物表面产生的整体照明效果。</p>
 <p>Whitted在Phong模型中增加了环境镜面反射光 亮度Is 和环境规则透射光亮度It , 从而模拟周围环境的光透射在景物表面上产生的理想镜面反 射和规则透射现象。</p>
-<div class="figure">
-<img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg">
-
-</div>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg"></p>
 <h3 id="实现真实感绘制的光线跟踪技术的主要思想和算法描述">5. 实现真实感绘制的光线跟踪技术的主要思想和算法描述。</h3>
 <p>光线跟踪技术是为了求解Whitted模型而提出 一种高度真实感图形绘制技术.</p>
 <p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxof13rtnj314s0gy10v.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxof7wxhuj312u0qkjtv.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxofkccc9j31am0kmjya.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg"></p>
@@ -1290,24 +1510,24 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <h2 id="第十章-open-gl-简介">第十章 OPEN GL 简介</h2>
 <h3 id="试设计一个室内三维环境-并利用-open-gl-展示它的三维效果要求1包含基本的实体元素球多面体锥体柱体曲面等-2有全局光照效果和纹理功能-3程序具有交互功能">1. 试设计一个室内三维环境, 并利用 OPEN GL 展示它的三维效果。要求：(1)包含基本的实体元素：球、多面体、锥体、柱体、曲面等； (2)有全局光照效果和纹理功能； (3)程序具有交互功能。</h3>
 <p>第二次大作业。</p>
-<p><a href="https://github.com/Sean10/graphicsLearning" target="_blank" rel="external">附录</a></p>
+<p><a href="https://github.com/Sean10/graphicsLearning" target="_blank" rel="noopener">附录</a></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1321,6 +1541,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1333,7 +1557,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1363,13 +1593,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T16:42:46+08:00">
-                2017-06-15
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T16:42:46+08:00">2017-06-15</time>
             
 
+            
             
 
             
@@ -1384,14 +1613,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1422,7 +1647,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1438,6 +1663,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1460,7 +1688,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <p>ui文件似乎必须要建一个类通过setupUI才能使用 主要需要新建一个dialog来show就可以了</p>
 <table style="width:8%;">
 <colgroup>
-<col width="8%">
+<col style="width: 8%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1483,7 +1711,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <p>事件是一个新的概念，与信号不一样。</p>
 <table style="width:6%;">
 <colgroup>
-<col width="5%">
+<col style="width: 5%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1506,12 +1734,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <p>遇到这个错误error: member function not viable this argument has type const 但是我一时忘了怎么解决的了</p>
 <hr>
 <p>call to implicitly-deleted copy constructor</p>
-<p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461: error: call to implicitly-deleted copy constructor of ‘centralAirConditioner’ current-&gt;v = new T(*reinterpret_cast<t*>(src-&gt;v)); ^ <sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub><sub>~</sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub></sub>~~ 遇到这个错误，发现又是因为继承了基类QObject的原因</t*></p>
+<p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461: error: call to implicitly-deleted copy constructor of ‘centralAirConditioner’ current-&gt;v = new T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遇到这个错误，发现又是因为继承了基类QObject的原因</p>
 <hr>
 <p>暂时设计了从multithread发送信号到databaseControl,暂时没能测试出数据是否发送成功</p>
 <table style="width:6%;">
 <colgroup>
-<col width="5%">
+<col style="width: 5%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1529,7 +1757,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <p>tcp粘包问题： 怎么分也需要双方组织一个比较好的包结构，所以一般可能会在头加一个数据长度之类的包，以确保接收。</p>
 <table style="width:6%;">
 <colgroup>
-<col width="5%">
+<col style="width: 5%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1557,17 +1785,17 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1581,6 +1809,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1593,7 +1825,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/01/04/《星之梦》传播星空之人/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1623,13 +1861,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-04T15:03:45+08:00">
-                2017-01-04
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T15:03:45+08:00">2017-01-04</time>
             
 
+            
             
 
             
@@ -1644,14 +1881,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1682,7 +1915,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1698,6 +1931,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1711,27 +1947,26 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 <p>在这个男主时刻为机器人追杀、攻击的年代里，从未遇到善良机器人的男主为其感动，信任了梦美，也得到了梦美的回报，梦美以自己的理念贯彻保护人类。以星空作为回忆媒介，令男主回忆起作为人，不仅仅应该只为生存而生存，而是应当为梦想而追逐。</p>
 <p>不过显然啦，假想现实如果发生这样的故事，也就只有人物设定成梦美这样萌，才有后续发展的一丝可能性了。无论如何，亲和感终究只会发生在有羁绊亦或是感官上可接受的对象之间。</p>
 <p>在《星之人》剧场版里好像就是之后发生的故事，男主与梦美作为传播星空之人而四处游走之后的故事了，不过现在国内还没上映，估计要等段时间了吧。</p>
-<div class="figure">
-<img src="http://7xrn64.com1.z0.glb.clouddn.com/2017/1/5/aa41268c-e.jpg" alt="超级萌的梦美">
-<p class="caption">超级萌的梦美</p>
-</div>
+<figure>
+<img src="http://7xrn64.com1.z0.glb.clouddn.com/2017/1/5/aa41268c-e.jpg" alt="超级萌的梦美"><figcaption>超级萌的梦美</figcaption>
+</figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1745,6 +1980,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1757,7 +1996,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2016/08/26/吸血鬼起源/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1787,13 +2032,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-26T17:25:43+08:00">
-                2016-08-26
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-26T17:25:43+08:00">2016-08-26</time>
             
 
+            
             
 
             
@@ -1808,14 +2052,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1846,7 +2086,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1862,6 +2102,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1873,7 +2116,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/08/26/吸血鬼起源/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1881,17 +2124,17 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1905,6 +2148,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1917,7 +2164,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2016/08/05/小议各式主角之死/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1947,13 +2200,12 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-05T07:25:34+08:00">
-                2016-08-05
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-05T07:25:34+08:00">2016-08-05</time>
             
 
+            
             
 
             
@@ -1968,14 +2220,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -2006,7 +2254,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -2022,6 +2270,9 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -2045,17 +2296,17 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -2069,140 +2320,10 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2016/07/14/论Pokemon-Go/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/07/14/论Pokemon-Go/" itemprop="url">论Pokemon Go</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-14T21:30:20+08:00">
-                2016-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/07/14/论Pokemon-Go/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/07/14/论Pokemon-Go/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/07/14/论Pokemon-Go/" class="leancloud_visitors" data-flag-title="论Pokemon Go">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -2219,9 +2340,6 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -2235,72 +2353,39 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -2317,30 +2402,41 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2351,6 +2447,8 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -2371,75 +2469,75 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
-
-    
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
+
+  
+
 
 
 
@@ -2456,8 +2554,6 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
 
 
 
-  
-
 
 
 
@@ -2474,7 +2570,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -2576,7 +2672,7 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -2585,28 +2681,13 @@ By the way, you can turn off YAML metadata block parsing entirely by putting <fi
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

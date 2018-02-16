@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,34 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="笔记 随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/page/6/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="笔记 随笔">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行路中.">
-<meta name="twitter:description" content="笔记 随笔">
+
+
+
 
 
 
@@ -110,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -128,14 +124,42 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+<meta name="description" content="笔记 随笔">
+<meta name="keywords" content="Hexo, NexT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="行路中.">
+<meta property="og:url" content="http://sean10.github.io/page/6/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="笔记 随笔">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="行路中.">
+<meta name="twitter:description" content="笔记 随笔">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/page/6/"/>
 
 
 
-
-
-  <title>行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>行路中.</title>
   
 
 
@@ -146,10 +170,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -161,12 +207,11 @@
   
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -200,51 +245,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -256,9 +281,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -275,7 +306,177 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/03/HDU2002/" itemprop="url">HDU2002</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:31:00+08:00">2015-12-03</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/03/HDU2002/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/03/HDU2002/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/03/HDU2002/" class="leancloud_visitors" data-flag-title="HDU2002">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>严格来说，到最后我还是没找到为什么我本机的CB运行出来就是0，上传就能AC的原因。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">#define PI 3.1415927</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    double r;</span><br><span class="line">    while(scanf(&quot;%lf&quot;,&amp;r)!=EOF)&#123;</span><br><span class="line">        printf(&quot;%.3lf\n&quot;,4.0/3.0*PI*r*r*r);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,13 +506,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-03T15:17:00+08:00">
-                2015-12-03
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:17:00+08:00">2015-12-03</time>
             
 
+            
             
 
             
@@ -326,14 +526,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -364,7 +560,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -380,6 +576,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -388,24 +587,24 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;math.h&gt;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    double x1 = 0,x2 = 0,y1 = 0,y2 = 0;</div><div class="line">    while(scanf(&quot;%lf %lf %lf %lf&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2)!=EOF)&#123;</div><div class="line">        printf(&quot;%.2lf\n&quot;,sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));</div><div class="line">    &#125;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    double x1 = 0,x2 = 0,y1 = 0,y2 = 0;</span><br><span class="line">    while(scanf(&quot;%lf %lf %lf %lf&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2)!=EOF)&#123;</span><br><span class="line">        printf(&quot;%.2lf\n&quot;,sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -419,6 +618,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -431,7 +634,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2000/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -461,13 +670,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-03T15:04:00+08:00">
-                2015-12-03
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:04:00+08:00">2015-12-03</time>
             
 
+            
             
 
             
@@ -482,14 +690,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -520,7 +724,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -536,6 +740,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -544,24 +751,24 @@
       
         
           
-            <p>自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line"></div><div class="line">void swap(char *s,int j)&#123;</div><div class="line">    char temp = s[j];</div><div class="line">    s[j] = s[j+1];</div><div class="line">    s[j+1] = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Bubblesort(char *s)&#123;</div><div class="line">    char temp = s[0];</div><div class="line">    for(int i = 0;i &lt; 3;i++)&#123;</div><div class="line">        for(int j = 0;j &lt; 2;j++)&#123;</div><div class="line">            if(s[j] &gt; s[j+1])</div><div class="line">                swap(s,j);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    char s[4];</div><div class="line">    while(scanf(&quot;%s&quot;,s)!=EOF)&#123;</div><div class="line">        //getchar();</div><div class="line">        Bubblesort(s);</div><div class="line">        for(int i = 0;i &lt; 2;i++)&#123;</div><div class="line">            printf(&quot;%c&quot;,s[i]);</div><div class="line">            printf(&quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        printf(&quot;%c&quot;,s[2]);</div><div class="line">        printf(&quot;\n&quot;);</div><div class="line">    &#125;</div><div class="line">    //printf(&quot;\n&quot;);</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <p>自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">void swap(char *s,int j)&#123;</span><br><span class="line">    char temp = s[j];</span><br><span class="line">    s[j] = s[j+1];</span><br><span class="line">    s[j+1] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Bubblesort(char *s)&#123;</span><br><span class="line">    char temp = s[0];</span><br><span class="line">    for(int i = 0;i &lt; 3;i++)&#123;</span><br><span class="line">        for(int j = 0;j &lt; 2;j++)&#123;</span><br><span class="line">            if(s[j] &gt; s[j+1])</span><br><span class="line">                swap(s,j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char s[4];</span><br><span class="line">    while(scanf(&quot;%s&quot;,s)!=EOF)&#123;</span><br><span class="line">        //getchar();</span><br><span class="line">        Bubblesort(s);</span><br><span class="line">        for(int i = 0;i &lt; 2;i++)&#123;</span><br><span class="line">            printf(&quot;%c&quot;,s[i]);</span><br><span class="line">            printf(&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%c&quot;,s[2]);</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    //printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -575,6 +782,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -587,7 +798,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/条件概率/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -617,13 +834,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-02T21:19:00+08:00">
-                2015-12-02
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-02T21:19:00+08:00">2015-12-02</time>
             
 
+            
             
 
             
@@ -638,14 +854,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -676,7 +888,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -692,6 +904,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -711,12 +926,8 @@
 <blockquote>
 <p>定理1.如果<span class="math inline">\(E_1,E_2,\dots\)</span> 是一序列成对出现的样本空间<span class="math inline">\(S\)</span>中的不相交的事件，那么<span class="math display">\[p \left(\bigcup_i E_i \right)=\sum_i{p(E_i)}\]</span>. （注意这个定义在一序列事件<span class="math inline">\(E_1,E_2,\dots\)</span>是由有限或可数数量的成对不想交的事件组成的时候应用）</p>
 </blockquote>
-<h3 id="条件概率">条件概率</h3>
-<blockquote>
-<p>定义3.令<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>作为<span class="math inline">\(p(F)&gt;0\)</span>的事件。给出条件<span class="math inline">\(F\)</span>的<span class="math inline">\(E\)</span>的条件概率写作<span class="math inline">\(p(E|F),定义为\)</span><span class="math inline">\(p(E|F)=\cfrac{p(E \cap F)}{p(F)}\)</span>$. 依照这个公式，目前来看，还是比较容易计算的。</p>
-</blockquote>
-<h3 id="独立性">独立性</h3>
-<p>一个硬币被掷3次，告诉我们第一次是背面，3次中出现奇数次背面的概率是多少？从上面的条件概率的公式中，我们可以得到<span class="math inline">\(\cfrac{\cfrac14}{\cfrac48}=\cfrac12\)</span>.即便没有告诉我们第一次是背面，得到的概率同样也是<span class="math inline">\(\cfrac12\)</span>。这样概率并没有受到影响的两个事件，就叫做独立事件。</p>
+<p>###条件概率 &gt;定义3.令<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>作为<span class="math inline">\(p(F)&gt;0\)</span>的事件。给出条件<span class="math inline">\(F\)</span>的<span class="math inline">\(E\)</span>的条件概率写作<span class="math inline">\(p(E|F),定义为\)</span><span class="math inline">\(p(E|F)=\cfrac{p(E \cap F)}{p(F)}\)</span>$. 依照这个公式，目前来看，还是比较容易计算的。</p>
+<p>###独立性 一个硬币被掷3次，告诉我们第一次是背面，3次中出现奇数次背面的概率是多少？从上面的条件概率的公式中，我们可以得到<span class="math inline">\(\cfrac{\cfrac14}{\cfrac48}=\cfrac12\)</span>.即便没有告诉我们第一次是背面，得到的概率同样也是<span class="math inline">\(\cfrac12\)</span>。这样概率并没有受到影响的两个事件，就叫做独立事件。</p>
 <blockquote>
 <p>定义4.事件<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>是独立的，当且仅当<span class="math inline">\(p(E \cap F)=p(E)p(F)\)</span>.</p>
 </blockquote>
@@ -724,22 +935,15 @@
 <p>定义5.当且仅当对于所有对整数<span class="math inline">\(i\)</span>和<span class="math inline">\(j\)</span> <span class="math inline">\(（1\leq i \leq j \leq n)\)</span>有<span class="math inline">\(p(E_i \cap E_j)=p(E_i)p(E_j)\)</span>，事件<span class="math inline">\(E_1,E_2,\dots,E_n\)</span>是成对独立的。如果对于$i_j,j=1,2,,m $，是<span class="math inline">\(1 \leq i_1 \leq i_2 \leq \dots \leq i_m \leq n\)</span> 和<span class="math inline">\(m \geq 2\)</span>的整数，那么<span class="math inline">\(p(E_{i_1}\cap E_{i_2}\cap \dots \cap E_{i_m})=p(E_{i_1})p(E_{i_2})\dots p(E_{i_m})\)</span>这些事件是相互独立的。</p>
 </blockquote>
 <p>从定义5，我们可以看到每个<span class="math inline">\(n\)</span>个相互独立事件的集合也是成对独立的。然而<span class="math inline">\(n\)</span>个成对独立的时间并不一定是相互独立的。 （成对独立只对于两个事件之前，而相互独立是<span class="math inline">\(n\)</span>个之间之间均独立，差别就在这里了）</p>
-<h3 id="伯努利实验和二项分布bernoulli-trials-and-the-binomial-distribution">伯努利实验和二项分布（Bernoulli Trials and the Binomial Distribution)</h3>
-<blockquote>
-<p>每个具有两个可能结果的实验表现称之为<em>伯努利实验</em>。 一般来说，伯努利实验的可能结果被称为<em>成功</em>或者<em>失败</em>.</p>
-</blockquote>
+<p>###伯努利实验和二项分布（Bernoulli Trials and the Binomial Distribution) &gt;每个具有两个可能结果的实验表现称之为<em>伯努利实验</em>。 &gt;一般来说，伯努利实验的可能结果被称为<em>成功</em>或者<em>失败</em>.</p>
 <blockquote>
 <p>定理2.实际上在<span class="math inline">\(n\)</span>格独立伯努利实践中<span class="math inline">\(k\)</span>个成功的概率，在成功的概率为<span class="math inline">\(p\)</span>、失败的概率为<span class="math inline">\(q=1-p\)</span>的条件下是<span class="math display">\[C(n,k)p^kq^{n-k}\]</span>.</p>
 </blockquote>
 <p>我们也常写作<span class="math inline">\(b(k;n,p)\)</span>.我们把这个函数(为什么叫function，不太明白）叫做二项分布。</p>
 <p><span class="math display">\[\sum^n_{k=0}C(n,k)p^kq^{n-k}=(p+q)^n=1.\]</span></p>
-<h3 id="随机变量">随机变量</h3>
-<blockquote>
-<p>定义6.一个<em>随机变量</em>是一个从实验的样本空间映射到实数集合的函数。因此，一个随机变量分配一个实数到每个可能结果。</p>
-</blockquote>
+<p>###随机变量 &gt;定义6.一个<em>随机变量</em>是一个从实验的样本空间映射到实数集合的函数。因此，一个随机变量分配一个实数到每个可能结果。</p>
 <p>注意：随机变量并不是变量，也不随机。 &gt;定义7.在样本空间<span class="math inline">\(S\)</span>中的随机变量<span class="math inline">\(X\)</span>的分配是对所有<span class="math inline">\(r \in X(S),p(X=r)\)</span>是<span class="math inline">\(X\)</span>取值<span class="math inline">\(r\)</span>的概率的对<span class="math inline">\((r,p(X=r))\)</span>的集合。（在这个分配中的对的集合是由对<span class="math inline">\(r \in X(S)\)</span>的概率<span class="math inline">\(p(X=r)\)</span>决定的。）</p>
-<h4 id="生日问题">生日问题</h4>
-<p>生日问题是寻找房间里最少的人数使得至少有2个人同一天生日的概率大于<span class="math inline">\(\frac12\)</span>. 答：首先，我们列出几条假设。我们假设在一个房间里的人们的生日均是独立的。更进一步，我们假设每个生日是等可能的并且一年里有366天。（实际上，在一年里更多的人出生在一年里的相同的一些日子里，比如包括新年在内的一些节日后的9个月里） 为了找到这个可能性，我们首先计算这些人有全部都有不同生日的概率<span class="math inline">\(p_n\)</span>。然后，至少2个人有相同生日的概率为<span class="math inline">\(1-p_n\)</span>。为了计算<span class="math inline">\(p_n\)</span>，我们姑且认定<span class="math inline">\(n\)</span>个人的生日是遵循一定顺序的。想象一下，他们在一个时刻一个个进入房间；我们将会计算每个人进入房间时与已经在房间里的人的生日不同的概率。 第一个进入房间的人的生日当然不会匹配到任何在房间里的人的生日。第二个人的生日不同于第一个人的概率是$因为当第二个人出生在除了第一个人的生日之外的<span class="math inline">\(365\)</span>天里时，他们的生日是不同的。（这个对每个人出生在<span class="math inline">\(366\)</span>天里任何一天等可能的假设保证了这个和后续步骤） 第三个人有不同生日的概率是<span class="math inline">\(\cfrac{364}{366}。延伸开来，对于第\)</span>j<span class="math inline">\(个人(2 \leq j \leq 366)，有一个不同于其他\)</span>n-1<span class="math inline">\(个人的生日的概率是\)</span><span class="math inline">\(\cfrac{366-(j-1)}{366}=\cfrac{367-j}{366}.\)</span>$ 因为已经假设在房间里的人的生日均是独立的，我们就可以得出结论这房间里的<span class="math inline">\(n\)</span>个人有不同生日概率是<span class="math display">\[p_n=\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.\]</span> 随之，我们得到<span class="math display">\[1-p_n=1-\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.\]</span> 接下来为了找到最少的人数使得其概率大于<span class="math inline">\(\cfrac12\)</span>，我们逐渐带入增大的<span class="math inline">\(n\)</span>来计算（虽然可以用微积分，但是这里不使用。话说怎么用？我忘了）。我们会发现<span class="math inline">\(n=22,1-p_n \approx 0.475;n=23,1-p_n \approx 0.506\)</span>。因此我们得知最少只要23个人即可使得房间内的人至少有2个人的生日相同的概率为<span class="math inline">\(\cfrac12\)</span>。</p>
+<p>####生日问题 生日问题是寻找房间里最少的人数使得至少有2个人同一天生日的概率大于<span class="math inline">\(\frac12\)</span>. 答：首先，我们列出几条假设。我们假设在一个房间里的人们的生日均是独立的。更进一步，我们假设每个生日是等可能的并且一年里有366天。（实际上，在一年里更多的人出生在一年里的相同的一些日子里，比如包括新年在内的一些节日后的9个月里） 为了找到这个可能性，我们首先计算这些人有全部都有不同生日的概率<span class="math inline">\(p_n\)</span>。然后，至少2个人有相同生日的概率为<span class="math inline">\(1-p_n\)</span>。为了计算<span class="math inline">\(p_n\)</span>，我们姑且认定<span class="math inline">\(n\)</span>个人的生日是遵循一定顺序的。想象一下，他们在一个时刻一个个进入房间；我们将会计算每个人进入房间时与已经在房间里的人的生日不同的概率。 第一个进入房间的人的生日当然不会匹配到任何在房间里的人的生日。第二个人的生日不同于第一个人的概率是$因为当第二个人出生在除了第一个人的生日之外的<span class="math inline">\(365\)</span>天里时，他们的生日是不同的。（这个对每个人出生在<span class="math inline">\(366\)</span>天里任何一天等可能的假设保证了这个和后续步骤） 第三个人有不同生日的概率是<span class="math inline">\(\cfrac{364}{366}。延伸开来，对于第\)</span>j<span class="math inline">\(个人(2 \leq j \leq 366)，有一个不同于其他\)</span>n-1<span class="math inline">\(个人的生日的概率是\)</span><span class="math inline">\(\cfrac{366-(j-1)}{366}=\cfrac{367-j}{366}.\)</span>$ 因为已经假设在房间里的人的生日均是独立的，我们就可以得出结论这房间里的<span class="math inline">\(n\)</span>个人有不同生日概率是<span class="math display">\[p_n=\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.\]</span> 随之，我们得到<span class="math display">\[1-p_n=1-\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.\]</span> 接下来为了找到最少的人数使得其概率大于<span class="math inline">\(\cfrac12\)</span>，我们逐渐带入增大的<span class="math inline">\(n\)</span>来计算（虽然可以用微积分，但是这里不使用。话说怎么用？我忘了）。我们会发现<span class="math inline">\(n=22,1-p_n \approx 0.475;n=23,1-p_n \approx 0.506\)</span>。因此我们得知最少只要23个人即可使得房间内的人至少有2个人的生日相同的概率为<span class="math inline">\(\cfrac12\)</span>。</p>
 <p>哈希的重合概率计算和生日问题类似。</p>
 
           
@@ -747,17 +951,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -771,6 +975,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -783,7 +991,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/有限概率（拉普拉斯概率）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -813,13 +1027,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-02T19:44:00+08:00">
-                2015-12-02
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-02T19:44:00+08:00">2015-12-02</time>
             
 
+            
             
 
             
@@ -834,14 +1047,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -872,7 +1081,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -888,6 +1097,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -896,19 +1108,15 @@
       
         
           
-            <h3 id="有限概率拉普拉斯概率">有限概率（拉普拉斯概率）</h3>
+            <p>###有限概率（拉普拉斯概率）</p>
 <blockquote>
 <p>定义1.如果<span class="math inline">\(S\)</span>是一个等可能结构的有限非空样本空间，<span class="math inline">\(E\)</span>是一个作为<span class="math inline">\(S\)</span>的子集的一个事件，那么<span class="math inline">\(E\)</span>的概率为<span class="math inline">\(p(E)=\cfrac{|E|}{|S|}\)</span>.</p>
 </blockquote>
 <blockquote>
 <p>定理1.让<span class="math inline">\(E\)</span>成为一个样本空间<span class="math inline">\(S\)</span>中的一个事件。事件<span class="math inline">\(\overline{E}=S-E\)</span>发生的概率，即事件<span class="math inline">\(E\)</span>的补全事件，由以下公式给出<span class="math display">\[p(\overline{E})=1-p(E)\]</span>.</p>
 </blockquote>
-<h3 id="事件补全联合概率">事件补全、联合概率</h3>
-<blockquote>
-<p>定理2.让<span class="math inline">\(E_1\)</span>和<span class="math inline">\(E_2\)</span>成为样本空间<span class="math inline">\(S\)</span>中的时间，那么<span class="math inline">\(p(E_1 \cup E_2)=p(E_1)+p(E_2)-p(E_1 \cap E_2)\)</span>.</p>
-</blockquote>
-<h3 id="概率性原因">概率性原因</h3>
-<p>没什么内容，都是概率之前学过的基础，就下面这个问题比较有意思。 ####蒙提霍尔问题 &gt;蒙提霍尔问题就是在一个游戏中，有三扇门，一扇门背后是奖品，两扇门背后是山羊，参加者可以在上台前选择其中一扇门，上台之后，主持人会从剩下的两扇门中选择一扇背后没有奖品的门打开，然后给参加者一个更换选择的机会。 问：如果你更换，会不会有更大的概率拿到奖品。</p>
+<p>###事件补全、联合概率 &gt;定理2.让<span class="math inline">\(E_1\)</span>和<span class="math inline">\(E_2\)</span>成为样本空间<span class="math inline">\(S\)</span>中的时间，那么<span class="math inline">\(p(E_1 \cup E_2)=p(E_1)+p(E_2)-p(E_1 \cap E_2)\)</span>.</p>
+<p>###概率性原因 没什么内容，都是概率之前学过的基础，就下面这个问题比较有意思。 ####蒙提霍尔问题 &gt;蒙提霍尔问题就是在一个游戏中，有三扇门，一扇门背后是奖品，两扇门背后是山羊，参加者可以在上台前选择其中一扇门，上台之后，主持人会从剩下的两扇门中选择一扇背后没有奖品的门打开，然后给参加者一个更换选择的机会。 问：如果你更换，会不会有更大的概率拿到奖品。</p>
 <p>这里的问题以前看到过流言终结者，那里面采用的方法是统计概率，得到的结果是2/3的中签率。</p>
 <p><em>在更换之前的是先验概率，为1/3。</em> <em>得到一扇门打开之后的是后验概率（条件概率）。</em></p>
 <p>举个例子： 比如10个人抽一个人值日，这是一个事件，概率是1/10. 如果一个人打开了他的签，他并不值日，他的事件和你的事件是两回事，概率并不相关。 但如果你知道了他的未中签，给你再选择的机会，那就是1/9.</p>
@@ -922,17 +1130,17 @@
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -946,6 +1154,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -958,7 +1170,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/01/二叉树——森林的带度数层次序列存储/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -988,13 +1206,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-01T18:09:00+08:00">
-                2015-12-01
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-01T18:09:00+08:00">2015-12-01</time>
             
 
+            
             
 
             
@@ -1009,14 +1226,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -1047,7 +1260,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1063,6 +1276,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1071,32 +1287,32 @@
       
         
           
-            <p><a href="http://dsalgo.openjudge.cn/201409week7/1/" target="_blank" rel="external">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 对于树和森林等非线性结构，我们往往需要将其序列化以便存储。有一种树的存储方式称为带度数的层次序列。我们可以通过层次遍历的方式将森林序列转化为多个带度数的层次序列。</p>
+            <p><a href="http://dsalgo.openjudge.cn/201409week7/1/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 对于树和森林等非线性结构，我们往往需要将其序列化以便存储。有一种树的存储方式称为带度数的层次序列。我们可以通过层次遍历的方式将森林序列转化为多个带度数的层次序列。</p>
 <p>例如对于以下森林： <img src="http://media.openjudge.cn/images/upload/1401904592.png" alt="img"></p>
 <p>两棵树的层次遍历序列分别为：C E F G K H J / D X I</p>
 <p>每个结点对应的度数为：3 3 0 0 0 0 0 / 2 0 0</p>
 <p>我们将以上序列存储起来，就可以在以后的应用中恢复这个森林。在存储中，我们可以将第一棵树表示为C 3 E 3 F 0 G 0 K 0 H 0 J 0，第二棵树表示为D 2 X 0 I 0。</p>
 <p>现在有一些通过带度数的层次遍历序列存储的森林数据，为了能够对这些数据进行进一步处理，首先需要恢复他们。</p>
-<p>输入 输入数据的第一行包括一个正整数n，表示森林中非空的树的数目。 随后的 n 行，每行给出一棵树的带度数的层次序列。 树的节点名称为A-Z的单个大写字母。 输出 输出包括一行，输出对应森林的后根遍历序列。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2</div><div class="line">C 3 E 3 F 0 G 0 K 0 H 0 J 0</div><div class="line">D 2 X 0 I 0</div></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">K H J E F G C X I D</div></pre></td></tr></table></figure></p>
-<p>这道题，主要就是用队列存下根节点，根据其子节点数目判断是不是叶子。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cstdlib&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">    char data;</div><div class="line">    struct node *child[26];</div><div class="line">&#125;BitNode,*BitTree;</div><div class="line"></div><div class="line">void Init(BitTree &amp;root, char ch)&#123;</div><div class="line">    for(int i = 0;i &lt; 26;i++)&#123;</div><div class="line">        root-&gt;child[i] = NULL;</div><div class="line">    &#125;</div><div class="line">    root-&gt;data = ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void Create(BitTree &amp;root)&#123;</div><div class="line">    queue &lt;BitTree&gt;qRoot;</div><div class="line">    queue&lt;int&gt;qSeq;</div><div class="line">    BitTree temp,tempHead;</div><div class="line">    char ch;</div><div class="line">    int i = 0;</div><div class="line">    int degree = 0;//树的度</div><div class="line">    int childNum;</div><div class="line">    cin &gt;&gt; ch &gt;&gt; childNum;</div><div class="line">    root = (BitTree)malloc(sizeof(BitNode));</div><div class="line">    Init(root,ch);</div><div class="line">    qRoot.push(root);</div><div class="line">    qSeq.push(childNum);</div><div class="line">    while(!qRoot.empty())&#123;</div><div class="line">        while(degree == i)&#123;</div><div class="line">            if(qRoot.empty())</div><div class="line">                return ;</div><div class="line">            degree = qSeq.front();</div><div class="line">            qSeq.pop();</div><div class="line">            tempHead = qRoot.front();</div><div class="line">            qRoot.pop();</div><div class="line">            i = 0;</div><div class="line">        &#125;</div><div class="line">        cin &gt;&gt; ch &gt;&gt; childNum;</div><div class="line">        temp = (BitTree)malloc(sizeof(BitNode));</div><div class="line">        Init(temp,ch);</div><div class="line">        qRoot.push(temp);</div><div class="line">        qSeq.push(childNum);</div><div class="line">        tempHead-&gt;child[i] = temp;</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void AftTranverse(BitTree root)&#123;</div><div class="line">    for(int i = 0;i &lt; 26 &amp;&amp; root-&gt;child[i];i++)</div><div class="line">        AftTranverse(root-&gt;child[i]);</div><div class="line">    cout &lt;&lt; root-&gt;data &lt;&lt; &apos; &apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    BitTree root;</div><div class="line">    int n;</div><div class="line">    cin &gt;&gt; n;</div><div class="line">    while(n--)&#123;</div><div class="line">        Create(root);</div><div class="line">        AftTranverse(root);</div><div class="line">    &#125;</div><div class="line">    cout &lt;&lt; &apos;\n&apos;;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输入 输入数据的第一行包括一个正整数n，表示森林中非空的树的数目。 随后的 n 行，每行给出一棵树的带度数的层次序列。 树的节点名称为A-Z的单个大写字母。 输出 输出包括一行，输出对应森林的后根遍历序列。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">C 3 E 3 F 0 G 0 K 0 H 0 J 0</span><br><span class="line">D 2 X 0 I 0</span><br></pre></td></tr></table></figure></p>
+<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">K H J E F G C X I D</span><br></pre></td></tr></table></figure></p>
+<p>这道题，主要就是用队列存下根节点，根据其子节点数目判断是不是叶子。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    char data;</span><br><span class="line">    struct node *child[26];</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">void Init(BitTree &amp;root, char ch)&#123;</span><br><span class="line">    for(int i = 0;i &lt; 26;i++)&#123;</span><br><span class="line">        root-&gt;child[i] = NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    root-&gt;data = ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Create(BitTree &amp;root)&#123;</span><br><span class="line">    queue &lt;BitTree&gt;qRoot;</span><br><span class="line">    queue&lt;int&gt;qSeq;</span><br><span class="line">    BitTree temp,tempHead;</span><br><span class="line">    char ch;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int degree = 0;//树的度</span><br><span class="line">    int childNum;</span><br><span class="line">    cin &gt;&gt; ch &gt;&gt; childNum;</span><br><span class="line">    root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    Init(root,ch);</span><br><span class="line">    qRoot.push(root);</span><br><span class="line">    qSeq.push(childNum);</span><br><span class="line">    while(!qRoot.empty())&#123;</span><br><span class="line">        while(degree == i)&#123;</span><br><span class="line">            if(qRoot.empty())</span><br><span class="line">                return ;</span><br><span class="line">            degree = qSeq.front();</span><br><span class="line">            qSeq.pop();</span><br><span class="line">            tempHead = qRoot.front();</span><br><span class="line">            qRoot.pop();</span><br><span class="line">            i = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        cin &gt;&gt; ch &gt;&gt; childNum;</span><br><span class="line">        temp = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">        Init(temp,ch);</span><br><span class="line">        qRoot.push(temp);</span><br><span class="line">        qSeq.push(childNum);</span><br><span class="line">        tempHead-&gt;child[i] = temp;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AftTranverse(BitTree root)&#123;</span><br><span class="line">    for(int i = 0;i &lt; 26 &amp;&amp; root-&gt;child[i];i++)</span><br><span class="line">        AftTranverse(root-&gt;child[i]);</span><br><span class="line">    cout &lt;&lt; root-&gt;data &lt;&lt; &apos; &apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    BitTree root;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    while(n--)&#123;</span><br><span class="line">        Create(root);</span><br><span class="line">        AftTranverse(root);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &apos;\n&apos;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1110,6 +1326,10 @@
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1122,7 +1342,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/30/大学物理实验-考点总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1152,13 +1378,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-30T22:42:00+08:00">
-                2015-11-30
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-30T22:42:00+08:00">2015-11-30</time>
             
 
+            
             
 
             
@@ -1173,14 +1398,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1211,7 +1432,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1227,6 +1448,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1257,14 +1481,10 @@ u_r=\cfrac{u(x)}{\overline {x}} \times 100\%
  \end{cases}\tag{1.2}\]</span> 式中，<span class="math inline">\(\overline x\)</span>为多次测量的平均值，<span class="math inline">\(u(x)\)</span>为合成不确定度，<span class="math inline">\(u_r\)</span>是两者的比值，称为测量的相对不确定度。</p>
 <h4 id="不确定度的求解">不确定度的求解</h4>
 <h5 id="直接测量不确定度的求解过程">直接测量不确定度的求解过程</h5>
-1.单次测量 因为我们的实验过程都是指定的，并不需要我们自己来构思实验过程，所以对于测量单次或者多次无需判断，这部分不在考点内。 当遇到测量结果是单次测量时，我们的不确定度只有<span class="math inline">\(u_B(x)\)</span>一项。它的取值有两种，一种是仪器标定的最大误差限（暂时没遇到，如果有应该会在型号说明那把），第二种是实验室给出的最大允许误差<span class="math inline">\(u(x)=u_B(x)=\Delta_仪\)</span>。如果两种都有，取较大者。<br>
+<p>1.单次测量 因为我们的实验过程都是指定的，并不需要我们自己来构思实验过程，所以对于测量单次或者多次无需判断，这部分不在考点内。 当遇到测量结果是单次测量时，我们的不确定度只有<span class="math inline">\(u_B(x)\)</span>一项。它的取值有两种，一种是仪器标定的最大误差限（暂时没遇到，如果有应该会在型号说明那把），第二种是实验室给出的最大允许误差<span class="math inline">\(u(x)=u_B(x)=\Delta_仪\)</span>。如果两种都有，取较大者。<br>
 2.多次测量 多次测量时，不确定度一般按照下列过程进行计算： * 求多次的测量数据的平均值<span class="math inline">\(\overline{x}=\sum \frac{x_i}{n}\)</span>; * 修正已知系统误差，得到测量值，例如，已知螺旋测微仪的零点误差为<span class="math inline">\(d_0\)</span>，修正后的测量结果为<span class="math inline">\(d=d_测-d_0\)</span>； * 用贝塞尔公式计算标准误差<span class="math display">\[s(x)=\sqrt{\cfrac{\sum_{i=1}^{n} (x_i-\overline{x})^2}{n-1}}\]</span> * 根据仪器标定的最大误差限，或实验室给出的最大允许误差，确定<span class="math inline">\(u_B(x)\)</span>； * 根据$u_A(x)和u_B(x)求合成不确定度 <span class="math display">\[u(x)=\sqrt{u^2_A(x)+u^2_B(x)}$ ；
 *   计算相对不确定度$u_r(x)=\cfrac{u(x)}{\overline {x}} \times 100 \%$;
-*   给出测量结果\]</span>
-<span class="math display">\[\begin{cases}x=\overline{x}\pm u(x) \\\\
-u_r=\cfrac{u(x)}{\overline x}\times 100 \%
-\end{cases}\]</span>
-<p>$$</p>
+*   给出测量结果\]</span>\begin{cases}x=u(x) \\ u_r=100 % \end{cases}$$</p>
 <h4 id="间接测量的不确定度">间接测量的不确定度</h4>
 <p>在实际测量中，我们遇到的往往是间接测量，因此间接测量具有非常重要的意义。假设物理量<span class="math inline">\(F\)</span>是<span class="math inline">\(n\)</span>个独立的直接测量量<span class="math inline">\(x,y,z,\cdots\)</span>的函数，即<span class="math inline">\(F=f(x,y,z,\cdots)\)</span>，如果它们相互独立，则<span class="math inline">\(F\)</span>的不确定度可由各直接测量量的不确定度合成，即<span class="math display">\[u(F)=\sqrt{\left(\cfrac {\partial{f}}{\partial {x}}\right)^2 u^2 (x)+\left(\cfrac {\partial{f}}{\partial {y}}\right)^2 u^2 (y)+\left(\cfrac {\partial{f}}{\partial {z}}\right)^2 u^2 (z)+\cdots}\]</span> 式中，<span class="math inline">\(u(x),u(y),u(z)\)</span>为各直接测量量<span class="math inline">\(x,y,z,\cdots\)</span>的不确定度。</p>
 <p>当<span class="math inline">\(F=f(x,y,z,\cdots)\)</span>中各观测量之间的关系是乘、除或方幂时，采用相对不确定度的表达方式，可以大大简化合成不确定度的运算。 方法是先取自然对数，然后作不确定度的合成，即 <span class="math display">\[u(F)=\sqrt{\left(\cfrac{\partial{lnf}}{\partial x}\right)^2u^2 (x)+\left(\cfrac{\partial{lnf}}{\partial y}\right)^2u^2 (y)+\left(\cfrac{\partial{lnf}}{\partial z}\right)^2u^2 (z)+\cdots}\]</span></p>
@@ -1357,17 +1577,17 @@ a=\overline{y}-b\overline{x}
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1381,6 +1601,10 @@ a=\overline{y}-b\overline{x}
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1393,7 +1617,13 @@ a=\overline{y}-b\overline{x}
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/29/非递归判断完全二叉树！递归？No-answer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1423,13 +1653,12 @@ a=\overline{y}-b\overline{x}
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-29T18:56:00+08:00">
-                2015-11-29
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-29T18:56:00+08:00">2015-11-29</time>
             
 
+            
             
 
             
@@ -1444,14 +1673,10 @@ a=\overline{y}-b\overline{x}
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -1482,7 +1707,7 @@ a=\overline{y}-b\overline{x}
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1498,6 +1723,9 @@ a=\overline{y}-b\overline{x}
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1508,11 +1736,11 @@ a=\overline{y}-b\overline{x}
           
             <p>判断完全二叉树。</p>
 <p>完全二叉树的定义是，只有第n行将所有子节点元素集中在最左以外（可以不满），其余行所有节点均为满。</p>
-<p>结构 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">typedef struct tree&#123;</div><div class="line">	char data;</div><div class="line">	struct tree *lc,*rc;</div><div class="line">&#125;BitNode,*BitTree;</div></pre></td></tr></table></figure></p>
-<p>1.采用层次遍历 通过建立一个队列，将节点an层次入队列。当队列首节点为空时，之后的节点应当均为空，出现非空，则为非完全二叉树 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">bool JudgeComplete(BitTree root)</div><div class="line">&#123;</div><div class="line">    queue&lt;BitTree&gt; q;</div><div class="line">    if(NULL == root)</div><div class="line">    	return true;</div><div class="line">    q.push(root);</div><div class="line">    BitTree cur = NULL;</div><div class="line">    bool flag = false;</div><div class="line">    while(!q.empty())</div><div class="line">    &#123;</div><div class="line">    	cur = q.front();</div><div class="line">     	q.pop();</div><div class="line">             if(cur)</div><div class="line">             &#123;</div><div class="line">             	if(flag)</div><div class="line">             		return false;</div><div class="line">                	q.push(cur-&gt;lc);</div><div class="line">                	q.push(cur-&gt;rc);</div><div class="line">             &#125;</div><div class="line">             else</div><div class="line">             	flag = true;</div><div class="line">   &#125;</div><div class="line">   return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2.递归判断的方法 如果要使用最原始的递归，那么根据分形的原则，完全二叉树并没有处处分形（自相似），所以是肯定不能使用最原始的递归方法，即只传递一个根节点进入的。下面两种传统的递归方法都有漏洞。 那么，可不可以通过追加其他的形参比如<em>层次</em>、<em>深度</em>、<em>左右子树标记</em>来达成目的呢？ 假设有一个深度为3的子树，追加这三项是可以判断出的，然而如果深度为100呢？仅一个标记已经无法判断这颗子树的位置，也就无法判断完全二叉树了。 所以，我认为对于完全二叉树的判断，只能采用队列层次遍历的方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">bool JudgeComplete(BitTree root)</div><div class="line">&#123;</div><div class="line">	if(root != NULL)&#123;</div><div class="line">		if(root-&gt;rc != NULL &amp;&amp; root-&gt;lc == NULL)</div><div class="line">			return false;</div><div class="line">		JudgeComplete(root-&gt;lc);</div><div class="line">		JudgeComplete(root-&gt;rc);</div><div class="line">	&#125; </div><div class="line">	return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结构 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct tree&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct tree *lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br></pre></td></tr></table></figure></p>
+<p>1.采用层次遍历 通过建立一个队列，将节点an层次入队列。当队列首节点为空时，之后的节点应当均为空，出现非空，则为非完全二叉树 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">bool JudgeComplete(BitTree root)</span><br><span class="line">&#123;</span><br><span class="line">    queue&lt;BitTree&gt; q;</span><br><span class="line">    if(NULL == root)</span><br><span class="line">    	return true;</span><br><span class="line">    q.push(root);</span><br><span class="line">    BitTree cur = NULL;</span><br><span class="line">    bool flag = false;</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">    	cur = q.front();</span><br><span class="line">     	q.pop();</span><br><span class="line">             if(cur)</span><br><span class="line">             &#123;</span><br><span class="line">             	if(flag)</span><br><span class="line">             		return false;</span><br><span class="line">                	q.push(cur-&gt;lc);</span><br><span class="line">                	q.push(cur-&gt;rc);</span><br><span class="line">             &#125;</span><br><span class="line">             else</span><br><span class="line">             	flag = true;</span><br><span class="line">   &#125;</span><br><span class="line">   return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.递归判断的方法 如果要使用最原始的递归，那么根据分形的原则，完全二叉树并没有处处分形（自相似），所以是肯定不能使用最原始的递归方法，即只传递一个根节点进入的。下面两种传统的递归方法都有漏洞。 那么，可不可以通过追加其他的形参比如<em>层次</em>、<em>深度</em>、<em>左右子树标记</em>来达成目的呢？ 假设有一个深度为3的子树，追加这三项是可以判断出的，然而如果深度为100呢？仅一个标记已经无法判断这颗子树的位置，也就无法判断完全二叉树了。 所以，我认为对于完全二叉树的判断，只能采用队列层次遍历的方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool JudgeComplete(BitTree root)</span><br><span class="line">&#123;</span><br><span class="line">	if(root != NULL)&#123;</span><br><span class="line">		if(root-&gt;rc != NULL &amp;&amp; root-&gt;lc == NULL)</span><br><span class="line">			return false;</span><br><span class="line">		JudgeComplete(root-&gt;lc);</span><br><span class="line">		JudgeComplete(root-&gt;rc);</span><br><span class="line">	&#125; </span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>存在一个问题，对于同时存在左右子树，不过是在倒数第二行的右子树上同时存在2个子树，而同行的左子树无子树，这种情况也会被判断为完全二叉树</p>
-<p>另外还有一个不同的递归算法，同样有比较大的问题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">bool JudgeComplete(BitTree root)   //采用递归算法来实现判断是否为完全二叉树</div><div class="line">&#123;</div><div class="line">      if(root == NULL) </div><div class="line">          return   true; </div><div class="line">      if(root-&gt;lc == NULL &amp;&amp; root-&gt;rc == NULL) </div><div class="line">          return   true;  </div><div class="line">      if(root-&gt;lc  == NULL  &amp;&amp; root-&gt;rc != NULL || root-&gt;lc != NULL &amp;&amp; root-&gt;rc == NULL) </div><div class="line">          return   false; </div><div class="line">      return   JudgeComplete(root-&gt;lc) &amp; JudgeComplete(root-&gt;rc); </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>另外还有一个不同的递归算法，同样有比较大的问题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bool JudgeComplete(BitTree root)   //采用递归算法来实现判断是否为完全二叉树</span><br><span class="line">&#123;</span><br><span class="line">      if(root == NULL) </span><br><span class="line">          return   true; </span><br><span class="line">      if(root-&gt;lc == NULL &amp;&amp; root-&gt;rc == NULL) </span><br><span class="line">          return   true;  </span><br><span class="line">      if(root-&gt;lc  == NULL  &amp;&amp; root-&gt;rc != NULL || root-&gt;lc != NULL &amp;&amp; root-&gt;rc == NULL) </span><br><span class="line">          return   false; </span><br><span class="line">      return   JudgeComplete(root-&gt;lc) &amp; JudgeComplete(root-&gt;rc); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这个算法里就是完全把存在左子树，不存在右子树作为了反例了的，实际上是存在一个这样的二叉树的。</p>
 
           
@@ -1520,17 +1748,17 @@ a=\overline{y}-b\overline{x}
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1544,6 +1772,10 @@ a=\overline{y}-b\overline{x}
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1556,7 +1788,13 @@ a=\overline{y}-b\overline{x}
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/28/偏序集、格/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1586,13 +1824,12 @@ a=\overline{y}-b\overline{x}
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-28T23:44:00+08:00">
-                2015-11-28
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-28T23:44:00+08:00">2015-11-28</time>
             
 
+            
             
 
             
@@ -1607,14 +1844,10 @@ a=\overline{y}-b\overline{x}
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1645,7 +1878,7 @@ a=\overline{y}-b\overline{x}
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1661,6 +1894,9 @@ a=\overline{y}-b\overline{x}
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1669,7 +1905,7 @@ a=\overline{y}-b\overline{x}
       
         
           
-            <h4 id="重新看一下关于格的知识">重新看一下关于格的知识</h4>
+            <p>####重新看一下关于格的知识</p>
 <p>具有极值性质的偏序集元素有许多重要应用。 其中偏序集的一个元素叫做极大的，当它不小于这个偏序集的任何其他元素，即在偏序集中是极大的。</p>
 <p>这里有个问题，什么叫做极大的？偏序集难道只有大小关系吗，不是说关系是任意的吗。难道说这个偏序集的大小关系其实就是是否满足这个偏序集所指定的关系，满足即为大，不满足即为小？这样的话又有一个问题，之前定义也说到了，满足即称为可比的，不满足即称为不可比的，那么在这里要求极大元素时，不可比的两个元素怎么说呢？</p>
 <p>这里所说的极大，其实就是在这个偏序集中不存在第二个元素可以使得他作为被处理的关系，即关系的受者。这样的元素称为该偏序集的极大元素。</p>
@@ -1679,20 +1915,18 @@ a=\overline{y}-b\overline{x}
 <p>其次从范围上，有所区别，比如最大元素和最小元素其实在定义中并没有提到可以用到偏序集的子集当中，而这里上界和下界主要就是用在偏序集的子集中。</p>
 <p>接下来，出现了两个关键新名词，最小上界和最大下界。</p>
 <p>而最大下界和最小上界就是意味着，在上界和下界中进行比较，其中最小的称之为最小上界，以此类推，最大的就称之为最大下界了。 最小上界和最大下界估计接下来会有很大的作用，因为在这里书上给了他一个定义GLB(A)和LUB(A)</p>
-<h4 id="好啦接下来整章中最重要的boss登场了格">好啦，接下来整章中最重要的BOSS登场了，格。</h4>
+<p>####好啦，接下来整章中最重要的BOSS登场了，格。</p>
 <p>格的首先的性质就要求一个偏序集中的每对元素存在最小上界和最大下界。这里有个很重要的修饰词——每对，任意对元素的集合都必须得存在最小上界和最大下界。</p>
 <p>以字母序排列的偏序集长得我觉得就比较像格。</p>
 <p>这里稍微说道，格在布尔代数中起到了非常重要的性质。 这里可以让我们保留一下期盼。（待以后看到了补充）</p>
 <p>书上分析是否是格，出现了一个没见过的判断，用到的原因是说3个元素的任意一个的在这个偏序集中的序都不大于另两个。</p>
 <p>这里的序是不是就是所谓的链接的大小关系呢？就是说因为他们三个元素与他们以下的元素都形成了相等的3条线，故三者相等，不存在其中一个大于另两个之说，也就导致了最小上界不存在。故不为格？</p>
 <p>这是一个猜想，姑且保留先。</p>
-<h4 id="信息流的格模型">信息流的格模型</h4>
-<p>在许多设置中，从一个人或计算机程序到另一个人或计算机程序的信息流要受到限制，这可以通过安全权限来实现。 我们可以使用格的模型来表示不同的信息流策略。 （这句话是什么意思，不能理解，什么叫做策略，又怎么来表示） 例如，一个通用的信息流策略是用于政府或军事系统中的多级安全策略。为每组信息分配一个安全级别，并且每个安全级别用一个对（A,C）表示，其中A是权限级别，C是种类，然后允许人和计算机程序从一个被特别限制的安全类的集合中访问信息。 （感觉这里并咩有说清楚，A和C是如何形成了一个偏序集的）</p>
+<p>####信息流的格模型 在许多设置中，从一个人或计算机程序到另一个人或计算机程序的信息流要受到限制，这可以通过安全权限来实现。 我们可以使用格的模型来表示不同的信息流策略。 （这句话是什么意思，不能理解，什么叫做策略，又怎么来表示） 例如，一个通用的信息流策略是用于政府或军事系统中的多级安全策略。为每组信息分配一个安全级别，并且每个安全级别用一个对（A,C）表示，其中A是权限级别，C是种类，然后允许人和计算机程序从一个被特别限制的安全类的集合中访问信息。 （感觉这里并咩有说清楚，A和C是如何形成了一个偏序集的）</p>
 <p>在美国政府中，使用的典型的权限级别是不保密（0）、秘密（1）、机密（2）和绝密（3）。在安全级别中使用的种类是一个集合的子集，这个集合含有与一个特定行业领域相关的所有的分布。每个分部表示一个指定的对象域。 （分部和对象域又是什么？完全没有提到） 例如，如果分部的集合是{间谍，鼹鼠，双重间谍}，那么存在8种不同的分类，分部集合有8个子集，对于每个子集有一类，例如{间谍，鼹鼠} （这里应该是根据关系进行了任意的组合，但是也没有说道这两个种类之间的关系）</p>
 <p>我们可以对安全类排序，规定 。信息允许从安全类（A1，C1}流向安全类（A2，C2）当且仅当（A1，C1）对(A2，C2)满足那个关系。例如，信息允许从安全类（机密，{间谍，鼹鼠}）流向安全类{绝密，{间谍，鼹鼠，双重间谍}}。反之，信息不允许从安全类（绝密，{间谍，鼹鼠}）流向安全类（机密，{间谍，鼹鼠，双重间谍}）或（绝密，{间谍}）；</p>
 <p>（暂时还是不理解）</p>
-<h4 id="拓扑排序">拓扑排序</h4>
-<p>假设一个项目由20个任务构成。某些人武只能在其他任务结束后完成。如何找到这些任务的顺序（感觉这个有点像路径了，比如CPM）</p>
+<p>####拓扑排序 假设一个项目由20个任务构成。某些人武只能在其他任务结束后完成。如何找到这些任务的顺序（感觉这个有点像路径了，比如CPM）</p>
 <p>定义，如果只要aRb就有a与b满足那样的关系，则称一个全序 与偏序R是相容的（相容又是一个新名词）。 从一个偏序构造一个相容的全序叫做拓扑排序，我们需要使用引理。（引理看起来很重要）</p>
 
           
@@ -1700,17 +1934,17 @@ a=\overline{y}-b\overline{x}
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1724,6 +1958,10 @@ a=\overline{y}-b\overline{x}
         <div class="post-eof"></div>
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -1736,7 +1974,13 @@ a=\overline{y}-b\overline{x}
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/27/《沉默的大多数》跳出手掌心/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1766,13 +2010,12 @@ a=\overline{y}-b\overline{x}
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-27T23:56:00+08:00">
-                2015-11-27
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-27T23:56:00+08:00">2015-11-27</time>
             
 
+            
             
 
             
@@ -1787,14 +2030,10 @@ a=\overline{y}-b\overline{x}
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1825,7 +2064,7 @@ a=\overline{y}-b\overline{x}
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1841,6 +2080,9 @@ a=\overline{y}-b\overline{x}
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -1865,17 +2107,17 @@ a=\overline{y}-b\overline{x}
       
     </div>
 
-    <div>
-      
-    </div>
+    
 
-    <div>
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-    </div>
+    
+
+    
+
+    
 
     <footer class="post-footer">
       
@@ -1889,171 +2131,10 @@ a=\overline{y}-b\overline{x}
         <div class="post-eof"></div>
       
     </footer>
-  </article>
-
-
-    
-      
-
-  
-
+  </div>
   
   
   
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/《沉默的大多数》序言/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/26/《沉默的大多数》序言/" itemprop="url">《沉默的大多数》序言</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-26T18:09:00+08:00">
-                2015-11-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/thinking/" itemprop="url" rel="index">
-                    <span itemprop="name">随想</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/《沉默的大多数》序言/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/26/《沉默的大多数》序言/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/26/《沉默的大多数》序言/" class="leancloud_visitors" data-flag-title="《沉默的大多数》序言">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<blockquote>
-<p>年轻时读萧伯纳的剧本《芭芭拉少校》，有场戏给我留下了深刻的印象：工业巨头安德谢夫老爷子见到了多年不见的儿子斯泰芬，问他对做什么有兴趣。这个年轻人在科学、文艺、法律等一切方面一无所长，但他说自己有一项长处：会明辨是非。老爷子把自己的儿子暴损了一通，说这件事难倒了一切科学家、政治家、哲学家，怎么你什么都不会，就会一个明辨是非？我看到这段文章时只有二十来岁，登时痛下决心，说这辈子我干什么都可以，就是不能做一个一无所能，就能明辨是非的人。因为这个原故，我成了沉默的大多数的一员。我年轻时所见的人，只掌握了一些粗浅（且不说是荒谬）的原则，就以为无所不知，对世界妄加判断，结果整个世界都深受其害。直到我年登不惑，才明白萧翁的见解原有偏颇之处；但这是后话——无论如何，萧翁的这些议论，对那些浅薄之辈、狂妄之辈，总是一种解毒剂。 萧翁说明辨是非难，是因为这些是非都在伦理的领域之内。俗话说得好，此人之肉，彼人之毒；一件对此人有利的事，难免会伤害另一个人。真正的君子知道，自己的见解受所处环境左右，未必是公平的；所以他觉得明辨是非是难的。倘若某人以为自己是社会的精英，以为自己的见解一定对，虽然有狂妄之嫌，但他会觉得明辨是非很容易。明了萧翁这重意思以后，我很以做明辨是非的专家为耻——但这已经是二十年前的事了。当时我是年轻人，觉得能洁身自好，不去害别人就可以了。现在我是中年人——一个社会里，中年人要负很重的责任：要对社会负责，要对年轻人负责，不能只顾自己。因为这个原故，我开始写杂文。现在奉献给读者的这本杂文集，篇篇都在明辨是非，而且都在打我自己的嘴。 伦理问题虽难，但却不是不能讨论。罗素先生云，真正的伦理原则把人人同等看待。考虑伦理问题时，想替每个人都想一遍是不可能的事，但你可以说，这是我的一得之见，然后说出自己的意见，把是非交付公论。讨论伦理问题时也可以保持良心的清白——这是我最近的体会；但不是我打破沉默的动机。假设有一个领域，谦虚的人、明理的人以为它太困难、太暧昧，不肯说话，那么开口说话的就必然是浅薄之徒、狂妄之辈。这导致一种负筛选：越是傻子越敢叫唤——马上我就要说到，这些傻子也不见得是真的傻，但喊出来的都是傻话。久而久之，对中国人的名声也有很大的损害。前些时见到个外国人，他说：听说你们中国人都在说“不”？这简直是把我们都当傻子看待。我很不客气地答道：物以类聚，人以群分。你认识的中国人都说“不”，但我不认识这样的人。这倒不是唬外国人，我认识很多明理的人，但他们都在沉默中，因为他们都珍视自己的清白。但我以为，伦理问题太过重要，已经不容我顾及自身的清白。 伦理（尤其是社会伦理）问题的重要，在于它是大家的事——大家的意思就是包括我在内。我在这个领域里有话要说，首先就是：我要反对愚蠢。一个只会明辨是非的人总是凭胸中的浩然正气做出一个判断，然后加上一句：难道这不是不言而喻的吗？任何受过一点科学训练的人都知道，这世界上简直找不到什么不言而喻的事，所以这就叫做愚蠢。在我们这个国家里，傻有时能成为一种威慑。假如乡下一位农妇养了五个傻儿子，既不会讲理，又不懂王法，就会和人打架，这家人就能得点便宜。聪明人也能看到这种便宜，而且装傻谁不会呢——所以装傻就成为一种风气。我也可以写装傻的文章，不只是可以，我是写过的——“文革”里谁没写过批判稿呢。但装傻是要不得的，装开了头就不好收拾，只好装到底，最后弄假成真。我知道一个例子是这样的：某人“文革”里装傻写批判稿，原本是想搞点小好处，谁知一不小心上了《人民日报》头版头条，成了风云人物。到了这一步，我也不知他是真傻假傻了。再以后就被人整成了“三种人”。到了这个地步，就只好装下去了，真傻犯错误处理还能轻些呀。 我反对愚蠢，不是反对天生就笨的人，这种人只是极少数，而且这种人还盼着变聪明。在这个世界上，大多数愚蠢里都含有假装和弄假成真的成分；但这一点并不是我的发现，是萧伯纳告诉我的。在他的《匹克梅梁》里，息金斯教授遇上了一个假痴不癫的杜特立尔先生。息教授问：你是恶棍还是傻瓜？这就是问：你假傻真傻？杜先生答：两样都有点，先生，凡人两样都得有点呀。在我身上，后者的成分多，前者的成分少；而且我讨厌装傻，渴望变聪明。所以我才会写这本书。 在社会伦理的领域里我还想反对无趣，也就是说，要反对庄严肃穆的假正经。据我的考察，在一个宽松的社会里，人们可以收获到优雅，收获到精雕细琢的浪漫；在一个呆板的社会里，人们可以收获到幽默——起码是黑色的幽默。就是在我呆的这个社会里，什么都收获不到，这可是件让人吃惊的事情。看过但丁《神曲》的人就会知道，对人来说，刀山剑树火海油锅都不算严酷，最严酷的是寒冰地狱，把人冻在那里一动都不能动。假如一个社会的宗旨就是反对有趣，那它比寒冰地狱又有不如。在这个领域里发议论的人总是在说：这个不宜提倡，那个不宜提倡。仿佛人活着就是为了被提倡。要真是这样，就不如不活。罗素先生说，参差多态乃是幸福的本源——弟兄姐妹们，让我们睁开眼睛往周围看看，所谓的参差多态，它在哪里呢。 在萧翁的《芭芭拉少校》中，安德谢夫家族的每一代都要留下一句至理名言。那些话都编得很有意思，其中有一句是：人人有权争胜负，无人有权论是非。这话也很有意思，但它是句玩笑。实际上，人只要争得了论是非的权力，他已经不战而胜了。我对自己的要求很低：我活在世上，无非想要明白些道理，遇见些有趣的事。倘能如我所愿，我的一生就算成功。为此也要去论是非，否则道理不给你明白，有趣的事也不让你遇到。我开始得太晚了，很可能做不成什么，但我总得申明我的态度，所以就有了这本书——为我自己，也代表沉默的大多数。 王小波 1997年3月20日</p>
-</blockquote>
-<p>明辨是非确实不值得自称，正如作者所说，是非与社会伦理相关，受环境影响，辨出的是非是与视野确切相关的。</p>
-<p>当下的我们大部分人还年轻，阅历并不能算是很丰富，可能看了不少书、电影、段子，即便这些都是建立在真实之上的，那也只是真实的局部，我们认识的与亲身经历的往往相差甚远。往往通过网络看到一些时事时，看到结果与自己的判断差不多，自以为自己辨别的不错。其实都是假象，其中一个原因，就是人总会自觉的美化自己。就像看答案做作业，你总会觉得这些题好简单，很容易就写出来；而实际脱离答案时，建立的思路却远不上道。辨别是非并不是像我们当下想象的那么简单地能力，正如作者所言，年轻时还是少言是非多做自己的事为好。</p>
-<p>必须着重强调一下的是，少言是非。少言并不是对一切保持沉默，即便是自己该发言的时候。少言仅仅只是指不要对不关自己的事情，不切身的事情，妄下评论。对于与自己相关之事，单纯发表真实的想法并不为过。</p>
-<p>而在相关、且并非时下不正常的时候，不发表自己的真实想法，以装傻糊弄他人占些便宜，这就是在损伤自己的良心了。仅从我们个人自身来谈，对于并非聪明绝顶的、我们这样的普通人来说，装傻装着装着习惯了，贪小便宜习惯了，那可就真的习惯了装傻的思维方式了。至少于我，装傻是不可行的，否则我必定会习惯局限性的思考，忘记了探索思维的深度。而且吧，如果是真傻，那还只是自己的思维的广度不足，对某些事真的不懂，学着学着就不傻了。假傻，那可就没辙了，时间会让你习惯成真傻的。</p>
-<p>对无趣这段，所幸当下的我们的社会其实还是不错的了，至少对于网上的我们，还是能做些越矩的事的。</p>
-<p>有态度，慢慢做，做到哪收获到哪，对我来说，当下也足够了。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </article>
 
 
@@ -2070,9 +2151,6 @@ a=\overline{y}-b\overline{x}
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -2086,72 +2164,39 @@ a=\overline{y}-b\overline{x}
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -2168,30 +2213,41 @@ a=\overline{y}-b\overline{x}
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -2202,6 +2258,8 @@ a=\overline{y}-b\overline{x}
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -2222,75 +2280,75 @@ a=\overline{y}-b\overline{x}
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
-
-    
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
   
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
+
+  
+
 
 
 
@@ -2307,8 +2365,6 @@ a=\overline{y}-b\overline{x}
 
 
 
-  
-
 
 
 
@@ -2325,7 +2381,7 @@ a=\overline{y}-b\overline{x}
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -2427,7 +2483,7 @@ a=\overline{y}-b\overline{x}
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -2436,28 +2492,13 @@ a=\overline{y}-b\overline{x}
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

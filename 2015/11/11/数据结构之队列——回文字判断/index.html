@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,36 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数据结构," />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
-<meta name="keywords" content="数据结构">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据结构之队列——回文字判断">
-<meta property="og:url" content="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
-<meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构之队列——回文字判断">
-<meta name="twitter:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
+
+
+
 
 
 
@@ -112,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -130,14 +124,43 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="数据结构," />
+
+
+<meta name="description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构之队列——回文字判断">
+<meta property="og:url" content="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构之队列——回文字判断">
+<meta name="twitter:description" content="题目：判别回文字符串 正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/"/>
 
 
 
-
-
-  <title>数据结构之队列——回文字判断 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>数据结构之队列——回文字判断 | 行路中.</title>
   
 
 
@@ -148,10 +171,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -162,11 +207,11 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -200,51 +245,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -256,9 +281,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -275,7 +306,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,13 +340,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-11T17:43:00+08:00">
-                2015-11-11
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-11T17:43:00+08:00">2015-11-11</time>
             
 
+            
             
 
             
@@ -324,14 +360,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -362,7 +394,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -378,6 +410,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -386,46 +421,22 @@
       
         <p>题目：判别回文字符串</p>
 <p>正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#define ERROR 0</div><div class="line">#define OK 1</div><div class="line"></div><div class="line">typedef struct node&#123;</div><div class="line">	char data;</div><div class="line">	struct node *next;</div><div class="line">&#125;queue,stack,*LinkQueue,*LinkStack;</div><div class="line"></div><div class="line">int push(LinkStack &amp;sHead, char ch)&#123;//入栈操作</div><div class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(stack));</div><div class="line">	if (p == NULL)&#123;</div><div class="line">		printf(&quot;Error calloc.\n&quot;);</div><div class="line">		return ERROR;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = ch;</div><div class="line">	p-&gt;next = sHead;</div><div class="line">	sHead = p;</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char pop(LinkStack &amp;sHead)&#123;//出栈</div><div class="line">	if (NULL == sHead) return ERROR;</div><div class="line">	LinkStack temp = sHead;</div><div class="line">	char ch = sHead-&gt;data;</div><div class="line">	sHead = sHead-&gt;next;</div><div class="line">	free(temp);</div><div class="line">	return ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int enqueue(LinkQueue &amp;qHead, LinkQueue &amp;qRear, char ch)&#123;//进入队列操作</div><div class="line">	LinkQueue p = (LinkQueue)calloc(1, sizeof(queue));//动态分配空间并初始化</div><div class="line">	if (p == NULL)&#123;</div><div class="line">		printf(&quot;Error calloc_queue.\n&quot;);</div><div class="line">		return ERROR;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = ch;</div><div class="line">	p-&gt;next = NULL;</div><div class="line">	if (NULL != qRear)</div><div class="line">		qRear-&gt;next = p;</div><div class="line">	if (NULL == qHead)</div><div class="line">		qHead = qRear;</div><div class="line">	qRear = p;</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int queueDel(LinkQueue &amp;qHead)&#123;//进行队列删除</div><div class="line">	if (qHead == NULL) return OK;</div><div class="line">	LinkQueue temp = qHead;</div><div class="line">	qHead = qHead-&gt;next;</div><div class="line">	free(temp);</div><div class="line">	return OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line">char dequeue(LinkQueue &amp;qHead)&#123;//进行出队列操作</div><div class="line">	char ch = qHead-&gt;data;</div><div class="line">	LinkQueue temp = qHead;</div><div class="line">	qHead = qHead-&gt;next;</div><div class="line">	queueDel(temp);</div><div class="line">	return ch;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void input(LinkStack &amp;sHead, LinkQueue &amp;qHead,LinkQueue &amp;qRear,int &amp;len)&#123;</div><div class="line">	char ch;</div><div class="line">	printf(&quot;Please input the string which would be judged:&quot;);</div><div class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; &apos;#&apos; != ch)&#123;</div><div class="line">		push(sHead, ch);//推入栈</div><div class="line">		enqueue(qHead ,qRear, ch);//进入队列</div><div class="line">		len++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int compare(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</div><div class="line">    int cnt = 0;</div><div class="line">	while (sHead != NULL &amp;&amp; qHead != NULL &amp;&amp; cnt &lt;= len/2)&#123;//判断一半的栈和队列是否已空</div><div class="line">		if (pop(sHead) != dequeue(qHead))//比较对应字符是否相同</div><div class="line">			return ERROR;//不同直接退出比较</div><div class="line">        cnt++;</div><div class="line">	&#125;</div><div class="line">	return OK;//始终相同，匹配</div><div class="line">&#125;</div><div class="line"></div><div class="line">void output(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</div><div class="line">	if (compare(sHead, qHead,len))//调用判断函数进行判断是否满足</div><div class="line">		printf(&quot;It is a plalindrome.\n&quot;);</div><div class="line">	else printf(&quot;It isn&apos;t a plalindrome.\n&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</div><div class="line">    int len=0;</div><div class="line">	LinkStack sHead = NULL;//栈的头结点指针</div><div class="line">	LinkQueue qHead = NULL ,qRear = NULL;//队列的头结点和尾节点指针</div><div class="line">	input(sHead, qHead,qRear,len);</div><div class="line">	output(sHead, qHead,len);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct node *next;</span><br><span class="line">&#125;queue,stack,*LinkQueue,*LinkStack;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;sHead, char ch)&#123;//入栈操作</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(stack));</span><br><span class="line">	if (p == NULL)&#123;</span><br><span class="line">		printf(&quot;Error calloc.\n&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = ch;</span><br><span class="line">	p-&gt;next = sHead;</span><br><span class="line">	sHead = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char pop(LinkStack &amp;sHead)&#123;//出栈</span><br><span class="line">	if (NULL == sHead) return ERROR;</span><br><span class="line">	LinkStack temp = sHead;</span><br><span class="line">	char ch = sHead-&gt;data;</span><br><span class="line">	sHead = sHead-&gt;next;</span><br><span class="line">	free(temp);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int enqueue(LinkQueue &amp;qHead, LinkQueue &amp;qRear, char ch)&#123;//进入队列操作</span><br><span class="line">	LinkQueue p = (LinkQueue)calloc(1, sizeof(queue));//动态分配空间并初始化</span><br><span class="line">	if (p == NULL)&#123;</span><br><span class="line">		printf(&quot;Error calloc_queue.\n&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = ch;</span><br><span class="line">	p-&gt;next = NULL;</span><br><span class="line">	if (NULL != qRear)</span><br><span class="line">		qRear-&gt;next = p;</span><br><span class="line">	if (NULL == qHead)</span><br><span class="line">		qHead = qRear;</span><br><span class="line">	qRear = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int queueDel(LinkQueue &amp;qHead)&#123;//进行队列删除</span><br><span class="line">	if (qHead == NULL) return OK;</span><br><span class="line">	LinkQueue temp = qHead;</span><br><span class="line">	qHead = qHead-&gt;next;</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char dequeue(LinkQueue &amp;qHead)&#123;//进行出队列操作</span><br><span class="line">	char ch = qHead-&gt;data;</span><br><span class="line">	LinkQueue temp = qHead;</span><br><span class="line">	qHead = qHead-&gt;next;</span><br><span class="line">	queueDel(temp);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;sHead, LinkQueue &amp;qHead,LinkQueue &amp;qRear,int &amp;len)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the string which would be judged:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; &apos;#&apos; != ch)&#123;</span><br><span class="line">		push(sHead, ch);//推入栈</span><br><span class="line">		enqueue(qHead ,qRear, ch);//进入队列</span><br><span class="line">		len++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int compare(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">	while (sHead != NULL &amp;&amp; qHead != NULL &amp;&amp; cnt &lt;= len/2)&#123;//判断一半的栈和队列是否已空</span><br><span class="line">		if (pop(sHead) != dequeue(qHead))//比较对应字符是否相同</span><br><span class="line">			return ERROR;//不同直接退出比较</span><br><span class="line">        cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;//始终相同，匹配</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void output(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</span><br><span class="line">	if (compare(sHead, qHead,len))//调用判断函数进行判断是否满足</span><br><span class="line">		printf(&quot;It is a plalindrome.\n&quot;);</span><br><span class="line">	else printf(&quot;It isn&apos;t a plalindrome.\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    int len=0;</span><br><span class="line">	LinkStack sHead = NULL;//栈的头结点指针</span><br><span class="line">	LinkQueue qHead = NULL ,qRear = NULL;//队列的头结点和尾节点指针</span><br><span class="line">	input(sHead, qHead,qRear,len);</span><br><span class="line">	output(sHead, qHead,len);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      Sean10
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/" title="数据结构之队列——回文字判断">http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -465,6 +476,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -484,18 +499,18 @@
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
           <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+
+  
+
 
 
         </div>
@@ -511,72 +526,39 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -593,30 +575,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -627,6 +620,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -647,87 +642,96 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/';
-          this.page.identifier = '2015/11/11/数据结构之队列——回文字判断/';
-          this.page.title = '数据结构之队列——回文字判断';
-        };
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/';
+        this.page.identifier = '2015/11/11/数据结构之队列——回文字判断/';
+        this.page.title = '数据结构之队列——回文字判断';
+      };
+      function loadComments () {
         var d = document, s = d.createElement('script');
         s.src = 'https://seanrebn.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script>
-    
-
+      }
+      
+        loadComments();
+      
+    </script>
   
+
 
 
 
@@ -744,8 +748,6 @@
 
 
 
-  
-
 
 
 
@@ -762,7 +764,7 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -864,7 +866,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -873,28 +875,13 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 

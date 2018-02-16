@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -10,6 +10,10 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -21,6 +25,7 @@
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
 
 
 
@@ -74,40 +79,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="离散数学," />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
-<meta name="description" content="一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Step">
-<meta name="keywords" content="离散数学">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">
-<meta property="og:url" content="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/index.html">
-<meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Step">
-<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png">
-<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_1.png">
-<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_2.png">
-<meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">
-<meta name="twitter:description" content="一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Step">
-<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png">
+
+
+
 
 
 
@@ -116,13 +106,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    fastclick: ,
+    lazyload: ,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -134,14 +124,47 @@
 </script>
 
 
+  
+
+
+
+
+  
+  <meta name="keywords" content="离散数学," />
+
+
+<meta name="description" content="一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Step">
+<meta name="keywords" content="离散数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">
+<meta property="og:url" content="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Step">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_1.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_2.png">
+<meta property="og:updated_time" content="2017-06-26T08:51:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">
+<meta name="twitter:description" content="一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Step">
+<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png">
+
+
+
+
+
 
   <link rel="canonical" href="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/"/>
 
 
 
-
-
-  <title>关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨 | 行路中.</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨 | 行路中.</title>
   
 
 
@@ -152,10 +175,32 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-
-
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -166,11 +211,11 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -204,51 +249,31 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
+            Home</a>
         </li>
       
         
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
+            About</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
+            Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            Archives</a>
         </li>
       
 
@@ -260,9 +285,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -279,7 +310,13 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -307,13 +344,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-17T19:23:00+08:00">
-                2015-11-17
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-17T19:23:00+08:00">2015-11-17</time>
             
 
+            
             
 
             
@@ -328,14 +364,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pro/" itemprop="url" rel="index">
-                    <span itemprop="name">专业</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -366,7 +398,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数 </span>
+                 <span class="post-meta-item-text">Views&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -382,6 +414,9 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
@@ -389,61 +424,34 @@
 
       
         <p>一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Stephen Warshell发表了找到传递闭包的这个算法。三人被认定为独立发现这个算法。 该算法的主要作用是将常规算法的时间复杂度由Θ(n<sup>4)降低到了Θ(n</sup>3). 本文中，我们出于寻找Roy、Warshall的算法被认定为独立发现的的缘由对两人的算法进行分析。</p>
-<p>二、分析与讨论 1. Warshall 算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">procedure Warshall (MR : n × n zero–one matrix)</div><div class="line">W : = MR</div><div class="line">for k : = 1 to n</div><div class="line">   for i : = 1 to n</div><div class="line">      for j : = 1 to n</div><div class="line">         w_ij : = w_ij ∨ (w_ik)∧ w_kj )</div><div class="line">return W&#123;W = [w_ij] is MR∗&#125;</div></pre></td></tr></table></figure></p>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png" alt="essay_">
-<p class="caption">essay_</p>
-</div>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_1.png" alt="essay_">
-<p class="caption">essay_</p>
-</div>
-<div class="figure">
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_2.png" alt="essay">
-<p class="caption">essay</p>
-</div>
+<p>二、分析与讨论 1. Warshall 算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">procedure Warshall (MR : n × n zero–one matrix)</span><br><span class="line">W : = MR</span><br><span class="line">for k : = 1 to n</span><br><span class="line">   for i : = 1 to n</span><br><span class="line">      for j : = 1 to n</span><br><span class="line">         w_ij : = w_ij ∨ (w_ik)∧ w_kj )</span><br><span class="line">return W&#123;W = [w_ij] is MR∗&#125;</span><br></pre></td></tr></table></figure></p>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png" alt="essay_"><figcaption>essay_</figcaption>
+</figure>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_1.png" alt="essay_"><figcaption>essay_</figcaption>
+</figure>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_2.png" alt="essay"><figcaption>essay</figcaption>
+</figure>
 <p>三、结论 虽然Bernard Roy 提出该算法在Robert Floyd和Stephen Warshall之前，但他论文的主体依旧是以对图的定义为主，而Warshall 和Floyd两人同年发表了成文的简单算法。所以，可能这是一部分影响单独发表的原因。</p>
 <p>四、展望 根据[1]，我们知道了Roy的传递闭包计算方法是采用了Kleene已经提出了的深层技术，而Warshall和Floyd则是采用了第三个参数。不过基于时间以及水平原因，并没有能够找到这两者之间所说的深层技术，也并没能确定是否Warshall和Floyd所采用的关键技术是在于中间点k。因而，可以沿这个方向继续接下去进行查询发掘。</p>
-<p>五、参考文献 [1]. Jeff Erickson, Kleene-Roy-Floyd-Warshall. [https://courses.engr.illinois.edu/cs498dl1/sp2015/notes/22-apsp.pdf][2]. Warshall, Stephen (January 1962). “A theorem on Boolean matrices”. Journal of the ACM 9 (1): 11–12. doi:10.1145/321105.321107 . [3]. Roy, B. “Transitivité et connexité.” C. R. Acad. Sci. Paris 249, 216-218, 1959. [http://gallica.bnf.fr/ark:/12148/bpt6k3201c][4]. Bouyssou, D., Jacquet-Lagrèze, E., Perny, P., Slowiński, R., Vanderpooten, D., Vincke, P,《Aiding Decisions with Multiple Criteria: Essays in Honor of Bernard Roy》,24,2001. [5]. Wikipedia. [https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm][6]. Purdom, Paul, Jr. “A Transitive Closure Algorithm.” Bit 10, no. 1 (March 1970): 76–94. doi:10.1007/BF01940892.</p>
+<p>五、参考文献 [1]. Jeff Erickson, Kleene-Roy-Floyd-Warshall. [https://courses.engr.illinois.edu/cs498dl1/sp2015/notes/22-apsp.pdf] [2]. Warshall, Stephen (January 1962). “A theorem on Boolean matrices”. Journal of the ACM 9 (1): 11–12. doi:10.1145/321105.321107 . [3]. Roy, B. “Transitivité et connexité.” C. R. Acad. Sci. Paris 249, 216-218, 1959. [http://gallica.bnf.fr/ark:/12148/bpt6k3201c] [4]. Bouyssou, D., Jacquet-Lagrèze, E., Perny, P., Slowiński, R., Vanderpooten, D., Vincke, P,《Aiding Decisions with Multiple Criteria: Essays in Honor of Bernard Roy》,24,2001. [5]. Wikipedia. [https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm] [6]. Purdom, Paul, Jr. “A Transitive Closure Algorithm.” Bit 10, no. 1 (March 1970): 76–94. doi:10.1007/BF01940892.</p>
 
       
     </div>
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      Sean10
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" title="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -483,6 +491,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -502,18 +514,18 @@
           </div>
           
 
-
-          
-  <div class="comments" id="comments">
-    
+  
+    <div class="comments" id="comments">
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
           <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
-    
-  </div>
+    </div>
+
+  
+
 
 
         </div>
@@ -529,72 +541,39 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Sean10" />
-          <p class="site-author-name" itemprop="name">Sean10</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
               <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
           
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">91</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">71</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -611,30 +590,41 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -645,6 +635,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -665,87 +657,96 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
-    
+  
+    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+  
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/';
-          this.page.identifier = '2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/';
-          this.page.title = '关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨';
-        };
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/';
+        this.page.identifier = '2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/';
+        this.page.title = '关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨';
+      };
+      function loadComments () {
         var d = document, s = d.createElement('script');
         s.src = 'https://seanrebn.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script>
-    
-
+      }
+      
+        loadComments();
+      
+    </script>
   
+
 
 
 
@@ -762,8 +763,6 @@
 
 
 
-  
-
 
 
 
@@ -780,7 +779,7 @@
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
   <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
   <script>
     function showTime(Counter) {
@@ -882,7 +881,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -891,28 +890,13 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
   
 
+  
+
+  
 
   
 
