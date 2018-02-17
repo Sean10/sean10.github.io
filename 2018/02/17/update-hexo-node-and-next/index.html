@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next muse" lang="zh-Hans">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -40,10 +38,6 @@
 
 
 
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -108,11 +102,11 @@
     scheme: 'Muse',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    fancybox: false,
     fastclick: ,
     lazyload: ,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -141,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="之前没有用nvm管理node版本，导致node升级到9.5以后，hexo里的依赖都不能正常运作了，单独一个个升级依赖没能成功解决bug.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-16T18:27:20.000Z">
+<meta property="og:updated_time" content="2018-02-17T06:50:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="update hexo node9 and theme next">
 <meta name="twitter:description" content="之前没有用nvm管理node版本，导致node升级到9.5以后，hexo里的依赖都不能正常运作了，单独一个个升级依赖没能成功解决bug.">
@@ -421,13 +415,16 @@
       
         <p>之前没有用nvm管理node版本，导致node升级到9.5以后，hexo里的依赖都不能正常运作了，单独一个个升级依赖没能成功解决bug.</p>
 <a id="more"></a>
+<p>next添加更新时间模板</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: write EPIPE</span><br><span class="line">at _errnoException (util.js)</span><br><span class="line"></span><br><span class="line">at WriteWrap.afterWrite [as oncomplete] (net.js)</span><br></pre></td></tr></table></figure>
 <p>遇到这个错误，重装好久，也没解决，在<a href="https://github.com/hexojs/hexo/issues/2913" target="_blank" rel="noopener">#2913</a>里找到，更新了hexo-renderer-pandoc就no error了。</p>
 <hr>
 <p>中途，在一个个卸载plugin判断错误来源，发现卸载了hexo-renderer-stylus之后，就无法生成css样式了。</p>
 <hr>
 <p>遭遇白屏问题，似乎字号颜色渲染问题？只有下方的copyright可见，内容虽然可以点击，但是不可见，全选也看不到文字颜色反转（所以其实也不算字体颜色问题？）</p>
-<p>似乎这是一个next久远的bug</p>
+<p>似乎这是一个next久远的bug.</p>
+<p>在network看到是fancybox.js的加载404，在console里看到的是config is not defined, next is not defined，导致后续无法识别.</p>
+<p>根据<a href="https://github.com/iissnan/hexo-theme-next/issues/1896" target="_blank" rel="noopener">这条issue</a>关闭了motion就可以正常显示了。</p>
 <hr>
 <p>No layout问题。</p>
 <p>为了升级next，发现_config.yml是一个非常影响的文件，官方说hexo3支持了data file功能，可以将站点和主题config都放到到_data/next.yml中，在翻译的文档中都没有提到一点，原始的站点配置不能删除</p>
@@ -672,8 +669,6 @@
 
 
 
-  
-
 
 
 
@@ -701,11 +696,6 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
