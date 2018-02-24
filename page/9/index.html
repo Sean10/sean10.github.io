@@ -73,19 +73,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
 
 
 
@@ -100,7 +100,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.4',
+    version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: ,
@@ -216,7 +216,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">脚踏实地</p>
+        <h1 class="site-subtitle" itemprop="description">脚踏实地</h1>
       
   </div>
 
@@ -306,6 +306,371 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/11/数据结构之队列——回文字判断/" itemprop="url">数据结构之队列——回文字判断</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-11T17:43:00+08:00">2015-11-11</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/11/数据结构之队列——回文字判断/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/11/数据结构之队列——回文字判断/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/11/数据结构之队列——回文字判断/" class="leancloud_visitors" data-flag-title="数据结构之队列——回文字判断">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目：判别回文字符串</p>
+<p>正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct node *next;</span><br><span class="line">&#125;queue,stack,*LinkQueue,*LinkStack;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;sHead, char ch)&#123;//入栈操作</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(stack));</span><br><span class="line">	if (p == NULL)&#123;</span><br><span class="line">		printf(&quot;Error calloc.\n&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = ch;</span><br><span class="line">	p-&gt;next = sHead;</span><br><span class="line">	sHead = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char pop(LinkStack &amp;sHead)&#123;//出栈</span><br><span class="line">	if (NULL == sHead) return ERROR;</span><br><span class="line">	LinkStack temp = sHead;</span><br><span class="line">	char ch = sHead-&gt;data;</span><br><span class="line">	sHead = sHead-&gt;next;</span><br><span class="line">	free(temp);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int enqueue(LinkQueue &amp;qHead, LinkQueue &amp;qRear, char ch)&#123;//进入队列操作</span><br><span class="line">	LinkQueue p = (LinkQueue)calloc(1, sizeof(queue));//动态分配空间并初始化</span><br><span class="line">	if (p == NULL)&#123;</span><br><span class="line">		printf(&quot;Error calloc_queue.\n&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = ch;</span><br><span class="line">	p-&gt;next = NULL;</span><br><span class="line">	if (NULL != qRear)</span><br><span class="line">		qRear-&gt;next = p;</span><br><span class="line">	if (NULL == qHead)</span><br><span class="line">		qHead = qRear;</span><br><span class="line">	qRear = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int queueDel(LinkQueue &amp;qHead)&#123;//进行队列删除</span><br><span class="line">	if (qHead == NULL) return OK;</span><br><span class="line">	LinkQueue temp = qHead;</span><br><span class="line">	qHead = qHead-&gt;next;</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char dequeue(LinkQueue &amp;qHead)&#123;//进行出队列操作</span><br><span class="line">	char ch = qHead-&gt;data;</span><br><span class="line">	LinkQueue temp = qHead;</span><br><span class="line">	qHead = qHead-&gt;next;</span><br><span class="line">	queueDel(temp);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;sHead, LinkQueue &amp;qHead,LinkQueue &amp;qRear,int &amp;len)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the string which would be judged:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; &apos;#&apos; != ch)&#123;</span><br><span class="line">		push(sHead, ch);//推入栈</span><br><span class="line">		enqueue(qHead ,qRear, ch);//进入队列</span><br><span class="line">		len++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int compare(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">	while (sHead != NULL &amp;&amp; qHead != NULL &amp;&amp; cnt &lt;= len/2)&#123;//判断一半的栈和队列是否已空</span><br><span class="line">		if (pop(sHead) != dequeue(qHead))//比较对应字符是否相同</span><br><span class="line">			return ERROR;//不同直接退出比较</span><br><span class="line">        cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;//始终相同，匹配</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void output(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</span><br><span class="line">	if (compare(sHead, qHead,len))//调用判断函数进行判断是否满足</span><br><span class="line">		printf(&quot;It is a plalindrome.\n&quot;);</span><br><span class="line">	else printf(&quot;It isn&apos;t a plalindrome.\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    int len=0;</span><br><span class="line">	LinkStack sHead = NULL;//栈的头结点指针</span><br><span class="line">	LinkQueue qHead = NULL ,qRear = NULL;//队列的头结点和尾节点指针</span><br><span class="line">	input(sHead, qHead,qRear,len);</span><br><span class="line">	output(sHead, qHead,len);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之栈——二进制转十进制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/11/数据结构之栈——二进制转十进制/" itemprop="url">数据结构之栈——二进制转十进制</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-11T17:42:00+08:00">2015-11-11</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-08-24T15:06:50+08:00">2017-08-24</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/11/数据结构之栈——二进制转十进制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/11/数据结构之栈——二进制转十进制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/11/数据结构之栈——二进制转十进制/" class="leancloud_visitors" data-flag-title="数据结构之栈——二进制转十进制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>数据结构的作业，顺便就放上来吧</p>
+<p>题目： 2/8进制转换器</p>
+<p>编写程序，从终端输入一串0/1表示二进制数，以“#”结束，输出它的8进制表示形式。要求：采用栈来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct node* nextPtr;</span><br><span class="line">&#125;Stack,*LinkStack;</span><br><span class="line"></span><br><span class="line">int StackDel(LinkStack &amp;s)&#123;</span><br><span class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</span><br><span class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</span><br><span class="line">	s = s-&gt;nextPtr;//</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int pop(LinkStack &amp;s)&#123;</span><br><span class="line">	int e;</span><br><span class="line">	if (NULL == s)</span><br><span class="line">		return ERROR;</span><br><span class="line">	e = s-&gt;data;//存储从栈中取出的值</span><br><span class="line">	StackDel(s);//删除已取出的栈的空间</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;s, int e)&#123;</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</span><br><span class="line">	if (!p)&#123;</span><br><span class="line">		printf(&quot;Error calloc_push&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</span><br><span class="line">	s = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void transform(LinkStack &amp;s)&#123;</span><br><span class="line">	int e, temp = 0, pow = 1;</span><br><span class="line">	while (NULL != s)&#123;//直到栈空</span><br><span class="line">		e = pop(s);</span><br><span class="line">		temp += e*pow;//进行二进制转十进制的计算</span><br><span class="line">		pow *= 2;//进行位权的累乘</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;The octonary answer is:(&quot;);</span><br><span class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</span><br><span class="line">	printf(&quot;)8\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;s)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the binary string:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</span><br><span class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	LinkStack s = NULL;//栈的头结点指针</span><br><span class="line">	input(s);</span><br><span class="line">	transform(s);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/08/《爱的艺术》人类超越了本能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,9 +688,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/08/《爱的艺术》人类超越了本能/" itemprop="url">《爱的艺术》人类超越了本能</a></h1>
+                <a class="post-title-link" href="/2015/11/08/《爱的艺术》人类超越了本能/" itemprop="url">《爱的艺术》人类超越了本能</a></h2>
         
 
         <div class="post-meta">
@@ -342,7 +707,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -498,9 +879,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/05/栈——C语言模拟/" itemprop="url">栈——C语言模拟</a></h1>
+                <a class="post-title-link" href="/2015/11/05/栈——C语言模拟/" itemprop="url">栈——C语言模拟</a></h2>
         
 
         <div class="post-meta">
@@ -517,7 +898,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -687,9 +1084,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/04/读《弗洛伊德：作家与白日梦》/" itemprop="url">读《弗洛伊德：作家与白日梦》</a></h1>
+                <a class="post-title-link" href="/2015/11/04/读《弗洛伊德：作家与白日梦》/" itemprop="url">读《弗洛伊德：作家与白日梦》</a></h2>
         
 
         <div class="post-meta">
@@ -706,7 +1103,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -925,9 +1338,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/04/《爱的艺术》爱的误解——对象，状态/" itemprop="url">《爱的艺术》爱的误解——对象，状态</a></h1>
+                <a class="post-title-link" href="/2015/11/04/《爱的艺术》爱的误解——对象，状态/" itemprop="url">《爱的艺术》爱的误解——对象，状态</a></h2>
         
 
         <div class="post-meta">
@@ -944,7 +1357,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-08-24T15:05:32+08:00">2017-08-24</time>
             
           </span>
 
@@ -1114,9 +1543,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/03/商半群的计算总结/" itemprop="url">商半群的计算总结</a></h1>
+                <a class="post-title-link" href="/2015/11/03/商半群的计算总结/" itemprop="url">商半群的计算总结</a></h2>
         
 
         <div class="post-meta">
@@ -1133,7 +1562,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1342,9 +1787,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/01/论勇气/" itemprop="url">论勇气</a></h1>
+                <a class="post-title-link" href="/2015/11/01/论勇气/" itemprop="url">论勇气</a></h2>
         
 
         <div class="post-meta">
@@ -1361,7 +1806,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1520,9 +1981,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/01/《爱的艺术》爱是艺术吗？/" itemprop="url">《爱的艺术》爱是艺术吗？</a></h1>
+                <a class="post-title-link" href="/2015/11/01/《爱的艺术》爱是艺术吗？/" itemprop="url">《爱的艺术》爱是艺术吗？</a></h2>
         
 
         <div class="post-meta">
@@ -1539,7 +2000,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1689,9 +2166,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/" itemprop="url">【Discrete Mathematics】Relations【2015.10.31更新】</a></h1>
+                <a class="post-title-link" href="/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/" itemprop="url">【Discrete Mathematics】Relations【2015.10.31更新】</a></h2>
         
 
         <div class="post-meta">
@@ -1708,7 +2185,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1954,343 +2447,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/25/《龙珠之复活的F》休闲的龙珠/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/25/《龙珠之复活的F》休闲的龙珠/" itemprop="url">《龙珠之复活的F》休闲的龙珠</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-25T20:14:00+08:00">2015-10-25</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/25/《龙珠之复活的F》休闲的龙珠/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/25/《龙珠之复活的F》休闲的龙珠/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/10/25/《龙珠之复活的F》休闲的龙珠/" class="leancloud_visitors" data-flag-title="《龙珠之复活的F》休闲的龙珠">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>稍稍温习了一下《龙珠之复活的F》，给我的印象就是现在出的龙珠的风格都已经趋于休闲了呢。《神与神》以及现在的这部，两部的剧情里都已经不再是以前的需要拼命才能拥有足够的战斗力了，现在已经偏向去日常化了，悟空的天真粗心的个性也愈发凸显了，虽说是主角，到了动漫的末期之后，配角反倒是和他拥有了同样的镜头率。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2015/10/25/《龙珠之复活的F》休闲的龙珠/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" itemprop="url">Ubuntu+win7安装总结——查询不到win7分区问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-24T20:01:00+08:00">2015-10-24</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" class="leancloud_visitors" data-flag-title="Ubuntu+win7安装总结——查询不到win7分区问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这两天在学校计划装个linux以后用来写代码，windows下面就专心玩好了。 本来搜了下经验，以为很轻松（虽然事实上知道怎么弄，不出错就确实很轻松啦）。然后，就那么把原来的win7系统不自觉的全格了，直到花了1天半的时间之后，搜linux下怎么看不到win7的硬盘搜不到结果，忽然点开linux下的computer的property看了下之后，发现原本一直以为的linux只是在隔出来的50G下玩的，事实上是500G。 然后，明白了，数据全没了。（虽然已经备份，但是对于一些下载的计划看的资料丢了，也是比较难很快接受）。 OK，知道现在电脑里什么都没了以后，轻松了/</p>
-<p>因为觉得在Linux下装win7，事后的引导什么的可能会很麻烦，就依旧先刻个win7的U盘，在win7安装之后安装ubuntu。 这里的win7是从msdn里下载的应该说是最纯净的win7，因为连个网卡驱动都没有，还好周边有一台老式机，下载了一个拷过来才用上的网络。 接下来就是唯一导致这次安装错误的幕后黑手。</p>
-<p>windows下准备好ultraiso刻录好的ubuntu的U盘。 开机进入选择启动（lenovo是F12进入，我电脑已经设置为Legacybios，所以不太了解win8双系统uefi该怎么设置） 进入ubuntu安装界面以后，之前都按continue就可以，到分区前一步，如果显示出已检测到win7系统，那么就说明你硬盘格式和标识都是正确的，下一步也就不会出现下一步不显示win7已经分好的磁盘的问题了。</p>
-如果没有显示检测出win7，现在按照我查的资料来理解。 安装win7的时候是MBR分区模式，安装ubuntu时，自动识别为GPT分区模式，执行以下命令就可以让Ubuntu以MBR执行。 在试用版里输入一下命令即可 &lt;pre class=“brush:bash”;&gt;sudo dd if=/dev/zero of=/dev/sda bs=1 count=8 seek=512
-
-<p>这会抹去 Primary GPT header 里的 GPT signature。请不要输错任何一个字，包括空格。 有其他人说也可以在bios设置里设置Legacyonly.我电脑没有这个选项，不确定在什么上有那个。 以上。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2377,9 +2533,11 @@
 </div>
 
 
+  
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -2387,7 +2545,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
 
 
 
@@ -2468,21 +2626,21 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
 
 
 
   
-  
-
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
 
 
 

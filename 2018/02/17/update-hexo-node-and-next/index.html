@@ -73,19 +73,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
 
 
 
@@ -100,7 +100,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.4',
+    version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: ,
@@ -135,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="之前没有用nvm管理node版本，导致node升级到9.5以后，hexo里的依赖都不能正常运作了，单独一个个升级依赖没能成功解决bug.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-17T06:50:25.000Z">
+<meta property="og:updated_time" content="2018-02-18T08:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="update hexo node9 and theme next">
 <meta name="twitter:description" content="之前没有用nvm管理node版本，导致node升级到9.5以后，hexo里的依赖都不能正常运作了，单独一个个升级依赖没能成功解决bug.">
@@ -217,7 +217,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">脚踏实地</p>
+        <h1 class="site-subtitle" itemprop="description">脚踏实地</h1>
       
   </div>
 
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">update hexo node9 and theme next</h1>
+          <h2 class="post-title" itemprop="name headline">update hexo node9 and theme next</h2>
         
 
         <div class="post-meta">
@@ -341,7 +341,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-02-18T16:00:00+08:00">2018-02-18</time>
             
           </span>
 
@@ -415,7 +431,9 @@
       
         <p>之前没有用nvm管理node版本，导致node升级到9.5以后，hexo里的依赖都不能正常运作了，单独一个个升级依赖没能成功解决bug.</p>
 <a id="more"></a>
-<p>next添加更新时间模板</p>
+<p>在hexo里已经支持了update时间，在模板里添加updated即可，在next 主题配置里，修改post_meta为true即可</p>
+<p><strong>参考</strong> <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">front-matter</a></p>
+<hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error: write EPIPE</span><br><span class="line">at _errnoException (util.js)</span><br><span class="line"></span><br><span class="line">at WriteWrap.afterWrite [as oncomplete] (net.js)</span><br></pre></td></tr></table></figure>
 <p>遇到这个错误，重装好久，也没解决，在<a href="https://github.com/hexojs/hexo/issues/2913" target="_blank" rel="noopener">#2913</a>里找到，更新了hexo-renderer-pandoc就no error了。</p>
 <hr>
@@ -434,6 +452,8 @@
 <p><a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/DATA-FILES.md" target="_blank" rel="noopener">来源</a></p>
 <p>弄了好久……，恢复站点配置文件之后，data-file就生效了</p>
 <hr>
+<p>关于pandoc解析mathjax，目前还是存在错误，view状态也存在错误</p>
+<p>测试一下，</p>
 
       
     </div>
@@ -492,6 +512,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/24/TensorFlow运行笔记/" rel="prev" title="TensorFlow运行笔记">
+                TensorFlow运行笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -611,9 +635,11 @@
 </div>
 
 
+  
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -621,7 +647,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
 
 
 
@@ -702,25 +728,25 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
 
 
 
   
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
 
 
 

@@ -73,19 +73,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
 
 
 
@@ -100,7 +100,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.4',
+    version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: ,
@@ -216,7 +216,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">脚踏实地</p>
+        <h1 class="site-subtitle" itemprop="description">脚踏实地</h1>
       
   </div>
 
@@ -306,6 +306,379 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/二叉树——UVA679/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/22/二叉树——UVA679/" itemprop="url">二叉树——UVA679</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-22T16:45:00+08:00">2015-11-22</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/22/二叉树——UVA679/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/22/二叉树——UVA679/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/22/二叉树——UVA679/" class="leancloud_visitors" data-flag-title="二叉树——UVA679">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用二叉树来模拟的算法会TLE,只能找规律来过 画图会发现，当I为奇数时，都会掉到左子树去，偶数则右。然后判断一下何时到叶子节点就可以了</p>
+<p>TLE的算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define N 1048577</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int n,x,y,li ;</span><br><span class="line">    int a[N];</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;x))&#123;</span><br><span class="line">        int k;</span><br><span class="line">        li = (1&lt;&lt;x) -1;</span><br><span class="line">        if(x == -1) break;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;y);</span><br><span class="line">        for(int j = 1;j &lt;= li;j++)</span><br><span class="line">            a[j] = 0;</span><br><span class="line">        for(int j = 1;j &lt;= y;j++)&#123;</span><br><span class="line">            for(k = 1;2*k &lt;= li;)&#123;</span><br><span class="line">                a[k] = !a[k];</span><br><span class="line">                k = a[k]==0?(2*k+1):(2*k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,k);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>AC <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int n,D,I;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;D))&#123;</span><br><span class="line">        int k = 1;</span><br><span class="line">        if(D== -1) break;</span><br><span class="line">        long long li = (1&lt;&lt;D)-1;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;I);</span><br><span class="line">        for(k = 1;k &lt;=li;)&#123;</span><br><span class="line">            if(I%2)&#123;</span><br><span class="line">                I=I/2+1;</span><br><span class="line">                k*=2;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                I=I/2;</span><br><span class="line">                k=2*k+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,k/2);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/线性表——约瑟夫问题（递推未完）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/22/线性表——约瑟夫问题（递推未完）/" itemprop="url">线性表——约瑟夫问题（递推未完）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-22T13:43:00+08:00">2015-11-22</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/22/线性表——约瑟夫问题（递推未完）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/22/线性表——约瑟夫问题（递推未完）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/22/线性表——约瑟夫问题（递推未完）/" class="leancloud_visitors" data-flag-title="线性表——约瑟夫问题（递推未完）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week2/1/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 有n只猴子，按顺时针方向围成一圈选大王（编号从1到n），从第1号开始报数，一直数到m，数到m的猴子退出圈外，剩下的猴子再接着从1开始报数。就这样，直到圈内只剩下一只猴子时，这个猴子就是猴王，编程求输入n，m后，输出最后猴王的编号。</p>
+<p>输入 输入包含两个整数，第一个是n，第二个是m (0 &lt; m,n &lt;=300)。 输出 输出包含一行，即最后猴王的编号。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12 4</span><br></pre></td></tr></table></figure></p>
+<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<p>这道题是有好几种解法的。 首先是数组。</p>
+<p>1.链表模拟 分析：建立一个循环链表，递推，一个个删除直到只剩下一个，输出即可。</p>
+<p>2.静态链表模拟 分析：用数组模拟链表，就是数组里存的是下一个位置的下标。</p>
+<p>以上两种的时间复杂度均为O(n*m);</p>
+<p>3.数组模拟 分析：先初始化整个数组为1，接下来在循环中只对数值为1的进行计数，满n置0，最后遍历最后一个数值为1的数，输出其下标。 这种的时间复杂度最大，为O(n^2);</p>
+<p>4.递推算法 待考试周过去后写</p>
+<p>1.链表遍历算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define N 10000</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct node* next;</span><br><span class="line">&#125;node,*nodePtr;</span><br><span class="line"></span><br><span class="line">void Create(nodePtr head, int n )&#123;</span><br><span class="line">    nodePtr temp, last = head;</span><br><span class="line">    for(int i = 1;i &lt;= n;i++)&#123;</span><br><span class="line">        temp = (nodePtr)calloc(1,sizeof(node));</span><br><span class="line">        if(temp == NULL) return ;</span><br><span class="line">        temp -&gt; data = i;</span><br><span class="line">        last -&gt; next = temp;</span><br><span class="line">        //printf(&quot;%p\t%p\t%p\t%p\n&quot;,NULL,head,last,last-&gt;next);</span><br><span class="line">        last = temp;</span><br><span class="line">        //printf(&quot;%d\n&quot;,last-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">    last -&gt; next = head -&gt; next;</span><br><span class="line">    //printf(&quot;%p\t%p\t%p\t%p\n&quot;,NULL,head,last,last-&gt;next);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Del(nodePtr prev, nodePtr &amp;curr)&#123;</span><br><span class="line">    nodePtr temp = curr;</span><br><span class="line">    prev-&gt;next = curr -&gt; next;</span><br><span class="line">    curr = prev;</span><br><span class="line">    free(temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nodePtr Josephus(nodePtr head,int m)&#123;</span><br><span class="line">    nodePtr temp = head,prev = NULL;</span><br><span class="line">    while(head-&gt;next != head)&#123;</span><br><span class="line">        for(int i = 0;i &lt; m;i++)&#123;</span><br><span class="line">            prev = head;</span><br><span class="line">            head = head -&gt; next;</span><br><span class="line">            //printf(&quot;%p\t%p\n&quot;,prev,head);</span><br><span class="line">        &#125;</span><br><span class="line">        //printf(&quot;%d\n&quot;,head-&gt;data);</span><br><span class="line">        Del(prev,head);</span><br><span class="line">    &#125;</span><br><span class="line">    free(temp);</span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int n,m;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;</span><br><span class="line">        nodePtr head = NULL;</span><br><span class="line">        head = (nodePtr)malloc(sizeof(node));</span><br><span class="line">        head -&gt; next = NULL;</span><br><span class="line">        Create(head, n);</span><br><span class="line">        printf(&quot;%d\n&quot;,Josephus(head,m)-&gt;data);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.静态链表算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define N 10000</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int a[N];</span><br><span class="line">    int n,m;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        a[i] = i+1;</span><br><span class="line">    &#125;</span><br><span class="line">    a[n] = 1;</span><br><span class="line"></span><br><span class="line">    int k = 0;</span><br><span class="line">    int prev;</span><br><span class="line">    while(a[k] != k)&#123;</span><br><span class="line">        for(int i = 1;i &lt;= m;i++)&#123;</span><br><span class="line">            prev = k;</span><br><span class="line">            k = a[k];</span><br><span class="line">        &#125;</span><br><span class="line">        a[prev] = a[k];</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;,k);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.数组模拟算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define N 350</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">    int a[N];</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    int times = 0;</span><br><span class="line">    for(int i = 1;i &lt;= n;i++)</span><br><span class="line">        a[i] = 1;</span><br><span class="line"></span><br><span class="line">    int i = 1;</span><br><span class="line">    while(times!=n-1)&#123;</span><br><span class="line">        while(1)&#123;</span><br><span class="line">            if(a[i++] == 1)&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                if(cnt &gt; 0 &amp;&amp; cnt%m == 0)</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(i &gt; n)</span><br><span class="line">                i = i%n;</span><br><span class="line">        &#125;</span><br><span class="line">        a[i-1] = 0;</span><br><span class="line">        if(i &gt; n)</span><br><span class="line">            i = i%n;</span><br><span class="line">        times++;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i = 1;i&lt;=n;i++)</span><br><span class="line">        if(a[i] == 1)</span><br><span class="line">            break;</span><br><span class="line">    printf(&quot;%d\n&quot;,i);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/19/栈——HDU1022/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -323,9 +696,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/19/栈——HDU1022/" itemprop="url">栈——HDU1022</a></h1>
+                <a class="post-title-link" href="/2015/11/19/栈——HDU1022/" itemprop="url">栈——HDU1022</a></h2>
         
 
         <div class="post-meta">
@@ -342,7 +715,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -488,9 +877,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/18/栈——出栈序列统计/" itemprop="url">栈——出栈序列统计</a></h1>
+                <a class="post-title-link" href="/2015/11/18/栈——出栈序列统计/" itemprop="url">栈——出栈序列统计</a></h2>
         
 
         <div class="post-meta">
@@ -507,7 +896,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -657,9 +1062,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/18/栈——密码翻译/" itemprop="url">栈——密码翻译</a></h1>
+                <a class="post-title-link" href="/2015/11/18/栈——密码翻译/" itemprop="url">栈——密码翻译</a></h2>
         
 
         <div class="post-meta">
@@ -676,7 +1081,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -826,9 +1247,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" itemprop="url">关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨</a></h1>
+                <a class="post-title-link" href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" itemprop="url">关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨</a></h2>
         
 
         <div class="post-meta">
@@ -845,7 +1266,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1003,9 +1440,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/15/离散数学——hamming码最小距离/" itemprop="url">离散数学——hamming码最小距离</a></h1>
+                <a class="post-title-link" href="/2015/11/15/离散数学——hamming码最小距离/" itemprop="url">离散数学——hamming码最小距离</a></h2>
         
 
         <div class="post-meta">
@@ -1022,7 +1459,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1185,9 +1638,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/14/十二年小说、游戏杂忆/" itemprop="url">十二年小说、游戏杂忆</a></h1>
+                <a class="post-title-link" href="/2015/11/14/十二年小说、游戏杂忆/" itemprop="url">十二年小说、游戏杂忆</a></h2>
         
 
         <div class="post-meta">
@@ -1204,7 +1657,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1369,9 +1838,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/11/数据结构之稀疏矩阵——稀疏矩阵加法和乘法/" itemprop="url">数据结构之稀疏矩阵——稀疏矩阵加法和乘法</a></h1>
+                <a class="post-title-link" href="/2015/11/11/数据结构之稀疏矩阵——稀疏矩阵加法和乘法/" itemprop="url">数据结构之稀疏矩阵——稀疏矩阵加法和乘法</a></h2>
         
 
         <div class="post-meta">
@@ -1388,7 +1857,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1535,9 +2020,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/" itemprop="url">数据结构之链表——加里森的任务（循环链表）</a></h1>
+                <a class="post-title-link" href="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/" itemprop="url">数据结构之链表——加里森的任务（循环链表）</a></h2>
         
 
         <div class="post-meta">
@@ -1554,7 +2039,23 @@
 
             
             
+              
+                
+              
+            
 
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1631,339 +2132,6 @@
             <p>题目：加里森的任务</p>
 <p>有n个加里森敢死队的队员要炸掉敌人的一个军火库，谁都不想去，队长加里森决定用轮回数数的办法来决定哪个战士去执行任务。规则如下：如果前一个战士没完成任务，则要再派一个战士上去。现给每个战士编一个号，大家围坐成一圈，随便从某一个编号为x的战士开始计数，当数到y时，对应的战士就去执行任务，且此战士不再参加下一轮计数。如果此战士没完成任务，再从下一个战士开始数数，被数到第y时，此战士接着去执行任务。以此类推，直到任务完成为止。 加里森本人是不愿意去的，假设加里森为1号，请你设计一程序为加里森支招，求出n,x,y满足何种条件时,加里森能留到最后而不用去执行任务;。 要求： 主要数据结构采用链式结构存储。 自拟1个实验实例验证程序正确性（即：n,x,y自拟）。</p>
 <p>循环链表的运用，最常见的一种，时间复杂度是O(n^3). <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">//#include &quot;stdafx.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;			//加里森队员链表结构</span><br><span class="line">	int data;</span><br><span class="line">	struct node* next;</span><br><span class="line">&#125;Linknode, *Link;</span><br><span class="line"></span><br><span class="line">Link ListCreate(int n)&#123;</span><br><span class="line">	Link head = NULL, curr = NULL, last = NULL;</span><br><span class="line">	while (n)&#123;					//对n个成员进行创建链表并编号</span><br><span class="line">		head = (Link)calloc(1, sizeof(Linknode));</span><br><span class="line">		if (NULL == head)</span><br><span class="line">			cout &lt;&lt; &quot;Error in calloc.&quot; &lt;&lt; endl;</span><br><span class="line">		head-&gt;data = n;</span><br><span class="line">		head-&gt;next = curr;</span><br><span class="line">		curr = head;</span><br><span class="line">		if (NULL == last)&#123;//保存最后一个节点的地址</span><br><span class="line">			last = head;</span><br><span class="line">		&#125;</span><br><span class="line">		n--;</span><br><span class="line">	&#125;</span><br><span class="line">	last-&gt;next = head;//进行首尾链接</span><br><span class="line">	return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Link ListDel(Link prev)&#123;</span><br><span class="line">	if (NULL == prev-&gt;next)&#123;//一种情况执行完毕，进行最后的节点空间释放。</span><br><span class="line">		free(prev);</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	Link curr = prev-&gt;next;</span><br><span class="line">	prev-&gt;next = curr-&gt;next;</span><br><span class="line">	free(curr);</span><br><span class="line">	return prev;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Link Josephus(Link head, int x, int y)&#123;</span><br><span class="line">	Link prev = NULL;</span><br><span class="line">	while (head-&gt;next-&gt;data != x)//进行遍历，直到指针的下一个节点的编号为x</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	while (head != head-&gt;next)&#123;//循环直到只剩下一个节点</span><br><span class="line">		for (int i = 0; i &lt; y; i++)&#123;</span><br><span class="line">			prev = head;</span><br><span class="line">			head = head-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		head = ListDel(prev);</span><br><span class="line">	&#125;</span><br><span class="line">	head-&gt;next = NULL;//将无限循环单节点链表断开</span><br><span class="line">	return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ListPrintSol(Link head,int n, int i, int j)&#123;</span><br><span class="line">	if (1 == head-&gt;data)&#123;</span><br><span class="line">		cout &lt;&lt; &quot;The solution of &quot; &lt;&lt; n &lt;&lt; &quot; is: from &quot; &lt;&lt; i &lt;&lt; &quot; by &quot; &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">		//cout &lt;&lt; &quot;The last of the list is: &quot; &lt;&lt; head-&gt;data &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	//FILE *stream;</span><br><span class="line">	//freopen_s(&amp;stream,&quot;op.txt&quot;, &quot;w&quot;, stdout);</span><br><span class="line">	Link head = NULL;</span><br><span class="line">	cout &lt;&lt; &quot;Please input the number of members n:&quot;;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">		for (int j = 1; j &lt;= n; j++)&#123;</span><br><span class="line">			head = ListCreate(n);//创建链表</span><br><span class="line">			head = Josephus(head,i,j );//调用约瑟夫函数进行编号计数抽选，派遣队员，直到最后一人</span><br><span class="line">			ListPrintSol(head,n,i,j);//输出使加里森成为最后一人的x,y</span><br><span class="line">			head = ListDel(head);//释放空间</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/11/数据结构之队列——回文字判断/" itemprop="url">数据结构之队列——回文字判断</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-11T17:43:00+08:00">2015-11-11</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/11/数据结构之队列——回文字判断/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/11/数据结构之队列——回文字判断/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/11/数据结构之队列——回文字判断/" class="leancloud_visitors" data-flag-title="数据结构之队列——回文字判断">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>题目：判别回文字符串</p>
-<p>正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct node *next;</span><br><span class="line">&#125;queue,stack,*LinkQueue,*LinkStack;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;sHead, char ch)&#123;//入栈操作</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(stack));</span><br><span class="line">	if (p == NULL)&#123;</span><br><span class="line">		printf(&quot;Error calloc.\n&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = ch;</span><br><span class="line">	p-&gt;next = sHead;</span><br><span class="line">	sHead = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char pop(LinkStack &amp;sHead)&#123;//出栈</span><br><span class="line">	if (NULL == sHead) return ERROR;</span><br><span class="line">	LinkStack temp = sHead;</span><br><span class="line">	char ch = sHead-&gt;data;</span><br><span class="line">	sHead = sHead-&gt;next;</span><br><span class="line">	free(temp);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int enqueue(LinkQueue &amp;qHead, LinkQueue &amp;qRear, char ch)&#123;//进入队列操作</span><br><span class="line">	LinkQueue p = (LinkQueue)calloc(1, sizeof(queue));//动态分配空间并初始化</span><br><span class="line">	if (p == NULL)&#123;</span><br><span class="line">		printf(&quot;Error calloc_queue.\n&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = ch;</span><br><span class="line">	p-&gt;next = NULL;</span><br><span class="line">	if (NULL != qRear)</span><br><span class="line">		qRear-&gt;next = p;</span><br><span class="line">	if (NULL == qHead)</span><br><span class="line">		qHead = qRear;</span><br><span class="line">	qRear = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int queueDel(LinkQueue &amp;qHead)&#123;//进行队列删除</span><br><span class="line">	if (qHead == NULL) return OK;</span><br><span class="line">	LinkQueue temp = qHead;</span><br><span class="line">	qHead = qHead-&gt;next;</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char dequeue(LinkQueue &amp;qHead)&#123;//进行出队列操作</span><br><span class="line">	char ch = qHead-&gt;data;</span><br><span class="line">	LinkQueue temp = qHead;</span><br><span class="line">	qHead = qHead-&gt;next;</span><br><span class="line">	queueDel(temp);</span><br><span class="line">	return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;sHead, LinkQueue &amp;qHead,LinkQueue &amp;qRear,int &amp;len)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the string which would be judged:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; &apos;#&apos; != ch)&#123;</span><br><span class="line">		push(sHead, ch);//推入栈</span><br><span class="line">		enqueue(qHead ,qRear, ch);//进入队列</span><br><span class="line">		len++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int compare(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">	while (sHead != NULL &amp;&amp; qHead != NULL &amp;&amp; cnt &lt;= len/2)&#123;//判断一半的栈和队列是否已空</span><br><span class="line">		if (pop(sHead) != dequeue(qHead))//比较对应字符是否相同</span><br><span class="line">			return ERROR;//不同直接退出比较</span><br><span class="line">        cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;//始终相同，匹配</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void output(LinkStack &amp;sHead, LinkQueue &amp;qHead,int len)&#123;</span><br><span class="line">	if (compare(sHead, qHead,len))//调用判断函数进行判断是否满足</span><br><span class="line">		printf(&quot;It is a plalindrome.\n&quot;);</span><br><span class="line">	else printf(&quot;It isn&apos;t a plalindrome.\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    int len=0;</span><br><span class="line">	LinkStack sHead = NULL;//栈的头结点指针</span><br><span class="line">	LinkQueue qHead = NULL ,qRear = NULL;//队列的头结点和尾节点指针</span><br><span class="line">	input(sHead, qHead,qRear,len);</span><br><span class="line">	output(sHead, qHead,len);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之栈——二进制转十进制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/11/数据结构之栈——二进制转十进制/" itemprop="url">数据结构之栈——二进制转十进制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-11T17:42:00+08:00">2015-11-11</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/11/数据结构之栈——二进制转十进制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/11/数据结构之栈——二进制转十进制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/11/数据结构之栈——二进制转十进制/" class="leancloud_visitors" data-flag-title="数据结构之栈——二进制转十进制">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>数据结构的作业，顺便就放上来吧</p>
-<p>题目： 2/8进制转换器</p>
-<p>编写程序，从终端输入一串0/1表示二进制数，以“#”结束，输出它的8进制表示形式。要求：采用栈来实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct node* nextPtr;</span><br><span class="line">&#125;Stack,*LinkStack;</span><br><span class="line"></span><br><span class="line">int StackDel(LinkStack &amp;s)&#123;</span><br><span class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</span><br><span class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</span><br><span class="line">	s = s-&gt;nextPtr;//</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int pop(LinkStack &amp;s)&#123;</span><br><span class="line">	int e;</span><br><span class="line">	if (NULL == s)</span><br><span class="line">		return ERROR;</span><br><span class="line">	e = s-&gt;data;//存储从栈中取出的值</span><br><span class="line">	StackDel(s);//删除已取出的栈的空间</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;s, int e)&#123;</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</span><br><span class="line">	if (!p)&#123;</span><br><span class="line">		printf(&quot;Error calloc_push&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</span><br><span class="line">	s = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void transform(LinkStack &amp;s)&#123;</span><br><span class="line">	int e, temp = 0, pow = 1;</span><br><span class="line">	while (NULL != s)&#123;//直到栈空</span><br><span class="line">		e = pop(s);</span><br><span class="line">		temp += e*pow;//进行二进制转十进制的计算</span><br><span class="line">		pow *= 2;//进行位权的累乘</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;The octonary answer is:(&quot;);</span><br><span class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</span><br><span class="line">	printf(&quot;)8\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;s)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the binary string:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</span><br><span class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	LinkStack s = NULL;//栈的头结点指针</span><br><span class="line">	input(s);</span><br><span class="line">	transform(s);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -2088,9 +2256,11 @@
 </div>
 
 
+  
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -2098,7 +2268,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
 
 
 
@@ -2179,21 +2349,21 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
 
 
 
   
-  
-
   
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
 
 
 
