@@ -306,6 +306,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之链表——加里森的任务（循环链表）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/" itemprop="url">数据结构之链表——加里森的任务（循环链表）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-11T17:45:00+08:00">2015-11-11</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/11/数据结构之链表——加里森的任务（循环链表）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/11/数据结构之链表——加里森的任务（循环链表）/" class="leancloud_visitors" data-flag-title="数据结构之链表——加里森的任务（循环链表）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目：加里森的任务</p>
+<p>有n个加里森敢死队的队员要炸掉敌人的一个军火库，谁都不想去，队长加里森决定用轮回数数的办法来决定哪个战士去执行任务。规则如下：如果前一个战士没完成任务，则要再派一个战士上去。现给每个战士编一个号，大家围坐成一圈，随便从某一个编号为x的战士开始计数，当数到y时，对应的战士就去执行任务，且此战士不再参加下一轮计数。如果此战士没完成任务，再从下一个战士开始数数，被数到第y时，此战士接着去执行任务。以此类推，直到任务完成为止。 加里森本人是不愿意去的，假设加里森为1号，请你设计一程序为加里森支招，求出n,x,y满足何种条件时,加里森能留到最后而不用去执行任务;。 要求： 主要数据结构采用链式结构存储。 自拟1个实验实例验证程序正确性（即：n,x,y自拟）。</p>
+<p>循环链表的运用，最常见的一种，时间复杂度是O(n^3). <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">//#include &quot;stdafx.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;			//加里森队员链表结构</span><br><span class="line">	int data;</span><br><span class="line">	struct node* next;</span><br><span class="line">&#125;Linknode, *Link;</span><br><span class="line"></span><br><span class="line">Link ListCreate(int n)&#123;</span><br><span class="line">	Link head = NULL, curr = NULL, last = NULL;</span><br><span class="line">	while (n)&#123;					//对n个成员进行创建链表并编号</span><br><span class="line">		head = (Link)calloc(1, sizeof(Linknode));</span><br><span class="line">		if (NULL == head)</span><br><span class="line">			cout &lt;&lt; &quot;Error in calloc.&quot; &lt;&lt; endl;</span><br><span class="line">		head-&gt;data = n;</span><br><span class="line">		head-&gt;next = curr;</span><br><span class="line">		curr = head;</span><br><span class="line">		if (NULL == last)&#123;//保存最后一个节点的地址</span><br><span class="line">			last = head;</span><br><span class="line">		&#125;</span><br><span class="line">		n--;</span><br><span class="line">	&#125;</span><br><span class="line">	last-&gt;next = head;//进行首尾链接</span><br><span class="line">	return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Link ListDel(Link prev)&#123;</span><br><span class="line">	if (NULL == prev-&gt;next)&#123;//一种情况执行完毕，进行最后的节点空间释放。</span><br><span class="line">		free(prev);</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	Link curr = prev-&gt;next;</span><br><span class="line">	prev-&gt;next = curr-&gt;next;</span><br><span class="line">	free(curr);</span><br><span class="line">	return prev;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Link Josephus(Link head, int x, int y)&#123;</span><br><span class="line">	Link prev = NULL;</span><br><span class="line">	while (head-&gt;next-&gt;data != x)//进行遍历，直到指针的下一个节点的编号为x</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	while (head != head-&gt;next)&#123;//循环直到只剩下一个节点</span><br><span class="line">		for (int i = 0; i &lt; y; i++)&#123;</span><br><span class="line">			prev = head;</span><br><span class="line">			head = head-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		head = ListDel(prev);</span><br><span class="line">	&#125;</span><br><span class="line">	head-&gt;next = NULL;//将无限循环单节点链表断开</span><br><span class="line">	return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ListPrintSol(Link head,int n, int i, int j)&#123;</span><br><span class="line">	if (1 == head-&gt;data)&#123;</span><br><span class="line">		cout &lt;&lt; &quot;The solution of &quot; &lt;&lt; n &lt;&lt; &quot; is: from &quot; &lt;&lt; i &lt;&lt; &quot; by &quot; &lt;&lt; j &lt;&lt; endl;</span><br><span class="line">		//cout &lt;&lt; &quot;The last of the list is: &quot; &lt;&lt; head-&gt;data &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	//FILE *stream;</span><br><span class="line">	//freopen_s(&amp;stream,&quot;op.txt&quot;, &quot;w&quot;, stdout);</span><br><span class="line">	Link head = NULL;</span><br><span class="line">	cout &lt;&lt; &quot;Please input the number of members n:&quot;;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">		for (int j = 1; j &lt;= n; j++)&#123;</span><br><span class="line">			head = ListCreate(n);//创建链表</span><br><span class="line">			head = Josephus(head,i,j );//调用约瑟夫函数进行编号计数抽选，派遣队员，直到最后一人</span><br><span class="line">			ListPrintSol(head,n,i,j);//输出使加里森成为最后一人的x,y</span><br><span class="line">			head = ListDel(head);//释放空间</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/11/数据结构之队列——回文字判断/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2098,319 +2280,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/" itemprop="url">【Discrete Mathematics】Relations【2015.10.31更新】</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-29T21:22:00+08:00">2015-10-29</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/10/29/【Discrete-Mathematics】Relations【2015-10-31更新】/" class="leancloud_visitors" data-flag-title="【Discrete Mathematics】Relations【2015.10.31更新】">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>【Discrete Mathematics】Relations</p>
-<p>这是离散数学课的个人阶段性总结，如有纰漏，敬请指出，一起学习~太过简单，也请见谅Orz</p>
-<p>使用教材为《离散数学及其应用》（第7版.英文版）</p>
-<p>现在主要拉定义，加上个人理解= =</p>
-<p><strong>Chapter 9.1 Relations and their properties</strong></p>
-<blockquote>
-<p><strong>Definition1.</strong> Let A and B be sets. A binary relation from A to B is a subset of A × B._</p>
-</blockquote>
-<p>二元关系就是序偶的集合R，记号为aRb，表示(a,b).</p>
-<p>函数是关系的一种。对应于集合A的每一个元素，恰好有且仅有一个集合B中的元素与之对应。</p>
-<blockquote>
-<p><strong>Definition2.</strong> A relation on a set A is relation from A to A.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition3.</strong> A relation R on a set A is called <em>reflexive</em> if (a, a)R for every element a A.</p>
-</blockquote>
-<p>Remark.我们看到a((a,a)R),那么集合上的关系是自反的。这里的论域是A中所有元素的集合。</p>
-<blockquote>
-<p><strong>Definition4.</strong> A relation R on a set A is called <em>symmetric</em> if(b,a) R whenever (a,b)R ,for all a,b A. A relation R on a set A such that for all a,b A, if (a,b) R and (b,a) R, then a = b is called antisymmetric.</p>
-</blockquote>
-<p>Remark.使用量词，可以看到如果a b((a,b) R -&gt; (b,a) R),则A上的关系R是对称的。类似的，如果a b(((a,b) R ^ (b,a) R)-&gt;(a=b),则A上的关系R是反对称的。</p>
-<p>就是说，关系R是对称的，当且仅当如果a与b相关则b与a就相关，关系R是反对称的，当且仅当不存在由不同元素a和b构成的序偶使得a与b相关并且b与a也相关。对称与反对称的概念不是对立的，因为一个关系可以同时有这两种性质或者两种性质都没有。一个关系如果包含了某些形如(a,b)的对，其中a != b，这个关系就不可能同时是对称和反对称的。</p>
-<blockquote>
-<p><strong>Definition5.</strong> A relation R on a set A is called <em>transitive</em> if whenever (a,b) R and (b,c) R,then (a,c) R,for all a,b,c A.</p>
-</blockquote>
-<p>Remark.使用量词，我们可以看到在集合A上的关系R是传递的，如果a b c(((a,b)R ^(b,c)R)-&gt; (a,c)R).</p>
-<blockquote>
-<p><strong>Definition6.</strong> Let R be a relation from a set A to a set B and S a relation from B to a set C.The <em>composite</em> of R and S is the relation consisting of ordered pairs(a,c),where aA,cC,and for which there exists an element b B such that (a,b) R and (b,c) S.We denote the composite of R and S by SR.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition7.</strong> Let R be a relation on the set A.The powers R^n,n= 1,2,3…,are defined recursively by R^1=R and R^(n+1) = R^nR.</p>
-</blockquote>
-<blockquote>
-<p><strong>Theorem1.</strong> The relation R on a set A is transitive if and only if R^n R for n = 1,2,3…</p>
-</blockquote>
-<blockquote>
-<p><strong>Supplement</strong> A relation R on the set A is <em>irreflexive</em> if for every a A,(a,a) R.That is ,R is irreflexive if no element in A is related to itself. A relation R is called <em>asymmetric</em> if (a,b)R implies that (b,a) R. Let R be a relation from a set A to a set B.The <strong>inverse relation</strong> from B to A,denoted by R^-1 ,is the set of ordered pairs {(b,a)|(a,b)}.The <strong>complementary relation</strong> R is the set of ordered pairs{(a,b)|(a,b)R}.</p>
-</blockquote>
-<p><strong>Chapter 9.2 n-ary relations and their applications</strong></p>
-<blockquote>
-<p><strong>Definition1.</strong> Let A1,A2,…An be sets.An <em>n-ary relation</em> on these sets is a subset of A1×A2×…×An.The sets A1,A2,…An are called the <em>domains</em> of the relation ,and n is called its <em>degree</em>.</p>
-</blockquote>
-<blockquote>
-<p>__*Supplement__ Relations used to represent databases are also called <strong>tables</strong>, because these relations are often displayed as tables. Each column of the table corresponds to an attribute of the database. For instance, the same database of students is displayed in Table 1. The attributes of this database are Student Name, ID Number, Major, and GPA. A domain of an n-ary relation is called a <strong>primary key</strong> when the value of the n-tuple from this domain determines the n-tuple. That is, a domain is a primary key when no two n-tuples in the relation have the same value from this domain. Records are often added to or deleted from databases. Because of this, the property that a domain is a primary key is time-dependent.Consequently, a primary key should be chosen that remains one whenever the database is changed. The current collection of n-tuples in a relation is called the <strong>extension</strong> of the relation. The more permanent part of a database, including the name and attributes of the database, is called its <strong>intension</strong>. When selecting a primary key, the goal should be to select a key that can serve as a primary key for all possible extensions of the database. To do this, it is necessary to examine the intension of the database to understand the set of possible n-tuples that can occur in an extension.</p>
-</blockquote>
-<blockquote>
-<p>Combinations of domains can also uniquely identify n-tuples in an n-ary relation. When the values of a set of domains determine an n-tuple in a relation, the Cartesian product of these domains is called a <strong>composite key</strong>.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition2.</strong> Let R be an n-ary relation and C a condition that elements in R may satisfy. Then the selection operator sC maps the n-ary relation R to the n-ary relation of all n-tuples from R that satisfy the condition C.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition3.</strong> The projection P(i1,i2,…,im) where i1 &lt; i2 &lt; · · · &lt; im, maps the n-tuple (a1, a2, . . . , an) to the m-tuple (a(i1), a(i2), . . . , a(im)), where m ≤ n.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition4.</strong> Let R be a relation of degree m and S a relation of degree n. The join Jp(R, S), where p ≤ m and p ≤ n, is a relation of degree m + n − p that consists of all (m + n − p)-tuples (a1, a2, . . . , a(m−p), c1, c2, . . . , cp, b1, b2, . . . , b(n−p)), where the m-tuple (a1, a2, . . . , a(m−p), c1, c2, . . . , c(p)) belongs to R and the n-tuple (c1, c2, . . . , cp, b1, b2, . . . ,b(n−p)) belongs to S.</p>
-</blockquote>
-<p><strong>Chapter 9.3 representing relations</strong> Representing relations using Matrices</p>
-<p>A relation between finite sets can be represented using a zero–one matrix. Suppose that R is a relation from A = {a1, a2, . . . , am} to B = {b1, b2, . . . , bn}. (Here the elements of the sets A and B have been listed in a particular, but arbitrary, order. Furthermore, when A = B we use the same ordering for A and B.) The relation R can be represented by the matrix MR = [mij], where m(ij)={1 if(ai,bj)R,0 if(ai,bj)R}.</p>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_figure2.png" alt="matrix"><figcaption>matrix</figcaption>
-</figure>
-<p>Representing relations using Digraphs</p>
-<p>We have shown that a relation can be represented by listing all of its ordered pairs or by using a zero–one matrix. There is another important way of representing a relation using a pictorial representation. Each element of the set is represented by a point, and each ordered pair is represented using an arc with its direction indicated by an arrow. We use such pictorial representations when we think of relations on a finite set as <strong>directed graphs</strong>, or <strong>digraphs.</strong></p>
-<blockquote>
-<p>__Definition1. A directed graph, or digraph, consists of a set V of vertices (or nodes) together with a set E of ordered pairs of elements of V called edges (or arcs). The vertex a is called the initial vertex of the edge (a, b), and the vertex b is called the terminal vertex of this edge.</p>
-</blockquote>
-<p>An edge of the form (a, a) is represented using an arc from the vertex a back to itself. Such an edge is called a loop.</p>
-<p><strong>Chapter9.4 closures of relations</strong> The relation R = {(1, 1), (1, 2), (2, 1), (3, 2)} on the set A = {1, 2, 3} is not reflexive. How can we produce a reflexive relation containing R that is as small as possible? This can be done by adding (2, 2) and (3, 3) to R, because these are the only pairs of the form (a, a) that are not in R. Clearly, this new relation contains R. Furthermore, any reflexive relation that contains R must also contain (2, 2) and (3, 3). Because this relation contains R, is reflexive, and is contained within every reflexive relation that contains R, it is called the <strong>reflexive closure</strong> of R.</p>
-<p>Paths in Directed Graphs &gt;<strong>Definition1.</strong> A path from a to b in the directed graph G is a sequence of edges (x0, x1), (x1, x2), (x2, x3), . . . , (xn−1, xn) in G, where n is a nonnegative integer, and x0 = a and xn = b, that is, a sequence of edges where the terminal vertex of an edge is the same as the initial vertex in the next edge in the path. This path is denoted by x0, x1, x2, . . . , xn−1, xn and has length n. We view the empty set of edges as a path of length zero from a to a. A path of length n ≥ 1 that begins and ends at the same vertex is called a circuit or cycle.</p>
-<blockquote>
-<p><strong>Theorem1.</strong> Let R be a relation on a set A. There is a path of length n, where n is a positive integer, from a to b if and only if (a, b) ∈ Rn.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition2.</strong> Let R be a relation on a set A. The connectivity relation R* consists of the pairs (a, b) such that there is a path of length at least one from a to b in R.</p>
-</blockquote>
-<p>Because Rn consists of the pairs (a, b) such that there is a path of length n from a to b, it follows that R* is the union of all the sets Rn. In other words, <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture.PNG" alt="formula1"></p>
-<blockquote>
-<p><strong>Theorem2.</strong> The transitive closure of a relation R equals the connectivity relation R*.</p>
-</blockquote>
-<blockquote>
-<p><strong>Lemma1.</strong> Let A be a set with n elements, and let R be a relation on A. If there is a path of length at least one in R from a to b, then there is such a path with length not exceeding n. Moreover, when a != b, if there is a path of length at least one in R from a to b, then there is such a path with length not exceeding n − 1. <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_figure.path.PNG" alt="path"></p>
-</blockquote>
-<blockquote>
-<p><strong>Theorem3.</strong> Let MR be the zero–one matrix of the relation R on a set with n elements. Then the zero–one matrix of the transitive closure R* is <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_formula2.png" alt="formula2"></p>
-</blockquote>
-<blockquote>
-<p><strong>Lemma2.</strong> <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture2.PNG"></p>
-</blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_algorithm.png" alt="algorithm"><figcaption>algorithm</figcaption>
-</figure>
-<p><strong>Chapter9.5 Equivalence Relations</strong></p>
-<blockquote>
-<p><strong>Definition1.</strong> A relation on a set A is called an <em>equivalence relation</em> if it is reflexive, symmetric, and transitive.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition2.</strong> Two elements a and b that are related by an equivalence relation are called <em>equivalent</em>. The notation a~b is often used to denote that a and b are equivalent elements with respect to a particular equivalence relation.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition3.</strong> Let R be an equivalence relation on a set A. The set of all elements that are related to an element a of A is called the equivalence class of a. The <em>equivalence class</em> of a with respect to R is denoted by [a]R. When only one relation is under consideration, we can delete the subscript R and write [a] for this equivalence class.</p>
-</blockquote>
-<p>In other words, if R is an equivalence relation on a set A, the equivalence class of the element a is [a]R = {s | (a, s) ∈ R}.</p>
-<p>If b ∈ [a]R, then b is called a <strong>representative</strong> of this equivalence class. Any element of a class can be used as a representative of this class. That is, there is nothing special about the particular element chosen as the representative of the class.</p>
-<blockquote>
-<p><strong>Theorem1.</strong> Let R be an equivalence relation on a set A. These statements for elements a and b of A are equivalent:(i) aRb (ii) [a] = [b] (iii) [a]∩[b] != 0</p>
-</blockquote>
-<blockquote>
-<p><strong>Theorem2.</strong> Let R be an equivalence relation on a set S. Then the equivalence classes of R form a partition of S. Conversely, given a partition {Ai | i ∈ I} of the set S, there is an equivalence relation R that has the sets Ai, i ∈ I, as its equivalence classes.</p>
-</blockquote>
-<blockquote>
-<p>a partition of a set S is a collection of disjoint nonempty subsets of S that have S as their union. In other words, the collection of subsets Ai, i ∈ I (where I is an index set) forms a partition of S if and only if Ai != 0 for i ∈ I, Ai ∩ Aj = 0 when i != j, and <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_1.png" alt="c"></p>
-</blockquote>
-<p><img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_2.png"></p>
-<blockquote>
-<p><strong>Supplement</strong> A partition P1 is called a refinement of the partition P2 if every set in P1 is a subset of one of the sets in P2.</p>
-</blockquote>
-<p><strong>Chapter9.6 Partial Orderings</strong></p>
-<blockquote>
-<p><strong>Definition1.</strong> A relation R on a set S is called a <em>partial ordering</em> or <em>partial order</em> if it is reflexive, antisymmetric, and transitive. A set S together with a partial ordering R is called a <em>partially ordered</em> set, or poset, and is denoted by (S, R). Members of S are called elements of the poset.</p>
-</blockquote>
-<blockquote>
-<p><strong>Definition2.</strong> <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture3.PNG" alt="4"></p>
-</blockquote>
-<blockquote>
-<p><strong>Definition3.</strong> <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture4.PNG" alt="3"></p>
-</blockquote>
-<blockquote>
-<p><strong>Definition4.</strong> <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture1.1.PNG" alt="2"></p>
-</blockquote>
-<blockquote>
-<p><strong>Theorem1.</strong> <img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capture1.2.PNG" alt="1"></p>
-</blockquote>
-<p>这一章就这样了，都是基础，摘录一下。找离散的符号太困难了，只能贴图了。</p>
-
-          
         
       
     </div>

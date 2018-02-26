@@ -135,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-17T19:46:49.000Z">
+<meta property="og:updated_time" content="2018-02-25T14:56:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深度探索C++对象模型》Note">
 <meta name="twitter:description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-02-18T03:46:49+08:00">2018-02-18</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-02-25T22:56:25+08:00">2018-02-25</time>
             
           </span>
 
@@ -450,6 +450,7 @@
 <p>虚继承有些忘记了</p>
 <p>编译器会在派生类B的实例中保存一个A的实例，然后在B中加入一个变量，这个变量是A的实例在实际B实例中的偏移量，实际上B中并不直接保存offset的值，而是保存的一个指针，这个指针指向一个表vbtable，vbtable表中保存着所有虚继承的基类在实例中的offset值，多个B的实例共享这个表，每个实例有个单独的指针指向这个表，这样就很好理解为什么多了4个字节了。用代码表示就像下面这样。</p>
 <p>这个offset的作用是什么不太理解，有个指针地址不就已经能访问这个对象了吗？</p>
+<p>向前预览(lookahead)？</p>
 <p>未完待续</p>
 
       

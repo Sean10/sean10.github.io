@@ -306,6 +306,290 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/15/Qt学习汇总遇到的问题/" itemprop="url">Qt学习汇总遇到的问题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T16:42:46+08:00">2017-06-15</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-27T21:52:45+08:00">2017-06-27</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/15/Qt学习汇总遇到的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/15/Qt学习汇总遇到的问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/15/Qt学习汇总遇到的问题/" class="leancloud_visitors" data-flag-title="Qt学习汇总遇到的问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build</p>
+<p>开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 &gt;:-1: error: symbol(s) not found for architecture x86_64 &gt;:-1: error: linker command failed with exit code 1 (use -v to see invocation)</p>
+<p>这个错误经常会出现</p>
+<hr>
+<p>c++跨文件或跨类传输变量参数是通过在对应文件声明类，然后调用该类获得参数的函数</p>
+<p>但是qt里我一旦这样做，就会出现上面那个系统错误。</p>
+<hr>
+<p>普通形参加不加const限定符对实参没有影响，引用形参和指针形参前面没有const限定符时，实参必须是非const的，而前面有const限定符时对实参也没有什么影响。</p>
+<p>为什么会出现这种情况？</p>
+<p>原因在于实参的传递方式不同，函数中的形参是普通形参的时，函数只是操纵的实参的副本，而无法去修改实参，实参会想，你形参反正改变不了我的值，那么你有没有const还有什么意义吗？引用形参和指针形参就下不同了，函数是对实参直接操纵，没有const的形参时实参的值是可以改变的，这种情况下怎能用函数来操纵const实参呢。</p>
+<hr>
+<p>ui文件似乎必须要建一个类通过setupUI才能使用 主要需要新建一个dialog来show就可以了</p>
+<table style="width:8%;">
+<colgroup>
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Qt的模态对话，setModal和dialog.exec() == box::accepted有什么区别？</td>
+</tr>
+</tbody>
+</table>
+<p>QT的close没有反应，似乎要使用事件循环</p>
+<hr>
+<p>setAttribute (Qt::WA_DeleteOnClose); 这个明明是解决内存泄露问题，为什么可以关闭窗口呢，而close却做不到</p>
+<hr>
+<p>qVector输入之后，造成implicitly deleted because base class “QObject” has a deleted copy constructor</p>
+<hr>
+<p>Qt 资源文件，可以通过添加qrc来实现路径的操作 但是 //路径这里存在问题，为什么添加了qrc之后依旧不需要前缀就可以使用了呢？ 明明理论上说要“:/db/user.db” 但只是“user.db”就可以使用了</p>
+<hr>
+<p>始终不能调用数据库，原因是我没有使用query.finish，以及建表语法出现了错误。</p>
+<hr>
+<p>事件似乎和信号有点相似，又有点不同。</p>
+<hr>
+<p>事件是一个新的概念，与信号不一样。</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>又遇到了当初的link错误，没有详细信息的那种 SF的答案是这个，感觉比较靠谱，我也确实有在Compile Output里看到问题，是client.o的问题，不过这个文件我都没有引用，为什么会错呢</td>
+</tr>
+<tr class="even">
+<td>Posting comment by N1ghtLight as an answer.</td>
+</tr>
+<tr class="odd">
+<td>Duplicate symbols found error is a linker error, which says that linker has found more than one symbols with the same name. Following are some common causes for this.</td>
+</tr>
+<tr class="even">
+<td>You have written a function definition in a header file (outside a class), which is included in two or more cpp files. You have defined a static variable twice. You have written a function definition twice in a cpp file. You can find out what are the duplicate symbols by checking Compile Output tab in Qt Creator</td>
+</tr>
+</tbody>
+</table>
+<p>把databaseControl设置继承QObject就出现编译不过的问题</p>
+<p>就是上面的link错误，不过更复杂</p>
+<hr>
+<p>遇到这个错误error: member function not viable this argument has type const 但是我一时忘了怎么解决的了</p>
+<hr>
+<p>call to implicitly-deleted copy constructor</p>
+<p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461: error: call to implicitly-deleted copy constructor of ‘centralAirConditioner’ current-&gt;v = new T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遇到这个错误，发现又是因为继承了基类QObject的原因</p>
+<hr>
+<p>暂时设计了从multithread发送信号到databaseControl,暂时没能测试出数据是否发送成功</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>好像知道为什么发送了信号，但槽函数没有执行的原因了，似乎是因为信号和槽不在一个线程里 但是默认是会执行异步的啊</td>
+</tr>
+<tr class="even">
+<td>上面的猜想是错误的，实际的问题是在于我把UserRegister写在mainwindow的构造函数里的，导致还没有执行connect就把信号已经发送出去了，所以这个信号浪费了</td>
+</tr>
+</tbody>
+</table>
+<p>稍后添加对于开关机的容错措施 数据锁尚未添加</p>
+<hr>
+<p>优先设置spinBox的lowtem会导致workTemperature变成这个lowTem,明明是满足他的约束的 噢，可能是因为spinBox一开始是0，没有设置，当有了约束之后，自动变成了18，满足了值变动，所以导致初始化被覆盖了。</p>
+<hr>
+<p>tcp粘包问题： 怎么分也需要双方组织一个比较好的包结构，所以一般可能会在头加一个数据长度之类的包，以确保接收。</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>从控机修改工作模式，但没有发送给主控机的过程，这个问题有待修正 这里应该根据文档来写：从控机没有调整工作模式的机会，只能由主控机设定</td>
+</tr>
+</tbody>
+</table>
+<p>connectToHost似乎是mac的问题，大大的windows执行就没有问题。</p>
+<hr>
+<p>找到每次修改完工作温度，室温就顺便同步的原因了，是因为信号问题，每发送一个SignalSendRequest就执行了9次SendRequest. 但是没有找到有多次connect的函数啊。</p>
+<p>即便是用了uniqueConnection还是执行了多次。</p>
+<p>找到问题了，有另外一个函数不停发送了signal，定时发送</p>
+<hr>
+<p>第二次从控机开机，主控机上没有再显示出那台从控机状态？ why?</p>
+<h2 id="还有解决粘包问题">还有解决粘包问题</h2>
+<p>把室温用电子时钟模式展示出来</p>
+<hr>
+<p>可以使用doxygen来进行根据注释生成文档</p>
+<p>/** * 要输出成文档的注释 */</p>
+<p>或者 //!</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/01/04/《星之梦》传播星空之人/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1917,191 +2201,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2016/01/08/DNA排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/01/08/DNA排序/" itemprop="url">DNA排序</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-08T18:58:00+08:00">2016-01-08</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/01/08/DNA排序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/01/08/DNA排序/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/01/08/DNA排序/" class="leancloud_visitors" data-flag-title="DNA排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>总时间限制: 1000ms 内存限制: 65536kB <strong>描述</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">现在有一些长度相等的DNA串（只由ACGT四个字母组成），请将它们按照逆序对的数量多少排序。</span><br><span class="line">逆序对指的是字符串A中的两个字符A[i]、A[j]，具有i &lt; j 且 A[i] &gt; A[j] 的性质。如字符串”ATCG“中，T和C是一个逆序对，T和G是另一个逆序对，这个字符串的逆序对数为2。</span><br></pre></td></tr></table></figure></p>
-<p><strong>输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第1行：两个整数n和m，n(0&lt;n&lt;=50)表示字符串长度，m(0&lt;m&lt;=100)表示字符串数量</span><br><span class="line"></span><br><span class="line">第2至m+1行：每行是一个长度为n的字符串</span><br></pre></td></tr></table></figure></p>
-<p><strong>输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按逆序对数从少到多输出字符串，逆序对数一样多的字符串按照输入的顺序输出。</span><br></pre></td></tr></table></figure></p>
-<p><strong>样例输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">10 6</span><br><span class="line">AACATGAAGG</span><br><span class="line">TTTTGGCCAA</span><br><span class="line">TTTGGCCAAA</span><br><span class="line">GATCAGATTT</span><br><span class="line">CCCGGGGGGA</span><br><span class="line">ATCGATGCAT</span><br></pre></td></tr></table></figure></p>
-<p><strong>样例输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CCCGGGGGGA</span><br><span class="line">AACATGAAGG</span><br><span class="line">GATCAGATTT</span><br><span class="line">ATCGATGCAT</span><br><span class="line">TTTTGGCCAA</span><br><span class="line">TTTGGCCAAA</span><br></pre></td></tr></table></figure></p>
-<p>本以为可能在排序之外需要剪枝之类的，事实上用不到，直接用快排就可以过 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Node &amp;a,<span class="keyword">const</span> Node &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.num &lt; b.num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    Node s[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s[i].str);</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i].str[j] == <span class="string">'A'</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = j+<span class="number">1</span>;k &lt; n;k++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(s[i].str[k] &lt; s[i].str[j])</span><br><span class="line">                        num++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        s[i].num = num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(s,s+m,cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,s[i].str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
         
       
     </div>

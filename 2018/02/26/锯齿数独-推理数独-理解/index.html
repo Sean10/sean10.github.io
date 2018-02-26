@@ -124,26 +124,30 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数独,sudoku," />
 
 
-<meta name="description" content="笔记 随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/archives/page/2/index.html">
+<meta name="description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
+<meta name="keywords" content="数独,sudoku">
+<meta property="og:type" content="article">
+<meta property="og:title" content="锯齿数独_推理数独 解法理解">
+<meta property="og:url" content="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="笔记 随笔">
+<meta property="og:description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg">
+<meta property="og:updated_time" content="2018-02-26T13:36:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="行路中.">
-<meta name="twitter:description" content="笔记 随笔">
+<meta name="twitter:title" content="锯齿数独_推理数独 解法理解">
+<meta name="twitter:description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://sean10.github.io/archives/page/2/"/>
+  <link rel="canonical" href="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/"/>
 
 
 
@@ -152,7 +156,7 @@
     sidebar: "",
   };
 </script>
-  <title>Archive | 行路中.</title>
+  <title>锯齿数独_推理数独 解法理解 | 行路中.</title>
   
 
 
@@ -199,7 +203,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,408 +293,268 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
+  
 
-      
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h2 class="post-title" itemprop="name headline">锯齿数独_推理数独 解法理解</h2>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-26T21:25:45+08:00">2018-02-26</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-02-26T21:36:32+08:00">2018-02-26</time>
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2017">2017</h2>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/07/仿佛天元突破/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">仿佛天元突破</span>
+                <span class="post-meta-item-text">In</span>
               
-            </a>
-        
-      </h3>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-07T22:25:18+08:00"
-              content="2017-10-07" >
-          10-07
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/26/锯齿数独-推理数独-理解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/26/锯齿数独-推理数独-理解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
+          
+          
+             <span id="/2018/02/26/锯齿数独-推理数独-理解/" class="leancloud_visitors" data-flag-title="锯齿数独_推理数独 解法理解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/07/系列首作，所以只是引观众进行哲思/" itemprop="url">
-              
-                <span itemprop="name">系列首作，所以只是引观众进行哲思</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-07T22:23:15+08:00"
-              content="2017-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/02/「序列之争」最后30分钟太可惜/" itemprop="url">
-              
-                <span itemprop="name">「序列之争」最后30分钟太可惜</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-02T16:46:28+08:00"
-              content="2017-10-02" >
-          10-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <blockquote>
+<p>推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of all numbers connected to it is given.</p>
+</blockquote>
+<h1 id="example">Example:</h1>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg"></p>
+<p>这个问题乍一眼看上去很眼熟，第一感觉可以用拓扑排序来解决。实际上目前也的确用拓扑排序成功解决了几道题。（不过上面这个例题是刚好有点卡住了的那个）</p>
+<p>首先观察这个图的特征，假定所有都是出路，可以观察到</p>
+<ul>
+<li>2出路: 4个</li>
+<li>3出路: 4个</li>
+<li>4出路: 1个</li>
+</ul>
+<p>不过还没有试着写成算法，只是脑海里按照下面这个思路迭代了几次就能实验出结果了。</p>
+<ol type="1">
+<li>找到图中最小数，置于与4出路直连的2个2出路处</li>
+<li>将最大数置于4出路处</li>
+<li>顺序计算，出现错误，回到第一条根据DFS/BFS继续走</li>
+</ol>
+<h1 id="参考资料">参考资料</h1>
+<ol type="1">
+<li><a href="http://www.sudokufans.org.cn/tl.index.php" target="_blank" rel="noopener">独 数之道 锯齿数独-&gt;推理数独</a>(需注册登录才能访问)</li>
+</ol>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/09/26/考研预报名/" itemprop="url">
-              
-                <span itemprop="name">考研预报名脚本</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-26T22:43:40+08:00"
-              content="2017-09-26" >
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/24/未来镜像/" itemprop="url">
-              
-                <span itemprop="name">未来镜像</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-24T15:03:07+08:00"
-              content="2017-08-24" >
-          08-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/08/04/克苏鲁神话/" itemprop="url">
-              
-                <span itemprop="name">克苏鲁神话初学</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-04T15:24:18+08:00"
-              content="2017-08-04" >
-          08-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/01/更换markdown渲染引擎/" itemprop="url">
-              
-                <span itemprop="name">原计划更换markdown渲染引擎</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-01T17:01:14+08:00"
-              content="2017-07-01" >
-          07-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/28/计算机系统结构复习note/" itemprop="url">
-              
-                <span itemprop="name">计算机系统结构复习note</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-28T15:58:32+08:00"
-              content="2017-06-28" >
-          06-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/27/Unix编程环境复习笔记/" itemprop="url">
-              
-                <span itemprop="name">Unix编程环境复习笔记</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-27T14:36:03+08:00"
-              content="2017-06-27" >
-          06-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/26/图形学复习笔记/" itemprop="url">
-              
-                <span itemprop="name">图形学复习笔记</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-26T16:35:28+08:00"
-              content="2017-06-26" >
-          06-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author: </strong>Sean10</li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" title="锯齿数独_推理数独 解法理解">http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY-NC-SA 3.0 unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数独/" rel="tag"># 数独</a>
+          
+            <a href="/tags/sudoku/" rel="tag"># sudoku</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/24/数独note/" rel="next" title="数独note">
+                <i class="fa fa-chevron-left"></i> 数独note
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/10/">10</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -711,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -740,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#example"><span class="nav-number">1.</span> <span class="nav-text">Example:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -869,6 +758,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
 
   
 
@@ -883,6 +776,23 @@
     <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
   
 
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/';
+        this.page.identifier = '2018/02/26/锯齿数独-推理数独-理解/';
+        this.page.title = '锯齿数独_推理数独 解法理解';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://seanrebn.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
