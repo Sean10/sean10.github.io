@@ -135,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="unique rectangle type 1~4没什么疑问，不过hidden unique rectangle 的删除有些疑惑，如何确定哪个是候选数a，哪个是候选数b的呢">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-24T15:51:24.000Z">
+<meta property="og:updated_time" content="2018-02-27T09:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数独note">
 <meta name="twitter:description" content="unique rectangle type 1~4没什么疑问，不过hidden unique rectangle 的删除有些疑惑，如何确定哪个是候选数a，哪个是候选数b的呢">
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-02-24T23:51:24+08:00">2018-02-24</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-02-27T17:00:00+08:00">2018-02-27</time>
             
           </span>
 
@@ -432,6 +432,21 @@
         <p>unique rectangle type 1~4没什么疑问，不过hidden unique rectangle 的删除有些疑惑，如何确定哪个是候选数a，哪个是候选数b的呢</p>
 <a id="more"></a>
 <p>有些技巧似乎国内的那个论坛上也并没有提到，国外那位大神总结的真是全。</p>
+<h2 id="generalising-x-wing">Generalising X-Wing</h2>
+<blockquote>
+<p>X-Wing is not restricted to rows and columns. We can also extend the idea to boxes as well. If we generalise the rule above we get:</p>
+<p>When there are * only 2 candidates for a value, in each of 2 different units of the same kind, * and these candidates lie also on 2 other units of the same kind,</p>
+<p>then all other candidates for that value can be eliminated from the latter two units.</p>
+<p>Now we have 6 combinations:</p>
+<ul>
+<li>Starting from 2 rows and eliminating in 2 columns -&gt; Classic X-Wing</li>
+<li>Starting from 2 columns and eliminating in 2 rows -&gt; Classic X-Wing</li>
+<li>Starting from 2 boxes and eliminating in 2 rows -&gt; Same effect as line/box reduction</li>
+<li>Starting from 2 boxes and eliminating in 2 columns -&gt; Same effect as line/box reduction</li>
+<li>Starting from 2 rows and eliminating in 2 boxes -&gt; Same effect as pointing pairs</li>
+<li>Starting from 2 columns and eliminating in 2 boxes -&gt; Same effect as pointing pairs</li>
+</ul>
+</blockquote>
 <h1 id="参考资料">参考资料：</h1>
 <ol type="1">
 <li><a href="http://www.sudokuwiki.org" target="_blank" rel="noopener">SudokuWiki</a></li>
@@ -493,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/26/锯齿数独-推理数独-理解/" rel="prev" title="锯齿数独_推理数独 解法理解">
-                锯齿数独_推理数独 解法理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/26/锯齿数独-推理数独-理解/" rel="prev" title="锯齿数独_推理数独 解法">
+                锯齿数独_推理数独 解法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -608,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">1.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#generalising-x-wing"><span class="nav-number">1.</span> <span class="nav-text">Generalising X-Wing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number"></span> <span class="nav-text">参考资料：</span></a></div>
             
 
           </div>

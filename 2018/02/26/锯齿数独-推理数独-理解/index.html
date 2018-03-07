@@ -130,7 +130,7 @@
 <meta name="description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
 <meta name="keywords" content="数独,sudoku">
 <meta property="og:type" content="article">
-<meta property="og:title" content="锯齿数独_推理数独 解法理解">
+<meta property="og:title" content="锯齿数独_推理数独 解法">
 <meta property="og:url" content="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
@@ -139,7 +139,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1foubneiifqj30l60ksjt8.jpg">
 <meta property="og:updated_time" content="2018-02-26T17:25:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="锯齿数独_推理数独 解法理解">
+<meta name="twitter:title" content="锯齿数独_推理数独 解法">
 <meta name="twitter:description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg">
 
@@ -157,7 +157,7 @@
     sidebar: "",
   };
 </script>
-  <title>锯齿数独_推理数独 解法理解 | 行路中.</title>
+  <title>锯齿数独_推理数独 解法 | 行路中.</title>
   
 
 
@@ -327,7 +327,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">锯齿数独_推理数独 解法理解</h2>
+          <h2 class="post-title" itemprop="name headline">锯齿数独_推理数独 解法</h2>
         
 
         <div class="post-meta">
@@ -401,7 +401,7 @@
 
           
           
-             <span id="/2018/02/26/锯齿数独-推理数独-理解/" class="leancloud_visitors" data-flag-title="锯齿数独_推理数独 解法理解">
+             <span id="/2018/02/26/锯齿数独-推理数独-理解/" class="leancloud_visitors" data-flag-title="锯齿数独_推理数独 解法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -449,6 +449,8 @@
 <p>算法大致是下面这样，只是脑海里按照下面这个思路迭代了几次就能实验出结果了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0. 将图中数字降序排列</span><br><span class="line">1. for 取最大数置于4出路处（即1号位）</span><br><span class="line">2. 	for 取最小数，置于与4出路直连的2个2出路处（即2与7号位）</span><br><span class="line">3. 			迭代求解</span><br></pre></td></tr></table></figure>
 <p>答案: <img src="https://ws2.sinaimg.cn/large/006tNc79gy1foubneiifqj30l60ksjt8.jpg"></p>
+<hr>
+<p>独 数之道的这类题是直接生成了图片再发到浏览器的，看来不能直接读包然后发回结果了。需要进行一下识图了。</p>
 <h1 id="参考资料">参考资料</h1>
 <ol type="1">
 <li><a href="http://www.sudokufans.org.cn/tl.index.php" target="_blank" rel="noopener">独 数之道 锯齿数独-&gt;推理数独</a>(需注册登录才能访问)</li>
@@ -474,7 +476,7 @@
     <strong>Post author: </strong>Sean10</li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" title="锯齿数独_推理数独 解法理解">http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/</a>
+    <a href="http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" title="锯齿数独_推理数独 解法">http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>All articles in this blog are licensed under CC BY-NC-SA 3.0 unless stating additionally.</li>
@@ -511,6 +513,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/06/公众号开发笔记/" rel="prev" title="公众号开发笔记">
+                公众号开发笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -781,7 +787,7 @@
       var disqus_config = function () {
         this.page.url = 'http://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/';
         this.page.identifier = '2018/02/26/锯齿数独-推理数独-理解/';
-        this.page.title = '锯齿数独_推理数独 解法理解';
+        this.page.title = '锯齿数独_推理数独 解法';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

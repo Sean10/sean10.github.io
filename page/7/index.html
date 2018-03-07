@@ -306,6 +306,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/01/二叉树——森林的带度数层次序列存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/01/二叉树——森林的带度数层次序列存储/" itemprop="url">二叉树——森林的带度数层次序列存储</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-01T18:09:00+08:00">2015-12-01</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/01/二叉树——森林的带度数层次序列存储/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/01/二叉树——森林的带度数层次序列存储/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/01/二叉树——森林的带度数层次序列存储/" class="leancloud_visitors" data-flag-title="二叉树——森林的带度数层次序列存储">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week7/1/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 对于树和森林等非线性结构，我们往往需要将其序列化以便存储。有一种树的存储方式称为带度数的层次序列。我们可以通过层次遍历的方式将森林序列转化为多个带度数的层次序列。</p>
+<p>例如对于以下森林： <img src="http://media.openjudge.cn/images/upload/1401904592.png" alt="img"></p>
+<p>两棵树的层次遍历序列分别为：C E F G K H J / D X I</p>
+<p>每个结点对应的度数为：3 3 0 0 0 0 0 / 2 0 0</p>
+<p>我们将以上序列存储起来，就可以在以后的应用中恢复这个森林。在存储中，我们可以将第一棵树表示为C 3 E 3 F 0 G 0 K 0 H 0 J 0，第二棵树表示为D 2 X 0 I 0。</p>
+<p>现在有一些通过带度数的层次遍历序列存储的森林数据，为了能够对这些数据进行进一步处理，首先需要恢复他们。</p>
+<p>输入 输入数据的第一行包括一个正整数n，表示森林中非空的树的数目。 随后的 n 行，每行给出一棵树的带度数的层次序列。 树的节点名称为A-Z的单个大写字母。 输出 输出包括一行，输出对应森林的后根遍历序列。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">C 3 E 3 F 0 G 0 K 0 H 0 J 0</span><br><span class="line">D 2 X 0 I 0</span><br></pre></td></tr></table></figure></p>
+<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">K H J E F G C X I D</span><br></pre></td></tr></table></figure></p>
+<p>这道题，主要就是用队列存下根节点，根据其子节点数目判断是不是叶子。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    char data;</span><br><span class="line">    struct node *child[26];</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">void Init(BitTree &amp;root, char ch)&#123;</span><br><span class="line">    for(int i = 0;i &lt; 26;i++)&#123;</span><br><span class="line">        root-&gt;child[i] = NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    root-&gt;data = ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Create(BitTree &amp;root)&#123;</span><br><span class="line">    queue &lt;BitTree&gt;qRoot;</span><br><span class="line">    queue&lt;int&gt;qSeq;</span><br><span class="line">    BitTree temp,tempHead;</span><br><span class="line">    char ch;</span><br><span class="line">    int i = 0;</span><br><span class="line">    int degree = 0;//树的度</span><br><span class="line">    int childNum;</span><br><span class="line">    cin &gt;&gt; ch &gt;&gt; childNum;</span><br><span class="line">    root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    Init(root,ch);</span><br><span class="line">    qRoot.push(root);</span><br><span class="line">    qSeq.push(childNum);</span><br><span class="line">    while(!qRoot.empty())&#123;</span><br><span class="line">        while(degree == i)&#123;</span><br><span class="line">            if(qRoot.empty())</span><br><span class="line">                return ;</span><br><span class="line">            degree = qSeq.front();</span><br><span class="line">            qSeq.pop();</span><br><span class="line">            tempHead = qRoot.front();</span><br><span class="line">            qRoot.pop();</span><br><span class="line">            i = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        cin &gt;&gt; ch &gt;&gt; childNum;</span><br><span class="line">        temp = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">        Init(temp,ch);</span><br><span class="line">        qRoot.push(temp);</span><br><span class="line">        qSeq.push(childNum);</span><br><span class="line">        tempHead-&gt;child[i] = temp;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AftTranverse(BitTree root)&#123;</span><br><span class="line">    for(int i = 0;i &lt; 26 &amp;&amp; root-&gt;child[i];i++)</span><br><span class="line">        AftTranverse(root-&gt;child[i]);</span><br><span class="line">    cout &lt;&lt; root-&gt;data &lt;&lt; &apos; &apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    BitTree root;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    while(n--)&#123;</span><br><span class="line">        Create(root);</span><br><span class="line">        AftTranverse(root);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &apos;\n&apos;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/30/大学物理实验-考点总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2057,194 +2245,6 @@ a=\overline{y}-b\overline{x}
 <p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
 <p>提示 每组测试数据的复杂度为O(nlgn)的算法才能通过本次，否则会返回TLE(超时) 需要使用最小堆结构来实现本题的算法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int heap[100010];</span><br><span class="line">int len;</span><br><span class="line">//int maxsize;</span><br><span class="line"></span><br><span class="line">void Init()&#123;</span><br><span class="line">    //maxsize = 0;</span><br><span class="line">    len = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Insert(int x)&#123;</span><br><span class="line">    //heap[len] = x;</span><br><span class="line">    len++;</span><br><span class="line"></span><br><span class="line">    int i = len -1;</span><br><span class="line"></span><br><span class="line">    while(i &gt; 0)&#123;</span><br><span class="line">        int j = (i-1)/2;</span><br><span class="line">        if(x &gt; heap[j])</span><br><span class="line">            break;</span><br><span class="line">        heap[i] = heap[j];</span><br><span class="line">        i = j;</span><br><span class="line">    &#125;</span><br><span class="line">    heap[i] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Del()&#123;</span><br><span class="line">    if(0 == len)&#123;</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int temp = heap[0];</span><br><span class="line">    len--;</span><br><span class="line"></span><br><span class="line">    if(0 == len)&#123;</span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int x = heap[len];</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 2*i+1;</span><br><span class="line">    while(j &lt;= len-1)&#123;</span><br><span class="line">        if((j &lt; len-1)&amp;&amp; (heap[j] &gt; heap[j+1]))&#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(x &lt; heap[j])&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        heap[i] = heap[j];</span><br><span class="line">        i = j;</span><br><span class="line">        j = 2*i+1;</span><br><span class="line">    &#125;</span><br><span class="line">    heap[i] = x;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int t,n,type,x;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">        //struct node p;</span><br><span class="line">        Init();</span><br><span class="line">        while(n--)&#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;type);</span><br><span class="line">            if(type == 1)&#123;</span><br><span class="line">                scanf(&quot;%d&quot;,&amp;x);</span><br><span class="line">                Insert(x);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(type == 2)</span><br><span class="line">                printf(&quot;%d\n&quot;,Del());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" itemprop="url">二叉树——由中根序列和后根序列重建二叉树</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-22T21:48:00+08:00">2015-11-22</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" class="leancloud_visitors" data-flag-title="二叉树——由中根序列和后根序列重建二叉树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/1/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 500ms 内存限制: 65535kB 描述 我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。</p>
-<p>用不同的整数来唯一标识二叉树的每一个结点</p>
-<p>中根序列是9 5 32 67</p>
-<p>后根序列9 32 67 5</p>
-<p>前根序列5 9 67 32</p>
-<p>输入 两行。第一行是二叉树的中根序列，第二行是后根序列。每个数字表示的结点之间用空格隔开。结点数字范围0～65535。暂不必考虑不合理的输入数据。 输出 一行。由输入中的中根序列和后根序列重建的二叉树的前根序列。每个数字表示的结点之间用空格隔开。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9 5 32 67</span><br><span class="line">9 32 67 5</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 9 67 32</span><br></pre></td></tr></table></figure></p>
-<p>关键在于利用通过后序找到每个子树的根节点，以此为界找到左、右子树，从而进行递归。 链式算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#define N 65536</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct node * lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">int sLDR[N],sLRD[N];</span><br><span class="line"></span><br><span class="line">BitTree BuildTree(int coStart,int coEnd,int loStart, int loEnd)&#123;</span><br><span class="line">    BitTree root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    root-&gt;data = sLRD[loEnd];</span><br><span class="line">    root-&gt;lc = NULL;</span><br><span class="line">    root-&gt;rc = NULL;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    if(coStart == coEnd)</span><br><span class="line">        return root;</span><br><span class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</span><br><span class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(i&gt;=1) root-&gt;lc = BuildTree(coStart,coStart+i-1,loStart,loStart+i-1);</span><br><span class="line">    if(coEnd&gt;=coStart+i+1) root-&gt;rc = BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1);</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int visit(BitTree T)&#123;</span><br><span class="line">    printf(&quot;%d &quot;,T-&gt;data);</span><br><span class="line">    return T-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int PreTranverse(BitTree T)&#123;</span><br><span class="line">    if(T)&#123;</span><br><span class="line">        visit(T);</span><br><span class="line">        if(T-&gt;lc)</span><br><span class="line">            PreTranverse(T-&gt;lc);</span><br><span class="line">        if(T-&gt;rc)</span><br><span class="line">            PreTranverse(T-&gt;rc);</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int s[N];</span><br><span class="line">    int order = 0;</span><br><span class="line">    int ch;</span><br><span class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</span><br><span class="line">        s[++order] = ch;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLDR[i] = s[i];</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLRD[i] = s[order/2+i];</span><br><span class="line">    BitTree root = BuildTree(1,order/2,1,order/2);</span><br><span class="line">    PreTranverse(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>顺序算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#define N 65536</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct node * lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">int sLDR[N],sLRD[N];</span><br><span class="line">int tree[N];</span><br><span class="line"></span><br><span class="line">void BuildTree(int coStart,int coEnd,int loStart, int loEnd,int k)&#123;</span><br><span class="line">    //BitTree root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    tree[k] = sLRD[loEnd];</span><br><span class="line">    tree[2*k] = 0;</span><br><span class="line">    tree[2*k+1] = 0;</span><br><span class="line">    //root-&gt;lc = NULL;</span><br><span class="line">    //root-&gt;rc = NULL;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    if(coStart == coEnd)</span><br><span class="line">        return ;</span><br><span class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</span><br><span class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(i&gt;=1) BuildTree(coStart,coStart+i-1,loStart,loStart+i-1,2*k);</span><br><span class="line">    if(coEnd&gt;=coStart+i+1) BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1,2*k+1);</span><br><span class="line">    //return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int visit(int i)&#123;</span><br><span class="line">    printf(&quot;%d &quot;,tree[i]);</span><br><span class="line">    return tree[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int PreTranverse(int i)&#123;</span><br><span class="line">    if(tree[i])&#123;</span><br><span class="line">        visit(i);</span><br><span class="line">        if(tree[2*i])</span><br><span class="line">            PreTranverse(2*i);</span><br><span class="line">        if(tree[2*i+1])</span><br><span class="line">            PreTranverse(2*i+1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int s[N];</span><br><span class="line">    int order = 0;</span><br><span class="line">    int ch;</span><br><span class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</span><br><span class="line">        s[++order] = ch;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLDR[i] = s[i];</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLRD[i] = s[order/2+i];</span><br><span class="line">    BuildTree(1,order/2,1,order/2,1);</span><br><span class="line">    PreTranverse(1);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
