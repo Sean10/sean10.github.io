@@ -135,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T01:47:18.000Z">
+<meta property="og:updated_time" content="2018-03-07T16:08:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="公众号开发笔记">
 <meta name="twitter:description" content="试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。">
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-03-07T09:47:18+08:00">2018-03-07</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-08T00:08:02+08:00">2018-03-08</time>
             
           </span>
 
@@ -432,9 +432,20 @@
         <p>试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。</p>
 <a id="more"></a>
 <p>首先，id/secret/token设置需要记录下。测试接口似乎可以使用ngrok这样工具。</p>
+<p>未认证的订阅号的被动回复权限理论上是满足我的需求了的。</p>
 <hr>
 <h1 id="遇到问题">遇到问题:</h1>
-<p>在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。</p>
+<h2 id="在用搬瓦工服务器处理消息时似乎那边收不到我的消息但是认证token那个收发包过程还是通过了的暂时怀疑是服务器端口冲突了但是iptables并没有查到冲突问题用nginx映射时倒是才提示端口已占用">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</h2>
+<h2 id="在centos6安装python时出现了">在centos6安装python时，出现了</h2>
+<p><code>ModuleNotFoundError: No module named '_sqlite3'</code>,在<a href="https://stackoverflow.com/questions/1210664/no-module-named-sqlite3" target="_blank" rel="noopener">SF</a>，似乎是python3.6移除了3.5中的_sqlite3.so，不过按照最高票的cp python2的module过去再altinstall会引发新的<code>ImportError: dynamic module does not define module export function (PyInit__sqlite3)</code></p>
+<p>最后，只是configure时(添加个动态库选项)[http://blog.csdn.net/jaket5219999/article/details/53512071]就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enable-loadable-sqlite-extensions</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料">参考资料:</h1>
+<ol type="1">
+<li>https://stackoverflow.com/questions/1210664/no-module-named-sqlite3</li>
+<li>https://stackoverflow.com/questions/16018463/difference-in-details-between-make-install-and-make-altinstall</li>
+<li>http://blog.csdn.net/jaket5219999/article/details/53512071</li>
+</ol>
 
       
     </div>
@@ -491,6 +502,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/《最好的告别》note/" rel="prev" title="《最好的告别》note">
+                《最好的告别》note <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -603,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到问题"><span class="nav-number">1.</span> <span class="nav-text">遇到问题:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到问题"><span class="nav-number">1.</span> <span class="nav-text">遇到问题:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在用搬瓦工服务器处理消息时似乎那边收不到我的消息但是认证token那个收发包过程还是通过了的暂时怀疑是服务器端口冲突了但是iptables并没有查到冲突问题用nginx映射时倒是才提示端口已占用"><span class="nav-number">1.1.</span> <span class="nav-text">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在centos6安装python时出现了"><span class="nav-number">1.2.</span> <span class="nav-text">在centos6安装python时，出现了</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料:</span></a></li></ol></div>
             
 
           </div>
