@@ -306,6 +306,366 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-4018-正则表达式（简单）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/18/Hdu-4018-正则表达式（简单）/" itemprop="url">Hdu 4018 正则表达式（简单）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-18T23:32:00+08:00">2015-12-18</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/18/Hdu-4018-正则表达式（简单）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/18/Hdu-4018-正则表达式（简单）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/18/Hdu-4018-正则表达式（简单）/" class="leancloud_visitors" data-flag-title="Hdu 4018 正则表达式（简单）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[100];</span><br><span class="line">    char ch[100];</span><br><span class="line">    int n;</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int j = 1;j &lt;= n;j++)&#123;</span><br><span class="line">        scanf(&quot;%s&quot;,str);</span><br><span class="line">        for(int i = 0;str[i+2] != &apos;\0&apos;;i++)&#123;</span><br><span class="line">            if(str[i] == &apos;/&apos;)&#123;</span><br><span class="line">                if(str[i+1] == &apos;/&apos;)&#123;</span><br><span class="line">                    strcpy(ch,&amp;str[i+2]);</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0;ch[i] != &apos;\0&apos;;i++)&#123;</span><br><span class="line">            if(ch[i] == &apos;/&apos; || ch[i] == &apos;:&apos;)&#123;</span><br><span class="line">                ch[i] = &apos;\0&apos;;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;Case #%d: %s\n&quot;,j,ch);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-1039-字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/18/Hdu-1039-字符串/" itemprop="url">Hdu 1039 字符串</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-18T23:08:00+08:00">2015-12-18</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/18/Hdu-1039-字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/18/Hdu-1039-字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/18/Hdu-1039-字符串/" class="leancloud_visitors" data-flag-title="Hdu 1039 字符串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本来以为是正则，结果只是字符串水题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[22];</span><br><span class="line"></span><br><span class="line">    char vowel[26]=&quot;aeiou&quot;;</span><br><span class="line">    char consonants[26]=&quot;bcdfghjklmnpqrstvwxyz&quot;;</span><br><span class="line"></span><br><span class="line">    while(scanf(&quot;%s&quot;,str) &amp;&amp; strcmp(str,&quot;end&quot;))&#123;</span><br><span class="line">        int tag[3];</span><br><span class="line">        tag[0] = 0;</span><br><span class="line">        int len = strlen(str);</span><br><span class="line">        for(int i = 0;i &lt; len;i++)&#123;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i] == vowel[j])&#123;</span><br><span class="line">                    tag[0] = 1;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //char ch[3];</span><br><span class="line">        //ch[0] = str[0];</span><br><span class="line">        tag[1] = 1;</span><br><span class="line">        int flag[3] = &#123;1,1,1&#125;;</span><br><span class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</span><br><span class="line">            flag[0] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i] == consonants[j])</span><br><span class="line">                    flag[0] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[1] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i+1] == consonants[j])</span><br><span class="line">                    flag[1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[2] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i+2] == consonants[j])</span><br><span class="line">                    flag[2] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</span><br><span class="line">                tag[1] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</span><br><span class="line">            flag[0] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i] == vowel[j])</span><br><span class="line">                    flag[0] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[1] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i+1] == vowel[j])</span><br><span class="line">                    flag[1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[2] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i+2] == vowel[j])</span><br><span class="line">                    flag[2] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</span><br><span class="line">                tag[1] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //char ch = str[0];</span><br><span class="line">        tag[2] = 1;</span><br><span class="line">        for(int i = 1;i &lt; len;i++)&#123;</span><br><span class="line">            if(str[i-1] == str[i])</span><br><span class="line">                if(str[i] != &apos;e&apos; &amp;&amp; str[i] != &apos;o&apos;)</span><br><span class="line">                    tag[2] = 0;</span><br><span class="line">            //ch = str[i];</span><br><span class="line">        &#125;</span><br><span class="line">        if(tag[0] == 1 &amp;&amp; tag[1] == 1 &amp;&amp; tag[2] == 1)</span><br><span class="line">            printf(&quot;&lt;%s&gt; is acceptable.\n&quot;,str);</span><br><span class="line">        else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;,str);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/15/《starting-over重启人生》/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1722,395 +2082,6 @@
         
           
             <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    double x1 = 0,x2 = 0,y1 = 0,y2 = 0;</span><br><span class="line">    while(scanf(&quot;%lf %lf %lf %lf&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2)!=EOF)&#123;</span><br><span class="line">        printf(&quot;%.2lf\n&quot;,sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2000/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/03/HDU2000/" itemprop="url">HDU2000</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:04:00+08:00">2015-12-03</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/03/HDU2000/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/03/HDU2000/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/03/HDU2000/" class="leancloud_visitors" data-flag-title="HDU2000">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">void swap(char *s,int j)&#123;</span><br><span class="line">    char temp = s[j];</span><br><span class="line">    s[j] = s[j+1];</span><br><span class="line">    s[j+1] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Bubblesort(char *s)&#123;</span><br><span class="line">    char temp = s[0];</span><br><span class="line">    for(int i = 0;i &lt; 3;i++)&#123;</span><br><span class="line">        for(int j = 0;j &lt; 2;j++)&#123;</span><br><span class="line">            if(s[j] &gt; s[j+1])</span><br><span class="line">                swap(s,j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char s[4];</span><br><span class="line">    while(scanf(&quot;%s&quot;,s)!=EOF)&#123;</span><br><span class="line">        //getchar();</span><br><span class="line">        Bubblesort(s);</span><br><span class="line">        for(int i = 0;i &lt; 2;i++)&#123;</span><br><span class="line">            printf(&quot;%c&quot;,s[i]);</span><br><span class="line">            printf(&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%c&quot;,s[2]);</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    //printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/条件概率/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/02/条件概率/" itemprop="url">条件概率</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-02T21:19:00+08:00">2015-12-02</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/02/条件概率/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/02/条件概率/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/02/条件概率/" class="leancloud_visitors" data-flag-title="条件概率">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>定义1.假设<span class="math inline">\(S\)</span>是一个有<span class="math inline">\(n\)</span>个元素的集合，均匀分布分配给<span class="math inline">\(S\)</span>的每个元素<span class="math inline">\(\frac1n\)</span>的概率。</p>
-</blockquote>
-<blockquote>
-<p>定义2.事件<span class="math inline">\(E\)</span>的概率是<span class="math inline">\(E\)</span>中所有结果出现的概率之和。如下：<span class="math display">\[p(E)=\sum_{s \in E}p(s)\]</span>. （注意：当<span class="math inline">\(E\)</span>是一个有限集合时，<span class="math inline">\(\sum_{s \in E}p(s)\)</span>是一个收敛有限级数。）</p>
-</blockquote>
-<p>这里事件的各个结果的概率计算依照拉普拉斯概率的计算即可。 从一个带有均匀分配（也可叫做一致分布）的样本空间中选择一个元素的实验叫做<em>随机</em>选取元素<span class="math inline">\(S\)</span>。</p>
-<p>在这个部分，带有数个结果的事件的补全概率的计算依旧遵循拉普拉斯的传统的计算。 <span class="math display">\[p(E_1 \cup E_2)=p(E_1)+p(E_2)-p(E_1 \cap E_2)\]</span>.</p>
-<blockquote>
-<p>定理1.如果<span class="math inline">\(E_1,E_2,\dots\)</span> 是一序列成对出现的样本空间<span class="math inline">\(S\)</span>中的不相交的事件，那么<span class="math display">\[p \left(\bigcup_i E_i \right)=\sum_i{p(E_i)}\]</span>. （注意这个定义在一序列事件<span class="math inline">\(E_1,E_2,\dots\)</span>是由有限或可数数量的成对不想交的事件组成的时候应用）</p>
-</blockquote>
-<p>###条件概率 &gt;定义3.令<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>作为<span class="math inline">\(p(F)&gt;0\)</span>的事件。给出条件<span class="math inline">\(F\)</span>的<span class="math inline">\(E\)</span>的条件概率写作<span class="math inline">\(p(E|F),定义为\)</span><span class="math inline">\(p(E|F)=\cfrac{p(E \cap F)}{p(F)}\)</span>$. 依照这个公式，目前来看，还是比较容易计算的。</p>
-<p>###独立性 一个硬币被掷3次，告诉我们第一次是背面，3次中出现奇数次背面的概率是多少？从上面的条件概率的公式中，我们可以得到<span class="math inline">\(\cfrac{\cfrac14}{\cfrac48}=\cfrac12\)</span>.即便没有告诉我们第一次是背面，得到的概率同样也是<span class="math inline">\(\cfrac12\)</span>。这样概率并没有受到影响的两个事件，就叫做独立事件。</p>
-<blockquote>
-<p>定义4.事件<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>是独立的，当且仅当<span class="math inline">\(p(E \cap F)=p(E)p(F)\)</span>.</p>
-</blockquote>
-<blockquote>
-<p>定义5.当且仅当对于所有对整数<span class="math inline">\(i\)</span>和<span class="math inline">\(j\)</span> <span class="math inline">\(（1\leq i \leq j \leq n)\)</span>有<span class="math inline">\(p(E_i \cap E_j)=p(E_i)p(E_j)\)</span>，事件<span class="math inline">\(E_1,E_2,\dots,E_n\)</span>是成对独立的。如果对于$i_j,j=1,2,,m $，是<span class="math inline">\(1 \leq i_1 \leq i_2 \leq \dots \leq i_m \leq n\)</span> 和<span class="math inline">\(m \geq 2\)</span>的整数，那么<span class="math inline">\(p(E_{i_1}\cap E_{i_2}\cap \dots \cap E_{i_m})=p(E_{i_1})p(E_{i_2})\dots p(E_{i_m})\)</span>这些事件是相互独立的。</p>
-</blockquote>
-<p>从定义5，我们可以看到每个<span class="math inline">\(n\)</span>个相互独立事件的集合也是成对独立的。然而<span class="math inline">\(n\)</span>个成对独立的时间并不一定是相互独立的。 （成对独立只对于两个事件之前，而相互独立是<span class="math inline">\(n\)</span>个之间之间均独立，差别就在这里了）</p>
-<p>###伯努利实验和二项分布（Bernoulli Trials and the Binomial Distribution) &gt;每个具有两个可能结果的实验表现称之为<em>伯努利实验</em>。 &gt;一般来说，伯努利实验的可能结果被称为<em>成功</em>或者<em>失败</em>.</p>
-<blockquote>
-<p>定理2.实际上在<span class="math inline">\(n\)</span>格独立伯努利实践中<span class="math inline">\(k\)</span>个成功的概率，在成功的概率为<span class="math inline">\(p\)</span>、失败的概率为<span class="math inline">\(q=1-p\)</span>的条件下是<span class="math display">\[C(n,k)p^kq^{n-k}\]</span>.</p>
-</blockquote>
-<p>我们也常写作<span class="math inline">\(b(k;n,p)\)</span>.我们把这个函数(为什么叫function，不太明白）叫做二项分布。</p>
-<p><span class="math display">\[\sum^n_{k=0}C(n,k)p^kq^{n-k}=(p+q)^n=1.\]</span></p>
-<p>###随机变量 &gt;定义6.一个<em>随机变量</em>是一个从实验的样本空间映射到实数集合的函数。因此，一个随机变量分配一个实数到每个可能结果。</p>
-<p>注意：随机变量并不是变量，也不随机。 &gt;定义7.在样本空间<span class="math inline">\(S\)</span>中的随机变量<span class="math inline">\(X\)</span>的分配是对所有<span class="math inline">\(r \in X(S),p(X=r)\)</span>是<span class="math inline">\(X\)</span>取值<span class="math inline">\(r\)</span>的概率的对<span class="math inline">\((r,p(X=r))\)</span>的集合。（在这个分配中的对的集合是由对<span class="math inline">\(r \in X(S)\)</span>的概率<span class="math inline">\(p(X=r)\)</span>决定的。）</p>
-<p>####生日问题 生日问题是寻找房间里最少的人数使得至少有2个人同一天生日的概率大于<span class="math inline">\(\frac12\)</span>. 答：首先，我们列出几条假设。我们假设在一个房间里的人们的生日均是独立的。更进一步，我们假设每个生日是等可能的并且一年里有366天。（实际上，在一年里更多的人出生在一年里的相同的一些日子里，比如包括新年在内的一些节日后的9个月里） 为了找到这个可能性，我们首先计算这些人有全部都有不同生日的概率<span class="math inline">\(p_n\)</span>。然后，至少2个人有相同生日的概率为<span class="math inline">\(1-p_n\)</span>。为了计算<span class="math inline">\(p_n\)</span>，我们姑且认定<span class="math inline">\(n\)</span>个人的生日是遵循一定顺序的。想象一下，他们在一个时刻一个个进入房间；我们将会计算每个人进入房间时与已经在房间里的人的生日不同的概率。 第一个进入房间的人的生日当然不会匹配到任何在房间里的人的生日。第二个人的生日不同于第一个人的概率是$因为当第二个人出生在除了第一个人的生日之外的<span class="math inline">\(365\)</span>天里时，他们的生日是不同的。（这个对每个人出生在<span class="math inline">\(366\)</span>天里任何一天等可能的假设保证了这个和后续步骤） 第三个人有不同生日的概率是<span class="math inline">\(\cfrac{364}{366}。延伸开来，对于第\)</span>j<span class="math inline">\(个人(2 \leq j \leq 366)，有一个不同于其他\)</span>n-1<span class="math inline">\(个人的生日的概率是\)</span><span class="math inline">\(\cfrac{366-(j-1)}{366}=\cfrac{367-j}{366}.\)</span>$ 因为已经假设在房间里的人的生日均是独立的，我们就可以得出结论这房间里的<span class="math inline">\(n\)</span>个人有不同生日概率是<span class="math display">\[p_n=\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.\]</span> 随之，我们得到<span class="math display">\[1-p_n=1-\cfrac{365}{366}\cfrac{364}{366}\cfrac{363}{366}\dots \cfrac{367-n}{366}.\]</span> 接下来为了找到最少的人数使得其概率大于<span class="math inline">\(\cfrac12\)</span>，我们逐渐带入增大的<span class="math inline">\(n\)</span>来计算（虽然可以用微积分，但是这里不使用。话说怎么用？我忘了）。我们会发现<span class="math inline">\(n=22,1-p_n \approx 0.475;n=23,1-p_n \approx 0.506\)</span>。因此我们得知最少只要23个人即可使得房间内的人至少有2个人的生日相同的概率为<span class="math inline">\(\cfrac12\)</span>。</p>
-<p>哈希的重合概率计算和生日问题类似。</p>
 
           
         
