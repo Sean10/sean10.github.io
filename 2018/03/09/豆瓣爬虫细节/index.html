@@ -135,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="1https://movie.douban.com/j/new_search_subjects?sort=T&amp;amp;range=0,10&amp;amp;tags=%E5%89%A7%E6%83%85&amp;amp;start=10 像这种json获取的链接，倒是没有cookie的要求，即便多线程爬取几百页也没有被ban.  之前直接使用了rq任务队列，导致不知道该怎么写多线程了。 暂时先重新用自带的queu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T16:02:19.000Z">
+<meta property="og:updated_time" content="2018-03-11T13:16:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="豆瓣爬虫细节">
 <meta name="twitter:description" content="1https://movie.douban.com/j/new_search_subjects?sort=T&amp;amp;range=0,10&amp;amp;tags=%E5%89%A7%E6%83%85&amp;amp;start=10 像这种json获取的链接，倒是没有cookie的要求，即便多线程爬取几百页也没有被ban.  之前直接使用了rq任务队列，导致不知道该怎么写多线程了。 暂时先重新用自带的queu">
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-03-10T00:02:19+08:00">2018-03-10</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-11T21:16:58+08:00">2018-03-11</time>
             
           </span>
 
@@ -436,10 +436,15 @@
 <p>暂时先重新用自带的queu写写看多线程。</p>
 <p>目前20个线程爬取10页约200个评论，耗时8.98秒,不过这里固定一个ip测试立马就被ban了。</p>
 <p>只是添加了bid的cookie 和 随机UA似乎并不足够.</p>
-<p>在用charles测试抓包的过程中遭遇了SSLError(SSLError(1, ’[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:777)’),))问题,似乎与python3 install certificate有关。</p>
+<p>明明使用了可用的代理，但是被ban的却还有我的真实ip，好奇怪。对ip测试网站测试了下，检测的ip是没有问题的，的确是代理后的ip.</p>
+<p>怀疑是发送的包中包含了我本机的信息。</p>
+<p>姑且在requests的选项中使用了verify=False，暂时可以抓取一部分了。</p>
+<hr>
+<p>在用charles测试抓包的过程中遭遇了SSLError(SSLError(1, ’[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:777)’),))问题,似乎与python requests对charles ssl认证有关。</p>
+<p>从charles保存根证书导入python requests即可。</p>
 <h1 id="参考资料">参考资料</h1>
 <ol type="1">
-<li>(SSL certificate)[https://bugs.python.org/issue29065]</li>
+<li>(requests charles SSL)[https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/]</li>
 </ol>
 
       
@@ -501,6 +506,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/11/读《韩松——宇宙墓碑》/" rel="prev" title="读《韩松——宇宙墓碑》">
+                读《韩松——宇宙墓碑》 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>

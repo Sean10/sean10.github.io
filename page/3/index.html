@@ -306,6 +306,217 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/07/01/更换markdown渲染引擎/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/01/更换markdown渲染引擎/" itemprop="url">原计划更换markdown渲染引擎</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-01T17:01:14+08:00">2017-07-01</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-07-03T23:18:47+08:00">2017-07-03</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/01/更换markdown渲染引擎/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/01/更换markdown渲染引擎/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/01/更换markdown渲染引擎/" class="leancloud_visitors" data-flag-title="原计划更换markdown渲染引擎">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前两天在写复习笔记的时候，发现渲染出的mathjax公式不像本地预览时显示的那样正常，含有<code>_</code>符号的都被渲染成了<code>&lt;em&gt;</code>标记，导致公式显示异常。网上推荐更换渲染引擎hexo-renderer-krame，虽然这个是fork出来特地解决了hexo-renderer-marked的这个问题的，但是同样，也修改了markdown的一些基本语法，在写行内公式时，就需要在$$外套上一层`符号，而我本地的预览使用的渲染引擎同样也会需要修改，这就比较麻烦了。</p>
+<p>再进行了搜索，发现了一个据说非常强大的引擎pandoc，不过我在安装后，始终遇到以下错误。</p>
+<blockquote>
+<p>INFO Start processing FATAL Something’s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</p>
+<p>Error: [pandoc warning] YAML header is not an object “source” (line 67, column 1)<br>
+at ChildProcess.<anonymous> (/Users/sean10/Code/sean10.github.io/node_modules/hexo-renderer-pandoc/index.js:73:20)<br>
+at emitTwo (events.js:106:13)<br>
+at ChildProcess.emit (events.js:191:7)<br>
+at maybeClose (internal/child_process.js:877:16)<br>
+at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</anonymous></p>
+</blockquote>
+<p>经过搜查，这似乎属于pandoc解析时的错误，找到了以下类似内容。</p>
+<blockquote>
+<p>See http://johnmacfarlane.net/pandoc/README.html#yaml-metadata-block</p>
+<p>There must be something in your document that looks like a YAML metadata block, but isn’t. Such a block would start with—on a line by itself and end with—or…on a line by itself. The line numbers in the error message refer to lines inside the metadata block, not to lines of the document.<br>
+By the way, you can turn off YAML metadata block parsing entirely by putting <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--from markdown-yaml_metadata_block</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>in your pandoc command line.</p>
+</blockquote>
+<p>不过这个解决方法并没能解决问题，我换了一个思路。</p>
+<p>后来想了想，是否可能是在渲染文章头部YAML格式时出现错误，导致后续的markdown就无法渲染了，所以可能是在文章内容上出现了问题，但是这个error信息没能显示具体文件，又没有日志，我决定二分排查是哪篇的错误。</p>
+<p>很快就发现了，是最近写的Unix复习那篇的错误，在第67行，没有意识到错误所在，经过测试，发现问题是在于markdown的语法上，pandoc语法要求标题#前必须插入一空行，修改后终于成功渲染了。真是不容易。</p>
+<blockquote>
+<p>Extension: blank_before_header</p>
+<p>始 markdown 語法在標題之前並不需要預留空白行。Pandoc 則需要（除非標題位於文件最開始的地方）。這是因為以 # 符號開頭的情況在一般文字段落中相當常見，這會導致非預期的標題。例如下面的例子：</p>
+<p>I like several of their flavors of ice cream: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#22, for example, and #5.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="参考文献">参考文献</h1>
+<ol type="1">
+<li><a href="https://stackoverflow.com/questions/19520463/pandoc-cannot-parse-yaml-header-when-converting-md-to-pdf" target="_blank" rel="noopener">parse yaml</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2017/06/28/计算机系统结构复习note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2250,205 +2461,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2016/07/02/重读《爱的艺术》/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/07/02/重读《爱的艺术》/" itemprop="url">重读《爱的艺术》</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-02T10:09:22+08:00">2016-07-02</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-08-24T15:07:15+08:00">2017-08-24</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/07/02/重读《爱的艺术》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/07/02/重读《爱的艺术》/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/07/02/重读《爱的艺术》/" class="leancloud_visitors" data-flag-title="重读《爱的艺术》">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>弗洛姆在书中首先讲述了爱情其本质也是一门艺术，而非对象问题。</p>
-<p>其次讲述了爱情的本质目的是为了补全人类的天性的缺失，弥补个人的孤独，这是人类的生存的必要条件。</p>
-<p>第三讲述的是孩子对父母的依存，从父母身上找到仍在胎中时的温暖的感觉。而父母在这个过程中对孩子的影响则是巨大的，导向了孩子长大后对爱的艺术的掌握。，</p>
-<p>第四正式讲述了关于爱的对象的问题，对不同对象所见所具有的不同的爱，博爱、母爱、性爱、自爱、神爱。</p>
-<p>关于博爱，无法做到对所有需要帮助的人均爱，则无法称之为博爱。</p>
-<p>母爱，则是对上一章的补充，补充了唯有无私并能奉献出一切，除了被爱者的幸福一无所求的母亲才真的就具有母爱。</p>
-<p>关于性爱，则是讲到性要求的数种误解，其一是认为性要求能够解除一切的隔阂，然而这样建立的亲密关系随着时间的推进会很快消失;其二，认为有了性要求必然是已经具备了爱的结果，然而性要求是爱情之后的衍生，但性要求并非唯有具备了爱之后才会产生。另外，一种认为性爱完全是两个人之间的吸引力，是两个特殊的人之间绝无仅有的联系;另一种认为性爱只是意志的行为。以上两种观点都是正确的其实。是两者综合之后方具有的爱情。</p>
-<p>关于自爱，这种爱是判断你是否具有爱的能力的标志。无法以爱自己般爱他人与无法以爱他人般爱自己均是不具有爱的能力的体现，仅仅是一种利己的表现。</p>
-<p>关于神爱，神爱是另一种形式的爱。</p>
-<p>依据悖论逻辑，人只有在现实的矛盾中才能感觉现实，人永远无法在思想上把握最终实体，把握宇宙。人们不应该把从思想上找到答案看作最终目的。思想只能使我们认识到思想不能使我们作出最终回答，思想的世界囿于悖理之中。即对神的爱既不是从思想上了解神，也不是指自己爱神的思想，而是在爱的体验中体验自己同神的一致。这里印度、中国和神秘主义的宗教中，是以此作为神爱。</p>
-<p>而在西方主流思想中，人们相信在正确的思想中会找到最终真理，因而也会引起科学的发展。</p>
-<p>第五，爱情在当下西方资本主义社会中的衰亡。于当下，迫于社会的高度集中的特性，现代人受到了异化，失去自我，成为一种自动机器。这样的情况下为解除孤独而但诞生的爱情和婚姻概念实际上是强调保护自己免遭不可忍受的孤独感的侵袭。两个人结成以反对全世界的同盟，却把这种两个人的自私看作是爱情和信赖。后续还稍稍提及了神经技能病态爱情的部分。</p>
-<p>第六，爱的实践。在这一部分中，作者着重强调了任何艺术掌握的必备条件，在生活中的每一个阶段将训练纪律、集中和耐心作为实践爱的艺术的开端。之后讲述了关于作者认为的爱的艺术的必备条件——克服自恋与积极的活动。整个这一段的内容放至当下仍无不可。</p>
-<p>大致就是以上的内容了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 

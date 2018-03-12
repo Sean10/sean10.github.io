@@ -306,6 +306,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/并查集——HDU1213/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/26/并查集——HDU1213/" itemprop="url">并查集——HDU1213</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-26T16:02:00+08:00">2015-11-26</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/26/并查集——HDU1213/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/26/并查集——HDU1213/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/26/并查集——HDU1213/" class="leancloud_visitors" data-flag-title="并查集——HDU1213">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一次做并查集的题，选了道比较简单的。 用数组很简单，不多说了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int a[1010];</span><br><span class="line"></span><br><span class="line">void Init(int N)&#123;</span><br><span class="line">    for(int i = 1;i &lt;= N;i++)</span><br><span class="line">        a[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Find(int x)&#123;</span><br><span class="line">    while(x != a[x])</span><br><span class="line">        x = a[x];</span><br><span class="line">    return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Union(int x, int y)&#123;</span><br><span class="line">    int x1 = Find(x);</span><br><span class="line">    int y1 = Find(y);</span><br><span class="line">    if(x1 != y1)</span><br><span class="line">        a[y1] = x1;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int T;</span><br><span class="line">    scanf(&quot; %d&quot;,&amp;T);</span><br><span class="line">    while(T--)&#123;</span><br><span class="line">        int N,M;</span><br><span class="line">        scanf(&quot; %d%d&quot;,&amp;N,&amp;M);</span><br><span class="line">        Init(N);</span><br><span class="line">        for(int i = 0;i &lt; M;i++)&#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</span><br><span class="line">            Union(x,y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int ans = 0;</span><br><span class="line">        for(int i = 1;i &lt;= N;i++)&#123;</span><br><span class="line">            if(i == a[i])</span><br><span class="line">                ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">        //getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1965,196 +2145,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/18/栈——密码翻译/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/18/栈——密码翻译/" itemprop="url">栈——密码翻译</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-18T12:43:00+08:00">2015-11-18</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/18/栈——密码翻译/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/18/栈——密码翻译/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/18/栈——密码翻译/" class="leancloud_visitors" data-flag-title="栈——密码翻译">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week3/2/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 1000ms 内存限制: 65536kB 描述 在情报传递过程中，为了防止情报被截获，往往需要对情报用一定的方式加密，简单的加密算法虽然不足以完全避免情报被破译，但仍然能防止情报被轻易的识别。我们给出一种最简的的加密方法，对给定的一个字符串，把其中从a-y,A-Y的字母用其后继字母替代，把z和Z用a和A替代，则可得到一个简单的加密字符串。</p>
-<p>输入 第一行是字符串的数目n。 其余n行每行一个字符串。 输出 输出每行字符串的加密字符串。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">Hello! How are you!</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ifmmp! Ipx bsf zpv!</span><br></pre></td></tr></table></figure></p>
-<p>最近重新开始练算法了，好多基础用法都忘了，现在重新熟悉一下，先从OpenJudge做起。</p>
-<p>这道题严格意义上应该题目叫简单凯撒密码翻译。题目理解很简单，不过对于scanf的用法需要注意，在%s格式时，遇到空格就会结束输入，这里可以用gets()和scanf(“%[^\n]”,h)来解决这个问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char h[1000];</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot; %d&quot;,&amp;n);</span><br><span class="line">    getchar();</span><br><span class="line">    for(int k = 0;k &lt; n;k++)&#123;</span><br><span class="line">        //getchar();</span><br><span class="line">        gets(h);</span><br><span class="line">        //printf(&quot;%s\n&quot;,h);</span><br><span class="line">        int len=strlen(h);</span><br><span class="line">        for(int i = 0;i &lt; len;i++)&#123;</span><br><span class="line">            if((h[i] &gt;= &apos;a&apos; &amp;&amp; h[i] &lt; &apos;z&apos;) ||( h[i] &gt;= &apos;A&apos; &amp;&amp; h[i] &lt; &apos;Z&apos;))&#123;</span><br><span class="line">                h[i]+=1;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(h[i] == &apos;z&apos;)&#123;</span><br><span class="line">                h[i] = &apos;a&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(h[i] == &apos;Z&apos;)&#123;</span><br><span class="line">                h[i] = &apos;A&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%s\n&quot;,h);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
