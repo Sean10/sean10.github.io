@@ -65,7 +65,28 @@ struct mumble {
 
 这种通过malloc来分配的可变数组为什么违背了c++的规范呢，成为c++的陷阱？
 
-
+>指定多个access section，内含数据
+
+这是什么意思?
+
+就是访问权限区域。
+
+private和public 在内存布局中的位置并不一定始终维持一个前后关系。
+
+通过malloc来维持可变长数组的struct在转化为class时不可知属于哪个access section，容易出现问题
+
+要组合C和C++，比较适合使用组合的方法，继承在当前的编译器中才存在被添加一些额外的Data members的可能性。
+
+C++分为3个程序模型
+* procedural model(过程型)
+* abstract data type model(抽象数据类型)
+* object-oriented model(面向对象模型)
+
+只有通过pointer或reference的间接处理，才支持OO程序设计所需的多态性质。
+
+
+
+
 
 
 未完待续
