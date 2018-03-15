@@ -135,7 +135,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-13T14:51:41.000Z">
+<meta property="og:updated_time" content="2018-03-15T12:08:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深度探索C++对象模型》Note">
 <meta name="twitter:description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
@@ -357,7 +357,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-03-13T22:51:41+08:00">2018-03-13</time>
+              <time title="Post modified" itemprop="dateModified" datetime="2018-03-15T20:08:32+08:00">2018-03-15</time>
             
           </span>
 
@@ -464,6 +464,22 @@
 <p>要组合C和C++，比较适合使用组合的方法，继承在当前的编译器中才存在被添加一些额外的Data members的可能性。</p>
 <p>C++分为3个程序模型 * procedural model(过程型) * abstract data type model(抽象数据类型) * object-oriented model(面向对象模型)</p>
 <p>只有通过pointer或reference的间接处理，才支持OO程序设计所需的多态性质。</p>
+<blockquote>
+<p>cast 其实是一种编译器指令，大部分情况下它并不改变一个指针所含的真正地址，它只影响“被指出之内存的大小和其内容”的解释方式</p>
+</blockquote>
+<blockquote>
+<p>一个pointer或一个reference之所以支持多态，是因为它们并不引发内存中任何”与类型有关的内存委托操作(type-dependent commitment)， 会受到改变的只是它们所指向的内存的“大小和内容解释方式”而已</p>
+</blockquote>
+<h1 id="构造函数语意学">构造函数语意学</h1>
+<p>Conversion运算符的引入</p>
+<blockquote>
+<p>如果没有implicit conversion的支持, String函数库必须将每一个拥有字符串参数的C runtime library函数都复制一份。 有趣的是，标准的C++ library string class并不提供一个implicit conversion运算子, 它提供的是一个具体实名(named instance),使用者必须明确调用。</p>
+</blockquote>
+<p>上面这个具体实名是什么情况呢？好像没见过的样子。</p>
+<p>Schwarz Error</p>
+<blockquote>
+<p>memberwise initialization named return value optimization(NRV)身上</p>
+</blockquote>
 <p>未完待续</p>
 
       
@@ -637,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#简单对象模型"><span class="nav-number">1.</span> <span class="nav-text">简单对象模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表格驱动对象模型"><span class="nav-number">2.</span> <span class="nav-text">表格驱动对象模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#c对象模型"><span class="nav-number">3.</span> <span class="nav-text">c++对象模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#简单对象模型"><span class="nav-number">1.</span> <span class="nav-text">简单对象模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#表格驱动对象模型"><span class="nav-number">2.</span> <span class="nav-text">表格驱动对象模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#c对象模型"><span class="nav-number">3.</span> <span class="nav-text">c++对象模型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数语意学"><span class="nav-number"></span> <span class="nav-text">构造函数语意学</span></a></div>
             
 
           </div>
