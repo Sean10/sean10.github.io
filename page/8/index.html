@@ -306,6 +306,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/有限概率（拉普拉斯概率）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/02/有限概率（拉普拉斯概率）/" itemprop="url">有限概率（拉普拉斯概率）</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-02T19:44:00+08:00">2015-12-02</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/02/有限概率（拉普拉斯概率）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/02/有限概率（拉普拉斯概率）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/02/有限概率（拉普拉斯概率）/" class="leancloud_visitors" data-flag-title="有限概率（拉普拉斯概率）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###有限概率（拉普拉斯概率）</p>
+<blockquote>
+<p>定义1.如果<span class="math inline">\(S\)</span>是一个等可能结构的有限非空样本空间，<span class="math inline">\(E\)</span>是一个作为<span class="math inline">\(S\)</span>的子集的一个事件，那么<span class="math inline">\(E\)</span>的概率为<span class="math inline">\(p(E)=\cfrac{|E|}{|S|}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>定理1.让<span class="math inline">\(E\)</span>成为一个样本空间<span class="math inline">\(S\)</span>中的一个事件。事件<span class="math inline">\(\overline{E}=S-E\)</span>发生的概率，即事件<span class="math inline">\(E\)</span>的补全事件，由以下公式给出<span class="math display">\[p(\overline{E})=1-p(E)\]</span>.</p>
+</blockquote>
+<p>###事件补全、联合概率 &gt;定理2.让<span class="math inline">\(E_1\)</span>和<span class="math inline">\(E_2\)</span>成为样本空间<span class="math inline">\(S\)</span>中的时间，那么<span class="math inline">\(p(E_1 \cup E_2)=p(E_1)+p(E_2)-p(E_1 \cap E_2)\)</span>.</p>
+<p>###概率性原因 没什么内容，都是概率之前学过的基础，就下面这个问题比较有意思。 ####蒙提霍尔问题 &gt;蒙提霍尔问题就是在一个游戏中，有三扇门，一扇门背后是奖品，两扇门背后是山羊，参加者可以在上台前选择其中一扇门，上台之后，主持人会从剩下的两扇门中选择一扇背后没有奖品的门打开，然后给参加者一个更换选择的机会。 问：如果你更换，会不会有更大的概率拿到奖品。</p>
+<p>这里的问题以前看到过流言终结者，那里面采用的方法是统计概率，得到的结果是2/3的中签率。</p>
+<p><em>在更换之前的是先验概率，为1/3。</em> <em>得到一扇门打开之后的是后验概率（条件概率）。</em></p>
+<p>举个例子： 比如10个人抽一个人值日，这是一个事件，概率是1/10. 如果一个人打开了他的签，他并不值日，他的事件和你的事件是两回事，概率并不相关。 但如果你知道了他的未中签，给你再选择的机会，那就是1/9.</p>
+<p>（概率永远会变）变了一定是事件变了。</p>
+<p>回到这个例子，如果你始终不更换你的选择，你的中签率就是1/3，这里就算主持人打开了门，但你不重新选择，所以你始终是1/3.这是不相关的两件事。</p>
+<p>如果你会更改选择，那么简单地来说，因为事件改变为了剩下两个一扇奖品一扇山羊，这样你的概率一定会大于等于1/2.</p>
+<p>假如我选两扇门，中奖概率一定是2/3.这是确定的事件，确定的概率。 不让你选择两个，其实换个角度，就是比如有ABC三扇门，我想选AB，我就先选C，然后主持人会在AB里选择一扇门，然后我就可以更换到AB中的那扇没被打开的门了。这样事件没有改变，很明显， 中奖概率都是2/3.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/01/二叉树——森林的带度数层次序列存储/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2058,193 +2253,6 @@ a=\overline{y}-b\overline{x}
 <p>递归不太会用，这道题是参照解题报告，用迭代来建树的。 这道题的关键点在于建一个栈，存储节点的目录，用于寻找当前节点的父节点，以及节点是否是叶子节点（如果是叶子节点，因为与下一个节点不成父子节点，直接出栈）。 算法的关键是对两种节点情况的处理。 1.有左右子树尚未链接上，进行左右判别，从栈里找到它的父节点（判断父节点的方法就是树的深度相差为1），链接； 2.左右子树链接完了，出栈，进行同深度右子树的链接。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int deepth;</span><br><span class="line">    int dir;</span><br><span class="line">    char data;</span><br><span class="line">    struct node *lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">BitTree Create()&#123;</span><br><span class="line">    BitTree p1,p2,head;</span><br><span class="line">    char s[100];</span><br><span class="line">    scanf(&quot;%s&quot;,s);</span><br><span class="line">    head = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    head-&gt;data = s[0];</span><br><span class="line">    head-&gt;deepth = 0;</span><br><span class="line">    head-&gt;dir = 0;</span><br><span class="line">    head-&gt;lc = NULL;</span><br><span class="line">    head-&gt;rc = NULL;</span><br><span class="line">    stack&lt;BitTree&gt;temp;</span><br><span class="line">    temp.push(head);</span><br><span class="line">    //p2 = temp.top();</span><br><span class="line">    while(scanf(&quot;%s&quot;,s))&#123;</span><br><span class="line">        if(s[0] == &apos;0&apos;)&#123;</span><br><span class="line">            return head;</span><br><span class="line">        &#125;</span><br><span class="line">        p1 = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">        p1-&gt;deepth = strlen(s)-1;</span><br><span class="line">        p1-&gt;data = s[p1-&gt;deepth];</span><br><span class="line">        p1-&gt;lc = NULL;</span><br><span class="line">        p1-&gt;rc = NULL;</span><br><span class="line">        p1-&gt;dir = 0;</span><br><span class="line">        p2 = temp.top();</span><br><span class="line">        if(p1-&gt;data == &apos;*&apos;)&#123;</span><br><span class="line">            p2-&gt;dir++;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        while(p1-&gt;deepth - p2-&gt;deepth != 1)&#123;</span><br><span class="line">            temp.pop();</span><br><span class="line">            p2 = temp.top();</span><br><span class="line">        &#125;</span><br><span class="line">        if(p2-&gt;dir == 0)&#123;</span><br><span class="line">            p2-&gt;lc = p1;</span><br><span class="line">            p2-&gt;dir++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(p2-&gt;dir == 1)&#123;</span><br><span class="line">            p2-&gt;rc = p1;</span><br><span class="line">            p2-&gt;dir++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(p2-&gt;dir == 2)&#123;</span><br><span class="line">            temp.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        temp.push(p1);</span><br><span class="line">    &#125;</span><br><span class="line">    //return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void PreOrder(BitTree root)&#123;</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        PreOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        PreOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MidOrder(BitTree root)&#123;</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        MidOrder(root-&gt;lc);</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        MidOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AftOrder(BitTree root)&#123;</span><br><span class="line">    if(root-&gt;lc != NULL)</span><br><span class="line">        AftOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc != NULL)&#123;</span><br><span class="line">        AftOrder(root-&gt;rc);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int t;</span><br><span class="line">    BitTree head;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        head = Create();</span><br><span class="line">        PreOrder(head);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        AftOrder(head);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        MidOrder(head);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考资料： [1]http://www.cnblogs.com/zl0372/articles/C_01.html [2]http://blog.sina.com.cn/s/blog_6ae9d6c70101bf8p.html</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/23/二叉树——实现堆结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/23/二叉树——实现堆结构/" itemprop="url">二叉树——实现堆结构</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-23T09:46:00+08:00">2015-11-23</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/23/二叉树——实现堆结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/23/二叉树——实现堆结构/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/23/二叉树——实现堆结构/" class="leancloud_visitors" data-flag-title="二叉树——实现堆结构">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/2/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 3000ms 内存限制: 65535kB 描述 定义一个数组，初始化为空。在数组上执行两种操作：</p>
-<p>1、增添1个元素，把1个新的元素放入数组。</p>
-<p>2、输出并删除数组中最小的数。</p>
-<p>使用堆结构实现上述功能的高效算法。</p>
-<p>输入 第一行输入一个整数t，代表测试数据的组数。 对于每组测试数据，第一行输入一个整数n，代表操作的次数。 每次操作首先输入一个整数type。 当type=1，增添操作，接着输入一个整数u，代表要插入的元素。 当type=2，输出删除操作，输出并删除数组中最小的元素。 1&lt;=n&lt;=100000。 输出 每次删除操作输出被删除的数字。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">1 1</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">1 5</span><br><span class="line">1 1</span><br><span class="line">1 7</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
-<p>提示 每组测试数据的复杂度为O(nlgn)的算法才能通过本次，否则会返回TLE(超时) 需要使用最小堆结构来实现本题的算法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int heap[100010];</span><br><span class="line">int len;</span><br><span class="line">//int maxsize;</span><br><span class="line"></span><br><span class="line">void Init()&#123;</span><br><span class="line">    //maxsize = 0;</span><br><span class="line">    len = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Insert(int x)&#123;</span><br><span class="line">    //heap[len] = x;</span><br><span class="line">    len++;</span><br><span class="line"></span><br><span class="line">    int i = len -1;</span><br><span class="line"></span><br><span class="line">    while(i &gt; 0)&#123;</span><br><span class="line">        int j = (i-1)/2;</span><br><span class="line">        if(x &gt; heap[j])</span><br><span class="line">            break;</span><br><span class="line">        heap[i] = heap[j];</span><br><span class="line">        i = j;</span><br><span class="line">    &#125;</span><br><span class="line">    heap[i] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Del()&#123;</span><br><span class="line">    if(0 == len)&#123;</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int temp = heap[0];</span><br><span class="line">    len--;</span><br><span class="line"></span><br><span class="line">    if(0 == len)&#123;</span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int x = heap[len];</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 2*i+1;</span><br><span class="line">    while(j &lt;= len-1)&#123;</span><br><span class="line">        if((j &lt; len-1)&amp;&amp; (heap[j] &gt; heap[j+1]))&#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(x &lt; heap[j])&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        heap[i] = heap[j];</span><br><span class="line">        i = j;</span><br><span class="line">        j = 2*i+1;</span><br><span class="line">    &#125;</span><br><span class="line">    heap[i] = x;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int t,n,type,x;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">        //struct node p;</span><br><span class="line">        Init();</span><br><span class="line">        while(n--)&#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;type);</span><br><span class="line">            if(type == 1)&#123;</span><br><span class="line">                scanf(&quot;%d&quot;,&amp;x);</span><br><span class="line">                Insert(x);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(type == 2)</span><br><span class="line">                printf(&quot;%d\n&quot;,Del());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
