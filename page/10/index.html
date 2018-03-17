@@ -306,6 +306,204 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/15/离散数学——hamming码最小距离/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/15/离散数学——hamming码最小距离/" itemprop="url">离散数学——hamming码最小距离</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-15T00:12:00+08:00">2015-11-15</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/15/离散数学——hamming码最小距离/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/15/离散数学——hamming码最小距离/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/15/离散数学——hamming码最小距离/" class="leancloud_visitors" data-flag-title="离散数学——hamming码最小距离">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1：给定H(读取文件方式，第一行两个整数m,n，第二行 m(n-m)个0或1，也就是矩阵H的上半部分，下半部单位矩阵自行生成)，计算群码编码函数e_H。计算该编码函数能检测到多少位错误，交互输出字的码字。</p>
+<p>输入文件：in.txt，示例：第一行两个整数，第二行累计mxr个整数。所有整数都用一个空格分隔。</p>
+<p>3 5</p>
+<p>1 0 1 0 0 1</p>
+<p>无输出文件。</p>
+<hr>
+<p>2：针对(8,12)编码e，找出最小距离最大的群码编码函数，输出H及最小距离。</p>
+<p>无输入文件</p>
+<p>输出文件：out.txt，示例，矩阵按行输出</p>
+<p>1 1 0 0</p>
+<p>0 0 1 0</p>
+<p>….</p>
+<p>0 1 0 1</p>
+<p>(以上总共256行，此行为说明，程序不输出)</p>
+<p>H的最小距离是：3</p>
+<hr>
+<p>以下是代码 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int int_pow(int x,int e)&#123;</span><br><span class="line">    int ans = 1;</span><br><span class="line">    while(e--)</span><br><span class="line">        ans*=x;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void GetBinary(int* mb,int m, int i)&#123;</span><br><span class="line">    for(int j = m;j &gt;= 1;j--)&#123;</span><br><span class="line">        mb[j] = i%2;</span><br><span class="line">        i/=2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CntBinary(int *mb, int n ,int &amp;min)&#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    for(int i = 1;i &lt;= n;i++)&#123;</span><br><span class="line">        if(mb[i] == 1)</span><br><span class="line">            cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(cnt &lt; min)</span><br><span class="line">        min = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    FILE *fp = fopen(&quot;in.txt&quot;,&quot;r&quot;);</span><br><span class="line">    if(fp == NULL) printf(&quot;ERROR OPEN.\n&quot;);</span><br><span class="line">    int m,n;</span><br><span class="line">    int ma[100][100];</span><br><span class="line">    fscanf(fp,&quot; %d %d&quot;,&amp;m,&amp;n);</span><br><span class="line">    for(int i = 1;i &lt;= m;i++)&#123;//行列互换</span><br><span class="line">        for(int j = 1;j &lt;= n-m;j++)&#123;</span><br><span class="line">            fscanf(fp,&quot; %d&quot;,&amp;ma[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /*</span><br><span class="line">    for(int i = 1;i &lt;= m;i++)&#123;</span><br><span class="line">        for(int j = 1;j &lt;= n-m;j++)</span><br><span class="line">            printf(&quot;%d&quot;,ma[i][j]);</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    */</span><br><span class="line">    int mb[100];</span><br><span class="line">    int mc[100];</span><br><span class="line">    int min = m;</span><br><span class="line">    for(int i = 1;i &lt; int_pow(2,m);i++)&#123;</span><br><span class="line">        GetBinary(mb,m,i);</span><br><span class="line">        for(int j = m+1;j &lt;= n;j++)</span><br><span class="line">            mc[j] = 0;</span><br><span class="line">        for(int j = 1;j &lt;= m;j++)</span><br><span class="line">            mc[j]=mb[j];</span><br><span class="line">        for(int j = m+1;j &lt;= n;j++)&#123;</span><br><span class="line">            for(int k = 1;k &lt;= m;k++)&#123;</span><br><span class="line">                mc[j] += mb[k]*ma[k][j-m];</span><br><span class="line">            &#125;</span><br><span class="line">            mc[j] %= 2;</span><br><span class="line">        &#125;</span><br><span class="line">        CntBinary(mc,n,min);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;The minimum hamming distance is:%d\n&quot;,min);</span><br><span class="line"></span><br><span class="line">    for(int i = 1;i &lt;= m;i++)</span><br><span class="line">        scanf(&quot; %d&quot;,&amp;mb[i]);</span><br><span class="line">    for(int i = 0;i &lt;= n;i++)</span><br><span class="line">        mc[i] = 0;</span><br><span class="line">    for(int i = 1;i &lt;= m;i++)</span><br><span class="line">        mc[i]=mb[i];</span><br><span class="line"></span><br><span class="line">    for(int i = m+1;i &lt;= n;i++)&#123;</span><br><span class="line">        for(int j = 1;j &lt;= m;j++)&#123;</span><br><span class="line">            mc[i] += mb[j]*ma[j][i-m];</span><br><span class="line">        &#125;</span><br><span class="line">        mc[i] %= 2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;The code word is:&quot;);</span><br><span class="line">    for(int i = 1;i &lt;= n;i++)</span><br><span class="line">        printf(&quot;%d&quot;,mc[i]);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第二题这里，依照以下定理自己手算奇偶校验矩阵就比较简单了，最小距离最大的充要条件是奇偶校验矩阵任意两行线性无关。</p>
+<p>定理是(n,k)线性分组码的最小Hamming距离为d的充要条件是，H矩阵中任意d-1列线性无关。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define N 256</span><br><span class="line"></span><br><span class="line">int int_pow(int x,int e)&#123;</span><br><span class="line">    int ans = 1;</span><br><span class="line">    while(e--)</span><br><span class="line">        ans*=x;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void GetBinary(int* mb,int m, int i)&#123;</span><br><span class="line">    for(int j = m;j &gt;= 1;j--)&#123;</span><br><span class="line">        mb[j] = i%2;</span><br><span class="line">        i/=2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CntBinary(int *mb, int m ,int &amp;min)&#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    for(int i = 1;i &lt;= m;i++)&#123;</span><br><span class="line">        if(mb[i] == 1)</span><br><span class="line">            cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    if(cnt &lt; min)</span><br><span class="line">        min = cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    FILE *fp=fopen(&quot;out.txt&quot;,&quot;w&quot;);</span><br><span class="line">    int m = 8,n = 12;</span><br><span class="line">    int ma[N][5]=&#123;&#123;0,0,0,0,0&#125;,</span><br><span class="line">              &#123;0,1,1,0,0&#125;,</span><br><span class="line">              &#123;0,0,1,1,0&#125;,</span><br><span class="line">              &#123;0,1,1,0,1&#125;,</span><br><span class="line">              &#123;0,1,1,1,0&#125;,</span><br><span class="line">              &#123;0,1,0,0,1&#125;,</span><br><span class="line">              &#123;0,0,1,0,1&#125;,</span><br><span class="line">              &#123;0,1,0,1,0&#125;,</span><br><span class="line">              &#123;0,0,0,1,1&#125;&#125;;</span><br><span class="line">    /*</span><br><span class="line">    for(int i = 0;i &lt; 8;i++)&#123;</span><br><span class="line">        for(int j = 0;j &lt; 4;j++)&#123;</span><br><span class="line">            printf(&quot;%d&quot;,H[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    */</span><br><span class="line">    int mb[N];</span><br><span class="line">    int mc[N];</span><br><span class="line">    int min = m;</span><br><span class="line">    for(int i = 1;i &lt; int_pow(2,m);i++)&#123;</span><br><span class="line">        GetBinary(mb,m,i);</span><br><span class="line">        for(int j = m+1;j &lt;= n;j++)</span><br><span class="line">            mc[j] = 0;</span><br><span class="line">        for(int j = 1;j &lt;= m;j++)</span><br><span class="line">            mc[j]=mb[j];</span><br><span class="line"></span><br><span class="line">        for(int j = m+1;j &lt;= n;j++)&#123;</span><br><span class="line">            for(int k = 1;k &lt;= m;k++)&#123;</span><br><span class="line">                mc[j] += mb[k]*ma[k][j-m];</span><br><span class="line">            &#125;</span><br><span class="line">            mc[j] %= 2;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j = m+1;j &lt;= n;j++)</span><br><span class="line">            fprintf(fp,&quot;%d\t&quot;,mc[j]);</span><br><span class="line">        fprintf(fp,&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">        CntBinary(mc,n,min);</span><br><span class="line">    &#125;</span><br><span class="line">    fprintf(fp,&quot;The maximum of all the minimum distance is:%d\n&quot;,min);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/14/十二年小说、游戏杂忆/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2037,250 +2235,6 @@
 <p>尽管这种态度——再没有什么东西比爱更容易的了——得到截然相反的证明，可是它仍旧成为一种对爱流行的看法。几乎没有哪一种活动，哪一项事业会像爱那样一开始充满着希冀和期望，而最后又常常失败。如果在其它的活动中出现这种情况，人们也许会渴望知道失败的原因，渴望学会怎样做得更好一些，或者干脆放弃这种活动。既然在的问题上，人们要放弃爱是不可能的，那么似乎只有一种合适的办法来克服爱的失败，这种办法乃是探讨爱的失败的原因，进而探究爱的意义。</p>
 </blockquote>
 <p>探究爱的原因，进而探讨爱的意义正是我们阅读这本书的目的。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/03/商半群的计算总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/03/商半群的计算总结/" itemprop="url">商半群的计算总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-03T20:06:00+08:00">2015-11-03</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/03/商半群的计算总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/03/商半群的计算总结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/03/商半群的计算总结/" class="leancloud_visitors" data-flag-title="商半群的计算总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##商半群的计算总结</p>
-<p>看商半群的题看了好久，一直没看懂几个条件是什么意思，重头翻书，总算找到一些思路，是自己的基础没学好的缘故。</p>
-<p>以下来分享以下我的计算方式，因为没有找到答案，我也不好说一定对。</p>
-<p>首先，必须要明白商集的相关基础知识。 &gt;<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition1.PNG" alt="huafen"></p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_explore1.PNG" alt="huafen2"><figcaption>huafen2</figcaption>
-</figure>
-</blockquote>
-<p>A的商集就是对集合A进行一个划分，所有划分的子集之间交集为空集，同时并集又为A。</p>
-<p>看下图就能理解他是如何划分的了</p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example1.PNG" alt="example1"><figcaption>example1</figcaption>
-</figure>
-</blockquote>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition2.PNG" alt="dingli1"><figcaption>dingli1</figcaption>
-</figure>
-</blockquote>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition3.PNG" alt="explore"><figcaption>explore</figcaption>
-</figure>
-</blockquote>
-<p>这两段讲的很清楚。</p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_definition4.png" alt="dingli2"><figcaption>dingli2</figcaption>
-</figure>
-</blockquote>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example2.png" alt="example2"><figcaption>example2</figcaption>
-</figure>
-</blockquote>
-<p>根据这个例子，我们理解了得到的集合的等价关系应该怎么写出来。 依据划分的块进行相关元素的全排列。</p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example3.PNG" alt="explore2"><figcaption>explore2</figcaption>
-</figure>
-</blockquote>
-<p>这个例子告诉了我们商集通过等价类应该如何表达。 &gt;<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_conten.PNG" alt="example2"></p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_example4.PNG" alt="example3"><figcaption>example3</figcaption>
-</figure>
-</blockquote>
-<p>接下来回到群的内容</p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_group.PNG" alt="definition3"><figcaption>definition3</figcaption>
-</figure>
-</blockquote>
-<p>这一段的(a)给了我们进行商半群的运算表的计算的条件。 等价类的二元运算就是先计算方括号内的，得到的等价类就是所求等价类</p>
-<p>让我们来看一道题</p>
-<blockquote>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_question1.PNG" alt="question"><figcaption>question</figcaption>
-</figure>
-</blockquote>
-<p>在这里我们只做a题，b题暂时不涉及</p>
-<p>我的答案是以下 &gt;<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_Capturexx.PNG" alt="ans"></p>
-<p>我对商半群的计算的认识就是以上的过程了。</p>
 
           
         
