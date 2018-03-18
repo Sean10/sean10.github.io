@@ -306,6 +306,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/11/26/二叉树——Huffman树求最短路径和/" itemprop="url">二叉树——Huffman树求最短路径和</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-26T14:25:00+08:00">2015-11-26</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/26/二叉树——Huffman树求最短路径和/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/26/二叉树——Huffman树求最短路径和/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/26/二叉树——Huffman树求最短路径和/" class="leancloud_visitors" data-flag-title="二叉树——Huffman树求最短路径和">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://dsalgo.openjudge.cn/201409week6/1/" target="_blank" rel="noopener">题目链接</a></p>
+<p>总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外部路径长度总和。 ####输入 第一行输入一个整数n，外部节点的个数。第二行输入n个整数，代表各个外部节点的权值。 2&lt;=N&lt;=100 ####输出 输出最小外部路径长度总和。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 1 3 5</span><br></pre></td></tr></table></figure></p>
+<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">typedef struct tree&#123;</span><br><span class="line">    int weight;</span><br><span class="line">    int lc ,rc, parent;</span><br><span class="line">&#125;HufNode,*HufTree;</span><br><span class="line"></span><br><span class="line">int GetMin(HufTree H,int k)&#123;</span><br><span class="line">    int i = 0,min,minWeight;</span><br><span class="line">    while(H[i].parent != -1)&#123;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    min = i;</span><br><span class="line">    minWeight = H[i].weight;</span><br><span class="line"></span><br><span class="line">    for(;i&lt;k;i++)&#123;</span><br><span class="line">        if(minWeight &gt; H[i].weight &amp;&amp; H[i].parent == -1)&#123;</span><br><span class="line">            minWeight = H[i].weight;</span><br><span class="line">            min = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    H[min].parent = 1;</span><br><span class="line">    return min;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HufTree Create(HufTree &amp;H,int *s,int n)&#123;</span><br><span class="line">    int total = 2*n-1;</span><br><span class="line">    H = (HufTree)malloc(total*sizeof(HufNode));</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        H[i].weight = *s;</span><br><span class="line">        H[i].lc = -1;</span><br><span class="line">        H[i].rc = -1;</span><br><span class="line">        H[i].parent = -1;</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i = n;i &lt; total;i++)&#123;</span><br><span class="line">        H[i].weight = 0;</span><br><span class="line">        H[i].lc = -1;</span><br><span class="line">        H[i].rc = -1;</span><br><span class="line">        H[i].parent = -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int min1,min2;</span><br><span class="line">    for(int i = n;i &lt; total;i++)&#123;</span><br><span class="line">        min1 = GetMin(H,i);</span><br><span class="line">        min2 = GetMin(H,i);</span><br><span class="line">        H[min1].parent = i;</span><br><span class="line">        H[min2].parent = i;</span><br><span class="line">        H[i].lc = min1;</span><br><span class="line">        H[i].rc = min2;</span><br><span class="line">        H[i].weight = H[min1].weight+H[min2].weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Trans(HufTree H,int n)&#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        int deepth = 0;</span><br><span class="line">        int temp = i;</span><br><span class="line">        while(H[i].parent != -1)&#123;</span><br><span class="line">            deepth++;</span><br><span class="line">            i = H[i].parent;</span><br><span class="line">        &#125;</span><br><span class="line">        i = temp;</span><br><span class="line">        ans += deepth *H[i].weight;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    int s[1000];</span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    HufTree H = Create(H,s,n);</span><br><span class="line">    printf(&quot;%d\n&quot;,Trans(H,n));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料： [1]http://blog.csdn.net/ns_code/article/details/19174553</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/二叉树——文本二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1928,199 +2112,6 @@
 <p>最近重新开始练算法了，好多基础用法都忘了，现在重新熟悉一下，先从OpenJudge做起。</p>
 <p>这道题严格意义上应该题目叫简单凯撒密码翻译。题目理解很简单，不过对于scanf的用法需要注意，在%s格式时，遇到空格就会结束输入，这里可以用gets()和scanf(“%[^\n]”,h)来解决这个问题。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char h[1000];</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot; %d&quot;,&amp;n);</span><br><span class="line">    getchar();</span><br><span class="line">    for(int k = 0;k &lt; n;k++)&#123;</span><br><span class="line">        //getchar();</span><br><span class="line">        gets(h);</span><br><span class="line">        //printf(&quot;%s\n&quot;,h);</span><br><span class="line">        int len=strlen(h);</span><br><span class="line">        for(int i = 0;i &lt; len;i++)&#123;</span><br><span class="line">            if((h[i] &gt;= &apos;a&apos; &amp;&amp; h[i] &lt; &apos;z&apos;) ||( h[i] &gt;= &apos;A&apos; &amp;&amp; h[i] &lt; &apos;Z&apos;))&#123;</span><br><span class="line">                h[i]+=1;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(h[i] == &apos;z&apos;)&#123;</span><br><span class="line">                h[i] = &apos;a&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(h[i] == &apos;Z&apos;)&#123;</span><br><span class="line">                h[i] = &apos;A&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%s\n&quot;,h);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" itemprop="url">关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-17T19:23:00+08:00">2015-11-17</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" class="leancloud_visitors" data-flag-title="关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，Stephen Warshell发表了找到传递闭包的这个算法。三人被认定为独立发现这个算法。 该算法的主要作用是将常规算法的时间复杂度由Θ(n<sup>4)降低到了Θ(n</sup>3). 本文中，我们出于寻找Roy、Warshall的算法被认定为独立发现的的缘由对两人的算法进行分析。</p>
-<p>二、分析与讨论 1. Warshall 算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">procedure Warshall (MR : n × n zero–one matrix)</span><br><span class="line">W : = MR</span><br><span class="line">for k : = 1 to n</span><br><span class="line">   for i : = 1 to n</span><br><span class="line">      for j : = 1 to n</span><br><span class="line">         w_ij : = w_ij ∨ (w_ik)∧ w_kj )</span><br><span class="line">return W&#123;W = [w_ij] is MR∗&#125;</span><br></pre></td></tr></table></figure></p>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_0.png" alt="essay_"><figcaption>essay_</figcaption>
-</figure>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_1.png" alt="essay_"><figcaption>essay_</figcaption>
-</figure>
-<figure>
-<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_essay_2.png" alt="essay"><figcaption>essay</figcaption>
-</figure>
-<p>三、结论 虽然Bernard Roy 提出该算法在Robert Floyd和Stephen Warshall之前，但他论文的主体依旧是以对图的定义为主，而Warshall 和Floyd两人同年发表了成文的简单算法。所以，可能这是一部分影响单独发表的原因。</p>
-<p>四、展望 根据[1]，我们知道了Roy的传递闭包计算方法是采用了Kleene已经提出了的深层技术，而Warshall和Floyd则是采用了第三个参数。不过基于时间以及水平原因，并没有能够找到这两者之间所说的深层技术，也并没能确定是否Warshall和Floyd所采用的关键技术是在于中间点k。因而，可以沿这个方向继续接下去进行查询发掘。</p>
-<p>五、参考文献 [1]. Jeff Erickson, Kleene-Roy-Floyd-Warshall. [https://courses.engr.illinois.edu/cs498dl1/sp2015/notes/22-apsp.pdf] [2]. Warshall, Stephen (January 1962). “A theorem on Boolean matrices”. Journal of the ACM 9 (1): 11–12. doi:10.1145/321105.321107 . [3]. Roy, B. “Transitivité et connexité.” C. R. Acad. Sci. Paris 249, 216-218, 1959. [http://gallica.bnf.fr/ark:/12148/bpt6k3201c] [4]. Bouyssou, D., Jacquet-Lagrèze, E., Perny, P., Slowiński, R., Vanderpooten, D., Vincke, P,《Aiding Decisions with Multiple Criteria: Essays in Honor of Bernard Roy》,24,2001. [5]. Wikipedia. [https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm] [6]. Purdom, Paul, Jr. “A Transitive Closure Algorithm.” Bit 10, no. 1 (March 1970): 76–94. doi:10.1007/BF01940892.</p>
 
           
         

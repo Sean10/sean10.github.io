@@ -306,6 +306,186 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2000/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/03/HDU2000/" itemprop="url">HDU2000</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:04:00+08:00">2015-12-03</time>
+            
+
+            
+            
+              
+                
+              
+            
+
+            
+              
+              <span class="post-meta-divider">|</span>
+              
+
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/03/HDU2000/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/12/03/HDU2000/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/12/03/HDU2000/" class="leancloud_visitors" data-flag-title="HDU2000">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">void swap(char *s,int j)&#123;</span><br><span class="line">    char temp = s[j];</span><br><span class="line">    s[j] = s[j+1];</span><br><span class="line">    s[j+1] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Bubblesort(char *s)&#123;</span><br><span class="line">    char temp = s[0];</span><br><span class="line">    for(int i = 0;i &lt; 3;i++)&#123;</span><br><span class="line">        for(int j = 0;j &lt; 2;j++)&#123;</span><br><span class="line">            if(s[j] &gt; s[j+1])</span><br><span class="line">                swap(s,j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char s[4];</span><br><span class="line">    while(scanf(&quot;%s&quot;,s)!=EOF)&#123;</span><br><span class="line">        //getchar();</span><br><span class="line">        Bubblesort(s);</span><br><span class="line">        for(int i = 0;i &lt; 2;i++)&#123;</span><br><span class="line">            printf(&quot;%c&quot;,s[i]);</span><br><span class="line">            printf(&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%c&quot;,s[2]);</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    //printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/02/条件概率/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2083,190 +2263,6 @@ a=\overline{y}-b\overline{x}
         
           
             <p>第一次做并查集的题，选了道比较简单的。 用数组很简单，不多说了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int a[1010];</span><br><span class="line"></span><br><span class="line">void Init(int N)&#123;</span><br><span class="line">    for(int i = 1;i &lt;= N;i++)</span><br><span class="line">        a[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Find(int x)&#123;</span><br><span class="line">    while(x != a[x])</span><br><span class="line">        x = a[x];</span><br><span class="line">    return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Union(int x, int y)&#123;</span><br><span class="line">    int x1 = Find(x);</span><br><span class="line">    int y1 = Find(y);</span><br><span class="line">    if(x1 != y1)</span><br><span class="line">        a[y1] = x1;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int T;</span><br><span class="line">    scanf(&quot; %d&quot;,&amp;T);</span><br><span class="line">    while(T--)&#123;</span><br><span class="line">        int N,M;</span><br><span class="line">        scanf(&quot; %d%d&quot;,&amp;N,&amp;M);</span><br><span class="line">        Init(N);</span><br><span class="line">        for(int i = 0;i &lt; M;i++)&#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</span><br><span class="line">            Union(x,y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int ans = 0;</span><br><span class="line">        for(int i = 1;i &lt;= N;i++)&#123;</span><br><span class="line">            if(i == a[i])</span><br><span class="line">                ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">        //getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/11/26/二叉树——Huffman树求最短路径和/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/26/二叉树——Huffman树求最短路径和/" itemprop="url">二叉树——Huffman树求最短路径和</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-26T14:25:00+08:00">2015-11-26</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/二叉树——Huffman树求最短路径和/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/11/26/二叉树——Huffman树求最短路径和/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/26/二叉树——Huffman树求最短路径和/" class="leancloud_visitors" data-flag-title="二叉树——Huffman树求最短路径和">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week6/1/" target="_blank" rel="noopener">题目链接</a></p>
-<p>总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外部路径长度总和。 ####输入 第一行输入一个整数n，外部节点的个数。第二行输入n个整数，代表各个外部节点的权值。 2&lt;=N&lt;=100 ####输出 输出最小外部路径长度总和。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 1 3 5</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">typedef struct tree&#123;</span><br><span class="line">    int weight;</span><br><span class="line">    int lc ,rc, parent;</span><br><span class="line">&#125;HufNode,*HufTree;</span><br><span class="line"></span><br><span class="line">int GetMin(HufTree H,int k)&#123;</span><br><span class="line">    int i = 0,min,minWeight;</span><br><span class="line">    while(H[i].parent != -1)&#123;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    min = i;</span><br><span class="line">    minWeight = H[i].weight;</span><br><span class="line"></span><br><span class="line">    for(;i&lt;k;i++)&#123;</span><br><span class="line">        if(minWeight &gt; H[i].weight &amp;&amp; H[i].parent == -1)&#123;</span><br><span class="line">            minWeight = H[i].weight;</span><br><span class="line">            min = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    H[min].parent = 1;</span><br><span class="line">    return min;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HufTree Create(HufTree &amp;H,int *s,int n)&#123;</span><br><span class="line">    int total = 2*n-1;</span><br><span class="line">    H = (HufTree)malloc(total*sizeof(HufNode));</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        H[i].weight = *s;</span><br><span class="line">        H[i].lc = -1;</span><br><span class="line">        H[i].rc = -1;</span><br><span class="line">        H[i].parent = -1;</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i = n;i &lt; total;i++)&#123;</span><br><span class="line">        H[i].weight = 0;</span><br><span class="line">        H[i].lc = -1;</span><br><span class="line">        H[i].rc = -1;</span><br><span class="line">        H[i].parent = -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int min1,min2;</span><br><span class="line">    for(int i = n;i &lt; total;i++)&#123;</span><br><span class="line">        min1 = GetMin(H,i);</span><br><span class="line">        min2 = GetMin(H,i);</span><br><span class="line">        H[min1].parent = i;</span><br><span class="line">        H[min2].parent = i;</span><br><span class="line">        H[i].lc = min1;</span><br><span class="line">        H[i].rc = min2;</span><br><span class="line">        H[i].weight = H[min1].weight+H[min2].weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Trans(HufTree H,int n)&#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        int deepth = 0;</span><br><span class="line">        int temp = i;</span><br><span class="line">        while(H[i].parent != -1)&#123;</span><br><span class="line">            deepth++;</span><br><span class="line">            i = H[i].parent;</span><br><span class="line">        &#125;</span><br><span class="line">        i = temp;</span><br><span class="line">        ans += deepth *H[i].weight;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    int s[1000];</span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    HufTree H = Create(H,s,n);</span><br><span class="line">    printf(&quot;%d\n&quot;,Trans(H,n));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考资料： [1]http://blog.csdn.net/ns_code/article/details/19174553</p>
 
           
         
