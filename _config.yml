@@ -69,7 +69,7 @@ pagination_dir: page
 # plugins:
 #  - hexo-renderer-pandoc
 # ## Themes: https://hexo.io/themes/
-theme: next
+theme: yelee
 
 # Personal Configuration
 since: 2015
