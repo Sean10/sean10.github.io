@@ -84,7 +84,23 @@ C++分为3个程序模型
 
 只有通过pointer或reference的间接处理，才支持OO程序设计所需的多态性质。
 
+>cast 其实是一种编译器指令，大部分情况下它并不改变一个指针所含的真正地址，它只影响“被指出之内存的大小和其内容”的解释方式
 
+>一个pointer或一个reference之所以支持多态，是因为它们并不引发内存中任何”与类型有关的内存委托操作(type-dependent commitment)， 会受到改变的只是它们所指向的内存的“大小和内容解释方式”而已
+
+# 构造函数语意学
+
+Conversion运算符的引入
+
+>如果没有implicit conversion的支持, String函数库必须将每一个拥有字符串参数的C runtime library函数都复制一份。
+>有趣的是，标准的C++ library string class并不提供一个implicit conversion运算子, 它提供的是一个具体实名(named instance),使用者必须明确调用。
+
+上面这个具体实名是什么情况呢？好像没见过的样子。
+
+Schwarz Error
+
+>memberwise initialization
+>named return value optimization(NRV)身上
 
 
 
