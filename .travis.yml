@@ -1,0 +1,32 @@
+language: node_js
+node_js: stable
+branches:
+  only:
+  - hexo
+cache:
+  apt: true
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+- openssl aes-256-cbc -K $encrypted_3135f0b7527f_key -iv $encrypted_3135f0b7527f_iv
+  -in travis.enc -out travis -d
+# 改变文件权限
+- chmod 600 ~/.ssh/id_rsa
+# 配置 ssh
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+# 配置git
+- git config --global user.name "sean10"
+- git config --global user.email "sean10reborn@gmail.com"
+- curl -o- -L https://yarnpkg.com/install.sh | bash
+- export PATH=$HOME/.yarn/bin:$PATH
+- npm install -g hexo-cli
+install:
+- yarn
+script:
+- hexo clean
+- hexo generate
+after_success:
+- hexo deploy
