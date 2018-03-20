@@ -27,6 +27,7 @@ before_install:
 - wget ${pandoc}
 - sudo dpkg -i pandoc*.deb
 - npm install -g hexo-cli
+- git clone https://github.com/theme-next/hexo-theme-next themes/next
 install:
 - yarn
 script:
