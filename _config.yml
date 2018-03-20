@@ -77,6 +77,18 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 plugin:
  - hexo-renderer-pandoc
+
+douban:
+  user: seanrebn
+  book:
+    title: '豆瓣读书'
+    quote: 'Here is the books i favored.'
+  # movie:
+  #   title: '豆瓣电影'
+  #   quote: 'Here is the movie i watched.'
+  timeout: 10000 #optional
+
+
 # ## Themes: https://hexo.io/themes/
 theme: next
 
