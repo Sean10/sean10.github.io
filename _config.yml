@@ -86,8 +86,13 @@ douban:
   # movie:
   #   title: '豆瓣电影'
   #   quote: 'Here is the movie i watched.'
-  timeout: 10000 #optional
+  # timeout: 10000 #optional
 
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
 
 # ## Themes: https://hexo.io/themes/
 theme: next
