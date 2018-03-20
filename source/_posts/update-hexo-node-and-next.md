@@ -56,6 +56,8 @@ No layout问题。
 
 关于pandoc解析mathjax，目前还是存在错误，view状态也存在错误
 
+需要在每篇需要的md Frontter开启mathjax: true
+
 ---------
 
 首页不显示最新的，以及分类页面缓存了之前的错误
