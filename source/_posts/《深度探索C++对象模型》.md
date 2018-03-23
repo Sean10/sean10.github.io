@@ -102,7 +102,9 @@ Schwarz Error
 >memberwise initialization
 >named return value optimization(NRV)身上
 
+带有default constructor 的member class object
 
+inline是什么设计
 
 
 未完待续
