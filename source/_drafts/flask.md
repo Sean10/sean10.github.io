@@ -8,4 +8,8 @@ categories: [专业]
 
 未完待续
 
+app.config 存储临时 配置？
+
 # Reference
+1. [Flask Doc]()
+2. [Flask 项目配置](https://zhuanlan.zhihu.com/p/24055329)
