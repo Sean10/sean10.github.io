@@ -78,15 +78,15 @@ pagination_dir: page
 plugin:
  - hexo-renderer-pandoc
 
-douban:
-  user: seanrebn
-  book:
-    title: '豆瓣读书'
-    quote: 'Here is the books i favored.'
-  # movie:
-  #   title: '豆瓣电影'
-  #   quote: 'Here is the movie i watched.'
-  timeout: 1000000 #optional
+# douban:
+#   user: seanrebn
+#   book:
+#     title: '豆瓣读书'
+#     quote: 'Here is the books i favored.'
+#   # movie:
+#   #   title: '豆瓣电影'
+#   #   quote: 'Here is the movie i watched.'
+#   timeout: 1000000 #optional
 
 symbols_count_time:
   symbols: true
