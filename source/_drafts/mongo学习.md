@@ -10,16 +10,24 @@ categories: [专业]
 
 Key-Value对 > 文档 > 集合 > 数据库
 
+<!--more-->
+
 mongo插入时不执行代码，会先转化为BSON，所以免疫了传统注入攻击
+
+但是mongo执行js代码时，存在被注入的可能性
 
 mongo的操作是异步且不可靠的，无确认
 
+## GridFS
+```
+mongofiles
+```
 
 # 操作记录
 
 ``` mongodb
 //启动
-mongod
+mongod --port 5506 --fork --logpath mongodb.log
 
 //显示所有数据库
 show dbs

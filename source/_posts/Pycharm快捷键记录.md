@@ -6,7 +6,9 @@ tags: [Pycharm, 快捷键]
 categories: [专业]
 ---
 
-![Pycharm 键位图](https://pic1.zhimg.com/v2-cb058dde6f3580de6589eedc8193acee_r.jpg)
+![Pycharm 键位图](https://ws4.sinaimg.cn/large/006tKfTcly1fpoyzqd6olj31kw0v1dxb.jpg)
+
+<!--more-->
 
 Command+B 函数跳转
 Command+alt+left 返回上一页

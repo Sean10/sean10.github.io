@@ -112,7 +112,7 @@ menu:
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
-  books: /books     #This is your books page
+  # books: /books     #This is your books page
   # movies: /movies   #This is your movies page
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
