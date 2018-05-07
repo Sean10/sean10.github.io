@@ -1,5 +1,5 @@
 ---
-title: VMWare远程控制踩坑
+title: VMWare远程控制tensorflow踩坑
 date: 2018-05-07 18:14:08
 updated:
 tags: [VMWare]
@@ -12,15 +12,24 @@ categories: [专业]
 
 安装完ubuntu，为了能让远程直接ssh到虚拟机里，需要对NAT进行设置，在虚拟网络设置中，比如我就把将主机的10086端口映射到虚拟机IP的22端口，这样就可以直接远程ssh了。
 
+首先修改一下apt源到清华，不过为什么感觉反而这次更慢了呢？
+
 不过在使用VMWare共享文件夹给ubuntu的时候倒是遭遇了一些问题。
 
-一开始为了减少桌面环境的资源占用，修改了grub的选项，默认启动命令行界面了。理论上这个部分对我之后安装vmware-tools是没有什么影响的。
+# 1. legacy install
+
+一开始为了减少桌面环境的资源占用，修改了grub的选项，默认启动命令行界面了。理论上这个部分对我之后安装vmware-tools是没有什么影响的，照常挂载cdrom,`mount -t auto /dev/cdrom /mnt/cdrom`，然后解压到根目录执行就好。
 
 vmware据说是安装了vmware tools以后就可以访问共享文件夹，但是在ubuntu里安装失败多次，成功一次以后依旧没能发现那个文件夹。
 
-`sudo ./vmware-install.pl -d`之后后时完全不够的
+`sudo ./vmware-install.pl -d`之后是完全不够的
 
-需要按照2对tools打一个补丁，之后就能访问共享文件夹了。
+需要按照2对tools打一个补丁，
+
+然后使用更新的vmfuse替换mount，``之后就能访问共享文件夹了。
+
+# 2. open-vm-tools install
+
 
 ``` bash
 sudo apt-get install git
@@ -29,9 +38,28 @@ cd vmware-tools-patches
 sudo ./patched-open-vm-tools.sh
 ```
 
-终于可以跑起来了，之后再装好jupyter打开对外访问，就OK啦~
+# Python环境重建
+
+好久没在ubuntu下重新配置环境了
+
+
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.6
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3.6 get-pip.py
+```
+
+然后把pip源改到清华，OK。
+
+
+终于可以跑起来了，之后再装好jupyter打开对外访问,win10防火墙开放一下修改的映射端口，就OK啦~
 
 
 # Reference
 1. [vmhgfs-fuse替换mount](https://ask.csdn.net/questions/163546)
 2. [vmware-tools-patches](https://askubuntu.com/questions/762755/no-vmhgfs-file-system-installed-to-use-use-shared-folder)
+3. [pip install doc](https://pip.pypa.io/en/stable/installing/)
+4. [tsinghua pypi](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
