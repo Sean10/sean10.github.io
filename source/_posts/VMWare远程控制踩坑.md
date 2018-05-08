@@ -57,6 +57,11 @@ python3.6 get-pip.py
 
 终于可以跑起来了，之后再装好jupyter打开对外访问,win10防火墙开放一下修改的映射端口，就OK啦~
 
+Jupyter远程跑的时候，频频会弹出窗口提示
+
+`Notebook has changed since we opened it. Overwrite the changed file?`
+
+一开始搜了下，最高票都提示说是bug，是自动modify_checkpoint间隙太短，在5。5版本里添加了修改这个时间的配置文件。但我之前单机使用是没有问题的，新装的版本和单机用的notebook版本是相同的，所以变量是控制了的，之后发现有人多次提到主要出现原因是因为同时多个窗口在访问这个页面，那么，细想一下，在启动notebook时默认会自动打开一个网页，text启动的ubuntu是不是也存在了这个情况(目前猜想是由于毕竟是desktop版本的ubuntu，所以还是存在自动打开网页进程的能力)，那么就去修改一下配置文件，默认不打开网页，成功解决问题。
 
 # Reference
 1. [vmhgfs-fuse替换mount](https://ask.csdn.net/questions/163546)
