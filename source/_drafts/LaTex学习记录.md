@@ -36,4 +36,5 @@ open -a preview main.pdf
 
 # Reference
 
-1. [](https://blog.csdn.net/u014466412/article/details/53282615)
+1. [Latex中bib参考文献的编译](https://blog.csdn.net/u014466412/article/details/53282615)
+2. [bib格式](http://blog.sina.com.cn/s/blog_4aee288a0100dehr.html)
