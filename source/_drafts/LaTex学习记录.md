@@ -24,6 +24,16 @@ I read that Knuth divides the people working with T E X into T E Xnicians and T 
 
 ----------------------------
 
+出现问题
+>---they aren't the same literal types for entry shenyaoZhongGuoDianYingZaiXianPiaoWuFaZhanYanJiu2016
+while executing---line 2571 of file buptbachelor.bst
+0 is an integer literal, not a function, for entry shenyaoZhongGuoDianYingZaiXianPiaoWuFaZhanYanJiu2016
+while executing---line 2571 of file buptbachelor.bst
+You can't pop an empty literal stack for entry shenyaoZhongGuoDianYingZaiXianPiaoWuFaZhanYanJiu2016
+while executing---line 2571 of file buptbachelor.bst
+
+根据检索，按照4次编译过程来[4]，就可以得到文献结果，只不过出现中文编码错误
+
 
 # 编译过程
 
@@ -31,10 +41,21 @@ I read that Knuth divides the people working with T E X into T E Xnicians and T 
 xelatex main.tex
 bibtex main.aux
 xelatex main.tex
+xelatex main.tex
 open -a preview main.pdf
+```
+
+```
+# 调用方法 ：
+# 单个文件
+texcount  your-file-name.tex
+# 多个文件
+texcount file-name1.tex file-name2.tex
 ```
 
 # Reference
 
 1. [Latex中bib参考文献的编译](https://blog.csdn.net/u014466412/article/details/53282615)
 2. [bib格式](http://blog.sina.com.cn/s/blog_4aee288a0100dehr.html)
+3. [使用 BibTeX 生成参考文献列表](https://liam0205.me/2016/01/23/using-bibtex-to-generate-reference/)
+4. [Latex下使用IEEEtran模板编译bib失败报错的解决方法](https://blog.csdn.net/greenapple_shan/article/details/37054813)
