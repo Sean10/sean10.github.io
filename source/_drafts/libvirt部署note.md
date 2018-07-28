@@ -12,6 +12,8 @@ categories: [专业]
 <!--more-->
 
 
+# 准备新kvm 磁盘刻录 等等 技巧
+
 ## 磁盘刻录命令:
 
 
@@ -20,7 +22,7 @@ categories: [专业]
 fdisk -l
 
 # 写入命令
-dd if=/nas/nas/dd_img/iraid/rongheyitiji/C-IVMS256-20160523.img of=/dev/sdn bs=10M &
+dd if=/nas/nas/dd_img/iraid/rongheyij'jtiji/C-IVMS256-20160523.img of=/dev/sdn bs=10M &
 # 查看dd进度
 watch -n 5 pkill -USR1 ^dd$
 
@@ -37,6 +39,9 @@ dd if=/nas/nas/dd_img/iraid/c/iVMS-3000C-H24_CN_STD_9.2.0_V2.3.4-2_LOUYU24_18062
 
 ll -h G /nas/nas/dd_img/iraid/c/iVMS-3000C-H24_CN_STD_9.2.0_V2.3.4-2_LOUYU24_180626.img
 查看大小
+
+将硬盘刻成镜像
+dd if=/dev/sdl of=/nas/nas/dd_img/iraid/c/jingweiyitiji/iVMS-3000C-H24_CN_STD_9.2.0_V2.3.4-2_JINGWEI24_180710.img bs=1M count=63488 &
 
 ```
 
@@ -56,233 +61,6 @@ libvirt的远程uri访问中那些命令不太理解，外部参数的使用也�
 熟悉libvirt的接口，熟悉virsh命令
 
 [root@localhost ~]# virsh help
-分组的命令：
-
- Domain Management (help keyword 'domain'):
-    attach-device                  从一个XML文件附加装置
-    attach-disk                    附加磁盘设备
-    attach-interface               获得网络界面
-    autostart                      自动开始一个域
-    blkdeviotune                   设定或者查询块设备 I/O 调节参数。
-    blkiotune                      获取或者数值 blkio 参数
-    blockcommit                    启动块提交操作。
-    blockcopy                      启动块复制操作。
-    blockjob                       管理活跃块操作
-    blockpull                      使用其后端映像填充磁盘。
-    blockresize                    创新定义域块设备大小
-    change-media                   更改 CD 介质或者软盘驱动器
-    console                        连接到客户会话
-    cpu-baseline                   计算基线 CPU
-    cpu-compare                    使用 XML 文件中描述的 CPU 与主机 CPU 进行对比
-    cpu-stats                      显示域 cpu 统计数据
-    create                         从一个 XML 文件创建一个域
-    define                         从一个 XML 文件定义（但不开始）一个域
-    desc                           显示或者设定域描述或者标题
-    destroy                        销毁（停止）域
-    detach-device                  从一个 XML 文件分离设备
-    detach-disk                    分离磁盘设备
-    detach-interface               分离网络界面
-    domdisplay                     域显示连接 URI
-    domfstrim                      在域挂载的文件系统中调用 fstrim。
-    domhostname                    输出域主机名
-    domid                          把一个域名或 UUID 转换为域 id
-    domif-setlink                  设定虚拟接口的链接状态
-    domiftune                      获取/设定虚拟接口参数
-    domjobabort                    忽略活跃域任务
-    domjobinfo                     域任务信息
-    domname                        将域 id 或 UUID 转换为域名
-    dompmsuspend                   使用电源管理功能挂起域
-    dompmwakeup                    从 pmsuspended 状态唤醒域
-    domuuid                        把一个域名或 id 转换为域 UUID
-    domxml-from-native             将原始配置转换为域 XML
-    domxml-to-native               将域 XML 转换为原始配置
-    dump                           把一个域的内核 dump 到一个文件中以方便分析
-    dumpxml                        XML 中的域信息
-    edit                           编辑某个域的 XML 配置
-    inject-nmi                     在虚拟机中输入 NMI
-    send-key                       向虚拟机发送序列号
-    send-process-signal            向进程发送信号
-    lxc-enter-namespace            LXC 虚拟机进入名称空间
-    managedsave                    管理域状态的保存
-    managedsave-remove             删除域的管理保存
-    maxvcpus                       连接 vcpu 最大值
-    memtune                        获取或者数值内存参数
-    migrate                        将域迁移到另一个主机中
-    migrate-setmaxdowntime         设定最大可耐受故障时间
-    migrate-compcache              获取/设定压缩缓存大小
-    migrate-setspeed               设定迁移带宽的最大值
-    migrate-getspeed               获取最长迁移带宽
-    numatune                       获取或者数值 numa 参数
-    qemu-attach                    QEMU 附加
-    qemu-monitor-command           QEMU 监控程序命令
-    qemu-agent-command             QEMU 虚拟机代理命令
-    reboot                         重新启动一个域
-    reset                          重新设定域
-    restore                        从一个存在一个文件中的状态恢复一个域
-    resume                         重新恢复一个域
-    save                           把一个域的状态保存到一个文件
-    save-image-define              为域的保存状态文件重新定义 XML
-    save-image-dumpxml             在 XML 中保存状态域信息
-    save-image-edit                为域保存状态文件编辑 XML
-    schedinfo                      显示/设置日程安排变量
-    screenshot                     提取当前域控制台快照并保存到文件中
-    setmaxmem                      改变最大内存限制值
-    setmem                         改变内存的分配
-    setvcpus                       改变虚拟 CPU 的号
-    shutdown                       关闭一个域
-    start                          开始一个（以前定义的）非活跃的域
-    suspend                        挂起一个域
-    ttyconsole                     tty 控制台
-    undefine                       取消定义一个域
-    update-device                  从 XML 文件中关系设备
-    vcpucount                      域 vcpu 计数
-    vcpuinfo                       详细的域 vcpu 信息
-    vcpupin                        控制或者查询域 vcpu 亲和性
-    emulatorpin                    控制火车查询域模拟器亲和性
-    vncdisplay                     vnc 显示
-
- Domain Monitoring (help keyword 'monitor'):
-    domblkerror                    在块设备中显示错误
-    domblkinfo                     域块设备大小信息
-    domblklist                     列出所有域块
-    domblkstat                     获得域设备块状态
-    domcontrol                     域控制接口状态
-    domif-getlink                  获取虚拟接口链接状态
-    domiflist                      列出所有域虚拟接口
-    domifstat                      获得域网络接口状态
-    dominfo                        域信息
-    dommemstat                     获取域的内存统计
-    domstate                       域状态
-    list                           列出域
-
- Host and Hypervisor (help keyword 'host'):
-    capabilities                   性能
-    freecell                       NUMA可用内存
-    hostname                       打印管理程序主机名
-    node-memory-tune               获取或者设定节点内存参数
-    nodecpumap                     节点 cpu 映射
-    nodecpustats                   输出节点的 cpu 状统计数据。
-    nodeinfo                       节点信息
-    nodememstats                   输出节点的内存状统计数据。
-    nodesuspend                    在给定时间段挂起主机节点
-    sysinfo                        输出 hypervisor sysinfo
-    uri                            打印管理程序典型的URI
-    version                        显示版本
-
- Interface (help keyword 'interface'):
-    iface-begin                    生成当前接口设置快照，可在今后用于提交 (iface-commit) 或者恢复 (iface-rollback)
-    iface-bridge                   生成桥接设备并为其附加一个现有网络设备
-    iface-commit                   提交 iface-begin 后的更改并释放恢复点
-    iface-define                   定义（但不启动）XML 文件中的物理主机接口
-    iface-destroy                  删除物理主机接口（启用它请执行 "if-down"）
-    iface-dumpxml                  XML 中的接口信息
-    iface-edit                     为物理主机界面编辑 XML 配置
-    iface-list                     物理主机接口列表
-    iface-mac                      将接口名称转换为接口 MAC 地址
-    iface-name                     将接口 MAC 地址转换为接口名称
-    iface-rollback                 恢复到之前保存的使用 iface-begin 生成的更改
-    iface-start                    启动物理主机接口（启用它请执行 "if-up"）
-    iface-unbridge                 分离其辅助设备后取消定义桥接设备
-    iface-undefine                 取消定义物理主机接口（从配置中删除）
-
- Network Filter (help keyword 'filter'):
-    nwfilter-define                使用 XML 文件定义或者更新网络过滤器
-    nwfilter-dumpxml               XML 中的网络过滤器信息
-    nwfilter-edit                  为网络过滤器编辑 XML 配置
-    nwfilter-list                  列出网络过滤器
-    nwfilter-undefine              取消定义网络过滤器
-
- Networking (help keyword 'network'):
-    net-autostart                  自动开始网络
-    net-create                     从一个 XML 文件创建一个网络
-    net-define                     从一个 XML 文件定义(但不开始)一个网络
-    net-destroy                    销毁（停止）网络
-    net-dumpxml                    XML 中的网络信息
-    net-edit                       为网络编辑 XML 配置
-    net-info                       网络信息
-    net-list                       列出网络
-    net-name                       把一个网络UUID 转换为网络名
-    net-start                      开始一个(以前定义的)不活跃的网络
-    net-undefine                   取消定义一个非活跃的网络
-    net-update                     更新现有网络配置的部分
-    net-uuid                       把一个网络名转换为网络UUID
-
- Node Device (help keyword 'nodedev'):
-    nodedev-create                 根据节点中的 XML 文件定义生成设备
-    nodedev-destroy                销毁（停止）节点中的设备
-    nodedev-detach                 将节点设备与其设备驱动程序分离
-    nodedev-dumpxml                XML 中的节点设备详情
-    nodedev-list                   这台主机中中的枚举设备
-    nodedev-reattach               重新将节点设备附加到他的设备驱动程序中
-    nodedev-reset                  重置节点设备
-
- Secret (help keyword 'secret'):
-    secret-define                  定义或者修改 XML 中的 secret
-    secret-dumpxml                 XML 中的 secret 属性
-    secret-get-value               secret 值输出
-    secret-list                    列出 secret
-    secret-set-value               设定 secret 值
-    secret-undefine                取消定义 secret
-
- Snapshot (help keyword 'snapshot'):
-    snapshot-create                使用 XML 生成快照
-    snapshot-create-as             使用一组参数生成快照
-    snapshot-current               获取或者设定当前快照
-    snapshot-delete                删除域快照
-    snapshot-dumpxml               为域快照转储 XML
-    snapshot-edit                  编辑快照 XML
-    snapshot-info                  快照信息
-    snapshot-list                  为域列出快照
-    snapshot-parent                获取快照的上级快照名称
-    snapshot-revert                将域转换为快照
-
- Storage Pool (help keyword 'pool'):
-    find-storage-pool-sources-as   找到潜在存储池源
-    find-storage-pool-sources      发现潜在存储池源
-    pool-autostart                 自动启动某个池
-    pool-build                     建立池
-    pool-create-as                 从一组变量中创建一个池
-    pool-create                    从一个 XML 文件中创建一个池
-    pool-define-as                 在一组变量中定义池
-    pool-define                    在一个 XML 文件中定义（但不启动）一个池
-    pool-delete                    删除池
-    pool-destroy                   销毁（删除）池
-    pool-dumpxml                   XML 中的池信息
-    pool-edit                      为存储池编辑 XML 配置
-    pool-info                      存储池信息
-    pool-list                      列出池
-    pool-name                      将池 UUID 转换为池名称
-    pool-refresh                   刷新池
-    pool-start                     启动一个（以前定义的）非活跃的池
-    pool-undefine                  取消定义一个不活跃的池
-    pool-uuid                      把一个池名称转换为池 UUID
-
- Storage Volume (help keyword 'volume'):
-    vol-clone                      克隆卷。
-    vol-create-as                  从一组变量中创建卷
-    vol-create                     从一个 XML 文件创建一个卷
-    vol-create-from                生成卷，使用另一个卷作为输入。
-    vol-delete                     删除卷
-    vol-download                   将卷内容下载到文件中
-    vol-dumpxml                    XML 中的卷信息
-    vol-info                       存储卷信息
-    vol-key                        为给定密钥或者路径返回卷密钥
-    vol-list                       列出卷
-    vol-name                       为给定密钥或者路径返回卷名
-    vol-path                       为给定密钥或者路径返回卷路径
-    vol-pool                       为给定密钥或者路径返回存储池
-    vol-resize                     创新定义卷大小
-    vol-upload                     将文件内容上传到卷中
-    vol-wipe                       擦除卷
-
- Virsh itself (help keyword 'virsh'):
-    cd                             更改当前目录
-    connect                        连接（重新连接）到 hypervisor
-    echo                           echo 参数
-    exit                           退出这个非交互式终端
-    help                           打印帮助
-    pwd                            输出当前目录
-    quit                           退出这个非交互式终端
 
 
 # 实践过程
@@ -405,7 +183,7 @@ CPU硬件虚拟化 支持？
 
 
 # Ceph是什么呢
-分布式文件系统，在OpenStack社区比较流行
+分布式文件系统（也是个对象存储生态环境），在OpenStack社区比较流行
 
 同类的有
 * GlusterFS，分布式NAS最多
@@ -421,6 +199,9 @@ Ceph的代码是通过C ,C++实现的，而为什么这里说到相比现代点�
 
 这里说，其他同等级的高质量的代码，大多是用C写出来的。
 
+
+
+
 这里有一张，超融合中各种存储的图
 
 ![](https://pic1.zhimg.com/88517e35f17409d52607caf21d535df0_r.jpg)
@@ -435,3 +216,500 @@ win10 全角与半角切换，shift + space
 发现了hik的mirror站点，pip镜像可以从这个源下
 
 http://mirrors.hikvision.com.cn/python-pypi/simple/
+
+# 7.6 
+
+Ceph用的Paxos算法，这个算法在分布式系统的书里看到过，基本各种分布式用的都是这个。
+
+* 通过算来代替寻找节点
+* 去中心化，不存在Master-Slave，不通过查表，而是通过计算得到各节点位置，（这个计算的方式有点意思）
+
+在数据去重、压缩、同步、异步上存在一些缺陷
+
+Ceph主要3个守护进程Ceph OSD\ Monitor \MDS
+
+底层核心RADOS
+
+CRUSH算法(Controlled Replication Under Scalable Hashing)
+
+基于可扩展哈希的控制复制算法
+
+在计算过程中，由Cluser Map（集群映射）\ Data Distribution Policy（数据分布规则）和给出的一个额随机整数x共同决定个数据对象最后的位置
+
+
+
+原生云架构？
+
+linux安装可以直接制定内核路径，直接加载
+
+多CPU协作技术，SMP\MPP\NUMA架构，
+
+`numactl --hardware`为什么这里也有2个CPU,那么在Centos那里可以看到的SMP又是什么？
+
+KSM技术(Kernel SamePage Merging)，合并内存,为了内存超用，只适合测试环境，对性能要求不高的
+
+内存气球技术
+
+CPU绑定技术
+
+NUMA自动平衡策略，可能并不均衡，需要手动协调
+
+CPU热添加技术
+
+KVM Nested技术
+
+虚拟机，Virtio驱动下，比e1000驱动的网络发包性能好2倍
+
+linux，一般virtio较好。windows上就根据系统版本，不同驱动性能都有可能出现
+
+vhost-net（必须virtio）
+
+MacVTap
+
+网卡PCI-Passthrough
+
+SR-IOV虚拟化技术(the Single ROot I/O Virtualization)，将PCI-E设备共享给虚拟机使用的标准
+
+Open vSwitch 虚拟化软件交换机
+
+树上说虚拟化网络管理，Open vSwitch非常稳定，但是hik没看到被安装， 那应该有其他的管理工具
+
+qemu磁盘虚拟化，virtio类型，
+
+裸盘可以用lvm来管理
+
+在虚拟化中，为了充分发挥SSD性能，虚拟机磁盘应该用裸设备映射，而不是qcow2格式的文件系统(能用qcow2的能用lvm管理的裸机映射来替换？)
+
+唔，内网中，https的网页就可以访问，http就不行
+
+pxe 预启动环境
+
+P2V， 物理机转虚拟机
+
+KVM桌面虚拟化(Virtual Desktop Infrastructure, VDI)
+
+远程访问协议RDP\PCoIP\Spice，公司内主要设置的VNC
+
+## 几种常见开源文件系统在KVM中的应用
+
+
+### DRBD
+
+### GlusterFS 
+
+### MooseFS
+
+### Sheepdog
+
+
+OpenStack 管理KVM
+
+RabbitMQ Cluster
+
+OpenNebula
+
+VPN（Virtual Private Network)
+
+自动化运维， Puppet
+
+
+
+---------
+
+缩容img
+
+```
+qemu-img convert -f qcow2 -O raw model_test model_test.raw
+qemu-img resize model_test.raw -71G
+
+-c 可以压缩
+qemu-img convert -f qcow2 -c -O qcow2 model_test.qcow2 model_test_compress.qcow2
+
+压缩完，磁盘空间只有3.6G了，非常不错
+
+根据http://openwares.net/2012/04/26/shrink_kvm_qcow2_disk/ 缩容windows，需要用系统的分区工具进行缩容
+
+之后才能执行resize 
+
+尝试用lmt来调整分区看看，目前raw是7.8G， 但进入lmt分区管理，看到的是最少只能压缩到11.15G
+
+现在尝试在无网络Centos中安装rpm包
+
+rpm -ivh libguestfs-tools-c-1.36.10-6.el7.centos.x86_64.rpm --nodeps
+
+找了好久配置本地源，yum list始终提示需要repodata/repomd.xml
+
+运行最初上面那行代码加上强制--force，结果却提示没有--force这个路径，这版本是差了多少，连force都没有
+
+还是失败了，好些so文件依赖错误。
+
+用自己电脑下载了官网的tar.gz包。用百度云发过来，自己编译，结果还是包依赖缺失。
+
+现在看到Centos自己的iso里可能就包含了这些包，用这个做源试试看
+
+yumlist终于得到结果了
+
+先卸载了之前装的失败的
+
+```
+ rpm -qa | grep libguestfs | rpm -e libguestfs-bash-completion-1.36.10-6.el7.centos.noarch \
+libguestfs-1.36.10-6.el7.centos.x86_64 \
+libguestfs-man-pages-uk-1.36.10-6.el7.centos.noarch \
+libguestfs-xfs-1.36.10-6.el7.centos.x86_64 \
+libguestfs-java-1.36.10-6.el7.centos.x86_64\
+libguestfs-winsupport-7.2-2.el7.x86_64\
+libguestfs-gobject-1.36.10-6.el7.centos.x86_64\
+libguestfs-rescue-1.36.10-6.el7.centos.x86_64\
+libguestfs-benchmarking-1.36.10-6.el7.centos.x86_64\
+libguestfs-javadoc-1.36.10-6.el7.centos.noarch\
+libguestfs-tools-1.36.10-6.el7.centos.noarch\
+libguestfs-gobject-doc-1.36.10-6.el7.centos.noarch\
+libguestfs-man-pages-ja-1.36.10-6.el7.centos.noarch\
+libguestfs-tools-c-1.36.10-6.el7.centos.x86_64\
+libguestfs-gfs2-1.36.10-6.el7.centos.x86_64\
+libguestfs-rsync-1.36.10-6.el7.centos.x86_64\
+libguestfs-java-devel-1.36.10-6.el7.centos.x86_64\
+libguestfs-gobject-devel-1.36.10-6.el7.centos.x86_64\
+libguestfs-devel-1.36.10-6.el7.centos.x86_64\
+libguestfs-inspect-icons-1.36.10-6.el7.centos.noarch
+
+```
+.2 缩小分配的磁盘镜像空间上限(未完成)
+
+首先，经过查询，找到guestfish和gparted两个linux下操作虚拟机文件分区的工具，但由于无网络下的安装依赖问题，暂时搁置，选择尝试已有工具。
+
+使用老毛桃对win7进行分区压缩，提示对Vista及以上版本压缩后可能出现问题，实际上压缩完成后的确出现蓝屏，文件缺失问题。
+
+使用win7自带磁盘管理，仅能从16G压缩至12G。
+
+而该镜像使用qemu-img info查看，qcow2文件仅占用了3.6G，而raw也仅占用了7.8G。内外不符，尚未找到确定的原因，暂时猜测文件稀疏等问题。
+
+根据《深度实践KVM》及大量博客推荐，开始尝试无网络下，安装guestfish，即libguestfs包。
+
+1.2.1 尝试安装rpm包，从centos源站下载了该rpm包，实际安装时仅提示安装100%，实际操作时发现需要的工具命令并未安装完全。
+
+1.2.2 想到昨天发现的Hik pypi的镜像源，试图寻找yum源，最终发现了mirrors.hikvision.com.cn中CentOS存在部分源。但在多次尝试修改源后发现，源信息不全，无法直接使用。该源各组似乎各自维护自己所需要的包，经检索，在OS组下找到了guestfish包，根据(https://centos.pkgs.org/7/centos-updates-x86_64/libguestfs-tools-c-1.36.10-6.el7_5.2.x86_64.rpm.html)里所要求的依赖包，手动从海康源中下载，计划手动安装。在手动安装了约10个左右后，发现依赖不全。并且出现了嵌套依赖的缺失。
+
+
+
+海康源站mirrors.hikvision.com.cn
+
+# 块设备
+
+doc在这里，到时候查着改就行了
+https://libvirt.org/formatdomain.html#elementsDevices
+
+
+
+```
+
+20180707
+
+raw之所以也可能会类似qcow2那样，用du看到的空间也非常小的原因，是在于在其之下的ext4格式文件系统，因此qcow2在这种背景下并没有优势，只是其支持的功能复杂，因此具有价值
+
+
+PaaS上的中间件开发，将各种接口进行适配，平台化？
+
+
+
+>下面是被用于CI / CD创建脚本的主要框架和工具：
+>
+>自动构建管理: Apache Ant, Apache Maven, Gradle, …
+>持续集成: Jenkins, Bamboo, …
+>持续交付: Chef, Puppet, SaltStack, Ansible, …
+
+其实docker组用的是docker swarm这个框架写的那个配置？
+
+docker和KVM
+
+docker还是更轻量级，不愧为微服务使用，而KVM还是太笨重了
+
+什么叫所有的容器都必须使用同样的操作系统和内核，不也是可选的吗？
+
+现在连windows的镜像也已经发布了呀？
+
+的确，KVM需要hypervisor支持
+
+不过在隔离性伤，相比KVM，容器公用一部分的运行库,怎么说
+
+http://www.cnblogs.com/boyzgw/p/6807986.html
+
+
+
+20180709
+
+```
+只读挂载
+mount -o ro xxx.ios /mnt/cdrom
+yum list | grep libvirt
+手动remove旧的包
+yum remove libvirt
+yum install libvirt
+
+似乎下述代码能修好libvirt和systemd的问题
+# cp /usr/lib/systemd/system/libvirtd.service /etc/systemd/system/libvirtd.service 
+# sed -i s/notify/simple/ /etc/systemd/system/libvirtd.service 
+# systemctl daemon-reload
+# systemctl reenable libvirtd     # If you enabled it before
+
+来源https://www.reddit.com/r/archlinux/comments/490h9d/libvirtqemu_weird_timeout_issue/
+```
+
+新设备缺少了br0网桥配置，需要本机network里添加这个设置之后，在virsh net-define 这个配置
+在virsh net-list里看到才比较正常
+
+新机器最后使用命令时，依赖依旧有问题，libguestfs和supermin5上面异常退出，
+
+偶然想到，看到的博客都没有提到修改qco2硬盘上限这个问题，由于qcow2格式是写时复制，想到会不会并不检测硬盘大小是否满足上限，因此找zx哥分了一个仅比实际占用硬盘大小大，远比设置的上限小的硬盘分区，实际测试，成功启动了win7
+
+把一个带平台的系统刻到ssd上，拿回来压缩。
+
+试着用在线平台，但是阻塞在scp，连了显示器，看到系统halted了
+
+# win7 系统 刻成 iso
+
+简单查询，似乎已经安装好的系统，没办法封装成iso，只能采用ghost备份还原的方法
+
+看到了sysprep工具，似乎可以做到
+
+20180710
+
+`
+tar zcvf xx.img.tar.gz xxx.img`
+
+32G的要压缩多久呢
+
+重新看了一下以前看的那些
+
+```
+dd if=/dev/zero of=/mytempfile
+# that could take a some time
+rm -f /mytempfile
+# 这种清零的操作，可以对磁盘分区的连续性起到作用吗？
+
+```
+
+Shrink the Disk File
+Shut down the VM.
+Log into the Proxmox node and go to the VM's disk storage directory.
+IMPORTANT: Create a backup of your existing VM disk file:
+```
+mv image.qcow2 image.qcow2_backup
+```
+Option #1: Shrink your disk without compression (better performance, larger disk size):
+```
+qemu-img convert -O qcow2 image.qcow2_backup image.qcow2
+```
+Option #2: Shrink your disk with compression (smaller disk size, takes longer to shrink, performance impact on slower systems):
+
+```
+qemu-img convert -O qcow2 -c image.qcow2_backup image.qcow2
+```
+Example: A 50GB disk file I shrank without compression to 46GB, but with compression to 25GB. Time to compress was almost twice as long as an uncompressed shrink.
+Boot your VM and verify all is working.
+When you verify all is well, it should be safe to either delete the backup of the original disk, or move it to an offline backup storage.
+
+Ref.(https://pve.proxmox.com/wiki/Shrink_Qcow2_Disk_Files)
+
+这里是否可以这么理解，通过清零后的磁盘，再使用-c指令，可以让镜像变得更小。
+
+
+# 安装了平台以后的win7
+
+磁盘管理的压缩卷没有反应，日志里说到是服务被禁用，在Services.msc中找到disk 磁盘清理，设置禁用为手动，可以压缩了
+
+但是可压缩空间小于可分配空间，根据下面那个关闭系统保护、删除还原点、关闭分页，得到了
+
+Ref.(https://jingyan.baidu.com/article/1709ad808a599f4634c4f082.html)
+
+但是还是存在8个G的不可移动，进行一下磁盘碎片清理
+
+唔，重启之后就启动不了，一直paused
+
+# 封装win7到iso? 目前用sysprep可以弄成wim文件
+
+
+# 一体机镜像
+
+virsh start时，提示没有br0，
+
+进入https://10.192.53.96:2004界面，按照顺序进行网络配置，绑定前两个，创建网桥
+
+修改网络配置，/etc/sysconfig/network-scripts/ 
+
+# 写个py代码，实现脚本功能
+
+需求:
+python xxx.py --kvm $kvm_name --source $source_block_dir
+
+就会根据kvm_name获取到xml文件，然后在其中devices选项中写入block的选项，source 设置为$source_block_dir。
+
+追加完后，重新define设备，根据是否已经存在，将libvirt提供的错误给返回。
+
+似乎需要写成一个接口，会返回成功状态0
+
+所以 之后 要将 这个过程型，再进行多种情况考虑，写成对象型
+
+考虑到，目前使用这两个参数，必定是同时使用的，没有找到绑定这两个参数的方式，即一旦使用了kvm，自动提示必须要-source选项
+
+# arg_parse使用
+
+这里的optional arguments 和 positional arguments区别在哪里？
+
+20180711
+
+透传逻辑卷的脚本基础上按照流程途中的逻辑进行相应的修改，
+
+1	块设备透传 在一键配置中加入 ，景象中虚拟机默认关机，开机之后做完一间配置之后，透传快设备，然后开启虚拟机
+
+# 记录 过程
+
+考虑到是作为接口开发的，因此，类内实例应该是保存输入的信息，如kvm名以及路径名等，然后通过外部调用那些操作的接口来执行
+
+1. 在命令错误提示那里，连续输入的2个参数的名字需要修改，如-k kvm_name source，目前还是-k KVM KVM
+
+可以通过设置2个选项，并且都是必须的实现
+
+测试:
+python kvmCmd.py 
+输出:
+usage: kvmCmd.py [-h] -k KVM -s SOURCE
+kvmCmd.py: error: argument -k/--kvm is required
+
+2. 当遇到异常时，raise状态 后 强制退出， 如sys.exit(1)，让echo $?能得到结果是1就行
+
+raise并不能强制退出，只会把捕获的异常再次抛出
+
+python里的raise就是常见的throw
+
+综上，sys.exit()的退出比较优雅，调用后会引发SystemExit异常，可以捕获此异常做清理工作。os._exit()直接将python解释器退出，余下的语句不会执行。
+
+一般情况下使用sys.exit()即可，一般在fork出来的子进程中使用os._exit()
+
+ Ref.(https://blog.csdn.net/g863402758/article/details/53304480)
+
+$# 传递到脚本的参数个数
+$* 以一个单字符串显示所有向脚本传递的参数
+$$ 脚本运行的ID号
+$! 后台运行的最后一个进程的ID号
+$@ 与$#相同，但是使用时加引号，并在引号中返回每个参数。
+$- 显示shell使用的当前选项。
+$? 显示最后命令的推出状况。0表示没有错误。 
+
+try catch 在js上浏览器会自动进行优化，性能有所提升，不过目前没有涉及，暂时不管
+
+
+# 查看块设备命令
+```
+lvs 
+report-lun
+report-lun info -i 0(id号)
+路径在/dev/mapper，默认在名字
+```
+
+# arp 绑定 
+8C-EC-4B-54-DA-66
+ip 10.192.44.63
+用管理员权限绑定了，`arp -s 10.192.44.63 8C-EC-4B-54-DA-66`
+
+
+
+20180712 
+
+# 刻制915、920卡
+
+# 给45.55透传音频设备
+
+似乎可以透传音频的pci，然后更改为spice连接即可
+
+lspci 查看pci设备，但是这里看不到是ac97 model还是什么？
+
+
+00:03.0 Audio device: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor HD Audio Controller (rev 06)
+00:1b.0 Audio device: Intel Corporation 8 Series/C220 Series Chipset High Definition Audio Controller (rev 05)
+
+Intel 和 AMD 都在它们的新一代处理器架构中提供对设备透传的支持（以及辅助管理程序的新指令）。Intel 将这种支持称为 Virtualization Technology for Directed I/O (VT-d)，而 AMD 称之为 I/O Memory Management Unit (IOMMU)。
+
+唉，在内网里，装个驱动还得靠驱动人生
+
+nvc透传的并不是原始设备，而是仿真的一个声卡。
+
+本来似乎需要在宿主机里取消挂载声卡，用下面的脚本，但实际上更换了下model, vnc那里就检测到了。
+
+```
+[root@host016 home]# vi bind.sh
+#!/bin/bash
+
+modprobe vfio-pci
+
+for dev in "$@"; do
+        vendor=$(cat /sys/bus/pci/devices/$dev/vendor)
+        device=$(cat /sys/bus/pci/devices/$dev/device)
+        if [ -e /sys/bus/pci/devices/$dev/driver ]; then
+                echo $dev > /sys/bus/pci/devices/$dev/driver/unbind
+        fi
+        echo $vendor $device > /sys/bus/pci/drivers/vfio-pci/new_id
+done
+
+```
+
+```
+透传物理机声卡到guest os
+
+virsh nodedev-list --tree 查看相关信息
+lspci -nn 查看设备
+
+virsh nodedev-dumpxml pci_0000_00_1b_0（pci_0000_00_03_0）
+
+然后再执行system-complete-reboot
+
+宿主机 解挂pci设备
+
+ cat /proc/cmdline |grep iommu
+
+vim /boot/grub2/grub.cfg 
+
+vim里查找 intel_iommu=pt， 在这里后面加上pci-stub.ids=8086:8c20
+
+# 确认权限
+
+TRUNK/HIKOS/hikos 
+TRUNK/HIKOS/system
+TRUNK/9.2.X-iRAID/HIKDISK-MANAGER有权限
+
+
+
+TRUNK/9.2.X无权限
+BRANCHES/9.2.X看得到文件夹，看不到内容
+TRUNK/9.2.X-iRAID/MSGBUS
+
+    
+
+
+
+
+20180713
+
+# 卸载声卡，需要采用其他方式，娟姐提供的仅限NVIDIA显卡的驱动的
+
+卸载N卡驱动使用的是intel_iommu=on vfio-pci ids=8086:0c0c的内核参数
+
+
+如果要透传pci设备，是用到了IOMMU的虚拟地址转换的，从而可以实现卸载和透传，使用cat /proc/cpuinfo可以看到AT-D的支持。
+
+在CPU里看到AT-x的设置，但是AT-D呢
+
+E3 1250 1230 支持 vt-d
+
+rdp由于使用的是本机的物理设备如声卡来接收音频信息，因此对guest OS的声卡没有要求，同样可以做到传递音频信息，centos上也有支持windows rdp的应用，如xfreerdp
+
+# ghost 替换gho, 得到iso
+
+# 使用microsoft自带的， dism 和 imagesx和oscdimg进行打包https://answers.microsoft.com/en-us/windows/forum/windows_7-windows_install/where-is-oscdimgexe/b6ccd22e-b478-4222-b370-d5aaf021f575
+
+
+目前打包遭遇问题，由于缺少virt io驱动，在进入如ghost和win pE时，无法识别出硬盘，导致无法对硬盘进行封包、备份操作。
+
+而win pe时无法安装硬盘驱动。
+
+20180714

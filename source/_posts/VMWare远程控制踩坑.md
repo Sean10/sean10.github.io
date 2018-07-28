@@ -2,7 +2,7 @@
 title: VMWare远程控制tensorflow踩坑
 date: 2018-05-07 18:14:08
 updated:
-tags: [VMWare]
+tags: [VMWare, jupyter]
 categories: [专业]
 ---
 
@@ -65,8 +65,31 @@ Jupyter远程跑的时候，频频会弹出窗口提示
 
 但是依旧会定时弹出这个网页……暂时先集中到内容上，之后在处理吧
 
+# jupyter kernel重建
+
+在另一台电脑上重新安装jupyter，发现由于系统内存在多个python3版本，执行的python3内核并不是我所要的。
+
+首先修改ipython
+
+解决方式:
+```
+which ipython
+which python3
+```
+
+将ipython文件中启动方式里的python路径改为你要用的那个版本的python即可，像我就是修改为python3。
+
+再使用`jupyter kernelspec list`得到所需要修改kernel.json路径，将其中的python路径改为自己所要用的即可。
+
+不过这里显然存在一个问题，这里我list出来的是我在virtualenvwrapper里配置的环境里装的jupyter的kernel的路径，虽然这里改了以后能够运作了，但这应该是存在问题的。
+
+看[6]中提到的，`ipython kernel install`可以按自己想要的安装内核，但是我安装后还是没能出现在上面的list中，稍后再看吧。
+
+
 # Reference
 1. [vmhgfs-fuse替换mount](https://ask.csdn.net/questions/163546)
 2. [vmware-tools-patches](https://askubuntu.com/questions/762755/no-vmhgfs-file-system-installed-to-use-use-shared-folder)
 3. [pip install doc](https://pip.pypa.io/en/stable/installing/)
 4. [tsinghua pypi](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)
+5. [Anaconda & ipython路径问题 & jupyter notebook 启动核心问题（使用方法&不常见的问题）](https://zhuanlan.zhihu.com/p/31074090)
+6. [jupyter与python的内核](https://letianfeng.github.io/python/2018/04/24/jupyter_and_python_kernel.html)
