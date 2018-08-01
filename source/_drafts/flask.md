@@ -45,6 +45,18 @@ url_for('todo.index')
 
 直接指向blueprint的路由函数就可以了
 
+## Flask Blueprint AttributeError: 'module' object has no attribute 'name' error
+
+从[^6]中可以看到，这个问题，主要是由于实际在register_blueprint时，todo不是Blueprint对象导致的，添加一个`isinstance(obj, Blueprint)`可以有效帮助排查问题。
+
+然后，主要是导入模块上出现的问题，由于我Bluprint设置的对象名与模块文件名相同，导入了自定义包里的模块(即文件名)，而不是导入的Blueprint，所以才会出现上述问题。
+
+## rule = self.url_rule_class(rule, methods=methods, **options) TypeError: __init__() got an unexpected keyword argument 'default'
+
+经过排查，的确在flask那个位置存在一个Defaults属性，但是暂时没能找到哪里传去的defualt参数
+
+
+
 
 # Reference
 1. [Flask Doc]()
@@ -53,3 +65,4 @@ url_for('todo.index')
 ](https://stackoverflow.com/questions/18214612/how-to-access-app-config-in-a-blueprint)
 4. [一个Flask应用运行过程剖析](http://fanchunke.me/Flask/%E4%B8%80%E4%B8%AAFlask%E5%BA%94%E7%94%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%89%96%E6%9E%90/)
 5. [Flask进阶(一)——请求上下文和应用上下文完全解答(下)](https://blog.csdn.net/sodawaterer/article/details/71124899)
+6. [Flask Blueprint AttributeError: 'module' object has no attribute 'name' error](https://stackoverflow.com/questions/26550180/flask-blueprint-attributeerror-module-object-has-no-attribute-name-error)

@@ -1,0 +1,467 @@
+---
+title: rsyslog & journald日志系统结构
+date: 2018-08-02 01:45:01
+updated:
+tags: [linux, rsyslog, systemd]
+categories: [专业]
+---
+
+之前在公司服务器上验证了好多次流程图，结果是被改过代码了可能，运行结果与原生CentOS镜像结果不同。被迫混淆了好久。
+
+<!--more-->
+
+
+# 基本背景
+
+## 实验环境
+* Centos 7.4
+* rsyslog 8.24
+* systemd环境
+
+# rsyslog与systemd-journald日志流向
+![](http://7xrn64.com1.z0.glb.clouddn.com/2016/10/20/anime_miku_girl_vocaloid_pose_28724_1366x768.jpg)
+
+目前来看，lsof只能查看该进程监听的socket,不显示它发送的socket。通过strace追踪，RecMsg会显示发送方的进程pid，从那里可以看到是哪个进程发送到自己监听的socket的信息。
+
+``` bash
+
+# rsyslog
+
+[root@localhost ~]# strace -T -ttt -f -p 35341
+strace: Process 35341 attached with 3 threads
+[pid 35343] 1532962871.699907 futex(0x559329e6e2ac, FUTEX_WAIT_PRIVATE, 23, NULL <unfinished ...>
+[pid 35342] 1532962871.699926 select(4, [3], NULL, NULL, NULL <unfinished ...>
+[pid 35341] 1532962871.699940 select(1, NULL, NULL, NULL, {367, 871364} <unfinished ...>
+[pid 35342] 1532962894.732966 <... select resumed> ) = 1 (in [3]) <23.033022>
+[pid 35342] 1532962894.733015 recvmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"<13>Jul 30 11:01:34 root: newer", 8096}], msg_controllen=64, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}, {cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=10247, uid=0, gid=0}}], msg_flags=0}, MSG_DONTWAIT) = 31 <0.000008>
+[pid 35342] 1532962894.733070 futex(0x559329e6e2ac, FUTEX_WAKE_OP_PRIVATE, 1, 1, 0x559329e6e2a8, {FUTEX_OP_SET, 0, FUTEX_OP_CMP_GT, 1} <unfinished ...>
+[pid 35343] 1532962894.733094 <... futex resumed> ) = 0 <23.033169>
+[pid 35342] 1532962894.733098 <... futex resumed> ) = 1 <0.000018>
+[pid 35343] 1532962894.733110 futex(0x559329e6e0b0, FUTEX_WAIT_PRIVATE, 2, NULL <unfinished ...>
+[pid 35342] 1532962894.733116 futex(0x559329e6e0b0, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+[pid 35343] 1532962894.733128 <... futex resumed> ) = -1 EAGAIN (Resource temporarily unavailable) <0.000012>
+[pid 35342] 1532962894.733140 <... futex resumed> ) = 0 <0.000021>
+[pid 35343] 1532962894.733154 futex(0x559329e6e0b0, FUTEX_WAKE_PRIVATE, 1 <unfinished ...>
+[pid 35342] 1532962894.733160 select(4, [3], NULL, NULL, NULL <unfinished ...>
+[pid 35343] 1532962894.733175 <... futex resumed> ) = 0 <0.000016>
+[pid 35343] 1532962894.733194 write(5, "Jul 30 11:01:34 localhost root: "..., 38) = 38 <0.000020>
+[pid 35343] 1532962894.733234 futex(0x559329e6e2ac, FUTEX_WAIT_PRIVATE, 25, NULL
+
+# systemd-journald
+
+[root@localhost ~]# strace -ttt -f -p 10247
+strace: Process 10247 attached
+1532962887.731909 epoll_wait(7, [{EPOLLIN, {u32=3876856720, u64=94080840508304}}], 10, -1) = 1
+1532962894.732687 clock_gettime(CLOCK_BOOTTIME, {246287, 470494988}) = 0
+1532962894.732723 ioctl(5, FIONREAD, [31]) = 0
+1532962894.732755 recvmsg(5, {msg_name(0)=0x7ffc9785fab0, msg_iov(1)=[{"<13>Jul 30 11:01:34 root: newer", 24575}], msg_controllen=136, [{cmsg_len=32, cmsg_level=SOL_SOCKET, cmsg_type=0x1d /* SCM_??? */}, {cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=35455, uid=0, gid=0}}, {cmsg_len=70, cmsg_level=SOL_SOCKET, cmsg_type=SCM_SECURITY, "unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023\0"}], msg_flags=MSG_CMSG_CLOEXEC}, MSG_DONTWAIT|MSG_CMSG_CLOEXEC) = 31
+1532962894.732825 sendmsg(5, {msg_name(29)={sa_family=AF_LOCAL, sun_path="/run/systemd/journal/syslog"}, msg_iov(1)=[{"<13>Jul 30 11:01:34 root: newer", 31}], msg_controllen=28, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=35455, uid=0, gid=0}}], msg_flags=0}, MSG_NOSIGNAL) = -1 ESRCH (No such process)
+1532962894.732870 sendmsg(5, {msg_name(29)={sa_family=AF_LOCAL, sun_path="/run/systemd/journal/syslog"}, msg_iov(1)=[{"<13>Jul 30 11:01:34 root: newer", 31}], msg_controllen=28, [{cmsg_len=28, cmsg_level=SOL_SOCKET, cmsg_type=SCM_CREDENTIALS, {pid=10247, uid=0, gid=0}}], msg_flags=0}, MSG_NOSIGNAL) = 31
+1532962894.733261 open("/proc/35455/cgroup", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.733307 open("/proc/35455/comm", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.733331 readlinkat(AT_FDCWD, "/proc/35455/exe", 0x5590e71435b0, 99) = -1 ENOENT (No such file or directory)
+1532962894.733872 open("/proc/35455/cmdline", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.733923 open("/proc/35455/status", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.733946 open("/proc/35455/sessionid", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.733988 open("/proc/35455/loginuid", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.734014 open("/proc/35455/cgroup", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+1532962894.734050 fstat(14, {st_mode=S_IFREG|0640, st_size=8388608, ...}) = 0
+1532962894.734146 ftruncate(14, 8388608) = 0
+
+这里可以看到，35455是logger发送时建立的进程pid
+[root@localhost ~]# journalctl | grep 35455
+Jul 30 10:31:18 localhost.localdomain root[35455]: 123
+Jul 30 10:32:35 localhost.localdomain root[35455]: 123
+Jul 30 10:34:03 localhost.localdomain root[35455]: 123
+Jul 30 10:35:30 localhost.localdomain root[35455]: 123
+Jul 30 11:01:34 localhost.localdomain root[35455]: newer
+```
+
+# 常见问题
+
+## 日志重复
+见上图，可知默认rsyslog.conf中启动了imuxsock与imjournal两个模块，分别会通过不同的渠道获得syslog日志，因此会导致重复。配置方法详见下章配置信息对应项。
+
+## 日志丢失
+
+rsyslog的imjournal模块读取数据库有一个频率上限设置，而systemd-journald也有一个数据库读取频率上限设置。满足rsyslog频率上限，messages中就会drop日志；满足systemd-journald上限，journald就会miss日志。配置方法详见下章配置信息对应项。
+
+```
+rsyslogd: imjournal: 84667 messages lost due to rate-limiting
+
+systemd-journal[1770]: Missed 1427 kernel messages
+
+```
+
+# 配置信息
+## /etc/rsyslog.conf
+
+### $ModLoad imuxsock
+
+该模块导入监听本机syslog socket的功能，从syslog中接收日志,该配置项依赖systemd-journald.conf中的ForwardToSyslog=Yes
+
+#### $OmitLocalLogging 与 $SystemLogSocketName
+
+该配置信息测试结果与官网有所区别，测试中指定socketName为/dev/log(可修改)，系统默认指向socket为/run/systemd/journal/syslog。使用详见下表。
+
+``` bash
+# 显式关闭 OmitLocalLog,未指定socketName || 非显式关闭，未指定socketName
+[root@localhost ~]# lsof -c rsyslog
+COMMAND   PID USER   FD   TYPE             DEVICE SIZE/OFF   NODE NAME
+rsyslogd 1713 root  cwd    DIR              253,0      224     64 /
+rsyslogd 1713 root  rtd    DIR              253,0      224     64 /
+rsyslogd 1713 root  txt    REG              253,0   663960    961 /usr/sbin/rsyslogd
+rsyslogd 1713 root  mem    REG              253,0    38128   9671 /usr/lib64/rsyslog/imuxsock.so
+rsyslogd 1713 root  mem    REG              253,0    24520   9672 /usr/lib64/rsyslog/lmnet.so
+rsyslogd 1713 root  mem    REG              253,0  2127336  61000 /usr/lib64/libc-2.17.so
+rsyslogd 1713 root  mem    REG              253,0    88720     84 /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+rsyslogd 1713 root  mem    REG              253,0    20040  87327 /usr/lib64/libuuid.so.1.3.0
+rsyslogd 1713 root  mem    REG              253,0    40824 322855 /usr/lib64/libfastjson.so.4.0.0
+rsyslogd 1713 root  mem    REG              253,0    15424 322847 /usr/lib64/libestr.so.0.0.0
+rsyslogd 1713 root  mem    REG              253,0    44448  72710 /usr/lib64/librt-2.17.so
+rsyslogd 1713 root  mem    REG              253,0    19776  61006 /usr/lib64/libdl-2.17.so
+rsyslogd 1713 root  mem    REG              253,0   144792  72706 /usr/lib64/libpthread-2.17.so
+rsyslogd 1713 root  mem    REG              253,0    90664  87310 /usr/lib64/libz.so.1.2.7
+rsyslogd 1713 root  mem    REG              253,0   164264  60993 /usr/lib64/ld-2.17.so
+rsyslogd 1713 root    0r   CHR                1,3      0t0   5423 /dev/null
+rsyslogd 1713 root    1w   CHR                1,3      0t0   5423 /dev/null
+rsyslogd 1713 root    2w   CHR                1,3      0t0   5423 /dev/null
+rsyslogd 1713 root    3u  unix 0xffff880037064800      0t0  29648 /run/systemd/journal/syslog
+
+# 显式打开OmitLocalLog 并 指定socketName || 并不指定socketName
+[root@localhost ~]# lsof -c rsyslog
+COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+rsyslogd 1765 root  cwd    DIR  253,0      224     64 /
+rsyslogd 1765 root  rtd    DIR  253,0      224     64 /
+rsyslogd 1765 root  txt    REG  253,0   663960    961 /usr/sbin/rsyslogd
+rsyslogd 1765 root  mem    REG  253,0    38128   9671 /usr/lib64/rsyslog/imuxsock.so
+rsyslogd 1765 root  mem    REG  253,0    24520   9672 /usr/lib64/rsyslog/lmnet.so
+rsyslogd 1765 root  mem    REG  253,0  2127336  61000 /usr/lib64/libc-2.17.so
+rsyslogd 1765 root  mem    REG  253,0    88720     84 /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+rsyslogd 1765 root  mem    REG  253,0    20040  87327 /usr/lib64/libuuid.so.1.3.0
+rsyslogd 1765 root  mem    REG  253,0    40824 322855 /usr/lib64/libfastjson.so.4.0.0
+rsyslogd 1765 root  mem    REG  253,0    15424 322847 /usr/lib64/libestr.so.0.0.0
+rsyslogd 1765 root  mem    REG  253,0    44448  72710 /usr/lib64/librt-2.17.so
+rsyslogd 1765 root  mem    REG  253,0    19776  61006 /usr/lib64/libdl-2.17.so
+rsyslogd 1765 root  mem    REG  253,0   144792  72706 /usr/lib64/libpthread-2.17.so
+rsyslogd 1765 root  mem    REG  253,0    90664  87310 /usr/lib64/libz.so.1.2.7
+rsyslogd 1765 root  mem    REG  253,0   164264  60993 /usr/lib64/ld-2.17.so
+rsyslogd 1765 root    0r   CHR    1,3      0t0   5423 /dev/null
+rsyslogd 1765 root    1w   CHR    1,3      0t0   5423 /dev/null
+rsyslogd 1765 root    2w   CHR    1,3      0t0   5423 /dev/null
+
+# 非显式开启OmitLocalLog ，指定socketName || 显式关闭OmitLocalLog, 并指定SocketName
+[root@localhost ~]# lsof -c rsyslog
+COMMAND   PID USER   FD   TYPE             DEVICE SIZE/OFF     NODE NAME
+rsyslogd 1779 root  cwd    DIR              253,0      224       64 /
+rsyslogd 1779 root  rtd    DIR              253,0      224       64 /
+rsyslogd 1779 root  txt    REG              253,0   663960      961 /usr/sbin/rsyslogd
+rsyslogd 1779 root  mem    REG              253,0    38128     9671 /usr/lib64/rsyslog/imuxsock.so
+rsyslogd 1779 root  mem    REG              253,0    24520     9672 /usr/lib64/rsyslog/lmnet.so
+rsyslogd 1779 root  mem    REG              253,0  2127336    61000 /usr/lib64/libc-2.17.so
+rsyslogd 1779 root  mem    REG              253,0    88720       84 /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+rsyslogd 1779 root  mem    REG              253,0    20040    87327 /usr/lib64/libuuid.so.1.3.0
+rsyslogd 1779 root  mem    REG              253,0    40824   322855 /usr/lib64/libfastjson.so.4.0.0
+rsyslogd 1779 root  mem    REG              253,0    15424   322847 /usr/lib64/libestr.so.0.0.0
+rsyslogd 1779 root  mem    REG              253,0    44448    72710 /usr/lib64/librt-2.17.so
+rsyslogd 1779 root  mem    REG              253,0    19776    61006 /usr/lib64/libdl-2.17.so
+rsyslogd 1779 root  mem    REG              253,0   144792    72706 /usr/lib64/libpthread-2.17.so
+rsyslogd 1779 root  mem    REG              253,0    90664    87310 /usr/lib64/libz.so.1.2.7
+rsyslogd 1779 root  mem    REG              253,0   164264    60993 /usr/lib64/ld-2.17.so
+rsyslogd 1779 root    0r   CHR                1,3      0t0     5423 /dev/null
+rsyslogd 1779 root    1w   CHR                1,3      0t0     5423 /dev/null
+rsyslogd 1779 root    2w   CHR                1,3      0t0     5423 /dev/null
+rsyslogd 1779 root    3u  unix 0xffff88003b564800      0t0    30441 /dev/log
+rsyslogd 1779 root    4u  unix 0xffff88003b560800      0t0    30443 socket
+rsyslogd 1779 root    5w   REG              253,0   754001 17131680 /var/log/messages
+rsyslogd 1779 root    6w   REG              253,0    24654 17131681 /var/log/secure
+```
+
+由上述可知，在不同情况下，rsyslog实际监听的socket如下
+
+| x            | 显式开启 | 显式关闭                    | 非显式开启                  |
+| ------------ | -------- | --------------------------- | --------------------------- |
+| 指定socket   | null     | /dev/log                    | /dev/log                    |
+| 不指定socket | null     | /run/systemd/journal/syslog | /run/systemd/journal/syslog |
+
+### $ModLoad imjournal
+
+该模块导入直接读取systemd-journald数据库的功能，可直接从journald数据库中读取syslog日志、内核日志以及服务stdout\stderr等信息。
+
+imjournal在lsof中可以看到，直接读取的数据库
+``` bash
+[root@localhost ~]# lsof  /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+COMMAND     PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME
+systemd-j 10247 root  mem    REG   0,19 25165824 7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+systemd-j 10247 root   12u   REG   0,19 25165824 7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+rsyslogd  10255 root  mem    REG   0,19 25165824 7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+rsyslogd  10255 root    5r   REG   0,19 25165824 7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+
+[root@localhost ~]# lsof -c systemd-journal
+COMMAND     PID USER   FD      TYPE             DEVICE SIZE/OFF     NODE NAME
+systemd-j 10247 root  cwd       DIR              253,0      224       64 /
+systemd-j 10247 root  rtd       DIR              253,0      224       64 /
+systemd-j 10247 root  txt       REG              253,0   274752 16874824 /usr/lib/systemd/systemd-journald
+systemd-j 10247 root  mem       REG               0,19 25165824  7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+systemd-j 10247 root  mem       REG              253,0    19888    87389 /usr/lib64/libattr.so.1.1.0
+systemd-j 10247 root  mem       REG              253,0   402384    87259 /usr/lib64/libpcre.so.1.2.0
+systemd-j 10247 root  mem       REG              253,0    19776    61006 /usr/lib64/libdl-2.17.so
+systemd-j 10247 root  mem       REG              253,0    19384    87371 /usr/lib64/libgpg-error.so.0.10.0
+systemd-j 10247 root  mem       REG              253,0  2127336    61000 /usr/lib64/libc-2.17.so
+systemd-j 10247 root  mem       REG              253,0   144792    72706 /usr/lib64/libpthread-2.17.so
+systemd-j 10247 root  mem       REG              253,0    88720       84 /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+systemd-j 10247 root  mem       REG              253,0    44448    72710 /usr/lib64/librt-2.17.so
+systemd-j 10247 root  mem       REG              253,0    37056    87391 /usr/lib64/libacl.so.1.1.0
+systemd-j 10247 root  mem       REG              253,0   155744    87307 /usr/lib64/libselinux.so.1
+systemd-j 10247 root  mem       REG              253,0   535064    87381 /usr/lib64/libgcrypt.so.11.8.2
+systemd-j 10247 root  mem       REG              253,0   157424    87316 /usr/lib64/liblzma.so.5.2.2
+systemd-j 10247 root  mem       REG              253,0   164264    60993 /usr/lib64/ld-2.17.so
+systemd-j 10247 root  mem       REG               0,19        8     7972 /run/systemd/journal/kernel-seqnum
+systemd-j 10247 root    0r      CHR                1,3      0t0     5423 /dev/null
+systemd-j 10247 root    1w      CHR                1,3      0t0     5423 /dev/null
+systemd-j 10247 root    2w      CHR                1,3      0t0     5423 /dev/null
+systemd-j 10247 root    3u     unix 0xffff880037e83000      0t0    42542 /run/systemd/journal/stdout
+systemd-j 10247 root    4u     unix 0xffff880037e81400      0t0    42544 /run/systemd/journal/socket
+systemd-j 10247 root    5u     unix 0xffff880037e80800      0t0    42546 /dev/log
+systemd-j 10247 root    6w      CHR               1,11      0t0     5429 /dev/kmsg
+systemd-j 10247 root    7u  a_inode                0,9        0     5419 [eventpoll]
+systemd-j 10247 root    8u  a_inode                0,9        0     5419 [timerfd]
+systemd-j 10247 root    9u      CHR               1,11      0t0     5429 /dev/kmsg
+systemd-j 10247 root   10r      REG                0,3        0     7973 /proc/sys/kernel/hostname
+systemd-j 10247 root   11u  a_inode                0,9        0     5419 [signalfd]
+systemd-j 10247 root   12u      REG               0,19 25165824  7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+systemd-j 10247 root   13u  a_inode                0,9        0     5419 [timerfd]
+
+[root@localhost ~]# lsof -c rsyslog
+COMMAND    PID USER   FD      TYPE             DEVICE SIZE/OFF     NODE NAME
+rsyslogd 10255 root  cwd       DIR              253,0      224       64 /
+rsyslogd 10255 root  rtd       DIR              253,0      224       64 /
+rsyslogd 10255 root  txt       REG              253,0   663960      961 /usr/sbin/rsyslogd
+rsyslogd 10255 root  mem       REG               0,19 25165824   307917 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-0000000000000f6d-0005722d8a52e79b.journal
+rsyslogd 10255 root  mem       REG               0,19 25165824  2282729 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-00000000000074f5-0005722d9bdab060.journal
+rsyslogd 10255 root  mem       REG               0,19 25165824  4612418 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-000000000000dcd4-0005722db4fed7dd.journal
+rsyslogd 10255 root  mem       REG               0,19 25165824  7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+rsyslogd 10255 root  mem       REG               0,19  6455296     7976 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-0000000000000001-000571ff63cd3044.journal
+rsyslogd 10255 root  mem       REG              253,0    68192    87353 /usr/lib64/libbz2.so.1.0.6
+rsyslogd 10255 root  mem       REG              253,0    99944    87368 /usr/lib64/libelf-0.168.so
+rsyslogd 10255 root  mem       REG              253,0   402384    87259 /usr/lib64/libpcre.so.1.2.0
+rsyslogd 10255 root  mem       REG              253,0    19888    87389 /usr/lib64/libattr.so.1.1.0
+rsyslogd 10255 root  mem       REG              253,0   297328   115274 /usr/lib64/libdw-0.168.so
+rsyslogd 10255 root  mem       REG              253,0   111080    72708 /usr/lib64/libresolv-2.17.so
+rsyslogd 10255 root  mem       REG              253,0    19384    87371 /usr/lib64/libgpg-error.so.0.10.0
+rsyslogd 10255 root  mem       REG              253,0   535064    87381 /usr/lib64/libgcrypt.so.11.8.2
+rsyslogd 10255 root  mem       REG              253,0   157424    87316 /usr/lib64/liblzma.so.5.2.2
+rsyslogd 10255 root  mem       REG              253,0   155744    87307 /usr/lib64/libselinux.so.1
+rsyslogd 10255 root  mem       REG              253,0  1139680    61008 /usr/lib64/libm-2.17.so
+rsyslogd 10255 root  mem       REG              253,0    20032    87393 /usr/lib64/libcap.so.2.22
+rsyslogd 10255 root  mem       REG              253,0    25072     9665 /usr/lib64/rsyslog/imjournal.so
+rsyslogd 10255 root  mem       REG              253,0    24520     9672 /usr/lib64/rsyslog/lmnet.so
+rsyslogd 10255 root  mem       REG              253,0  2127336    61000 /usr/lib64/libc-2.17.so
+rsyslogd 10255 root  mem       REG              253,0    88720       84 /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+rsyslogd 10255 root  mem       REG              253,0    20040    87327 /usr/lib64/libuuid.so.1.3.0
+rsyslogd 10255 root  mem       REG              253,0    40824   322855 /usr/lib64/libfastjson.so.4.0.0
+rsyslogd 10255 root  mem       REG              253,0    15424   322847 /usr/lib64/libestr.so.0.0.0
+rsyslogd 10255 root  mem       REG              253,0    44448    72710 /usr/lib64/librt-2.17.so
+rsyslogd 10255 root  mem       REG              253,0    19776    61006 /usr/lib64/libdl-2.17.so
+rsyslogd 10255 root  mem       REG              253,0   144792    72706 /usr/lib64/libpthread-2.17.so
+rsyslogd 10255 root  mem       REG              253,0    90664    87310 /usr/lib64/libz.so.1.2.7
+rsyslogd 10255 root  mem       REG              253,0   164264    60993 /usr/lib64/ld-2.17.so
+rsyslogd 10255 root  mem       REG              253,0   162560   237027 /usr/lib64/libsystemd.so.0.6.0
+rsyslogd 10255 root    0r      CHR                1,3      0t0     5423 /dev/null
+rsyslogd 10255 root    1w      CHR                1,3      0t0     5423 /dev/null
+rsyslogd 10255 root    2w      CHR                1,3      0t0     5423 /dev/null
+rsyslogd 10255 root    3r  a_inode                0,9        0     5419 inotify
+rsyslogd 10255 root    4u     unix 0xffff880037338800      0t0  9404081 socket
+rsyslogd 10255 root    5r      REG               0,19 25165824  7373149 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system.journal
+rsyslogd 10255 root    6r      REG               0,19 25165824  4612418 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-000000000000dcd4-0005722db4fed7dd.journal
+rsyslogd 10255 root    7r      REG               0,19 25165824  2282729 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-00000000000074f5-0005722d9bdab060.journal
+rsyslogd 10255 root    8r      REG               0,19 25165824   307917 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-0000000000000f6d-0005722d8a52e79b.journal
+rsyslogd 10255 root    9r      REG               0,19  6455296     7976 /run/log/journal/a288ec3729494d3dad642453d0b272b7/system@cea802f344b94cb6b1e2b867690eca83-0000000000000001-000571ff63cd3044.journal
+rsyslogd 10255 root   10w      REG              253,0 49250519 17152683 /var/log/messages
+rsyslogd 10255 root   11w      REG              253,0     4634 17152684 /var/log/secure
+```
+
+
+
+#### $imjournalRatelimitInterval 0
+
+该属性设置为5s,代表以5s为一个间隙统计日志频次，达到下一条配置设置的频次，即放弃读取journald数据库信息(待验证是读取前放弃，还是读取后丢弃)。
+
+#### $imjournalRatelimitBurst 0
+
+该属性设置为上一条设置的间隙期间读取日志条数上限，如5s内读取1000条，达到该频次即停止。与上一条同时设置为0，即关闭该上限
+
+>Note that it is not recommended to turn of ratelimiting, except that you know for sure journal database entries will never be corrupted. Without ratelimiting, a corrupted systemd journal database may cause a kind of denial of service (we are stressing this point as multiple users have reported us such problems with the journal database - information current as of June 2013).
+
+但是官方并不建议关闭该上限，可能会导致数据库阻塞等问题导致其他服务出现异常。
+
+### $ModLoad imklog
+
+该模块导入直接从平台内核中读取内核日志的功能，可以避过journald数据库读写性能瓶颈。
+
+### $ModLoad imkmsg
+
+该模块通过/dev/kmsg设备，获取结构化日志
+
+### $ModLoad imudp
+
+导入该模块，并打开防火墙放行，可远程访问该主机获取日志信息
+
+### $ModLoad imtcp
+
+导入该模块，并打开防火墙放行，可远程访问该主机获取日志信息
+
+### 转发规则
+rhel7系统中，一般log默认保存在下述目录，/var/log 目录保管由rsyslog维护的各种特定于系统和服务的日志文件。
+
+/var/log/messages大多数系统日志消息记录在此。例外是与身份验证，电子邮件处理相关的定期运行作业的消息以及纯粹与调试相关的信息。
+/var/log/secure安全和身份验证相关的消息和错误的日志文件。
+/var/log/maillog与邮件服务器相关的日志文件。
+/var/log/cron crond计划任务的日志
+/var/log/boot.log与系统启动相关的消息记录在此。
+
+
+建议不直接修改rsyslog.conf的规则，在这个目录`$IncludeConfig /etc/rsyslog.d/*.conf`下存放自定义的转发规则
+
+``` bash
+:msg, contains, "of user root"            ~ 
+& ~
+
+:msg, contains, "Removed session"            ~ 
+& ~
+
+:msg, contains, "please try to use systemctl"		~
+& ~	
+
+# Log all kernel messages to the console.
+# Logging much else clutters up the screen.
+#kern.*                                                 /dev/console
+
+# Log anything (except mail) of level info or higher.
+# Don't log private authentication messages!
+*.info;mail.none;authpriv.none;cron.none                /var/log/messages
+
+# The authpriv file has restricted access.
+authpriv.*                                              /var/log/secure
+
+# Log all the mail messages in one place.
+mail.*                                                  -/var/log/maillog
+
+
+# Log cron stuff
+cron.*                                                  /var/log/cron
+
+# Everybody gets emergency messages
+*.emerg                                                 :omusrmsg:*
+
+# Save news errors of level crit and higher in a special file.
+uucp,news.crit                                          /var/log/spooler
+
+# Save boot messages also to boot.log
+local7.*                                                /var/log/boot.log
+
+```
+
+转发过滤规则，见[文档](https://www.rsyslog.com/doc/v8-stable/configuration/filters.html?highlight=info%20mail%20none%20authpriv%20none%20cron%20none%20news%20none)
+
+### begin forwarding rule
+暂未使用的远程访问日志配置信息，语法见[Legacy Action-Specific Configuration Statements](https://www.rsyslog.com/doc/v8-stable/configuration/action/index.html?highlight=actionfiledefaulttemplate)
+
+## /etc/systemd/journald.conf
+
+systemd-journald主要获得以下信息
+* Kernel log messages, via kmsg
+* Simple system log messages, via the libc syslog(3) call
+* Structured system log messages via the native Journal API, see sd_journal_print(4)
+* Standard output and standard error of service units. For further details see below.
+* Audit records, originating from the kernel audit subsystem
+
+### RateLimitInterval=30s
+频率间隙为30s
+
+### RateLimitBurst=1000
+每个间隙频次上限为1000，直到下个间隙不会接收日志
+
+### Storage=auto
+
+该配置选项控制journald日志的存储位置，以下4个选项"volatile", "persistent", "auto" and "none"，对应`/run/log/journal`,`/var/log/journal`,根据`/var/log/journal`目录建立与否判断，收到即drop,但转发forward还是生效的(如imjournal等读取数据库文件等方式无效)。
+
+### RuntimeMaxUse=
+
+设置内存中journald文件上限，一旦达到该上限，journald数据库就会阻塞住。
+
+### RuntimeKeepFree=
+
+RuntimeKeepFree表示需要保留的内存空间，剩余空间不足其设置，journald数据库同样会阻塞住。
+
+SystemMaxUse= 与 RuntimeMaxUse= 的默认值是10%空间与4G空间两者中的较小者； SystemKeepFree= 与 RuntimeKeepFree= 的默认值是15%空间与4G空间两者中的较大者； 如果在 systemd-journald 启动时， 文件系统即将被填满并且已经超越了 SystemKeepFree= 或 RuntimeKeepFree= 的限制，那么日志记录将被暂停。 也就是说，如果在创建日志文件时，文件系统有充足的空闲空间， 但是后来文件系统被其他非日志文件过多占用， 那么 systemd-journald 只会立即暂停日志记录， 但不会删除已经存在的日志文件。
+
+### RuntimeMaxFileSize=
+SystemMaxFileSize= 与 RuntimeMaxFileSize= 限制单个日志文件的最大体积， 到达此限制后日志文件将会自动滚动。 默认值是对应的 SystemMaxUse= 与 RuntimeMaxUse= 值的1/8 ， 这也意味着日志滚动默认保留7个历史文件。
+
+日志大小的值可以使用以1024为基数的 K, M, G, T, P, E 后缀， 分别对应于 1024, 1024², … 字节。
+
+### ForwardToSyslog=yes
+
+转发syslog日志到syslog socket，从而使rsyslog调用imuxsock从该socket接收日志
+
+该选项可被内核引导选项覆盖`systemd.journald.forward_to_syslog=, systemd.journald.forward_to_kmsg=, systemd.journald.forward_to_console=, systemd.journald.forward_to_wall=`，允许/禁止将收集到的日志： 转发到传统的 syslog 守护进程, 转发到内核日志缓冲区, 转发到系统控制台, 作为wall警告信息转发给所有已登录的用户
+
+### MaxLevelStore=debug
+* MaxLevelSyslog=debug
+* MaxLevelKMsg=notice
+* MaxLevelConsole=info
+* MaxLevelWall=emerg
+
+以上配置控制在数据库上存储以及转发的最大日志等级。
+
+日志等级一共分为"emerg", "alert", "crit", "err", "warning", "notice","info", "debug"
+
+## /lib/systemd/system/systemd-journald.service
+
+### StandardOutput=null
+
+设置进程的标准输出(STDOUT)。 可设为 inherit, null, tty, journal, syslog, kmsg, journal+console, syslog+console, kmsg+console, socket, fd 之一。
+
+* inherit 表示使用 StandardInput= 设置的值。
+* null 表示 /dev/null ， 也就是所有写入都会被丢弃。
+* tty 表示 TTY(由 TTYPath= 设置)， 如果仅用于输出， 那么进程将无需取得终端的控制权， 亦无需等待其他进程释放终端控制权。
+* journal 表示 systemd 日志服务(通过 journalctl(1) 访问)。 注意，所有发到 syslog 或 kmsg 的日志都会 隐含的复制一份到 journal 中。
+* syslog 表示 syslog(3) 日志服务。 注意，此时所有日志都会隐含的复制一份到 journal 中。
+* kmsg 表示内核日志缓冲区(通过 dmesg(1) 访问)。 注意，此时所有日志都会隐含的复制一份到 journal 中。
+* journal+console, syslog+console, kmsg+console 与上面三个值类似， 不同之处在于所有日志都会再复制一份到系统的控制台上。
+* socket 的解释与 StandardInput= 中的解释完全相同。
+* fd 表示将标准输出(STDOUT)连接到一个由 socket 单元提供的文件描述符。 可以通过 "fd:foobar" 格式 明确指定文件描述符的名称。 描述符名称的默认值为 "stdout" ，也就是 "fd" 等价于 "fd:stdout" 。 必须明确使用 Sockets= 选项 提供至少一个定义了文件描述符名称的 socket 单元。 注意，文件描述符的名称不一定和定义它的 socket 单元的名称一致。 如果出现了多个匹配，那么以第一个为准， 详见 systemd.socket(5) 手册对 FileDescriptorName= 选项的讲解。
+
+如果单元的标准输出(StandardOutput=)或标准错误(StandardError=)中含有 journal, syslog, kmsg 之一， 那么该单元将会自动隐含的获得 After=systemd-journald.socket 依赖(见上文)。
+
+## /etc/logrotate.conf
+
+仅对持久化后的/var/log/journal有效
+
+## journald持久化
+
+持久化保存journal的日志，默认保存一个月的日志
+``` bash
+$ sudo mkdir /var/log/journal
+$ sudo chown root:systemd-journal /var/log/journal
+$ sudo chmod 2775 /var/log/journal
+$ sudo systemctl restart systemd-journald.service
+```
+# 调试方法
+## 检验rsyslog配置信息
+``` bash
+[root@localhost ~]# rsyslogd -N6
+rsyslogd: version 8.24.0, config validation run (level 6), master config /etc/rsyslog.conf
+rsyslogd: invalid or yet-unknown config file command 'IMJournalStateFile' - have you forgotten to load a module? [v8.24.0 try http://www.rsyslog.com/e/3003 ]
+```
+
+## strace -p pid追踪进程
+
+# 参考资料
+1. [imjournal: Systemd Journal Input Module](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imjournal.html?highlight=imjournalstatefile)
+2. [rsyslog-logger-message-duplicated](https://unix.stackexchange.com/questions/196877/rsyslog-logger-message-duplicated)
+3. [systemd service 单元语法](https://zh.opensuse.org/openSUSE:How_to_write_a_systemd_service)
+4. [Filter Conditions](https://www.rsyslog.com/doc/v8-stable/configuration/filters.html?highlight=info%20mail%20none%20authpriv%20none%20cron%20none%20news%20none)
+5. [imuxsock: Unix Socket Input Module](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imuxsock.html?highlight=omitlocallogging)
+6. [man journald.conf](http://www.jinbuguo.com/systemd/journald.conf.html)
