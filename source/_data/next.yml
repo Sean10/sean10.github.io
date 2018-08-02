@@ -518,7 +518,7 @@ gitment:
   cleanly: false # Hide 'Powered by ...' on footer, and more
   language: # Force language, or auto switch by theme
   github_user: Sean10 # MUST HAVE, Your Github Username
-  github_repo: https://github.com/Sean10/sean10.github.io # MUST HAVE, The name of the repo you use to store Gitment comments
+  github_repo: sean10.github.io # MUST HAVE, The name of the repo you use to store Gitment comments
   client_id: 27dbd250403d9ac94974 # MUST HAVE, Github client id for the Gitment
   client_secret: bd2b618574e6696aa791f1a5ab010e9c44828362 # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect

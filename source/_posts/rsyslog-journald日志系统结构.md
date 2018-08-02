@@ -19,7 +19,7 @@ categories: [专业]
 * systemd环境
 
 # rsyslog与systemd-journald日志流向
-![](http://7xrn64.com1.z0.glb.clouddn.com/2016/10/20/anime_miku_girl_vocaloid_pose_28724_1366x768.jpg)
+![](http://7xrn64.com1.z0.glb.clouddn.com/rsyslog_journald.png)
 
 目前来看，lsof只能查看该进程监听的socket,不显示它发送的socket。通过strace追踪，RecMsg会显示发送方的进程pid，从那里可以看到是哪个进程发送到自己监听的socket的信息。
 
