@@ -4,5 +4,5 @@ date: {{ date }}
 updated: {{ updated }}
 tags:
 categories:
-subtitle: {{ tech }}
+subtitle: tech
 ---

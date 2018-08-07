@@ -53,10 +53,41 @@ url_for('todo.index')
 
 ## rule = self.url_rule_class(rule, methods=methods, **options) TypeError: __init__() got an unexpected keyword argument 'default'
 
-经过排查，的确在flask那个位置存在一个Defaults属性，但是暂时没能找到哪里传去的defualt参数
+经过排查，的确在flask那个位置存在一个Defaults属性，但是暂时没能找到哪里传去的defualt参数，当时传入的kargs已经没有字典值了，哪里来的Default呢
 
+尝试了一下，还是可能因为我的目录架构的原因导致的。
 
+果然如此，当我将todo的blueprint创建从todo模块中的todo文件中挪到这个模块的__init__文件中，再运行就不报错了。
 
+下面是我调整过后的结构，在__init__.py中Create_app，进行导入配置，注册blueprint等操作。
+```
+.
+├── __init__.py
+├── __pycache__
+│   ├── __init__.cpython-36.pyc
+│   ├── pagination.cpython-36.pyc
+│   └── utils.cpython-36.pyc
+├── models
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── post.cpython-36.pyc
+│   │   ├── settings.cpython-36.pyc
+│   │   ├── todolist.cpython-36.pyc
+│   │   └── user.cpython-36.pyc
+│   ├── post.py
+│   ├── settings.py
+│   ├── todolist.py
+│   └── user.py
+├── pagination.py
+├── todo
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-36.pyc
+│   │   └── todo.cpython-36.pyc
+│   └── todo.py
+└── utils.py
+```
 
 # Reference
 1. [Flask Doc]()
