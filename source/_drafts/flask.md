@@ -57,7 +57,7 @@ url_for('todo.index')
 
 尝试了一下，还是可能因为我的目录架构的原因导致的。
 
-果然如此，当我将todo的blueprint创建从todo模块中的todo文件中挪到这个模块的__init__文件中，再运行就不报错了。
+根据参考7中的架构，果然如此，当我将todo的blueprint创建从todo模块中的todo文件中挪到这个模块的__init__文件中，再运行就不报错了。
 
 下面是我调整过后的结构，在__init__.py中Create_app，进行导入配置，注册blueprint等操作。
 ```
@@ -89,6 +89,9 @@ url_for('todo.index')
 └── utils.py
 ```
 
+总算是移植完成了，感觉对app_context有一定认识了，也简单知道什么时候才能用current_app了
+
+
 # Reference
 1. [Flask Doc]()
 2. [Flask 项目配置](https://zhuanlan.zhihu.com/p/24055329)
@@ -97,3 +100,4 @@ url_for('todo.index')
 4. [一个Flask应用运行过程剖析](http://fanchunke.me/Flask/%E4%B8%80%E4%B8%AAFlask%E5%BA%94%E7%94%A8%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%89%96%E6%9E%90/)
 5. [Flask进阶(一)——请求上下文和应用上下文完全解答(下)](https://blog.csdn.net/sodawaterer/article/details/71124899)
 6. [Flask Blueprint AttributeError: 'module' object has no attribute 'name' error](https://stackoverflow.com/questions/26550180/flask-blueprint-attributeerror-module-object-has-no-attribute-name-error)
+7. [Flask 蓝图（Blueprint）使用方式解析](https://www.jianshu.com/p/95b584e4f76e)
