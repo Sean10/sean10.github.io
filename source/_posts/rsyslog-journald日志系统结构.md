@@ -11,6 +11,7 @@ categories: [专业]
 <!--more-->
 
 
+
 # 基本背景
 
 ## 实验环境
@@ -19,7 +20,7 @@ categories: [专业]
 * systemd环境
 
 # rsyslog与systemd-journald日志流向
-![](http://7xrn64.com1.z0.glb.clouddn.com/rsyslog_journald.png)
+<!--![](http://10.192.44.64:5000/_uploads/photos/rsyslog_journald.png)-->
 
 目前来看，lsof只能查看该进程监听的socket,不显示它发送的socket。通过strace追踪，RecMsg会显示发送方的进程pid，从那里可以看到是哪个进程发送到自己监听的socket的信息。
 
@@ -92,6 +93,61 @@ rsyslogd: imjournal: 84667 messages lost due to rate-limiting
 systemd-journal[1770]: Missed 1427 kernel messages
 
 ```
+
+## 测试journald数据库性能上限
+
+
+1. 数据库文件大小上限设置为2T,在尚未抵达文件大小上限时，出现了间歇的丢失日志
+
+```
+Aug  7 15:53:23 localhost journal: Missed 68 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 770 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 16 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 95 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 77 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 65 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 71 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 92 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 110 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 89 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 206 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 5 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 485 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 243 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 105 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 893 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 947 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 837 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 890 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 892 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 914 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 894 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 896 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 888 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 901 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 928 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 887 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 884 kernel messages
+Aug  7 15:53:23 localhost journal: Missed 905 kernel messages
+:
+
+```
+
+## 测试再persistent与volatile状态下，数据库停止记录条件
+
+目前在设置了日志上限的情况下，并没有出现数据库卡死，都是在覆写之前的日志。
+
+在公司镜像上测试，发现，在volatile状态下的日志，和在persistent状态下，同样会自动覆写之前的日志。
+
+仅当journald日志大小达到该分区上限时，目前测试为当RunMaxUse大于分区可用空间时，会导致日志卡死。
+
+## imjournald journal reloaded问题
+
+这个问题在[7]中被提到，主要时由于systemd-journald正在轮转数据库文件，因此导致数据库文件变动，所以会出现这个reload日志。
+
+根据[8]中添加的这个日志信息，可以看到是为了在journald切换文件位置时，为了不用重启rsyslog而添加的自动切换\加载功能。
+
+经过测试，journal日志每被切割一次，都会产生一个reloaded信息（日志level是info，不是Error，所以可以忽视）
 
 # 配置信息
 ## /etc/rsyslog.conf
@@ -295,6 +351,9 @@ rsyslogd 10255 root   11w      REG              253,0     4634 17152684 /var/log
 
 但是官方并不建议关闭该上限，可能会导致数据库阻塞等问题导致其他服务出现异常。
 
+
+
+
 ### $ModLoad imklog
 
 该模块导入直接从平台内核中读取内核日志的功能，可以避过journald数据库读写性能瓶颈。
@@ -442,11 +501,10 @@ SystemMaxFileSize= 与 RuntimeMaxFileSize= 限制单个日志文件的最大体�
 ## journald持久化
 
 持久化保存journal的日志，默认保存一个月的日志
+
+直接修改journald.conf中的storage为persistent就切换到var路径下了，切换到volatile就自动回/run/log了
 ``` bash
-$ sudo mkdir /var/log/journal
-$ sudo chown root:systemd-journal /var/log/journal
-$ sudo chmod 2775 /var/log/journal
-$ sudo systemctl restart systemd-journald.service
+systemctl restart systemd-journald.service
 ```
 # 调试方法
 ## 检验rsyslog配置信息
@@ -465,3 +523,7 @@ rsyslogd: invalid or yet-unknown config file command 'IMJournalStateFile' - have
 4. [Filter Conditions](https://www.rsyslog.com/doc/v8-stable/configuration/filters.html?highlight=info%20mail%20none%20authpriv%20none%20cron%20none%20news%20none)
 5. [imuxsock: Unix Socket Input Module](https://www.rsyslog.com/doc/v8-stable/configuration/modules/imuxsock.html?highlight=omitlocallogging)
 6. [man journald.conf](http://www.jinbuguo.com/systemd/journald.conf.html)
+7. [rsyslog daemon have unkown log entries "rsyslogd:imjournal: journal reloaded" from time to time](https://bugzilla.redhat.com/show_bug.cgi?id=1497985)
+8. [switching to persistent journal possible without rsyslog restart](https://github.com/rsyslog/rsyslog/pull/1747/files#diff-b1ea6478b8060f07cd30ecde78bfdc49R518)
+9. [Journal is reloaded and duplicate messages are output into log file](https://bugzilla.redhat.com/show_bug.cgi?id=1495631)
+10. [关于Rsyslogd 的一些配置 (高性能、高可用 rsyslogd)](http://www.tsingfun.com/html/2015/dev_1123/high_performance_rsyslogd.html)
