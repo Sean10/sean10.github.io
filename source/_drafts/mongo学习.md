@@ -29,6 +29,17 @@ mongofiles
 //启动
 mongod --port 5506 --fork --logpath mongodb.log
 
+//创建数据库
+use todos
+这是只是进入了一个暂时为空的数据库，此时还没有创建，只是显示切换到了todos这个数据库而已。接着执行一个插入操作才真的创建了数据库，并创建了一个叫TodoList的Collection，可以在show dbs里看到。
+db.TodoList.insert({'id':'1'})
+
+使用上mongo就像是一个写时操作的系统。
+
+// 连接已经在运行的数据库
+mongo localhost:26789
+
+
 //显示所有数据库
 show dbs
 //显示所有集合
@@ -37,6 +48,15 @@ show collections
 use blog
 // 这个就像select * from db.posts
 db.posts.find()
+
+mongo常用变量
+```
+# 插入ISO时间
+new Data() 
+db.TodoList.insert({'task':'todo', 'date': new Date()})
+
+
+```
 
 ```
 
