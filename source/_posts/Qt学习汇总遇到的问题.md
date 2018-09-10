@@ -167,3 +167,34 @@ why?
 //!
 
 ---
+
+qmake project 变量使用
+
+
+一个pro生成多个app似乎现在不行了，只能通过subdirs来实现了？
+
+通过$$PWD来导入公用包
+
+
+用CLion的Cmake和 命令直接clang++都没办法把sqlite3成功编译通过，但是用Qt就能过，真的是奇特。
+
+
+sqlite3 使用怪怪的
+
+select * from sqlite_master;
+
+始终得到结果为空
+
+然后报错
+
+libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: SQL logic error
+
+CREATE TABLE main.table_name(
+   column1 datatype  PRIMARY KEY(one or more columns),
+   column2 datatype,
+   column3 datatype,
+   .....
+   columnN datatype,
+);
+
+现在尝试用回俊宁大佬的库，但是连创建table都使用不了……

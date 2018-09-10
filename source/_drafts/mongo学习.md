@@ -51,16 +51,21 @@ db.posts.find()
 
 mongo常用变量
 ```
-# 插入ISO时间
+
+
+## 插入ISO时间
 new Data() 
 db.TodoList.insert({'task':'todo', 'date': new Date()})
 
+使用python插入时，只要插入一个`datetime.datetime`的实例就会自动在mongo shell中显示为ISODate，不需要自己转换为Isoformat[4]
 
-```
+## mongo数据库主键
 
-```
+在写todoList时，一开始想的是数据库里的id主键用自增的数字来表示，但是在查阅解决方式的过程中发现，现在的这种UUID的方式生成才是最适合mongo数据库，不应该将mysql等数据库的习惯带到新的数据库中。
 
 # Reference
 1. [Mac OSX下使用Homebrew安装MongoDB](https://iengchen.github.io/2016/06/13/mac-install-mongodb-use-homebrew/)
 2. Mongo 权威指南
 3. [MongoDB数据表基本操作](https://www.cnblogs.com/libingql/archive/2011/06/09/2076440.html)
+4. [Create an ISODate with pyMongo](https://stackoverflow.com/questions/7651064/create-an-isodate-with-pymongo)
+5. [MongoDB中如何不使用_id作为主键的简单策略](https://www.oschina.net/question/2269509_224279)

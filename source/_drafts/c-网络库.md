@@ -14,6 +14,12 @@ categories: [专业]
 4. libev
 5. libcurl
 
+# libevent
+
+# json库
+
+根据性能来推荐来表示，暂时使用RapidJson
+
 # select\poll\epoll之间区别
 
 
@@ -21,3 +27,4 @@ categories: [专业]
 1. [Linux Socket Programming In C++](http://tldp.org/LDP/LG/issue74/tougher.html)
 2. [select、poll、epoll之间的区别总结[整理]](http://www.cnblogs.com/Anker/p/3265058.html)
 3. [值得推荐的C/C++框架和库](https://www.ezlippi.com/blog/2014/12/c-open-project.html)
+4. [从比并 JSON 库谈开源意义](http://miloyip.com/2016/nativejson/)

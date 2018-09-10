@@ -12,6 +12,7 @@ categories: [专业]
 
 
 
+
 # 基本背景
 
 ## 实验环境
@@ -85,6 +86,8 @@ Jul 30 11:01:34 localhost.localdomain root[35455]: newer
 
 ## 日志丢失
 
+### 由于日志频次丢失
+
 rsyslog的imjournal模块读取数据库有一个频率上限设置，而systemd-journald也有一个数据库读取频率上限设置。满足rsyslog频率上限，messages中就会drop日志；满足systemd-journald上限，journald就会miss日志。配置方法详见下章配置信息对应项。
 
 ```
@@ -94,10 +97,35 @@ systemd-journal[1770]: Missed 1427 kernel messages
 
 ```
 
+### journal正常，rsyslog停止记录日志
+
+当前测试似乎是在/var/log/messages被移动或者被删除或者被轮转了导致的这个问题
+
+在logrotate那里执行了达到100M就轮转的功能，会删除.1文件然后备份
+
+但是这边的现象还是有点怪，在我关闭那个特别高频的日志写入之后，就会更新最新的了，但这是为什么呢？
+
+这里的messages是在/b_iscsi/log/messages里的，这块的设置倒是和我没太大关系，不过原因还是得测试一下，在自己的53.31的/var/log/messages里测试是没什么问题的。
+
+通过lsof，并且从logrotate那里删除自动备份的操作，结果发现，rsyslog还是会出现被删除的情况，但是没找到哪里触发的，
+
+logrotate会在100M时删除
+sys_space这个进程会在messages达到110M时删除
+
+Aug 29 17:02:28 localhost syslog: [do_record_log_t:1013] get log info error
+
+目前更换回/var/log/messages，没有出现被删的情况，但是每满130M会出现一次rsyslog不再读取journal的问题,需要移除那个快速写入的程序才能接着更新
+
+看了下卡死的那个时候，rsyslog的lsof显示并不是像我之前想的那样，读取的全都是Deleted文件，反而有些是正常的文件。
+
+刚才试了一下，top里可以看到rsyslog卡死之后读取了30M缓存。
+
+欸，但是命名rsyslog是直接读取systemd-journald数据库啊，哪里有缓存的位置
+
 ## 测试journald数据库性能上限
 
 
-1. 数据库文件大小上限设置为2T,在尚未抵达文件大小上限时，出现了间歇的丢失日志
+ 数据库文件大小上限设置为2T,在尚未抵达文件大小上限时，出现了间歇的丢失日志
 
 ```
 Aug  7 15:53:23 localhost journal: Missed 68 kernel messages
@@ -148,6 +176,91 @@ Aug  7 15:53:23 localhost journal: Missed 905 kernel messages
 根据[8]中添加的这个日志信息，可以看到是为了在journald切换文件位置时，为了不用重启rsyslog而添加的自动切换\加载功能。
 
 经过测试，journal日志每被切割一次，都会产生一个reloaded信息（日志level是info，不是Error，所以可以忽视）
+
+## /dev/log 丢失
+
+参照[11]，这个socket似乎在systemd设备上，是由systemd-journald.socket提供，
+如果是单独的rsyslog的日志管理下，则是由imuxsock插件创建，
+
+>Normally, with rsyslogd, the imuxsock module will create the /dev/log socket on its own, unlinking the previous entry before creating it. When rsyslogd is stopped (possibly because restart which fails because of faulty configuration), rsyslogd removes /dev/log.
+>
+>However, the rsyslog supplied with RHEL7 is expected to be used in conjunction with systemd, and the imuxsock module will actually open and remove /run/systemd/journal/syslog socket. Meanwhile, the /dev/log device is created by the system service-file systemd-journald.socket which triggers journald.
+
+
+在systemd-journald.socket这个服务的Unit文件里是这么写的
+
+```
+[root@localhost ~]# less /lib/systemd/system/systemd-journald.socket 
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+[Unit]
+Description=Journal Socket
+Documentation=man:systemd-journald.service(8) man:journald.conf(5)
+DefaultDependencies=no
+Before=sockets.target
+
+# Mount and swap units need this. If this socket unit is removed by an
+# isolate request the mount and swap units would be removed too,
+# hence let's exclude this from isolate requests.
+IgnoreOnIsolate=yes
+
+[Socket]
+ListenStream=/run/systemd/journal/stdout
+ListenDatagram=/run/systemd/journal/socket
+ListenDatagram=/dev/log
+SocketMode=0666
+PassCredentials=yes
+PassSecurity=yes
+ReceiveBuffer=8M
+```
+
+这里可以看到监听的/dev/log端口创建是由这个服务管理的。
+
+## /var/log/messages 时间存在跳变，乱序
+
+暂时无法复现
+
+## journal input/output Error
+
+理论上来说，应该是journald连接写入到数据库被阻断了，数据库无法访问导致的问题。
+
+不过应该仅针对journalctl读取时的问题
+
+## 将/var/log/journal目录做了软链接后，指向路径是被挂载的盘，在系统启动尚未挂载上时，会导致日志不合并，会丢失
+
+欸，我试下了，挂载上后，新的日志就看不到了，而卸载掉后，这次启动的日志文件还是在的。
+
+在测试中，新挂载的盘中与systemd-journal并没有建立连接，在lsof中看到的该路径下的文件是现在已经被隐藏了的目录，通过`stat`查看了文件inode，的确如此。
+
+```
+systemd-j 432 root   17u      REG                8,1  8388608  531238 /root/log/journal/abf6c3e0a96f452ab2efd6c2d1a9c1e0/system.journal
+
+
+[root@thor ~]# stat /root/log/journal/abf6c3e0a96f452ab2efd6c2d1a9c1e0/system.journal 
+  File: 鈥root/log/journal/abf6c3e0a96f452ab2efd6c2d1a9c1e0/system.journal鈥
+  Size: 8388608    Blocks: 16384      IO Block: 4096   regular file
+Device: 811h/2065d      Inode: 42729475    Links: 1
+Access: (0640/-rw-r-----)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-08-22 14:31:18.865335001 +0800
+Modify: 2018-08-22 14:27:43.244195482 +0800
+Change: 2018-08-22 14:27:43.244195482 +0800
+ Birth: -
+[root@thor ~]# umount /dev/sdc1
+[root@thor ~]# stat /root/log/journal/abf6c3e0a96f452ab2efd6c2d1a9c1e0/system.journal 
+  File: 鈥root/log/journal/abf6c3e0a96f452ab2efd6c2d1a9c1e0/system.journal鈥
+  Size: 8388608    Blocks: 16408      IO Block: 4096   regular file
+Device: 801h/2049d      Inode: 531238      Links: 1
+Access: (0640/-rw-r-----)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2018-08-22 14:34:01.246346582 +0800
+Modify: 2018-08-22 14:39:01.133367970 +0800
+Change: 2018-08-22 14:39:01.133367970 +0800
+ Birth: -
+ ```
 
 # 配置信息
 ## /etc/rsyslog.conf
@@ -502,13 +615,22 @@ SystemMaxFileSize= 与 RuntimeMaxFileSize= 限制单个日志文件的最大体�
 
 持久化保存journal的日志，默认保存一个月的日志
 
-直接修改journald.conf中的storage为persistent就切换到var路径下了，切换到volatile就自动回/run/log了
+直接修改journald.conf中的storage为persistent就切换到var路径下了，切换到volatile就自动回/run/log了。
 ``` bash
 systemctl restart systemd-journald.service
+systemctl restart systemd-journald.socket
 ```
+
+如果出现了切换到persistent状态下，日志已经存到了/var/log/journal，但是/run/log/journal路径依旧存在的状况的话，可能是自动切换有些不同。就手动将volatile修改成auto,手动`mkdir /var/log/journal`，这样再重启比较适合防丢日志。
+
+在切换前，为了防止journal数据库文件大小刚好超过设置的上限，然后由于重启了服务，没能及时自动清理掉超过的部分，从而导致数据库假死，建议使用`journalctl --vacuumm-size=250M`，可以清除日志直到满足这个大小限制。不过这个要求sytemd版本318及以上才支持这个选项。
+
+如果版本不支持的话，那就还是`rm -rf`掉这些日志或者手动删掉一些数据库文件吧，升级systemd的版本似乎带来的风险相比这些日志的价值要大得多。[12]
+
 # 调试方法
 ## 检验rsyslog配置信息
 ``` bash
+# 可以让rsyslogd 进入 Debug模式
 [root@localhost ~]# rsyslogd -N6
 rsyslogd: version 8.24.0, config validation run (level 6), master config /etc/rsyslog.conf
 rsyslogd: invalid or yet-unknown config file command 'IMJournalStateFile' - have you forgotten to load a module? [v8.24.0 try http://www.rsyslog.com/e/3003 ]
@@ -527,3 +649,7 @@ rsyslogd: invalid or yet-unknown config file command 'IMJournalStateFile' - have
 8. [switching to persistent journal possible without rsyslog restart](https://github.com/rsyslog/rsyslog/pull/1747/files#diff-b1ea6478b8060f07cd30ecde78bfdc49R518)
 9. [Journal is reloaded and duplicate messages are output into log file](https://bugzilla.redhat.com/show_bug.cgi?id=1495631)
 10. [关于Rsyslogd 的一些配置 (高性能、高可用 rsyslogd)](http://www.tsingfun.com/html/2015/dev_1123/high_performance_rsyslogd.html)
+11. [How do I restore `/dev/log` in systemd+rsyslog host?](https://unix.stackexchange.com/questions/317064/how-do-i-restore-dev-log-in-systemdrsyslog-host)
+12. [How would I upgrade systemd?](https://askubuntu.com/questions/627174/how-would-i-upgrade-systemd)
+13. [Is systemd-journald a syslog implementation?
+](https://unix.stackexchange.com/questions/332274/is-systemd-journald-a-syslog-implementation)
