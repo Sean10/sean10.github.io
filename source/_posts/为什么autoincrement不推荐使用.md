@@ -1,5 +1,5 @@
 ---
-title: [译]sqlite为什么autoincrement不推荐使用
+title: 「译」sqlite为什么autoincrement不推荐使用
 subtitle: sqite
 date: 2018-09-15 22:51:18
 updated:
