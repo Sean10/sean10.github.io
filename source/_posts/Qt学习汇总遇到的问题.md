@@ -198,3 +198,167 @@ CREATE TABLE main.table_name(
 );
 
 现在尝试用回俊宁大佬的库，但是连创建table都使用不了……
+
+找到了俊宁大佬自己的作业，从那里的实例来进行操作
+
+
+Qt dialog传递参数
+https://blog.csdn.net/xzh_blue/article/details/51490747
+
+现在很奇怪，有时候能够充值上去，有时候就报这个错误，导致失败
+
+```
+[INFO] send message: {"define":2}
+[INFO] receive message: {"define":3,"username":"ls1"}
+[INFO] Get user balance request comes
+[INFO] send message: {"balance":0,"define":1}
+SQL error: 'UNIQUE constraint failed: OrderInfo.type' at 'insert into OrderInfo(type,amount,out_account,in_account,record_time) values (4,25,'cash','ls1',1536938826);'
+[INFO] Someone offline, now 0 conne
+```
+
+C/S架构下， 登录过程中 密码 是否需要加密？
+
+出现了一个权限值为25，似乎是哪里传输的时候顺序出错了？把转账的值写入到了权限的位置？
+
+[QT 点击自定义QDialog类"确定"按钮 , 模态框立刻关闭 , 之后又做空值检查问题解决 \- CSDN博客](https://blog.csdn.net/wenyun_kang/article/details/64439517)
+
+mac 自带openssl 0.98，而官方最新版 1.1
+
+[\(6 条消息\)UUID是如何保证唯一性的？ \- 知乎](https://www.zhihu.com/question/34876910)
+
+现在有一个问题，我的tableView没有释放过standardItem，因此一定会出现内存泄露问题
+
+[\(6 条消息\)互联网中TCP Socket服务器的实现过程需要考虑哪些安全问题？ \- 知乎](https://www.zhihu.com/question/30507539)
+
+引用openssl库的方式
+
+clang client.c -o client -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib -lcrypto -lssl
+
+像上面这样加上最后那4条就可以正常运行了
+
+openssl生成过程
+
+```
+mkdir misc
+cd misc
+sudo cp /usr/local/etc/openssl/openssl.cnf ./
+cp /usr/local/etc/openssl/misc/* ./
+
+//这里生成的是rsa的ca.key和 .rnd 输入密钥是fighton
+openssl genrsa -out ./private/ca.key -rand ./private/.rnd -des 2048
+
+// 这里确认了密钥，然后要求输入下面那些内容
+openssl req -new -x509 -days 3650 -key ./private/ca.key -out ./private/ca.crt -config openssl.cnf
+
+<!-- Enter pass phrase for ./private/ca.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:ZH
+State or Province Name (full name) [Some-State]:Beijing
+Locality Name (eg, city) []:Beijing
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Hikvision
+Organizational Unit Name (eg, section) []:bjyf
+Common Name (e.g. server FQDN or YOUR name) []:sean10
+Email Address []:sean10reborn@gmail.com -->
+
+
+// 这个应该是显示一下证书
+openssl x509 -in ./private/ca.crt -noout -text
+
+
+## 
+// 产生server证书
+
+openssl genrsa -out ./private/server.key 1024
+
+openssl req -new -key ./private/server.key -out ./newcerts/server.csr -config openssl.cnf
+<!-- You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:ZH
+State or Province Name (full name) [Some-State]:Beijing
+Locality Name (eg, city) []:Beijing
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:bjyf
+Organizational Unit Name (eg, section) []:hik
+Common Name (e.g. server FQDN or YOUR name) []:sean10
+Email Address []:sean10reborn@gmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:helloworld
+An optional company name []:hik -->
+
+
+touch index.txt
+touch serial
+
+echo 00 > serial
+
+
+openssl ca -in ./newcerts/server.csr -cert ./private/ca.crt -keyfile ./private/ca.key -config openssl.cnf -policy policy_anything -out ./certs/server.crt
+
+
+openssl genrsa -out ./private/proxy.key 1024
+//这步要是产生错误，请看后面的解决方法
+openssl req -new -key ./private/proxy.key -out ./newcerts/proxy.csr -config openssl.cnf
+openssl ca -in ./newcerts/proxy.csr -cert ./private/ca.crt -keyfile./private/ca.key -config openssl.cnf -policy policy_anything -out ./certs/proxy.crt
+openssl x509 -in ./certs/proxy.crt -noout -text
+
+```
+
+[基于OpenSSL自建CA和颁发SSL证书 \| Sean's Notes](http://seanlook.com/2015/01/18/openssl-self-sign-ca/)
+
+
+Qt 如何 引入 openssl库
+
+[QT总结第3篇：如何在QT中添加\.lib，\.dll还有\.h文件 \- CSDN博客](https://blog.csdn.net/alspwx/article/details/12649225)
+
+现在在编译时，ui_widget.h丢失？
+
+奇怪了。将lssl等加到LIBS这里之后，server可以编译了，但是client又出现了上面的问题，明明这次client一行代码都没改……
+
+终于发现了，我在socket.h里多导入了一个curve.h这个包，这个包里的一个函数qblog和 Qt 的一个包 重名了
+
+
+case中无法定义同一个变量
+
+用if else 代替 switch 语句;
+
+2：在case中用{}将代码括起来,这样在{}中就能定义变量了;
+
+3：如果变量在各个case中都要用的话,就把变量定义在switch外面吧;
+
+目前在switch case中定义的变量无法被后续的代码发现，从而使用
+
+可能是作用域的原因？
+
+想要手动定义，但是无法通过typeid .name 打印出来
+
+还需要找到办法手动定义
+
+openSSL [OpenSSL主配置文件openssl\.cnf \- 骏马金龙 \- 博客园](https://www.cnblogs.com/f-ck-need-u/p/6091027.html)
+
+[基于OpenSSL自建CA和颁发SSL证书 \| Sean's Notes](http://seanlook.com/2015/01/18/openssl-self-sign-ca/)
+
+[使用c语言实现在linux下的openssl客户端和服务器端编程 \- 欢跳的心 \- 博客园](https://www.cnblogs.com/etangyushan/p/3679457.html)
+
+[openssl编程轻松入门（含完整示例）\-飞月\-51CTO博客](http://blog.51cto.com/mooon/909932)
+
+[\(6 条消息\)用 C\+\+ 写 HTTPS 客户端和服务器大体步骤有哪些？ \- 知乎](https://www.zhihu.com/question/41717174)
+
+[OPENSSL编程入门学习 \- 骑着蜗牛逛世界 \- 博客园](http://www.cnblogs.com/LittleHann/p/3741907.html)
+
+用Cross Functional Vertical就可以画图了
+
+https://www.processon.com/view/5938c757e4b036140a0ef5ef?fromnew=1
+
+https://www.processon.com/diagrams/new#temp-system
