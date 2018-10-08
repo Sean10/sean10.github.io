@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="为了防止环境问题，所以使用了docker配置的TensorFlow环境，">
+<meta name="keywords" content="TensorFlow,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker TensorFlow运行笔记">
+<meta property="og:url" content="https://sean10.github.io/2018/02/24/undefined/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="为了防止环境问题，所以使用了docker配置的TensorFlow环境，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-01T17:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker TensorFlow运行笔记">
+<meta name="twitter:description" content="为了防止环境问题，所以使用了docker配置的TensorFlow环境，">
+
+
+
+
+
+
+  <link rel="canonical" href="https://sean10.github.io/2018/02/24/undefined/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Docker TensorFlow运行笔记 | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2018/02/24/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Docker TensorFlow运行笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-02-24 13:24:58" itemprop="dateCreated datePublished" datetime="2018-02-24T13:24:58+08:00">2018-02-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-03-02 01:00:00" itemprop="dateModified" datetime="2018-03-02T01:00:00+08:00">2018-03-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/24/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/02/24/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/24/undefined/" class="leancloud_visitors" data-flag-title="Docker TensorFlow运行笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">7.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:07</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为了防止环境问题，所以使用了docker配置的TensorFlow环境，</p>
+<a id="more"></a>
+<p>为了防止万一被收录，论文查重问题，这篇之前一直没发布。</p>
+<hr>
+<h1 id="部署">部署</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull tensorflow/tensorflow</span><br><span class="line">docker run -it tensorflow/tensorflow bash</span><br><span class="line"></span><br><span class="line">发现这个仓库只能在1.1版本下跑，重新下载了个</span><br><span class="line">docker pull tensorflow/tensorflow:1.1.0-py3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA</p>
+</blockquote>
+<p>一开始在使用tf.Session()时就报了这个错误。暂时没理会。</p>
+<hr>
+<p>但是对docker 不那么熟悉，不知道代码和数据应该存在哪个位置，在那还是决定代码通过volume挂载到docker内。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 --name=tensorflow_sean10 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow  bash</span><br><span class="line"></span><br><span class="line">这个版本tensorflow支持python3</span><br><span class="line">docker run -p 7777:8888 --name=tensorflow_sean10_py3 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:latest-py3  bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker ps -a -l</span><br><span class="line">docker rm $container_id</span><br><span class="line">docker rmi $image_id</span><br><span class="line">docker stop tensorflow_sean10_1.1.0_py3</span><br><span class="line">docker start -i tensorflow_sean10_1.1.0_py3</span><br><span class="line"></span><br><span class="line">docker attach tensorflow_sean10_1.1.0_py3</span><br><span class="line">docker exec -t -i tensorflow_sean10_1.1.0_py3 bash</span><br><span class="line"></span><br><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br></pre></td></tr></table></figure>
+<p>对运行中的docker进行网络映射 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker port tensorflow_sean10_1.1.0_py3</span><br><span class="line">docker inspect tensorflow_sean10_1.1.0_py3 | grep IPAddress</span><br><span class="line"></span><br><span class="line">pfctl</span><br></pre></td></tr></table></figure></p>
+<p>然后又接触到了jupyter,才逐渐明白这个做的不是ide的任务，有更多其他有意思的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --no-browser --ip=0.0.0.0 --allow-root</span><br><span class="line"></span><br><span class="line">想要再次获取</span><br><span class="line">docker exec -it &lt;docker_container_name&gt;</span><br><span class="line">jupyter notebook list</span><br></pre></td></tr></table></figure>
+<p>然后在主机浏览器内访问<code>http://localhost:7777?token=xxxxxf</code></p>
+<p>然后运行代码时，显示已经使用了python3的内核，但实际运行弹出的错误来源始终是python2.7，查到的说是默认的tensorflow image只有python2.7安装了tensorflow包，需要pull python3-latest版本才行。的确更换后就可以了……</p>
+<hr>
+<p>jupyter默认没有配置自动wrap,</p>
+<p>创建~/.jupyter/nbconfig/notebook.json配置文件，追加这一段 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;MarkdownCell&quot;: &#123;</span><br><span class="line">    &quot;cm_config&quot;: &#123;</span><br><span class="line">      &quot;lineWrapping&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;CodeCell&quot;: &#123;</span><br><span class="line">    &quot;cm_config&quot;: &#123;</span><br><span class="line">      &quot;lineWrapping&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><code>No module named ipykernel</code></p>
+<p>jupyter install 后 无法找到ipykernel_launcher</p>
+<p>解决方法： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pykernel</span><br><span class="line">python -m ipykernel install --user</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="tensorflow错误记录">Tensorflow错误记录</h1>
+<h2 id="输入维度错误">输入维度错误</h2>
+<blockquote>
+<p>ValueError: Input 0 of layer basic_lstm_cell_1 is incompatible with the layer: expected ndim=2, found ndim=1. Full shape received: [400]</p>
+</blockquote>
+<p>输入数据占位符的维度错误了</p>
+<blockquote>
+<p>basicRNNCell ValueError: Shape must be rank 2 but is rank 1 for ‘MatMul’ (op: ‘MatMul’) with input shapes: [64], [64,32].</p>
+</blockquote>
+<p>将BasicLSTMCell更换成BasicRNNCell时，始终出现错误。唉，在占位符embiding时没注意到传错数了，导致很久都没debug出来……</p>
+<h2 id="dynamic_rnn">dynamic_rnn</h2>
+<p>Dynamic_Rnn与Static_rnn主要区别在于输入数据的结构上。</p>
+<blockquote>
+<p>static_rnn 输入的list的大小[序列长度,batch_size,embed大小]，所以一一般在经过embed层后，使用x = tf.unstack(embed, seq_len, 1)变换为[序列长度,batch_size,embed大小]，然后输入到static_rnn，输出也是list，大小形状为[seq_len,batch_size,hidden_size],所以我们取最后一个的输出就直接为static_rnn_out[-1],但是我们的dynamic_rnn不是这样，它的输入是[batch,seq_len,input],所以一般经过embeding层后不需要变化直接输入dynamic_rnn里面，然后输出结果为dynamic_rnn_out，他的shape为[batch,seq_len,hidden_size] ,这样我们要取到最后一个的输出，需要多维度进行一个转化：tf.transpose(dynamic_rnn_out, [1, 0, 2])，然后才可以去计算loss和accuracy等。[5]</p>
+<p>tensorflow 的dynamic_rnn方法，我们用一个小例子来说明其用法，假设你的RNN的输入input是[2,20,128]，其中2是batch_size,20是文本最大长度，128是embedding_size，可以看出，有两个example，我们假设第二个文本长度只有13，剩下的7个是使用0-padding方法填充的。dynamic返回的是两个参数：outputs,last_states，其中outputs是[2,20,128]，也就是每一个迭代隐状态的输出,last_states是由(c,h)组成的tuple，均为[batch,128]。</p>
+<p>到这里并没有什么不同，但是dynamic有个参数：sequence_length，这个参数用来指定每个example的长度，比如上面的例子中，我们令 sequence_length为[20,13]，表示第一个example有效长度为20，第二个example有效长度为13，当我们传入这个参数的时候，对于第二个example，TensorFlow对于13以后的padding就不计算了，其last_states将重复第13步的last_states直至第20步，而outputs中超过13步的结果将会被置零。[6]</p>
+</blockquote>
+<p>如果由于batch一次读入过大，可以使用API中的eval_in_batches(https://github.com/petewarden/tensorflow_makefile/blob/master/tensorflow/models/image/mnist/convolutional.py#L255)</p>
+<h1 id="graph的权值偏置值复用7">graph的权值偏置值复用[7]</h1>
+<p>如果不复用，训练的和测试的图就一点关系都没有了，就很有可能导致下面的那样输出结果完全无关</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.get_variable_scope().reuse_variables()</span><br></pre></td></tr></table></figure>
+<h2 id="lstm-准确率过低">lstm 准确率过低</h2>
+<p>输出的训练集上的loss还算正常，但是acc连50%都没有</p>
+<p>根据知乎大神所说，二分类问题50%的准确率就等同于没有学习到，没有进行优化。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">lSTM</span><br><span class="line">loss:5.716831 batch_Acc: 0.5 acc:0.525</span><br><span class="line">loss:0.16445649 batch_Acc: 0.9583333 acc:0.2225</span><br><span class="line">loss:0.21239458 batch_Acc: 0.9583333 acc:0.2075</span><br><span class="line">loss:0.07486567 batch_Acc: 1.0 acc:0.23</span><br><span class="line">loss:0.015121219 batch_Acc: 1.0 acc:0.275</span><br><span class="line">loss:0.10024478 batch_Acc: 0.9583333 acc:0.2475</span><br><span class="line">loss:0.056348186 batch_Acc: 0.9583333 acc:0.25</span><br><span class="line">loss:0.018785348 batch_Acc: 1.0 acc:0.255</span><br><span class="line">loss:0.017489845 batch_Acc: 1.0 acc:0.255</span><br><span class="line">loss:0.0008791888 batch_Acc: 1.0 acc:0.275</span><br><span class="line">loss:0.0012423135 batch_Acc: 1.0 acc:0.27</span><br><span class="line">loss:0.010488756 batch_Acc: 1.0 acc:0.2525</span><br><span class="line">loss:0.008405162 batch_Acc: 1.0 acc:0.245</span><br><span class="line">loss:0.0038538638 batch_Acc: 1.0 acc:0.2125</span><br><span class="line">loss:0.00075430545 batch_Acc: 1.0 acc:0.2375</span><br><span class="line">loss:0.0011128571 batch_Acc: 1.0 acc:0.2275</span><br><span class="line">loss:0.014299699 batch_Acc: 1.0 acc:0.325</span><br><span class="line">loss:0.00064932863 batch_Acc: 1.0 acc:0.3775</span><br><span class="line">loss:0.0039427895 batch_Acc: 1.0 acc:0.425</span><br><span class="line">loss:0.0043920926 batch_Acc: 1.0 acc:0.4025</span><br><span class="line">loss:0.0037787214 batch_Acc: 1.0 acc:0.41</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">传统RNN</span><br><span class="line">loss:4.7681885 acc:0.51</span><br><span class="line">loss:1.3538479 acc:0.48</span><br><span class="line">loss:1.7510027 acc:0.4825</span><br><span class="line">loss:1.2965189 acc:0.5175</span><br><span class="line">loss:0.8639291 acc:0.4725</span><br><span class="line">loss:0.7651406 acc:0.48</span><br><span class="line">loss:0.5035551 acc:0.4725</span><br><span class="line">loss:0.7856639 acc:0.5125</span><br><span class="line">loss:0.41615644 acc:0.535</span><br><span class="line">loss:0.63352686 acc:0.515</span><br><span class="line">loss:0.8058832 acc:0.5125</span><br><span class="line">loss:0.715534 acc:0.5225</span><br><span class="line">loss:0.58976775 acc:0.49</span><br><span class="line">loss:0.6922045 acc:0.4875</span><br><span class="line">loss:0.6963689 acc:0.5225</span><br><span class="line">loss:0.6474119 acc:0.48</span><br><span class="line">loss:0.6436865 acc:0.4725</span><br><span class="line">loss:0.79238504 acc:0.4925</span><br><span class="line">loss:0.63156253 acc:0.535</span><br><span class="line">loss:0.6858673 acc:0.51</span><br><span class="line">loss:0.65090233 acc:0.52</span><br><span class="line">answer</span><br></pre></td></tr></table></figure>
+<p>模型暂时和原本的初版差别不大，训练集也还是原本的随机出的，测试集顺序理论上应该没有影响才对</p>
+<p>就是上面那个weight和bias复用的问题……我定义在def model里了，导致reuse根本没有可以存下来</p>
+<hr>
+<h1 id="tf.truncated_normal">tf.truncated_normal()</h1>
+<p>这个函数产生正太分布，均值和标准差自己设定。这是一个截断的产生正太分布的函数，就是说产生正太分布的值如果与均值的差值大于两倍的标准差，那就重新生成。</p>
+<h1 id="bi-lstm实现">bi-lstm实现</h1>
+<p>参考了[8][9][重点10]</p>
+<h1 id="weight初始化导致无法梯度下降">weight初始化导致无法梯度下降</h1>
+<p>使用Xavier initialization[11]</p>
+<h1 id="basicrnncell使用上需要在lstmcell基础上修改一些地方">basicRNNCell使用上需要在LSTMCell基础上修改一些地方</h1>
+<p>参考[13]的代码修改的，原来在rnncell的时候就直接取当前state计算就可以ile</p>
+<h1 id="使用multirnncell的时候">使用MultiRNNCell的时候</h1>
+<blockquote>
+<p>InvalidArgumentError: Dimensions must be equal, but are 128 and 464 for ‘rnn/while/rnn/multi_rnn_cell/cell_0/basic_rnn_cell/MatMul_1’ (op: ‘MatMul’) with input shapes: [24,128], [464,64].</p>
+</blockquote>
+<p>要用python迭代器生成list，而不能直接用乘法，并且需要从函数来获取多个cell,不能直接对一个cell进行迭代</p>
+<h1 id="tf.metric.recall使用前需要initilizer">tf.metric.recall使用前需要initilizer</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sess.run(tf.local_variables_initializer())</span><br></pre></td></tr></table></figure>
+<p>使用完 发现 这个值依旧是不能用的，因为这个统计的是整个session周期内的</p>
+<h1 id="梯度消失和梯度爆炸如何从指标上判断出来">梯度消失和梯度爆炸，如何从指标上判断出来</h1>
+<p>梯度消失似乎主要指的是多层效果反而没有浅层的好</p>
+<h1 id="关于recallf1等指标计算">关于recall,f1等指标计算</h1>
+<p>按照[16]条执行，成功跑出来了。</p>
+<h1 id="使用indrnn-报错似乎和while_loop有关">使用IndRNN 报错，似乎和while_loop有关</h1>
+<blockquote>
+<p>ValueError: Cannot use ‘rnn/while/rnn/multi_rnn_cell/cell_0/ind_rnn_cell/Mul_1’ as input to ‘rnn/while/rnn/multi_rnn_cell/cell_0/ind_rnn_cell/clip_by_value’ because they are in different while loops. See info log for more details.</p>
+</blockquote>
+<p>看了下源码，出现了clip_by_value位置的只有设置了recurrent_abs_max的时候，所以把这个参数先取消看看，成功跑起来了~hhh</p>
+<p>性能和普通的lstm差不多，之后再和官方的lstmcell比较一下源码，看看怎么改能够跑起来</p>
+<p>发现问题，由于最初对tensorflow认识不足，导致训练集和测试集虽然复用了weight和bias，但是实际是运行在不同的网络中的，而IndRNN可能由于没能针对Tensorflow处理好这些问题，因此无法应用。在修改后的代码中，复用同一个网络后，这个参数添加后就没有报错了。</p>
+<h1 id="参考资料">参考资料</h1>
+<ol type="1">
+<li><a href="http://yuenshome.cn/?p=4633" target="_blank" rel="noopener">本地访问远程服务器的Docker容器的Jupyter Notebook</a></li>
+<li><a href="http://www.cnblogs.com/ivictor/p/4834864.html" target="_blank" rel="noopener">关于Docker目录挂载的总结</a></li>
+<li><a href="https://stackoverflow.com/questions/36419342/how-to-wrap-code-text-in-jupyter-notebooks" target="_blank" rel="noopener">wrap jupyter config</a></li>
+<li><a href="https://github.com/jupyter/notebook/issues/1558" target="_blank" rel="noopener">No module named ipykernel</a></li>
+<li><a href="https://blog.csdn.net/qq1483661204/article/details/78997644" target="_blank" rel="noopener">tensorflow中dynamic_rnn与static_rnn区别</a></li>
+<li><a href="https://blog.csdn.net/u010223750/article/details/71079036" target="_blank" rel="noopener">tensorflow高阶教程:tf.dynamic_rnn</a> # Reference</li>
+<li><a href="https://www.cnblogs.com/rocketfan/p/5773373.html" target="_blank" rel="noopener">Tensorflow 变量的共享</a></li>
+<li><a href="http://www.cnblogs.com/linyx/p/6979119.html" target="_blank" rel="noopener">tensorflow bilstm官方示例</a></li>
+<li><a href="https://blog.csdn.net/Felaim/article/details/70300362" target="_blank" rel="noopener">TensorFlow实战12：Bidirectional LSTM Classifier</a></li>
+<li><a href="https://blog.csdn.net/u012436149/article/details/71080601" target="_blank" rel="noopener">tensorflow学习笔记(三十九) : 双向rnn (BiRNN)</a></li>
+<li><a href="https://www.leiphone.com/news/201703/3qMp45aQtbxTdzmK.html" target="_blank" rel="noopener">谷歌工程师：聊一聊深度学习的weight initialization</a></li>
+<li><a href="https://lguduy.github.io/2017/05/20/TensorFlow%E6%95%99%E7%A8%8B-%E5%A4%84%E7%90%86%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener">ensorFlow教程：利用TensorFlow处理自己的数据</a></li>
+<li><a href="https://www.jianshu.com/p/8e96b7ee1421" target="_blank" rel="noopener">RNN入门：利用TF的API（二）</a></li>
+<li><a href="https://github.com/tensorflow/tensorflow/issues/14897" target="_blank" rel="noopener">A bug in tensorflow r1.4 when applying MultiRNNCell</a></li>
+<li><a href="https://github.com/dennybritz/cnn-text-classification-tf/issues/71" target="_blank" rel="noopener">Add precision and recall summaries</a></li>
+<li><a href="https://blog.csdn.net/appleml/article/details/58647585" target="_blank" rel="noopener">tensorflow中precision,recall和F1</a></li>
+<li><a href=""></a></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Sean10</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://sean10.github.io/2018/02/24/undefined/" title="Docker TensorFlow运行笔记">https://sean10.github.io/2018/02/24/undefined/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/17/undefined/" rel="next" title="update hexo node9 and theme next">
+                <i class="fa fa-chevron-left"></i> update hexo node9 and theme next
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/24/undefined/" rel="prev" title="数独note">
+                数独note <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#部署"><span class="nav-number">1.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow错误记录"><span class="nav-number">2.</span> <span class="nav-text">Tensorflow错误记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入维度错误"><span class="nav-number">2.1.</span> <span class="nav-text">输入维度错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dynamic_rnn"><span class="nav-number">2.2.</span> <span class="nav-text">dynamic_rnn</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#graph的权值偏置值复用7"><span class="nav-number">3.</span> <span class="nav-text">graph的权值偏置值复用[7]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lstm-准确率过低"><span class="nav-number">3.1.</span> <span class="nav-text">lstm 准确率过低</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf.truncated_normal"><span class="nav-number">4.</span> <span class="nav-text">tf.truncated_normal()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bi-lstm实现"><span class="nav-number">5.</span> <span class="nav-text">bi-lstm实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#weight初始化导致无法梯度下降"><span class="nav-number">6.</span> <span class="nav-text">weight初始化导致无法梯度下降</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#basicrnncell使用上需要在lstmcell基础上修改一些地方"><span class="nav-number">7.</span> <span class="nav-text">basicRNNCell使用上需要在LSTMCell基础上修改一些地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用multirnncell的时候"><span class="nav-number">8.</span> <span class="nav-text">使用MultiRNNCell的时候</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tf.metric.recall使用前需要initilizer"><span class="nav-number">9.</span> <span class="nav-text">tf.metric.recall使用前需要initilizer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#梯度消失和梯度爆炸如何从指标上判断出来"><span class="nav-number">10.</span> <span class="nav-text">梯度消失和梯度爆炸，如何从指标上判断出来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于recallf1等指标计算"><span class="nav-number">11.</span> <span class="nav-text">关于recall,f1等指标计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用indrnn-报错似乎和while_loop有关"><span class="nav-number">12.</span> <span class="nav-text">使用IndRNN 报错，似乎和while_loop有关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">13.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

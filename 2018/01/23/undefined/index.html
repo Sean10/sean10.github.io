@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="刷题注意事项 每道题需要总结的 思路 算法 核心代码 这个题得到的启示!!!重点是bug free的能力">
+<meta name="keywords" content="算法,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode_Algorithm_Note">
+<meta property="og:url" content="https://sean10.github.io/2018/01/23/undefined/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="刷题注意事项 每道题需要总结的 思路 算法 核心代码 这个题得到的启示!!!重点是bug free的能力">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode_Algorithm_Note">
+<meta name="twitter:description" content="刷题注意事项 每道题需要总结的 思路 算法 核心代码 这个题得到的启示!!!重点是bug free的能力">
+
+
+
+
+
+
+  <link rel="canonical" href="https://sean10.github.io/2018/01/23/undefined/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>LeetCode_Algorithm_Note | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2018/01/23/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LeetCode_Algorithm_Note
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-01-23 22:50:32" itemprop="dateCreated datePublished" datetime="2018-01-23T22:50:32+08:00">2018-01-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/23/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/01/23/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/23/undefined/" class="leancloud_visitors" data-flag-title="LeetCode_Algorithm_Note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">7.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:06</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>刷题注意事项</p>
+<p>每道题需要总结的</p>
+<p>思路 算法 核心代码 这个题得到的启示!!!重点是bug free的能力</p>
+<a id="more"></a>
+<p>linked list理解</p>
+<p>enter image description here</p>
+<p>结果两个都是 1 2 3</p>
+<p>node是存在main函数里的局部变量, 还是全局变量? 局部</p>
+<p>node1 是一个指针, 在32位即中占有4个字节. 也可以理解为引用, 存的是一个内存的地址. 所以一个ListNode占8个字节, val占4个, next占四个. 可以理解为, 内存是个大数组, ref和pointer都是数组的下标, 是index</p>
+<p>enter image description here</p>
+<p>Reverse Nodes in k-Groups</p>
+<p>Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.</p>
+<p>If the number of nodes is not a multiple of k then left-out nodes in the end should remain as it is.</p>
+<p>You may not alter the values in the nodes, only nodes itself may be changed.</p>
+<p>Only constant memory is allowed.</p>
+<p>复杂问题的解决方案</p>
+<p>复杂的, 不能一眼看到结果的, 要拆分.</p>
+<p>拆分就是要步骤化, 先框架, 再细节.</p>
+<p>复杂的问题通过一个for循环, 一个while循环, 或者一个123步怎么做, 变成一个更小的问题.</p>
+<p>每个function需要明确</p>
+<p>dummy node</p>
+<p>java要new， c++不要new，c++如果new了要删除</p>
+<p>HEAD = DUMMY 这句话总是需要么？</p>
+<p>几乎</p>
+<p>什么时候使用 DUMMY NODE?</p>
+<p>链表结构发生变化的时候</p>
+<p>DUMMY NODE 是否需要删除？</p>
+<p>不需要</p>
+<p>使用 DUMMY NODE 算面试官会说我耗费了额外空间么？</p>
+<p>他没那么神精病， O(1)的额外空间不算额外空间，O(n)才算</p>
+<p>DUMMY NODE 非用不可么？</p>
+<p>不是, 但是用了代码比较简洁</p>
+<p>DUMMY NODE 初始化的值重要么？</p>
+<p>不重要, 只需要它的next的值</p>
+<h1 id="leetcode-小结">LeetCode 小结</h1>
+<h2 id="数组">数组:</h2>
+<h3 id="leetcode-1">leetcode 1</h3>
+<p>add two numbers to be the target，返回这2个数的位置</p>
+<p>用hash map能实现O(n)甚至O(1)，但是不太清楚原理</p>
+<h3 id="leetcode-561">leetcode 561</h3>
+<p>直接用std::stable_sort排序，从小到大每2个取第一个，然后累加就是最大的最小数对和了</p>
+<p>这个的时间复杂度应该是O(nlogn)，有没有</p>
+<h3 id="leetcode-566">leetcode 566</h3>
+<p>看了下Solution才知道有3种方法 1. 要求把能够重组的矩阵重组，按照从行到列的顺序重排，所以我一开始考虑把原本的矩阵数组输入到一个队列里，然后一个个pop，不过想了下，没有必要浪费空间，直接用迭代器，每到这行矩阵的末尾，就直接推进到下一行的begin()就好了。 2. 把原始的矩阵加到队列里去 3. 使用整除和取余符号,直接进行换行赋值</p>
+<p>时空复杂度都是O(m*n).</p>
+<p>python可以有numpy等等模块直接使用</p>
+<p>不过在用python进行这个逻辑时， 始终提示列表越界…… <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">matrixReshape</span><span class="params">(self, nums, r, c)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[List[int]]</span></span><br><span class="line"><span class="string">        :type r: int</span></span><br><span class="line"><span class="string">        :type c: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> (len(nums[<span class="number">0</span>])*len(nums)) != r*c:</span><br><span class="line">            <span class="keyword">return</span> nums</span><br><span class="line">         <span class="comment">#tmp = [[None] * c for i in range(r)]</span></span><br><span class="line">        tmp = [[<span class="keyword">None</span> <span class="keyword">for</span> row <span class="keyword">in</span> range(r)] <span class="keyword">for</span> col <span class="keyword">in</span> range(c)]</span><br><span class="line"></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        j = <span class="number">0</span></span><br><span class="line">        leng_x = len(nums[<span class="number">0</span>])</span><br><span class="line">        x = <span class="number">0</span></span><br><span class="line">        y = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(r):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(c):</span><br><span class="line">                tmp[i][j] = nums[x][y]</span><br><span class="line">                y += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> y == leng_x:</span><br><span class="line">                    x += <span class="number">1</span></span><br><span class="line">                    y = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">matrixReshape</span><span class="params">(self, nums, r, c)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[List[int]]</span></span><br><span class="line"><span class="string">        :type r: int</span></span><br><span class="line"><span class="string">        :type c: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)*len(nums[<span class="number">0</span>]) != r*c:</span><br><span class="line">            <span class="keyword">return</span> nums</span><br><span class="line">        ans = [[<span class="keyword">None</span> <span class="keyword">for</span> row <span class="keyword">in</span> range(r)] <span class="keyword">for</span> col <span class="keyword">in</span> range(c)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(r*c):</span><br><span class="line">            <span class="comment"># if i//c &lt; r and i%c &lt; c and ((i//len(nums[0]) &lt; len(nums)) and ((i%len(nums[0])) &lt; len(nums[0])):</span></span><br><span class="line">            ans[i//c][i%c] = nums[i//len(nums[<span class="number">0</span>])][i%len(nums[<span class="number">0</span>])]</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>这2份代码<code>tmp[i][j] = nums[x][y]</code> 究竟是哪里越界了呢？</p>
+<h3 id="leetcode-485-最大连续1长度">leetCode 485 最大连续1长度</h3>
+<p>O(n)时间复杂度，应该已经是最好了的吧，遍历一遍</p>
+<h3 id="leetcode-717-自动机">leetCode 717 自动机</h3>
+<p>比较简单， 状态0:刚得到的是0的string 状态1:收到1个1，接下来读取0\1 状态2:刚刚结束10/11的string</p>
+<p>最后判断是状态0还是状态2就可以了</p>
+<p>时间复杂度是O(n)</p>
+<h3 id="leetcode-695-找最大的岛屿第一反应就是dfs或者bfs">leetCode 695 找最大的岛屿，第一反应就是DFS或者BFS</h3>
+<p>边界条件 越界or已被标记or为0</p>
+<p>迭代和递归两种方法 时间复杂度O(r*c)</p>
+<p>C++做迭代的时候，对allocator不怎么理解，stack&lt;vector<int>&gt;的时候一直报错…… 最后用了pair</int></p>
+<h3 id="leetcode-448">leetCode 448</h3>
+<p>题目要求不使用额外空间。</p>
+<p>想了想，第一个思路是不符合要求的，想到的是建个flag标记数组，然后输出没标记的。</p>
+<p>没想到第二个方法，看了下答案，才意识到，可以把每个位置的值作为坐标来对该坐标位置进行*-1标记，既不影响值，又可以进行标记</p>
+<h3 id="leetcode-283">leetCode 283</h3>
+<p>遍历一遍，j作为非0位的位置，i作为遍历位置，向前移位，最后再从j的位置置0到end。</p>
+<p>不过看到std::remove,可以找到value，直接向前补足，起到了上面第一个部分的功能，然后调用std::fill，结束</p>
+<h3 id="leetcode-697">leetCode 697</h3>
+<p>不理解题目……看了别人的代码以后才理解的题目是要的最长下标……不是说要最长子序列吗？</p>
+<h3 id="leetcode-122-股票问题">leetCode 122 股票问题</h3>
+<p>完全没思路，看了下解题报告</p>
+<ol type="1">
+<li>一个叫Peak Valley Approach，寻找极值点来靠近最优解</li>
+<li>直接后一个减去前一个，只要大于0，就加到ans就好了</li>
+</ol>
+<p>O(n)时间复杂度，O(1)空间复杂度</p>
+<h3 id="leetcode-167">leetCode 167</h3>
+<p>只有输出上在leetCode 1基础上+1,并排序</p>
+<p>不过说起来，理论上，输出的时候应该本就是从低到高的吧，为什么偶尔会输出逆序的呢？</p>
+<p>似乎是输出找到的最后一个，那么应该需要返回换下序就好了</p>
+<h3 id="leetcode-169">leetCode 169</h3>
+<p>打算写个标记的，结果写完跑出来RE，才意识到输入是有负数的，</p>
+<h3 id="leetcode-661">leetCode 661</h3>
+<p>比较简单，就是遍历二维数组，O(n^2)的时间复杂度，O(1)的空间复杂度</p>
+<h3 id="leetcode-628">leetCode 628</h3>
+<p>打算直接用max_element找，结果漏考虑了负数也可以得到最大值了。 还是需要用到nth_element，来获取前K大和K小, 应该是O(nlog)复杂度，还不如直接排序了</p>
+<h3 id="leetcode-268">leetCode 268</h3>
+<p>要求是O(n)，用set.find()吧</p>
+<p>忘记了可以用异或运算了</p>
+<h3 id="leetcode-674">leetCode 674</h3>
+<p>除了第一个，只要比前一个大，就可以+1</p>
+<h3 id="leetcode-121">leetCode 121</h3>
+<p>参考答案是不停的找最低点，然后之后的每个数都减一下他，获取最大利润。</p>
+<p>完全没想到，我的思路是一开始先找到最低点/最高点，然后再找另一个，但是没想到方法。</p>
+<h3 id="leetcode-442">leetCode 442</h3>
+<p>第一反应就是插入set，使用find函数</p>
+<p>时间复杂度应该是O(nlogn),空间复杂度O(n)</p>
+<p>看了下discuss，有O(n)的方法，把nums[i]放到nums[nums[i]]的位置，最后不在自己位置的就是，还有一种更好的，每一个反转一下，有2个就会为正</p>
+<h3 id="leetcode-238">leetCode 238</h3>
+<p>要求常数空间复杂度和不用除法的O(n)的时间复杂度。</p>
+<p>参考答案给出的方案是，因为每个数组中的结果都需要乘N-1次，而循环的次数也差不多是N-1次，每个循环都同时对2个结果进行累乘，而使用的参数from_begin和from_end则在不停累乘，得到除了self以外的乘积。</p>
+<p>天哪，genius!</p>
+<h3 id="leetcode-53">leetCode 53</h3>
+<p>要去给出一个连续的能求出最大和的数组序列</p>
+<p>依旧是动态规划，不过这个时间复杂度只有O(n)了</p>
+<h3 id="leetcode-338">leetCode 338</h3>
+<p>想到了应该是在临近的几位之间的位运算有状态变化，但没想到是位与</p>
+<h3 id="leetcode-141">leetCode 141</h3>
+<p>判断是否有环</p>
+<p>我一开始想简单了，忘了只要中间有一个相交点就算环，而不是一定回到head</p>
+<h3 id="leetcode-160">leetCode 160</h3>
+<p>目前来看，看到了2种方法，一种就是先进行链表长度的计算，然后保证同步前进</p>
+<p>第二种，就是两个进行交互遍历，A跑完了就指向B的表头，再开始跑，B跑完了就指向A的表头，总会有最大公约数的时候。</p>
+<h3 id="leetcode-445">leetCode 445</h3>
+<p>用了栈把输入的链表逆序输出了，然后再进行计算，头插</p>
+<h3 id="leetcode-328">leetCode 328</h3>
+<p>把奇数序号的节点移到最前面，要求O(1)空间复杂度和O(n)时间复杂度。</p>
+<p>用了tail_odd,curr_odd,head_even,curr_even，搞定</p>
+<h3 id="leetcode-24">leetCode 24</h3>
+<p>要求每两个都交换节点。</p>
+<p>记得有pre来连接每2个之间就可以了</p>
+<h3 id="leetcode-19">leetCode 19</h3>
+<p>这道题n直接说明定义域是从1开始就好了，还得自己测试</p>
+<h3 id="leetcode-75">leetCode 75</h3>
+<p>折半查找 255ms， 直接插入，冒泡，希尔都是3ms 可能因为只有0，1，2排序？</p>
+<h3 id="leetcode-101">leetCode 101</h3>
+<p>一开始想到的是层次遍历二叉树，然后用迭代器正反迭代匹配一下，有一个不匹配就返回false。</p>
+<p>忘了写中间为空时填充一个nullptr，导致有些案例也返回了true。</p>
+<p>又发现如果找不到就填充nullptr，会导致队列永远不会为空，内存溢出MLE的情况，试图在匹配过程中发现空指针，就erase掉，但是迭代过程中erase会导致后续的所有迭代器前移</p>
+<p>并且，erase反向迭代器需要进行一下显示类型转换，并在erase时转换成正向迭代器(++it_r).base()。</p>
+<p>因为我是new了一个ptr来替代nullptr来实现普遍性，考虑到智能指针可能可以省力，但是实际情况下，似乎容器中不能添加智能指针。虽然我用shared_ptr.get()传递进了容器，但是这样猜测应该是违背容器管理的。</p>
+<p>一个容器全部被erase后，迭代器得到的并不是end()，所以需要添加一个empty的判断条件</p>
+<p>但是，我又发现，在erase最后一个，之后得到的是地址的顺推，但是end()因为在队列中被释放了2次，所以得到的是原本的倒数第二个，与实际不相符合了。所以需要添加一个计数器来管理结束</p>
+<p>看了下参考答案，原来是在遍历的时候就直接正反遍历，最后直接匹配树就好了，我想复杂了。</p>
+<p>不过也是成功实现了。</p>
+<h3 id="leetcode-88">leetCode 88</h3>
+<p>题目讲的也太不清楚了，m和n的边界功能完全没交代，难怪差评那么多。</p>
+<h3 id="leetcode-105">leetCode 105</h3>
+<p>DFS版本，似乎没法做出 BFS版本来</p>
+<p>引用传递指针，忘了这条，导致定义的指针始终没能指向函数中分配的堆地址</p>
+<h3 id="leetcode-287">leetCode 287</h3>
+<p>这道题，一开始没注意可以多次重复这件事，所以应该不是用异或运算了，而是利用值在1-n之间的这个条件。</p>
+<p>看了一下，大致的解法有2种，1种就是用slow和fast两个迭代器，进行前进 另一种是用二分查找，但是这个挺不能理解的，因为没有规定重复的一定是连续的呀？</p>
+<h3 id="leetcode-11">leetCode 11</h3>
+<p>从n的中间点开始向两边遍历，找分别最长的2条线，</p>
+<p>后来发现，还是直接从两端还是朝里走更简单，可以少去一些边界条件</p>
+<h3 id="leetcode-134">leetCode 134</h3>
+<h3 id="leetcode-142">leetCode 142</h3>
+<p>我们注意到第一次相遇时</p>
+<p>慢指针走过的路程S1 = 非环部分长度 + 弧A长</p>
+<p>快指针走过的路程S2 = 非环部分长度 + n * 环长 + 弧A长</p>
+<p>S1 * 2 = S2，可得 非环部分长度 = n * 环长 - 弧A长</p>
+<p>让指针A回到起始点后，走过一个非环部分长度，指针B走过了相等的长度，也就是n * 环长 - 弧A长，正好回到环的开头。</p>
+<p>要注意，让fast和slow同时从起点出发，否则遇到长度为2的环，就会TLE了</p>
+<h3 id="leetcode-632">leetCode 632</h3>
+<h3 id="leetcode-324">leetcode 324</h3>
+<p>这道题，应该从后向前赋值，因为最后一位需要与他身后那一位比较，就可以免去与正向最大那一位的比较</p>
+<h3 id="leetcode-524">leetCode 524</h3>
+<p>sort中的比较函数compare要声明为静态成员函数或全局函数，不能作为普通成员函数，否则会报错。Line 26: invalid use of non-static member function 因为：非静态成员函数是依赖于具体对象的，而std::sort这类函数是全局的，因此无法再sort中调用非静态成员函数。静态成员函数或者全局函数是不依赖于具体对象的, 可以独立访问，无须创建任何对象实例就可以访问。同时静态成员函数不可以调用类的非静态成员。</p>
+<h3 id="leetcode-713">leetCode 713</h3>
+<p>窗口每次向右增加一个数字，然后左边去掉需要去掉的数字后，窗口的大小就是新的子数组的个数，每次加到结果res中即可</p>
+<h3 id="leetcode-662">leetCode 662</h3>
+<p>这里max({a,b,c})和max(a,max(b,c))得到的是两个结果，后一个完全错误了</p>
+<p>没能想到是为什么，难道是对栈处理的问题？</p>
+<p>换成引用值，在过程中使用max,久一点没有问题了</p>
+<p>啊啊啊，</p>
+<h3 id="leetcode-372">leetCode 372</h3>
+<p>遵循公式 f(a,1234567) = f(a, 1234560) * f(a, 7) % k = f(f(a, 123456),10) * f(a,7)%k;</p>
+<h3 id="leetcode-387">leetCode 387</h3>
+<p>直觉，遍历过程中在之后的子串中进行find,找到就不是第一个，但是这个因为没有进行标记，完全可能把第二个出现的给标记成结果，导致错误。</p>
+<h3 id="leetcode-696">leetCode 696</h3>
+<p>始终没看懂题意，总算看懂以后也没看懂题解的方法，最后用了一个O(n^2)的解法，先找出所有的临界点，然后从临界点向外延伸</p>
+<h3 id="leetcode-441">leetcode 441</h3>
+<p>这道题感觉可能是可以理解成一个数学题的，但是完全想不到是什么keyword</p>
+<p>等差数列求和公式、阶梯、一元二次方程</p>
+<h3 id="leetcode-241">leetcode 241</h3>
+<p>stoi和atoi还是有点不一样，处理string上，我把stoi换成atoi c_str就可以跑出结果，虽然还是错的</p>
+<hr>
+<p>其实没有问题，只是我把substr传入范围出错了……天哪，我卡了一个晚上</p>
+<h3 id="leetcode-90-subsets">leetcode 90 subsets</h3>
+<p>为什么这里必须要先排序呢？我都用set来接收数据了，</p>
+<h3 id="leetcode-60-第k个全排列数">leetcode 60 第k个全排列数</h3>
+<p>这道题不能用回溯法了，需要寻找排列组合的规律</p>
+<h3 id="leetcode-204-求素数数量">leetcode 204 求素数数量</h3>
+<p>简单的话还是用素数筛选算法，</p>
+<p>如果是应用需要的话，还是得用基于费马小定理的Miller Rabin算法，可以用快速幂取模优化一下</p>
+<p>似乎这算是一个蒙特卡洛算法</p>
+<p>因为是随机检测的原因吧</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Sean10</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://sean10.github.io/2018/01/23/undefined/" title="LeetCode_Algorithm_Note">https://sean10.github.io/2018/01/23/undefined/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/11/undefined/" rel="next" title="pdf解密脚本">
+                <i class="fa fa-chevron-left"></i> pdf解密脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/08/undefined/" rel="prev" title="《深度探索C++对象模型》Note">
+                《深度探索C++对象模型》Note <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode-小结"><span class="nav-number">1.</span> <span class="nav-text">LeetCode 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.1.</span> <span class="nav-text">数组:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">leetcode 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-561"><span class="nav-number">1.1.2.</span> <span class="nav-text">leetcode 561</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-566"><span class="nav-number">1.1.3.</span> <span class="nav-text">leetcode 566</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-485-最大连续1长度"><span class="nav-number">1.1.4.</span> <span class="nav-text">leetCode 485 最大连续1长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-717-自动机"><span class="nav-number">1.1.5.</span> <span class="nav-text">leetCode 717 自动机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-695-找最大的岛屿第一反应就是dfs或者bfs"><span class="nav-number">1.1.6.</span> <span class="nav-text">leetCode 695 找最大的岛屿，第一反应就是DFS或者BFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-448"><span class="nav-number">1.1.7.</span> <span class="nav-text">leetCode 448</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-283"><span class="nav-number">1.1.8.</span> <span class="nav-text">leetCode 283</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-697"><span class="nav-number">1.1.9.</span> <span class="nav-text">leetCode 697</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-122-股票问题"><span class="nav-number">1.1.10.</span> <span class="nav-text">leetCode 122 股票问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-167"><span class="nav-number">1.1.11.</span> <span class="nav-text">leetCode 167</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-169"><span class="nav-number">1.1.12.</span> <span class="nav-text">leetCode 169</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-661"><span class="nav-number">1.1.13.</span> <span class="nav-text">leetCode 661</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-628"><span class="nav-number">1.1.14.</span> <span class="nav-text">leetCode 628</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-268"><span class="nav-number">1.1.15.</span> <span class="nav-text">leetCode 268</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-674"><span class="nav-number">1.1.16.</span> <span class="nav-text">leetCode 674</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-121"><span class="nav-number">1.1.17.</span> <span class="nav-text">leetCode 121</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-442"><span class="nav-number">1.1.18.</span> <span class="nav-text">leetCode 442</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-238"><span class="nav-number">1.1.19.</span> <span class="nav-text">leetCode 238</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-53"><span class="nav-number">1.1.20.</span> <span class="nav-text">leetCode 53</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-338"><span class="nav-number">1.1.21.</span> <span class="nav-text">leetCode 338</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-141"><span class="nav-number">1.1.22.</span> <span class="nav-text">leetCode 141</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-160"><span class="nav-number">1.1.23.</span> <span class="nav-text">leetCode 160</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-445"><span class="nav-number">1.1.24.</span> <span class="nav-text">leetCode 445</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-328"><span class="nav-number">1.1.25.</span> <span class="nav-text">leetCode 328</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-24"><span class="nav-number">1.1.26.</span> <span class="nav-text">leetCode 24</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-19"><span class="nav-number">1.1.27.</span> <span class="nav-text">leetCode 19</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-75"><span class="nav-number">1.1.28.</span> <span class="nav-text">leetCode 75</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-101"><span class="nav-number">1.1.29.</span> <span class="nav-text">leetCode 101</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-88"><span class="nav-number">1.1.30.</span> <span class="nav-text">leetCode 88</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-105"><span class="nav-number">1.1.31.</span> <span class="nav-text">leetCode 105</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-287"><span class="nav-number">1.1.32.</span> <span class="nav-text">leetCode 287</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-11"><span class="nav-number">1.1.33.</span> <span class="nav-text">leetCode 11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-134"><span class="nav-number">1.1.34.</span> <span class="nav-text">leetCode 134</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-142"><span class="nav-number">1.1.35.</span> <span class="nav-text">leetCode 142</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-632"><span class="nav-number">1.1.36.</span> <span class="nav-text">leetCode 632</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-324"><span class="nav-number">1.1.37.</span> <span class="nav-text">leetcode 324</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-524"><span class="nav-number">1.1.38.</span> <span class="nav-text">leetCode 524</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-713"><span class="nav-number">1.1.39.</span> <span class="nav-text">leetCode 713</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-662"><span class="nav-number">1.1.40.</span> <span class="nav-text">leetCode 662</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-372"><span class="nav-number">1.1.41.</span> <span class="nav-text">leetCode 372</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-387"><span class="nav-number">1.1.42.</span> <span class="nav-text">leetCode 387</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-696"><span class="nav-number">1.1.43.</span> <span class="nav-text">leetCode 696</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-441"><span class="nav-number">1.1.44.</span> <span class="nav-text">leetcode 441</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-241"><span class="nav-number">1.1.45.</span> <span class="nav-text">leetcode 241</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-90-subsets"><span class="nav-number">1.1.46.</span> <span class="nav-text">leetcode 90 subsets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-60-第k个全排列数"><span class="nav-number">1.1.47.</span> <span class="nav-text">leetcode 60 第k个全排列数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leetcode-204-求素数数量"><span class="nav-number">1.1.48.</span> <span class="nav-text">leetcode 204 求素数数量</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

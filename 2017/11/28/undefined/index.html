@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="in-class 初值设定 只支持整型常量">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Effective_C++》note">
+<meta property="og:url" content="https://sean10.github.io/2017/11/28/undefined/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="in-class 初值设定 只支持整型常量">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Effective_C++》note">
+<meta name="twitter:description" content="in-class 初值设定 只支持整型常量">
+
+
+
+
+
+
+  <link rel="canonical" href="https://sean10.github.io/2017/11/28/undefined/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>《Effective_C++》note | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/11/28/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《Effective_C++》note
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-11-28 22:47:56" itemprop="dateCreated datePublished" datetime="2017-11-28T22:47:56+08:00">2017-11-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/11/28/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/28/undefined/" class="leancloud_visitors" data-flag-title="《Effective_C++》note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:03</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="in-class-初值设定">in-class 初值设定</h1>
+<p>只支持整型常量</p>
+<a id="more"></a>
+<p>class static专属变量可以不定义，直接声明并使用</p>
+<p>如果要取地址，就在定义文件里再定义const ，不要初始化，因为值在声明时已经默认了。</p>
+<p>这不知道是哪个C++的版本加入的功能，旧编译器不支持初值</p>
+<p>不支持in class时，可以用<code>enum{NumTurns = 5}</code>替代</p>
+<p>这叫做enum hack补偿做法</p>
+<p>这是template metaprogramming的基本技术</p>
+<p>bitwise constness(physical constness) and logical constness</p>
+<p>二进制常量性 和 逻辑常量性 利用Mutable解决掉non-static的const摆动场，释放bitwise constness</p>
+<h1 id="新式转型">新式转型</h1>
+<p>static_const转型操作</p>
+<p>const_cast去除const操作</p>
+<p>core dump错误</p>
+<p>基类使用派生类函数 1. 使用virtual从继承向上移动 2. 使用安全容器</p>
+<p>绝对拒绝cascading dynamip_cast，理由不理解</p>
+<p>尽可能使用C++ style新式转型</p>
+<p>无参数构造函数，为什么也需要用到初始化操作？ （噢，可能是为了不忘记哪个参数不需要初值）</p>
+<p>不同编译单元内定义之non-local static对象，编译器对初始化顺序并没有设定</p>
+<p>**多个编译单元内的non-local static对象经由“模板隐式具现化 implicit template instantiations””形成</p>
+<p>将non-local 移到专属函数中，调用一个函数返回一个reference指向所含的对象，</p>
+<p>这是Singleton模式的一个常见实现手法</p>
+<p>但是在多线程环境下存在不确定性</p>
+<p>做法：在程序的单线程启动阶段手工调用所有reference-returning函数，可消除与初始化有关的”竞速形式(race conditions)</p>
+<p>编译器拒绝生成拷贝构造函数和操作符的几种情况</p>
+<p>将成员函数声明为private并不去实现，就可以阻止编译器生成public拷贝构造函数等等</p>
+<p>声明一个uncopyable基类，继承他就可以直接阻止编译器</p>
+<p>c++的异常绝对不要放在析构函数里</p>
+<p>连锁赋值</p>
+<p>返回*this，这个是返回引用</p>
+<p>自我赋值，释放，陷阱</p>
+<p>传统做法，添加identity test</p>
+<p>异常安全性是什么？</p>
+<p>工厂函数factory function</p>
+<h1 id="raii资源取得时机便是初始化时机resource-acquisition-is-initialization">RAII，资源取得时机便是初始化时机(Resource Acquisition is Initialization)</h1>
+<p>智能指针</p>
+<p>或者 referenced counting smart pointer</p>
+<h1 id="resource-handler">resource handler</h1>
+<p>shared_ptr存在删除器，可以指定调用函数作为释放这种行为</p>
+<p><code>std::tr1::shard_ptr&lt;Investor&gt; ptr</code> <code>ptr(m1, Unlock)</code></p>
+<p>有时APIs直接接触原始资源，无法通过资源管理类来接触</p>
+<p>对原始资源的访问最好是通过显式转换，但是对客户来说，隐式转换 可能更加方便</p>
+<p>隐式转换也是可以在自定义类中重载的吗？</p>
+<p><strong>以独立语句将newed对象存储于智能指针内。如果不这样做，一旦异常被抛出，有可能导致难以察觉的资源泄露</strong></p>
+<h1 id="优良接口">优良接口</h1>
+<p>许多客户端错误可以因为导入新类型而获得预防</p>
+<p>以函数替换对象，表现某个特定月份</p>
+<p>和non-local static对象的初始化次序有什么关系？</p>
+<p>嗯，想起来了，构造函数的赋值和初始化次序可能不定，还是直接调用函数效果更确定</p>
+<p>tr1::shared_ptr支持定制型删除器，可防范DLL问题，可被用来自动解除互斥锁。</p>
+<p>这条不太理解，不知道DLL可能发生什么错误</p>
+<p>设计class犹如设计type</p>
+<p>函数内的static local对象何时释放？ global slinton</p>
+<p>在一个命名空间内添加多个头文件也是一种做法</p>
+<p><strong>特化版本</strong>是什么，好像没见过</p>
+<p>条款25，特化swap，感觉不理解，特别复杂</p>
+<p>避免返回handles（包括references、迭代器）指向对象内部</p>
+<h1 id="异常安全性">异常安全性</h1>
+<ul>
+<li>不泄露任何资源</li>
+<li>不允许数据败坏</li>
+</ul>
+<p>异常安全码</p>
+<p>copy and swap一般化策略</p>
+<p>pimpl idiom</p>
+<p>function template和头文件是啥关系，似乎没啥关系</p>
+<h1 id="条款31-将文件件的编译依存关系降至最低">条款31 将文件件的编译依存关系降至最低</h1>
+<p>我们可以这样做，将person分割为两个classes，一个只提供接口，另一个负责实现该接口。</p>
+<p>这样可以实现接口与实现相分离</p>
+<p>std头文件依旧引用，除此之外。接口使用前置声明。</p>
+<p>关键:用“声明的依存性”替换“定义的依存性”</p>
+<p>Pass By Value就需要用到定义，而如果传递指针或引用，就不需要定义，只要声明</p>
+<p><strong>为声明式和定义式上提供不同的头文件</strong></p>
+<p>就像<iosfwd></iosfwd></p>
+<p>这个被称为Handle classes.</p>
+<p>2种: * 接口与实现相分离 * 抽象基类，叫interface class</p>
+<p>类似Java的Interface</p>
+<p>继承这个抽象基类的叫做具象类(concrete classes)，调用基类的创建函数，在创建函数中调用具象类对象动态分配，并返回static，然后通过基类中提供的接口对返回的对象进行操作。哇，这也是一种接口与实现相分离</p>
+<p>handle classes 和Interface classes解除了接口和实现之间的耦合关系，从而降低了文件间的编译依存性(compilation dependencies)</p>
+<p>virtual意味着接口必须被继承，non-virtual意味着接口和实现必须被继承</p>
+<p>转角函数 forwarding function</p>
+<h1 id="函数接口继承和函数实现继承">函数接口继承和函数实现继承</h1>
+<p>virtual和inline究竟有什么关系？</p>
+<p>接口和缺省实现应该分开</p>
+<p>可以在纯虚函数的定义中进行缺省实现</p>
+<p>简朴的(非纯)impure vritual函数具体制定接口继承及缺省实现继承。</p>
+<p>缺省实现继承不还是pure virtual函数实现的吗？</p>
+<p>难道这个简朴的，指的不是virtual函数？</p>
+<p>non-virtual interface(NVI手法)，外覆器(wrapper)</p>
+<p>Template Method设计模式</p>
+<p>虚函数private，还能被继承吗？</p>
+<p>不能的话，那有什么意义？</p>
+<p>strategy设计模式</p>
+<p>传递函数指针</p>
+<p>tr1::function可以实现stategy设计模式</p>
+<p>任何兼容的可调用物(callable entity)</p>
+<p>与给定之目标签名式(target signature)兼容</p>
+<p>上面2条什么意思？</p>
+<p>非虚函数，Base类指针指向派生类，执行的函数式Base类中的，而不是派生类中的。</p>
+<p>如果是虚函数，那么就都执行派生类中的。</p>
+<p>静态绑定，动态绑定</p>
+<p>dynamically bound,stataically bound</p>
+<p>不能调用继承Private的virtual函数，那么允许重新定义这个虚函数的价值是什么呢？</p>
+<p>如果继承的private是非虚函数，也是可以重新定义的吧？</p>
+<p>难道这个不行</p>
+<p>Java和C#自带 组织derived class 重新定义virtual 函数</p>
+<p>空白基类最优化</p>
+<h1 id="多重继承">多重继承</h1>
+<p>virtual inheritance</p>
+<h1 id="泛型编程">泛型编程</h1>
+<p>衍生出模板元编程</p>
+<p>显式接口，运行期多态</p>
+<p>template中指涉一个嵌套丛书类型名称，就必须在紧邻它的前一个位置放上关键字typename</p>
+<p>模板 特化</p>
+<p>全特化模板的调用很有可能编译器不会去查询，也就无法调用，存在一些问题</p>
+<p>共性与变性分析</p>
+<p>模板化基类 被覆盖</p>
+<p>working set</p>
+<p>因非类型模板参数造成的代码膨胀，可以用class来替换template，但是完全理解不了</p>
+<p>Traits是一门技术，获取类型信息的，无论是内置还是自动类型</p>
+<p>TMP元编程技术越来越牛了</p>
+<p>可以定制new和delete，set_new_handler</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Sean10</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://sean10.github.io/2017/11/28/undefined/" title="《Effective_C++》note">https://sean10.github.io/2017/11/28/undefined/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/undefined/" rel="next" title="东野圭吾作品的别致">
+                <i class="fa fa-chevron-left"></i> 东野圭吾作品的别致
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/02/undefined/" rel="prev" title="leetcode-101">
+                leetcode-101 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#in-class-初值设定"><span class="nav-number">1.</span> <span class="nav-text">in-class 初值设定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新式转型"><span class="nav-number">2.</span> <span class="nav-text">新式转型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#raii资源取得时机便是初始化时机resource-acquisition-is-initialization"><span class="nav-number">3.</span> <span class="nav-text">RAII，资源取得时机便是初始化时机(Resource Acquisition is Initialization)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resource-handler"><span class="nav-number">4.</span> <span class="nav-text">resource handler</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优良接口"><span class="nav-number">5.</span> <span class="nav-text">优良接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常安全性"><span class="nav-number">6.</span> <span class="nav-text">异常安全性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条款31-将文件件的编译依存关系降至最低"><span class="nav-number">7.</span> <span class="nav-text">条款31 将文件件的编译依存关系降至最低</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数接口继承和函数实现继承"><span class="nav-number">8.</span> <span class="nav-text">函数接口继承和函数实现继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多重继承"><span class="nav-number">9.</span> <span class="nav-text">多重继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型编程"><span class="nav-number">10.</span> <span class="nav-text">泛型编程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

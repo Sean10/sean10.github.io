@@ -3,11 +3,22 @@
 
 
 
-<html class="theme-next muse" lang="zh-Hans">
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -42,50 +53,24 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
@@ -100,13 +85,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.0.4',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
-    fastclick: ,
-    lazyload: ,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -123,14 +108,10 @@
 
 
 
-  
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-<meta name="description" content="笔记 随笔">
+  <meta name="description" content="笔记 随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/page/6/index.html">
+<meta property="og:url" content="https://sean10.github.io/page/6/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="笔记 随笔">
 <meta property="og:locale" content="zh-Hans">
@@ -143,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://sean10.github.io/page/6/"/>
+  <link rel="canonical" href="https://sean10.github.io/page/6/"/>
 
 
 
@@ -152,6 +133,7 @@
     sidebar: "",
   };
 </script>
+
   <title>行路中.</title>
   
 
@@ -204,24 +186,26 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">行路中.</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
-        <h1 class="site-subtitle" itemprop="description">脚踏实地</h1>
+        <p class="site-subtitle">脚踏实地</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -229,56 +213,73 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            Home</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            About</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            Tags</a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            Categories</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            Archives</a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
 </nav>
 
 
+
   
 
 
 
- </div>
+</div>
     </header>
 
     
@@ -287,6 +288,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -306,11 +308,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-319/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/08/04/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -323,13 +325,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/19/leetcode-319/" itemprop="url">leetcode 319</a></h2>
+                <a class="post-title-link" href="/2017/08/04/undefined/" itemprop="url">
+                  克苏鲁神话初学
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -337,28 +349,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T20:51:00+08:00">2015-12-19</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2017-08-04 15:24:18" itemprop="dateCreated datePublished" datetime="2017-08-04T15:24:18+08:00">2017-08-04</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -374,7 +388,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -389,9 +403,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/19/leetcode-319/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-319/" itemprop="commentCount"></span>
+                <a href="/2017/08/04/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/08/04/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,13 +412,13 @@
 
           
           
-             <span id="/2015/12/19/leetcode-319/" class="leancloud_visitors" data-flag-title="leetcode 319">
+             <span id="/2017/08/04/undefined/" class="leancloud_visitors" data-flag-title="克苏鲁神话初学">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -413,6 +426,257 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:07</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>初闻，有所疏漏，请见谅。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/04/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/07/01/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/01/undefined/" itemprop="url">
+                  原计划更换markdown渲染引擎
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-07-01 17:01:14" itemprop="dateCreated datePublished" datetime="2017-07-01T17:01:14+08:00">2017-07-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/01/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/07/01/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/01/undefined/" class="leancloud_visitors" data-flag-title="原计划更换markdown渲染引擎">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:02</span>
+              
+            </div>
           
 
           
@@ -432,7 +696,38 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int bulbSwitch(int n) &#123;</span><br><span class="line">    return (int)sqrt(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>前两天在写复习笔记的时候，发现渲染出的mathjax公式不像本地预览时显示的那样正常，含有<code>_</code>符号的都被渲染成了<code>&lt;em&gt;</code>标记，导致公式显示异常。网上推荐更换渲染引擎hexo-renderer-krame，虽然这个是fork出来特地解决了hexo-renderer-marked的这个问题的，但是同样，也修改了markdown的一些基本语法，在写行内公式时，就需要在$$外套上一层`符号，而我本地的预览使用的渲染引擎同样也会需要修改，这就比较麻烦了。</p>
+<p>再进行了搜索，发现了一个据说非常强大的引擎pandoc，不过我在安装后，始终遇到以下错误。</p>
+<blockquote>
+<p>INFO Start processing FATAL Something’s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</p>
+<p>Error: [pandoc warning] YAML header is not an object “source” (line 67, column 1)<br>
+at ChildProcess.<anonymous> (/Users/sean10/Code/sean10.github.io/node_modules/hexo-renderer-pandoc/index.js:73:20)<br>
+at emitTwo (events.js:106:13)<br>
+at ChildProcess.emit (events.js:191:7)<br>
+at maybeClose (internal/child_process.js:877:16)<br>
+at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)</anonymous></p>
+</blockquote>
+<p>经过搜查，这似乎属于pandoc解析时的错误，找到了以下类似内容。</p>
+<blockquote>
+<p>See http://johnmacfarlane.net/pandoc/README.html#yaml-metadata-block</p>
+<p>There must be something in your document that looks like a YAML metadata block, but isn’t. Such a block would start with—on a line by itself and end with—or…on a line by itself. The line numbers in the error message refer to lines inside the metadata block, not to lines of the document.<br>
+By the way, you can turn off YAML metadata block parsing entirely by putting <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--from markdown-yaml_metadata_block</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>in your pandoc command line.</p>
+</blockquote>
+<p>不过这个解决方法并没能解决问题，我换了一个思路。</p>
+<p>后来想了想，是否可能是在渲染文章头部YAML格式时出现错误，导致后续的markdown就无法渲染了，所以可能是在文章内容上出现了问题，但是这个error信息没能显示具体文件，又没有日志，我决定二分排查是哪篇的错误。</p>
+<p>很快就发现了，是最近写的Unix复习那篇的错误，在第67行，没有意识到错误所在，经过测试，发现问题是在于markdown的语法上，pandoc语法要求标题#前必须插入一空行，修改后终于成功渲染了。真是不容易。</p>
+<blockquote>
+<p>Extension: blank_before_header</p>
+<p>始 markdown 語法在標題之前並不需要預留空白行。Pandoc 則需要（除非標題位於文件最開始的地方）。這是因為以 # 符號開頭的情況在一般文字段落中相當常見，這會導致非預期的標題。例如下面的例子：</p>
+<p>I like several of their flavors of ice cream: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#22, for example, and #5.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="参考文献">参考文献</h1>
+<ol type="1">
+<li><a href="https://stackoverflow.com/questions/19520463/pandoc-cannot-parse-yaml-header-when-converting-md-to-pdf" target="_blank" rel="noopener">parse yaml</a></li>
+</ol>
 
           
         
@@ -486,11 +781,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-260/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/06/28/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -503,13 +798,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/19/leetcode-260/" itemprop="url">leetcode 260</a></h2>
+                <a class="post-title-link" href="/2017/06/28/undefined/" itemprop="url">
+                  计算机系统结构复习note
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -517,28 +822,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T20:27:00+08:00">2015-12-19</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2017-06-28 15:58:32" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">2017-06-28</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -554,7 +861,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -569,9 +876,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/19/leetcode-260/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-260/" itemprop="commentCount"></span>
+                <a href="/2017/06/28/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/06/28/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -579,13 +885,13 @@
 
           
           
-             <span id="/2015/12/19/leetcode-260/" class="leancloud_visitors" data-flag-title="leetcode 260">
+             <span id="/2017/06/28/undefined/" class="leancloud_visitors" data-flag-title="计算机系统结构复习note">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -593,6 +899,482 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">20k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:18</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>仅供参考~</p>
+<p>看到了，没记住是最悲剧的……</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/28/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/06/27/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/27/undefined/" itemprop="url">
+                  Unix编程环境复习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-27 14:36:03" itemprop="dateCreated datePublished" datetime="2017-06-27T14:36:03+08:00">2017-06-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/27/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/06/27/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/27/undefined/" class="leancloud_visitors" data-flag-title="Unix编程环境复习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:05</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>关于shell内的圆括号的问题，圆括号不是本来就在shell中作与操作吗，为什么还要用转义符转义才能在find中用？ 难道说如果不用转义符，其优先级会更高？导致会报错误？姑且先这么记吧。</p>
+<p>check: 括号中的命令将会新开一个子shell顺序执行，所以括号中的变量不能够被脚本余下的部分使用</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/27/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/06/26/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/26/undefined/" itemprop="url">
+                  图形学复习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-26 16:35:28" itemprop="dateCreated datePublished" datetime="2017-06-26T16:35:28+08:00">2017-06-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/26/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/06/26/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/06/26/undefined/" class="leancloud_visitors" data-flag-title="图形学复习笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">7.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:07</span>
+              
+            </div>
           
 
           
@@ -612,7 +1394,225 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Return an array of size *returnSize.</span><br><span class="line"> * Note: The returned array must be malloced, assume caller calls free().</span><br><span class="line"> */</span><br><span class="line">int* singleNumber(int* nums, int numsSize, int* returnSize) &#123;</span><br><span class="line">    int xor = 0;</span><br><span class="line">    for(int i = 0;i &lt; numsSize;i++)</span><br><span class="line">        xor ^= nums[i];</span><br><span class="line">    int temp = xor;</span><br><span class="line">    temp &amp;= ~temp+1;</span><br><span class="line">    int ansX = 0;</span><br><span class="line">    for(int i = 0;i &lt; numsSize;i++)</span><br><span class="line">        if(nums[i]&amp;temp)//这一行还有点纳闷，如果换成(nums[i]&amp;temp == temp)就会WA</span><br><span class="line">            ansX ^= nums[i];</span><br><span class="line">    int ansY = ansX^xor;</span><br><span class="line">    *returnSize = 2;</span><br><span class="line">    int *ans;</span><br><span class="line">    ans = malloc(sizeof(int)*2);</span><br><span class="line">    ans[0] = ansX;</span><br><span class="line">    ans[1] = ansY;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="第一章-计算机图形学概论">第一章 计算机图形学概论</h2>
+<h3 id="比较计算机图形学与图象处理技术相同点和不同点">1． 比较计算机图形学与图象处理技术相同点和不同点。</h3>
+<p>Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。</p>
+<p>图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，多维像素数组。 而图像处理技术输入的是图像，输出的也是图像。</p>
+<p><img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg"></p>
+<h3 id="列举三个计算机图形的应用实例">2． 列举三个计算机图形的应用实例。</h3>
+<ul>
+<li>CAx领域 计算机辅助设计CAD; 计算机辅助制造CAM; 计算机辅助教学CAI; 等</li>
+<li>系统模拟、虚拟现实 航空、航天、建筑、体育等模拟与训练</li>
+<li>OA与电子出版系统</li>
+<li>过程控制 飞船、卫星、导弹、工业生产过程等</li>
+<li>绘制勘探、测量图</li>
+</ul>
+<p>地形、地貌、矿藏、气象、GIS</p>
+<p>• 艺术、娱乐和商业</p>
+<p>平面设计、动画、影视制作</p>
+<p>• 医学诊断技术</p>
+<p>CT、核磁共振等数据分析诊断病因,手术模拟</p>
+<p>• 科学计算可视化</p>
+<p>复杂数据的直观表示,方便观察结果</p>
+<h3 id="简述计算机图形学发展动向">3． 简述计算机图形学发展动向。</h3>
+<ul>
+<li>造型技术
+<ul>
+<li><p>规则形体: 可用欧氏几何描述的形体 几何造型技术（几何描述） 特征造型技术（特征作为形状描述的单元） 基于物理的造型技术（动画）</p></li>
+<li><p>不规则形体: 过程式模拟, 如分形、粒子系统、基于文法生成</p></li>
+</ul></li>
+<li><p>真实图形生成技术 简单局部光照模型、全局光照模型, 基于图象绘制技术</p></li>
+<li><p>人-机交互技术 三维人-机交互技术, 虚拟环境, 多通道技术, 非精确交互</p></li>
+<li><p>基于网络的图形技术 网络和多媒体技术, 分布式图形, 虚拟现实建模语言VRML</p></li>
+</ul>
+<h2 id="第二章-计算机图形系统概述">第二章 计算机图形系统概述</h2>
+<h3 id="叙述计算机图形系统的基本功能">1． 叙述计算机图形系统的基本功能。</h3>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg"> 输入、输出、计算、存储、对话</p>
+<h3 id="输入设备可有哪几种逻辑功能请举出各自对应的物理设备">2． 输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</h3>
+<p>共有6类逻辑输入设备： * 定位(locator): 指定一个坐标点。对应的物理设备有鼠标器、键盘、数字化仪、触摸屏等。 * 笔划(stroke): 指示一个坐标点系列, 如指定一条曲线的控制点等。主要物理设备有数字化仪 * 送值(valuator): 输入一个数值。最常用的物理设备是键盘的数字键。 * 字符串(string)：输入一个字符串。最基本的物理设备是键盘的数字字母键 * 拾取(pick)：选择一个显示对象, 为应用程序处理确定目标。常用的物理设备是各种定位设备 * 选择(choice)：在一个可选动作或选项中进行选择, 如选择菜单项。典型的物理设备是鼠标器、数字化仪、键盘的功能键等。</p>
+<h3 id="画出图形软件的层次结构及主要组成">3． 画出图形软件的层次结构及主要组成。</h3>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg"></p>
+<h3 id="颜色查找表的概念及实现原理">4． 颜色查找表的概念及实现原理。</h3>
+<p>彩色表又称为调色板, 用来定义图像的 不同颜色。 <strong>彩色表的工作原理</strong> 代号-颜色RGB值对照表</p>
+<h3 id="光栅扫描显示器结构与工作原理">5. 光栅扫描显示器结构与工作原理。</h3>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxhv179vbj30z40ekdi9.jpg"> (1)图形信息的产生有两种主要途径: 其一, 由计算机执行相应的图形应用程序, 图像生成系统接受指令将图形的矢量表示转换成像素表示, 再将像素值存入显示存储器; 其二, 图像生成系统直接把图形输入设备(摄像 机、扫描仪等)输入的图形图像直接或经过主存 储器间接地存放到显示存储器中。 (2)显示控制器生成水平和垂直同步扫描信号送到 监视器, 使CRT电子束进行水平扫描和垂直扫描形成光栅; 另一方面又根据电子束在屏幕上的 行、列位置, 不断地读出显示存储器中对应位 置的像素值。 (3)利用彩色表将读出的像素值转换成R、G、B 三原色的亮度值, 来控制CRT的R、G、B电子束, 在屏幕对应点生成需要的像素颜色。</p>
+<h3 id="什么要制订图形软件标准举例说明它的分类">6． 什么要制订图形软件标准？举例说明它的分类。</h3>
+<p>制定图形软件标准的目的在于使图形软件能 够在不同的计算机和图形设备之间进行移植, 以便提高图形软件的利用率, 降低开发成本, 缩短研制周期, 使图形软件向着通用、高级与 设备无关的方向发展。 目前已经制定或正在制定的一些图形标准都是接 口标准。这些标准的功能旨在使图形系统中两 部分之间的接口标准化, 可以分为两类: * 数据接口标准 * 子程序接口标准</p>
+<h2 id="第三章-基本图形生成算法">第三章 基本图形生成算法</h2>
+<h3 id="bresenham-直线生成算法原理它与-dda-算法相比有何改进">1． Bresenham 直线生成算法原理。它与 DDA 算法相比，有何改进？</h3>
+<p>根据直线的斜率确定选择X或者Y方向作为计 长方向, 在此方向上每次递增一个单位步长(或 者一个像素单位), 另一个方向上是否同时产生 一个单位增量由一个计算量很小的判别式来判 断。</p>
+<p>Bresenham算法相比DDA算法去除了费时的取整运算，效率更高了。</p>
+<h3 id="比较几种常用画圆弧算法的原理和效率">2． 比较几种常用画圆弧算法的原理和效率。</h3>
+<ul>
+<li>Bresenham算法 与Bresenham直线生成算法一样, 其基本方法 是从一个起点出发, 利用判别式选择下一个显 示点。判别式的值通过简单计算获得, 其符号 用作判断。</li>
+</ul>
+<p><strong>算法特点</strong> Bresenham圆弧算法是最有效的算法之一, 生 成圆时利用第一象限的上八分之一圆弧对称 扩展。选择点时所用判别式是递推表达式， 仅用加、减和移位即可计算, 算法效率高。</p>
+<ul>
+<li>正负法（逐点比较法） • 首先,区分不同象限的圆弧；</li>
+</ul>
+<p>• 然后,选定圆弧起点后,在输出圆弧的过程中, 根 据当前点的位置与理想圆弧的关系和所在象限， 决定下一步的走向, 每次只在一个方向(X 或 Y) 走步取点;</p>
+<p>• 这样一步步地逼近产生应显示的圆弧。</p>
+<p><strong>算法特点</strong> 计算机用正负法生成圆弧时运算只有加、减和 移位(乘2)运算, 无乘除, 因此运算效率高, 这很 适用于用硬件实现。</p>
+<p>较之Bresenham算法, 正负法的运算更为简单, 但对于同一段圆弧而言, 由于正负法每次只是 单向走步, 因而生成的点数比Bresenham算法生 成的点数要多。</p>
+<ul>
+<li>多边形逼近法</li>
+</ul>
+<p>当圆的内接多边形边数足够多时, 该多边形可 以和圆接近到任意程度, 因此在允许的误差范 围内(例如圆周和多边形之间的最大距离小于半 个像素的宽度), 可用显示多边形代替显示圆。</p>
+<p>显示多边形的边可以用Bresenham直线生成算 法来实现。</p>
+<p><em>个人猜想：毕竟采用的不是描点法，因而效率会更高</em></p>
+<h3 id="简述两种字符生成方法">3． 简述两种字符生成方法。</h3>
+<ul>
+<li>矢量字符 写字模：采集每一笔两个端点的值。</li>
+<li>点阵字符 采用mask来定义字符 所谓(mask)字符掩膜,就 是包含该字符的像素信息的一小块光栅。</li>
+</ul>
+<h3 id="何谓四连通和八连通写出一种边界表示的八连通区域填充算法">4． 何谓四连通和八连通？写出一种边界表示的八连通区域填充算法。</h3>
+<p>4连通区域：取区域中的任何两个像素,从一象 素出发,通过上、下、左、右4种运动,只经过 该区域的点可以达到另一像素</p>
+<p>8连通区域：取区域中任何两个像素,从一象素 出发通过上、下、左、右、两条对角线方向共 8种运动,只经过该区域的点可达到另一像素</p>
+<p>4连通区域和8连通区域的关系： 4连通区域是8连通区域的一种特殊情况。4连通区域的边界必定是8连通式的；（8连通区域的边界必定是4连通式的？）。 这里指的是连通（而不是边界）</p>
+<h3 id="解释活化边表的思想以多边形区域填充为例介绍它的应用">5． 解释活化边表的思想，以多边形区域填充为例介绍它的应用。</h3>
+<h3 id="已知多边形各个顶点的坐标为22-24-86-122-81-62及-22-在用扫描线填充算法实现扫描转换时-写出其边表et和全部的活化边表aet的内容">6．已知多边形各个顶点的坐标为(2,2), (2,4), (8,6), (12,2), (8,1), (6,2)及 (2,2), 在用扫描线填充算法实现扫描转换时, 写出其边表(ET)和全部的活化边表(AET)的内容。</h3>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxlixlj38j30uy0jkjte.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg"></p>
+<h3 id="设计和实现一个图形函数库具有绘制直线段任意圆弧椭圆弧-多边形区域的阴影填充和颜色填充等功能仅调用画点函数">7. 设计和实现一个图形函数库，具有绘制直线段、任意圆弧、椭圆弧、 多边形区域的阴影填充和颜色填充等功能。（仅调用画点函数）</h3>
+<p>大作业第一个 见附录</p>
+<h2 id="第四章-图形变换与裁剪">第四章 图形变换与裁剪</h2>
+<h3 id="什么是灭点">1．什么是灭点?</h3>
+<p>任何一束不平行于投影平面的平行线的透视投 影将汇聚成一点,称为灭点。灭点可以看作是 无限远处的一点在投影面上的投影。灭点有无 限多个。</p>
+<p>在坐标轴方向上的灭点, 称为主灭点。</p>
+<p>透视投影根据主灭点的个数分为一点透视、二 点透视和三点透视。主灭点数是和投影平面切割坐标轴的数量相对应的。</p>
+<h3 id="试用几种不同顺序的简单几何变换求出将平面上的任一线段p1x1-y1-p2x2-y2变换成与-x-轴重合的变换阵并说明其等效性">2．试用几种不同顺序的简单几何变换,求出将平面上的任一线段P1(x1, y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</h3>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmi0znwoj30v80v4433.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmid8igvj31180ycq9b.jpg"></p>
+<h3 id="已知-oxyz-坐标系下平面方程是-xyzd0试求变换距阵-t使该平面在-oxyz坐标系下变成-z0">3．已知 OXYZ 坐标系下平面方程是 x+y+z+d=0，试求变换距阵 T，使该平面在 O’X’Y’Z’坐标系下变成 z’=0。</h3>
+<h3 id="试简述二维图形裁剪的基本原理及可选用的裁剪策略.">4．试简述二维图形裁剪的基本原理及可选用的裁剪策略.</h3>
+<p>在显示图形之前, 组成图形的每一个基本元素都 要经过裁剪, 因此裁剪算法直接影响整个图形系 统的效率。</p>
+<p>裁剪的基本目的是判断图形元素是否在所考虑 的区域内。如在区域内, 则进一步求出在区域内 的那一部分。因此裁剪处理包含两部分内容:</p>
+<p>1)点在区域内外的判断;</p>
+<p>2)计算图形元素与区域边界的交点。</p>
+<p><strong>可选用的裁剪策略：</strong> * 编码裁剪法(Sutherland-Cohen算法) <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxow9qi0fj315s0nmdnw.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxowgvxxyj316e0satbz.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxowqbws0j31520pytio.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox3ge2oj30ze0ww442.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox9xbl4j314s0v0jw3.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoxgj3lnj31460vktbn.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoxngfihj314s0n441a.jpg"> * 中点分割裁剪法 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxm94eayqj31900wogqd.jpg"> * 多边形的裁剪 * 逐边裁剪法 * 双边裁剪法</p>
+<h2 id="第五章-人机交互技术">第五章 人机交互技术</h2>
+<h3 id="基本的交互任务有哪些它们可用什么设备执行">1. 基本的交互任务有哪些？它们可用什么设备执行？</h3>
+<ul>
+<li>定位 定位设备</li>
+<li>选择 选择设备</li>
+<li>数量输入 取值设备</li>
+<li>文本输入 键盘</li>
+<li>三维交互 鼠标</li>
+</ul>
+<p>设备有:定位设备，键盘设备，取数设备，选择设备，其他输入设备</p>
+<h3 id="举例说明-windows-系统常用的交互方式编程实现其中一例">2. 举例说明 WINDOWS 系统常用的交互方式，编程实现其中一例。</h3>
+<p>windows系统常用选择交互方式，鼠标点选选项进行操作。</p>
+<h3 id="叙述设计人机交互的一般风格和原则">3. 叙述设计人机交互的一般风格和原则。</h3>
+<p>现在计算机系统的人机界面一般具有下列风格, 即: “所见即所得”(what you see is what you get) , 直接操作(direct manipulate)及菜单和图形符号 (icon)驱动。 * “所见即所得”在交互式图形系统中一般都 能做到, 即在屏幕上所见到的设计结果和用硬 拷贝所得的输出结果是一致的。 * 直接操作是对对象、特性及关系等操作时用 户可得到一种直观及形象的表示, 以说明这个 操作是正确地被执行了。 * 图形符号驱动的目的是要用户不需要专门学 习及记忆便可借助于菜单选择来运行系统。 要做到这一点最主要的是要设计好图形符号, 使它一看便知道它代表什么操作。</p>
+<h2 id="第六章-曲线曲面的表示">第六章 曲线曲面的表示</h2>
+<h3 id="bezier-曲线具有哪些特性试用-n-的归纳法证明其凸包性">1. Bezier 曲线具有哪些特性？试用 n 的归纳法证明其凸包性。</h3>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmtkh0bsj31900w6jxn.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmttb1hkj317a0w847j.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmu0svh1j317e0ryah1.jpg"> 证明就算了，一点都看不懂……</p>
+<h3 id="b-样条曲线的定义及其特点">2. B 样条曲线的定义及其特点。</h3>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmxqacfxj313o0n6jwh.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmxxr2wij317k0qodnu.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmy55psuj310y0qg77b.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmycwhevj316w0qktgo.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmyl3qsej31020p40us.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmys8m11j31940vkgyx.jpg"></p>
+<h3 id="比较-bezier-曲面和ｂ样条曲面的功能特点">3. 比较 Bezier 曲面和Ｂ样条曲面的功能特点。</h3>
+<p>Bezier曲面和B样条曲面的特点是曲面逼近控制网 格。</p>
+<p>Ｂ样条曲面不仅在保留了Bézier曲面的优点的同时克服了由于整体表示带来的不具有局部修正性质的特点，而且成功地解决了样条函数的局部控制问题，轻而易举地在参数连续性上解决了贝奇尔方法的连接问题。</p>
+<h3 id="coons-曲面片构造方法及其特点">4. Coons 曲面片构造方法及其特点。</h3>
+<p>Coons曲面特点是插值, 它构造满足给定边界条 件的曲面。</p>
+<h2 id="第七章-三维实体的造型">第七章 三维实体的造型</h2>
+<h3 id="体素构造表示法中两物体正则运算的公式并举例说明它们的计算方-法">1. 体素构造表示法中两物体正则运算的公式，并举例说明它们的计算方 法。</h3>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnb3rmn9j316u0psai6.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnbss16mj318g0w6q9r.jpg"></p>
+<h3 id="形体的拓扑信息和几何信息各包含哪些内容举例说明它们起何作用">2. 形体的拓扑信息和几何信息各包含哪些内容？举例说明它们起何作用。</h3>
+<p>几何信息－物体大小、尺寸、位置、形状等</p>
+<p>拓扑信息－物体上所有顶点、棱边、表面间连接关系</p>
+<p>几何信息和拓扑信息分开表示的优点:</p>
+<ol type="1">
+<li><p>便于具体查询物体中各元素、获取它们的信息;</p></li>
+<li><p>容易支持对物体的各种局部操作;</p></li>
+<li><p>对于具有相同拓扑结构而只是大小、尺寸不同 的物体,可以用统一的数据结构加以表示;</p></li>
+<li><p>便于在数据结构上附加各种非几何信息。</p></li>
+</ol>
+<h3 id="欧拉公式及其应用意义">3. 欧拉公式及其应用意义。</h3>
+<p>给用户提供了直接使用顶点、棱边、表面等基 本元素构造三维立体的手段。用户可以通过输入 点,再建立边, 构成面, 形成体。 任何数目顶点、棱边、表面并不能构成一个体。 它们之间须满足拓扑一致性和几何一致性。</p>
+<p>– 几何一致性由用户输入几何信息时保证, 系统应 提供检查输入信息几何一致性功能。 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgyby1965zj31960vu154.jpg"></p>
+<h3 id="试写出判定空间任意位置的两个长方体是否相交的算法">4. 试写出判定空间任意位置的两个长方体是否相交的算法。</h3>
+<h3 id="试比较实体的边界表示扫移表示csg-表示及八叉树表示的优缺点-说明它们适应的应用">5. 试比较实体的边界表示、扫移表示、CSG 表示及八叉树表示的优缺点。 说明它们适应的应用。</h3>
+<p>边界表示法：用顶点、棱边、表面等物体的边界信息来表示物体。边界就是物体内部点与外部点的分界面。</p>
+<p>扫描表示</p>
+<p>CSG表示：一个复杂物体可由一些比较简单、规则的物体经过布尔运算而得到。其中叶结点为基本体素(立方体, 圆柱, 圆锥等); 中间结点为正则集合运算结点。 优点: 将复杂物体表示转换为简单物体之间运算,也可递归求出物体性质; 缺点: 方法有局限性,物体复杂时,这种表示不太适应。</p>
+<p>空间位置枚举：使用该方法时, 先将空间分割成均匀的立方体网格, 然后根据物体所占据的网格位置来定义物体的形状和大小。 优点–适合所有形状三维物体表示, 容易实现物体的并交差及整体性质计算(对应着数组运算) 缺点–没有明确给定物体边界信息, 占据存储量大</p>
+<p>八叉树（改进的空间位置枚举)</p>
+<p>• 物体之间集合运算在八叉树中十分简单</p>
+<p>物体并－两物体一共占有的空间；</p>
+<p>物体交－两物体共同占有的空间。</p>
+<p>运算时只需同时遍历参加集合运算两物体相应的 八叉树。</p>
+<p>• 简化了隐藏线和隐藏面的消除</p>
+<p>核心是排序(按离观察点远近排序);</p>
+<p>八叉树中物体元素已按空间位置排成一定顺序, 同一层的八叉树结点通过优先级表示。</p>
+<p>• 计算物体的性质(体积、质量)更简单</p>
+<p>对物体的各项操作＝》体元的操作。</p>
+<h2 id="第八章-消隐技术">第八章 消隐技术</h2>
+<h3 id="为何要进行隐藏面的消除">1. 为何要进行隐藏面的消除？</h3>
+<p>消除图形的二义性</p>
+<h3 id="简述区域子分消隐算法思想和描述">2. 简述区域子分消隐算法思想和描述。</h3>
+<p>区域子分算法是针对光栅扫描式图象显示器上 填色产生图形的。它是一种所谓分而治之的算 法。</p>
+<p>整个屏幕称为窗口, 每一次把矩形的窗口等分成 4个相等的小矩形,分成的矩形也称为窗口, 见图 8.2。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg"></p>
+<p>每一次子分, 均要把要显示的多边形和窗口的 关系做一次判断。这种关系有以下4种:</p>
+<p>–多边形包围了窗口(图8.3中情况1);</p>
+<p>–多边形和窗口相交(图8.3中情况2);</p>
+<p>–窗口包围了多边形(图8.3中情况3);</p>
+<p>–窗口和多边形分离(图8.3中情况4)。</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg"></p>
+<p>窗口和每个多边形的关系确定之后, 有些窗口 内的图形便可显示了, 它们属于下列情况:</p>
+<p>(1)所有多边形都和窗口分离。这时只要把窗口 内所有的象素填上背景颜色。</p>
+<p>(2)只有一个多边形和窗口相交,或这个多边形 包含在窗口内。这时先对窗口内每一象素填 上背景颜色, 再对窗口内多边形部分用扫描 线算法填色。</p>
+<p>(3)只有一个多边形和窗口相交,这个多边形把 窗口整个包围在内;或虽有几个多边形和窗 口相交,但离观察者最近的一个多边形包围 了整个窗口。这时把整个窗口填上离观察者 最近的那个多边形的颜色。</p>
+<p>对上述3种情况不成立的窗口再一分为四,见图 8.2。分得的窗口重复上述的处理。</p>
+<p>• 重复处理后,窗口的边长越分越短, 分了若干次 后, 窗口的边长就和一个象素的宽度一样了。 这时, 这个窗口对应的象素的颜色可取成最靠 近观察者的多边形的颜色, 或和这个窗口相交 的多边形颜色的平均值。</p>
+<h3 id="简述-z-缓存消隐算法思想和描述">3. 简述 Z 缓存消隐算法思想和描述。</h3>
+<p>深度缓存算法(Z-Buffer)是一种最简单的图象空间 面消隐算法, 既适应于多边形面也适用其它曲面。</p>
+<p>• 它需要一个深度缓存数组ZB, 其大小与屏幕上象素 点的个数相同, 也与显示器的帧缓存FB的单元个数 相同, 彼此一一对应。</p>
+<p>• 如图8.6, 在屏幕坐标系中, 过屏幕上任一象素点(i, j) 作平行于Z轴的射线R, 与物体表面上的多边形相交 于p 1 和p 2 点。</p>
+<p>• 比较p 1 和p 2 的Z值, 将最大Z值存入深度缓存数组ZB, 最大Z值所对应点的颜色存入显示器的帧缓存FB。 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnwnofuej312a0w00vx.jpg"></p>
+<p><strong>算法描述</strong> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnz0q222j31720mi0ym.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxnz9kkimj316y0o07ah.jpg"></p>
+<h3 id="比较几种主要的隐藏面的消除算法的特点">4. 比较几种主要的隐藏面的消除算法的特点。</h3>
+<p>区域子分算法是针对光栅扫描式图象显示器上 填色产生图形的。它是一种所谓分而治之的算 法</p>
+<p>用边界盒的办法就可判定一些多边形和指定窗 口是无交的。因此, 这些多边形可从窗口多边 形序列中排除, 从而提高排序效率</p>
+<p>深度缓存算法的优点是简单、可靠, 不需要对显示对象的 面预先进行排序;</p>
+<p>• 缺点是要很大的Z缓冲器, 显示对象的表面和象素对应的 每一个点处都要计算它的Z值, 因而工作量较大。</p>
+<h2 id="第九章-真实感图形技术">第九章 真实感图形技术</h2>
+<h3 id="用框图描述三维真实感图形的产生流程">1. 用框图描述三维真实感图形的产生流程。</h3>
+<p>–用数学方法建立所需三维场景的几何描述, 并将它们输入计算机；</p>
+<p>–将三维几何描述转换为二维透视图；</p>
+<p>–确定场景中的所有可见图(消隐)；</p>
+<p>–计算场景中可见面的颜色。（本章重点）</p>
+<h3 id="phong-局部光照模型及其实现算法描述">2. Phong 局部光照模型及其实现算法描述。</h3>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoa4f4gvj319c0s8agx.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoacz8tbj31920tudm1.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxob3r961j316m0pagrt.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxoba8n9ej31920jmacd.jpg"></p>
+<h3 id="叙述-phong-多边形明暗处理算法原理-与-gouraud-算法比较它的优缺-点">3. 叙述 Phong 多边形明暗处理算法原理, 与 Gouraud 算法比较它的优缺 点。</h3>
+<p>Phong明暗处理技术(Phong Shading)</p>
+<p>• 思想: 对离散的法向量采样作双线性插值, 构造一个连续的法向量函数, 将这个连续的 法向量插值函数代入光亮度计算公式, 即得 到一个非线性的光亮度插值公式。 如图9.7所示, 任一点P处法向按插值方法由 各顶点处法向推出。</p>
+<p>• 优点: 大大减少了马赫带效应;产生真实的高光效果。</p>
+<p>缺点: 由于对每一像素光亮度计算还需使用 光照模型, 故计算量大。</p>
+<p>Gouraud明暗处理技术(Gouraud Shading)</p>
+<p>• 思想：对离散的光亮度采样作双线性插值 以获取连续的光亮度函数。</p>
+<p>• 过程： a.计算出多边形顶点处的光亮度值, 作为 插值采样点； b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮度。</p>
+<p>优缺点 效果尚好, 计算量小; 不能正确模拟高光, 会产生Mach带效应(光亮度 变化率不连续的边界处呈现亮带或黑带)。</p>
+<h3 id="何为全局光照模型典型的模型举例">4. 何为全局光照模型，典型的模型举例。</h3>
+<p>Phong模型仅考虑光源直接照射在景物表面产生 的反射光能, 因而是一种局部光照模型。 • 局部光照模型忽略了光能在环境景物之间的传 递, 很难生成高质量真实感图形。 原因: 未能考虑环境的漫射、镜面反射和规则透 射对景物表面产生的整体照明效果。</p>
+<p>Whitted在Phong模型中增加了环境镜面反射光 亮度Is 和环境规则透射光亮度It , 从而模拟周围环境的光透射在景物表面上产生的理想镜面反 射和规则透射现象。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg"></p>
+<h3 id="实现真实感绘制的光线跟踪技术的主要思想和算法描述">5. 实现真实感绘制的光线跟踪技术的主要思想和算法描述。</h3>
+<p>光线跟踪技术是为了求解Whitted模型而提出 一种高度真实感图形绘制技术.</p>
+<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxof13rtnj314s0gy10v.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxof7wxhuj312u0qkjtv.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxofkccc9j31am0kmjya.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg"></p>
+<h3 id="加速光线跟踪算法的主要方法">6. 加速光线跟踪算法的主要方法。</h3>
+<ul>
+<li>包围盒技术</li>
+<li>景物空间分割技术</li>
+</ul>
+<h3 id="何谓纹理映射简述其实现原理">7. 何谓纹理映射，简述其实现原理。</h3>
+<p>纹理：物体表面所呈现的表面细节。</p>
+<p>生成颜色纹理的方法。其过程是:</p>
+<p>在一平面区域(纹理空间)上预先定义纹理图案; 然后建立物体表面的点与纹理空间的点之间的 对应关系(即映射)。</p>
+<p>主要有法向扰动法、分形生成技术等。</p>
+<h3 id="试写出将一幅图片贴到三维圆柱体表面的算法">8. 试写出将一幅图片贴到三维圆柱体表面的算法。</h3>
+<h2 id="第十章-open-gl-简介">第十章 OPEN GL 简介</h2>
+<h3 id="试设计一个室内三维环境-并利用-open-gl-展示它的三维效果要求1包含基本的实体元素球多面体锥体柱体曲面等-2有全局光照效果和纹理功能-3程序具有交互功能">1. 试设计一个室内三维环境, 并利用 OPEN GL 展示它的三维效果。要求：(1)包含基本的实体元素：球、多面体、锥体、柱体、曲面等； (2)有全局光照效果和纹理功能； (3)程序具有交互功能。</h3>
+<p>第二次大作业。</p>
+<p><a href="https://github.com/Sean10/graphicsLearning" target="_blank" rel="noopener">附录</a></p>
 
           
         
@@ -666,11 +1666,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-226/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/06/15/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -683,13 +1683,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/19/leetcode-226/" itemprop="url">leetcode 226</a></h2>
+                <a class="post-title-link" href="/2017/06/15/undefined/" itemprop="url">
+                  Qt学习汇总遇到的问题
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -697,28 +1707,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T19:45:00+08:00">2015-12-19</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2017-06-15 16:42:46" itemprop="dateCreated datePublished" datetime="2017-06-15T16:42:46+08:00">2017-06-15</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -734,7 +1746,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -749,9 +1761,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/19/leetcode-226/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-226/" itemprop="commentCount"></span>
+                <a href="/2017/06/15/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/06/15/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -759,13 +1770,13 @@
 
           
           
-             <span id="/2015/12/19/leetcode-226/" class="leancloud_visitors" data-flag-title="leetcode 226">
+             <span id="/2017/06/15/undefined/" class="leancloud_visitors" data-flag-title="Qt学习汇总遇到的问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -773,6 +1784,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:07</span>
+              
+            </div>
           
 
           
@@ -792,7 +1831,161 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct TreeNode *left;</span><br><span class="line"> *     struct TreeNode *right;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">struct TreeNode* invertTree(struct TreeNode* root) &#123;</span><br><span class="line">    struct TreeNode* temp;</span><br><span class="line">    if(root == NULL)</span><br><span class="line">        return NULL;</span><br><span class="line">    else&#123;</span><br><span class="line">        temp = root-&gt;left;</span><br><span class="line">        root-&gt;left = invertTree(root-&gt;right);</span><br><span class="line">        root-&gt;right = invertTree(temp);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build</p>
+<p>开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 &gt;:-1: error: symbol(s) not found for architecture x86_64 &gt;:-1: error: linker command failed with exit code 1 (use -v to see invocation)</p>
+<p>这个错误经常会出现</p>
+<hr>
+<p>c++跨文件或跨类传输变量参数是通过在对应文件声明类，然后调用该类获得参数的函数</p>
+<p>但是qt里我一旦这样做，就会出现上面那个系统错误。</p>
+<hr>
+<p>普通形参加不加const限定符对实参没有影响，引用形参和指针形参前面没有const限定符时，实参必须是非const的，而前面有const限定符时对实参也没有什么影响。</p>
+<p>为什么会出现这种情况？</p>
+<p>原因在于实参的传递方式不同，函数中的形参是普通形参的时，函数只是操纵的实参的副本，而无法去修改实参，实参会想，你形参反正改变不了我的值，那么你有没有const还有什么意义吗？引用形参和指针形参就下不同了，函数是对实参直接操纵，没有const的形参时实参的值是可以改变的，这种情况下怎能用函数来操纵const实参呢。</p>
+<hr>
+<p>ui文件似乎必须要建一个类通过setupUI才能使用 主要需要新建一个dialog来show就可以了</p>
+<table style="width:8%;">
+<colgroup>
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Qt的模态对话，setModal和dialog.exec() == box::accepted有什么区别？</td>
+</tr>
+</tbody>
+</table>
+<p>QT的close没有反应，似乎要使用事件循环</p>
+<hr>
+<p>setAttribute (Qt::WA_DeleteOnClose); 这个明明是解决内存泄露问题，为什么可以关闭窗口呢，而close却做不到</p>
+<hr>
+<p>qVector输入之后，造成implicitly deleted because base class “QObject” has a deleted copy constructor</p>
+<hr>
+<p>Qt 资源文件，可以通过添加qrc来实现路径的操作 但是 //路径这里存在问题，为什么添加了qrc之后依旧不需要前缀就可以使用了呢？ 明明理论上说要“:/db/user.db” 但只是“user.db”就可以使用了</p>
+<hr>
+<p>始终不能调用数据库，原因是我没有使用query.finish，以及建表语法出现了错误。</p>
+<hr>
+<p>事件似乎和信号有点相似，又有点不同。</p>
+<hr>
+<p>事件是一个新的概念，与信号不一样。</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>又遇到了当初的link错误，没有详细信息的那种 SF的答案是这个，感觉比较靠谱，我也确实有在Compile Output里看到问题，是client.o的问题，不过这个文件我都没有引用，为什么会错呢</td>
+</tr>
+<tr class="even">
+<td>Posting comment by N1ghtLight as an answer.</td>
+</tr>
+<tr class="odd">
+<td>Duplicate symbols found error is a linker error, which says that linker has found more than one symbols with the same name. Following are some common causes for this.</td>
+</tr>
+<tr class="even">
+<td>You have written a function definition in a header file (outside a class), which is included in two or more cpp files. You have defined a static variable twice. You have written a function definition twice in a cpp file. You can find out what are the duplicate symbols by checking Compile Output tab in Qt Creator</td>
+</tr>
+</tbody>
+</table>
+<p>把databaseControl设置继承QObject就出现编译不过的问题</p>
+<p>就是上面的link错误，不过更复杂</p>
+<hr>
+<p>遇到这个错误error: member function not viable this argument has type const 但是我一时忘了怎么解决的了</p>
+<hr>
+<p>call to implicitly-deleted copy constructor</p>
+<p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461: error: call to implicitly-deleted copy constructor of ‘centralAirConditioner’ current-&gt;v = new T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遇到这个错误，发现又是因为继承了基类QObject的原因</p>
+<hr>
+<p>暂时设计了从multithread发送信号到databaseControl,暂时没能测试出数据是否发送成功</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>好像知道为什么发送了信号，但槽函数没有执行的原因了，似乎是因为信号和槽不在一个线程里 但是默认是会执行异步的啊</td>
+</tr>
+<tr class="even">
+<td>上面的猜想是错误的，实际的问题是在于我把UserRegister写在mainwindow的构造函数里的，导致还没有执行connect就把信号已经发送出去了，所以这个信号浪费了</td>
+</tr>
+</tbody>
+</table>
+<p>稍后添加对于开关机的容错措施 数据锁尚未添加</p>
+<hr>
+<p>优先设置spinBox的lowtem会导致workTemperature变成这个lowTem,明明是满足他的约束的 噢，可能是因为spinBox一开始是0，没有设置，当有了约束之后，自动变成了18，满足了值变动，所以导致初始化被覆盖了。</p>
+<hr>
+<p>tcp粘包问题： 怎么分也需要双方组织一个比较好的包结构，所以一般可能会在头加一个数据长度之类的包，以确保接收。</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>从控机修改工作模式，但没有发送给主控机的过程，这个问题有待修正 这里应该根据文档来写：从控机没有调整工作模式的机会，只能由主控机设定</td>
+</tr>
+</tbody>
+</table>
+<p>connectToHost似乎是mac的问题，大大的windows执行就没有问题。</p>
+<hr>
+<p>找到每次修改完工作温度，室温就顺便同步的原因了，是因为信号问题，每发送一个SignalSendRequest就执行了9次SendRequest. 但是没有找到有多次connect的函数啊。</p>
+<p>即便是用了uniqueConnection还是执行了多次。</p>
+<p>找到问题了，有另外一个函数不停发送了signal，定时发送</p>
+<hr>
+<p>第二次从控机开机，主控机上没有再显示出那台从控机状态？ why?</p>
+<h2 id="还有解决粘包问题">还有解决粘包问题</h2>
+<p>把室温用电子时钟模式展示出来</p>
+<hr>
+<p>可以使用doxygen来进行根据注释生成文档</p>
+<p>/** * 要输出成文档的注释 */</p>
+<p>或者 //!</p>
+<hr>
+<p>qmake project 变量使用</p>
+<p>一个pro生成多个app似乎现在不行了，只能通过subdirs来实现了？</p>
+<p>通过$$PWD来导入公用包</p>
+<p>用CLion的Cmake和 命令直接clang++都没办法把sqlite3成功编译通过，但是用Qt就能过，真的是奇特。</p>
+<p>sqlite3 使用怪怪的</p>
+<p>select * from sqlite_master;</p>
+<p>始终得到结果为空</p>
+<p>然后报错</p>
+<p>libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: SQL logic error</p>
+<p>CREATE TABLE main.table_name( column1 datatype PRIMARY KEY(one or more columns), column2 datatype, column3 datatype, ….. columnN datatype, );</p>
+<p>现在尝试用回俊宁大佬的库，但是连创建table都使用不了……</p>
+<p>找到了俊宁大佬自己的作业，从那里的实例来进行操作</p>
+<p>Qt dialog传递参数 https://blog.csdn.net/xzh_blue/article/details/51490747</p>
+<p>现在很奇怪，有时候能够充值上去，有时候就报这个错误，导致失败</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[INFO] send message: &#123;&quot;define&quot;:2&#125;</span><br><span class="line">[INFO] receive message: &#123;&quot;define&quot;:3,&quot;username&quot;:&quot;ls1&quot;&#125;</span><br><span class="line">[INFO] Get user balance request comes</span><br><span class="line">[INFO] send message: &#123;&quot;balance&quot;:0,&quot;define&quot;:1&#125;</span><br><span class="line">SQL error: &apos;UNIQUE constraint failed: OrderInfo.type&apos; at &apos;insert into OrderInfo(type,amount,out_account,in_account,record_time) values (4,25,&apos;cash&apos;,&apos;ls1&apos;,1536938826);&apos;</span><br><span class="line">[INFO] Someone offline, now 0 conne</span><br></pre></td></tr></table></figure>
+<p>C/S架构下， 登录过程中 密码 是否需要加密？</p>
+<p>出现了一个权限值为25，似乎是哪里传输的时候顺序出错了？把转账的值写入到了权限的位置？</p>
+<p><a href="https://blog.csdn.net/wenyun_kang/article/details/64439517" target="_blank" rel="noopener">QT 点击自定义QDialog类“确定”按钮 , 模态框立刻关闭 , 之后又做空值检查问题解决 - CSDN博客</a></p>
+<p>mac 自带openssl 0.98，而官方最新版 1.1</p>
+<p><a href="https://www.zhihu.com/question/34876910" target="_blank" rel="noopener">(6 条消息)UUID是如何保证唯一性的？ - 知乎</a></p>
+<p>现在有一个问题，我的tableView没有释放过standardItem，因此一定会出现内存泄露问题</p>
+<p><a href="https://www.zhihu.com/question/30507539" target="_blank" rel="noopener">(6 条消息)互联网中TCP Socket服务器的实现过程需要考虑哪些安全问题？ - 知乎</a></p>
+<p>引用openssl库的方式</p>
+<p>clang client.c -o client -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib -lcrypto -lssl</p>
+<p>像上面这样加上最后那4条就可以正常运行了</p>
+<p>openssl生成过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">mkdir misc</span><br><span class="line">cd misc</span><br><span class="line">sudo cp /usr/local/etc/openssl/openssl.cnf ./</span><br><span class="line">cp /usr/local/etc/openssl/misc/* ./</span><br><span class="line"></span><br><span class="line">//这里生成的是rsa的ca.key和 .rnd 输入密钥是fighton</span><br><span class="line">openssl genrsa -out ./private/ca.key -rand ./private/.rnd -des 2048</span><br><span class="line"></span><br><span class="line">// 这里确认了密钥，然后要求输入下面那些内容</span><br><span class="line">openssl req -new -x509 -days 3650 -key ./private/ca.key -out ./private/ca.crt -config openssl.cnf</span><br><span class="line"></span><br><span class="line">&lt;!-- Enter pass phrase for ./private/ca.key:</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Country Name (2 letter code) [AU]:ZH</span><br><span class="line">State or Province Name (full name) [Some-State]:Beijing</span><br><span class="line">Locality Name (eg, city) []:Beijing</span><br><span class="line">Organization Name (eg, company) [Internet Widgits Pty Ltd]:Hikvision</span><br><span class="line">Organizational Unit Name (eg, section) []:bjyf</span><br><span class="line">Common Name (e.g. server FQDN or YOUR name) []:sean10</span><br><span class="line">Email Address []:sean10reborn@gmail.com --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这个应该是显示一下证书</span><br><span class="line">openssl x509 -in ./private/ca.crt -noout -text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## </span><br><span class="line">// 产生server证书</span><br><span class="line"></span><br><span class="line">openssl genrsa -out ./private/server.key 1024</span><br><span class="line"></span><br><span class="line">openssl req -new -key ./private/server.key -out ./newcerts/server.csr -config openssl.cnf</span><br><span class="line">&lt;!-- You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Country Name (2 letter code) [AU]:ZH</span><br><span class="line">State or Province Name (full name) [Some-State]:Beijing</span><br><span class="line">Locality Name (eg, city) []:Beijing</span><br><span class="line">Organization Name (eg, company) [Internet Widgits Pty Ltd]:bjyf</span><br><span class="line">Organizational Unit Name (eg, section) []:hik</span><br><span class="line">Common Name (e.g. server FQDN or YOUR name) []:sean10</span><br><span class="line">Email Address []:sean10reborn@gmail.com</span><br><span class="line"></span><br><span class="line">Please enter the following &apos;extra&apos; attributes</span><br><span class="line">to be sent with your certificate request</span><br><span class="line">A challenge password []:helloworld</span><br><span class="line">An optional company name []:hik --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">touch index.txt</span><br><span class="line">touch serial</span><br><span class="line"></span><br><span class="line">echo 00 &gt; serial</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">openssl ca -in ./newcerts/server.csr -cert ./private/ca.crt -keyfile ./private/ca.key -config openssl.cnf -policy policy_anything -out ./certs/server.crt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">openssl genrsa -out ./private/proxy.key 1024</span><br><span class="line">//这步要是产生错误，请看后面的解决方法</span><br><span class="line">openssl req -new -key ./private/proxy.key -out ./newcerts/proxy.csr -config openssl.cnf</span><br><span class="line">openssl ca -in ./newcerts/proxy.csr -cert ./private/ca.crt -keyfile./private/ca.key -config openssl.cnf -policy policy_anything -out ./certs/proxy.crt</span><br><span class="line">openssl x509 -in ./certs/proxy.crt -noout -text</span><br></pre></td></tr></table></figure>
+<p><a href="http://seanlook.com/2015/01/18/openssl-self-sign-ca/" target="_blank" rel="noopener">基于OpenSSL自建CA和颁发SSL证书 | Sean’s Notes</a></p>
+<p>Qt 如何 引入 openssl库</p>
+<p><a href="https://blog.csdn.net/alspwx/article/details/12649225" target="_blank" rel="noopener">QT总结第3篇：如何在QT中添加.lib，.dll还有.h文件 - CSDN博客</a></p>
+<p>现在在编译时，ui_widget.h丢失？</p>
+<p>奇怪了。将lssl等加到LIBS这里之后，server可以编译了，但是client又出现了上面的问题，明明这次client一行代码都没改……</p>
+<p>终于发现了，我在socket.h里多导入了一个curve.h这个包，这个包里的一个函数qblog和 Qt 的一个包 重名了</p>
+<p>case中无法定义同一个变量</p>
+<p>用if else 代替 switch 语句;</p>
+<p>2：在case中用{}将代码括起来,这样在{}中就能定义变量了;</p>
+<p>3：如果变量在各个case中都要用的话,就把变量定义在switch外面吧;</p>
+<p>目前在switch case中定义的变量无法被后续的代码发现，从而使用</p>
+<p>可能是作用域的原因？</p>
+<p>想要手动定义，但是无法通过typeid .name 打印出来</p>
+<p>还需要找到办法手动定义</p>
+<p>openSSL <a href="https://www.cnblogs.com/f-ck-need-u/p/6091027.html" target="_blank" rel="noopener">OpenSSL主配置文件openssl.cnf - 骏马金龙 - 博客园</a></p>
+<p><a href="http://seanlook.com/2015/01/18/openssl-self-sign-ca/" target="_blank" rel="noopener">基于OpenSSL自建CA和颁发SSL证书 | Sean’s Notes</a></p>
+<p><a href="https://www.cnblogs.com/etangyushan/p/3679457.html" target="_blank" rel="noopener">使用c语言实现在linux下的openssl客户端和服务器端编程 - 欢跳的心 - 博客园</a></p>
+<p><a href="http://blog.51cto.com/mooon/909932" target="_blank" rel="noopener">openssl编程轻松入门（含完整示例）-飞月-51CTO博客</a></p>
+<p><a href="https://www.zhihu.com/question/41717174" target="_blank" rel="noopener">(6 条消息)用 C++ 写 HTTPS 客户端和服务器大体步骤有哪些？ - 知乎</a></p>
+<p><a href="http://www.cnblogs.com/LittleHann/p/3741907.html" target="_blank" rel="noopener">OPENSSL编程入门学习 - 骑着蜗牛逛世界 - 博客园</a></p>
+<p>用Cross Functional Vertical就可以画图了</p>
+<p>https://www.processon.com/view/5938c757e4b036140a0ef5ef?fromnew=1</p>
+<p>https://www.processon.com/diagrams/new#temp-system</p>
 
           
         
@@ -846,11 +2039,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-100/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/02/21/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -863,13 +2056,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/19/leetcode-100/" itemprop="url">leetcode 100</a></h2>
+                <a class="post-title-link" href="/2017/02/21/undefined/" itemprop="url">
+                  git笔记
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -877,28 +2080,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T19:24:00+08:00">2015-12-19</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2017-02-21 00:12:09" itemprop="dateCreated datePublished" datetime="2017-02-21T00:12:09+08:00">2017-02-21</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -914,7 +2119,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -929,9 +2134,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/19/leetcode-100/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-100/" itemprop="commentCount"></span>
+                <a href="/2017/02/21/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/02/21/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -939,13 +2143,13 @@
 
           
           
-             <span id="/2015/12/19/leetcode-100/" class="leancloud_visitors" data-flag-title="leetcode 100">
+             <span id="/2017/02/21/undefined/" class="leancloud_visitors" data-flag-title="git笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -953,6 +2157,480 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:05</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>git的快照流是指什么？ (参见 Git 内部原理 来了解更多关于到底 .git 文件夹中包含了哪些文件的信息。) 事实上，如果你的服务器的磁盘坏掉了，你通常可以使用任何一个克隆下来的用户端来重建服务器上的仓库（虽然可能会丢失某些服务器端的挂钩设置，但是所有版本的数据仍在，详见 在服务器上搭建 Git ）。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/21/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/02/10/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/10/undefined/" itemprop="url">
+                  C++_Note
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-02-10 22:49:18" itemprop="dateCreated datePublished" datetime="2017-02-10T22:49:18+08:00">2017-02-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/10/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/02/10/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/02/10/undefined/" class="leancloud_visitors" data-flag-title="C++_Note">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">8.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:08</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/10/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/01/04/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/04/undefined/" itemprop="url">
+                  《星之梦》传播星空之人
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-01-04 15:03:45" itemprop="dateCreated datePublished" datetime="2017-01-04T15:03:45+08:00">2017-01-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/04/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/01/04/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/01/04/undefined/" class="leancloud_visitors" data-flag-title="《星之梦》传播星空之人">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">533</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
           
 
           
@@ -972,7 +2650,14 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct TreeNode *left;</span><br><span class="line"> *     struct TreeNode *right;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">bool isSameTree(struct TreeNode* p, struct TreeNode* q) &#123;</span><br><span class="line">    if(p == NULL || q == NULL)</span><br><span class="line">        return p == q;</span><br><span class="line">    else</span><br><span class="line">        return p-&gt;val == q-&gt;val &amp;&amp; isSameTree(p-&gt;left,q-&gt;left) &amp;&amp; isSameTree(p-&gt;right,q-&gt;right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>《星之梦》开篇引出的AI机器人第一时间给我的反应是，这极可能又是基于阿西莫夫机器人三定律之上的人与机器人的故事。</p>
+<p>梦美在这里的设定显然不止是常规的Robot，虽然她自称是廉价型，不过也显然不同于故事开始时攻击人类的武装机器人一般只是贯彻攻击指令，她是具有自主性的AI。姑且忽视老化、无修理能力、供电持续30年等一系列相对不现实的因素，当作满足了千万分之一的偶然性吧。这样的设定给梦美提供了一个令人不由得深思的背景，29年多的等待只为服务人类、坚守机器人的守则，这样的梦美为我们揭示的想必就是机器人之中善良的特质吧。</p>
+<p>在这个男主时刻为机器人追杀、攻击的年代里，从未遇到善良机器人的男主为其感动，信任了梦美，也得到了梦美的回报，梦美以自己的理念贯彻保护人类。以星空作为回忆媒介，令男主回忆起作为人，不仅仅应该只为生存而生存，而是应当为梦想而追逐。</p>
+<p>不过显然啦，假想现实如果发生这样的故事，也就只有人物设定成梦美这样萌，才有后续发展的一丝可能性了。无论如何，亲和感终究只会发生在有羁绊亦或是感官上可接受的对象之间。</p>
+<p>在《星之人》剧场版里好像就是之后发生的故事，男主与梦美作为传播星空之人而四处游走之后的故事了，不过现在国内还没上映，估计要等段时间了吧。</p>
+<figure>
+<img src="http://7xrn64.com1.z0.glb.clouddn.com/2017/1/5/aa41268c-e.jpg" alt="超级萌的梦美"><figcaption>超级萌的梦美</figcaption>
+</figure>
 
           
         
@@ -1026,11 +2711,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-283/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/10/27/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1043,13 +2728,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/19/leetcode-283/" itemprop="url">leetcode 283</a></h2>
+                <a class="post-title-link" href="/2016/10/27/undefined/" itemprop="url">
+                  爬虫学习笔记
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1057,28 +2752,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T19:17:00+08:00">2015-12-19</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-10-27 20:49:28" itemprop="dateCreated datePublished" datetime="2016-10-27T20:49:28+08:00">2016-10-27</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-03-09 20:49:28" itemprop="dateModified" datetime="2018-03-09T20:49:28+08:00">2018-03-09</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1094,7 +2791,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
 
                 
                 
@@ -1109,9 +2806,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/19/leetcode-283/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-283/" itemprop="commentCount"></span>
+                <a href="/2016/10/27/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/10/27/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1119,13 +2815,13 @@
 
           
           
-             <span id="/2015/12/19/leetcode-283/" class="leancloud_visitors" data-flag-title="leetcode 283">
+             <span id="/2016/10/27/undefined/" class="leancloud_visitors" data-flag-title="爬虫学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1133,6 +2829,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">7.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:07</span>
+              
+            </div>
           
 
           
@@ -1151,912 +2875,16 @@
 
       
         
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void moveZeroes(int* nums, int numsSize) &#123;</span><br><span class="line">    //int zeros = 0;</span><br><span class="line">    for(int i = numsSize-1;i &gt;= 0;i--)&#123;</span><br><span class="line">        if(nums[i] == 0)&#123;</span><br><span class="line">            for(int j = i;j &lt; numsSize-1;j++)&#123;</span><br><span class="line">                nums[j] = nums[j+1];</span><br><span class="line">            &#125;</span><br><span class="line">            nums[numsSize-1] = 0;</span><br><span class="line">            //zeros++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-237/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/19/leetcode-237/" itemprop="url">leetcode 237</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T15:12:00+08:00">2015-12-19</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/19/leetcode-237/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-237/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/19/leetcode-237/" class="leancloud_visitors" data-flag-title="leetcode 237">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct ListNode *next;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">void deleteNode(struct ListNode* node) &#123;</span><br><span class="line">    struct ListNode* temp = node-&gt;next;</span><br><span class="line">    node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line">    node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    free(temp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-104/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/19/leetcode-104/" itemprop="url">leetcode 104</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T15:06:00+08:00">2015-12-19</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/19/leetcode-104/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-104/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/19/leetcode-104/" class="leancloud_visitors" data-flag-title="leetcode 104">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct TreeNode *left;</span><br><span class="line"> *     struct TreeNode *right;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">int maxDepth(struct TreeNode* root) &#123;</span><br><span class="line">    if(root == NULL)</span><br><span class="line">        return 0;</span><br><span class="line">    int x = maxDepth(root-&gt;left);</span><br><span class="line">    int y = maxDepth(root-&gt;right);</span><br><span class="line">    if(x&gt;y)</span><br><span class="line">        return x+1;</span><br><span class="line">    else return y+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode-258/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/19/leetcode-258/" itemprop="url">leetcode 258</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T15:02:00+08:00">2015-12-19</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/19/leetcode-258/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode-258/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/19/leetcode-258/" class="leancloud_visitors" data-flag-title="leetcode 258">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int addDigits(int num) &#123;</span><br><span class="line">    return (num != 0 &amp;&amp; num%9 == 0)?9:num%9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/leetcode292/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/19/leetcode292/" itemprop="url">leetcode292</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T14:50:00+08:00">2015-12-19</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/19/leetcode292/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/leetcode292/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/19/leetcode292/" class="leancloud_visitors" data-flag-title="leetcode292">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。</p>
-<p>数学方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    return n%4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>传统递归 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    if(n &gt; 0 &amp;&amp; n &lt;= 3)</span><br><span class="line">        return true;</span><br><span class="line">    if(canWinNim(n-1)&amp;&amp;canWinNim(n-2)&amp;&amp;canWinNim(n-3))</span><br><span class="line">        return false;</span><br><span class="line">    else return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/19/poj-2752-前后缀匹配/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/19/poj-2752-前后缀匹配/" itemprop="url">poj 2752 前后缀匹配</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-19T14:16:00+08:00">2015-12-19</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/19/poj-2752-前后缀匹配/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/19/poj-2752-前后缀匹配/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/19/poj-2752-前后缀匹配/" class="leancloud_visitors" data-flag-title="poj 2752 前后缀匹配">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>kmp才能保证不超时 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void getNext(int next[],char str[])&#123;</span><br><span class="line">    int j = 0;</span><br><span class="line">    next[0] = -1;</span><br><span class="line">    int k = -1;</span><br><span class="line">    int len = strlen(str);</span><br><span class="line">    while(j &lt; len)&#123;</span><br><span class="line">        if(k == -1 || str[k] == str[j])&#123;</span><br><span class="line">            next[++j] = ++k;</span><br><span class="line">        &#125;</span><br><span class="line">        else k = next[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[400001];</span><br><span class="line">    int next[400001];</span><br><span class="line"></span><br><span class="line">    int j;</span><br><span class="line">    while(scanf(&quot;%s&quot;,str) != EOF)&#123;</span><br><span class="line">        memset(next,0,strlen(str));</span><br><span class="line">        getNext(next,str);</span><br><span class="line">        stack &lt;int&gt; q;</span><br><span class="line">        j =strlen(str);</span><br><span class="line">        while(j != 0)&#123;</span><br><span class="line">            q.push(j);</span><br><span class="line">            j = next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        while(!q.empty())&#123;</span><br><span class="line">            printf(&quot;%d &quot;,q.top());</span><br><span class="line">            q.pop();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <h1 id="爬虫学习笔记">爬虫学习笔记</h1>
+<p>2016.10.27</p>
+<p>在一开始按照例子写最简单的爬虫的时候居然都写错了，写成了如下的</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/27/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2097,7 +2925,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2134,6 +2962,375 @@
           </div>
 
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
 
           
 
@@ -2168,22 +3365,34 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
   
 </div>
 
 
-  
 
 
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2191,7 +3400,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
 
 
 
@@ -2217,7 +3426,18 @@
     
 
     
+	
+    
 
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
   </div>
 
   
@@ -2272,39 +3492,25 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
-
   
-    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+
   
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
-	
-
-
+  
 
 
 
@@ -2317,122 +3523,36 @@
 
 
 
-
-
-
-
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   
-
-
-
-
-
   
-
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
     });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
 
 
 
@@ -2443,6 +3563,63 @@
   
 
   
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
   
 
   

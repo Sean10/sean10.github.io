@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。 在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。 但是在我使用的ORM_LITE中没有提供这样的属性，那么是不是这个属性不推荐使用呢？ 找到了下面这篇文章SQLite AUTOINCREMENT : Why You Shoul">
+<meta name="keywords" content="C++,Qt,sqlite3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译」sqlite为什么autoincrement不推荐使用">
+<meta property="og:url" content="https://sean10.github.io/2018/09/15/sqite/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。 在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。 但是在我使用的ORM_LITE中没有提供这样的属性，那么是不是这个属性不推荐使用呢？ 找到了下面这篇文章SQLite AUTOINCREMENT : Why You Shoul">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-AUTOINCREMENT.jpg">
+<meta property="og:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-maximum-rowid-value.jpg">
+<meta property="og:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-INSERT-row-without-rowid.jpg">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「译」sqlite为什么autoincrement不推荐使用">
+<meta name="twitter:description" content="在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。 在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。 但是在我使用的ORM_LITE中没有提供这样的属性，那么是不是这个属性不推荐使用呢？ 找到了下面这篇文章SQLite AUTOINCREMENT : Why You Shoul">
+<meta name="twitter:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-AUTOINCREMENT.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://sean10.github.io/2018/09/15/sqite/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>「译」sqlite为什么autoincrement不推荐使用 | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2018/09/15/sqite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「译」sqlite为什么autoincrement不推荐使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-15 22:51:18" itemprop="dateCreated datePublished" datetime="2018-09-15T22:51:18+08:00">2018-09-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/15/sqite/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2018/09/15/sqite/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/09/15/sqite/" class="leancloud_visitors" data-flag-title="「译」sqlite为什么autoincrement不推荐使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:02</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。</p>
+<p>在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。</p>
+<p>但是在我使用的<a href="">ORM_LITE</a>中没有提供这样的属性，那么是不是这个属性不推荐使用呢？</p>
+<p>找到了下面这篇文章<a href="http://www.sqlitetutorial.net/sqlite-autoincrement/" target="_blank" rel="noopener">SQLite AUTOINCREMENT : Why You Should Avoid Using It</a></p>
+<a id="more"></a>
+<p>下文是这篇的翻译。</p>
+<h2 id="sqlite-rowid表简介">SQLite ROWID表简介</h2>
+<p>无论何时，创建表时不指定<code>WITHOUT ROWID</code>选项，都会得到一个名为rowid的隐式自动增量列。</p>
+<p>rowid列存储64位有符号整型，用于唯一标识表中的行。</p>
+<p>我们来看下面的例子。</p>
+<p>首先，创建一个包含两列<code>first_name, last_name</code>的新表<code>people</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people (</span><br><span class="line"> first_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> last_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#1" target="_blank" rel="noopener">Try it</a></p>
+<p>其次，用以下<code>INSERT</code>语句插入<code>people</code>一行: <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (first_name, last_name)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (<span class="string">'John'</span>, <span class="string">'Doe'</span>);</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#2" target="_blank" rel="noopener">Try it</a></p>
+<p>第三，用以下<code>SELECT</code>语句从<code>people</code>中查询数据 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"> <span class="keyword">rowid</span>,</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line"> people;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#3" target="_blank" rel="noopener">Try it</a></p>
+<p><img src="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-AUTOINCREMENT.jpg"></p>
+<p>所以，SQLite会自动创建一个名为rowid的隐式列，并 在您插入新行时自动分配一个整数值。</p>
+<p>可以通过<code>rowid</code>的两个别名<code>_rowid_</code>和<code>oid</code>来使用它</p>
+<p>如果创建具有<code>INTEGER PRIMARY KEY</code>列的表，则该列指向<code>rowid</code>列。</p>
+<p>以下语句删除<code>people</code>表并重新创建它，不过这一次，我们添加另一列带有<code>INTEGER PRIMARY KEY</code>属性的名为<code>person_id</code>的列。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> people;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people (</span><br><span class="line"> person_id <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line"> first_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> last_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#4" target="_blank" rel="noopener">Try it</a></p>
+<p>现在<code>person_id</code>列实际上就是<code>rowid</code>列。</p>
+<p>那么，Sqlite如何分配一个整型值给rowid列呢？</p>
+<p>如果插入一个新行时，你没有指定一个rowid值或者使用<code>NULL</code>值， Sqlite会分配一个比表中最大的rowid大1的整型。 当还没有插入任何行时， rowid是1。</p>
+<p>首先，插入带有最大值的一行插入<code>people</code>表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> person_id,</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="number">9223372036854775807</span>,</span><br><span class="line"> <span class="string">'Johnathan'</span>,</span><br><span class="line"> <span class="string">'Smith'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#5" target="_blank" rel="noopener">Try it</a></p>
+<p><img src="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-maximum-rowid-value.jpg"></p>
+<p>第二，插入不指定<code>person_id</code>的另一行</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="string">'William'</span>,</span><br><span class="line"> <span class="string">'Gate'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#6" target="_blank" rel="noopener">Try it</a></p>
+<p><img src="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-INSERT-row-without-rowid.jpg"></p>
+<h2 id="sqlite-autoincrement-属性">SQLite AUTOINCREMENT 属性</h2>
+<p>SQLite 推荐你不应该使用<code>AUTOCREMENT</code>属性，因为:</p>
+<blockquote>
+<p>The AUTOINCREMENT keyword imposes extra CPU, memory, disk space, and disk I/O overhead and should be avoided if not strictly needed. It is usually not needed.</p>
+<p>AUTOINCREMENT关键字会产生额外的CPU,内存,磁盘空间和磁盘I/O开销，如果不是严格需求，应该避免使用。通常不是必须的。</p>
+</blockquote>
+<p>此外，SQLite为<code>AUTOCREMENT</code>列分配值的方式与<code>rowid</code>列的使用方式略有不同。</p>
+<p>请参阅以下示例。</p>
+<p>首先，再次删除并重新创建人员表。这次，我们使用<code>AUTOINCREMENT</code>属性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> people;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people (</span><br><span class="line"> person_id <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span> AUTOINCREMENT,</span><br><span class="line"> first_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> last_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#7" target="_blank" rel="noopener">Try it</a></p>
+<p>其次，将具有最大行id值的行添加到people表中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> person_id,</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="number">9223372036854775807</span>,</span><br><span class="line"> <span class="string">'Johnathan'</span>,</span><br><span class="line"> <span class="string">'Smith'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#8" target="_blank" rel="noopener">Try it</a></p>
+<p>第三，在people表中插入另一行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="string">'John'</span>,</span><br><span class="line"> <span class="string">'Smith'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#9" target="_blank" rel="noopener">Try it</a></p>
+<p>这次，SQLite发出了一条错误消息：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Err] 13 - database or disk is full</span><br></pre></td></tr></table></figure></p>
+<p>因为它不会重新使用未被使用数字。</p>
+<p><code>AUTOCREMENT</code>这个属性的主要目的是<em>防止SQLite复用还未使用的值或者使用先前删除的行</em></p>
+<p>如果还没有任何像这样的需求，那么你就不应该在主键中使用<code>SQLite AUTOINCREMENT</code>属性。</p>
+<p>在这篇教程中，你已经学习到<code>AUTOINCREMENT</code>属性如何运作的，以及它如何影响<code>SQLite</code>分配值给主键的方式。</p>
+<p># Reference 1. <a href="http://www.sqlitetutorial.net/sqlite-autoincrement/" target="_blank" rel="noopener">SQLite AUTOINCREMENT : Why You Should Avoid Using It</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Sean10</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://sean10.github.io/2018/09/15/sqite/" title="「译」sqlite为什么autoincrement不推荐使用">https://sean10.github.io/2018/09/15/sqite/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/Qt/" rel="tag"># Qt</a>
+          
+            <a href="/tags/sqlite3/" rel="tag"># sqlite3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/26/fire/" rel="next" title="高层火灾应对方式">
+                <i class="fa fa-chevron-left"></i> 高层火灾应对方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlite-rowid表简介"><span class="nav-number">1.</span> <span class="nav-text">SQLite ROWID表简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlite-autoincrement-属性"><span class="nav-number">2.</span> <span class="nav-text">SQLite AUTOINCREMENT 属性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

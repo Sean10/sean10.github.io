@@ -3,11 +3,22 @@
 
 
 
-<html class="theme-next muse" lang="zh-Hans">
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -42,50 +53,24 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.0.4" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
@@ -100,13 +85,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.0.4',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
-    fastclick: ,
-    lazyload: ,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -123,14 +108,10 @@
 
 
 
-  
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-<meta name="description" content="笔记 随笔">
+  <meta name="description" content="笔记 随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="行路中.">
-<meta property="og:url" content="http://sean10.github.io/page/7/index.html">
+<meta property="og:url" content="https://sean10.github.io/page/7/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="笔记 随笔">
 <meta property="og:locale" content="zh-Hans">
@@ -143,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://sean10.github.io/page/7/"/>
+  <link rel="canonical" href="https://sean10.github.io/page/7/"/>
 
 
 
@@ -152,6 +133,7 @@
     sidebar: "",
   };
 </script>
+
   <title>行路中.</title>
   
 
@@ -204,24 +186,26 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">行路中.</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
-        <h1 class="site-subtitle" itemprop="description">脚踏实地</h1>
+        <p class="site-subtitle">脚踏实地</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -229,56 +213,73 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            Home</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            About</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            Tags</a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            Categories</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            Archives</a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
 </nav>
 
 
+
   
 
 
 
- </div>
+</div>
     </header>
 
     
@@ -287,6 +288,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -306,11 +308,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-4018-正则表达式（简单）/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/08/26/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -323,193 +325,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/18/Hdu-4018-正则表达式（简单）/" itemprop="url">Hdu 4018 正则表达式（简单）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-18T23:32:00+08:00">2015-12-18</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/12/18/Hdu-4018-正则表达式（简单）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/18/Hdu-4018-正则表达式（简单）/" itemprop="commentCount"></span>
+                <a class="post-title-link" href="/2016/08/26/undefined/" itemprop="url">
+                  吸血鬼起源
                 </a>
-              </span>
+              
             
-          
-
-          
-          
-             <span id="/2015/12/18/Hdu-4018-正则表达式（简单）/" class="leancloud_visitors" data-flag-title="Hdu 4018 正则表达式（简单）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[100];</span><br><span class="line">    char ch[100];</span><br><span class="line">    int n;</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int j = 1;j &lt;= n;j++)&#123;</span><br><span class="line">        scanf(&quot;%s&quot;,str);</span><br><span class="line">        for(int i = 0;str[i+2] != &apos;\0&apos;;i++)&#123;</span><br><span class="line">            if(str[i] == &apos;/&apos;)&#123;</span><br><span class="line">                if(str[i+1] == &apos;/&apos;)&#123;</span><br><span class="line">                    strcpy(ch,&amp;str[i+2]);</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0;ch[i] != &apos;\0&apos;;i++)&#123;</span><br><span class="line">            if(ch[i] == &apos;/&apos; || ch[i] == &apos;:&apos;)&#123;</span><br><span class="line">                ch[i] = &apos;\0&apos;;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;Case #%d: %s\n&quot;,j,ch);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/18/Hdu-1039-字符串/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/18/Hdu-1039-字符串/" itemprop="url">Hdu 1039 字符串</a></h2>
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -517,208 +349,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-18T23:08:00+08:00">2015-12-18</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-08-26 17:25:43" itemprop="dateCreated datePublished" datetime="2016-08-26T17:25:43+08:00">2016-08-26</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
                 
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
+                
+
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <a href="/2015/12/18/Hdu-1039-字符串/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/18/Hdu-1039-字符串/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/18/Hdu-1039-字符串/" class="leancloud_visitors" data-flag-title="Hdu 1039 字符串">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本来以为是正则，结果只是字符串水题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char str[22];</span><br><span class="line"></span><br><span class="line">    char vowel[26]=&quot;aeiou&quot;;</span><br><span class="line">    char consonants[26]=&quot;bcdfghjklmnpqrstvwxyz&quot;;</span><br><span class="line"></span><br><span class="line">    while(scanf(&quot;%s&quot;,str) &amp;&amp; strcmp(str,&quot;end&quot;))&#123;</span><br><span class="line">        int tag[3];</span><br><span class="line">        tag[0] = 0;</span><br><span class="line">        int len = strlen(str);</span><br><span class="line">        for(int i = 0;i &lt; len;i++)&#123;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i] == vowel[j])&#123;</span><br><span class="line">                    tag[0] = 1;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //char ch[3];</span><br><span class="line">        //ch[0] = str[0];</span><br><span class="line">        tag[1] = 1;</span><br><span class="line">        int flag[3] = &#123;1,1,1&#125;;</span><br><span class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</span><br><span class="line">            flag[0] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i] == consonants[j])</span><br><span class="line">                    flag[0] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[1] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i+1] == consonants[j])</span><br><span class="line">                    flag[1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[2] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 21;j++)&#123;</span><br><span class="line">                if(str[i+2] == consonants[j])</span><br><span class="line">                    flag[2] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</span><br><span class="line">                tag[1] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i = 0;i &lt; len-2;i++)&#123;</span><br><span class="line">            flag[0] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i] == vowel[j])</span><br><span class="line">                    flag[0] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[1] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i+1] == vowel[j])</span><br><span class="line">                    flag[1] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            flag[2] = 0;</span><br><span class="line">            for(int j = 0;j &lt; 5;j++)&#123;</span><br><span class="line">                if(str[i+2] == vowel[j])</span><br><span class="line">                    flag[2] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag[0] == 1 &amp;&amp; flag [1] == 1 &amp;&amp; flag[2] == 1)</span><br><span class="line">                tag[1] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //char ch = str[0];</span><br><span class="line">        tag[2] = 1;</span><br><span class="line">        for(int i = 1;i &lt; len;i++)&#123;</span><br><span class="line">            if(str[i-1] == str[i])</span><br><span class="line">                if(str[i] != &apos;e&apos; &amp;&amp; str[i] != &apos;o&apos;)</span><br><span class="line">                    tag[2] = 0;</span><br><span class="line">            //ch = str[i];</span><br><span class="line">        &#125;</span><br><span class="line">        if(tag[0] == 1 &amp;&amp; tag[1] == 1 &amp;&amp; tag[2] == 1)</span><br><span class="line">            printf(&quot;&lt;%s&gt; is acceptable.\n&quot;,str);</span><br><span class="line">        else printf(&quot;&lt;%s&gt; is not acceptable.\n&quot;,str);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/15/《starting-over重启人生》/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/15/《starting-over重启人生》/" itemprop="url">《starting over重启人生》</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-15T23:48:00+08:00">2015-12-15</time>
-            
-
-            
-            
-              
+                  <span class="post-meta-item-text">Edited on</span>
                 
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
-              
-
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -749,9 +403,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/15/《starting-over重启人生》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/15/《starting-over重启人生》/" itemprop="commentCount"></span>
+                <a href="/2016/08/26/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/08/26/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -759,13 +412,13 @@
 
           
           
-             <span id="/2015/12/15/《starting-over重启人生》/" class="leancloud_visitors" data-flag-title="《starting over重启人生》">
+             <span id="/2016/08/26/undefined/" class="leancloud_visitors" data-flag-title="吸血鬼起源">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -773,6 +426,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">2.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:02</span>
+              
+            </div>
           
 
           
@@ -791,11 +472,10 @@
 
       
         
-          <p>###starting over重启人生</p>
-<p>这是这一个月来看的第一本质量感觉不错的轻小说。 初看完，我觉得从小说的方向上来说是引起我们对自己人生的反思的，我之前看过的《我将死去，你将重生》感觉和这本类似的感觉，同样值得一看。
+          <p>之所以写起这个，是因为最近开始写起宅文了，背景设定需要就来搜集一些资料。 所以本文会提到的起源只会是从神话角度和各式作品里提取的。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/12/15/《starting-over重启人生》/#more" rel="contents">
+            <a class="btn" href="/2016/08/26/undefined/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -851,11 +531,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/13/huffman编码实现压缩与解压缩/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/08/05/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -868,13 +548,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/13/huffman编码实现压缩与解压缩/" itemprop="url">huffman编码实现压缩与解压缩</a></h2>
+                <a class="post-title-link" href="/2016/08/05/undefined/" itemprop="url">
+                  小议各式主角之死
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -882,28 +572,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-13T21:23:00+08:00">2015-12-13</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-08-05 07:25:34" itemprop="dateCreated datePublished" datetime="2016-08-05T07:25:34+08:00">2016-08-05</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -919,7 +611,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -934,9 +626,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/13/huffman编码实现压缩与解压缩/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/13/huffman编码实现压缩与解压缩/" itemprop="commentCount"></span>
+                <a href="/2016/08/05/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/08/05/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -944,13 +635,13 @@
 
           
           
-             <span id="/2015/12/13/huffman编码实现压缩与解压缩/" class="leancloud_visitors" data-flag-title="huffman编码实现压缩与解压缩">
+             <span id="/2016/08/05/undefined/" class="leancloud_visitors" data-flag-title="小议各式主角之死">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -958,6 +649,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">876</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
           
 
           
@@ -977,21 +696,15 @@
       
         
           
-            <p>题目：将任意一个指定的文件进行哈夫曼编码，并以真正的二进制位生成一个二进制文件（压缩文件）；反过来，可将一个压缩文件解码还原为原来的文件。</p>
-<p>以下是编码过程中需要注意的地方 1.读入字符 这里需要明白fread的运用。这段代码要实现的功能是对各类型文件进行转码，所以文本输入的方式fscanf不能在这里使用，只能用fread. 读入过程中需要记录文件中总计的单字节字符数量n，后面需要写入编码的文件中用于后续解码时判断是否已经到了最后一个字符的编码处，跳过补充的0代码段的解码。</p>
-<p>2.统计字符出现频次 这里需要统计实际的哈弗曼树的叶子节点的数量，即不同的字符数量。</p>
-<p>3.通过2的过程已经得到了每个字符的权值，即前nReal项已经输入完毕，可以开始建树 首先通过Select函数从已经得到的字符中提取最小的2个字符的权值，然后进行循环建树。这里的过程就是常规的建立静态分配空间以后的哈夫曼树的过程。</p>
-<p>4.建树完毕，接下来开始进行编码操作 主体编码的流程是左子树为0，右子树为1，如果该节点两个孩子节点均指向0,,则该节点编码完毕，将临时分配的cd空间内的字符存入哈夫曼树中。</p>
-<p>5.编码完毕，接下来直接输出即可 重新按照文件的字符出现的顺序，找到该字符对应的编码，按每8位完成一个编码写入文件，当抵达最后一个字符的时候，如果不足8位，补充编码，后面解码的时候的n就是用在这里跳过补充的编码的。</p>
-<p>注意：这里并不能直接输出 如果直接以char型写入，输出的并没有起到压缩的作用，最多只能算是转码，所以这里需要追加一个过程，使得输出的0、1为确实的单比特输出，而不是1个字节的字符型输出。 并且这里char型与unsigned char型在首位也是存在差别的，所以建议转换类型为unsigned char。</p>
-<p>下面解码 虽然说哈弗曼编码运用了前缀编码的原理，编码不会发生无法解码的过程，但是其终究是建立在具有了哈弗曼树的前提下才可进行解码。假如没有哈夫曼树，因为文件内部的二进制码是没有间断点的，如果一个一颗成形的哈夫曼树，我们并不能判断是否已经到了这个字符的编码结束的位置。假如迭代暴力解码，间断点的可能性有(n-1)!种，相当于o(n^n)级的复杂度，不可行。</p>
-<p>所以我们在这里在编码时就将整棵树输出到解码文件的首部，解码时通过读取此树，再根据这棵树进行解码。</p>
-<p>1.首先，读取nReal，动态分配足够的空间给接下来建立的树，读取文件中关于树的data和权值。</p>
-<p>2.建树完毕，读取二进制编码，根据01决定左、右子树，如果抵达叶子节点，则其左右子树均为0，存入输出字符串即可。</p>
-<p>这里对于补充的编码长度如何写入呢？</p>
-<p>程序优化： 可以对哈夫曼树进行压缩</p>
-<p>参考资料: [1].http://blog.csdn.net/u013275340/article/details/38778497?utm_source=tuicool&amp;utm_medium=referral [2].http://zzh87615.blog.163.com/blog/static/1178207282009516271866</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">#define MAX 99999999</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    unsigned char data;</span><br><span class="line">    int weight;</span><br><span class="line">    int parent,lchild,rchild;</span><br><span class="line">    //unsigned char *bit;</span><br><span class="line">    unsigned char *bit;</span><br><span class="line">&#125;HuffmanNode,HuffmanTree[512];</span><br><span class="line">/*</span><br><span class="line">typedef struct bit&#123;//设立位域，用于解码进行数字比对</span><br><span class="line">    unsigned a:1;</span><br><span class="line">    unsigned b:6;</span><br><span class="line">    unsigned c:1;</span><br><span class="line">&#125;Bit;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">void Select(HuffmanTree HT,int k,int &amp;s1,int &amp;s2)&#123;//选取最小的两个未链入哈弗曼树中的节点</span><br><span class="line">    int minHuf1 = MAX,minHuf2 = MAX;</span><br><span class="line">    s1 = 99999999,s2 = 99999999;</span><br><span class="line">    for(int i = 1;i &lt;= k;i++)&#123;</span><br><span class="line">        if(HT[i].weight &lt; minHuf1 &amp;&amp; HT[i].parent == 0)&#123;</span><br><span class="line">            minHuf2 = minHuf1;</span><br><span class="line">            s2 = s1;</span><br><span class="line">            minHuf1 = HT[i].weight;</span><br><span class="line">            s1 = i;</span><br><span class="line">        &#125;else if(HT[i].weight &lt; minHuf2 &amp;&amp; HT[i].parent == 0)&#123;</span><br><span class="line">            s2 = i;</span><br><span class="line">            minHuf2 = HT[i].weight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Encode(HuffmanTree HT,int nReal)&#123;//进行字符编码</span><br><span class="line">    unsigned char *cd;</span><br><span class="line">    cd = (unsigned char*)malloc(nReal*sizeof(unsigned char));</span><br><span class="line">    cd[nReal-1] = &apos;\0&apos;;</span><br><span class="line">    for(int i = 1;i &lt;= nReal;i++)&#123;</span><br><span class="line">        int start = nReal-1;</span><br><span class="line">        for(int curr = i,parent = HT[i].parent;parent != 0 &amp;&amp; 0 &lt; parent &amp;&amp; parent &lt;= 2*nReal-1;curr = parent,parent = HT[parent].parent)&#123;</span><br><span class="line">            if(curr == HT[parent].lchild)</span><br><span class="line">                cd[--start] = &apos;0&apos;;</span><br><span class="line">            else</span><br><span class="line">                cd[--start] = &apos;1&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">        HT[i].bit = (unsigned char*)malloc((nReal-start+1)*sizeof(unsigned char));</span><br><span class="line">        int x = 0;</span><br><span class="line">        do&#123;</span><br><span class="line">            HT[i].bit[x++] = cd[start++];</span><br><span class="line">        &#125;while(cd[start-1] != &apos;\0&apos;);</span><br><span class="line">        HT[i].bit[x] = &apos;\0&apos;;</span><br><span class="line">        //strcpy(HT[i].bit,&amp;cd[start]);</span><br><span class="line">    &#125;</span><br><span class="line">    free(cd);</span><br><span class="line">    /*</span><br><span class="line">    if(nReal == 1)</span><br><span class="line">        HT[1].bit[0] = &apos;0&apos;;</span><br><span class="line">        */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Init(FILE *fpR,HuffmanTree &amp;HT,int &amp;nReal,int &amp;n)&#123;//初始化哈夫曼树</span><br><span class="line">    nReal = 0;</span><br><span class="line">    HuffmanNode *p;</span><br><span class="line">    int i;</span><br><span class="line">    unsigned char ch;</span><br><span class="line"></span><br><span class="line">    for(p = HT,i = 1;i &lt;= 511;i++,p++)</span><br><span class="line">        *p = &#123;&apos;\0&apos;,0,0,0,0&#125;;</span><br><span class="line">    int start = 1;</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        fread(&amp;ch,1,1,fpR);</span><br><span class="line">        if(feof(fpR))</span><br><span class="line">            return;</span><br><span class="line">        int tag = 0;</span><br><span class="line">        n++;</span><br><span class="line">        for(int j = 1;j &lt;= nReal;j++)&#123;</span><br><span class="line">            if(ch == HT[j].data)&#123;</span><br><span class="line">                HT[j].weight++;</span><br><span class="line">                tag = 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(tag == 0)&#123;</span><br><span class="line">            HT[start].data = ch;</span><br><span class="line">            HT[start++].weight++;</span><br><span class="line">            nReal++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void BuildTree(HuffmanTree &amp;HT,int nReal)&#123;//建树</span><br><span class="line">    int m = 2*nReal-1;</span><br><span class="line">    for(int i = nReal+1;i &lt;= m;i++)&#123;</span><br><span class="line">        int s1,s2;</span><br><span class="line">        Select(HT,i-1,s1,s2);</span><br><span class="line">        HT[s1].parent = i;</span><br><span class="line">        HT[s2].parent = i;</span><br><span class="line">        HT[i].lchild = s1;</span><br><span class="line">        HT[i].rchild = s2;</span><br><span class="line">        HT[i].weight = HT[s1].weight + HT[s2].weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Decode(HuffmanTree &amp;HT,int &amp;n,int &amp;nReal,FILE *fpR,FILE *fpW)&#123;//解码</span><br><span class="line">    int sup;</span><br><span class="line">    fread(&amp;sup,sizeof(int),1,fpR);</span><br><span class="line"></span><br><span class="line">    fread(&amp;n,sizeof(int),1,fpR);</span><br><span class="line">    fread(&amp;nReal,sizeof(int),1,fpR);</span><br><span class="line">    int i;</span><br><span class="line">    HuffmanNode *p;</span><br><span class="line">    for(p = HT,i = 1;i &lt;= 511;i++,p++)</span><br><span class="line">        *p = &#123;&apos;\0&apos;,0,0,0,0&#125;;</span><br><span class="line"></span><br><span class="line">    for(i = 1;i &lt;= 2*nReal-1;i++)&#123;</span><br><span class="line">        fread(&amp;HT[i].data,sizeof(unsigned char),1,fpR);</span><br><span class="line">        fread(&amp;HT[i].weight,sizeof(int),1,fpR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BuildTree(HT,nReal);</span><br><span class="line"></span><br><span class="line">    unsigned char c;</span><br><span class="line">    unsigned char str;</span><br><span class="line">    int root = 2*nReal-1;</span><br><span class="line">    //i = 0;</span><br><span class="line">    int length = 0;//对字符读取数量的计数，判断是否已经结束一次字符串读取</span><br><span class="line">    int flagSup = 0;</span><br><span class="line">    while(true)&#123;</span><br><span class="line">        fread(&amp;c,1,1,fpR);</span><br><span class="line">        if(feof(fpR))</span><br><span class="line">            return;</span><br><span class="line">        //fseek(fpR,len,SEEK_CUR);</span><br><span class="line">        for(int k = 0;k &lt; 8;k++)&#123;</span><br><span class="line">            if(HT[root].lchild == 0 &amp;&amp; HT[root].rchild == 0)&#123;//哈弗曼树不存在度为1的节点，故用and或者or均可</span><br><span class="line">                //if(HT[root].data == &apos;\0&apos;)</span><br><span class="line">                  //  fprintf(stderr,&quot;Error str\n&quot;);</span><br><span class="line">                str = HT[root].data;</span><br><span class="line">                root = 2*nReal-1;</span><br><span class="line">                fwrite(&amp;str,1,1,fpW);</span><br><span class="line">                length++;</span><br><span class="line">            &#125;</span><br><span class="line">            if(length == n)</span><br><span class="line">                break;</span><br><span class="line">            if((c&amp;128) == 0)</span><br><span class="line">                root = HT[root].lchild;</span><br><span class="line">            else if((c&amp;128) == 128)&#123;</span><br><span class="line">                root = HT[root].rchild;</span><br><span class="line">            &#125;</span><br><span class="line">            c = c &lt;&lt; 1;</span><br><span class="line">            if(length == n)</span><br><span class="line">                flagSup++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void EncodeOutput(HuffmanTree HT,FILE *fpR, FILE *fpW,int n,int nReal)&#123;//输出编码</span><br><span class="line">    fseek(fpW,4,SEEK_SET);</span><br><span class="line">    fwrite(&amp;n,sizeof(int),1,fpW);</span><br><span class="line">    fwrite(&amp;nReal,sizeof(int),1,fpW);</span><br><span class="line">    for(int i = 1;i &lt;= 2*nReal-1;i++)&#123;</span><br><span class="line">        fwrite(&amp;HT[i].data,sizeof(unsigned char),1,fpW);</span><br><span class="line">        fwrite(&amp;HT[i].weight,sizeof(int),1,fpW);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int length = 0;</span><br><span class="line">    unsigned char c = 0;//编码变量</span><br><span class="line">    unsigned char ch;//输入字符变量，作为文件顺序参照</span><br><span class="line">    int sup = 0;</span><br><span class="line">    int start = 0;</span><br><span class="line">    fseek(fpR,0,SEEK_SET);</span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;//进行逐个字符编码写入</span><br><span class="line">        fread(&amp;ch,1,1,fpR);</span><br><span class="line">        for(int j = 1;j &lt;= nReal;j++)&#123;//进行逐个匹配，寻找对应字符哈弗曼节点</span><br><span class="line">            if(HT[j].data == ch)&#123;</span><br><span class="line">                int StrLen = 0;</span><br><span class="line">                while(HT[j].bit[StrLen] != &apos;\0&apos;)//计算该节点字符的编码比特数</span><br><span class="line">                    StrLen++;</span><br><span class="line">                //fprintf(fpW,&quot;%s&quot;,HT[j].bit);</span><br><span class="line">                for(int k = 0;k &lt; StrLen;k++)&#123;</span><br><span class="line">                    if(HT[j].bit[k] == &apos;0&apos;)</span><br><span class="line">                        c = c &lt;&lt; 1;</span><br><span class="line">                    else if(HT[j].bit[k] == &apos;1&apos;)</span><br><span class="line">                        c = (c &lt;&lt; 1)|1;</span><br><span class="line">                    else fprintf(stderr,&quot;Bit output error!\n&quot;);</span><br><span class="line">                    length++;</span><br><span class="line">                    if(i == n-1 &amp;&amp; length % 8 != 0)&#123;//最后一个节点需要记录补充编码数</span><br><span class="line">                        while(length%8!=0)&#123;</span><br><span class="line">                            c = c &lt;&lt; 1;</span><br><span class="line">                            length++;</span><br><span class="line">                            sup++;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(length % 8 == 0 &amp;&amp; length &gt; 0)</span><br><span class="line">                        fwrite(&amp;c,1,1,fpW);</span><br><span class="line">                &#125;</span><br><span class="line">                //fwrite(HT[i].bit,1,sizeof(HT[i].bit),fpW);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fseek(fpW,0,SEEK_SET);</span><br><span class="line">    //fwrite(&amp;length,sizeof(int),1,fpW);</span><br><span class="line">    fwrite(&amp;sup,sizeof(int),1,fpW);</span><br><span class="line">    //fwrite(str,sizeof(unsigned char),length,fpW);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void InterfaceFile(char *infile,char *outfile)&#123;</span><br><span class="line">    fprintf(stdout,&quot;***Welcome to the Huffman Encoding/Decoding System:***\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;***                                                ***\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;Please input the input file name(including the postfix):&quot;);</span><br><span class="line">    gets(infile);</span><br><span class="line">    fprintf(stdout,&quot;Please input the output file name(including the postfix):&quot;);</span><br><span class="line">    gets(outfile);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void InterfaceNum(int &amp;num)&#123;</span><br><span class="line">    fprintf(stdout,&quot;***Please choose which operation you&apos;d like to do:****\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;***                                                ***\n&quot;);</span><br><span class="line">    fprintf(stdout,&quot;***1_Encoding          2_Decoding                  ***\n&quot;);</span><br><span class="line">    while(fscanf(stdin,&quot;%d&quot;,&amp;num) &amp;&amp; (num != 1 &amp;&amp; num != 2))&#123;</span><br><span class="line">        fprintf(stdout,&quot;The number is out of range.\nPlease input again:&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line"></span><br><span class="line">    FILE *fpR,*fpW;</span><br><span class="line">    char infile[255],outfile[255];</span><br><span class="line">    InterfaceFile(infile,outfile);</span><br><span class="line">    if((fpR = fopen(infile,&quot;ab+&quot;)) == NULL)&#123;</span><br><span class="line">        fprintf(stderr,&quot;File_Read open error!\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    if((fpW = fopen(outfile,&quot;wb+&quot;)) == NULL)&#123;</span><br><span class="line">        fprintf(stderr,&quot;File_Write open error!\n&quot;);</span><br><span class="line">        exit(2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    HuffmanTree HT;</span><br><span class="line">    //unsigned char ch;//编码字符</span><br><span class="line">    int n = 0,nReal = 0;//文件中字符数量n，哈弗曼节点数量nReal</span><br><span class="line"></span><br><span class="line">    int num = 0;//选择方案</span><br><span class="line">    InterfaceNum(num);</span><br><span class="line">    switch(num)&#123;</span><br><span class="line">        case 1:</span><br><span class="line">            Init(fpR,HT,nReal,n);</span><br><span class="line">            BuildTree(HT,nReal);</span><br><span class="line">            Encode(HT,nReal);</span><br><span class="line">            EncodeOutput(HT,fpR,fpW,n,nReal);</span><br><span class="line">            break;</span><br><span class="line">        case 2:</span><br><span class="line">            Decode(HT,n,nReal,fpR,fpW);</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fclose(fpR);</span><br><span class="line">    fclose(fpW);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <a id="more"></a>
+<p>在作家手中，为了推进故事发展，往往总是会有角色离开我们，主角也无例外。</p>
+<p>在我最喜欢的《叛逆的鲁鲁修》中，lelouch在故事的最后以自己的死亡来解放全世界。Lelouch决心背负世界的罪恶，作为全世界的敌人而死，让人们珍惜来之不易的和平。而型月世界里的Gilgamish说过“王来承认，王来允许。王来背负整个世界。”各个故事中，作为王的主角，若是离去，必背负着一切。在《罪恶王冠》中，集如同Lelouch的挚友朱雀一般，背负了祈和涯托付给他的未来以及他自身的罪孽继续活着。</p>
+<p>不过，存在王的故事往往都是基于一个宏大的世界观，具有伟大的背景，这样的故事写好了的终究还是少数。更多的还是基于现实的日常，但又脱离了现实的故事。《命运石之门》，我想就可以说是一部代表作。以世界线变动作为这个世界的基准，凤凰院凶真扰动了世界线，拯救了克里斯蒂娜的死，但有得必有失，等价交换的原则，以真由理之死为代价。故事最终找到了一个完美的世界线，作者给了一个幸福的结局。这类故事基于日常，所以主线都会围绕着人与人之间的感情而展开，最多的是爱情，友情其次。</p>
+<p>说到爱情之死，不得不提到Key社名作《Clannad》了。在After Story中，渚身体虚弱离去了，朋也崩溃了，颓废了，直到在早苗的安排下带着汐旅行时意识到自己的父亲在同样的处境下所背负的，意识到了自己所该做的，决心照顾好汐。同样的，汐也走上了和渚小时候面临的同样的处境，坚强的汐最后还是没能挺过发烧。这个时候，这个小镇的奇迹发生了，朋也回到了渚生下汐的那一刻，这个世界里，渚活下来了。故事终于在一遍又一遍的催泪中达成了一个满意的结局。</p>
+<p>爱情之死，都是作为剧情的推动，引发其他角色的心理的一个巨大变化。</p>
+<p>除此之外，就是推理故事中的推理所需的案件之死了。《弹丸论破》是以角色的死亡来为主角提供线索破解故事，《名侦探柯南》则是柯南所到之地，必有人死亡。</p>
+<p>前两种死亡，都会带来无比的催泪效果，虐心倒不觉得，毕竟作者提供的铺垫已足够强烈。</p>
+<p>PS:《斩！赤红之瞳》里的死根据剧情明明可以避免，却偏要以悲剧来推动，并不能接受。</p>
 
           
         
@@ -1045,11 +758,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/13/用先序递归过程建立二叉树/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/07/14/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1062,13 +775,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/13/用先序递归过程建立二叉树/" itemprop="url">用先序递归过程建立二叉树</a></h2>
+                <a class="post-title-link" href="/2016/07/14/undefined/" itemprop="url">
+                  论Pokemon Go
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1076,49 +799,33 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-13T21:21:00+08:00">2015-12-13</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-07-14 21:30:20" itemprop="dateCreated datePublished" datetime="2016-07-14T21:30:20+08:00">2016-07-14</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1128,9 +835,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/13/用先序递归过程建立二叉树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/13/用先序递归过程建立二叉树/" itemprop="commentCount"></span>
+                <a href="/2016/07/14/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/07/14/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1138,13 +844,13 @@
 
           
           
-             <span id="/2015/12/13/用先序递归过程建立二叉树/" class="leancloud_visitors" data-flag-title="用先序递归过程建立二叉树">
+             <span id="/2016/07/14/undefined/" class="leancloud_visitors" data-flag-title="论Pokemon Go">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1152,6 +858,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
           
 
           
@@ -1171,8 +905,7 @@
       
         
           
-            <p>用先序递归过程建立二叉树 (存储结构：二叉链表) 输入数据按先序遍历所得序列输入，当某结点左子树或右子树为空时，输入<code>‘*’</code>号，如输入<code>abc**d**e**</code>得到的二叉树如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  a</span><br><span class="line"> b e</span><br><span class="line">c d</span><br></pre></td></tr></table></figure></p>
-<p>代码如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">typedef struct tree&#123;//二叉树结构</span><br><span class="line">    char data;</span><br><span class="line">    struct tree *lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">typedef struct queu&#123;//先序序列存储队列，包含&apos;*&apos;</span><br><span class="line">    char data;</span><br><span class="line">    struct queu *next;</span><br><span class="line">&#125;QueueNode,*Queue;</span><br><span class="line">Queue head = NULL,rear = head;</span><br><span class="line"></span><br><span class="line">void enqueue(Queue &amp;head, Queue &amp;rear,char ch)&#123;//入队</span><br><span class="line">    Queue p = (Queue)malloc(sizeof(QueueNode));</span><br><span class="line">    p-&gt;data = ch;</span><br><span class="line">    p-&gt;next = NULL;</span><br><span class="line">    if(head == NULL)&#123;</span><br><span class="line">        head = p;</span><br><span class="line">        rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        rear-&gt;next = p;</span><br><span class="line">        rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Queue Del(Queue head)&#123;//删除节点操作</span><br><span class="line">    Queue temp = head -&gt; next;</span><br><span class="line">    free(head);</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">char dequeue(Queue &amp;head)&#123;//出队</span><br><span class="line">    if(head == NULL)</span><br><span class="line">        return NULL;</span><br><span class="line">    char ch = head-&gt;data;</span><br><span class="line">    head = Del(head);</span><br><span class="line">    return ch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void BuildTree(BitTree &amp;root)&#123;//根据带&apos;*&apos;先序序列建树</span><br><span class="line">    char ch = dequeue(head);</span><br><span class="line">    if(ch == &apos;*&apos; || ch == &apos;\0&apos;)//遇到&apos;*&apos;，直接返回</span><br><span class="line">        return;</span><br><span class="line">    root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    root-&gt;data = ch;</span><br><span class="line">    root-&gt;lc = NULL;</span><br><span class="line">    root-&gt;rc = NULL;</span><br><span class="line"></span><br><span class="line">    BuildTree(root-&gt;lc);</span><br><span class="line">    BuildTree(root-&gt;rc);</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void PreOrder(BitTree root)&#123;//先序遍历输出</span><br><span class="line">    printf(&quot;%c&quot;,root-&gt;data);</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        PreOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        PreOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MidOrder(BitTree root)&#123;//中序遍历输出</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        PreOrder(root-&gt;lc);</span><br><span class="line">    printf(&quot;%c&quot;,root-&gt;data);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        PreOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AftOrder(BitTree root)&#123;//后续遍历输出</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        AftOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        AftOrder(root-&gt;rc);</span><br><span class="line">    printf(&quot;%c&quot;,root-&gt;data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    char ch[10000];</span><br><span class="line"></span><br><span class="line">    scanf(&quot;%s&quot;,ch);</span><br><span class="line">    for(int i = 0;ch[i] != &apos;\0&apos;;i++)</span><br><span class="line">        enqueue(head,rear,ch[i]);</span><br><span class="line">    BitTree root;</span><br><span class="line">    BuildTree(root);</span><br><span class="line">    PreOrder(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    MidOrder(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    AftOrder(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+            
 
           
         
@@ -1226,11 +959,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/09/蒙特卡洛算法（简单理解）/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/07/02/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1243,13 +976,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/09/蒙特卡洛算法（简单理解）/" itemprop="url">蒙特卡洛算法（简单理解）</a></h2>
+                <a class="post-title-link" href="/2016/07/02/undefined/" itemprop="url">
+                  重读《爱的艺术》
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1257,28 +1000,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-09T17:23:00+08:00">2015-12-09</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-07-02 10:09:22" itemprop="dateCreated datePublished" datetime="2016-07-02T10:09:22+08:00">2016-07-02</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1294,7 +1039,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
 
                 
                 
@@ -1309,9 +1054,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/09/蒙特卡洛算法（简单理解）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/09/蒙特卡洛算法（简单理解）/" itemprop="commentCount"></span>
+                <a href="/2016/07/02/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/07/02/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1319,13 +1063,13 @@
 
           
           
-             <span id="/2015/12/09/蒙特卡洛算法（简单理解）/" class="leancloud_visitors" data-flag-title="蒙特卡洛算法（简单理解）">
+             <span id="/2016/07/02/undefined/" class="leancloud_visitors" data-flag-title="重读《爱的艺术》">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1333,6 +1077,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
           
 
           
@@ -1352,16 +1124,477 @@
       
         
           
-            <p>###蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。</p>
+            <a id="more"></a>
+<p>弗洛姆在书中首先讲述了爱情其本质也是一门艺术，而非对象问题。</p>
+<p>其次讲述了爱情的本质目的是为了补全人类的天性的缺失，弥补个人的孤独，这是人类的生存的必要条件。</p>
+<p>第三讲述的是孩子对父母的依存，从父母身上找到仍在胎中时的温暖的感觉。而父母在这个过程中对孩子的影响则是巨大的，导向了孩子长大后对爱的艺术的掌握。，</p>
+<p>第四正式讲述了关于爱的对象的问题，对不同对象所见所具有的不同的爱，博爱、母爱、性爱、自爱、神爱。</p>
+<p>关于博爱，无法做到对所有需要帮助的人均爱，则无法称之为博爱。</p>
+<p>母爱，则是对上一章的补充，补充了唯有无私并能奉献出一切，除了被爱者的幸福一无所求的母亲才真的就具有母爱。</p>
+<p>关于性爱，则是讲到性要求的数种误解，其一是认为性要求能够解除一切的隔阂，然而这样建立的亲密关系随着时间的推进会很快消失;其二，认为有了性要求必然是已经具备了爱的结果，然而性要求是爱情之后的衍生，但性要求并非唯有具备了爱之后才会产生。另外，一种认为性爱完全是两个人之间的吸引力，是两个特殊的人之间绝无仅有的联系;另一种认为性爱只是意志的行为。以上两种观点都是正确的其实。是两者综合之后方具有的爱情。</p>
+<p>关于自爱，这种爱是判断你是否具有爱的能力的标志。无法以爱自己般爱他人与无法以爱他人般爱自己均是不具有爱的能力的体现，仅仅是一种利己的表现。</p>
+<p>关于神爱，神爱是另一种形式的爱。</p>
+<p>依据悖论逻辑，人只有在现实的矛盾中才能感觉现实，人永远无法在思想上把握最终实体，把握宇宙。人们不应该把从思想上找到答案看作最终目的。思想只能使我们认识到思想不能使我们作出最终回答，思想的世界囿于悖理之中。即对神的爱既不是从思想上了解神，也不是指自己爱神的思想，而是在爱的体验中体验自己同神的一致。这里印度、中国和神秘主义的宗教中，是以此作为神爱。</p>
+<p>而在西方主流思想中，人们相信在正确的思想中会找到最终真理，因而也会引起科学的发展。</p>
+<p>第五，爱情在当下西方资本主义社会中的衰亡。于当下，迫于社会的高度集中的特性，现代人受到了异化，失去自我，成为一种自动机器。这样的情况下为解除孤独而但诞生的爱情和婚姻概念实际上是强调保护自己免遭不可忍受的孤独感的侵袭。两个人结成以反对全世界的同盟，却把这种两个人的自私看作是爱情和信赖。后续还稍稍提及了神经技能病态爱情的部分。</p>
+<p>第六，爱的实践。在这一部分中，作者着重强调了任何艺术掌握的必备条件，在生活中的每一个阶段将训练纪律、集中和耐心作为实践爱的艺术的开端。之后讲述了关于作者认为的爱的艺术的必备条件——克服自恋与积极的活动。整个这一段的内容放至当下仍无不可。</p>
+<p>大致就是以上的内容了。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/06/12/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/12/undefined/" itemprop="url">
+                  综述日本动漫艺术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-06-12 18:32:12" itemprop="dateCreated datePublished" datetime="2016-06-12T18:32:12+08:00">2016-06-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/12/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/06/12/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/06/12/undefined/" class="leancloud_visitors" data-flag-title="综述日本动漫艺术">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">10k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:09</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="综述现代日本动漫艺术表现">综述现代日本动漫艺术表现</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/12/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/05/16/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/05/16/undefined/" itemprop="url">
+                  一省幕间
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-05-16 22:48:28" itemprop="dateCreated datePublished" datetime="2016-05-16T22:48:28+08:00">2016-05-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/16/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/05/16/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/05/16/undefined/" class="leancloud_visitors" data-flag-title="一省幕间">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">657</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p>算来已经快整3周没听课了，整日在刷小说中，试着以放纵来令自己对小说失望，不过成效些微，反倒进度缺失的确实很多。</p>
+<p>近来，从动漫同人到电影同人，再到架空历史、竞技，再回到科幻、奇幻、玄幻，爱好的小说类型愈发的变化，曾经最喜欢看的西红柿、三少的小白文倒是无法再入口，其剧情框架已被用烂了，再无出彩的创意，始终从零打怪升级，无非依靠主角光环，不见出彩伏笔，亦不见大气世界观，不过满足了大家的YY想法。</p>
+<p>今天看到这样一句，《将夜》中说道： &gt;你究竟喜欢的是读书这件事情，还是读完所有书这件事情呢？</p>
+<p>我不得不说，自己所爱好的是读完书这件事情，在小说上只是希望自己能尽快看到作者出彩的后续剧情，而在专业书上，只是想为自己在豆瓣上的成果上多一笔，自己看完了那本专业巨著呢！</p>
+<p>哎，真的不得不对自己说，真的是太俗了。</p>
+<p>也因为这个，虽然收了不少CS的经典了，但看的却没几本，我的兴趣去哪了呢？</p>
 <blockquote>
-<p>A Monte Carlo algorithm for a decision problem uses a sequence of tests. The probability that the algorithm answers the decision problem correctly increases as more tests are carried out. At each step of the algorithm, possible responses are “true,” which means that the answer is “true” and no additional iterations are needed, or “unknown,” which means that the answer could be either “true” or “false.” After running all the iterations in such an algorithm, the final answer produced is “true” if at least one iteration yields the answer “true,” and the answer is “false” if every iteration yields the answer “unknown.” If the correct answer is “false,” then the algorithm answers “false,” because every iteration will yield “unknown.” However, if the correct answer is “true,” then the algorithm could answer either “true” or “false,” because it may be possible that each iteration produced the response “unknown” even though the correct response was “true.” We will show that this possibility becomes extremely unlikely as the number of tests increases.</p>
+<p>每个人都会碰到很多难题，想要解开这些难题，就必须专心的做下去，就需要疯狂的那股痴劲儿，但这股痴却不是山一般压在你肩上的重量，而是你内心深入向往的那些喜悦。 宁缺望着美丽的书院后山，说道：以前我曾经痴过，这些天却忘了痴的本质是喜欢。不存在虚妄的希望，自然也就没有虚妄的失望，更没有什么绝望。人生如题各种痴，就是各种喜欢，喜欢做什么那便做下去。这道题目总会有答案的。</p>
 </blockquote>
-<p>决策问题只有“对”与“错”两种答案。在每一步迭代中，如果决策是“对”，意味着回答是“对”，并且与算法的其他迭代无关；也可能回应“未知”，意味着答案可能是“对”也可能是“错”。在全部均迭代过后，如果至少有一次迭代中生成了结果“对”，那么结果就为”对“；如果每个重复生成的回答都是”未知“，那么结果就为”错“。 然而，如果正确答案是”对“，而算法可以回答”对“或”错“，有可能所有的迭代均得到的回答是”未知“。（这就是其中的小概率的错误概率。） （这一段是我对书上的翻译，我理解下来，这段描述的其实是拉斯维加斯算法吧，是不是我理解错了，希望明白的人能指正一下）</p>
-<p>对于蒙特卡洛算法，是实验样例越多，得到的结果也就愈发靠近正确的结果。</p>
-<p>与蒙特卡洛算法相对的另一种随机算法，叫做拉斯维加斯算法，同样是随机抽样，样本数越多，这个算法增加的只有找到正确结果的概率，他得到的只有对与错，没找到正确的结果就没有意义。</p>
-<p>参考其他资料对蒙特卡洛算法的理解是，蒙特卡洛算法是利用一种满足平均分布的随机抽样达成的计算数学期望的方法。其主要计算的是近似真值。也就是说他主要是从样本数中找对的结果，然后计算”对“的结果占全部样本数的概率，其方法重点是在于抽样的过程。</p>
-<p>Ps.果然《离散数学》里面的各方面内容都只是各领域最简单的内容，关于蒙特卡洛算法，这里连抽样(sample)的单词都并没有用到，用了一些常用（多义）的单词，不看其他资料，完全不能理解呀。</p>
-<p>参考资料： [1]http://www.zhihu.com/question/20254139 [2]http://www.cnblogs.com/daniel-D/p/3388724.html [3]https://en.wikipedia.org/wiki/Monte_Carlo_method</p>
+<p>可能在看的多了之后终究会懂，但却无法持之以恒。向往，却又不够向往。</p>
+<blockquote>
+<p>给我无尽的知识，我便以自身为支点，撬起无尽世界。</p>
+</blockquote>
+<p>虽然没有如此宏伟，但这也可谓是一种追求吧。</p>
 
           
         
@@ -1415,11 +1648,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2004/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/04/19/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1432,13 +1665,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/03/HDU2004/" itemprop="url">HDU2004</a></h2>
+                <a class="post-title-link" href="/2016/04/19/undefined/" itemprop="url">
+                  一省吾身
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1446,28 +1689,477 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:43:00+08:00">2015-12-03</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-04-19 23:31:21" itemprop="dateCreated datePublished" datetime="2016-04-19T23:31:21+08:00">2016-04-19</time>
             
 
             
               
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
               <span class="post-meta-divider">|</span>
-              
-
+            
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                <span class="post-meta-item-text">In</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/19/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/04/19/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/04/19/undefined/" class="leancloud_visitors" data-flag-title="一省吾身">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>近来，明明是在时间最紧迫的时刻，作业堆积如山、学姐布置的任务ddl也在迫近，可我却始终感觉缺了点什么似的，用最近看的村上春树的书中常提到的话来说恐怕就是“留在此处的只是我的一半，另一半怕是已然随着某事离开”。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/19/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/04/16/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/16/undefined/" itemprop="url">
+                  《情书》：平淡-回忆
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-04-16 11:47:43" itemprop="dateCreated datePublished" datetime="2016-04-16T11:47:43+08:00">2016-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/16/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/04/16/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2016/04/16/undefined/" class="leancloud_visitors" data-flag-title="《情书》：平淡-回忆">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">755</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>为图方便，这部电影是从B站上拉标签看评论找到的。</p>
+<p>看过了村上春树的几部小说以后，加之桥本爱的《small forest》，对日本的作品的初印象就是非常的平静，在长达1个多小时的作品中逐渐静下来，在看这部片时感觉尤为深刻。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/16/undefined/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/01/08/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/08/undefined/" itemprop="url">
+                  DNA排序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-01-08 18:58:00" itemprop="dateCreated datePublished" datetime="2016-01-08T18:58:00+08:00">2016-01-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
             
           </span>
 
@@ -1498,9 +2190,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/03/HDU2004/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/03/HDU2004/" itemprop="commentCount"></span>
+                <a href="/2016/01/08/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/01/08/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1508,13 +2199,13 @@
 
           
           
-             <span id="/2015/12/03/HDU2004/" class="leancloud_visitors" data-flag-title="HDU2004">
+             <span id="/2016/01/08/undefined/" class="leancloud_visitors" data-flag-title="DNA排序">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1522,6 +2213,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:01</span>
+              
+            </div>
           
 
           
@@ -1541,7 +2260,12 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int x;</span><br><span class="line">    while(scanf(&quot;%d&quot;,&amp;x)!=EOF)&#123;</span><br><span class="line">        if(x &gt;= 90 &amp;&amp; x&lt;= 100)</span><br><span class="line">            printf(&quot;A&quot;);</span><br><span class="line">        else if(x &gt;= 80&amp;&amp; x&lt;=89)</span><br><span class="line">            printf(&quot;B&quot;);</span><br><span class="line">        else if(x &gt;= 70 &amp;&amp; x &lt;= 79)</span><br><span class="line">            printf(&quot;C&quot;);</span><br><span class="line">        else if(x &gt;= 60 &amp;&amp; x &lt;= 69)</span><br><span class="line">            printf(&quot;D&quot;);</span><br><span class="line">        else if(x &gt;= 0 &amp;&amp; x &lt;= 59)</span><br><span class="line">            printf(&quot;E&quot;);</span><br><span class="line">        else printf(&quot;Score is error!&quot;);</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>总时间限制: 1000ms 内存限制: 65536kB <strong>描述</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">现在有一些长度相等的DNA串（只由ACGT四个字母组成），请将它们按照逆序对的数量多少排序。</span><br><span class="line">逆序对指的是字符串A中的两个字符A[i]、A[j]，具有i &lt; j 且 A[i] &gt; A[j] 的性质。如字符串”ATCG“中，T和C是一个逆序对，T和G是另一个逆序对，这个字符串的逆序对数为2。</span><br></pre></td></tr></table></figure></p>
+<p><strong>输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第1行：两个整数n和m，n(0&lt;n&lt;=50)表示字符串长度，m(0&lt;m&lt;=100)表示字符串数量</span><br><span class="line"></span><br><span class="line">第2至m+1行：每行是一个长度为n的字符串</span><br></pre></td></tr></table></figure></p>
+<p><strong>输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按逆序对数从少到多输出字符串，逆序对数一样多的字符串按照输入的顺序输出。</span><br></pre></td></tr></table></figure></p>
+<p><strong>样例输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">10 6</span><br><span class="line">AACATGAAGG</span><br><span class="line">TTTTGGCCAA</span><br><span class="line">TTTGGCCAAA</span><br><span class="line">GATCAGATTT</span><br><span class="line">CCCGGGGGGA</span><br><span class="line">ATCGATGCAT</span><br></pre></td></tr></table></figure></p>
+<p><strong>样例输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CCCGGGGGGA</span><br><span class="line">AACATGAAGG</span><br><span class="line">GATCAGATTT</span><br><span class="line">ATCGATGCAT</span><br><span class="line">TTTTGGCCAA</span><br><span class="line">TTTGGCCAAA</span><br></pre></td></tr></table></figure></p>
+<p>本以为可能在排序之外需要剪枝之类的，事实上用不到，直接用快排就可以过 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Node &amp;a,<span class="keyword">const</span> Node &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.num &lt; b.num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    Node s[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s[i].str);</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i].str[j] == <span class="string">'A'</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = j+<span class="number">1</span>;k &lt; n;k++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(s[i].str[k] &lt; s[i].str[j])</span><br><span class="line">                        num++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        s[i].num = num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(s,s+m,cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,s[i].str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1595,11 +2319,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2003/">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2016/01/08/undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="笔记 随笔">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1612,13 +2336,23 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/03/HDU2003/" itemprop="url">HDU2003</a></h2>
+                <a class="post-title-link" href="/2016/01/08/undefined/" itemprop="url">
+                  The Peanuts
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1626,28 +2360,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:39:00+08:00">2015-12-03</time>
-            
 
-            
-            
               
                 
               
+
+              <time title="Created: 2016-01-08 17:39:00" itemprop="dateCreated datePublished" datetime="2016-01-08T17:39:00+08:00">2016-01-08</time>
             
 
             
               
-              <span class="post-meta-divider">|</span>
-              
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
             
           </span>
 
@@ -1678,9 +2414,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/12/03/HDU2003/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/03/HDU2003/" itemprop="commentCount"></span>
+                <a href="/2016/01/08/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2016/01/08/undefined/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1688,13 +2423,13 @@
 
           
           
-             <span id="/2015/12/03/HDU2003/" class="leancloud_visitors" data-flag-title="HDU2003">
+             <span id="/2016/01/08/undefined/" class="leancloud_visitors" data-flag-title="The Peanuts">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Views&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1703,365 +2438,33 @@
           
 
           
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    double x;</span><br><span class="line">    while(scanf(&quot;%lf&quot;,&amp;x)!=EOF)&#123;</span><br><span class="line">        if(x&lt;0)</span><br><span class="line">            x=-x;</span><br><span class="line">        printf(&quot;%lf\n&quot;,x);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2002/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/12/03/HDU2002/" itemprop="url">HDU2002</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:31:00+08:00">2015-12-03</time>
-            
-
-            
-            
-              
-                
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
+            <div class="post-symbolscount">
               
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="fa fa-file-word-o"></i>
                 </span>
-                <a href="/2015/12/03/HDU2002/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/03/HDU2002/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/03/HDU2002/" class="leancloud_visitors" data-flag-title="HDU2002">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>严格来说，到最后我还是没找到为什么我本机的CB运行出来就是0，上传就能AC的原因。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">#define PI 3.1415927</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    double r;</span><br><span class="line">    while(scanf(&quot;%lf&quot;,&amp;r)!=EOF)&#123;</span><br><span class="line">        printf(&quot;%.3lf\n&quot;,4.0/3.0*PI*r*r*r);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://sean10.github.io/2015/12/03/HDU2001/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/12/03/HDU2001/" itemprop="url">HDU2001</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-12-03T15:17:00+08:00">2015-12-03</time>
-            
-
-            
-            
-              
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-              
-            
-
-            
-              
-              <span class="post-meta-divider">|</span>
+                <span title="Symbols count in article">4.4k</span>
               
 
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2017-06-26T16:51:41+08:00">2017-06-26</time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
+              
+
+              
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="fa fa-clock-o"></i>
                 </span>
-                <a href="/2015/12/03/HDU2001/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/12/03/HDU2001/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/12/03/HDU2001/" class="leancloud_visitors" data-flag-title="HDU2001">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:04</span>
+              
+            </div>
           
 
           
@@ -2081,7 +2484,12 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    double x1 = 0,x2 = 0,y1 = 0,y2 = 0;</span><br><span class="line">    while(scanf(&quot;%lf %lf %lf %lf&quot;,&amp;x1,&amp;y1,&amp;x2,&amp;y2)!=EOF)&#123;</span><br><span class="line">        printf(&quot;%.2lf\n&quot;,sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>总时间限制: 1000ms 内存限制: 65536kB <strong>描述</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Mr. Robinson and his pet monkey Dodo love peanuts very much. One day while they were having a walk on a country road, Dodo found a sign by the road, pasted with a small piece of paper, saying &quot;Free Peanuts Here! &quot; You can imagine how happy Mr. Robinson and Dodo were.</span><br><span class="line"></span><br><span class="line">There was a peanut field on one side of the road. The peanuts were planted on the intersecting points of a grid as shown in Figure-1\. At each point, there are either zero or more peanuts. For example, in Figure-2, only four points have more than zero peanuts, and the numbers are 15, 13, 9 and 7 respectively. One could only walk from an intersection point to one of the four adjacent points, taking one unit of time. It also takes one unit of time to do one of the following: to walk from the road to the field, to walk from the field to the road, or pick peanuts on a point.</span><br><span class="line"></span><br><span class="line">According to Mr. Robinson&apos;s requirement, Dodo should go to the plant with the most peanuts first. After picking them, he should then go to the next plant with the most peanuts, and so on. Mr. Robinson was not so patient as to wait for Dodo to pick all the peanuts and he asked Dodo to return to the road in a certain period of time. For example, Dodo could pick 37 peanuts within 21 units of time in the situation given in Figure-2.</span><br><span class="line"></span><br><span class="line">Your task is, given the distribution of the peanuts and a certain period of time, tell how many peanuts Dodo could pick. You can assume that each point contains a different amount of peanuts, except 0, which may appear more than once.</span><br></pre></td></tr></table></figure></p>
+<p><strong>输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The first line of input contains the test case number T (1 &lt;= T &lt;= 20). For each test case, the first line contains three integers, M, N and K (1 &lt;= M, N &lt;= 50, 0 &lt;= K &lt;= 20000). Each of the following M lines contain N integers. None of the integers will exceed 3000\. (M * N) describes the peanut field. The j-th integer X in the i-th line means there are X peanuts on the point (i, j). K means Dodo must return to the road in K units of time.</span><br></pre></td></tr></table></figure></p>
+<p><strong>输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For each test case, print one line containing the amount of peanuts Dodo can pick.</span><br></pre></td></tr></table></figure></p>
+<p><strong>样例输入</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">6 7 21</span><br><span class="line">0 0 0 0 0 0 0</span><br><span class="line">0 0 0 0 13 0 0</span><br><span class="line">0 0 0 0 0 0 7</span><br><span class="line">0 15 0 0 0 0 0</span><br><span class="line">0 0 0 9 0 0 0</span><br><span class="line">0 0 0 0 0 0 0</span><br><span class="line">6 7 20</span><br><span class="line">0 0 0 0 0 0 0</span><br><span class="line">0 0 0 0 13 0 0</span><br><span class="line">0 0 0 0 0 0 7</span><br><span class="line">0 15 0 0 0 0 0</span><br><span class="line">0 0 0 9 0 0 0</span><br><span class="line">0 0 0 0 0 0 0</span><br></pre></td></tr></table></figure></p>
+<p><strong>样例输出</strong> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">37</span><br><span class="line">28</span><br></pre></td></tr></table></figure></p>
+<p>其实没用到什么技巧，只是排序。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">#define MAX 50</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int weight;</span><br><span class="line">    int x,y;</span><br><span class="line">&#125;Node;</span><br><span class="line">int v[MAX][MAX];</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int T,M,N,K;</span><br><span class="line">    Node order[2500];</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;T);</span><br><span class="line">    while(T--)&#123;</span><br><span class="line">        int len = 0;</span><br><span class="line">        int currT = 0,ans = 0;;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;M,&amp;N,&amp;K);</span><br><span class="line">        for(int i = 1;i &lt;= M;i++)&#123;</span><br><span class="line">            for(int j = 1;j &lt;= N;j++)&#123;</span><br><span class="line">                scanf(&quot;%d&quot;,&amp;v[i][j]);</span><br><span class="line">                if(v[i][j] != 0)&#123;</span><br><span class="line">                    int k;</span><br><span class="line">                    for(k = 0;k &lt; len &amp;&amp; v[i][j] &lt; order[k].weight;k++);</span><br><span class="line">                    for(int l = len;l &gt; k;l--)&#123;</span><br><span class="line">                        order[l] = order[l-1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    order[k].weight = v[i][j];</span><br><span class="line">                    order[k].x = i;</span><br><span class="line">                    order[k].y = j;</span><br><span class="line">                    len++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int next_i,next_j,start = 0;</span><br><span class="line">        currT = 0;</span><br><span class="line">        int out_i = 0;</span><br><span class="line">        int curr_i = 0;</span><br><span class="line">        int curr_j = order[start].y;</span><br><span class="line">        next_i = order[start].x;</span><br><span class="line">        next_j = order[start].y;</span><br><span class="line">        int nextT = currT;</span><br><span class="line">        while(start &lt; len)&#123;</span><br><span class="line">            out_i = order[start].x;</span><br><span class="line">            nextT += abs(curr_i-next_i)+abs(curr_j-next_j);</span><br><span class="line">            nextT++;</span><br><span class="line">            if(nextT+out_i &lt;= K)&#123;</span><br><span class="line">                currT = nextT;</span><br><span class="line">                ans += order[start].weight;</span><br><span class="line">                curr_i = next_i;</span><br><span class="line">                curr_j = next_j;</span><br><span class="line">                if(nextT+out_i == K)</span><br><span class="line">                    break;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                nextT = currT;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            start++;</span><br><span class="line">            next_i = order[start].x;</span><br><span class="line">            next_j = order[start].y;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -2124,7 +2532,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2161,6 +2569,375 @@
           </div>
 
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
 
           
 
@@ -2195,22 +2972,34 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Sean10</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
   
 </div>
 
 
-  
 
 
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2218,7 +3007,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.4</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
 
 
 
@@ -2244,7 +3033,18 @@
     
 
     
+	
+    
 
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
   </div>
 
   
@@ -2299,39 +3099,25 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
-
   
-    <script id="dsq-count-scr" src="https://seanrebn.disqus.com/count.js" async></script>
+
   
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
-	
-
-
+  
 
 
 
@@ -2344,122 +3130,36 @@
 
 
 
-
-
-
-
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   
-
-
-
-
-
   
-
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz", "FyxT8MxDPHbu8mQSapgjEMPC");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
     });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
 
 
 
@@ -2470,6 +3170,63 @@
   
 
   
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
   
 
   

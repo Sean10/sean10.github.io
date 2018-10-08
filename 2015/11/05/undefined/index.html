@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="##栈——C语言模拟 一、定义 根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种_限制访问端口_的线性表。 栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop). 推入:将数据放入栈的顶端，top+1. 弹出:将顶端数据资料输出，top-1. 也就是所谓的先进后出(LIFO，Last In First">
+<meta name="keywords" content="栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈——C语言模拟">
+<meta property="og:url" content="https://sean10.github.io/2015/11/05/undefined/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="##栈——C语言模拟 一、定义 根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种_限制访问端口_的线性表。 栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop). 推入:将数据放入栈的顶端，top+1. 弹出:将顶端数据资料输出，top-1. 也就是所谓的先进后出(LIFO，Last In First">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="栈——C语言模拟">
+<meta name="twitter:description" content="##栈——C语言模拟 一、定义 根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种_限制访问端口_的线性表。 栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop). 推入:将数据放入栈的顶端，top+1. 弹出:将顶端数据资料输出，top-1. 也就是所谓的先进后出(LIFO，Last In First">
+<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG">
+
+
+
+
+
+
+  <link rel="canonical" href="https://sean10.github.io/2015/11/05/undefined/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>栈——C语言模拟 | 行路中.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">行路中.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">脚踏实地</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/05/undefined/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sean10">
+      <meta itemprop="description" content="笔记 随笔">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="行路中.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">栈——C语言模拟
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2015-11-05 13:37:00" itemprop="dateCreated datePublished" datetime="2015-11-05T13:37:00+08:00">2015-11-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/05/undefined/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/05/undefined/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/05/undefined/" class="leancloud_visitors" data-flag-title="栈——C语言模拟">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">6.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">0:06</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##栈——C语言模拟</p>
+<p><strong>一、定义</strong> 根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种_限制访问端口_的线性表。</p>
+<p>栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop).</p>
+<p>推入:将数据放入栈的顶端，top+1. 弹出:将顶端数据资料输出，top-1. 也就是所谓的先进后出(LIFO，Last In First Out).</p>
+<blockquote>
+<figure>
+<img src="http://images.cnblogs.com/cnblogs_com/sean10/750413/o_stack.PNG" alt="stack"><figcaption>stack</figcaption>
+</figure>
+</blockquote>
+<p><strong>栈的存在价值</strong> 虽然说，栈实现的功能用数组和链表也可以实现，不过你不得不分神到考虑数组的下标增减、链表的指针指向等问题。</p>
+<p>引用原作者的例子，就像我们明明有两只脚可以走路，算上游泳，理论上可以去到全球任何一个地方，那么为什么我们还要有汽车、火车、飞机一样。在向未来的发展过程中，我们需要考虑的更多的是在在抵达目的地之后的发展，这个抵达的过程已经成了我们继续发展的拖累。这时，优化移动方式就成了必然，让我们得以关注结果之后。</p>
+<p>所以说，栈的引入简化了程序设计的问题，划分了不同关注层次，让人更聚焦于问题本身。比如C++，JAVA等的标准库都封装了栈的结构。</p>
+<p><strong>栈分为顺序栈和链式栈</strong> <strong>两者的差别在哪里呢？为什么要特别用两种方法模拟呢？</strong> 时间复杂度上，两者都没有任何其他的操作，均为O(1)； 而空间复杂度上，顺序栈只存储了数据和表头标记；而链式栈对每个数据都建立了一个节点，存储数据之外还存储了指向下一个节点的指针，空间较顺序栈多了一倍。</p>
+<p>所以顺序栈优点，空间占用小，存取定位还是比较方便的，在使用小空间的；而链式栈可以</p>
+<p><strong>以下是栈的抽象数据类型的定义：</strong> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ADT Stack&#123;</span><br><span class="line">    数据对象:D=&#123;ai|ai \in ElemSet,i = <span class="number">1</span>,<span class="number">2</span>,...,n, n &gt;= <span class="number">0</span>&#125;</span><br><span class="line">    数据关系:R1=&#123;&lt;a(i<span class="number">-1</span>),ai&gt;|a(i<span class="number">-1</span>),ai \in D, i = <span class="number">2</span>,..,n&#125;</span><br><span class="line">        约定an端为栈顶，ai端为栈底.</span><br><span class="line">    基本操作:</span><br><span class="line">        InitStack(&amp;S)</span><br><span class="line">        操作结果:构造一个空栈S</span><br><span class="line"></span><br><span class="line">        Destroy(&amp;S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:栈S被销毁。</span><br><span class="line"></span><br><span class="line">        ClearStack(&amp;S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:将S清为空栈。</span><br><span class="line"></span><br><span class="line">        StackEmpty(S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:若栈S为空栈，则返回TRUE，否则FALSE。</span><br><span class="line"></span><br><span class="line">        StackLength(S)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:返回S的元素个数，即栈的长度。</span><br><span class="line"></span><br><span class="line">        GetTop(S,&amp;e)</span><br><span class="line">        初始条件:栈S已存在且非空。</span><br><span class="line">        操作结果:用e返回S的栈顶元素。</span><br><span class="line"></span><br><span class="line">        Push(&amp;S,e)</span><br><span class="line">        初始条件:栈S已存在。</span><br><span class="line">        操作结果:插入元素e为新的栈顶指针。</span><br><span class="line"></span><br><span class="line">        Pop(&amp;S,&amp;e)</span><br><span class="line">        初始条件:栈S已存在且非空。</span><br><span class="line">        操作结果:删除S的栈顶元素，并用e返回其值。</span><br><span class="line"></span><br><span class="line">        StackTraverse(S,visit())</span><br><span class="line">        初始条件:栈S已存在且非空。</span><br><span class="line">        操作结果:从栈底到栈顶依次对S的每个数据元素调用函数visit()。一旦visit()失败，则操作失效。</span><br><span class="line">&#125;ADT Stack</span><br></pre></td></tr></table></figure></p>
+<p><strong>二、顺序栈</strong></p>
+<p>定义： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">    SElemType *base;</span><br><span class="line">    SElemType *top;</span><br><span class="line">    int stacksize;</span><br><span class="line">&#125;SqStack;</span><br></pre></td></tr></table></figure></p>
+<p>接下来是顺序栈的模块说明 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#define STACK_INIT_SIZE 100 //存储空间初始分配量</span><br><span class="line">#define STACKINCREMENT 10   //存储空间分配增量</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line">#define OVERFLOW -1</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">    SElemType *base;    //在栈构造之前和压栈之后，base的值为NULL</span><br><span class="line">    SElemType *top;     //栈顶指针，指向栈顶的下一个位置</span><br><span class="line">    int stacksize;      //当前已分配的存储空间，以元素为单位</span><br><span class="line">&#125;SqStack;</span><br><span class="line">//------基本操作的函数原型说明------</span><br><span class="line">Status InitStack(SqStack &amp;S);</span><br><span class="line">//构造一个空栈S</span><br><span class="line"></span><br><span class="line">Status DestroyStack(SqStack &amp;S);</span><br><span class="line">//销毁栈S，S不再存在</span><br><span class="line"></span><br><span class="line">Status ClearStack(SqStack &amp;S);</span><br><span class="line">//把S置为空栈</span><br><span class="line"></span><br><span class="line">Status StackEmpty(SqStack S);</span><br><span class="line">//若栈S为空栈，则返回TRUE,否则返回FALSE</span><br><span class="line"></span><br><span class="line">int StackLength(SqStack S);</span><br><span class="line">//返回S的元素个数，即栈的长度</span><br><span class="line"></span><br><span class="line">Status GetTop(SqStack S,SElemType &amp;e);</span><br><span class="line">//若栈不空，则用e返回S的栈顶元素，并返回OK；否则返回ERROR</span><br><span class="line"></span><br><span class="line">Status Push(SqStack &amp;S,SElemType e);</span><br><span class="line">//插入元素e为新的栈顶元素</span><br><span class="line"></span><br><span class="line">Status Pop(SqStack &amp;S,SElemType &amp;e);</span><br><span class="line">//若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR</span><br><span class="line"></span><br><span class="line">Status StackTraverse(SqStack S,Stack (*visit()));</span><br><span class="line">//从栈底到栈顶一次对栈中每个元素调用函数visit().一旦visit()失败，则操作失败</span><br><span class="line"></span><br><span class="line">/***************基本操作的算法描述**********/</span><br><span class="line">Status InitStack(SqStack &amp;S)&#123;</span><br><span class="line">    //构造一个空栈</span><br><span class="line">    S.base = (SElemType *)malloc(STACK_INIT_SIZE * sizeof(SElemType));</span><br><span class="line">    if(!S.base) exit(OVERFLOW);</span><br><span class="line">    S.top = S.base;</span><br><span class="line">    S.stacksize = STACK_INIT_SIZE;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//InitStack</span><br><span class="line"></span><br><span class="line">Status GetTop(SqStack S, SElemType &amp;e)&#123;</span><br><span class="line">//若站不空，则用e返回S的栈顶元素，并返回OK；否则返回ERROR</span><br><span class="line">    if(S.top == S.base) return ERROR;</span><br><span class="line">    e = *(S.top-1);</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//GetTop</span><br><span class="line"></span><br><span class="line">Status Push(SqStack &amp;S,SElemType e)&#123;</span><br><span class="line">//插入元素e为新的栈顶元素</span><br><span class="line">    if(S.top-S.base &gt;= S.stacksize)&#123;</span><br><span class="line">        //栈满，追加存储空间</span><br><span class="line">        S.base=(SElemType *)realloc(S.base,(S.stacksize+STACKINCREMENT)*sizeof(SElemType));</span><br><span class="line">        if(!S.base) exit(OVERFLOW);//存储分配失败</span><br><span class="line">        S.top=S.base+S.stacksize;</span><br><span class="line">        S.stacksize+=STACKINCREMENT;</span><br><span class="line">    &#125;</span><br><span class="line">    *S.top++ = e;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//push_back</span><br><span class="line"></span><br><span class="line">Status Pop(SqStack &amp;S,SElemType &amp;e)&#123;</span><br><span class="line">//若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK，否则返回ERROR</span><br><span class="line">    if(S.top == S.base) return ERROR;</span><br><span class="line">    e = * --S.top;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;//pop</span><br></pre></td></tr></table></figure></p>
+<p>顺序栈是为栈预先分配一个大小固定且较合适的空间，最常见的做法是Stack结构中含一个数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> top;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>以下是数组实现的各函数代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACK_POP_ERR 42</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> stack struct Stack;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> val[<span class="number">10</span>]; </span><br><span class="line">  	<span class="keyword">int</span> top; <span class="comment">//栈顶</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 检查栈是否为空 */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">empty</span><span class="params">(<span class="built_in">stack</span> *stk)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> stk-&gt;top == <span class="number">0</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 推入资料 */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="built_in">stack</span> *stk, <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	stk-&gt;top=stk-&gt;top+<span class="number">1</span>;</span><br><span class="line">	stk-&gt;val[stk-&gt;top]=x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 弹出并返回资料 */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(<span class="built_in">stack</span> *stk)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(empty(stk)) </span><br><span class="line">		<span class="keyword">return</span> STACK_POP_ERR; <span class="comment">// 不能弹出</span></span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		stk-&gt;top=stk-&gt;top<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">return</span> stk-&gt;val[stk-&gt;top+<span class="number">1</span>];<span class="comment">//这里使用了复用技术</span></span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// 宣告并初始化空间</span></span><br><span class="line">	<span class="built_in">stack</span> stk;</span><br><span class="line">	stk.top=<span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 推入四个</span></span><br><span class="line">	push(&amp;stk, <span class="number">3</span>);</span><br><span class="line">	push(&amp;stk, <span class="number">4</span>);</span><br><span class="line">	push(&amp;stk, <span class="number">1</span>);</span><br><span class="line">	push(&amp;stk, <span class="number">9</span>);</span><br><span class="line">	<span class="comment">// 弹出三个</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>, pop(&amp;stk));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>三、链式栈</strong> 链式栈是定义一个结构体，去掉表头（表头是指一个空节点只带有一个指向存储栈顶数据的空间的指针，即首节点就开始存储数据）</p>
+<p>链式栈这里我用二进制转八进制的程序来说明 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define OK 1</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">	int data;</span><br><span class="line">	struct node* nextPtr;</span><br><span class="line">&#125;Stack,*LinkStack;</span><br><span class="line"></span><br><span class="line">int StackDel(LinkStack &amp;s)&#123;</span><br><span class="line">	if (NULL == s)	return ERROR;//判断栈是否出现了意外的空的状态</span><br><span class="line">	LinkStack temp = s;//定义一个存储即将被释放的空间的指针</span><br><span class="line">	s = s-&gt;nextPtr;//</span><br><span class="line">	free(temp);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int pop(LinkStack &amp;s)&#123;</span><br><span class="line">	int e;</span><br><span class="line">	if (NULL == s)</span><br><span class="line">		return ERROR;</span><br><span class="line">	e = s-&gt;data;//存储从栈中取出的值</span><br><span class="line">	StackDel(s);//删除已取出的栈的空间</span><br><span class="line">	return e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int push(LinkStack &amp;s, int e)&#123;</span><br><span class="line">	LinkStack p = (LinkStack)calloc(1, sizeof(Stack));//动态分配空间并初始化</span><br><span class="line">	if (!p)&#123;</span><br><span class="line">		printf(&quot;Error calloc_push&quot;);</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = e;</span><br><span class="line">	p-&gt;nextPtr = s;//将新数据链接到链表头部</span><br><span class="line">	s = p;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void transform(LinkStack &amp;s)&#123;</span><br><span class="line">	int e, temp = 0, pow = 1;</span><br><span class="line">	while (NULL != s)&#123;//直到栈空</span><br><span class="line">		e = pop(s);</span><br><span class="line">		temp += e*pow;//进行二进制转十进制的计算</span><br><span class="line">		pow *= 2;//进行位权的累乘</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;The octonary answer is:(&quot;);</span><br><span class="line">    printf(&quot;%o&quot;, temp);//输出八进制结果</span><br><span class="line">	printf(&quot;)8\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void input(LinkStack &amp;s)&#123;</span><br><span class="line">	char ch;</span><br><span class="line">	printf(&quot;Please input the binary string:&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;, &amp;ch) &amp;&amp; ch != &apos;#&apos;)&#123;</span><br><span class="line">		push(s, ch - &apos;0&apos;);//将字符型二进制数以整型输入</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;input.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;output.txt&quot;,&quot;w&quot;,stdout);</span><br><span class="line">	LinkStack s = NULL;//栈的头结点指针</span><br><span class="line">	input(s);</span><br><span class="line">	transform(s);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>四、栈的应用 1.表达式求值 2.由递归到非递归 3.深度优先搜索(bfs)</p>
+<p>参考资料： [1].kelinlin.<a href="http://www.lai18.com/content/423601.html" target="_blank" rel="noopener">为什么要使用栈这种数据结构.</a> [2][Wikipedia Definition.](https://zh.wikipedia.org/zh/%E5%A0%86%E6%A0%88) [3]《数据结构》，严蔚敏</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Sean10</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://sean10.github.io/2015/11/05/undefined/" title="栈——C语言模拟">https://sean10.github.io/2015/11/05/undefined/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/栈/" rel="tag"># 栈</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/04/undefined/" rel="next" title="读《弗洛伊德：作家与白日梦》">
+                <i class="fa fa-chevron-left"></i> 读《弗洛伊德：作家与白日梦》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/08/undefined/" rel="prev" title="《爱的艺术》人类超越了本能">
+                《爱的艺术》人类超越了本能 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sean10</p>
+              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">134</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sean10</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">356k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">5:24</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
+        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
