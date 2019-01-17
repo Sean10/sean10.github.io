@@ -1,121 +1,34 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html>
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+    
+
+    
+
+    
 
 
 
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>图形学复习笔记 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="图形学,openGL">
+    <meta name="description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
 <meta name="keywords" content="图形学,openGL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图形学复习笔记">
 <meta property="og:url" content="https://sean10.github.io/2017/06/26/undefined/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg">
@@ -166,359 +79,168 @@
 <meta name="twitter:title" content="图形学复习笔记">
 <meta name="twitter:description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
 <meta name="twitter:image" content="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
 
-
-
-
-
-
-  <link rel="canonical" href="https://sean10.github.io/2017/06/26/undefined/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>图形学复习笔记 | 行路中.</title>
-  
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
 
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">行路中.</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
     </div>
-    
-      
-        <p class="site-subtitle">脚踏实地</p>
-      
-    
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">图形学复习笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-  </li>
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">图形学复习笔记</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2017-06-26T08:35:28.000Z" itemprop="datePublished" class="page-time">
+  2017-06-26
+</time>
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
 
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/06/26/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">图形学复习笔记
-              
             
-          </h1>
-        
+        </h5>
+    </div>
 
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一章-计算机图形学概论"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一章 计算机图形学概论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较计算机图形学与图象处理技术相同点和不同点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1． 比较计算机图形学与图象处理技术相同点和不同点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列举三个计算机图形的应用实例"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2． 列举三个计算机图形的应用实例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述计算机图形学发展动向"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3． 简述计算机图形学发展动向。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二章-计算机图形系统概述"><span class="post-toc-number">2.</span> <span class="post-toc-text">第二章 计算机图形系统概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#叙述计算机图形系统的基本功能"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1． 叙述计算机图形系统的基本功能。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入设备可有哪几种逻辑功能请举出各自对应的物理设备"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2． 输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画出图形软件的层次结构及主要组成"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3． 画出图形软件的层次结构及主要组成。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#颜色查找表的概念及实现原理"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4． 颜色查找表的概念及实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#光栅扫描显示器结构与工作原理"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5. 光栅扫描显示器结构与工作原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么要制订图形软件标准举例说明它的分类"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">6． 什么要制订图形软件标准？举例说明它的分类。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三章-基本图形生成算法"><span class="post-toc-number">3.</span> <span class="post-toc-text">第三章 基本图形生成算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bresenham-直线生成算法原理它与-dda-算法相比有何改进"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1． Bresenham 直线生成算法原理。它与 DDA 算法相比，有何改进？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较几种常用画圆弧算法的原理和效率"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2． 比较几种常用画圆弧算法的原理和效率。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述两种字符生成方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3． 简述两种字符生成方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#何谓四连通和八连通写出一种边界表示的八连通区域填充算法"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4． 何谓四连通和八连通？写出一种边界表示的八连通区域填充算法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解释活化边表的思想以多边形区域填充为例介绍它的应用"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5． 解释活化边表的思想，以多边形区域填充为例介绍它的应用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#已知多边形各个顶点的坐标为22-24-86-122-81-62及-22-在用扫描线填充算法实现扫描转换时-写出其边表et和全部的活化边表aet的内容"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">6．已知多边形各个顶点的坐标为(2,2), (2,4), (8,6), (12,2), (8,1), (6,2)及 (2,2), 在用扫描线填充算法实现扫描转换时, 写出其边表(ET)和全部的活化边表(AET)的内容。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计和实现一个图形函数库具有绘制直线段任意圆弧椭圆弧-多边形区域的阴影填充和颜色填充等功能仅调用画点函数"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">7. 设计和实现一个图形函数库，具有绘制直线段、任意圆弧、椭圆弧、 多边形区域的阴影填充和颜色填充等功能。（仅调用画点函数）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四章-图形变换与裁剪"><span class="post-toc-number">4.</span> <span class="post-toc-text">第四章 图形变换与裁剪</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是灭点"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1．什么是灭点?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试用几种不同顺序的简单几何变换求出将平面上的任一线段p1x1-y1-p2x2-y2变换成与-x-轴重合的变换阵并说明其等效性"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2．试用几种不同顺序的简单几何变换,求出将平面上的任一线段P1(x1, y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#已知-oxyz-坐标系下平面方程是-xyzd0试求变换距阵-t使该平面在-oxyz坐标系下变成-z0"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3．已知 OXYZ 坐标系下平面方程是 x+y+z+d=0，试求变换距阵 T，使该平面在 O’X’Y’Z’坐标系下变成 z’=0。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试简述二维图形裁剪的基本原理及可选用的裁剪策略."><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4．试简述二维图形裁剪的基本原理及可选用的裁剪策略.</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第五章-人机交互技术"><span class="post-toc-number">5.</span> <span class="post-toc-text">第五章 人机交互技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本的交互任务有哪些它们可用什么设备执行"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1. 基本的交互任务有哪些？它们可用什么设备执行？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#举例说明-windows-系统常用的交互方式编程实现其中一例"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2. 举例说明 WINDOWS 系统常用的交互方式，编程实现其中一例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#叙述设计人机交互的一般风格和原则"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3. 叙述设计人机交互的一般风格和原则。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第六章-曲线曲面的表示"><span class="post-toc-number">6.</span> <span class="post-toc-text">第六章 曲线曲面的表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bezier-曲线具有哪些特性试用-n-的归纳法证明其凸包性"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">1. Bezier 曲线具有哪些特性？试用 n 的归纳法证明其凸包性。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#b-样条曲线的定义及其特点"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">2. B 样条曲线的定义及其特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较-bezier-曲面和ｂ样条曲面的功能特点"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">3. 比较 Bezier 曲面和Ｂ样条曲面的功能特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#coons-曲面片构造方法及其特点"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">4. Coons 曲面片构造方法及其特点。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第七章-三维实体的造型"><span class="post-toc-number">7.</span> <span class="post-toc-text">第七章 三维实体的造型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#体素构造表示法中两物体正则运算的公式并举例说明它们的计算方-法"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">1. 体素构造表示法中两物体正则运算的公式，并举例说明它们的计算方 法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#形体的拓扑信息和几何信息各包含哪些内容举例说明它们起何作用"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">2. 形体的拓扑信息和几何信息各包含哪些内容？举例说明它们起何作用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#欧拉公式及其应用意义"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">3. 欧拉公式及其应用意义。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试写出判定空间任意位置的两个长方体是否相交的算法"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">4. 试写出判定空间任意位置的两个长方体是否相交的算法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试比较实体的边界表示扫移表示csg-表示及八叉树表示的优缺点-说明它们适应的应用"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">5. 试比较实体的边界表示、扫移表示、CSG 表示及八叉树表示的优缺点。 说明它们适应的应用。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第八章-消隐技术"><span class="post-toc-number">8.</span> <span class="post-toc-text">第八章 消隐技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为何要进行隐藏面的消除"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">1. 为何要进行隐藏面的消除？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述区域子分消隐算法思想和描述"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">2. 简述区域子分消隐算法思想和描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述-z-缓存消隐算法思想和描述"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">3. 简述 Z 缓存消隐算法思想和描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较几种主要的隐藏面的消除算法的特点"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">4. 比较几种主要的隐藏面的消除算法的特点。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第九章-真实感图形技术"><span class="post-toc-number">9.</span> <span class="post-toc-text">第九章 真实感图形技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用框图描述三维真实感图形的产生流程"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">1. 用框图描述三维真实感图形的产生流程。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#phong-局部光照模型及其实现算法描述"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">2. Phong 局部光照模型及其实现算法描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#叙述-phong-多边形明暗处理算法原理-与-gouraud-算法比较它的优缺-点"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">3. 叙述 Phong 多边形明暗处理算法原理, 与 Gouraud 算法比较它的优缺 点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#何为全局光照模型典型的模型举例"><span class="post-toc-number">9.4.</span> <span class="post-toc-text">4. 何为全局光照模型，典型的模型举例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现真实感绘制的光线跟踪技术的主要思想和算法描述"><span class="post-toc-number">9.5.</span> <span class="post-toc-text">5. 实现真实感绘制的光线跟踪技术的主要思想和算法描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加速光线跟踪算法的主要方法"><span class="post-toc-number">9.6.</span> <span class="post-toc-text">6. 加速光线跟踪算法的主要方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#何谓纹理映射简述其实现原理"><span class="post-toc-number">9.7.</span> <span class="post-toc-text">7. 何谓纹理映射，简述其实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试写出将一幅图片贴到三维圆柱体表面的算法"><span class="post-toc-number">9.8.</span> <span class="post-toc-text">8. 试写出将一幅图片贴到三维圆柱体表面的算法。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第十章-open-gl-简介"><span class="post-toc-number">10.</span> <span class="post-toc-text">第十章 OPEN GL 简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试设计一个室内三维环境-并利用-open-gl-展示它的三维效果要求1包含基本的实体元素球多面体锥体柱体曲面等-2有全局光照效果和纹理功能-3程序具有交互功能"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">1. 试设计一个室内三维环境, 并利用 OPEN GL 展示它的三维效果。要求：(1)包含基本的实体元素：球、多面体、锥体、柱体、曲面等； (2)有全局光照效果和纹理功能； (3)程序具有交互功能。</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-图形学复习笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">图形学复习笔记</h1>
         <div class="post-meta">
-          <span class="post-time">
+            <time class="post-time" title="2017-06-26 16:35:28" datetime="2017-06-26T08:35:28.000Z"  itemprop="datePublished">2017-06-26</time>
 
             
-            
-            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
 
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
 
-              
-                
-              
-
-              <time title="Created: 2017-06-26 16:35:28" itemprop="dateCreated datePublished" datetime="2017-06-26T16:35:28+08:00">2017-06-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/26/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/06/26/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/26/undefined/" class="leancloud_visitors" data-flag-title="图形学复习笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">7.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:07</span>
-              
-            </div>
-          
-
-          
 
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="第一章-计算机图形学概论">第一章 计算机图形学概论</h2>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="第一章-计算机图形学概论">第一章 计算机图形学概论</h2>
 <h3 id="比较计算机图形学与图象处理技术相同点和不同点">1． 比较计算机图形学与图象处理技术相同点和不同点。</h3>
 <p>Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。</p>
 <p>图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，多维像素数组。 而图像处理技术输入的是图像，输出的也是图像。</p>
-<p><img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="列举三个计算机图形的应用实例">2． 列举三个计算机图形的应用实例。</h3>
 <ul>
 <li>CAx领域 计算机辅助设计CAD; 计算机辅助制造CAM; 计算机辅助教学CAI; 等</li>
@@ -547,15 +269,35 @@
 </ul>
 <h2 id="第二章-计算机图形系统概述">第二章 计算机图形系统概述</h2>
 <h3 id="叙述计算机图形系统的基本功能">1． 叙述计算机图形系统的基本功能。</h3>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg"> 输入、输出、计算、存储、对话</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>输入、输出、计算、存储、对话</p>
 <h3 id="输入设备可有哪几种逻辑功能请举出各自对应的物理设备">2． 输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</h3>
 <p>共有6类逻辑输入设备： * 定位(locator): 指定一个坐标点。对应的物理设备有鼠标器、键盘、数字化仪、触摸屏等。 * 笔划(stroke): 指示一个坐标点系列, 如指定一条曲线的控制点等。主要物理设备有数字化仪 * 送值(valuator): 输入一个数值。最常用的物理设备是键盘的数字键。 * 字符串(string)：输入一个字符串。最基本的物理设备是键盘的数字字母键 * 拾取(pick)：选择一个显示对象, 为应用程序处理确定目标。常用的物理设备是各种定位设备 * 选择(choice)：在一个可选动作或选项中进行选择, 如选择菜单项。典型的物理设备是鼠标器、数字化仪、键盘的功能键等。</p>
 <h3 id="画出图形软件的层次结构及主要组成">3． 画出图形软件的层次结构及主要组成。</h3>
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="颜色查找表的概念及实现原理">4． 颜色查找表的概念及实现原理。</h3>
 <p>彩色表又称为调色板, 用来定义图像的 不同颜色。 <strong>彩色表的工作原理</strong> 代号-颜色RGB值对照表</p>
 <h3 id="光栅扫描显示器结构与工作原理">5. 光栅扫描显示器结构与工作原理。</h3>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxhv179vbj30z40ekdi9.jpg"> (1)图形信息的产生有两种主要途径: 其一, 由计算机执行相应的图形应用程序, 图像生成系统接受指令将图形的矢量表示转换成像素表示, 再将像素值存入显示存储器; 其二, 图像生成系统直接把图形输入设备(摄像 机、扫描仪等)输入的图形图像直接或经过主存 储器间接地存放到显示存储器中。 (2)显示控制器生成水平和垂直同步扫描信号送到 监视器, 使CRT电子束进行水平扫描和垂直扫描形成光栅; 另一方面又根据电子束在屏幕上的 行、列位置, 不断地读出显示存储器中对应位 置的像素值。 (3)利用彩色表将读出的像素值转换成R、G、B 三原色的亮度值, 来控制CRT的R、G、B电子束, 在屏幕对应点生成需要的像素颜色。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxhv179vbj30z40ekdi9.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(1)图形信息的产生有两种主要途径: 其一, 由计算机执行相应的图形应用程序, 图像生成系统接受指令将图形的矢量表示转换成像素表示, 再将像素值存入显示存储器; 其二, 图像生成系统直接把图形输入设备(摄像 机、扫描仪等)输入的图形图像直接或经过主存 储器间接地存放到显示存储器中。 (2)显示控制器生成水平和垂直同步扫描信号送到 监视器, 使CRT电子束进行水平扫描和垂直扫描形成光栅; 另一方面又根据电子束在屏幕上的 行、列位置, 不断地读出显示存储器中对应位 置的像素值。 (3)利用彩色表将读出的像素值转换成R、G、B 三原色的亮度值, 来控制CRT的R、G、B电子束, 在屏幕对应点生成需要的像素颜色。</p>
 <h3 id="什么要制订图形软件标准举例说明它的分类">6． 什么要制订图形软件标准？举例说明它的分类。</h3>
 <p>制定图形软件标准的目的在于使图形软件能 够在不同的计算机和图形设备之间进行移植, 以便提高图形软件的利用率, 降低开发成本, 缩短研制周期, 使图形软件向着通用、高级与 设备无关的方向发展。 目前已经制定或正在制定的一些图形标准都是接 口标准。这些标准的功能旨在使图形系统中两 部分之间的接口标准化, 可以分为两类: * 数据接口标准 * 子程序接口标准</p>
 <h2 id="第三章-基本图形生成算法">第三章 基本图形生成算法</h2>
@@ -591,7 +333,27 @@
 <p>4连通区域和8连通区域的关系： 4连通区域是8连通区域的一种特殊情况。4连通区域的边界必定是8连通式的；（8连通区域的边界必定是4连通式的？）。 这里指的是连通（而不是边界）</p>
 <h3 id="解释活化边表的思想以多边形区域填充为例介绍它的应用">5． 解释活化边表的思想，以多边形区域填充为例介绍它的应用。</h3>
 <h3 id="已知多边形各个顶点的坐标为22-24-86-122-81-62及-22-在用扫描线填充算法实现扫描转换时-写出其边表et和全部的活化边表aet的内容">6．已知多边形各个顶点的坐标为(2,2), (2,4), (8,6), (12,2), (8,1), (6,2)及 (2,2), 在用扫描线填充算法实现扫描转换时, 写出其边表(ET)和全部的活化边表(AET)的内容。</h3>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxlixlj38j30uy0jkjte.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxlixlj38j30uy0jkjte.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="设计和实现一个图形函数库具有绘制直线段任意圆弧椭圆弧-多边形区域的阴影填充和颜色填充等功能仅调用画点函数">7. 设计和实现一个图形函数库，具有绘制直线段、任意圆弧、椭圆弧、 多边形区域的阴影填充和颜色填充等功能。（仅调用画点函数）</h3>
 <p>大作业第一个 见附录</p>
 <h2 id="第四章-图形变换与裁剪">第四章 图形变换与裁剪</h2>
@@ -600,14 +362,75 @@
 <p>在坐标轴方向上的灭点, 称为主灭点。</p>
 <p>透视投影根据主灭点的个数分为一点透视、二 点透视和三点透视。主灭点数是和投影平面切割坐标轴的数量相对应的。</p>
 <h3 id="试用几种不同顺序的简单几何变换求出将平面上的任一线段p1x1-y1-p2x2-y2变换成与-x-轴重合的变换阵并说明其等效性">2．试用几种不同顺序的简单几何变换,求出将平面上的任一线段P1(x1, y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</h3>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmi0znwoj30v80v4433.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmid8igvj31180ycq9b.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmi0znwoj30v80v4433.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmid8igvj31180ycq9b.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="已知-oxyz-坐标系下平面方程是-xyzd0试求变换距阵-t使该平面在-oxyz坐标系下变成-z0">3．已知 OXYZ 坐标系下平面方程是 x+y+z+d=0，试求变换距阵 T，使该平面在 O’X’Y’Z’坐标系下变成 z’=0。</h3>
 <h3 id="试简述二维图形裁剪的基本原理及可选用的裁剪策略.">4．试简述二维图形裁剪的基本原理及可选用的裁剪策略.</h3>
 <p>在显示图形之前, 组成图形的每一个基本元素都 要经过裁剪, 因此裁剪算法直接影响整个图形系 统的效率。</p>
 <p>裁剪的基本目的是判断图形元素是否在所考虑 的区域内。如在区域内, 则进一步求出在区域内 的那一部分。因此裁剪处理包含两部分内容:</p>
 <p>1)点在区域内外的判断;</p>
 <p>2)计算图形元素与区域边界的交点。</p>
-<p><strong>可选用的裁剪策略：</strong> * 编码裁剪法(Sutherland-Cohen算法) <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxow9qi0fj315s0nmdnw.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxowgvxxyj316e0satbz.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxowqbws0j31520pytio.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox3ge2oj30ze0ww442.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox9xbl4j314s0v0jw3.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoxgj3lnj31460vktbn.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoxngfihj314s0n441a.jpg"> * 中点分割裁剪法 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxm94eayqj31900wogqd.jpg"> * 多边形的裁剪 * 逐边裁剪法 * 双边裁剪法</p>
+<p><strong>可选用的裁剪策略：</strong> * 编码裁剪法(Sutherland-Cohen算法) <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxow9qi0fj315s0nmdnw.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxowgvxxyj316e0satbz.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxowqbws0j31520pytio.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox3ge2oj30ze0ww442.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox9xbl4j314s0v0jw3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoxgj3lnj31460vktbn.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoxngfihj314s0n441a.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> * 中点分割裁剪法 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxm94eayqj31900wogqd.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> * 多边形的裁剪 * 逐边裁剪法 * 双边裁剪法</p>
 <h2 id="第五章-人机交互技术">第五章 人机交互技术</h2>
 <h3 id="基本的交互任务有哪些它们可用什么设备执行">1. 基本的交互任务有哪些？它们可用什么设备执行？</h3>
 <ul>
@@ -624,9 +447,71 @@
 <p>现在计算机系统的人机界面一般具有下列风格, 即: “所见即所得”(what you see is what you get) , 直接操作(direct manipulate)及菜单和图形符号 (icon)驱动。 * “所见即所得”在交互式图形系统中一般都 能做到, 即在屏幕上所见到的设计结果和用硬 拷贝所得的输出结果是一致的。 * 直接操作是对对象、特性及关系等操作时用 户可得到一种直观及形象的表示, 以说明这个 操作是正确地被执行了。 * 图形符号驱动的目的是要用户不需要专门学 习及记忆便可借助于菜单选择来运行系统。 要做到这一点最主要的是要设计好图形符号, 使它一看便知道它代表什么操作。</p>
 <h2 id="第六章-曲线曲面的表示">第六章 曲线曲面的表示</h2>
 <h3 id="bezier-曲线具有哪些特性试用-n-的归纳法证明其凸包性">1. Bezier 曲线具有哪些特性？试用 n 的归纳法证明其凸包性。</h3>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmtkh0bsj31900w6jxn.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmttb1hkj317a0w847j.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmu0svh1j317e0ryah1.jpg"> 证明就算了，一点都看不懂……</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmtkh0bsj31900w6jxn.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmttb1hkj317a0w847j.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmu0svh1j317e0ryah1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>证明就算了，一点都看不懂……</p>
 <h3 id="b-样条曲线的定义及其特点">2. B 样条曲线的定义及其特点。</h3>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmxqacfxj313o0n6jwh.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmxxr2wij317k0qodnu.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmy55psuj310y0qg77b.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmycwhevj316w0qktgo.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmyl3qsej31020p40us.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmys8m11j31940vkgyx.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmxqacfxj313o0n6jwh.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmxxr2wij317k0qodnu.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmy55psuj310y0qg77b.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmycwhevj316w0qktgo.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmyl3qsej31020p40us.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmys8m11j31940vkgyx.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="比较-bezier-曲面和ｂ样条曲面的功能特点">3. 比较 Bezier 曲面和Ｂ样条曲面的功能特点。</h3>
 <p>Bezier曲面和B样条曲面的特点是曲面逼近控制网 格。</p>
 <p>Ｂ样条曲面不仅在保留了Bézier曲面的优点的同时克服了由于整体表示带来的不具有局部修正性质的特点，而且成功地解决了样条函数的局部控制问题，轻而易举地在参数连续性上解决了贝奇尔方法的连接问题。</p>
@@ -634,7 +519,20 @@
 <p>Coons曲面特点是插值, 它构造满足给定边界条 件的曲面。</p>
 <h2 id="第七章-三维实体的造型">第七章 三维实体的造型</h2>
 <h3 id="体素构造表示法中两物体正则运算的公式并举例说明它们的计算方-法">1. 体素构造表示法中两物体正则运算的公式，并举例说明它们的计算方 法。</h3>
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnb3rmn9j316u0psai6.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnbss16mj318g0w6q9r.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnb3rmn9j316u0psai6.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnbss16mj318g0w6q9r.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="形体的拓扑信息和几何信息各包含哪些内容举例说明它们起何作用">2. 形体的拓扑信息和几何信息各包含哪些内容？举例说明它们起何作用。</h3>
 <p>几何信息－物体大小、尺寸、位置、形状等</p>
 <p>拓扑信息－物体上所有顶点、棱边、表面间连接关系</p>
@@ -647,7 +545,13 @@
 </ol>
 <h3 id="欧拉公式及其应用意义">3. 欧拉公式及其应用意义。</h3>
 <p>给用户提供了直接使用顶点、棱边、表面等基 本元素构造三维立体的手段。用户可以通过输入 点,再建立边, 构成面, 形成体。 任何数目顶点、棱边、表面并不能构成一个体。 它们之间须满足拓扑一致性和几何一致性。</p>
-<p>– 几何一致性由用户输入几何信息时保证, 系统应 提供检查输入信息几何一致性功能。 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgyby1965zj31960vu154.jpg"></p>
+<p>– 几何一致性由用户输入几何信息时保证, 系统应 提供检查输入信息几何一致性功能。 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgyby1965zj31960vu154.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h3 id="试写出判定空间任意位置的两个长方体是否相交的算法">4. 试写出判定空间任意位置的两个长方体是否相交的算法。</h3>
 <h3 id="试比较实体的边界表示扫移表示csg-表示及八叉树表示的优缺点-说明它们适应的应用">5. 试比较实体的边界表示、扫移表示、CSG 表示及八叉树表示的优缺点。 说明它们适应的应用。</h3>
 <p>边界表示法：用顶点、棱边、表面等物体的边界信息来表示物体。边界就是物体内部点与外部点的分界面。</p>
@@ -670,13 +574,25 @@
 <h3 id="简述区域子分消隐算法思想和描述">2. 简述区域子分消隐算法思想和描述。</h3>
 <p>区域子分算法是针对光栅扫描式图象显示器上 填色产生图形的。它是一种所谓分而治之的算 法。</p>
 <p>整个屏幕称为窗口, 每一次把矩形的窗口等分成 4个相等的小矩形,分成的矩形也称为窗口, 见图 8.2。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>每一次子分, 均要把要显示的多边形和窗口的 关系做一次判断。这种关系有以下4种:</p>
 <p>–多边形包围了窗口(图8.3中情况1);</p>
 <p>–多边形和窗口相交(图8.3中情况2);</p>
 <p>–窗口包围了多边形(图8.3中情况3);</p>
 <p>–窗口和多边形分离(图8.3中情况4)。</p>
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>窗口和每个多边形的关系确定之后, 有些窗口 内的图形便可显示了, 它们属于下列情况:</p>
 <p>(1)所有多边形都和窗口分离。这时只要把窗口 内所有的象素填上背景颜色。</p>
 <p>(2)只有一个多边形和窗口相交,或这个多边形 包含在窗口内。这时先对窗口内每一象素填 上背景颜色, 再对窗口内多边形部分用扫描 线算法填色。</p>
@@ -687,8 +603,26 @@
 <p>深度缓存算法(Z-Buffer)是一种最简单的图象空间 面消隐算法, 既适应于多边形面也适用其它曲面。</p>
 <p>• 它需要一个深度缓存数组ZB, 其大小与屏幕上象素 点的个数相同, 也与显示器的帧缓存FB的单元个数 相同, 彼此一一对应。</p>
 <p>• 如图8.6, 在屏幕坐标系中, 过屏幕上任一象素点(i, j) 作平行于Z轴的射线R, 与物体表面上的多边形相交 于p 1 和p 2 点。</p>
-<p>• 比较p 1 和p 2 的Z值, 将最大Z值存入深度缓存数组ZB, 最大Z值所对应点的颜色存入显示器的帧缓存FB。 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnwnofuej312a0w00vx.jpg"></p>
-<p><strong>算法描述</strong> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnz0q222j31720mi0ym.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxnz9kkimj316y0o07ah.jpg"></p>
+<p>• 比较p 1 和p 2 的Z值, 将最大Z值存入深度缓存数组ZB, 最大Z值所对应点的颜色存入显示器的帧缓存FB。 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnwnofuej312a0w00vx.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p><strong>算法描述</strong> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnz0q222j31720mi0ym.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxnz9kkimj316y0o07ah.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h3 id="比较几种主要的隐藏面的消除算法的特点">4. 比较几种主要的隐藏面的消除算法的特点。</h3>
 <p>区域子分算法是针对光栅扫描式图象显示器上 填色产生图形的。它是一种所谓分而治之的算 法</p>
 <p>用边界盒的办法就可判定一些多边形和指定窗 口是无交的。因此, 这些多边形可从窗口多边 形序列中排除, 从而提高排序效率</p>
@@ -701,7 +635,34 @@
 <p>–确定场景中的所有可见图(消隐)；</p>
 <p>–计算场景中可见面的颜色。（本章重点）</p>
 <h3 id="phong-局部光照模型及其实现算法描述">2. Phong 局部光照模型及其实现算法描述。</h3>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoa4f4gvj319c0s8agx.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoacz8tbj31920tudm1.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxob3r961j316m0pagrt.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxoba8n9ej31920jmacd.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoa4f4gvj319c0s8agx.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoacz8tbj31920tudm1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxob3r961j316m0pagrt.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxoba8n9ej31920jmacd.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="叙述-phong-多边形明暗处理算法原理-与-gouraud-算法比较它的优缺-点">3. 叙述 Phong 多边形明暗处理算法原理, 与 Gouraud 算法比较它的优缺 点。</h3>
 <p>Phong明暗处理技术(Phong Shading)</p>
 <p>• 思想: 对离散的法向量采样作双线性插值, 构造一个连续的法向量函数, 将这个连续的 法向量插值函数代入光亮度计算公式, 即得 到一个非线性的光亮度插值公式。 如图9.7所示, 任一点P处法向按插值方法由 各顶点处法向推出。</p>
@@ -714,10 +675,57 @@
 <h3 id="何为全局光照模型典型的模型举例">4. 何为全局光照模型，典型的模型举例。</h3>
 <p>Phong模型仅考虑光源直接照射在景物表面产生 的反射光能, 因而是一种局部光照模型。 • 局部光照模型忽略了光能在环境景物之间的传 递, 很难生成高质量真实感图形。 原因: 未能考虑环境的漫射、镜面反射和规则透 射对景物表面产生的整体照明效果。</p>
 <p>Whitted在Phong模型中增加了环境镜面反射光 亮度Is 和环境规则透射光亮度It , 从而模拟周围环境的光透射在景物表面上产生的理想镜面反 射和规则透射现象。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="实现真实感绘制的光线跟踪技术的主要思想和算法描述">5. 实现真实感绘制的光线跟踪技术的主要思想和算法描述。</h3>
 <p>光线跟踪技术是为了求解Whitted模型而提出 一种高度真实感图形绘制技术.</p>
-<p><img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxof13rtnj314s0gy10v.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxof7wxhuj312u0qkjtv.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxofkccc9j31am0kmjya.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg"> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxof13rtnj314s0gy10v.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxof7wxhuj312u0qkjtv.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxofkccc9j31am0kmjya.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="加速光线跟踪算法的主要方法">6. 加速光线跟踪算法的主要方法。</h3>
 <ul>
 <li>包围盒技术</li>
@@ -734,800 +742,307 @@
 <p>第二次大作业。</p>
 <p><a href="https://github.com/Sean10/graphicsLearning" target="_blank" rel="noopener">附录</a></p>
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
     </div>
-
     
-
-    
-    
-    
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>Post author:  </strong>Sean10</li>
-  <li class="post-copyright-link">
-    <strong>Post link: </strong>
-    <a href="https://sean10.github.io/2017/06/26/undefined/" title="图形学复习笔记">https://sean10.github.io/2017/06/26/undefined/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/图形学/" rel="tag"># 图形学</a>
-          
-            <a href="/tags/openGL/" rel="tag"># openGL</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/15/undefined/" rel="next" title="Qt学习汇总遇到的问题">
-                <i class="fa fa-chevron-left"></i> Qt学习汇总遇到的问题
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/27/undefined/" rel="prev" title="Unix编程环境复习笔记">
-                Unix编程环境复习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
     </footer>
-  </div>
-  
-  
-  
-  </article>
+</blockquote>
 
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openGL/">openGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图形学/">图形学</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
     
-    <div class="sidebar-inner">
 
-      
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/26/undefined/&title=《图形学复习笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/26/undefined/&title=《图形学复习笔记》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/26/undefined/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图形学复习笔记》 — 行路中.&url=https://sean10.github.io/2017/06/26/undefined/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/26/undefined/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Sean10</p>
-              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
-          </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">135</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">128</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
 
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-计算机图形学概论"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机图形学概论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比较计算机图形学与图象处理技术相同点和不同点"><span class="nav-number">1.1.</span> <span class="nav-text">1． 比较计算机图形学与图象处理技术相同点和不同点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列举三个计算机图形的应用实例"><span class="nav-number">1.2.</span> <span class="nav-text">2． 列举三个计算机图形的应用实例。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述计算机图形学发展动向"><span class="nav-number">1.3.</span> <span class="nav-text">3． 简述计算机图形学发展动向。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-计算机图形系统概述"><span class="nav-number">2.</span> <span class="nav-text">第二章 计算机图形系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#叙述计算机图形系统的基本功能"><span class="nav-number">2.1.</span> <span class="nav-text">1． 叙述计算机图形系统的基本功能。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入设备可有哪几种逻辑功能请举出各自对应的物理设备"><span class="nav-number">2.2.</span> <span class="nav-text">2． 输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画出图形软件的层次结构及主要组成"><span class="nav-number">2.3.</span> <span class="nav-text">3． 画出图形软件的层次结构及主要组成。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色查找表的概念及实现原理"><span class="nav-number">2.4.</span> <span class="nav-text">4． 颜色查找表的概念及实现原理。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#光栅扫描显示器结构与工作原理"><span class="nav-number">2.5.</span> <span class="nav-text">5. 光栅扫描显示器结构与工作原理。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么要制订图形软件标准举例说明它的分类"><span class="nav-number">2.6.</span> <span class="nav-text">6． 什么要制订图形软件标准？举例说明它的分类。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-基本图形生成算法"><span class="nav-number">3.</span> <span class="nav-text">第三章 基本图形生成算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bresenham-直线生成算法原理它与-dda-算法相比有何改进"><span class="nav-number">3.1.</span> <span class="nav-text">1． Bresenham 直线生成算法原理。它与 DDA 算法相比，有何改进？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较几种常用画圆弧算法的原理和效率"><span class="nav-number">3.2.</span> <span class="nav-text">2． 比较几种常用画圆弧算法的原理和效率。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述两种字符生成方法"><span class="nav-number">3.3.</span> <span class="nav-text">3． 简述两种字符生成方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何谓四连通和八连通写出一种边界表示的八连通区域填充算法"><span class="nav-number">3.4.</span> <span class="nav-text">4． 何谓四连通和八连通？写出一种边界表示的八连通区域填充算法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释活化边表的思想以多边形区域填充为例介绍它的应用"><span class="nav-number">3.5.</span> <span class="nav-text">5． 解释活化边表的思想，以多边形区域填充为例介绍它的应用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#已知多边形各个顶点的坐标为22-24-86-122-81-62及-22-在用扫描线填充算法实现扫描转换时-写出其边表et和全部的活化边表aet的内容"><span class="nav-number">3.6.</span> <span class="nav-text">6．已知多边形各个顶点的坐标为(2,2), (2,4), (8,6), (12,2), (8,1), (6,2)及 (2,2), 在用扫描线填充算法实现扫描转换时, 写出其边表(ET)和全部的活化边表(AET)的内容。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计和实现一个图形函数库具有绘制直线段任意圆弧椭圆弧-多边形区域的阴影填充和颜色填充等功能仅调用画点函数"><span class="nav-number">3.7.</span> <span class="nav-text">7. 设计和实现一个图形函数库，具有绘制直线段、任意圆弧、椭圆弧、 多边形区域的阴影填充和颜色填充等功能。（仅调用画点函数）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-图形变换与裁剪"><span class="nav-number">4.</span> <span class="nav-text">第四章 图形变换与裁剪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是灭点"><span class="nav-number">4.1.</span> <span class="nav-text">1．什么是灭点?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#试用几种不同顺序的简单几何变换求出将平面上的任一线段p1x1-y1-p2x2-y2变换成与-x-轴重合的变换阵并说明其等效性"><span class="nav-number">4.2.</span> <span class="nav-text">2．试用几种不同顺序的简单几何变换,求出将平面上的任一线段P1(x1, y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#已知-oxyz-坐标系下平面方程是-xyzd0试求变换距阵-t使该平面在-oxyz坐标系下变成-z0"><span class="nav-number">4.3.</span> <span class="nav-text">3．已知 OXYZ 坐标系下平面方程是 x+y+z+d=0，试求变换距阵 T，使该平面在 O’X’Y’Z’坐标系下变成 z’=0。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#试简述二维图形裁剪的基本原理及可选用的裁剪策略."><span class="nav-number">4.4.</span> <span class="nav-text">4．试简述二维图形裁剪的基本原理及可选用的裁剪策略.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-人机交互技术"><span class="nav-number">5.</span> <span class="nav-text">第五章 人机交互技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本的交互任务有哪些它们可用什么设备执行"><span class="nav-number">5.1.</span> <span class="nav-text">1. 基本的交互任务有哪些？它们可用什么设备执行？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举例说明-windows-系统常用的交互方式编程实现其中一例"><span class="nav-number">5.2.</span> <span class="nav-text">2. 举例说明 WINDOWS 系统常用的交互方式，编程实现其中一例。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叙述设计人机交互的一般风格和原则"><span class="nav-number">5.3.</span> <span class="nav-text">3. 叙述设计人机交互的一般风格和原则。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-曲线曲面的表示"><span class="nav-number">6.</span> <span class="nav-text">第六章 曲线曲面的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bezier-曲线具有哪些特性试用-n-的归纳法证明其凸包性"><span class="nav-number">6.1.</span> <span class="nav-text">1. Bezier 曲线具有哪些特性？试用 n 的归纳法证明其凸包性。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-样条曲线的定义及其特点"><span class="nav-number">6.2.</span> <span class="nav-text">2. B 样条曲线的定义及其特点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较-bezier-曲面和ｂ样条曲面的功能特点"><span class="nav-number">6.3.</span> <span class="nav-text">3. 比较 Bezier 曲面和Ｂ样条曲面的功能特点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coons-曲面片构造方法及其特点"><span class="nav-number">6.4.</span> <span class="nav-text">4. Coons 曲面片构造方法及其特点。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-三维实体的造型"><span class="nav-number">7.</span> <span class="nav-text">第七章 三维实体的造型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#体素构造表示法中两物体正则运算的公式并举例说明它们的计算方-法"><span class="nav-number">7.1.</span> <span class="nav-text">1. 体素构造表示法中两物体正则运算的公式，并举例说明它们的计算方 法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形体的拓扑信息和几何信息各包含哪些内容举例说明它们起何作用"><span class="nav-number">7.2.</span> <span class="nav-text">2. 形体的拓扑信息和几何信息各包含哪些内容？举例说明它们起何作用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉公式及其应用意义"><span class="nav-number">7.3.</span> <span class="nav-text">3. 欧拉公式及其应用意义。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#试写出判定空间任意位置的两个长方体是否相交的算法"><span class="nav-number">7.4.</span> <span class="nav-text">4. 试写出判定空间任意位置的两个长方体是否相交的算法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#试比较实体的边界表示扫移表示csg-表示及八叉树表示的优缺点-说明它们适应的应用"><span class="nav-number">7.5.</span> <span class="nav-text">5. 试比较实体的边界表示、扫移表示、CSG 表示及八叉树表示的优缺点。 说明它们适应的应用。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章-消隐技术"><span class="nav-number">8.</span> <span class="nav-text">第八章 消隐技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为何要进行隐藏面的消除"><span class="nav-number">8.1.</span> <span class="nav-text">1. 为何要进行隐藏面的消除？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述区域子分消隐算法思想和描述"><span class="nav-number">8.2.</span> <span class="nav-text">2. 简述区域子分消隐算法思想和描述。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简述-z-缓存消隐算法思想和描述"><span class="nav-number">8.3.</span> <span class="nav-text">3. 简述 Z 缓存消隐算法思想和描述。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较几种主要的隐藏面的消除算法的特点"><span class="nav-number">8.4.</span> <span class="nav-text">4. 比较几种主要的隐藏面的消除算法的特点。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九章-真实感图形技术"><span class="nav-number">9.</span> <span class="nav-text">第九章 真实感图形技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用框图描述三维真实感图形的产生流程"><span class="nav-number">9.1.</span> <span class="nav-text">1. 用框图描述三维真实感图形的产生流程。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#phong-局部光照模型及其实现算法描述"><span class="nav-number">9.2.</span> <span class="nav-text">2. Phong 局部光照模型及其实现算法描述。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#叙述-phong-多边形明暗处理算法原理-与-gouraud-算法比较它的优缺-点"><span class="nav-number">9.3.</span> <span class="nav-text">3. 叙述 Phong 多边形明暗处理算法原理, 与 Gouraud 算法比较它的优缺 点。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何为全局光照模型典型的模型举例"><span class="nav-number">9.4.</span> <span class="nav-text">4. 何为全局光照模型，典型的模型举例。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现真实感绘制的光线跟踪技术的主要思想和算法描述"><span class="nav-number">9.5.</span> <span class="nav-text">5. 实现真实感绘制的光线跟踪技术的主要思想和算法描述。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加速光线跟踪算法的主要方法"><span class="nav-number">9.6.</span> <span class="nav-text">6. 加速光线跟踪算法的主要方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何谓纹理映射简述其实现原理"><span class="nav-number">9.7.</span> <span class="nav-text">7. 何谓纹理映射，简述其实现原理。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#试写出将一幅图片贴到三维圆柱体表面的算法"><span class="nav-number">9.8.</span> <span class="nav-text">8. 试写出将一幅图片贴到三维圆柱体表面的算法。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十章-open-gl-简介"><span class="nav-number">10.</span> <span class="nav-text">第十章 OPEN GL 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#试设计一个室内三维环境-并利用-open-gl-展示它的三维效果要求1包含基本的实体元素球多面体锥体柱体曲面等-2有全局光照效果和纹理功能-3程序具有交互功能"><span class="nav-number">10.1.</span> <span class="nav-text">1. 试设计一个室内三维环境, 并利用 OPEN GL 展示它的三维效果。要求：(1)包含基本的实体元素：球、多面体、锥体、柱体、曲面等； (2)有全局光照效果和纹理功能； (3)程序具有交互功能。</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/27/undefined/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Unix编程环境复习笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/15/undefined/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Qt学习汇总遇到的问题</h4>
+      </a>
+    </div>
+  
+</nav>
 
 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
         
-      </div>
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
     </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Sean10</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">360k</span>
-  
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-    <span title="Reading time total">5:27</span>
-  
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/26/undefined/&title=《图形学复习笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/26/undefined/&title=《图形学复习笔记》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/26/undefined/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图形学复习笔记》 — 行路中.&url=https://sean10.github.io/2017/06/26/undefined/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/26/undefined/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/06/26/undefined/" alt="微信分享二维码">
 </div>
 
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
-      <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
-</div>
-
-      </div>
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
 </script>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
 
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
+<!-- mathjax config similar to math.stackexchange -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: true,
-        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
-        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: true
-    });
-  </script>
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
         processEscapes: true,
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
-    
-  
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
-  
-  
 
-  
 
-  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-  
 
-  
 
-  
+
 
 </body>
 </html>

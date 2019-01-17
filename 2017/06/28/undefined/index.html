@@ -1,121 +1,34 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html>
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+    
+
+    
+
+    
 
 
 
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="仅供参考~ 看到了，没记住是最悲剧的……">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>计算机系统结构复习note | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="系统结构">
+    <meta name="description" content="仅供参考~ 看到了，没记住是最悲剧的……">
 <meta name="keywords" content="系统结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机系统结构复习note">
 <meta property="og:url" content="https://sean10.github.io/2017/06/28/undefined/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="仅供参考~ 看到了，没记住是最悲剧的……">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh140p00wpj30kw0f8qfd.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg">
@@ -128,68 +41,7 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh125jxoi7j30xg06sdgh.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh13biyv2zj313o0tite3.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh138y1719j31380sogtx.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1385ja86j314c0rqdnz.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh16e0gi0cj315q0vm496.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh16fzm21aj30xy06gn0i.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh16otya5jj31160cqad1.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh17birrf6j30re0n2q7u.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh17k44ua3j31560pcq93.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1doxascvj313q0t8aic.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh1e0cszsgj30zk0liadb.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh1em87ixaj30so0hcwgp.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fh1e295ct6j31300kwdmq.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1e9ptgbwj30o80c476a.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fh1ead7itzj30my0440t0.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh1ecazewmj30yo074abu.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fh1edxgje4j30se09075c.jpg">
@@ -214,361 +66,170 @@
 <meta name="twitter:title" content="计算机系统结构复习note">
 <meta name="twitter:description" content="仅供参考~ 看到了，没记住是最悲剧的……">
 <meta name="twitter:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fh140p00wpj30kw0f8qfd.jpg">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
 
-
-
-
-
-
-  <link rel="canonical" href="https://sean10.github.io/2017/06/28/undefined/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>计算机系统结构复习note | 行路中.</title>
-  
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
 
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">行路中.</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
     </div>
-    
-      
-        <p class="site-subtitle">脚踏实地</p>
-      
-    
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
   </div>
+</aside>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">计算机系统结构复习note</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
         
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-  </li>
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">计算机系统结构复习note</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2017-06-28T07:58:32.000Z" itemprop="datePublished" class="page-time">
+  2017-06-28
+</time>
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
 
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2017/06/28/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">计算机系统结构复习note
-              
             
-          </h1>
-        
+        </h5>
+    </div>
 
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一章-基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一章 基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#系统结构的相关概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">系统结构的相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#计算机系统的层次结构概念"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">计算机系统的层次结构概念</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#广义机器虚拟机器透明性编译解释"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#计算机系统结构组织和实现"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">计算机系统结构、组织和实现</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#计算机系统分类方法"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">计算机系统分类方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#系统分析技术"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">系统分析技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#大概率事件优先原理"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">大概率事件优先原理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#amdahl定律加速比定义"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">Amdahl定律、加速比定义</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#程序访存的局部性原理"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">程序访存的局部性原理</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#cpu性能公式"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">CPU性能公式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#cpu时间"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">CPU时间</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#每条指令执行的平均时钟周期数cpi"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">每条指令执行的平均时钟周期数CPI</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#性能评价标准"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">性能评价标准</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三章-流水线技术"><span class="post-toc-number">2.</span> <span class="post-toc-text">第三章 流水线技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#流水线的概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">流水线的概念：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#单功能与多功能流水线"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">单功能与多功能流水线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#单功能流水线只能完成一种固定功能的流水线"><span class="post-toc-number">2.1.1.1.</span> <span class="post-toc-text">单功能流水线：只能完成一种固定功能的流水线。</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#多功能流水线流水线的各段可以进行不同的连接以实现不同的功能"><span class="post-toc-number">2.1.1.2.</span> <span class="post-toc-text">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#流水线表示方法时空图-连接图"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">流水线表示方法–时空图 、连接图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#流水线特点五段流水线访存部件me-转移ex"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">流水线特点：五段流水线（访存部件ME, 转移EX)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#性能指标-吞吐率加速比效率-最佳段数"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">性能指标 ： 吞吐率、加速比、效率、 最佳段数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#流水线相关与冲突及解决办法"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">流水线相关与冲突及解决办法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#数据冲突解决办法"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">数据冲突解决办法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#控制冲突解决办法"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">控制冲突解决办法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第四章-向量处理机"><span class="post-toc-number">3.</span> <span class="post-toc-text">第四章 向量处理机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#向量处理方法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">向量处理方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#向量流水处理机结构"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">向量流水处理机结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提高向量处理机性能的方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">提高向量处理机性能的方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#向量处理机性能的主要参数"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">向量处理机性能的主要参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#一条向量指令的处理时间"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">一条向量指令的处理时间</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#每秒多少个浮点运算结果mflop或一个浮点运算的时间"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#一组向量指令的处理时间"><span class="post-toc-number">3.4.3.</span> <span class="post-toc-text">一组向量指令的处理时间</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分段开采时一组向量指令的总执行时间复习课件中未作为重点"><span class="post-toc-number">3.4.4.</span> <span class="post-toc-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#向量流水线的最大性能-r_infty"><span class="post-toc-number">3.4.5.</span> <span class="post-toc-text">向量流水线的最大性能 \(R_{\infty}\)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#例题"><span class="post-toc-number">3.4.5.1.</span> <span class="post-toc-text">例题</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#半性能向量长度-n_frac12"><span class="post-toc-number">3.4.6.</span> <span class="post-toc-text">半性能向量长度 \(n_{\frac{1}{2}}\)</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#长度向量临界值-n_v同样不是重点"><span class="post-toc-number">3.4.7.</span> <span class="post-toc-text">长度向量临界值 \(n_v\)(同样不是重点)</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例-1"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第五章-指令集并行"><span class="post-toc-number">4.</span> <span class="post-toc-text">第五章 指令集并行</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指令级并行度ilp"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">指令级并行度ILP</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开发ilp的方法可以分为两大类"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">开发ILP的方法可以分为两大类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#记分牌scoreboard算法"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">记分牌(Scoreboard)算法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#tomasulo算法"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">Tomasulo算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#相关与流水线冲突"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">相关与流水线冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#理想流水线的cpi加上各类停顿的时钟周期数"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态分支预测技术"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">动态分支预测技术</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#超标量处理机"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">超标量处理机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#超流水线处理机"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">超流水线处理机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#超长指令字vliw处理机"><span class="post-toc-number">4.8.</span> <span class="post-toc-text">超长指令字（VLIW)处理机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例-2"><span class="post-toc-number">4.9.</span> <span class="post-toc-text">实例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态分支预测技术-1"><span class="post-toc-number">4.10.</span> <span class="post-toc-text">动态分支预测技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第九章-互联网络"><span class="post-toc-number">5.</span> <span class="post-toc-text">第九章 互联网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互连网络相关概念"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">互连网络相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分类"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">分类</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#三大要素互连结构开关元件控制方式"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">三大要素：互连结构、开关元件、控制方式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#特征"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">特征</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互联函数"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">互联函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#基本互联函数"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">基本互联函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#恒等函数"><span class="post-toc-number">5.2.1.1.</span> <span class="post-toc-text">恒等函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#交换函数"><span class="post-toc-number">5.2.1.2.</span> <span class="post-toc-text">交换函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#均匀洗牌函数"><span class="post-toc-number">5.2.1.3.</span> <span class="post-toc-text">均匀洗牌函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#蝶式函数"><span class="post-toc-number">5.2.1.4.</span> <span class="post-toc-text">蝶式函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#反位序函数"><span class="post-toc-number">5.2.1.5.</span> <span class="post-toc-text">反位序函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#移数函数"><span class="post-toc-number">5.2.1.6.</span> <span class="post-toc-text">移数函数</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#pm2i移数函数重点"><span class="post-toc-number">5.2.1.7.</span> <span class="post-toc-text">PM2I移数函数(重点)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互联网络的结构参数"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">互联网络的结构参数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互联网络的性能指标"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">互联网络的性能指标</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#互联网络"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">互联网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#动态互联网络"><span class="post-toc-number">5.5.1.</span> <span class="post-toc-text">动态互联网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#总线网络"><span class="post-toc-number">5.5.1.1.</span> <span class="post-toc-text">总线网络</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#交叉开关网络"><span class="post-toc-number">5.5.1.2.</span> <span class="post-toc-text">交叉开关网络</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#多级互联网络的构成"><span class="post-toc-number">5.5.1.3.</span> <span class="post-toc-text">多级互联网络的构成</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#多级立方体网络"><span class="post-toc-number">5.5.1.4.</span> <span class="post-toc-text">多级立方体网络</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#omega网络"><span class="post-toc-number">5.5.1.5.</span> <span class="post-toc-text">Omega网络</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#动态互联网络的比较"><span class="post-toc-number">5.5.2.</span> <span class="post-toc-text">动态互联网络的比较</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#消息传递机制重点"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">消息传递机制（重点）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#路由选择和消息传递方法式"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">路由选择和消息传递方法式:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#死锁与虚拟通道"><span class="post-toc-number">5.7.1.</span> <span class="post-toc-text">死锁与虚拟通道</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#流量控制策略"><span class="post-toc-number">5.7.2.</span> <span class="post-toc-text">流量控制策略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#包冲突的解决"><span class="post-toc-number">5.7.2.1.</span> <span class="post-toc-text">包冲突的解决</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#确定性寻径和自适应寻径"><span class="post-toc-number">5.7.2.2.</span> <span class="post-toc-text">确定性寻径和自适应寻径</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#通信模式"><span class="post-toc-number">5.7.3.</span> <span class="post-toc-text">通信模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例-3"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十章-多处理机"><span class="post-toc-number">6.</span> <span class="post-toc-text">第十章 多处理机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多处理机概念"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">多处理机概念:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#mimd计算机的特点分类"><span class="post-toc-number">6.1.1.</span> <span class="post-toc-text">MIMD计算机的特点、分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#flynn分类法"><span class="post-toc-number">6.1.1.1.</span> <span class="post-toc-text">Flynn分类法</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#mimd已成为通用多处理机系统结构的选择原因"><span class="post-toc-number">6.1.1.2.</span> <span class="post-toc-text">MIMD已成为通用多处理机系统结构的选择，原因：</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#根据存储器的组织结构-把现有的mimd机器分为两类"><span class="post-toc-number">6.1.1.3.</span> <span class="post-toc-text">根据存储器的组织结构 ，把现有的MIMD机器分为两类</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多处理机一致性问题"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">多处理机一致性问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#cache的一致性问题和原因"><span class="post-toc-number">6.2.1.</span> <span class="post-toc-text">Cache的一致性问题和原因</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#存储器的一致性"><span class="post-toc-number">6.2.2.</span> <span class="post-toc-text">存储器的一致性</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#实现一致性的基本方案"><span class="post-toc-number">6.2.3.</span> <span class="post-toc-text">实现一致性的基本方案</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#cache一致性协议"><span class="post-toc-number">6.2.4.</span> <span class="post-toc-text">Cache一致性协议</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#采用两种方法来解决cache一致性问题"><span class="post-toc-number">6.2.5.</span> <span class="post-toc-text">采用两种方法来解决Cache一致性问题。</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#监听协议的实现"><span class="post-toc-number">6.2.6.</span> <span class="post-toc-text">监听协议的实现</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#目录协议的基本思想"><span class="post-toc-number">6.2.7.</span> <span class="post-toc-text">目录协议的基本思想</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#目录协议的三种结构"><span class="post-toc-number">6.2.8.</span> <span class="post-toc-text">目录协议的三种结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多处理机分类"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">多处理机分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#按多处理机之间物理连接的紧密程度与交互作用能力强弱"><span class="post-toc-number">6.3.1.</span> <span class="post-toc-text">按多处理机之间物理连接的紧密程度与交互作用能力强弱</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#按处理机结构"><span class="post-toc-number">6.3.2.</span> <span class="post-toc-text">按处理机结构</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#按系统组成结构"><span class="post-toc-number">6.3.3.</span> <span class="post-toc-text">按系统组成结构</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#按存储器组织结构"><span class="post-toc-number">6.3.4.</span> <span class="post-toc-text">按存储器组织结构</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第十三章-阵列处理机"><span class="post-toc-number">7.</span> <span class="post-toc-text">第十三章 阵列处理机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#阵列处理机"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">阵列处理机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#阵列处理机的操作模型可用五元组表示"><span class="post-toc-number">7.1.1.</span> <span class="post-toc-text">阵列处理机的操作模型可用五元组表示</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#阵列处理机的结构"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">阵列处理机的结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#simd机与并行算法的关系"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">SIMD机与并行算法的关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解有限差分方程需要知道大致含义"><span class="post-toc-number">7.3.1.</span> <span class="post-toc-text">解有限差分方程（需要知道大致含义）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#矩阵加"><span class="post-toc-number">7.3.2.</span> <span class="post-toc-text">矩阵加</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#矩阵乘"><span class="post-toc-number">7.3.3.</span> <span class="post-toc-text">矩阵乘</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#递归折叠求和算法"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">递归折叠求和算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例-4"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">实例</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-计算机系统结构复习note"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">计算机系统结构复习note</h1>
         <div class="post-meta">
-          <span class="post-time">
+            <time class="post-time" title="2017-06-28 15:58:32" datetime="2017-06-28T07:58:32.000Z"  itemprop="datePublished">2017-06-28</time>
 
             
-            
-            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
 
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
 
-              
-                
-              
-
-              <time title="Created: 2017-06-28 15:58:32" itemprop="dateCreated datePublished" datetime="2017-06-28T15:58:32+08:00">2017-06-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/28/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2017/06/28/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/06/28/undefined/" class="leancloud_visitors" data-flag-title="计算机系统结构复习note">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">20k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:18</span>
-              
-            </div>
-          
-
-          
 
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>仅供参考~</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>仅供参考~</p>
 <p>看到了，没记住是最悲剧的……</p>
 <a id="more"></a>
 <h3 id="第一章-基础知识">第一章 基础知识</h3>
 <h4 id="系统结构的相关概念">系统结构的相关概念</h4>
 <h5 id="计算机系统的层次结构概念">计算机系统的层次结构概念</h5>
-<p>由硬件、软件和固件（被固化在ROM中的微程序）组成的复杂系统。 按语言功能（非组成）划分成多级层次结构: <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh140p00wpj30kw0f8qfd.jpg"></p>
+<p>由硬件、软件和固件（被固化在ROM中的微程序）组成的复杂系统。 按语言功能（非组成）划分成多级层次结构: <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh140p00wpj30kw0f8qfd.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <ul>
 <li>硬件层(物理机):如果问几层的话还是去除L0硬件层
 <ul>
@@ -619,7 +280,13 @@
 <p>则CPU时间可以写成下式 <span class="math display">\[CPU时间 = IC ×CPI ×时钟周期时间 \]</span></p>
 <h4 id="性能评价标准">性能评价标准</h4>
 <ul>
-<li>性能指标（CPU时间， CPI， MIPS,MFLOPS) MIPS 每秒百万条指令数 <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg"></li>
+<li>性能指标（CPU时间， CPI， MIPS,MFLOPS) MIPS 每秒百万条指令数 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzyog0tw9j315w0ocgri.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
 <li>性能比较
 <ul>
 <li>执行时间</li>
@@ -627,9 +294,77 @@
 </ul></li>
 </ul>
 <h4 id="实例">实例</h4>
-<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg"></p>
-<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg"></p>
-<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg"> <strong>1.11 假设浮点数指令FP指令的比例为30%，其中浮点数平方根FPSQR占全部指令的比例为4%, FP操作的CPI为5，FPSQR操作的CPI为20, 其他指令的平均CPI为1.25.现有两种改进方案，第一种是把FPSQR操作的CPI减至3, 第二种是把所有的FP操作的CPI减至3, 试比较两种方案对系统性能的提高程度。</strong> 答: 改进之前，系统指令平均时钟周期CPI为 <span class="math display">\[CPI=\sum{(CPI_i \times \frac{I_i}{I_c})}=(5 \times 30 % )+(1.25\times70 %) = 2.375\]</span></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzxlh213j318i0uodnv.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fgzzy5ko5uj318c0u8dms.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fgzzyd2anbj311206kjsk.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0089uh1gj318e0fe42o.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh009h7csrj315a0jojv3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh009mw5u9j317u07idga.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh00idtezej311e0oejze.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03726micj30m8076jyh.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh037e1qvnj30mi05ydlt.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh037hyygij30ls074n2r.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>1.11 假设浮点数指令FP指令的比例为30%，其中浮点数平方根FPSQR占全部指令的比例为4%, FP操作的CPI为5，FPSQR操作的CPI为20, 其他指令的平均CPI为1.25.现有两种改进方案，第一种是把FPSQR操作的CPI减至3, 第二种是把所有的FP操作的CPI减至3, 试比较两种方案对系统性能的提高程度。</strong> 答: 改进之前，系统指令平均时钟周期CPI为 <span class="math display">\[CPI=\sum{(CPI_i \times \frac{I_i}{I_c})}=(5 \times 30 % )+(1.25\times70 %) = 2.375\]</span></p>
 <p>如果采用A方案：FPSQR操作的CPI减至3，则整个系统的平均时钟周期数为: <span class="math display">\[CPI_A=CPI-(CPI_{FPSQR}-CPI_{FPSQR}^{&#39;}) \times 4 %=2.375-(20-3) \times 4 %=1.695\]</span></p>
 <p>如果采用B方案：把所有的FP操作的CPI减至3，则整个系统的平均时钟周期数为： <span class="math display">\[CPI_B=CPI-(CPI_{FP}-CPI_{FP}^{&#39;})\times4 %=2.375-(5-3)\times30 %=1.775\]</span></p>
 <p>从降低整个系统的指令平均时钟周期数的程度来看，方案A要优于B。</p>
@@ -649,7 +384,7 @@
 <h6 id="多功能流水线流水线的各段可以进行不同的连接以实现不同的功能">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</h6>
 <p>例： 多功能流水线：加、乘流水线</p>
 <h4 id="流水线表示方法时空图-连接图">流水线表示方法–时空图 、连接图</h4>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg"></p>
+{% image http://ww3.sinaimg.cn/large/006tNc79ly1fh1thpz1e8j312e0e440n.jpg '' '' %}
 <h4 id="流水线特点五段流水线访存部件me-转移ex">流水线特点：五段流水线（访存部件ME, 转移EX)</h4>
 <table>
 <thead>
@@ -702,21 +437,30 @@
 <h5 id="数据冲突解决办法">数据冲突解决办法</h5>
 <h5 id="控制冲突解决办法">控制冲突解决办法</h5>
 <p><strong>多功能流水线时空图</strong></p>
-<p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量 <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg"></p>
-<figure>
-<img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg" alt="瓶颈问题"><figcaption>瓶颈问题</figcaption>
-</figure>
-<p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。 <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg"> 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率) <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg"></p>
+<p>吞吐率：在单位时间内流水线所完成的任务数量或输出结果的数量 {% image http://ww4.sinaimg.cn/large/006tKfTcly1fh01ecrtzsj314k0ukdkz.jpg '' '' %} {% image http://ww4.sinaimg.cn/large/006tKfTcly1fh01cbvdvbj314i0raadi.jpg '' '' %} {% image http://ww2.sinaimg.cn/large/006tKfTcly1fh01epwny8j315m0v2dor.jpg '' '' %} {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01f334x0j314y0qigrb.jpg '' '' %}</p>
+{% image http://ww2.sinaimg.cn/large/006tKfTcly1fh01bz7dutj316c0vk7e8.jpg '瓶颈问题' '' %}
+<p>加速比：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。 {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01geo9ytj314g0ueq84.jpg '' '' %} {% image http://ww3.sinaimg.cn/large/006tKfTcly1fh01gotuqcj314s0tkgw9.jpg '' '' %} 流水线的效率：流水线中的设备实际使用时间与整个运行时间的比值，即流水线设备的利用率( 效率) {% image http://ww2.sinaimg.cn/large/006tKfTcly1fh01htdjp8j311e0fkac8.jpg '' '' %} {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01i1kdgaj310k0n6acd.jpg '' '' %} {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01iew0exj31580vmtim.jpg '' '' %} {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01in2tv4j315u0p8teb.jpg '' '' %} {% image http://ww4.sinaimg.cn/large/006tKfTcly1fh01ix845tj315e0sctg1.jpg '' '' %}</p>
 <p><strong>静态处理分支指令的基本方法</strong>： * 预测成功 * 延迟分支</p>
 <p><strong>降低流水线分支损失的方法有哪些？</strong> （1）在流水线中尽早判断出分支转移是否成功； （2）尽早计算出分支转移成功时的PC值（即分支的目标地址） * “冻结”或“排空”流水线的方法 * 预测分支失败 * 预测分支成功 * 延迟分支</p>
 <p><strong>请对延迟分支办法中的三种调度策略进行评价。</strong> 1. 从前调动：分支必须不依赖于被调度的指令，总是可以有效提高流水线性能。 2. 从目标处调度：若分支转移失败，必须保证被调度的指令对程序的执行没有影响，可能需要复制被调度指令。分支转移成功时，可提高流水线性能。但由于复制指令，可能加大程序空间。 3. 从失败处调度：若分支转移成功，必须保证被调度的指令对程序的执行无影响。分支转移失败时，可提高流水线性能。</p>
-<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg"></p>
-<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg" alt="预测分支"> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg"></p>
-<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg"></p>
-<p><img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg"></p>
-<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg"></p>
+<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh019wj2ghj30lq01kjri.jpg"> {% image http://ww2.sinaimg.cn/large/006tKfTcly1fh01a6ta51j316s0qgjvp.jpg '' '' %} {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01ajhkxrj315m0psgoi.jpg '' '' %} {% image http://ww4.sinaimg.cn/large/006tKfTcly1fh02vicb2cj31c00hoq4r.jpg '' '' %} {% image http://ww1.sinaimg.cn/large/006tKfTcly1fh01b5j07zj30yk0hmq4o.jpg '' '' %}</p>
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh02pfx12qj31840xq7bh.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh02rm0h07j30xg0g2wfw.jpg '' '' %}
+{% image http://ww2.sinaimg.cn/large/006tKfTcly1fh02rud2wzj315a0vagoe.jpg '' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh02t7isdpj31940gejuk.jpg '' '' %}
+{% image http://ww3.sinaimg.cn/large/006tKfTcly1fh02tofxv1j316c0lejwd.jpg '' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh02tuh1e8j317c0i0779.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh02wlha1qj31900u4gvd.jpg '' '' %}
+{% image http://ww3.sinaimg.cn/large/006tKfTcly1fh02wwrlr9j30zm02yjrx.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh032aoegij31640eg0yz.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh032jai5yj318u0p842u.jpg '预测分支' '' %}
+{% image http://ww3.sinaimg.cn/large/006tKfTcly1fh032pug9zj314k0mon4h.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh0qdynhf8j30x60dg0v7.jpg '' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh0336nedfj313m0igjwb.jpg '' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh033dgx53j31880w2k15.jpg '' '' %}
+{% image http://ww2.sinaimg.cn/large/006tKfTcly1fh033m66xdj317k0skdl4.jpg '' '' %}
+{% image http://ww3.sinaimg.cn/large/006tKfTcly1fh02y72c0tj311807ut9r.jpg '' '' %}
+{% image http://ww2.sinaimg.cn/large/006tKfTcly1fh02ye2nbbj317m0vak1b.jpg '' '' %}
 <p>命中Cache似乎不考</p>
 <h3 id="第四章-向量处理机">第四章 向量处理机</h3>
 <h4 id="向量处理方法">向量处理方法</h4>
@@ -781,7 +525,7 @@
 <h4 id="向量处理机性能的主要参数">向量处理机性能的主要参数</h4>
 <h5 id="一条向量指令的处理时间">一条向量指令的处理时间</h5>
 <ul>
-<li>执行一条向量长度为n的向量指令所需的时间: <span class="math display">\[T_{vp} = T_{s} + T_{e} + (n-1)T_{c}\]</span> <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh125jxoi7j30xg06sdgh.jpg"> <span class="math inline">\(T_s\)</span> : 流水线的建立时间为了使处理部件流水线能开始工作所需要的准备时间。 <span class="math inline">\(T_e\)</span> : 向量流水线的通过时间第一对向量元素通过流水线并产生第一个结果所花的时间。 <span class="math inline">\(T_c\)</span> : 流水线的时钟周期时间 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh13biyv2zj313o0tite3.jpg" alt="一条指令">
+<li>执行一条向量长度为n的向量指令所需的时间: <span class="math display">\[T_{vp} = T_{s} + T_{e} + (n-1)T_{c}\]</span> {% image http://ww4.sinaimg.cn/large/006tNc79ly1fh125jxoi7j30xg06sdgh.jpg '' '' %} <span class="math inline">\(T_s\)</span> : 流水线的建立时间为了使处理部件流水线能开始工作所需要的准备时间。 <span class="math inline">\(T_e\)</span> : 向量流水线的通过时间第一对向量元素通过流水线并产生第一个结果所花的时间。 <span class="math inline">\(T_c\)</span> : 流水线的时钟周期时间 {% image http://ww2.sinaimg.cn/large/006tNc79ly1fh13biyv2zj313o0tite3.jpg '一条指令' '' %}
 <ul>
 <li>上式转换为时钟周期个数 <span class="math display">\[T_{vp} = [s + e + (n-1)]T_c\]</span></li>
 <li>令 <span class="math inline">\(T_{start} = s + e -1\)</span> , 则 <span class="math display">\[T_{vp} = (T_{start} + n)T_c\]</span> <span class="math inline">\(T_{start}\)</span> : 向量指令的启动时间。产生第一个结果的前一个时钟周期数。</li>
@@ -812,15 +556,20 @@
 </ul>
 <h5 id="分段开采时一组向量指令的总执行时间复习课件中未作为重点">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</h5>
 <h5 id="向量流水线的最大性能-r_infty">向量流水线的最大性能 <span class="math inline">\(R_{\infty}\)</span></h5>
-<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg"></p>
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh04cjh4x5j31360hu786.jpg '' '' %}
 <h6 id="例题">例题</h6>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh138y1719j31380sogtx.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg" alt="最大性能例题"></p>
+{% image http://ww4.sinaimg.cn/large/006tNc79ly1fh138y1719j31380sogtx.jpg '' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh0462gbr9j312u0iwad9.jpg '最大性能例题' '' %}
 <h5 id="半性能向量长度-n_frac12">半性能向量长度 <span class="math inline">\(n_{\frac{1}{2}}\)</span></h5>
-<p>半性能向量长度 <span class="math inline">\(n_{\frac12}\)</span> 是指向量处理机的性能为其最大性能的一半时所需的向量长度。 <span class="math inline">\(n_{\frac12}\)</span> 小表示流水线建立的时间少。 <span class="math inline">\(n_{\frac12}\)</span> 越小， 对给定的向量处理，流水线性能越好。反映为建立流水线而导致的性能损失。 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1385ja86j314c0rqdnz.jpg" alt="半性能长度计算"></p>
+<p>半性能向量长度 <span class="math inline">\(n_{\frac12}\)</span> 是指向量处理机的性能为其最大性能的一半时所需的向量长度。 <span class="math inline">\(n_{\frac12}\)</span> 小表示流水线建立的时间少。 <span class="math inline">\(n_{\frac12}\)</span> 越小， 对给定的向量处理，流水线性能越好。反映为建立流水线而导致的性能损失。 {% image http://ww1.sinaimg.cn/large/006tNc79ly1fh1385ja86j314c0rqdnz.jpg '半性能长度计算' '' %}</p>
 <h5 id="长度向量临界值-n_v同样不是重点">长度向量临界值 <span class="math inline">\(n_v\)</span>(同样不是重点)</h5>
 <h4 id="实例-1">实例</h4>
-<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg"> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg"></p>
-<p><img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg"> 题目补充：各功能部件的启动时间为：取数和存数部件为12个时钟周期、乘法部件为7个时钟周期，执行标量代码的开销 <span class="math inline">\(T_{loop} = 15\)</span> 个时钟周期，对一个向量元素执行一次操作的时间Tg=一个时钟周期。</p>
+{% image http://ww3.sinaimg.cn/large/006tKfTcly1fh03iki4jij30ys0sqgry.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh03j2nkwdj310009adjg.jpg '' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh03ja3basj30ya0540tq.jpg '' '' %}
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh03jh18g4j30wu0pewhf.jpg '' '' %}
+{% image http://ww2.sinaimg.cn/large/006tKfTcly1fh03xko119j315q0s0jzk.jpg '' '' %}
+<p>题目补充：各功能部件的启动时间为：取数和存数部件为12个时钟周期、乘法部件为7个时钟周期，执行标量代码的开销 <span class="math inline">\(T_{loop} = 15\)</span> 个时钟周期，对一个向量元素执行一次操作的时间Tg=一个时钟周期。</p>
 <h3 id="第五章-指令集并行">第五章 指令集并行</h3>
 <h4 id="指令级并行度ilp">指令级并行度ILP</h4>
 <p>指令间存在的一种固有的并行性，计算机可以并行执行两条或两条以上的指令。</p>
@@ -843,12 +592,10 @@
 <p>第3章的5段流水线局限性:只能按序流出(In-order Issue)和按序执行(In-order Execution)</p>
 <p><strong>每条指令的执行过程分为4段（主要考虑浮点操作）</strong> * 流出：如果当前流出指令所需的功能部件空闲，并且所有其他正在执行的指令的目的寄存器与该指令的不同，就向功能部件流出该指令，并修改记分牌内部记录表。 <strong>解决了WAW冲突</strong> * 读操作数： 监测源操作数的可用性，如果数据可用，就从寄存器中读出源操作数并开始执行。 <strong>解决了RAW冲突，导致乱序执行。</strong> * 执行： 取到操作数后，功能部件开始执行。当产生出结果后，就通知记分牌它已经完成执行。 <strong>在浮点流水线中，这一段要占用多个时钟周期。</strong> * 写结果 <strong>执行前会检测是否存在WAR冲突</strong></p>
 <p><strong>WAR冲突可能发生在以下情况:</strong> 1. 前面的某条指令（按顺序流出）还没有读取操作数；而且,其中某个源操作数寄存器与本指令的目的寄存器相同。 2. 在这种情况下，记分牌必须等待，直到该冲突消失。</p>
-<figure>
-<img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg" alt="记分牌MIPS处理器基本结构"><figcaption>记分牌MIPS处理器基本结构</figcaption>
-</figure>
+{% image http://ww4.sinaimg.cn/large/006tNc79ly1fh158ngjffj30va0mmtck.jpg '记分牌MIPS处理器基本结构' '' %}
 <p><strong>性能受限</strong>(不考) * 程序代码中可开发的并行性，即是否存在可以并行执行的不相关的指令。 * 记分牌的容量（寄存器大小？） 记分牌的容量决定了流水线能在多大范围内寻找不相关指令。流水线中可以同时容纳的指令数量称为指令窗口 * 功能部件的数目和种类 功能部件的总数决定了结构冲突的严重程度 * 反相关和输出相关 它们引起记分牌中WAR和WAW冲突。</p>
 <h5 id="tomasulo算法">Tomasulo算法</h5>
-<p><strong>基本思想</strong>: * 通过分散控制处理数据相关和乱序执行。记录和检测指令相关，将发生RAW的可能性减少到最小 * 通过寄存器换名(通过保留站和流出逻辑实现)来消除WAR冲突和WAW冲突 <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh16e0gi0cj315q0vm496.jpg" alt="结构图"> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh16fzm21aj30xy06gn0i.jpg"></p>
+<p><strong>基本思想</strong>: * 通过分散控制处理数据相关和乱序执行。记录和检测指令相关，将发生RAW的可能性减少到最小 * 通过寄存器换名(通过保留站和流出逻辑实现)来消除WAR冲突和WAW冲突 {% image http://ww4.sinaimg.cn/large/006tNc79ly1fh16e0gi0cj315q0vm496.jpg '结构图' '' %} {% image http://ww2.sinaimg.cn/large/006tNc79ly1fh16fzm21aj30xy06gn0i.jpg '' '' %}</p>
 <p>保留站：保存已经流出并等待到本功能部件执行的指令，在保留站通过流出逻辑来完成的寄存器换名（顺序流出，乱序执行） 公共数据总线CDB :所有功能部件计算结果都送到CDB，由它把这些结果直接送到各个需要该结果的地方（乱序完成）</p>
 <p>具体算法（可选，暂时不看）</p>
 <h4 id="相关与流水线冲突">相关与流水线冲突</h4>
@@ -861,7 +608,7 @@
 <p>IPC：Instructions Per Cycle(每个时钟周期完成的指令条数) <span class="math display">\[CPI = \frac{1}{IPC}\]</span></p>
 <h4 id="动态分支预测技术">动态分支预测技术</h4>
 <ul>
-<li>分支历史表BHT 用二进制数10、11、01、00来表示转移预测状态的转换图 <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh16otya5jj31160cqad1.jpg" alt="BHT状态转换"> 从图中可以看出，只有连续两次预测错误，才会改变对分支去向的预测</li>
+<li>分支历史表BHT 用二进制数10、11、01、00来表示转移预测状态的转换图 {% image http://ww3.sinaimg.cn/large/006tNc79ly1fh16otya5jj31160cqad1.jpg 'BHT状态转换' '' %} 从图中可以看出，只有连续两次预测错误，才会改变对分支去向的预测</li>
 </ul>
 <p>优点: 转移预测提前到取指阶段。预测正确，则没有延迟损失。</p>
 <p>缺点:仅提供转移目标指令信息,未提供转移目标指令地址信息。</p>
@@ -874,10 +621,10 @@
 <ul>
 <li>将分支成功的分支指令的地址和它的分支目标地址都放到一个缓冲区中保存</li>
 <li>缓冲区以分支指令的地址作为标识</li>
-<li>得到转移目标指令地址信息 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh17birrf6j30re0n2q7u.jpg" alt="结构图"></li>
+<li>得到转移目标指令地址信息 {% image http://ww1.sinaimg.cn/large/006tNc79ly1fh17birrf6j30re0n2q7u.jpg '结构图' '' %}</li>
 </ul></li>
 </ul>
-<p>流水线各阶段进行的操作 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh17k44ua3j31560pcq93.jpg"></p>
+<p>流水线各阶段进行的操作 {% image http://ww2.sinaimg.cn/large/006tNc79ly1fh17k44ua3j31560pcq93.jpg '' '' %}</p>
 <h4 id="超标量处理机">超标量处理机</h4>
 <p>在每个时钟周期内流出多条指令， CPI＜1 在每个时钟周期流出的指令条数不固定,但有上限，依代码的具体情况而定。 设这个上限为n，就称该处理机为n-流出(发射)。 可以通过编译器进行静态调度，也可以基于Tomasulo算法进行动态调度。</p>
 <h4 id="超流水线处理机">超流水线处理机</h4>
@@ -889,9 +636,11 @@
 <p><strong>记分牌算法中，记分牌中记录的信息由哪三部分构成</strong></p>
 <p>答: 指令状态表、功能部件状态表、结果寄存器状态表</p>
 <h4 id="动态分支预测技术-1">动态分支预测技术</h4>
-<p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong> <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg"></p>
-<p><img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg" alt="5.8 分支延迟"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg" alt="5.9"></p>
-<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg" alt="画超标量处理机时空图"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg"></p>
+<p><strong>5.6 给出采用分支目标缓冲器(BTB)后，在流水线三个阶段(IF段、ID段、EX段）所进行的相关操作有哪些？</strong> {% image http://ww3.sinaimg.cn/large/006tKfTcly1fh0pdjh6x9j31520pajxj.jpg '' '' %}</p>
+{% image http://ww1.sinaimg.cn/large/006tKfTcly1fh0q8osu6vj317e0x0gw0.jpg '5.8 分支延迟' '' %}
+{% image http://ww4.sinaimg.cn/large/006tKfTcly1fh0q9lysb7j316a0weai9.jpg '5.9 ' '' %}
+{% image http://ww3.sinaimg.cn/large/006tKfTcly1fh0qgt6xhnj30zq0osadj.jpg '画超标量处理机时空图' '' %}
+{% image http://ww2.sinaimg.cn/large/006tKfTcly1fh0qh9ohspj30ya0zead2.jpg '' '' %}
 <h3 id="第九章-互联网络">第九章 互联网络</h3>
 <h4 id="互连网络相关概念">互连网络相关概念</h4>
 <h5 id="分类">分类</h5>
@@ -976,7 +725,7 @@
 <h4 id="互联网络的性能指标">互联网络的性能指标</h4>
 <p>评估互连网络性能的两个基本指标：时延和带宽 * 通信时延 指从源结点到目的结点传送一条消息所需的总时间 * 软件开销：在源结点和目的结点用于收发消息的软件所需的执行时间 * 通道时延：通过通道传送消息所花的时间。 * 选路时延：消息在传送路径上所需的一系列选路决策所需的时间开销 * 竞争时延：多个消息同时在网络中传送时，会发生争用网络资源的冲突。为避免或解决争用冲突所需的时间就是竞争时延。 * 网络时延 通道时延与选路时延的和 * 端口带宽 对于互连网络中的任意一个端口来说，其端口带宽是指单位时间内从该端口传送到其他端口的最大信息量。 * 聚集带宽 网络从一半结点到另一半结点，单位时间内能够传送的最大信息量。 * 等分带宽 与等分宽度对应的切平面中，所有边合起来单位时间所能传送的最大信息量。</p>
 <h4 id="互联网络">互联网络</h4>
-<p>典型互联网络:立方体型 和Illiac网，Omega网络（混洗函数）（重点） ##### 典型静态互联网络 * 线性阵列 * 环和带弦环 * 循环移数网络 * 树形和星形 * 胖树形 * 网格形和环网形 * Illiac网络 * 超立方体 * 带环n-立方体 * k元n立方体 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1doxascvj313q0t8aic.jpg"></p>
+<p>典型互联网络:立方体型 和Illiac网，Omega网络（混洗函数）（重点） ##### 典型静态互联网络 * 线性阵列 * 环和带弦环 * 循环移数网络 * 树形和星形 * 胖树形 * 网格形和环网形 * Illiac网络 * 超立方体 * 带环n-立方体 * k元n立方体 {% image http://ww1.sinaimg.cn/large/006tNc79ly1fh1doxascvj313q0t8aic.jpg '' '' %}</p>
 <h5 id="动态互联网络">动态互联网络</h5>
 <p>由交换开关构成的互联网络，可按运行程序的要求改变网络的连接状态</p>
 <p><strong>特点</strong>： * 网络中开关元件可以控制（有源）。 * 链路可通过设置开关的状态来重构。 * 网络边界上的开关元件可与处理机相连。</p>
@@ -989,22 +738,52 @@
 <h6 id="多级立方体网络">多级立方体网络</h6>
 <p>多级立方体网络包括STARAN网络和间接二进制n方体网络等。 * 两者仅在控制方式上不同，在其他方面都是一样的。 * 都采用二功能（直送和交换）的2×2开关。 * 当第i级（ <span class="math inline">\(0\leqslant i\leqslant n-1\)</span> ）交换开关处于交换状态时，实现的是 <span class="math inline">\(Cube_i\)</span> 互连函数。</p>
 <p>一个N输入的多级立方体网络有 <span class="math inline">\(log_2N\)</span> 级，每级用 <span class="math inline">\(\frac N2\)</span> 个2×2开关模块，共需要 <span class="math inline">\(log_2N\times\frac {N}{2}\)</span> 个开关。</p>
-<p>一个8个入端的多级立方体网络 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1e0cszsgj30zk0liadb.jpg"></p>
+<p>一个8个入端的多级立方体网络 {% image http://ww2.sinaimg.cn/large/006tNc79ly1fh1e0cszsgj30zk0liadb.jpg '' '' %}</p>
 <p>STARAN网络采用级控制和部分级控制。 * 采用级控制时，所实现的是交换功能； * 采用部分级控制时，则能实现移数功能。</p>
 <p>间接二进制n方体网络则采用单元控制。 * 具有更大的灵活性。</p>
 <h6 id="omega网络">Omega网络</h6>
-<p>一个8×8的Omega网络 * 每级由4个4功能的2×2开关构成 * 级间互连采用均匀洗牌连接方式 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1em87ixaj30so0hcwgp.jpg"></p>
+<p>一个8×8的Omega网络 * 每级由4个4功能的2×2开关构成 * 级间互连采用均匀洗牌连接方式 {% image http://ww2.sinaimg.cn/large/006tNc79ly1fh1em87ixaj30so0hcwgp.jpg '' '' %}</p>
 <p>一个N输入的Omega网络（重点） * 有 <span class="math inline">\(log_2N\)</span> 级，每级用 <span class="math inline">\(\frac N2\)</span>个2×2开关模块，共需要 <span class="math inline">\(\frac N2log_2{N}\)</span> 个开关。 * 每个开关模块均采用单元控制方式。 * 不同的开关状态组合可实现各种置换、广播或从输入到输出的其它连接。</p>
 <h5 id="动态互联网络的比较">动态互联网络的比较</h5>
-<p><img src="http://ww4.sinaimg.cn/large/006tNc79ly1fh1e295ct6j31300kwdmq.jpg"></p>
+{% image http://ww4.sinaimg.cn/large/006tNc79ly1fh1e295ct6j31300kwdmq.jpg '' '' %}
 <h4 id="消息传递机制重点">消息传递机制（重点）</h4>
 <p>当源结点和目的结点之间没有直接的连接时，消息需要经过中间的结点进行传递。寻径就是用来实现这种传递的通信方法和算法。有的称之为路由</p>
 <h4 id="路由选择和消息传递方法式">路由选择和消息传递方法式:</h4>
-<p><strong>线路交换和包交换（存储转发，虚拟直通、虫孔方式）</strong> * 线路交换：在传递信息之前，先建立一条从源结点到目的结点的物理通路( 所需时间 Lt ×（D+1）/B)，然后再传递信息( 所需时间 L/B) 。包经中间结点时,包无需存储 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1e9ptgbwj30o80c476a.jpg"></p>
+<p><strong>线路交换和包交换（存储转发，虚拟直通、虫孔方式）</strong> * 线路交换：在传递信息之前，先建立一条从源结点到目的结点的物理通路( 所需时间 Lt ×（D+1）/B)，然后再传递信息( 所需时间 L/B) 。包经中间结点时,包无需存储 {% image http://ww1.sinaimg.cn/large/006tNc79ly1fh1e9ptgbwj30o80c476a.jpg '' '' %}</p>
 <pre><code>* 优点：包经中间结点时,包无需存储，实际通信时间较短，使用缓冲区少.</code></pre>
-<p>适合于具有动态和突发性的大规模并行处理数据的传送。 * 缺点： 1. 物理通道非共享。传输过程中通道一直占用。 2. 若频繁建立源到目的结点的通路，时间开销大 * 存储转发：最简单的分组交换方式。 * 存储转发中，包是信息传递的基本单位。包从源结点经过一系列中间结点到达目的结点。 * 要求：包经过的每个中间结点都要设置一个包缓冲器。当一个包到达某个中间结点时，该结点先把这个包全部存储起来，然后在出口链路可用、而且下一个结点的包缓冲器也可用的情况下，传递给下一个结点。 <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1ead7itzj30my0440t0.jpg"> * L为消息包的长度    * 存储转发中网络时延与源和目的地距离成正比.           * 第一代多计算机系统常采用存储转发方式 * 缺点： 1. 包缓冲区大，不利于VLSI实现； 2. 网络时延大，与结点距离成正比。 * 虚拟直通: 为减少存储转发中 包存储的时延较大，包不必全部存入缓冲后再做路由判断，只要接收到用作寻径信息（头部），即进行路由选择。 1. 如果结点的输出链路空闲，包立即转送到下一个结点。如果整个通路都空闲，包直达目的结点，如同线路交换 2. 如果没有空闲链路时或出现寻径阻塞时，须将整个信息全部存储在寻径结点中。等同存储转发。 <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1ecazewmj30yo074abu.jpg"> * 缺点： 1. 每个结点中需要有缓冲。以便没有空闲链路时，要用缓冲器存储。 2. 包缓冲区大，不利于VLSI实现； * 虫孔(wormhole)方式 　为减少存储转发中包的存储时延，包可分为更小的“片” 。当一个结点把头片送到下一结点后，后面的各个片也依次送出。 * 特点：包不必全部存入缓冲后再做路由判断，只要接收到用作寻径信息（头片），即进行路由选择。 * 结点中缓冲器的容量小，各片的传送可按流水方式进行。传输延迟略大于线路交换，网络冲突较小。 * 一个结点一旦开始传送一个包中的头片后，必须等待这个包所有片都送出后，才能传送其他包。不同包的片不能混合在一起传送。 * 在新型的多计算机系统中得到了广泛的应用。 * 与虚拟直通的不同之处 当输出通路忙时，结点是把一个片存储到缓冲器中。 片的大小比包小很多，所以能有效地减少缓冲器的容量，使得它易于用VLSI实现。 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1edxgje4j30se09075c.jpg"></p>
+<p>适合于具有动态和突发性的大规模并行处理数据的传送。 * 缺点： 1. 物理通道非共享。传输过程中通道一直占用。 2. 若频繁建立源到目的结点的通路，时间开销大 * 存储转发：最简单的分组交换方式。 * 存储转发中，包是信息传递的基本单位。包从源结点经过一系列中间结点到达目的结点。 * 要求：包经过的每个中间结点都要设置一个包缓冲器。当一个包到达某个中间结点时，该结点先把这个包全部存储起来，然后在出口链路可用、而且下一个结点的包缓冲器也可用的情况下，传递给下一个结点。 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1ead7itzj30my0440t0.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> * L为消息包的长度    * 存储转发中网络时延与源和目的地距离成正比.           * 第一代多计算机系统常采用存储转发方式 * 缺点： 1. 包缓冲区大，不利于VLSI实现； 2. 网络时延大，与结点距离成正比。 * 虚拟直通: 为减少存储转发中 包存储的时延较大，包不必全部存入缓冲后再做路由判断，只要接收到用作寻径信息（头部），即进行路由选择。 1. 如果结点的输出链路空闲，包立即转送到下一个结点。如果整个通路都空闲，包直达目的结点，如同线路交换 2. 如果没有空闲链路时或出现寻径阻塞时，须将整个信息全部存储在寻径结点中。等同存储转发。 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1ecazewmj30yo074abu.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> * 缺点： 1. 每个结点中需要有缓冲。以便没有空闲链路时，要用缓冲器存储。 2. 包缓冲区大，不利于VLSI实现； * 虫孔(wormhole)方式 　为减少存储转发中包的存储时延，包可分为更小的“片” 。当一个结点把头片送到下一结点后，后面的各个片也依次送出。 * 特点：包不必全部存入缓冲后再做路由判断，只要接收到用作寻径信息（头片），即进行路由选择。 * 结点中缓冲器的容量小，各片的传送可按流水方式进行。传输延迟略大于线路交换，网络冲突较小。 * 一个结点一旦开始传送一个包中的头片后，必须等待这个包所有片都送出后，才能传送其他包。不同包的片不能混合在一起传送。 * 在新型的多计算机系统中得到了广泛的应用。 * 与虚拟直通的不同之处 当输出通路忙时，结点是把一个片存储到缓冲器中。 片的大小比包小很多，所以能有效地减少缓冲器的容量，使得它易于用VLSI实现。 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1edxgje4j30se09075c.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <ul>
-<li>存储转发与虫孔方式的时间比较 <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1eeaqc9aj31200dugp8.jpg"> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1eeu5e6vj312g0biwfp.jpg"></li>
+<li>存储转发与虫孔方式的时间比较 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1eeaqc9aj31200dugp8.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1eeu5e6vj312g0biwfp.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
 </ul>
 <h5 id="死锁与虚拟通道">死锁与虚拟通道</h5>
 <h5 id="流量控制策略">流量控制策略</h5>
@@ -1036,7 +815,19 @@
 <li>自适应寻径：通信的通路每一次都要根据资源或者网络的情况来选择。
 <ul>
 <li>对于二维的网格网络来说，这种寻径方法被称为X-Y寻径。 先沿X维方向进行寻径，然后再沿Y维方向寻找路径。</li>
-<li>对于超立方体来说，这种寻径方法被称为E-cube寻径。 <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1ej6oq76j30zg0kcte8.jpg"> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1ejb5p43j30xg0butbd.jpg"></li>
+<li>对于超立方体来说，这种寻径方法被称为E-cube寻径。 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1ej6oq76j30zg0kcte8.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1ejb5p43j30xg0butbd.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
 </ul></li>
 </ul>
 <h5 id="通信模式">通信模式</h5>
@@ -1055,10 +846,29 @@
 <p>答：3次混洗和4次交换</p>
 <p><strong>设Cube为立方体互联函数， <span class="math inline">\(\sigma\)</span> 为均匀洗牌函数， <span class="math inline">\(\beta\)</span> 为蝶式函数， <span class="math inline">\(\rho\)</span> 为反位序函数，分别求 <span class="math inline">\(Cube_{3}(0110)\)</span> 、 <span class="math inline">\(\sigma_{(3)}(0110)\)</span> 、 <span class="math inline">\(\beta(0110)\)</span> 、 <span class="math inline">\(\rho^{(2)}(0110)\)</span> .</strong></p>
 <p>答: * <span class="math inline">\(Cube_3(0110) = 0010\)</span> * <span class="math inline">\(\sigma_{(3)}(0110) = 0101\)</span> * <span class="math inline">\(\beta(0110) = 0110\)</span> * <span class="math inline">\(\rho^{(2)}(0110) = 1010\)</span></p>
-<p><strong>9.11 N=16的STARAN网络在级控制方式下实现分组交换置换，如果实现的分组交换置换是：首先是4组4元交换，然后是2组8元交换，最后是1组16元交换，写出网络实现的互联函数。</strong> <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg"></p>
+<p><strong>9.11 N=16的STARAN网络在级控制方式下实现分组交换置换，如果实现的分组交换置换是：首先是4组4元交换，然后是2组8元交换，最后是1组16元交换，写出网络实现的互联函数。</strong> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tKfTcly1fh0u2zogtbj31au0ko799.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p><strong>9.12 具有 <span class="math inline">\(N=2^n\)</span> 个输入端的Omega网络，采用单元控制。 (1) N个输入总共应有多少种不同的排列？ (2) 该Omega网络通过一次可以实现的置换总共可有多少种？ (3) 若N=8, 计算一次通过能实现的置换数占全部排列的百分比。</strong></p>
 <p>答: (1) N个输入可有N!种不同排列。 (2) 该Omega网络通过一关可以实现的置换有 <span class="math inline">\(2^{\frac{N}{2}log_2N}=N^{\frac{N}{2}}\)</span> 种不同。 (3) 若N=8, 通过Omega网络一次可以实现的不重复置换有 <span class="math inline">\(8^4 = 4096\)</span> 种。 8个输入可实现的不重复排列有 <span class="math inline">\(8! = 40320\)</span> 种。 故，一次可实现的置换数占全部排列数的10.16%.</p>
-<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg" alt="Omega网络"> <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0uderthoj313k0fiq8u.jpg" alt="Omega网络" title="">
+                </div>
+                <div class="image-caption">Omega网络</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tKfTcly1fh0udoemg0j30oq0ekjtz.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="第十章-多处理机">第十章 多处理机</h3>
 <h4 id="多处理机概念">多处理机概念:</h4>
 <ul>
@@ -1083,7 +893,13 @@
 <li>允许共享数据进入Cache，就可能出现多个处理器的Cache中都有同一存储块的副本，</li>
 <li>当某个处理器对其Cache中的数据进行修改后，会使得其Cache中的数据与其他Cache中的数据不一致。</li>
 </ul>
-<p><strong>例　由两个处理器（A和B）读写引起的Cache一致性问题</strong> <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1snhy9wzj30x40l0ju6.jpg"></p>
+<p><strong>例　由两个处理器（A和B）读写引起的Cache一致性问题</strong> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1snhy9wzj30x40l0ju6.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h5 id="存储器的一致性">存储器的一致性</h5>
 <ul>
 <li>如果对某个数据项的任何读操作均可得到其最新写入的值，则认为这个存储系统是一致的。</li>
@@ -1161,7 +977,13 @@
 <li>大规模并行处理机(MPP)</li>
 <li>工作站机群(COW)</li>
 </ul>
-<p><strong>五类机器特征比较</strong> <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1t1pdhllj30zg0lg461.jpg"></p>
+<p><strong>五类机器特征比较</strong> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fh1t1pdhllj30zg0lg461.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h5 id="按存储器组织结构">按存储器组织结构</h5>
 <ul>
 <li>集中式共享存储器结构(SMP)</li>
@@ -1169,7 +991,13 @@
 </ul>
 <h3 id="第十三章-阵列处理机">第十三章 阵列处理机</h3>
 <h4 id="阵列处理机">阵列处理机</h4>
-<p>多处理单元(PE)按照一定互连方式，在同一控制部件(CU) 控制下，对各自数据完成同一条指令规定的操作。 * 从CU看，指令串行执行。 * 从PE 看，数据并行处理。 * 属于单指令流多数据流结构(SIMD)。细粒度并行处理机 * 应用领域：主要用于高速向量或矩阵运算。 <strong>操作模型</strong> <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1et9ecwej30u20emwfo.jpg"></p>
+<p>多处理单元(PE)按照一定互连方式，在同一控制部件(CU) 控制下，对各自数据完成同一条指令规定的操作。 * 从CU看，指令串行执行。 * 从PE 看，数据并行处理。 * 属于单指令流多数据流结构(SIMD)。细粒度并行处理机 * 应用领域：主要用于高速向量或矩阵运算。 <strong>操作模型</strong> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1et9ecwej30u20emwfo.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h5 id="阵列处理机的操作模型可用五元组表示">阵列处理机的操作模型可用五元组表示</h5>
 <p>阵列处理机＝（N，C，I，M，R） * N：机器的处理单元（PE）数。 例如：Illiac Ⅳ计算机有64个PE MP-1计算机有16384个PE * C：控制部件CU直接执行的指令集，包括标量指令和程序流控制指令。 * I：由CU广播至所有PE进行并行执行的指令集。 包括算术运算、逻辑运算、数据寻径、屏蔽以及其他由每个PE对它的数据所执行的局部操作。 * M：屏蔽方案集 每种屏蔽将所有PE划分成允许操作和禁止操作两种工作模式。 * R：数据寻径功能集 说明互连网络中PE间通信所需要的各种设置模式。</p>
 <h4 id="阵列处理机的结构">阵列处理机的结构</h4>
@@ -1197,7 +1025,13 @@
 <h4 id="simd机与并行算法的关系">SIMD机与并行算法的关系</h4>
 <p>以Illiac Ⅳ为例，讨论阵列处理机的算法。</p>
 <h5 id="解有限差分方程需要知道大致含义"><strong>解有限差分方程</strong>（需要知道大致含义）</h5>
-<p>把一个有规则的网格覆盖在整个场域上，用网格点上的变量值写出差分方程组以代替场方程来进行计算。 描述平面场的拉普拉斯方程 <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1roxfqgsj30ak058wej.jpg"></p>
+<p>把一个有规则的网格覆盖在整个场域上，用网格点上的变量值写出差分方程组以代替场方程来进行计算。 描述平面场的拉普拉斯方程 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1roxfqgsj30ak058wej.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p>差分法求解的精度与网格间距有直接的关系，网格越小，精度越高，但求解所花费的时空开销越大。</p>
 <p>Illiac Ⅳ在计算时，是把内部网格点分配给各个处理单元的。因此，上述计算过程可以并行地完成，从而大幅度地提高处理速度。</p>
 <h5 id="矩阵加">矩阵加</h5>
@@ -1209,18 +1043,44 @@
 <li>在SIMD阵列处理机上求解这个问题 执行下列FORTRAN程序： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DO 10 I＝0，7</span><br><span class="line">	C（I，J）＝0</span><br><span class="line">    DO 10 K＝0，7</span><br><span class="line">    10  C(I，J) ＝C(I，J)＋A(I，K)*B(K，J)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>速度提高到原来的8倍，即每个处理单元的计算时间缩短为64次乘加时间。</p>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1s7p9bwzj30eo0um416.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1s7p9bwzj30eo0um416.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="递归折叠求和算法">递归折叠求和算法</h4>
 <p>一个将N个数的顺序相加转变为并行相加的问题。</p>
 <p>取N＝8。即有8个数A（I）要顺序累加（0≤I≤7） 这是一个串行程序，共要进行8次加法。</p>
 <p>在阵列处理机上采用成对递归相加的算法，则只需 <span class="math inline">\(log_28＝3\)</span> 次加法 。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1rz5ro8jj30vu0leadn.jpg"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fh1rz5ro8jj30vu0leadn.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="实例-4">实例</h4>
 <p><strong>阵列处理机操作模型可以用5元组表示:阵列处理机=(N, C, I, M, R), 简述其中N、C、I、M、R的含义。</strong> 答:N为极其的处理单元(PE)数； C为控制部件CU I为由CU广播至所有PE进行并行执行的指令集 M为屏蔽方案集，其中每种屏蔽将所有PE划分成允许操作和禁止操作两种模式 R为数据寻径功能机，说明互联网络中PE间通信所需要的各种设置模式</p>
 <p><strong>13.3 简述阵列处理机的特点</strong> 答： 1. 阵列机是以单指令流多数据流方式工作的。 2. 阵列机是通过设置多个相同的处理单元来开发并行性的，它利用并行性的同时性，而不是并发性 3. 阵列机是以某一类算法为背景的专用计算机 4. 阵列机的研究必须与并行算法的研究密切结合 5. 阵列机的控制器实质上是一台标量处理机</p>
 <p><strong>试分析与比较SIMD计算机与向量计算机的相同与不同</strong> 答: 相同点: 都能对大量数据进行向量处理 不同点: * SIMD获得高处理速度主要是采用资源重复的并行措施 * 各个处理单元并行工作 * 向量处理机依靠的是多功能流水线部件时间重叠，指高速度 * 另一区别是SIMD计算机有它的互联网络</p>
 <p><strong>简述SIMD计算机的分布式存储器与共享存储器的异同</strong> 答: 相同点: 都存在互联网络 不同点: * 在共享方案中，共享的多体并行存储器通过对准网络与各处理单元相连 * 在分布内存方案中，每个处理单元有自己的本地存储器，处理单元之间的数据通过数据寻径网络完成。</p>
-<p><img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg" alt="存储器"> <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg"> 这道题，推算体号地址公式的知识点不在我们书上，理论上，我们应该只能一个个尝试填表。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tKfTcly1fh0ynidqf9j315806w0ut.jpg" alt="存储器" title="">
+                </div>
+                <div class="image-caption">存储器</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww4.sinaimg.cn/large/006tKfTcly1fh0ynxda5fj312g0jy7iv.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这道题，推算体号地址公式的知识点不在我们书上，理论上，我们应该只能一个个尝试填表。</p>
 <p>**例1．试分别在下面两种计算机系统上用最短的时间来计算表达式s=A1<em>B1+A2</em>B2+…A32*B32。假设加法和乘法分别需要两个和四个单位时间，从存储器取指令、取数据、译码的时间忽略不计，所有的指令和数据已装入有关的PE。试确定下列每种情况的最小计算时间：<strong>（重点，必考） 1. </strong>一台SISD串行计算机。<strong> 2. </strong>一台有8个PE的SIMD计算机，8个PE用移数函数PM2I连接。每个PE用一个单位时间可以把数据直接送给它的相邻PE。操作数Ai和Bi最初存放在PEi mod 8中，其中i=1，2，…，32。每个PE可在不同时刻执行加法或乘法**</p>
 <p>答: 1. 在SISD计算机中,需要32次乘法和31次加法。 共需要时间：T=4<em>32+2</em>31=190单位时间</p>
 <ol start="2" type="1">
@@ -1228,798 +1088,309 @@
 </ol>
 <p><img src="http://ww3.sinaimg.cn/large/006tNc79ly1fh1sdwejxzj30lm07it9c.jpg"></p>
 
-      
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
     </div>
-
     
-
-    
-    
-    
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>Post author:  </strong>Sean10</li>
-  <li class="post-copyright-link">
-    <strong>Post link: </strong>
-    <a href="https://sean10.github.io/2017/06/28/undefined/" title="计算机系统结构复习note">https://sean10.github.io/2017/06/28/undefined/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/系统结构/" rel="tag"># 系统结构</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/06/27/undefined/" rel="next" title="Unix编程环境复习笔记">
-                <i class="fa fa-chevron-left"></i> Unix编程环境复习笔记
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/01/undefined/" rel="prev" title="原计划更换markdown渲染引擎">
-                原计划更换markdown渲染引擎 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
     </footer>
-  </div>
-  
-  
-  
-  </article>
+</blockquote>
 
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
-
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统结构/">系统结构</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
     
-    <div class="sidebar-inner">
 
-      
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/28/undefined/&title=《计算机系统结构复习note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/28/undefined/&title=《计算机系统结构复习note》 — 行路中.&source=仅供参考~
+看到了，没记住是最悲剧的……" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/28/undefined/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机系统结构复习note》 — 行路中.&url=https://sean10.github.io/2017/06/28/undefined/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/28/undefined/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Sean10</p>
-              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
-          </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">135</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">128</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
 
         </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础知识"><span class="nav-number">1.</span> <span class="nav-text">第一章 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统结构的相关概念"><span class="nav-number">1.1.</span> <span class="nav-text">系统结构的相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统的层次结构概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">计算机系统的层次结构概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#广义机器虚拟机器透明性编译解释"><span class="nav-number">1.1.2.</span> <span class="nav-text">广义机器、虚拟机器、透明性、编译、解释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统结构组织和实现"><span class="nav-number">1.1.3.</span> <span class="nav-text">计算机系统结构、组织和实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算机系统分类方法"><span class="nav-number">1.1.4.</span> <span class="nav-text">计算机系统分类方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统分析技术"><span class="nav-number">1.2.</span> <span class="nav-text">系统分析技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#大概率事件优先原理"><span class="nav-number">1.2.1.</span> <span class="nav-text">大概率事件优先原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#amdahl定律加速比定义"><span class="nav-number">1.2.2.</span> <span class="nav-text">Amdahl定律、加速比定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序访存的局部性原理"><span class="nav-number">1.2.3.</span> <span class="nav-text">程序访存的局部性原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cpu性能公式"><span class="nav-number">1.2.4.</span> <span class="nav-text">CPU性能公式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cpu时间"><span class="nav-number">1.2.5.</span> <span class="nav-text">CPU时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每条指令执行的平均时钟周期数cpi"><span class="nav-number">1.2.6.</span> <span class="nav-text">每条指令执行的平均时钟周期数CPI</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能评价标准"><span class="nav-number">1.3.</span> <span class="nav-text">性能评价标准</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.4.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-流水线技术"><span class="nav-number">2.</span> <span class="nav-text">第三章 流水线技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线的概念"><span class="nav-number">2.1.</span> <span class="nav-text">流水线的概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单功能与多功能流水线"><span class="nav-number">2.1.1.</span> <span class="nav-text">单功能与多功能流水线</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单功能流水线只能完成一种固定功能的流水线"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">单功能流水线：只能完成一种固定功能的流水线。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多功能流水线流水线的各段可以进行不同的连接以实现不同的功能"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">多功能流水线：流水线的各段可以进行不同的连接，以实现不同的功能。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线表示方法时空图-连接图"><span class="nav-number">2.2.</span> <span class="nav-text">流水线表示方法–时空图 、连接图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线特点五段流水线访存部件me-转移ex"><span class="nav-number">2.3.</span> <span class="nav-text">流水线特点：五段流水线（访存部件ME, 转移EX)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能指标-吞吐率加速比效率-最佳段数"><span class="nav-number">2.4.</span> <span class="nav-text">性能指标 ： 吞吐率、加速比、效率、 最佳段数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流水线相关与冲突及解决办法"><span class="nav-number">2.5.</span> <span class="nav-text">流水线相关与冲突及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据冲突解决办法"><span class="nav-number">2.5.1.</span> <span class="nav-text">数据冲突解决办法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制冲突解决办法"><span class="nav-number">2.5.2.</span> <span class="nav-text">控制冲突解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-向量处理机"><span class="nav-number">3.</span> <span class="nav-text">第四章 向量处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理方法"><span class="nav-number">3.1.</span> <span class="nav-text">向量处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量流水处理机结构"><span class="nav-number">3.2.</span> <span class="nav-text">向量流水处理机结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提高向量处理机性能的方法"><span class="nav-number">3.3.</span> <span class="nav-text">提高向量处理机性能的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量处理机性能的主要参数"><span class="nav-number">3.4.</span> <span class="nav-text">向量处理机性能的主要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一条向量指令的处理时间"><span class="nav-number">3.4.1.</span> <span class="nav-text">一条向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#每秒多少个浮点运算结果mflop或一个浮点运算的时间"><span class="nav-number">3.4.2.</span> <span class="nav-text">每秒多少个浮点运算结果（MFLOP或一个浮点运算的时间）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一组向量指令的处理时间"><span class="nav-number">3.4.3.</span> <span class="nav-text">一组向量指令的处理时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分段开采时一组向量指令的总执行时间复习课件中未作为重点"><span class="nav-number">3.4.4.</span> <span class="nav-text">分段开采时一组向量指令的总执行时间(复习课件中未作为重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#向量流水线的最大性能-r_infty"><span class="nav-number">3.4.5.</span> <span class="nav-text">向量流水线的最大性能 \(R_{\infty}\)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#例题"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#半性能向量长度-n_frac12"><span class="nav-number">3.4.6.</span> <span class="nav-text">半性能向量长度 \(n_{\frac{1}{2}}\)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#长度向量临界值-n_v同样不是重点"><span class="nav-number">3.4.7.</span> <span class="nav-text">长度向量临界值 \(n_v\)(同样不是重点)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-1"><span class="nav-number">3.5.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-指令集并行"><span class="nav-number">4.</span> <span class="nav-text">第五章 指令集并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令级并行度ilp"><span class="nav-number">4.1.</span> <span class="nav-text">指令级并行度ILP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发ilp的方法可以分为两大类"><span class="nav-number">4.2.</span> <span class="nav-text">开发ILP的方法可以分为两大类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#记分牌scoreboard算法"><span class="nav-number">4.2.1.</span> <span class="nav-text">记分牌(Scoreboard)算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tomasulo算法"><span class="nav-number">4.2.2.</span> <span class="nav-text">Tomasulo算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关与流水线冲突"><span class="nav-number">4.3.</span> <span class="nav-text">相关与流水线冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理想流水线的cpi加上各类停顿的时钟周期数"><span class="nav-number">4.4.</span> <span class="nav-text">理想流水线的CPI加上各类停顿的时钟周期数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术"><span class="nav-number">4.5.</span> <span class="nav-text">动态分支预测技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超标量处理机"><span class="nav-number">4.6.</span> <span class="nav-text">超标量处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超流水线处理机"><span class="nav-number">4.7.</span> <span class="nav-text">超流水线处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超长指令字vliw处理机"><span class="nav-number">4.8.</span> <span class="nav-text">超长指令字（VLIW)处理机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-2"><span class="nav-number">4.9.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态分支预测技术-1"><span class="nav-number">4.10.</span> <span class="nav-text">动态分支预测技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第九章-互联网络"><span class="nav-number">5.</span> <span class="nav-text">第九章 互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#互连网络相关概念"><span class="nav-number">5.1.</span> <span class="nav-text">互连网络相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类"><span class="nav-number">5.1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大要素互连结构开关元件控制方式"><span class="nav-number">5.1.2.</span> <span class="nav-text">三大要素：互连结构、开关元件、控制方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-number">5.1.3.</span> <span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联函数"><span class="nav-number">5.2.</span> <span class="nav-text">互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本互联函数"><span class="nav-number">5.2.1.</span> <span class="nav-text">基本互联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#恒等函数"><span class="nav-number">5.2.1.1.</span> <span class="nav-text">恒等函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交换函数"><span class="nav-number">5.2.1.2.</span> <span class="nav-text">交换函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#均匀洗牌函数"><span class="nav-number">5.2.1.3.</span> <span class="nav-text">均匀洗牌函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#蝶式函数"><span class="nav-number">5.2.1.4.</span> <span class="nav-text">蝶式函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#反位序函数"><span class="nav-number">5.2.1.5.</span> <span class="nav-text">反位序函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#移数函数"><span class="nav-number">5.2.1.6.</span> <span class="nav-text">移数函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#pm2i移数函数重点"><span class="nav-number">5.2.1.7.</span> <span class="nav-text">PM2I移数函数(重点)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的结构参数"><span class="nav-number">5.3.</span> <span class="nav-text">互联网络的结构参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络的性能指标"><span class="nav-number">5.4.</span> <span class="nav-text">互联网络的性能指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互联网络"><span class="nav-number">5.5.</span> <span class="nav-text">互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络"><span class="nav-number">5.5.1.</span> <span class="nav-text">动态互联网络</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#总线网络"><span class="nav-number">5.5.1.1.</span> <span class="nav-text">总线网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#交叉开关网络"><span class="nav-number">5.5.1.2.</span> <span class="nav-text">交叉开关网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级互联网络的构成"><span class="nav-number">5.5.1.3.</span> <span class="nav-text">多级互联网络的构成</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#多级立方体网络"><span class="nav-number">5.5.1.4.</span> <span class="nav-text">多级立方体网络</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#omega网络"><span class="nav-number">5.5.1.5.</span> <span class="nav-text">Omega网络</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态互联网络的比较"><span class="nav-number">5.5.2.</span> <span class="nav-text">动态互联网络的比较</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息传递机制重点"><span class="nav-number">5.6.</span> <span class="nav-text">消息传递机制（重点）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由选择和消息传递方法式"><span class="nav-number">5.7.</span> <span class="nav-text">路由选择和消息传递方法式:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁与虚拟通道"><span class="nav-number">5.7.1.</span> <span class="nav-text">死锁与虚拟通道</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流量控制策略"><span class="nav-number">5.7.2.</span> <span class="nav-text">流量控制策略</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#包冲突的解决"><span class="nav-number">5.7.2.1.</span> <span class="nav-text">包冲突的解决</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#确定性寻径和自适应寻径"><span class="nav-number">5.7.2.2.</span> <span class="nav-text">确定性寻径和自适应寻径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通信模式"><span class="nav-number">5.7.3.</span> <span class="nav-text">通信模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-3"><span class="nav-number">5.8.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十章-多处理机"><span class="nav-number">6.</span> <span class="nav-text">第十章 多处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机概念"><span class="nav-number">6.1.</span> <span class="nav-text">多处理机概念:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mimd计算机的特点分类"><span class="nav-number">6.1.1.</span> <span class="nav-text">MIMD计算机的特点、分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#flynn分类法"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">Flynn分类法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#mimd已成为通用多处理机系统结构的选择原因"><span class="nav-number">6.1.1.2.</span> <span class="nav-text">MIMD已成为通用多处理机系统结构的选择，原因：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#根据存储器的组织结构-把现有的mimd机器分为两类"><span class="nav-number">6.1.1.3.</span> <span class="nav-text">根据存储器的组织结构 ，把现有的MIMD机器分为两类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机一致性问题"><span class="nav-number">6.2.</span> <span class="nav-text">多处理机一致性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cache的一致性问题和原因"><span class="nav-number">6.2.1.</span> <span class="nav-text">Cache的一致性问题和原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存储器的一致性"><span class="nav-number">6.2.2.</span> <span class="nav-text">存储器的一致性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现一致性的基本方案"><span class="nav-number">6.2.3.</span> <span class="nav-text">实现一致性的基本方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cache一致性协议"><span class="nav-number">6.2.4.</span> <span class="nav-text">Cache一致性协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#采用两种方法来解决cache一致性问题"><span class="nav-number">6.2.5.</span> <span class="nav-text">采用两种方法来解决Cache一致性问题。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监听协议的实现"><span class="nav-number">6.2.6.</span> <span class="nav-text">监听协议的实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的基本思想"><span class="nav-number">6.2.7.</span> <span class="nav-text">目录协议的基本思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#目录协议的三种结构"><span class="nav-number">6.2.8.</span> <span class="nav-text">目录协议的三种结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多处理机分类"><span class="nav-number">6.3.</span> <span class="nav-text">多处理机分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按多处理机之间物理连接的紧密程度与交互作用能力强弱"><span class="nav-number">6.3.1.</span> <span class="nav-text">按多处理机之间物理连接的紧密程度与交互作用能力强弱</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按处理机结构"><span class="nav-number">6.3.2.</span> <span class="nav-text">按处理机结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按系统组成结构"><span class="nav-number">6.3.3.</span> <span class="nav-text">按系统组成结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按存储器组织结构"><span class="nav-number">6.3.4.</span> <span class="nav-text">按存储器组织结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第十三章-阵列处理机"><span class="nav-number">7.</span> <span class="nav-text">第十三章 阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机"><span class="nav-number">7.1.</span> <span class="nav-text">阵列处理机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#阵列处理机的操作模型可用五元组表示"><span class="nav-number">7.1.1.</span> <span class="nav-text">阵列处理机的操作模型可用五元组表示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阵列处理机的结构"><span class="nav-number">7.2.</span> <span class="nav-text">阵列处理机的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#simd机与并行算法的关系"><span class="nav-number">7.3.</span> <span class="nav-text">SIMD机与并行算法的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解有限差分方程需要知道大致含义"><span class="nav-number">7.3.1.</span> <span class="nav-text">解有限差分方程（需要知道大致含义）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵加"><span class="nav-number">7.3.2.</span> <span class="nav-text">矩阵加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#矩阵乘"><span class="nav-number">7.3.3.</span> <span class="nav-text">矩阵乘</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归折叠求和算法"><span class="nav-number">7.4.</span> <span class="nav-text">递归折叠求和算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例-4"><span class="nav-number">7.5.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
     </div>
-  </aside>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/01/undefined/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">原计划更换markdown渲染引擎</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/27/undefined/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Unix编程环境复习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
 
 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
         
-      </div>
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
     </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Sean10</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">360k</span>
-  
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-    <span title="Reading time total">5:27</span>
-  
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/28/undefined/&title=《计算机系统结构复习note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/28/undefined/&title=《计算机系统结构复习note》 — 行路中.&source=仅供参考~
+看到了，没记住是最悲剧的……" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/28/undefined/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机系统结构复习note》 — 行路中.&url=https://sean10.github.io/2017/06/28/undefined/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/28/undefined/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/06/28/undefined/" alt="微信分享二维码">
 </div>
 
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
-      <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
-</div>
-
-      </div>
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
 </script>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
 
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
+<!-- mathjax config similar to math.stackexchange -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: true,
-        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
-        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: true
-    });
-  </script>
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
         processEscapes: true,
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
-    
-  
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
-  
-  
 
-  
 
-  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-  
 
-  
 
-  
+
 
 </body>
 </html>

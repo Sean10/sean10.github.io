@@ -1,3280 +1,802 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html>
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+    
+
+    
+
+    
 
 
 
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="笔记 随笔">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="笔记 随笔">
 <meta property="og:type" content="website">
 <meta property="og:title" content="行路中.">
 <meta property="og:url" content="https://sean10.github.io/page/11/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="笔记 随笔">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="行路中.">
 <meta name="twitter:description" content="笔记 随笔">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
 
-
-
-
-
-
-  <link rel="canonical" href="https://sean10.github.io/page/11/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>行路中.</title>
-  
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
 
-  
-  
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">行路中.</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">行路中.</h1>
+        <h5 class="subtitle">
+            
+                脚踏实地
+            
+        </h5>
+    </div>
+
     
-  
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-非递归判断完全二叉树！递归？No-answer"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-29 18:56:00" datetime="2015-11-29T10:56:00.000Z"  itemprop="datePublished">2015-11-29</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
     
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">行路中.</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/29/undefined/">非递归判断完全二叉树！递归？No answer!</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        判断完全二叉树。
+完全二叉树的定义是，只有第n行将所有子节点元素集中在最左以外（可以不满），其余行所有节点均为满。
+结构 1234typedef struct tree&#123;	char data;	struct tree *lc,*rc;&#125;BitNode,*BitTree;
+1.采用层次遍历 通过建立一个队列，将节点an层次入队列。当队列首节点为空时，之后的节点应当均为空，出...
+    
+
+        <a href="/2015/11/29/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
     </div>
     
-      
-        <p class="site-subtitle">脚踏实地</p>
-      
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
+
+    </div>
     
-  </div>
+</article>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-偏序集、格"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-28 23:44:00" datetime="2015-11-28T15:44:00.000Z"  itemprop="datePublished">2015-11-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
 
 
 
-<nav class="site-nav">
+    </div>
+
+    
+
+
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-  </li>
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/28/undefined/">偏序集、格</a>
+    </h3>
+  
 
-      
-      
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ####重新看一下关于格的知识
+具有极值性质的偏序集元素有许多重要应用。 其中偏序集的一个元素叫做极大的，当它不小于这个偏序集的任何其他元素，即在偏序集中是极大的。
+这里有个问题，什么叫做极大的？偏序集难道只有大小关系吗，不是说关系是任意的吗。难道说这个偏序集的大小关系其实就是是否满足这个偏序集所指定的关系，满足即为大，不满足即为小？这样的话又有一个问题，之前定义也说到了，满足即称为可比的，...
+    
+
+        <a href="/2015/11/28/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-《沉默的大多数》跳出手掌心"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-27 23:56:00" datetime="2015-11-27T15:56:00.000Z"  itemprop="datePublished">2015-11-27</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/27/undefined/">《沉默的大多数》跳出手掌心</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+
+　　近来读了C．P．斯诺的《两种文化》。这本书里谈到的事倒是不新鲜，比方说，斯诺先生把知识分子分成了科学知识分子和文学（人文）知识分子两类，而且说，有两种文化，一种是科学文化，一种是文学（人文）文化。现在的每个知识分子，他的事业必定在其中一种之中。 　　我要谈到的事，其实与斯诺先生的书只有一点关系，那就是，我以为，把两种文化合在一起，就是人类前途所系。这么说还不大准确，实际上，是创造了这...
+    
+
+        <a href="/2015/11/27/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书评/">书评</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思考/">思考</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/王小波/">王小波</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-《沉默的大多数》序言"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-26 18:09:00" datetime="2015-11-26T10:09:00.000Z"  itemprop="datePublished">2015-11-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/26/undefined/">《沉默的大多数》序言</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+
+年轻时读萧伯纳的剧本《芭芭拉少校》，有场戏给我留下了深刻的印象：工业巨头安德谢夫老爷子见到了多年不见的儿子斯泰芬，问他对做什么有兴趣。这个年轻人在科学、文艺、法律等一切方面一无所长，但他说自己有一项长处：会明辨是非。老爷子把自己的儿子暴损了一通，说这件事难倒了一切科学家、政治家、哲学家，怎么你什么都不会，就会一个明辨是非？我看到这段文章时只有二十来岁，登时痛下决心，说这辈子我干什么都可以...
+    
+
+        <a href="/2015/11/26/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书评/">书评</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/王小波/">王小波</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-并查集——HDU1213"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-26 16:02:00" datetime="2015-11-26T08:02:00.000Z"  itemprop="datePublished">2015-11-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/26/undefined/">并查集——HDU1213</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        第一次做并查集的题，选了道比较简单的。 用数组很简单，不多说了。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;cstdio&gt;#include &lt;cstdlib&gt;int a[1010];void Init(int N)&#...
+    
+
+        <a href="/2015/11/26/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并查集/">并查集</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-二叉树——Huffman树求最短路径和"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-26 14:25:00" datetime="2015-11-26T06:25:00.000Z"  itemprop="datePublished">2015-11-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/26/undefined/">二叉树——Huffman树求最短路径和</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        题目链接
+总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算...
+    
+
+        <a href="/2015/11/26/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Huffman/">Huffman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-二叉树——文本二叉树"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-26 09:25:00" datetime="2015-11-26T01:25:00.000Z"  itemprop="datePublished">2015-11-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/26/undefined/">二叉树——文本二叉树</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        总时间限制: 1000ms 内存限制: 65536kB ####描述 
+                
+                    
+                    
+                
+                img
+             如上图，一棵每个节点都是一个字母，且字母互不相同的二叉树，可以用以下若干行文本表示:
+12345678A...
+    
+
+        <a href="/2015/11/26/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-二叉树——实现堆结构"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-23 09:46:00" datetime="2015-11-23T01:46:00.000Z"  itemprop="datePublished">2015-11-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/23/undefined/">二叉树——实现堆结构</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        题目链接 总时间限制: 3000ms 内存限制: 65535kB 描述 定义一个数组，初始化为空。在数组上执行两种操作：
+1、增添1个元素，把1个新的元素放入数组。
+2、输出并删除数组中最小的数。
+使用堆结构实现上述功能的高效算法。
+输入 第一行输入一个整数t，代表测试数据的组数。 对于每组测试数据，第一行输入一个整数n，代表操作的次数。 每次操作首先输入一个整数type。 当type=1，...
+    
+
+        <a href="/2015/11/23/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆/">堆</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-二叉树——由中根序列和后根序列重建二叉树"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-22 21:48:00" datetime="2015-11-22T13:48:00.000Z"  itemprop="datePublished">2015-11-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/22/undefined/">二叉树——由中根序列和后根序列重建二叉树</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        题目链接 总时间限制: 500ms 内存限制: 65535kB 描述 我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。
+用不同的整数来唯一标识二叉树的每一个结点
+中根序列是...
+    
+
+        <a href="/2015/11/22/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-二叉树——UVA122"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-22 19:23:00" datetime="2015-11-22T11:23:00.000Z"  itemprop="datePublished">2015-11-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/22/undefined/">二叉树——UVA122</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        二叉树的层次遍历 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include ...
+    
+
+        <a href="/2015/11/22/undefined/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
     </ul>
-  
 
-  
     
-
-  
-
-  
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
+    </div>
 </nav>
 
 
-
-  
-
-
-
 </div>
-    </header>
 
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/29/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
+</p>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2019</span>
+            <span>
                 
-                <a class="post-title-link" href="/2015/11/29/undefined/" itemprop="url">
-                  非递归判断完全二叉树！递归？No answer!
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-29 18:56:00" itemprop="dateCreated datePublished" datetime="2015-11-29T18:56:00+08:00">2015-11-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/29/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/29/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/29/undefined/" class="leancloud_visitors" data-flag-title="非递归判断完全二叉树！递归？No answer!">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1.8k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:02</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>判断完全二叉树。</p>
-<p>完全二叉树的定义是，只有第n行将所有子节点元素集中在最左以外（可以不满），其余行所有节点均为满。</p>
-<p>结构 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct tree&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct tree *lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br></pre></td></tr></table></figure></p>
-<p>1.采用层次遍历 通过建立一个队列，将节点an层次入队列。当队列首节点为空时，之后的节点应当均为空，出现非空，则为非完全二叉树 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">bool JudgeComplete(BitTree root)</span><br><span class="line">&#123;</span><br><span class="line">    queue&lt;BitTree&gt; q;</span><br><span class="line">    if(NULL == root)</span><br><span class="line">    	return true;</span><br><span class="line">    q.push(root);</span><br><span class="line">    BitTree cur = NULL;</span><br><span class="line">    bool flag = false;</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">    	cur = q.front();</span><br><span class="line">     	q.pop();</span><br><span class="line">             if(cur)</span><br><span class="line">             &#123;</span><br><span class="line">             	if(flag)</span><br><span class="line">             		return false;</span><br><span class="line">                	q.push(cur-&gt;lc);</span><br><span class="line">                	q.push(cur-&gt;rc);</span><br><span class="line">             &#125;</span><br><span class="line">             else</span><br><span class="line">             	flag = true;</span><br><span class="line">   &#125;</span><br><span class="line">   return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.递归判断的方法 如果要使用最原始的递归，那么根据分形的原则，完全二叉树并没有处处分形（自相似），所以是肯定不能使用最原始的递归方法，即只传递一个根节点进入的。下面两种传统的递归方法都有漏洞。 那么，可不可以通过追加其他的形参比如<em>层次</em>、<em>深度</em>、<em>左右子树标记</em>来达成目的呢？ 假设有一个深度为3的子树，追加这三项是可以判断出的，然而如果深度为100呢？仅一个标记已经无法判断这颗子树的位置，也就无法判断完全二叉树了。 所以，我认为对于完全二叉树的判断，只能采用队列层次遍历的方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool JudgeComplete(BitTree root)</span><br><span class="line">&#123;</span><br><span class="line">	if(root != NULL)&#123;</span><br><span class="line">		if(root-&gt;rc != NULL &amp;&amp; root-&gt;lc == NULL)</span><br><span class="line">			return false;</span><br><span class="line">		JudgeComplete(root-&gt;lc);</span><br><span class="line">		JudgeComplete(root-&gt;rc);</span><br><span class="line">	&#125; </span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>存在一个问题，对于同时存在左右子树，不过是在倒数第二行的右子树上同时存在2个子树，而同行的左子树无子树，这种情况也会被判断为完全二叉树</p>
-<p>另外还有一个不同的递归算法，同样有比较大的问题 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bool JudgeComplete(BitTree root)   //采用递归算法来实现判断是否为完全二叉树</span><br><span class="line">&#123;</span><br><span class="line">      if(root == NULL) </span><br><span class="line">          return   true; </span><br><span class="line">      if(root-&gt;lc == NULL &amp;&amp; root-&gt;rc == NULL) </span><br><span class="line">          return   true;  </span><br><span class="line">      if(root-&gt;lc  == NULL  &amp;&amp; root-&gt;rc != NULL || root-&gt;lc != NULL &amp;&amp; root-&gt;rc == NULL) </span><br><span class="line">          return   false; </span><br><span class="line">      return   JudgeComplete(root-&gt;lc) &amp; JudgeComplete(root-&gt;rc); </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这个算法里就是完全把存在左子树，不存在右子树作为了反例了的，实际上是存在一个这样的二叉树的。</p>
-
-          
-        
-      
+        </p>
     </div>
+</footer>
 
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/28/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/28/undefined/" itemprop="url">
-                  偏序集、格
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-28 23:44:00" itemprop="dateCreated datePublished" datetime="2015-11-28T23:44:00+08:00">2015-11-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/pro/" itemprop="url" rel="index"><span itemprop="name">专业</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/28/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/28/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/28/undefined/" class="leancloud_visitors" data-flag-title="偏序集、格">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:02</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>####重新看一下关于格的知识</p>
-<p>具有极值性质的偏序集元素有许多重要应用。 其中偏序集的一个元素叫做极大的，当它不小于这个偏序集的任何其他元素，即在偏序集中是极大的。</p>
-<p>这里有个问题，什么叫做极大的？偏序集难道只有大小关系吗，不是说关系是任意的吗。难道说这个偏序集的大小关系其实就是是否满足这个偏序集所指定的关系，满足即为大，不满足即为小？这样的话又有一个问题，之前定义也说到了，满足即称为可比的，不满足即称为不可比的，那么在这里要求极大元素时，不可比的两个元素怎么说呢？</p>
-<p>这里所说的极大，其实就是在这个偏序集中不存在第二个元素可以使得他作为被处理的关系，即关系的受者。这样的元素称为该偏序集的极大元素。</p>
-<p>使用Hasse图可以很容易找到极大元素和极小元素，因为他们是这个图的顶和底。 那么为什么呢？通过这个图，我们得到的是一个各关系之间的比较，所以，图底的元素是已经消除了所有多余的必定存在的环和传递线的，剩下的既然他作为底或顶，就意味着他已经是唯一的运算的主体或完全的运算的客体存在的了。</p>
-<p>这里又出现了两个新的名词，最大元素和最小元素。这两个元素的出现有什么意义呢？这两个名词限定了一个性质，那就是这两个人最大和最小都一定是唯一的，如果在Hasse图中在最高层次和最低层次出现了两个及以上的数量的元素，那么这个偏序集就不存在最大元素和最小元素了。 这里保留一个问题，最大元素和最小元素的存在价值？</p>
-<p>上界和下界是完全不一样的，首先从关键性质上就已经发生了偏差。最大元素和最小元素有个性质是必定要是唯一的才行，而上界和下界就完全没有这样的性质，完全可以存在好多个，只要满足对该子集中所有的元素都满足关系，就可以称之为其上界和下界。</p>
-<p>其次从范围上，有所区别，比如最大元素和最小元素其实在定义中并没有提到可以用到偏序集的子集当中，而这里上界和下界主要就是用在偏序集的子集中。</p>
-<p>接下来，出现了两个关键新名词，最小上界和最大下界。</p>
-<p>而最大下界和最小上界就是意味着，在上界和下界中进行比较，其中最小的称之为最小上界，以此类推，最大的就称之为最大下界了。 最小上界和最大下界估计接下来会有很大的作用，因为在这里书上给了他一个定义GLB(A)和LUB(A)</p>
-<p>####好啦，接下来整章中最重要的BOSS登场了，格。</p>
-<p>格的首先的性质就要求一个偏序集中的每对元素存在最小上界和最大下界。这里有个很重要的修饰词——每对，任意对元素的集合都必须得存在最小上界和最大下界。</p>
-<p>以字母序排列的偏序集长得我觉得就比较像格。</p>
-<p>这里稍微说道，格在布尔代数中起到了非常重要的性质。 这里可以让我们保留一下期盼。（待以后看到了补充）</p>
-<p>书上分析是否是格，出现了一个没见过的判断，用到的原因是说3个元素的任意一个的在这个偏序集中的序都不大于另两个。</p>
-<p>这里的序是不是就是所谓的链接的大小关系呢？就是说因为他们三个元素与他们以下的元素都形成了相等的3条线，故三者相等，不存在其中一个大于另两个之说，也就导致了最小上界不存在。故不为格？</p>
-<p>这是一个猜想，姑且保留先。</p>
-<p>####信息流的格模型 在许多设置中，从一个人或计算机程序到另一个人或计算机程序的信息流要受到限制，这可以通过安全权限来实现。 我们可以使用格的模型来表示不同的信息流策略。 （这句话是什么意思，不能理解，什么叫做策略，又怎么来表示） 例如，一个通用的信息流策略是用于政府或军事系统中的多级安全策略。为每组信息分配一个安全级别，并且每个安全级别用一个对（A,C）表示，其中A是权限级别，C是种类，然后允许人和计算机程序从一个被特别限制的安全类的集合中访问信息。 （感觉这里并咩有说清楚，A和C是如何形成了一个偏序集的）</p>
-<p>在美国政府中，使用的典型的权限级别是不保密（0）、秘密（1）、机密（2）和绝密（3）。在安全级别中使用的种类是一个集合的子集，这个集合含有与一个特定行业领域相关的所有的分布。每个分部表示一个指定的对象域。 （分部和对象域又是什么？完全没有提到） 例如，如果分部的集合是{间谍，鼹鼠，双重间谍}，那么存在8种不同的分类，分部集合有8个子集，对于每个子集有一类，例如{间谍，鼹鼠} （这里应该是根据关系进行了任意的组合，但是也没有说道这两个种类之间的关系）</p>
-<p>我们可以对安全类排序，规定 。信息允许从安全类（A1，C1}流向安全类（A2，C2）当且仅当（A1，C1）对(A2，C2)满足那个关系。例如，信息允许从安全类（机密，{间谍，鼹鼠}）流向安全类{绝密，{间谍，鼹鼠，双重间谍}}。反之，信息不允许从安全类（绝密，{间谍，鼹鼠}）流向安全类（机密，{间谍，鼹鼠，双重间谍}）或（绝密，{间谍}）；</p>
-<p>（暂时还是不理解）</p>
-<p>####拓扑排序 假设一个项目由20个任务构成。某些人武只能在其他任务结束后完成。如何找到这些任务的顺序（感觉这个有点像路径了，比如CPM）</p>
-<p>定义，如果只要aRb就有a与b满足那样的关系，则称一个全序 与偏序R是相容的（相容又是一个新名词）。 从一个偏序构造一个相容的全序叫做拓扑排序，我们需要使用引理。（引理看起来很重要）</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/27/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/27/undefined/" itemprop="url">
-                  《沉默的大多数》跳出手掌心
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-27 23:56:00" itemprop="dateCreated datePublished" datetime="2015-11-27T23:56:00+08:00">2015-11-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/27/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/27/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/27/undefined/" class="leancloud_visitors" data-flag-title="《沉默的大多数》跳出手掌心">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">4.2k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:04</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<blockquote>
-<p>　　近来读了C．P．斯诺的《两种文化》。这本书里谈到的事倒是不新鲜，比方说，斯诺先生把知识分子分成了科学知识分子和文学（人文）知识分子两类，而且说，有两种文化，一种是科学文化，一种是文学（人文）文化。现在的每个知识分子，他的事业必定在其中一种之中。 　　我要谈到的事，其实与斯诺先生的书只有一点关系，那就是，我以为，把两种文化合在一起，就是人类前途所系。这么说还不大准确，实际上，是创造了这两种文化的活动——人类的思索，才真正是人类前途之所系。尤瑟纳尔女士借阿德里安之口云，当一个人写作或计算时，就超越了性别，甚至超越了人类——当你写作和计算时，就是在思索。思索是人类的前途所系，故此，思索的人，超越了现世的人类。这句话讲得是非常之好的，只是讲得过于简单。实际上，并不是每一种写作或计算都可以超越人类。这种情况并不多见，但是非常的重要。 　　现在我又想起了另一件事，乍看上去离题甚远：八十年代，美国通过了一个计划，拨出几百亿美元的资金，要在最短时间之内攻克癌症。结果却不令人满意，有些人甚至说该计划贻人笑柄，因为花了那么多钱，也没找出一种特效疗法。这件事说明，有了使不尽的钱，也不见得能做出突破性的发现。实际上，人类历史上任何一种天才的发现都不是金钱直接作用的结果。金钱、权力，这在现世上是最重要的东西，是人类生活的一面，但还有另一面。说到天才的发现，我们就要谈到天才、灵感、福至心灵、灵机一动等等，决不会说它们是某些人有了钱、升了官，一高兴想出来的。我要说的就是：沉默地思索，是人类生活的另外一面。就以攻克癌症为例，科学家默默地想科学、做科学，不定哪一天就做出一个发现，彻底解决了这个问题。但是，如果要约定一个期限，则不管你给多少钱也未必能成功。对于现代科技来说，资金设备等等固然重要，但天才的思想依然是最主要的动力。一种发现或发明可以赚到很多钱，但有了钱也未必能造出所要的发明。思索是一道大门，通向现世上没有的东西，通到现在人类想不到的地方。以科学为例，这个道理就是明明白白的。 　　科学知识分子很容易把自己的工作看作超越人类的事业，但人文知识分子就很难想到这一点。就以文学艺术为例，我们这里要求它面向社会、面向生活，甚至要求它对现世的人有益，弘扬民族文化等等，这样就越说越小了。诚然，文学艺术等等，要为现世的人所欣赏，但也不仅限于此。莎士比亚的戏现在还在演，将来也要演。你从莎翁在世时的英国的角度出发，绝想象不到会有这样的事。自然科学的成果，有一些现在的人类已经用上了，但据我所知，没用上的还很多。倘若你把没用上的通通取消，科学就不成其为科学。我上大学时，有一次我的数学教授在课堂上讲到：我现在所教的数学，你们也许一生都用不到，但我还要教，因为这些知识是好的，应该让你们知道。这位老师的胸襟之高远，使我终生佩服。我还要说，像这样的胸襟，在中国人文知识分子中间很少见到。 　　倘若我说，科学知识分子比人文知识分子人品高尚，肯定是不对的。科学知识分子里也有卑鄙之徒，比方说，前苏联的李森科。但我未听到谁对他的学说说过什么太难听的话，更没有听到谁做过这样细致的分析：李森科学说中某个谬误，和他的卑鄙内心的某一块是紧密相连的。倘若李森科不值得尊敬，李森科所从事的事业——生物学——依旧值得尊重。在科学上，有错误的学说，没有卑鄙的学说；就是李森科这样卑鄙的人为生物学所做的工作也不能说是卑鄙的行径。这样的道德标准显然不能适用于现在中国的艺术论坛，不信你就看看别人是怎样评论贾平凹先生的《废都》的。很显然，现在在中国，文学不是一种超越现世、超越人类的事业。我们评论它的标准，和三姑六婆评价身边发生的琐事的标准，没有什么不同。贾先生写了一部《废都》，就如某位大嫂穿了旗袍出门，我们不但要说衣服不好看，还要想想她的动机是什么，是不是想要勾引谁。另外哪位先生或女士写了什么好书，称赞他的话必是功在世道人心，就如称赞哪位女士相夫教子、孝敬公婆是一样的。当然，假如我说现在中国对文艺只有这样一种标准，那就是恶毒的诽谤。杜拉斯的《情人》问世不久，一下就出了四种译本（包括台湾的译本），电影《辛德勒的名单》国内尚未见到，好评就不绝于耳。我们说，这些将是传世之作，那就不是用现世的标准、道德的标准来评判的。这种标准从来不用之于中国人。由此得到一个结论，那就是在文学艺术的领域，外国人可以做超越人类的事业，中国人却不能。 　　在文学艺术及其他人文的领域之内，国人的确是在使用一种双重标准，那就是对外国人的作品，用艺术或科学的标准来审评；而对中国人的作品，则用道德的标准来审评。这种想法的背后，是把外国人当成另外一个物种，这样对他们的成就就能客观地评价；对本国人则当作同种，只有主观的评价，因此我们的文化事业最主要的内容不是它的成就，而是它的界限；此种界限为大家所认同，谁敢越界就要被群起而攻之。当年孟子如此来评价杨朱和墨子：“无君无父，是禽兽也。”现在我们则如此地评价《废都》和一些在国外获奖的电影。这些作品好不好可以另论，总不能说人家的工作是“禽兽行”，或者是“崇洋媚外”。身为一个中国人，最大的痛苦是忍受别人“推己及人”的次数，比世界上任何地方的人都要多。我要说的不是自己不喜欢做中国人（这是我最喜欢的事），我要说的是，这对文化事业的发展很是不利。 　　我认为，当我们认真地评价艺术时，所用的标准和科学上的标准有共通之处，那就是不依据现世的利害得失，只论其对不对（科学）、美不美（艺术）。此种标准我称为智慧的标准。假设有一种人类之外的智能生物，我们当然期望它们除了理解人类在科学上的成就之外，还能理解人类在艺术上的成就，故此，智慧就超越了人类。有些人会以为人类之外的东西能欣赏人类的艺术是不可能的，那么我敢和你打赌，此种生物在读到尤瑟纳尔女士的书时，读到某一句必会击节赞赏，对人类拥有的胸襟给予肯定；至于它能不能欣赏《红楼梦》，我倒不敢赌。但我敢断言，这种标准是存在的。从这种标准来看，人类侥幸拥有了智慧，就该善用它，成就种种事业，其中就包括了文学艺术在内。用这样的标准来度量，小说家力图写出一本前所未有的书，正如科学家力图做出发现，是值得赞美的事。当然，还有别的标准，那就是念念不忘自己是个人，家住某某胡同某某号，周围有三姑六婆，应该循规蹈矩地过一生，倘有余力，就该发大财，当大官，让别人说你好。这后一种标准是个人幸福之所系，自然不可忘记，但作为一个现代知识分子，前一种标准也该记住一些。 　　一个知识分子在面对文化遗产时，必定会觉得它浩浩洋洋，仰之弥高。这些东西是数千年来人类智慧的积累，当然是值得尊重的。不过，我以为它的来源更值得尊重，那就是活着的人们所拥有的智慧。这种东西就如一汪活水，所有的文化遗产都是它的沉积物。这些活水之中的一小份可以存在于你我的脑子里，照我看来，这是世界上最美好的事情。保存在文化遗产里的智慧让人尊敬，而活人头脑里的智慧更让人抱有无限的期望。我喜欢看到人们取得各种成就，尤其是喜欢看到现在的中国人取得任何一种成就。智慧永远指向虚无之境，从虚无中生出知识和美；而不是死死盯住现时、现事和现在的人。我认为，把智慧的范围限定在某个小圈子里，换言之，限定在一时、一地、一些人、一种文化传统这样一种界限之内是不对的；因为假如智慧是为了产生、生产或发现现在没有的东西，那么前述的界限就不应当存在。不幸的是，中国最重大的文化遗产，正是这样一种界限，就像如来佛的手掌一样，谁也跳不出来；而现代的主流文化却诞生在西方。 　　在中国做知识分子，有一种传统的模式，可能是孔孟，也可能是程朱传下来的，那就是自己先去做个循规蹈矩的人，做出了模样，做出了乐趣，再去管别人。我小的时候，从小学到中学，班上都有这样的好同学，背着手听讲，当上了小班长，再去管别人。现在也是这样，先是好好地求学，当了知名理论家、批评家，再去匡正世道人心。当然，这是做人的诀窍。做个知识分子，似乎稍嫌不够；除了把世道和人心匡得正正的，还该干点别的。由这样的模式，自然会产生一种学堂式的气氛，先是求学，受教，攒到了一定程度，就来教别人，管别人。如此一种学堂开办数千年来，总是同一些知识在其中循环，并未产生一种面向未来、超越人类的文化——谁要骂我是民族虚无主义，就骂好了，反正我从小就不是好同学——只产生了一个极沉重的传统，无数的聪明才智被白白消磨掉。倘若说到世道人心，我承认没有比中国文化更好的传统——所以我们这里就永远只有世道人心，有不了别的。 　　总之，说到知识分子的职责，我认为还有一种传统可循：那就是面向未来，取得成就。古往今来的一切大智者无不是这样做的。这两种知识分子的形象可以这样分界，前一种一世的修为，是要做个如来佛，让别人永世跳不出他的手掌心；后一种是想在一生一世之中，只要能跳出别人的手掌心就满意了。我想说的就是，希望大家都做后一种知识分子，因为不管是谁的手掌心，都太小了。</p>
-</blockquote>
-<p>我们可能算得上是未来的知识分子，现在至少我自认认识的还远远不够多。我们的最大的价值确实是在于思考，现在我在努力养成的习惯正是无时无刻的思考。</p>
-<p>在博客园里的大部分人想必都是已经达到了一定的水平的程序员（我是少部分还在学习中的层次），我们其实也算得上是科学方面的知识分子，我们都是科技的受利者，在使用当下的科技谋生。在互联网产业中，如同乔布斯的创业者其实也可以算得上是在试图引发时代的变革、进化吧，工作确实算得上是超越人类的事业。而人文，对于理工科的我们，感受到的恐怕最为明显的只有精神的放松的作用了罢，于没有闲情逸致消遣人文的人，对于人文的超越性确实会很难理解了。</p>
-<p>对于人文的理解，我看的书还不够深，我也不太理解，这点期待其他人的想法。</p>
-<p>对于知识分子智慧的标准，我们虽然追求第一个标准，不想遵循粗鄙的第二个标准。然而第二个标准却是生活必然，超然于第二个标准实在需要一定的物质、精神高度才可。</p>
-<p>于程序员的世界，求学是永久的，我们始终面向未来，在不断的跳出其他人的手掌心，可能也会让其他人进入自己的手掌心，我们不正进入了Linus等人的手掌吗？如来佛也只是佛之一种，在我们的世界，并不存在万佛之祖，即便是Linus也是在其他人手中学习着的。</p>
-<p>话虽如此，环境虽然面向未来，我们依旧要时刻保持虚心的态度学习，否则恐怕就会成为悟空，只不过是被自己的五指山镇压。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/26/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/26/undefined/" itemprop="url">
-                  《沉默的大多数》序言
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-26 18:09:00" itemprop="dateCreated datePublished" datetime="2015-11-26T18:09:00+08:00">2015-11-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/thinking/" itemprop="url" rel="index"><span itemprop="name">随想</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/26/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/26/undefined/" class="leancloud_visitors" data-flag-title="《沉默的大多数》序言">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:03</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<blockquote>
-<p>年轻时读萧伯纳的剧本《芭芭拉少校》，有场戏给我留下了深刻的印象：工业巨头安德谢夫老爷子见到了多年不见的儿子斯泰芬，问他对做什么有兴趣。这个年轻人在科学、文艺、法律等一切方面一无所长，但他说自己有一项长处：会明辨是非。老爷子把自己的儿子暴损了一通，说这件事难倒了一切科学家、政治家、哲学家，怎么你什么都不会，就会一个明辨是非？我看到这段文章时只有二十来岁，登时痛下决心，说这辈子我干什么都可以，就是不能做一个一无所能，就能明辨是非的人。因为这个原故，我成了沉默的大多数的一员。我年轻时所见的人，只掌握了一些粗浅（且不说是荒谬）的原则，就以为无所不知，对世界妄加判断，结果整个世界都深受其害。直到我年登不惑，才明白萧翁的见解原有偏颇之处；但这是后话——无论如何，萧翁的这些议论，对那些浅薄之辈、狂妄之辈，总是一种解毒剂。 萧翁说明辨是非难，是因为这些是非都在伦理的领域之内。俗话说得好，此人之肉，彼人之毒；一件对此人有利的事，难免会伤害另一个人。真正的君子知道，自己的见解受所处环境左右，未必是公平的；所以他觉得明辨是非是难的。倘若某人以为自己是社会的精英，以为自己的见解一定对，虽然有狂妄之嫌，但他会觉得明辨是非很容易。明了萧翁这重意思以后，我很以做明辨是非的专家为耻——但这已经是二十年前的事了。当时我是年轻人，觉得能洁身自好，不去害别人就可以了。现在我是中年人——一个社会里，中年人要负很重的责任：要对社会负责，要对年轻人负责，不能只顾自己。因为这个原故，我开始写杂文。现在奉献给读者的这本杂文集，篇篇都在明辨是非，而且都在打我自己的嘴。 伦理问题虽难，但却不是不能讨论。罗素先生云，真正的伦理原则把人人同等看待。考虑伦理问题时，想替每个人都想一遍是不可能的事，但你可以说，这是我的一得之见，然后说出自己的意见，把是非交付公论。讨论伦理问题时也可以保持良心的清白——这是我最近的体会；但不是我打破沉默的动机。假设有一个领域，谦虚的人、明理的人以为它太困难、太暧昧，不肯说话，那么开口说话的就必然是浅薄之徒、狂妄之辈。这导致一种负筛选：越是傻子越敢叫唤——马上我就要说到，这些傻子也不见得是真的傻，但喊出来的都是傻话。久而久之，对中国人的名声也有很大的损害。前些时见到个外国人，他说：听说你们中国人都在说“不”？这简直是把我们都当傻子看待。我很不客气地答道：物以类聚，人以群分。你认识的中国人都说“不”，但我不认识这样的人。这倒不是唬外国人，我认识很多明理的人，但他们都在沉默中，因为他们都珍视自己的清白。但我以为，伦理问题太过重要，已经不容我顾及自身的清白。 伦理（尤其是社会伦理）问题的重要，在于它是大家的事——大家的意思就是包括我在内。我在这个领域里有话要说，首先就是：我要反对愚蠢。一个只会明辨是非的人总是凭胸中的浩然正气做出一个判断，然后加上一句：难道这不是不言而喻的吗？任何受过一点科学训练的人都知道，这世界上简直找不到什么不言而喻的事，所以这就叫做愚蠢。在我们这个国家里，傻有时能成为一种威慑。假如乡下一位农妇养了五个傻儿子，既不会讲理，又不懂王法，就会和人打架，这家人就能得点便宜。聪明人也能看到这种便宜，而且装傻谁不会呢——所以装傻就成为一种风气。我也可以写装傻的文章，不只是可以，我是写过的——“文革”里谁没写过批判稿呢。但装傻是要不得的，装开了头就不好收拾，只好装到底，最后弄假成真。我知道一个例子是这样的：某人“文革”里装傻写批判稿，原本是想搞点小好处，谁知一不小心上了《人民日报》头版头条，成了风云人物。到了这一步，我也不知他是真傻假傻了。再以后就被人整成了“三种人”。到了这个地步，就只好装下去了，真傻犯错误处理还能轻些呀。 我反对愚蠢，不是反对天生就笨的人，这种人只是极少数，而且这种人还盼着变聪明。在这个世界上，大多数愚蠢里都含有假装和弄假成真的成分；但这一点并不是我的发现，是萧伯纳告诉我的。在他的《匹克梅梁》里，息金斯教授遇上了一个假痴不癫的杜特立尔先生。息教授问：你是恶棍还是傻瓜？这就是问：你假傻真傻？杜先生答：两样都有点，先生，凡人两样都得有点呀。在我身上，后者的成分多，前者的成分少；而且我讨厌装傻，渴望变聪明。所以我才会写这本书。 在社会伦理的领域里我还想反对无趣，也就是说，要反对庄严肃穆的假正经。据我的考察，在一个宽松的社会里，人们可以收获到优雅，收获到精雕细琢的浪漫；在一个呆板的社会里，人们可以收获到幽默——起码是黑色的幽默。就是在我呆的这个社会里，什么都收获不到，这可是件让人吃惊的事情。看过但丁《神曲》的人就会知道，对人来说，刀山剑树火海油锅都不算严酷，最严酷的是寒冰地狱，把人冻在那里一动都不能动。假如一个社会的宗旨就是反对有趣，那它比寒冰地狱又有不如。在这个领域里发议论的人总是在说：这个不宜提倡，那个不宜提倡。仿佛人活着就是为了被提倡。要真是这样，就不如不活。罗素先生说，参差多态乃是幸福的本源——弟兄姐妹们，让我们睁开眼睛往周围看看，所谓的参差多态，它在哪里呢。 在萧翁的《芭芭拉少校》中，安德谢夫家族的每一代都要留下一句至理名言。那些话都编得很有意思，其中有一句是：人人有权争胜负，无人有权论是非。这话也很有意思，但它是句玩笑。实际上，人只要争得了论是非的权力，他已经不战而胜了。我对自己的要求很低：我活在世上，无非想要明白些道理，遇见些有趣的事。倘能如我所愿，我的一生就算成功。为此也要去论是非，否则道理不给你明白，有趣的事也不让你遇到。我开始得太晚了，很可能做不成什么，但我总得申明我的态度，所以就有了这本书——为我自己，也代表沉默的大多数。 王小波 1997年3月20日</p>
-</blockquote>
-<p>明辨是非确实不值得自称，正如作者所说，是非与社会伦理相关，受环境影响，辨出的是非是与视野确切相关的。</p>
-<p>当下的我们大部分人还年轻，阅历并不能算是很丰富，可能看了不少书、电影、段子，即便这些都是建立在真实之上的，那也只是真实的局部，我们认识的与亲身经历的往往相差甚远。往往通过网络看到一些时事时，看到结果与自己的判断差不多，自以为自己辨别的不错。其实都是假象，其中一个原因，就是人总会自觉的美化自己。就像看答案做作业，你总会觉得这些题好简单，很容易就写出来；而实际脱离答案时，建立的思路却远不上道。辨别是非并不是像我们当下想象的那么简单地能力，正如作者所言，年轻时还是少言是非多做自己的事为好。</p>
-<p>必须着重强调一下的是，少言是非。少言并不是对一切保持沉默，即便是自己该发言的时候。少言仅仅只是指不要对不关自己的事情，不切身的事情，妄下评论。对于与自己相关之事，单纯发表真实的想法并不为过。</p>
-<p>而在相关、且并非时下不正常的时候，不发表自己的真实想法，以装傻糊弄他人占些便宜，这就是在损伤自己的良心了。仅从我们个人自身来谈，对于并非聪明绝顶的、我们这样的普通人来说，装傻装着装着习惯了，贪小便宜习惯了，那可就真的习惯了装傻的思维方式了。至少于我，装傻是不可行的，否则我必定会习惯局限性的思考，忘记了探索思维的深度。而且吧，如果是真傻，那还只是自己的思维的广度不足，对某些事真的不懂，学着学着就不傻了。假傻，那可就没辙了，时间会让你习惯成真傻的。</p>
-<p>对无趣这段，所幸当下的我们的社会其实还是不错的了，至少对于网上的我们，还是能做些越矩的事的。</p>
-<p>有态度，慢慢做，做到哪收获到哪，对我来说，当下也足够了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/26/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/26/undefined/" itemprop="url">
-                  并查集——HDU1213
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-26 16:02:00" itemprop="dateCreated datePublished" datetime="2015-11-26T16:02:00+08:00">2015-11-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/26/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/26/undefined/" class="leancloud_visitors" data-flag-title="并查集——HDU1213">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:01</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>第一次做并查集的题，选了道比较简单的。 用数组很简单，不多说了。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">int a[1010];</span><br><span class="line"></span><br><span class="line">void Init(int N)&#123;</span><br><span class="line">    for(int i = 1;i &lt;= N;i++)</span><br><span class="line">        a[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Find(int x)&#123;</span><br><span class="line">    while(x != a[x])</span><br><span class="line">        x = a[x];</span><br><span class="line">    return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Union(int x, int y)&#123;</span><br><span class="line">    int x1 = Find(x);</span><br><span class="line">    int y1 = Find(y);</span><br><span class="line">    if(x1 != y1)</span><br><span class="line">        a[y1] = x1;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int T;</span><br><span class="line">    scanf(&quot; %d&quot;,&amp;T);</span><br><span class="line">    while(T--)&#123;</span><br><span class="line">        int N,M;</span><br><span class="line">        scanf(&quot; %d%d&quot;,&amp;N,&amp;M);</span><br><span class="line">        Init(N);</span><br><span class="line">        for(int i = 0;i &lt; M;i++)&#123;</span><br><span class="line">            int x,y;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</span><br><span class="line">            Union(x,y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int ans = 0;</span><br><span class="line">        for(int i = 1;i &lt;= N;i++)&#123;</span><br><span class="line">            if(i == a[i])</span><br><span class="line">                ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">        //getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/26/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/26/undefined/" itemprop="url">
-                  二叉树——Huffman树求最短路径和
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-26 14:25:00" itemprop="dateCreated datePublished" datetime="2015-11-26T14:25:00+08:00">2015-11-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/26/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/26/undefined/" class="leancloud_visitors" data-flag-title="二叉树——Huffman树求最短路径和">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:02</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week6/1/" target="_blank" rel="noopener">题目链接</a></p>
-<p>总时间限制: 1000ms 内存限制: 65536kB ####描述 构造一个具有n个外部节点的扩充二叉树，每个外部节点Ki有一个Wi对应，作为该外部节点的权。使得这个扩充二叉树的叶节点带权外部路径长度总和最小： Min( W1 * L1 + W2 * L2 + W3 * L3 + … + Wn * Ln) Wi:每个节点的权值。 Li:根节点到第i个外部叶子节点的距离。 编程计算最小外部路径长度总和。 ####输入 第一行输入一个整数n，外部节点的个数。第二行输入n个整数，代表各个外部节点的权值。 2&lt;=N&lt;=100 ####输出 输出最小外部路径长度总和。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 1 3 5</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">typedef struct tree&#123;</span><br><span class="line">    int weight;</span><br><span class="line">    int lc ,rc, parent;</span><br><span class="line">&#125;HufNode,*HufTree;</span><br><span class="line"></span><br><span class="line">int GetMin(HufTree H,int k)&#123;</span><br><span class="line">    int i = 0,min,minWeight;</span><br><span class="line">    while(H[i].parent != -1)&#123;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    min = i;</span><br><span class="line">    minWeight = H[i].weight;</span><br><span class="line"></span><br><span class="line">    for(;i&lt;k;i++)&#123;</span><br><span class="line">        if(minWeight &gt; H[i].weight &amp;&amp; H[i].parent == -1)&#123;</span><br><span class="line">            minWeight = H[i].weight;</span><br><span class="line">            min = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    H[min].parent = 1;</span><br><span class="line">    return min;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HufTree Create(HufTree &amp;H,int *s,int n)&#123;</span><br><span class="line">    int total = 2*n-1;</span><br><span class="line">    H = (HufTree)malloc(total*sizeof(HufNode));</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        H[i].weight = *s;</span><br><span class="line">        H[i].lc = -1;</span><br><span class="line">        H[i].rc = -1;</span><br><span class="line">        H[i].parent = -1;</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i = n;i &lt; total;i++)&#123;</span><br><span class="line">        H[i].weight = 0;</span><br><span class="line">        H[i].lc = -1;</span><br><span class="line">        H[i].rc = -1;</span><br><span class="line">        H[i].parent = -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int min1,min2;</span><br><span class="line">    for(int i = n;i &lt; total;i++)&#123;</span><br><span class="line">        min1 = GetMin(H,i);</span><br><span class="line">        min2 = GetMin(H,i);</span><br><span class="line">        H[min1].parent = i;</span><br><span class="line">        H[min2].parent = i;</span><br><span class="line">        H[i].lc = min1;</span><br><span class="line">        H[i].rc = min2;</span><br><span class="line">        H[i].weight = H[min1].weight+H[min2].weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Trans(HufTree H,int n)&#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line"></span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        int deepth = 0;</span><br><span class="line">        int temp = i;</span><br><span class="line">        while(H[i].parent != -1)&#123;</span><br><span class="line">            deepth++;</span><br><span class="line">            i = H[i].parent;</span><br><span class="line">        &#125;</span><br><span class="line">        i = temp;</span><br><span class="line">        ans += deepth *H[i].weight;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    int s[1000];</span><br><span class="line">    for(int i = 0;i &lt; n;i++)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    HufTree H = Create(H,s,n);</span><br><span class="line">    printf(&quot;%d\n&quot;,Trans(H,n));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考资料： [1]http://blog.csdn.net/ns_code/article/details/19174553</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/26/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/26/undefined/" itemprop="url">
-                  二叉树——文本二叉树
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-26 09:25:00" itemprop="dateCreated datePublished" datetime="2015-11-26T09:25:00+08:00">2015-11-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/26/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/26/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/26/undefined/" class="leancloud_visitors" data-flag-title="二叉树——文本二叉树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:03</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>总时间限制: 1000ms 内存限制: 65536kB ####描述 <img src="http://media.openjudge.cn/images/3720.jpg" alt="img"> 如上图，一棵每个节点都是一个字母，且字母互不相同的二叉树，可以用以下若干行文本表示:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">-B</span><br><span class="line">--*</span><br><span class="line">--C</span><br><span class="line">-D</span><br><span class="line">--E</span><br><span class="line">---*</span><br><span class="line">---F</span><br></pre></td></tr></table></figure>
-<p>在这若干行文本中：</p>
-<ol type="1">
-<li>每个字母代表一个节点。该字母在文本中是第几行，就称该节点的行号是几。根在第1行</li>
-<li>每个字母左边的’-’字符的个数代表该结点在树中的层次（树根位于第0层）</li>
-<li>若某第 i 层的非根节点在文本中位于第n行，则其父节点必然是第 i-1 层的节点中，行号小于n,且行号与n的差最小的那个</li>
-<li>若某文本中位于第n行的节点(层次是i) 有两个子节点，则第n+1行就是其左子节点，右子节点是n+1行以下第一个层次为i+1的节点</li>
-<li>若某第 i 层的节点在文本中位于第n行，且其没有左子节点而有右子节点，那么它的下一行就是 i+1个’-‘字符再加上一个’*’</li>
-</ol>
-<p>给出一棵树的文本表示法，要求输出该数的前序、后序、中序遍历结果 ####输入 第一行是树的数目 n</p>
-<p>接下来是n棵树，每棵树以’0’结尾。’0’不是树的一部分 每棵树不超过100个节点 ####输出 对每棵树，分三行先后输出其前序、后序、中序遍历结果 两棵树之间以空行分隔 ####样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">A</span><br><span class="line">-B</span><br><span class="line">--*</span><br><span class="line">--C</span><br><span class="line">-D</span><br><span class="line">--E</span><br><span class="line">---*</span><br><span class="line">---F</span><br><span class="line">0</span><br><span class="line">A</span><br><span class="line">-B</span><br><span class="line">-C</span><br><span class="line">0</span><br></pre></td></tr></table></figure></p>
-<p>####样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ABCDEF</span><br><span class="line">CBFEDA</span><br><span class="line">BCAEFD</span><br><span class="line"></span><br><span class="line">ABC</span><br><span class="line">BCA</span><br><span class="line">BAC</span><br></pre></td></tr></table></figure></p>
-<p>递归不太会用，这道题是参照解题报告，用迭代来建树的。 这道题的关键点在于建一个栈，存储节点的目录，用于寻找当前节点的父节点，以及节点是否是叶子节点（如果是叶子节点，因为与下一个节点不成父子节点，直接出栈）。 算法的关键是对两种节点情况的处理。 1.有左右子树尚未链接上，进行左右判别，从栈里找到它的父节点（判断父节点的方法就是树的深度相差为1），链接； 2.左右子树链接完了，出栈，进行同深度右子树的链接。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int deepth;</span><br><span class="line">    int dir;</span><br><span class="line">    char data;</span><br><span class="line">    struct node *lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">BitTree Create()&#123;</span><br><span class="line">    BitTree p1,p2,head;</span><br><span class="line">    char s[100];</span><br><span class="line">    scanf(&quot;%s&quot;,s);</span><br><span class="line">    head = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    head-&gt;data = s[0];</span><br><span class="line">    head-&gt;deepth = 0;</span><br><span class="line">    head-&gt;dir = 0;</span><br><span class="line">    head-&gt;lc = NULL;</span><br><span class="line">    head-&gt;rc = NULL;</span><br><span class="line">    stack&lt;BitTree&gt;temp;</span><br><span class="line">    temp.push(head);</span><br><span class="line">    //p2 = temp.top();</span><br><span class="line">    while(scanf(&quot;%s&quot;,s))&#123;</span><br><span class="line">        if(s[0] == &apos;0&apos;)&#123;</span><br><span class="line">            return head;</span><br><span class="line">        &#125;</span><br><span class="line">        p1 = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">        p1-&gt;deepth = strlen(s)-1;</span><br><span class="line">        p1-&gt;data = s[p1-&gt;deepth];</span><br><span class="line">        p1-&gt;lc = NULL;</span><br><span class="line">        p1-&gt;rc = NULL;</span><br><span class="line">        p1-&gt;dir = 0;</span><br><span class="line">        p2 = temp.top();</span><br><span class="line">        if(p1-&gt;data == &apos;*&apos;)&#123;</span><br><span class="line">            p2-&gt;dir++;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        while(p1-&gt;deepth - p2-&gt;deepth != 1)&#123;</span><br><span class="line">            temp.pop();</span><br><span class="line">            p2 = temp.top();</span><br><span class="line">        &#125;</span><br><span class="line">        if(p2-&gt;dir == 0)&#123;</span><br><span class="line">            p2-&gt;lc = p1;</span><br><span class="line">            p2-&gt;dir++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(p2-&gt;dir == 1)&#123;</span><br><span class="line">            p2-&gt;rc = p1;</span><br><span class="line">            p2-&gt;dir++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(p2-&gt;dir == 2)&#123;</span><br><span class="line">            temp.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        temp.push(p1);</span><br><span class="line">    &#125;</span><br><span class="line">    //return head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void PreOrder(BitTree root)&#123;</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        PreOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        PreOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MidOrder(BitTree root)&#123;</span><br><span class="line">    if(root-&gt;lc)</span><br><span class="line">        MidOrder(root-&gt;lc);</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">    if(root-&gt;rc)</span><br><span class="line">        MidOrder(root-&gt;rc);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void AftOrder(BitTree root)&#123;</span><br><span class="line">    if(root-&gt;lc != NULL)</span><br><span class="line">        AftOrder(root-&gt;lc);</span><br><span class="line">    if(root-&gt;rc != NULL)&#123;</span><br><span class="line">        AftOrder(root-&gt;rc);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; root-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int t;</span><br><span class="line">    BitTree head;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        head = Create();</span><br><span class="line">        PreOrder(head);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        AftOrder(head);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        MidOrder(head);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考资料： [1]http://www.cnblogs.com/zl0372/articles/C_01.html [2]http://blog.sina.com.cn/s/blog_6ae9d6c70101bf8p.html</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/23/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/23/undefined/" itemprop="url">
-                  二叉树——实现堆结构
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-23 09:46:00" itemprop="dateCreated datePublished" datetime="2015-11-23T09:46:00+08:00">2015-11-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/23/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/23/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/23/undefined/" class="leancloud_visitors" data-flag-title="二叉树——实现堆结构">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:02</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/2/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 3000ms 内存限制: 65535kB 描述 定义一个数组，初始化为空。在数组上执行两种操作：</p>
-<p>1、增添1个元素，把1个新的元素放入数组。</p>
-<p>2、输出并删除数组中最小的数。</p>
-<p>使用堆结构实现上述功能的高效算法。</p>
-<p>输入 第一行输入一个整数t，代表测试数据的组数。 对于每组测试数据，第一行输入一个整数n，代表操作的次数。 每次操作首先输入一个整数type。 当type=1，增添操作，接着输入一个整数u，代表要插入的元素。 当type=2，输出删除操作，输出并删除数组中最小的元素。 1&lt;=n&lt;=100000。 输出 每次删除操作输出被删除的数字。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">5</span><br><span class="line">1 1</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">1 5</span><br><span class="line">1 1</span><br><span class="line">1 7</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
-<p>提示 每组测试数据的复杂度为O(nlgn)的算法才能通过本次，否则会返回TLE(超时) 需要使用最小堆结构来实现本题的算法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int heap[100010];</span><br><span class="line">int len;</span><br><span class="line">//int maxsize;</span><br><span class="line"></span><br><span class="line">void Init()&#123;</span><br><span class="line">    //maxsize = 0;</span><br><span class="line">    len = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Insert(int x)&#123;</span><br><span class="line">    //heap[len] = x;</span><br><span class="line">    len++;</span><br><span class="line"></span><br><span class="line">    int i = len -1;</span><br><span class="line"></span><br><span class="line">    while(i &gt; 0)&#123;</span><br><span class="line">        int j = (i-1)/2;</span><br><span class="line">        if(x &gt; heap[j])</span><br><span class="line">            break;</span><br><span class="line">        heap[i] = heap[j];</span><br><span class="line">        i = j;</span><br><span class="line">    &#125;</span><br><span class="line">    heap[i] = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Del()&#123;</span><br><span class="line">    if(0 == len)&#123;</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int temp = heap[0];</span><br><span class="line">    len--;</span><br><span class="line"></span><br><span class="line">    if(0 == len)&#123;</span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int x = heap[len];</span><br><span class="line">    int i = 0;</span><br><span class="line">    int j = 2*i+1;</span><br><span class="line">    while(j &lt;= len-1)&#123;</span><br><span class="line">        if((j &lt; len-1)&amp;&amp; (heap[j] &gt; heap[j+1]))&#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(x &lt; heap[j])&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        heap[i] = heap[j];</span><br><span class="line">        i = j;</span><br><span class="line">        j = 2*i+1;</span><br><span class="line">    &#125;</span><br><span class="line">    heap[i] = x;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int t,n,type,x;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">        //struct node p;</span><br><span class="line">        Init();</span><br><span class="line">        while(n--)&#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;type);</span><br><span class="line">            if(type == 1)&#123;</span><br><span class="line">                scanf(&quot;%d&quot;,&amp;x);</span><br><span class="line">                Insert(x);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(type == 2)</span><br><span class="line">                printf(&quot;%d\n&quot;,Del());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/22/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/undefined/" itemprop="url">
-                  二叉树——由中根序列和后根序列重建二叉树
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-22 21:48:00" itemprop="dateCreated datePublished" datetime="2015-11-22T21:48:00+08:00">2015-11-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/22/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/22/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/22/undefined/" class="leancloud_visitors" data-flag-title="二叉树——由中根序列和后根序列重建二叉树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:03</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://dsalgo.openjudge.cn/201409week5/1/" target="_blank" rel="noopener">题目链接</a> 总时间限制: 500ms 内存限制: 65535kB 描述 我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。</p>
-<p>用不同的整数来唯一标识二叉树的每一个结点</p>
-<p>中根序列是9 5 32 67</p>
-<p>后根序列9 32 67 5</p>
-<p>前根序列5 9 67 32</p>
-<p>输入 两行。第一行是二叉树的中根序列，第二行是后根序列。每个数字表示的结点之间用空格隔开。结点数字范围0～65535。暂不必考虑不合理的输入数据。 输出 一行。由输入中的中根序列和后根序列重建的二叉树的前根序列。每个数字表示的结点之间用空格隔开。 样例输入 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9 5 32 67</span><br><span class="line">9 32 67 5</span><br></pre></td></tr></table></figure></p>
-<p>样例输出 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 9 67 32</span><br></pre></td></tr></table></figure></p>
-<p>关键在于利用通过后序找到每个子树的根节点，以此为界找到左、右子树，从而进行递归。 链式算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#define N 65536</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct node * lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">int sLDR[N],sLRD[N];</span><br><span class="line"></span><br><span class="line">BitTree BuildTree(int coStart,int coEnd,int loStart, int loEnd)&#123;</span><br><span class="line">    BitTree root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    root-&gt;data = sLRD[loEnd];</span><br><span class="line">    root-&gt;lc = NULL;</span><br><span class="line">    root-&gt;rc = NULL;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    if(coStart == coEnd)</span><br><span class="line">        return root;</span><br><span class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</span><br><span class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(i&gt;=1) root-&gt;lc = BuildTree(coStart,coStart+i-1,loStart,loStart+i-1);</span><br><span class="line">    if(coEnd&gt;=coStart+i+1) root-&gt;rc = BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1);</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int visit(BitTree T)&#123;</span><br><span class="line">    printf(&quot;%d &quot;,T-&gt;data);</span><br><span class="line">    return T-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int PreTranverse(BitTree T)&#123;</span><br><span class="line">    if(T)&#123;</span><br><span class="line">        visit(T);</span><br><span class="line">        if(T-&gt;lc)</span><br><span class="line">            PreTranverse(T-&gt;lc);</span><br><span class="line">        if(T-&gt;rc)</span><br><span class="line">            PreTranverse(T-&gt;rc);</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int s[N];</span><br><span class="line">    int order = 0;</span><br><span class="line">    int ch;</span><br><span class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</span><br><span class="line">        s[++order] = ch;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLDR[i] = s[i];</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLRD[i] = s[order/2+i];</span><br><span class="line">    BitTree root = BuildTree(1,order/2,1,order/2);</span><br><span class="line">    PreTranverse(root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>顺序算法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#define N 65536</span><br><span class="line"></span><br><span class="line">typedef struct node&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct node * lc,*rc;</span><br><span class="line">&#125;BitNode,*BitTree;</span><br><span class="line"></span><br><span class="line">int sLDR[N],sLRD[N];</span><br><span class="line">int tree[N];</span><br><span class="line"></span><br><span class="line">void BuildTree(int coStart,int coEnd,int loStart, int loEnd,int k)&#123;</span><br><span class="line">    //BitTree root = (BitTree)malloc(sizeof(BitNode));</span><br><span class="line">    tree[k] = sLRD[loEnd];</span><br><span class="line">    tree[2*k] = 0;</span><br><span class="line">    tree[2*k+1] = 0;</span><br><span class="line">    //root-&gt;lc = NULL;</span><br><span class="line">    //root-&gt;rc = NULL;</span><br><span class="line">    int i;</span><br><span class="line"></span><br><span class="line">    if(coStart == coEnd)</span><br><span class="line">        return ;</span><br><span class="line">    for(i = 0;i &lt;= coEnd-coStart;i++)&#123;</span><br><span class="line">        if(sLDR[coStart+i] == sLRD[loEnd])</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(i&gt;=1) BuildTree(coStart,coStart+i-1,loStart,loStart+i-1,2*k);</span><br><span class="line">    if(coEnd&gt;=coStart+i+1) BuildTree(coStart+i+1,coEnd,loStart+i,loEnd-1,2*k+1);</span><br><span class="line">    //return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int visit(int i)&#123;</span><br><span class="line">    printf(&quot;%d &quot;,tree[i]);</span><br><span class="line">    return tree[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int PreTranverse(int i)&#123;</span><br><span class="line">    if(tree[i])&#123;</span><br><span class="line">        visit(i);</span><br><span class="line">        if(tree[2*i])</span><br><span class="line">            PreTranverse(2*i);</span><br><span class="line">        if(tree[2*i+1])</span><br><span class="line">            PreTranverse(2*i+1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    int s[N];</span><br><span class="line">    int order = 0;</span><br><span class="line">    int ch;</span><br><span class="line">    while((scanf(&quot;%d&quot;,&amp;ch))!=EOF)&#123;</span><br><span class="line">        s[++order] = ch;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLDR[i] = s[i];</span><br><span class="line">    for(int i = 1;i &lt;= order/2;i++)</span><br><span class="line">        sLRD[i] = s[order/2+i];</span><br><span class="line">    BuildTree(1,order/2,1,order/2,1);</span><br><span class="line">    PreTranverse(1);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sean10.github.io/2015/11/22/undefined/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sean10">
-      <meta itemprop="description" content="笔记 随笔">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="行路中.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/11/22/undefined/" itemprop="url">
-                  二叉树——UVA122
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2015-11-22 19:23:00" itemprop="dateCreated datePublished" datetime="2015-11-22T19:23:00+08:00">2015-11-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 23:11:42" itemprop="dateModified" datetime="2018-10-08T23:11:42+08:00">2018-10-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/11/22/undefined/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count valine-comment-count" data-xid="/2015/11/22/undefined/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2015/11/22/undefined/" class="leancloud_visitors" data-flag-title="二叉树——UVA122">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Views: </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">2.5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">0:02</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>二叉树的层次遍历 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct Node&#123;</span><br><span class="line">    bool have_value;</span><br><span class="line">    int v;</span><br><span class="line">    struct Node* left,*right;</span><br><span class="line">    Node():have_value(false),left(NULL),right(NULL)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">const int maxn = 256;</span><br><span class="line">bool failed;</span><br><span class="line">char s[10000];</span><br><span class="line"></span><br><span class="line">Node *root = NULL;</span><br><span class="line"></span><br><span class="line">Node* newnode()&#123;</span><br><span class="line">    return new Node();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void addnode(int v,char *s)&#123;</span><br><span class="line">    int n = strlen(s);</span><br><span class="line">    Node* u = root;</span><br><span class="line">    for(int i = 0;i &lt;n;i++)</span><br><span class="line">        if(s[i] == &apos;L&apos;)&#123;</span><br><span class="line">            if(u-&gt;left == NULL) u-&gt;left = newnode();</span><br><span class="line">            u = u-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(s[i] == &apos;R&apos;)&#123;</span><br><span class="line">            if(u-&gt;right == NULL) u-&gt;right = newnode();</span><br><span class="line">            u = u-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">    if(u-&gt;have_value) failed = true;</span><br><span class="line">    u-&gt;v = v;</span><br><span class="line">    u -&gt;have_value = true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool bfs(vector&lt;int&gt;&amp; ans)&#123;</span><br><span class="line">    queue&lt;Node*&gt; q;</span><br><span class="line">    ans.clear();</span><br><span class="line">    q.push(root);</span><br><span class="line">    while(!q.empty())&#123;</span><br><span class="line">        Node * u = q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        if(!u-&gt;have_value) return false;</span><br><span class="line">        ans.push_back(u-&gt;v);</span><br><span class="line">        if(u-&gt;left != NULL)</span><br><span class="line">            q.push(u-&gt;left);</span><br><span class="line">        if(u-&gt;right != NULL)</span><br><span class="line">            q.push(u-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool read()&#123;</span><br><span class="line">    failed = false;</span><br><span class="line">    root = newnode();</span><br><span class="line">    for(;;)&#123;</span><br><span class="line">        if(scanf(&quot;%s&quot;,&amp;s) != 1)  return false;</span><br><span class="line">        if(!strcmp(s,&quot;()&quot;)) break;</span><br><span class="line">        int v;</span><br><span class="line">        sscanf(&amp;s[1],&quot;%d&quot;,&amp;v);</span><br><span class="line">        addnode(v,strchr(s,&apos;,&apos;)+1);</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void remove_tree(Node *u)&#123;</span><br><span class="line">    if(u == NULL) return ;</span><br><span class="line">    remove_tree(u-&gt;left);</span><br><span class="line">    remove_tree(u-&gt;right);</span><br><span class="line">    delete u;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    char s[maxn];</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        if(!read()) break;</span><br><span class="line">        vector&lt;int&gt;ans;</span><br><span class="line">        if(!failed &amp;&amp; bfs(ans))&#123;</span><br><span class="line">            int len = ans.size();</span><br><span class="line">            for(int i = 0;i &lt; len;i++)</span><br><span class="line">                printf(&quot;%d%c&quot;,ans[i],i == len-1?&apos;\n&apos;:&apos; &apos;);</span><br><span class="line">        &#125;else printf(&quot;not complete\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    remove_tree(root);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>参考资料： [1].《算法竞赛入门经典（第二版）》 [2].http://blog.csdn.net/u014800748/article/details/44733017</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Sean10</p>
-              <p class="site-description motion-element" itemprop="description">笔记 随笔</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">135</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">128</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
     </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Sean10</span>
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-    <span title="Symbols count total">360k</span>
-  
 
-  
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    
-    <span title="Reading time total">5:27</span>
-  
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/page/11/&title=行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/page/11/&title=行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/page/11/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=行路中.&url=https://sean10.github.io/page/11/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/page/11/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/page/11/" alt="微信分享二维码">
 </div>
 
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
-      <div>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_inline_share_toolbox">
-  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817" async = "async" ></script>
-</div>
-
-      </div>
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
 </script>
 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
 
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 
+<!-- mathjax config similar to math.stackexchange -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: true,
-        appId: 'yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz',
-        appKey: 'FyxT8MxDPHbu8mQSapgjEMPC',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: true
-    });
-  </script>
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
         processEscapes: true,
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
-    
-  
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
-  
-  
 
-  
 
-  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-  
 
-  
 
-  
+
 
 </body>
 </html>
