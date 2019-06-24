@@ -49,6 +49,131 @@ categories: [专业]
 
 
 
+
+## 进程间通信
+
+首先，我一般是通过一个中间层，比如redis、数据库等来实现的。但是理论上原生在一般场景下是足够使用了的才对。
+
+首先通过python实现IPC通信方式, socket\pipe\IPC（这个C里有，这里也应该有把？）
+
+
+### PIPE
+
+PIPE还是有比较大的局限性的，这里可以看到只能是单向的。单工场景。
+
+另外，这里可以看到进程间的PIPE主要依赖fork机制建立，对于完全没有关联的两个进程能不能使用PIPE通信，这个问题我还有点疑问。应该是可以的，默认管道是匿名管道，但是实际上是有命名管道的。
+
+``` python
+import multiprocessing
+
+def proc1(pipe):
+    pipe.send("hello")
+    print ("proc 1 : ",pipe.recv())
+
+def proc2(pipe):
+    print ("proc 2 : ",pipe.recv())
+    pipe.send("hello ,too")
+    print("{}".format(pipe.recv()))
+
+pipe=multiprocessing.Pipe()
+
+p1=multiprocessing.Process(target=proc1,args=(pipe[0],))
+p2=multiprocessing.Process(target=proc2,args=(pipe[1],))
+
+def main():
+    p1.start()
+    p2.start()
+
+    p1.join()
+    p2.join()
+
+if __name__ == '__main__':
+    main()
+
+```
+
+### Queue
+
+这个也是基于PIPE的实现，只是支持了全双工的形式，似乎。
+
+### Listener和 Client
+
+在python的multiprocessing.connection包中有Listener和Client类可以实现多进程之间的通信，这种通信方式根据平台的不同会自动选择socket或者named pipe的方式来实现通信。
+
+这里发现，进程间通信的同步，果然是必要条件。
+
+``` python
+#server 
+
+#!/usr/bin/env python
+# encoding: utf-8
+__author__ = 'outofmemory.cn'
+from multiprocessing.connection import Listener
+
+address = ('localhost', 6000)     # family is deduced to be 'AF_INET'
+listener = Listener(address, authkey=b'secret password')
+
+while True:
+    conn = listener.accept()
+    print('connection accepted from', listener.last_accepted)
+    while True:
+        data = conn.recv().decode()
+        print("get {}".format(data))
+        if data == 'close':
+            conn.close()
+        try:
+            result = "hello"
+            # result = ','.join(list(jieba.cut(data,False)))
+            print("send {}".format(result))
+
+            conn.send_bytes('get {}'.format(data).encode())
+        except Exception as e:
+            print(e)
+
+listener.close()
+```
+
+
+``` python
+#client
+#encoding=utf-8
+__author__ = 'outofmemory.cn'
+
+from multiprocessing.connection import Client
+
+address = ('localhost', 6000)
+
+conn = Client(address, authkey=b'secret password')
+
+for x in range(0, 50):
+    conn.send('这是一个美丽的世界'.encode())
+    print(conn.recv_bytes().decode())
+
+conn.send('close'.encode())
+
+conn.close()
+
+```
+
+# 事件循环
+
+要实现一个协程的库，首先需要一个事件循环、一个上下文的表示，一个上下文的切换。
+
+事件循环是为了用来监听如select和epoll这类东西的。
+
+## 从内核的角度
+
+好吧，似乎协程也叫做用户态线程
+
+如go的开发者开发的libtask，早期C中使用的
+
+实模式下的变化才能，就是只有一个进程，这种京城下，就是手动触发中断，然后系统保存
+
+
+## 用户态线程
+
+这个主要其实是glibc的clone完成的，在这个clone的传入flag参数中，允许用户指定要共享的空间，
+
 # Reference
 1. [《Linux多线程服务端编程》]
 2. [C++中四种进程或线程同步互斥的控制方法](https://blog.csdn.net/zhu2695/article/details/51148272)
