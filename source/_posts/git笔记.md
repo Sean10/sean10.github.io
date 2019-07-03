@@ -6,6 +6,16 @@ tags: [git]
 categories: [专业]
 ---
 
+# 常用命令
+
+```
+# 切换分支
+git reset --hard
+# 查看操作历史，寻找之前记录的分支
+git reflog
+```
+
+# 记录
 
 git的快照流是指什么？
 (参见 Git 内部原理 来了解更多关于到底 .git 文件夹中包含了哪些文件的信息。)
@@ -157,6 +167,9 @@ w强制回滚，用来撤销失败的调试
 >大体来说，当运行 "git gc" 命令时，Git会收集所有松散对象并将它们存入 packfile，合并这些 packfile 进一个大的 packfile，然后将不被任何 commit 引用并且已存在一段时间 (数月) 的对象删除。 此外，Git还会将所有引用 (references) 并入一个单独文件
 
 `git prune`功能，似乎是在遇到大文件的问题,有意思，这个git的垃圾回收问题以前倒是没遇到过呢
+
+
+
 
 # 参考
 1. [git gc功能](http://blog.csdn.net/lihuanshuai/article/details/37345565)

@@ -8,7 +8,7 @@ subtitle: 脚踏实地
 description: 笔记 随笔
 author: Sean10
 email: sean10reborn@gmail.com
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
@@ -95,7 +95,7 @@ symbols_count_time:
   total_time: true
 
 # ## Themes: https://hexo.io/themes/
-theme: next
+theme: indigo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

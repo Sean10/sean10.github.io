@@ -128,6 +128,8 @@ boot loader -> kernel -> initrd -> rootfs
 
 「实际上系统起来以后，究竟使用了多少系统资源来维护内核？」
 
+[3]这篇文章讲的挺不错的。
+
 #### CramFS
 
 
@@ -137,3 +139,4 @@ boot loader -> kernel -> initrd -> rootfs
 ## Reference
 1. [差分磁盘：从“恢复出厂设置”说起 \| Bojie Li](https://ring0.me/2014/02/how-factory-reset-works/)
 2. [Overlay filesystem](https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt)
+3. [基于 SquashFS 构建 Linux 可读写文件系统](https://www.ibm.com/developerworks/cn/linux/1306_qinzl_squashfs/index.html)
