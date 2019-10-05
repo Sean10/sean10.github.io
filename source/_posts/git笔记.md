@@ -15,6 +15,9 @@ git reset --hard
 git reflog
 ```
 
+## tag功能
+
+
 # 记录
 
 git的快照流是指什么？

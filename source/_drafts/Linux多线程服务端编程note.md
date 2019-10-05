@@ -170,9 +170,12 @@ conn.close()
 实模式下的变化才能，就是只有一个进程，这种京城下，就是手动触发中断，然后系统保存
 
 
+
 ## 用户态线程
 
 这个主要其实是glibc的clone完成的，在这个clone的传入flag参数中，允许用户指定要共享的空间，
+
+[snippet/linux\-system\-programming\.md at master · xgfone/snippet](https://github.com/xgfone/snippet/blob/master/snippet/docs/linux/program/linux-system-programming.md)
 
 # Reference
 1. [《Linux多线程服务端编程》]

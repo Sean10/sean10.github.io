@@ -37,6 +37,22 @@ lrwxrwxrwx. 1 root root 0 Jul  2 08:50 /proc/4703/root -> /home/chroot_sean10
 
 暂不支持kubernetes
 
+目前的LXC使用下列内核功能来控制进程：
+
+🏄‍♂️ 内核命名空间（进程间通信、uts、mount、pid、network和user）
+
+🏄‍♂️ AppArmor和SELinux配置
+
+🏄‍♂️ Seccomp策略
+
+🏄‍♂️ chroot（使用pivot_root）
+
+🏄‍♂️ Kernel Capibilities
+
+🏄‍♂️ 控制组（cgroups）
+
+它在0.9版之前都是使用LXC技术，但在0.9版之后，已不再是唯一且默认的运行环境。
+
 ## bocker学习
 
 ## Containerd
@@ -49,9 +65,28 @@ lrwxrwxrwx. 1 root root 0 Jul  2 08:50 /proc/4703/root -> /home/chroot_sean10
 
 ## namespace
 
+跟namespace相关的API
+
+* clone
+* setns
+* unshare
+
+unshare是使当前进程加入新的namespace
+
+clone是创建一个新的子进程，然后让子进程加入新的namespace，而当前进程保持不变
+
+pid namespace
+
+在用ns进行隔离的时候，
+mount -t proc proc /proc实际执行了什么操作呢
+指定type类型是proc
+
+net namespace应该就是关键的网络相关了。
+
 ## filesystem ? device mapper
 
 
 
 
 ## Reference
+1. [Linux命名空间学习教程（一） UTS \- DockOne\.io](http://dockone.io/article/76)
