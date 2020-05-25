@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="快排、归并、二分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta property="og:updated_time" content="2020-04-24T01:27:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法学习目录">
 <meta name="twitter:description" content="快排、归并、二分">
@@ -223,6 +223,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void dfs(int 当前状态)</span><br><span class="line">	&#123;</span><br><span class="line">	      if(当前状态为边界状态)</span><br><span class="line">	      &#123;</span><br><span class="line">	        记录或输出</span><br><span class="line">	        return;</span><br><span class="line">	      &#125;</span><br><span class="line">	      for(i=0;i&lt;n;i++)		//横向遍历解答树所有子节点</span><br><span class="line">	     &#123;</span><br><span class="line">	           //扩展出一个子状态。</span><br><span class="line">	           修改了全局变量</span><br><span class="line">	           if(子状态满足约束条件)</span><br><span class="line">	            &#123;</span><br><span class="line">	              dfs(子状态)</span><br><span class="line">	           &#125;</span><br><span class="line">	            恢复全局变量//回溯部分</span><br><span class="line">	        &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>转换 为 迭代时</p>
 <h3 id="尾递归">尾递归</h3>
+<p>非尾递归:下一个函数结束以后此函数还有后续，所以必须保存本身的环境以供处理返回值。</p>
+<p>尾递归的精髓在于往内进行下一层解析的时候，这一层函数执行完了没卵用了，编译器一想，你都没卵用了我把你参数改改也没事啊，改了之后发现，哟呵这不是你儿子吗，那你爷俩就用这一块地儿好了。所以空间复杂度是O(1)。</p>
+<p>尾递归优化主要看语言编译器的支持吧？python，因此鼓励用迭代的方式来实现。「似乎说是为了抛出异常时有完整的Stack trace」</p>
+<p>好像C中并没有规定需要尾递归优化，默认并不开启，也不推荐写尾递归，如果代码需要跨平台（那就不要写了）</p>
+<p>似乎Erlang更推荐。Erlang的虚拟机会进行优化。</p>
+<p>是不是应该写个例子出来？</p>
+<p>尾递归优化主要解决内存占用问题，从O(n)转为O(1)</p>
 <h3 id="dijkstra单源最短路径算法">dijkstra单源最短路径算法</h3>
 <h3 id="prim最小生成树算法">Prim最小生成树算法</h3>
 <p>每个阶段只有一个状态-&gt;递推； 每个阶段的最优状态都是由上一个阶段的最优状态得到的-&gt;贪心； 每个阶段的最优状态是由之前所有阶段的状态的组合得到的-&gt;搜索； 每个阶段的最优状态可以从之前某个阶段的某个或某些状态直接得到而不管之前这个状态是如何得到的-&gt;动态规划。 每个阶段的最优状态可以从之前某个阶段的某个或某些状态直接得到这个性质叫做最优子结构； 而不管之前这个状态是如何得到的这个性质叫做无后效性。</p>
@@ -245,7 +252,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+    最后更新时间：<time datetime="2020-04-24T01:27:29.000Z" itemprop="dateUpdated">2020-04-24 09:27:29</time>
 </span><br>
 
 
@@ -416,7 +423,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2019</span>
+        <p><span>Sean10 &copy; 2015 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
