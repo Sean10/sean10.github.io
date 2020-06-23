@@ -68,10 +68,28 @@ html看到的公式和图片都是正常的。但是基于`Puppeteer`导出的�
 
 ~~emm，有人说reveal.js原生的`?print-pdf`已经修复了这些问题，但是reveal-md，怎么像是css不加载？~~
 
+``` bash
+reveal-md temp.md --static static
+python3 -m http.server
+#然后在打开的页面里按下面增加print-pdf，保存成pdf 
+```
+
 要在html后的`#`前增加?print-pdf，在`#`后面加是没用的……总算是意识到了
 
 ```
 http://localhost:8000/index.html?print-pdf#/
+```
+
+### 遇到因为文件头部的yaml导致生成的html都无法使用的问题
+
+奇怪，前两天操作的时候怎么好像没遇到这个问题呢？
+
+node版本的问题嘛？不像啊
+
+```
+是因为我去掉了水平Separator的设置，但是保留了下面这个
+verticalSeparator: <!--v-->
+
 ```
 
 ## 通过Decktape输出pdf(支持mathjax，但暂时存在标题与图片间隙过大问题未修复，pinned状态)
@@ -113,9 +131,40 @@ decktape index.html new.pdf
 
 只不过这种只适合多屏幕场景了吧，不过对于投屏来说，的确就是多屏幕
 
+## 生成的目录结构
+
+本以为`Reveal.js`生成的`slides`是顺序的，但是发现实际是具有上下左右四个方向的……
+
+本以为直接是按照目录结构保证的，但是实际上来看，和我写的目录结构并不是完全匹配的。
+
+还得具体了解一下。
+
+>横向的幻灯片代表一章, 纵向的幻灯片代表一章中的一节。那么横向的幻灯片在播放时是左右切换的, 而纵向的幻灯片是上下切换的。
+
+>Reveal.js 里页面有两种页面类型，横向的一级页面、纵向的子页面。后者务必嵌套在前者里面。所谓的纵横比较好理解，键盘上的左右箭头控制一级页面，上下键移动子页面。
+
+说是这么说的.根据[^7]也是有人直接改了，让可以在section切换时，能够直接进入下一个section的开头，而不是按`Esc`看到的布局的右侧位置。
+
+又仔细翻了下文档，其实是由开关控制，决定是否要继承当前所在的section下属的纵向index的，关闭`navigationMode`就可以了。[^8]的`Navigation Mode`有提开关,既然有空格可以工作，暂时就不动这个了。
+
+还是暂时使用空格顺序切换吧。
+
+## scss编写
+
+``` bash
+cd reveal.js
+yarn
+yarn run build -- css-themes
+```
+
+在调试过程中，发现主要痛点在于默认主题的标题全部被强制大写了，导致看上去不是很符合我的预期，找了下可以在英文外增加代码符号`\``来完成绕过。
+
 ## Reference
 1. [webpro/reveal\-md: reveal\.js on steroids\! Get beautiful reveal\.js presentations from any Markdown file](https://github.com/webpro/reveal-md#theme)
 2. [weird spacing with reveal · Issue \#151 · astefanutti/decktape](https://github.com/astefanutti/decktape/issues/151)
 3. [astefanutti/decktape: PDF exporter for HTML presentations](https://github.com/astefanutti/decktape)
 4. [remark vs remark\-slide vs reveal\-md vs reveal\.js vs spectacle \| npm trends](https://www.npmtrends.com/remark-vs-remark-slide-vs-reveal-md-vs-reveal.js-vs-spectacle)
 5. [Presenter mode · Issue \#404 · hakimel/reveal\.js](https://github.com/hakimel/reveal.js/issues/404)
+6. [Reveal\.js：把你的 Markdown 文稿变成 PPT \- 少数派](https://sspai.com/post/40657)
+7. [Forces left/right to go to top of previous/next section · Issue \#2504 · hakimel/reveal\.js](https://github.com/hakimel/reveal.js/issues/2504)
+8. [Vertical Slides \| reveal\.js](https://revealjs.com/vertical-slides/)
