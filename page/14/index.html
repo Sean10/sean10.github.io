@@ -32,6 +32,8 @@
 <meta name="twitter:title" content="行路中.">
 <meta name="twitter:description" content="笔记 随笔">
     
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
     <link rel="shortcut icon" href="/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
@@ -149,11 +151,11 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-数据结构之稀疏矩阵——稀疏矩阵加法和乘法"
+            <article id="post-二叉树——文本二叉树"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-11 22:47:00" datetime="2015-11-11T14:47:00.000Z"  itemprop="datePublished">2015-11-11</time>
+        <time class="post-time" title="2015-11-26 09:25:00" datetime="2015-11-26T01:25:00.000Z"  itemprop="datePublished">2015-11-26</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -167,7 +169,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/11/undefined/">数据结构之稀疏矩阵——稀疏矩阵加法和乘法</a>
+      <a class="post-title-link" href="/2015/11/26/二叉树——文本二叉树/">二叉树——文本二叉树</a>
     </h3>
   
 
@@ -177,19 +179,24 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        题目：假设稀疏矩阵A和B均以三元组表作为存储结构，试写出矩阵相加和相乘的算法，另设三元组表C存放结果矩阵。 要求： 从键盘输入稀疏矩阵A和B 检测A和B能否相加/相乘 如能，做矩阵相加和相乘运算，并打印运算结果 如不能，应显示出原因
-这里主要就是三元组的运用，比较基础，详情见代码中的注释。
-123456789101112131415161718192021222324252627282930...
+        总时间限制: 1000ms 内存限制: 65536kB ####描述 
+                
+                    
+                    
+                
+                img
+             如上图，一棵每个节点都是一个字母，且字母互不相同的二叉树，可以用以下若干行文本表示:
+12345678A...
     
 
-        <a href="/2015/11/11/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/26/二叉树——文本二叉树/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
 
     </div>
     
@@ -198,11 +205,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-数据结构之链表——加里森的任务（循环链表）"
+            <article id="post-二叉树——实现堆结构"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-11 17:45:00" datetime="2015-11-11T09:45:00.000Z"  itemprop="datePublished">2015-11-11</time>
+        <time class="post-time" title="2015-11-23 09:46:00" datetime="2015-11-23T01:46:00.000Z"  itemprop="datePublished">2015-11-23</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -216,7 +223,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/11/undefined/">数据结构之链表——加里森的任务（循环链表）</a>
+      <a class="post-title-link" href="/2015/11/23/二叉树——实现堆结构/">二叉树——实现堆结构</a>
     </h3>
   
 
@@ -226,18 +233,21 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        题目：加里森的任务
-有n个加里森敢死队的队员要炸掉敌人的一个军火库，谁都不想去，队长加里森决定用轮回数数的办法来决定哪个战士去执行任务。规则如下：如果前一个战士没完成任务，则要再派一个战士上去。现给每个战士编一个号，大家围坐成一圈，随便从某一个编号为x的战士开始计数，当数到y时，对应的战士就去执行任务，且此战士不再参加下一轮计数。如果此战士没完成任务，再从下一个战士开始数数，被数到第y时，此...
+        题目链接 总时间限制: 3000ms 内存限制: 65535kB 描述 定义一个数组，初始化为空。在数组上执行两种操作：
+1、增添1个元素，把1个新的元素放入数组。
+2、输出并删除数组中最小的数。
+使用堆结构实现上述功能的高效算法。
+输入 第一行输入一个整数t，代表测试数据的组数。 对于每组测试数据，第一行输入一个整数n，代表操作的次数。 每次操作首先输入一个整数type。 当type=1，...
     
 
-        <a href="/2015/11/11/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/23/二叉树——实现堆结构/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/堆/">堆</a></li></ul>
 
     </div>
     
@@ -246,11 +256,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-数据结构之队列——回文字判断"
+            <article id="post-二叉树——由中根序列和后根序列重建二叉树"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-11 17:43:00" datetime="2015-11-11T09:43:00.000Z"  itemprop="datePublished">2015-11-11</time>
+        <time class="post-time" title="2015-11-22 21:48:00" datetime="2015-11-22T13:48:00.000Z"  itemprop="datePublished">2015-11-22</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -264,7 +274,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/11/undefined/">数据结构之队列——回文字判断</a>
+      <a class="post-title-link" href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/">二叉树——由中根序列和后根序列重建二叉树</a>
     </h3>
   
 
@@ -274,19 +284,19 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        题目：判别回文字符串
-正读和反读都一样的字符串称为回文字符串。 编写程序，在键盘上输入一个字符串，以“#”作为结束标志，判别它是否为回文字符串。要求：采用栈和队列来实现
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606...
+        题目链接 总时间限制: 500ms 内存限制: 65535kB 描述 我们知道如何按照三种深度优先次序来周游一棵二叉树，来得到中根序列、前根序列和后根序列。反过来，如果给定二叉树的中根序列和后根序列，或者给定中根序列和前根序列，可以重建一二叉树。本题输入一棵二叉树的中根序列和后根序列，要求在内存中重建二叉树，最后输出这棵二叉树的前根序列。
+用不同的整数来唯一标识二叉树的每一个结点
+中根序列是...
     
 
-        <a href="/2015/11/11/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/22/二叉树——由中根序列和后根序列重建二叉树/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
 
     </div>
     
@@ -295,11 +305,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-数据结构之栈——二进制转十进制"
+            <article id="post-二叉树——UVA122"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-11 17:42:00" datetime="2015-11-11T09:42:00.000Z"  itemprop="datePublished">2015-11-11</time>
+        <time class="post-time" title="2015-11-22 19:23:00" datetime="2015-11-22T11:23:00.000Z"  itemprop="datePublished">2015-11-22</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -313,7 +323,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/11/undefined/">数据结构之栈——二进制转十进制</a>
+      <a class="post-title-link" href="/2015/11/22/二叉树——UVA122/">二叉树——UVA122</a>
     </h3>
   
 
@@ -323,20 +333,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        数据结构的作业，顺便就放上来吧
-题目： 2/8进制转换器
-编写程序，从终端输入一串0/1表示二进制数，以“#”结束，输出它的8进制表示形式。要求：采用栈来实现
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263...
+        二叉树的层次遍历 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include ...
     
 
-        <a href="/2015/11/11/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/22/二叉树——UVA122/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
 
     </div>
     
@@ -345,60 +352,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-《爱的艺术》人类超越了本能"
+            <article id="post-二叉树——UVA679"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-08 00:10:00" datetime="2015-11-07T16:10:00.000Z"  itemprop="datePublished">2015-11-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/08/undefined/">《爱的艺术》人类超越了本能</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-
-第二章 爱情的理论 (一) 爱情是对人类生存问题的回答 爱情的每一个理论必须要以人的理论、人的生存理论为前提。我们所能看到的动物的爱情或者更确切地说动物身上类似爱情的东西，主要是动物的一部分本 能。在人身上只能看到这一本能的残余。人的存在的根本要点是人超越了动物界，超越了本能的适应性，脱离了自然-尽管人永远不可能完全脱离自然。人继续是自然的一部分，但又同自然分离，永远不可能再同自然合二为...
-    
-
-        <a href="/2015/11/08/undefined/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爱情/">爱情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爱的艺术/">爱的艺术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-栈——C语言模拟"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015-11-05 13:37:00" datetime="2015-11-05T05:37:00.000Z"  itemprop="datePublished">2015-11-05</time>
+        <time class="post-time" title="2015-11-22 16:45:00" datetime="2015-11-22T08:45:00.000Z"  itemprop="datePublished">2015-11-22</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -412,7 +370,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/05/undefined/">栈——C语言模拟</a>
+      <a class="post-title-link" href="/2015/11/22/二叉树——UVA679/">二叉树——UVA679</a>
     </h3>
   
 
@@ -422,13 +380,107 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ##栈——C语言模拟
-一、定义 根据wiki百科，栈(stack)，是一种特殊的串列形式的数据结构，是线性表的一种，一种_限制访问端口_的线性表。
-栈的特殊之处在于只能在链接串列的一端，即栈顶(top)进行操作，在栈顶进行存入数据(push)，取出(pop).
-推入:将数据放入栈的顶端，top+1. 弹出:将顶端数据资料输出，top-1. 也就是所谓的先进后出(LIFO，Last In Fi...
+        用二叉树来模拟的算法会TLE,只能找规律来过 画图会发现，当I为奇数时，都会掉到左子树去，偶数则右。然后判断一下何时到叶子节点就可以了
+TLE的算法 12345678910111213141516171819202122232425262728#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;math.h&gt;#in...
     
 
-        <a href="/2015/11/05/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/22/二叉树——UVA679/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-线性表——约瑟夫问题（递推未完）"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-22 13:43:00" datetime="2015-11-22T05:43:00.000Z"  itemprop="datePublished">2015-11-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/22/线性表——约瑟夫问题（递推未完）/">线性表——约瑟夫问题（递推未完）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        题目链接 总时间限制: 1000ms 内存限制: 65536kB 描述 有n只猴子，按顺时针方向围成一圈选大王（编号从1到n），从第1号开始报数，一直数到m，数到m的猴子退出圈外，剩下的猴子再接着从1开始报数。就这样，直到圈内只剩下一只猴子时，这个猴子就是猴王，编程求输入n，m后，输出最后猴王的编号。
+输入 输入包含两个整数，第一个是n，第二个是m (0 &lt; m,n &lt;=300)...
+    
+
+        <a href="/2015/11/22/线性表——约瑟夫问题（递推未完）/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性表/">线性表</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-栈——HDU1022"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-11-19 10:37:00" datetime="2015-11-19T02:37:00.000Z"  itemprop="datePublished">2015-11-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/11/19/栈——HDU1022/">栈——HDU1022</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        题目是栈的模拟进出。
+先用数组来模拟一下栈的指针移动。 12345678910111213141516171819202122232425262728293031323334#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;int main()&#123;    //freopen(&quot;in.txt&quot;,&quot;r&quot...
+    
+
+        <a href="/2015/11/19/栈——HDU1022/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
@@ -444,14 +496,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-读《弗洛伊德：作家与白日梦》"
+            <article id="post-栈——出栈序列统计"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-04 18:31:00" datetime="2015-11-04T10:31:00.000Z"  itemprop="datePublished">2015-11-04</time>
+        <time class="post-time" title="2015-11-18 14:36:00" datetime="2015-11-18T06:36:00.000Z"  itemprop="datePublished">2015-11-18</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
 
 
 
@@ -462,7 +514,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/04/undefined/">读《弗洛伊德：作家与白日梦》</a>
+      <a class="post-title-link" href="/2015/11/18/栈——出栈序列统计/">栈——出栈序列统计</a>
     </h3>
   
 
@@ -472,19 +524,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ##读《弗洛伊德：作家与白日梦》
-在弗洛伊德的这篇论文中，我的理解的含义是作家的作品便是他们的幻想的一种表达，只是借小说等形式展露而不必为让其他人窥探自己的内心自我而感到害羞。在弗洛伊德看来，这种白日梦依旧是符合他对梦的解析的，这里的幻想就如同孩童时期的梦，只是通过外加刺激唤醒了孩童时期的记忆。
-到文章最后，弗洛伊德将话题延伸至了对自我的分析，主体由第三者的作家转向了小说的读者——我们自己。...
+        题目链接 总时间限制: 100ms 内存限制: 64kB 描述 栈是常用的一种数据结构，有n个元素在栈顶端一侧等待进栈，栈顶端另一侧是出栈序列。你已经知道栈的操作有两种：push和pop，前者是将一个元素进栈，后者是将栈顶元素弹出。现在要使用这两种操作，由一个操作序列可以得到一系列的输出序列。请你编程求出对于给定的n，计算并输出由操作数序列1，2，…，n，经过一系列操作可能得到的输出序列总数...
     
 
-        <a href="/2015/11/04/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/18/栈——出栈序列统计/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/梦/">梦</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
 
     </div>
     
@@ -493,14 +543,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-《爱的艺术》爱的误解——对象，状态"
+            <article id="post-栈——密码翻译"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-04 11:04:00" datetime="2015-11-04T03:04:00.000Z"  itemprop="datePublished">2015-11-04</time>
+        <time class="post-time" title="2015-11-18 12:43:00" datetime="2015-11-18T04:43:00.000Z"  itemprop="datePublished">2015-11-18</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
 
 
 
@@ -511,7 +561,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/04/undefined/">《爱的艺术》爱的误解——对象，状态</a>
+      <a class="post-title-link" href="/2015/11/18/栈——密码翻译/">栈——密码翻译</a>
     </h3>
   
 
@@ -521,20 +571,18 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
-当然，那并不是说人们认为爱不重要。人们渴望着爱，他们没完没了地观看有关换了和悲哀的爱情故事的电影，倾听很多毫无价值的爱情歌曲——爱呢日，几乎每一个人都认为，爱是没有什么可学的。
-
-对于爱情的渴望，确实每个人都无可避免。不论是因为生理上的荷尔蒙，还是因为心理上对解脱寂寞的向往，爱情作为温柔乡，所有人都有着对理想的安神处的希望。不过，这样的渴望，毕竟正如上一段所说的，并不是所有人都能接受将其作...
+        题目链接 总时间限制: 1000ms 内存限制: 65536kB 描述 在情报传递过程中，为了防止情报被截获，往往需要对情报用一定的方式加密，简单的加密算法虽然不足以完全避免情报被破译，但仍然能防止情报被轻易的识别。我们给出一种最简的的加密方法，对给定的一个字符串，把其中从a-y,A-Y的字母用其后继字母替代，把z和Z用a和A替代，则可得到一个简单的加密字符串。
+输入 第一行是字符串的数目n...
     
 
-        <a href="/2015/11/04/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/18/栈——密码翻译/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爱情/">爱情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爱的艺术/">爱的艺术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
 
     </div>
     
@@ -543,11 +591,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-商半群的计算总结"
+            <article id="post-关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-11-03 20:06:00" datetime="2015-11-03T12:06:00.000Z"  itemprop="datePublished">2015-11-03</time>
+        <time class="post-time" title="2015-11-17 19:23:00" datetime="2015-11-17T11:23:00.000Z"  itemprop="datePublished">2015-11-17</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
@@ -561,7 +609,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/03/undefined/">商半群的计算总结</a>
+      <a class="post-title-link" href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/">关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨</a>
     </h3>
   
 
@@ -571,75 +619,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ##商半群的计算总结
-看商半群的题看了好久，一直没看懂几个条件是什么意思，重头翻书，总算找到一些思路，是自己的基础没学好的缘故。
-以下来分享以下我的计算方式，因为没有找到答案，我也不好说一定对。
-首先，必须要明白商集的相关基础知识。 &gt;
-                
-                    
-                    
-                ...
+        一、引言 在计算机科学中，Floyd-Warshell-Roy算法是用于在有向图或负权图中寻找最短路径的一种算法。运行一次能够找到所有两个顶点间的最短路径，不过并不输出所有路径。该算法同时也可以被用于寻找关系R的传递闭包。 Floyd-Warshell算法是一个动态规划的例子，在1962年为Robert Floyd发表。然而，在1959年，相同的算法已经被Bernard Roy发表。同年，S...
     
 
-        <a href="/2015/11/03/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/11/17/关于Warshall、Roy对寻找传递闭包方法的不同表达的探讨/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/群论/">群论</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-论勇气"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015-11-01 21:50:00" datetime="2015-11-01T13:50:00.000Z"  itemprop="datePublished">2015-11-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/11/01/undefined/">论勇气</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        作为交英语作业前的一次头脑风暴，以中文来记录自己所暂时能想到的。
-虽然本打算看完《存在的勇气》，再写的，时间不够，姑且量力而为了。
-勇气，依据维基百科，是一种面对痛苦、危险、威胁、不定的选择和希望。
-生理上的勇气是面对物理上的疼痛、困难、死亡抑或是死亡的威胁下的勇气，而心理上的勇气则是一种能够在面对流行的二元选择、羞愧、流言、气馁、个人损失下做出正确选择的能力。
-在这里，我们考虑的更多的是心...
-    
-
-        <a href="/2015/11/01/undefined/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/勇气/">勇气</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li></ul>
 
     </div>
     
@@ -652,7 +642,7 @@
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/13/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/15/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/13/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/15/">下一页</a>
     </div>
 </nav>
 
@@ -675,6 +665,8 @@
 
 
         <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>「译」sqlite为什么autoincrement不推荐使用 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++,Qt,sqlite3">
+    <meta name="description" content="在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。 在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。 但是在我使用的ORM_LITE中没有提供这样的属性，那么是不是这个属性不推荐使用呢？ 找到了下面这篇文章SQLite AUTOINCREMENT : Why You Shoul">
+<meta name="keywords" content="C++,Qt,sqlite3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「译」sqlite为什么autoincrement不推荐使用">
+<meta property="og:url" content="https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。 在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。 但是在我使用的ORM_LITE中没有提供这样的属性，那么是不是这个属性不推荐使用呢？ 找到了下面这篇文章SQLite AUTOINCREMENT : Why You Shoul">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-AUTOINCREMENT.jpg">
+<meta property="og:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-maximum-rowid-value.jpg">
+<meta property="og:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-INSERT-row-without-rowid.jpg">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「译」sqlite为什么autoincrement不推荐使用">
+<meta name="twitter:description" content="在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。 在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。 但是在我使用的ORM_LITE中没有提供这样的属性，那么是不是这个属性不推荐使用呢？ 找到了下面这篇文章SQLite AUTOINCREMENT : Why You Shoul">
+<meta name="twitter:image" content="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-AUTOINCREMENT.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">「译」sqlite为什么autoincrement不推荐使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">「译」sqlite为什么autoincrement不推荐使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-15T14:51:18.000Z" itemprop="datePublished" class="page-time">
+  2018-09-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sqlite-rowid表简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQLite ROWID表简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sqlite-autoincrement-属性"><span class="post-toc-number">2.</span> <span class="post-toc-text">SQLite AUTOINCREMENT 属性</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-为什么autoincrement不推荐使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">「译」sqlite为什么autoincrement不推荐使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-15 22:51:18" datetime="2018-09-15T14:51:18.000Z"  itemprop="datePublished">2018-09-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。</p>
+<p>在这个背景下，我考虑设置一个数据库里的自增主键，之后这部分就可以自动生成了。</p>
+<p>但是在我使用的<a href="">ORM_LITE</a>中没有提供这样的属性，那么是不是这个属性不推荐使用呢？</p>
+<p>找到了下面这篇文章<a href="http://www.sqlitetutorial.net/sqlite-autoincrement/" target="_blank" rel="noopener">SQLite AUTOINCREMENT : Why You Should Avoid Using It</a></p>
+<a id="more"></a>
+<p>下文是这篇的翻译。</p>
+<h2 id="sqlite-rowid表简介">SQLite ROWID表简介</h2>
+<p>无论何时，创建表时不指定<code>WITHOUT ROWID</code>选项，都会得到一个名为rowid的隐式自动增量列。</p>
+<p>rowid列存储64位有符号整型，用于唯一标识表中的行。</p>
+<p>我们来看下面的例子。</p>
+<p>首先，创建一个包含两列<code>first_name, last_name</code>的新表<code>people</code>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people (</span><br><span class="line"> first_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> last_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#1" target="_blank" rel="noopener">Try it</a></p>
+<p>其次，用以下<code>INSERT</code>语句插入<code>people</code>一行: <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (first_name, last_name)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (<span class="string">'John'</span>, <span class="string">'Doe'</span>);</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#2" target="_blank" rel="noopener">Try it</a></p>
+<p>第三，用以下<code>SELECT</code>语句从<code>people</code>中查询数据 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"> <span class="keyword">rowid</span>,</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line"> people;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#3" target="_blank" rel="noopener">Try it</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-AUTOINCREMENT.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>所以，SQLite会自动创建一个名为rowid的隐式列，并 在您插入新行时自动分配一个整数值。</p>
+<p>可以通过<code>rowid</code>的两个别名<code>_rowid_</code>和<code>oid</code>来使用它</p>
+<p>如果创建具有<code>INTEGER PRIMARY KEY</code>列的表，则该列指向<code>rowid</code>列。</p>
+<p>以下语句删除<code>people</code>表并重新创建它，不过这一次，我们添加另一列带有<code>INTEGER PRIMARY KEY</code>属性的名为<code>person_id</code>的列。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> people;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people (</span><br><span class="line"> person_id <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line"> first_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> last_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#4" target="_blank" rel="noopener">Try it</a></p>
+<p>现在<code>person_id</code>列实际上就是<code>rowid</code>列。</p>
+<p>那么，Sqlite如何分配一个整型值给rowid列呢？</p>
+<p>如果插入一个新行时，你没有指定一个rowid值或者使用<code>NULL</code>值， Sqlite会分配一个比表中最大的rowid大1的整型。 当还没有插入任何行时， rowid是1。</p>
+<p>首先，插入带有最大值的一行插入<code>people</code>表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> person_id,</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="number">9223372036854775807</span>,</span><br><span class="line"> <span class="string">'Johnathan'</span>,</span><br><span class="line"> <span class="string">'Smith'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#5" target="_blank" rel="noopener">Try it</a></p>
+<p><img src="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-maximum-rowid-value.jpg"></p>
+<p>第二，插入不指定<code>person_id</code>的另一行</p>
+<p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="string">'William'</span>,</span><br><span class="line"> <span class="string">'Gate'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#6" target="_blank" rel="noopener">Try it</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-INSERT-row-without-rowid.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="sqlite-autoincrement-属性">SQLite AUTOINCREMENT 属性</h2>
+<p>SQLite 推荐你不应该使用<code>AUTOCREMENT</code>属性，因为:</p>
+<blockquote>
+<p>The AUTOINCREMENT keyword imposes extra CPU, memory, disk space, and disk I/O overhead and should be avoided if not strictly needed. It is usually not needed.</p>
+<p>AUTOINCREMENT关键字会产生额外的CPU,内存,磁盘空间和磁盘I/O开销，如果不是严格需求，应该避免使用。通常不是必须的。</p>
+</blockquote>
+<p>此外，SQLite为<code>AUTOCREMENT</code>列分配值的方式与<code>rowid</code>列的使用方式略有不同。</p>
+<p>请参阅以下示例。</p>
+<p>首先，再次删除并重新创建人员表。这次，我们使用<code>AUTOINCREMENT</code>属性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> people;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> people (</span><br><span class="line"> person_id <span class="built_in">INTEGER</span> PRIMARY <span class="keyword">KEY</span> AUTOINCREMENT,</span><br><span class="line"> first_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"> last_name <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#7" target="_blank" rel="noopener">Try it</a></p>
+<p>其次，将具有最大行id值的行添加到people表中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> person_id,</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="number">9223372036854775807</span>,</span><br><span class="line"> <span class="string">'Johnathan'</span>,</span><br><span class="line"> <span class="string">'Smith'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#8" target="_blank" rel="noopener">Try it</a></p>
+<p>第三，在people表中插入另一行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> people (</span><br><span class="line"> first_name,</span><br><span class="line"> last_name</span><br><span class="line">)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line"> (</span><br><span class="line"> <span class="string">'John'</span>,</span><br><span class="line"> <span class="string">'Smith'</span></span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.sqlitetutorial.net/tryit/query/sqlite-autoincrement/#9" target="_blank" rel="noopener">Try it</a></p>
+<p>这次，SQLite发出了一条错误消息：</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Err] 13 - database or disk is full</span><br></pre></td></tr></table></figure></p>
+<p>因为它不会重新使用未被使用数字。</p>
+<p><code>AUTOCREMENT</code>这个属性的主要目的是<em>防止SQLite复用还未使用的值或者使用先前删除的行</em></p>
+<p>如果还没有任何像这样的需求，那么你就不应该在主键中使用<code>SQLite AUTOINCREMENT</code>属性。</p>
+<p>在这篇教程中，你已经学习到<code>AUTOINCREMENT</code>属性如何运作的，以及它如何影响<code>SQLite</code>分配值给主键的方式。</p>
+<p># Reference 1. <a href="http://www.sqlitetutorial.net/sqlite-autoincrement/" target="_blank" rel="noopener">SQLite AUTOINCREMENT : Why You Should Avoid Using It</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite3/">sqlite3</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/&title=《「译」sqlite为什么autoincrement不推荐使用》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/&title=《「译」sqlite为什么autoincrement不推荐使用》 — 行路中.&source=在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。
+在这个背..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《「译」sqlite为什么autoincrement不推荐使用》 — 行路中.&url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/19/Python分享/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python脚本常用模块记录</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/26/高层火灾应对方式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">高层火灾应对方式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/&title=《「译」sqlite为什么autoincrement不推荐使用》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/&title=《「译」sqlite为什么autoincrement不推荐使用》 — 行路中.&source=在使用sqlite3写一个建议订单系统的时候，没设置主键，默认将第一个条属性设置成了主键，而这条属性并不具有唯一性，导致经常出现插入失败的问题。
+在这个背..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《「译」sqlite为什么autoincrement不推荐使用》 — 行路中.&url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/09/15/为什么autoincrement不推荐使用/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

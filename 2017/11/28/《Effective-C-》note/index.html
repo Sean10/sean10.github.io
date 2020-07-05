@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>《Effective_C++》note | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++">
+    <meta name="description" content="in-class 初值设定 只支持整型常量">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Effective_C++》note">
+<meta property="og:url" content="https://sean10.github.io/2017/11/28/《Effective-C-》note/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="in-class 初值设定 只支持整型常量">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Effective_C++》note">
+<meta name="twitter:description" content="in-class 初值设定 只支持整型常量">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">《Effective_C++》note</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">《Effective_C++》note</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-28T14:47:56.000Z" itemprop="datePublished" class="page-time">
+  2017-11-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#in-class-初值设定"><span class="post-toc-number">1.</span> <span class="post-toc-text">in-class 初值设定</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#新式转型"><span class="post-toc-number">2.</span> <span class="post-toc-text">新式转型</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#raii资源取得时机便是初始化时机resource-acquisition-is-initialization"><span class="post-toc-number">3.</span> <span class="post-toc-text">RAII，资源取得时机便是初始化时机(Resource Acquisition is Initialization)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#resource-handler"><span class="post-toc-number">4.</span> <span class="post-toc-text">resource handler</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#优良接口"><span class="post-toc-number">5.</span> <span class="post-toc-text">优良接口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#异常安全性"><span class="post-toc-number">6.</span> <span class="post-toc-text">异常安全性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#条款31-将文件件的编译依存关系降至最低"><span class="post-toc-number">7.</span> <span class="post-toc-text">条款31 将文件件的编译依存关系降至最低</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#函数接口继承和函数实现继承"><span class="post-toc-number">8.</span> <span class="post-toc-text">函数接口继承和函数实现继承</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#多重继承"><span class="post-toc-number">9.</span> <span class="post-toc-text">多重继承</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#泛型编程"><span class="post-toc-number">10.</span> <span class="post-toc-text">泛型编程</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-《Effective-C-》note"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">《Effective_C++》note</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-28 22:47:56" datetime="2017-11-28T14:47:56.000Z"  itemprop="datePublished">2017-11-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="in-class-初值设定">in-class 初值设定</h1>
+<p>只支持整型常量</p>
+<a id="more"></a>
+<p>class static专属变量可以不定义，直接声明并使用</p>
+<p>如果要取地址，就在定义文件里再定义const ，不要初始化，因为值在声明时已经默认了。</p>
+<p>这不知道是哪个C++的版本加入的功能，旧编译器不支持初值</p>
+<p>不支持in class时，可以用<code>enum{NumTurns = 5}</code>替代</p>
+<p>这叫做enum hack补偿做法</p>
+<p>这是template metaprogramming的基本技术</p>
+<p>bitwise constness(physical constness) and logical constness</p>
+<p>二进制常量性 和 逻辑常量性 利用Mutable解决掉non-static的const摆动场，释放bitwise constness</p>
+<h1 id="新式转型">新式转型</h1>
+<p>static_const转型操作</p>
+<p>const_cast去除const操作</p>
+<p>core dump错误</p>
+<p>基类使用派生类函数 1. 使用virtual从继承向上移动 2. 使用安全容器</p>
+<p>绝对拒绝cascading dynamip_cast，理由不理解</p>
+<p>尽可能使用C++ style新式转型</p>
+<p>无参数构造函数，为什么也需要用到初始化操作？ （噢，可能是为了不忘记哪个参数不需要初值）</p>
+<p>不同编译单元内定义之non-local static对象，编译器对初始化顺序并没有设定</p>
+<p>**多个编译单元内的non-local static对象经由“模板隐式具现化 implicit template instantiations””形成</p>
+<p>将non-local 移到专属函数中，调用一个函数返回一个reference指向所含的对象，</p>
+<p>这是Singleton模式的一个常见实现手法</p>
+<p>但是在多线程环境下存在不确定性</p>
+<p>做法：在程序的单线程启动阶段手工调用所有reference-returning函数，可消除与初始化有关的”竞速形式(race conditions)</p>
+<p>编译器拒绝生成拷贝构造函数和操作符的几种情况</p>
+<p>将成员函数声明为private并不去实现，就可以阻止编译器生成public拷贝构造函数等等</p>
+<p>声明一个uncopyable基类，继承他就可以直接阻止编译器</p>
+<p>c++的异常绝对不要放在析构函数里</p>
+<p>连锁赋值</p>
+<p>返回*this，这个是返回引用</p>
+<p>自我赋值，释放，陷阱</p>
+<p>传统做法，添加identity test</p>
+<p>异常安全性是什么？</p>
+<p>工厂函数factory function</p>
+<h1 id="raii资源取得时机便是初始化时机resource-acquisition-is-initialization">RAII，资源取得时机便是初始化时机(Resource Acquisition is Initialization)</h1>
+<p>智能指针</p>
+<p>或者 referenced counting smart pointer</p>
+<h1 id="resource-handler">resource handler</h1>
+<p>shared_ptr存在删除器，可以指定调用函数作为释放这种行为</p>
+<p><code>std::tr1::shard_ptr&lt;Investor&gt; ptr</code> <code>ptr(m1, Unlock)</code></p>
+<p>有时APIs直接接触原始资源，无法通过资源管理类来接触</p>
+<p>对原始资源的访问最好是通过显式转换，但是对客户来说，隐式转换 可能更加方便</p>
+<p>隐式转换也是可以在自定义类中重载的吗？</p>
+<p><strong>以独立语句将newed对象存储于智能指针内。如果不这样做，一旦异常被抛出，有可能导致难以察觉的资源泄露</strong></p>
+<h1 id="优良接口">优良接口</h1>
+<p>许多客户端错误可以因为导入新类型而获得预防</p>
+<p>以函数替换对象，表现某个特定月份</p>
+<p>和non-local static对象的初始化次序有什么关系？</p>
+<p>嗯，想起来了，构造函数的赋值和初始化次序可能不定，还是直接调用函数效果更确定</p>
+<p>tr1::shared_ptr支持定制型删除器，可防范DLL问题，可被用来自动解除互斥锁。</p>
+<p>这条不太理解，不知道DLL可能发生什么错误</p>
+<p>设计class犹如设计type</p>
+<p>函数内的static local对象何时释放？ global slinton</p>
+<p>在一个命名空间内添加多个头文件也是一种做法</p>
+<p><strong>特化版本</strong>是什么，好像没见过</p>
+<p>条款25，特化swap，感觉不理解，特别复杂</p>
+<p>避免返回handles（包括references、迭代器）指向对象内部</p>
+<h1 id="异常安全性">异常安全性</h1>
+<ul>
+<li>不泄露任何资源</li>
+<li>不允许数据败坏</li>
+</ul>
+<p>异常安全码</p>
+<p>copy and swap一般化策略</p>
+<p>pimpl idiom</p>
+<p>function template和头文件是啥关系，似乎没啥关系</p>
+<h1 id="条款31-将文件件的编译依存关系降至最低">条款31 将文件件的编译依存关系降至最低</h1>
+<p>我们可以这样做，将person分割为两个classes，一个只提供接口，另一个负责实现该接口。</p>
+<p>这样可以实现接口与实现相分离</p>
+<p>std头文件依旧引用，除此之外。接口使用前置声明。</p>
+<p>关键:用“声明的依存性”替换“定义的依存性”</p>
+<p>Pass By Value就需要用到定义，而如果传递指针或引用，就不需要定义，只要声明</p>
+<p><strong>为声明式和定义式上提供不同的头文件</strong></p>
+<p>就像<iosfwd></iosfwd></p>
+<p>这个被称为Handle classes.</p>
+<p>2种: * 接口与实现相分离 * 抽象基类，叫interface class</p>
+<p>类似Java的Interface</p>
+<p>继承这个抽象基类的叫做具象类(concrete classes)，调用基类的创建函数，在创建函数中调用具象类对象动态分配，并返回static，然后通过基类中提供的接口对返回的对象进行操作。哇，这也是一种接口与实现相分离</p>
+<p>handle classes 和Interface classes解除了接口和实现之间的耦合关系，从而降低了文件间的编译依存性(compilation dependencies)</p>
+<p>virtual意味着接口必须被继承，non-virtual意味着接口和实现必须被继承</p>
+<p>转角函数 forwarding function</p>
+<h1 id="函数接口继承和函数实现继承">函数接口继承和函数实现继承</h1>
+<p>virtual和inline究竟有什么关系？</p>
+<p>接口和缺省实现应该分开</p>
+<p>可以在纯虚函数的定义中进行缺省实现</p>
+<p>简朴的(非纯)impure vritual函数具体制定接口继承及缺省实现继承。</p>
+<p>缺省实现继承不还是pure virtual函数实现的吗？</p>
+<p>难道这个简朴的，指的不是virtual函数？</p>
+<p>non-virtual interface(NVI手法)，外覆器(wrapper)</p>
+<p>Template Method设计模式</p>
+<p>虚函数private，还能被继承吗？</p>
+<p>不能的话，那有什么意义？</p>
+<p>strategy设计模式</p>
+<p>传递函数指针</p>
+<p>tr1::function可以实现stategy设计模式</p>
+<p>任何兼容的可调用物(callable entity)</p>
+<p>与给定之目标签名式(target signature)兼容</p>
+<p>上面2条什么意思？</p>
+<p>非虚函数，Base类指针指向派生类，执行的函数式Base类中的，而不是派生类中的。</p>
+<p>如果是虚函数，那么就都执行派生类中的。</p>
+<p>静态绑定，动态绑定</p>
+<p>dynamically bound,stataically bound</p>
+<p>不能调用继承Private的virtual函数，那么允许重新定义这个虚函数的价值是什么呢？</p>
+<p>如果继承的private是非虚函数，也是可以重新定义的吧？</p>
+<p>难道这个不行</p>
+<p>Java和C#自带 组织derived class 重新定义virtual 函数</p>
+<p>空白基类最优化</p>
+<h1 id="多重继承">多重继承</h1>
+<p>virtual inheritance</p>
+<h1 id="泛型编程">泛型编程</h1>
+<p>衍生出模板元编程</p>
+<p>显式接口，运行期多态</p>
+<p>template中指涉一个嵌套丛书类型名称，就必须在紧邻它的前一个位置放上关键字typename</p>
+<p>模板 特化</p>
+<p>全特化模板的调用很有可能编译器不会去查询，也就无法调用，存在一些问题</p>
+<p>共性与变性分析</p>
+<p>模板化基类 被覆盖</p>
+<p>working set</p>
+<p>因非类型模板参数造成的代码膨胀，可以用class来替换template，但是完全理解不了</p>
+<p>Traits是一门技术，获取类型信息的，无论是内置还是自动类型</p>
+<p>TMP元编程技术越来越牛了</p>
+<p>可以定制new和delete，set_new_handler</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/11/28/《Effective-C-》note/&title=《《Effective_C++》note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/11/28/《Effective-C-》note/&title=《《Effective_C++》note》 — 行路中.&source=in-class 初值设定
+只支持整型常量" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/11/28/《Effective-C-》note/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《Effective_C++》note》 — 行路中.&url=https://sean10.github.io/2017/11/28/《Effective-C-》note/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/11/28/《Effective-C-》note/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/02/leetcode-101/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">leetcode-101</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/31/东野圭吾作品的别致/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">东野圭吾作品的别致</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/11/28/《Effective-C-》note/&title=《《Effective_C++》note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/11/28/《Effective-C-》note/&title=《《Effective_C++》note》 — 行路中.&source=in-class 初值设定
+只支持整型常量" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/11/28/《Effective-C-》note/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《Effective_C++》note》 — 行路中.&url=https://sean10.github.io/2017/11/28/《Effective-C-》note/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/11/28/《Effective-C-》note/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/11/28/《Effective-C-》note/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

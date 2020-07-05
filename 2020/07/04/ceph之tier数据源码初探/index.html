@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>ceph之tier数据源码初探 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ceph,源码,tier">
+    <meta name="description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
+<meta name="keywords" content="ceph,源码,tier">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ceph之tier数据源码初探">
+<meta property="og:url" content="https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-05T16:09:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ceph之tier数据源码初探">
+<meta name="twitter:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ceph之tier数据源码初探</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ceph之tier数据源码初探</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-04T13:07:29.000Z" itemprop="datePublished" class="page-time">
+  2020-07-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析关键点"><span class="post-toc-number">1.</span> <span class="post-toc-text">分析关键点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#埋点统计接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">埋点统计接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier主要触发任务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">tier主要触发任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据迁移"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数据迁移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#io操作"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">IO操作</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码阅读过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">源码阅读过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier_proxy_read数据来源"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">tier_proxy_read数据来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-stats"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pg stats</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pool-stat方向"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">pool stat方向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo"><span class="post-toc-number">3.</span> <span class="post-toc-text">Todo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#write_full"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">write_full?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-counter有类似pg-map的同步周期"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">pg counter有类似pg map的同步周期?</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ceph之tier数据源码初探"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ceph之tier数据源码初探</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-04 21:07:29" datetime="2020-07-04T13:07:29.000Z"  itemprop="datePublished">2020-07-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="分析关键点">分析关键点</h2>
+<h3 id="埋点统计接口">埋点统计接口</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tier_flush\tier_promote等数据</span></span><br><span class="line"></span><br><span class="line">ceph daemon osd.&#123;id&#125; perf dump | grep tier</span><br><span class="line"></span><br><span class="line"><span class="comment"># num_write\num_read\num_promote等数据</span></span><br><span class="line">ceph pg dump_json</span><br></pre></td></tr></table></figure>
+<h3 id="tier主要触发任务">tier主要触发任务</h3>
+<h4 id="数据迁移">数据迁移</h4>
+<p>下面的<code>flush</code>和<code>evict</code>动作主要根据热度命中集和当前空间占用的<code>ratio</code>有关. * flush * evict * promote(感觉只和这个有关系了)</p>
+<h4 id="io操作">IO操作</h4>
+<p>根据<code>flush_mode</code>和<code>evict_mode</code>状态判断触发下面的<code>may_read</code>,<code>can_proxy_write</code>等操作的成功与否.</p>
+<p>下面的每一个操作好像都是<code>may</code>或者<code>can</code>的, 看上去像是有开关之类的.</p>
+<ul>
+<li>write_back
+<ul>
+<li>读:
+<ul>
+<li>缓存不存在
+<ul>
+<li>read proxy(osd层的proxy_read怎么转换到pg层上?)</li>
+<li>read forward(会redirct, 统计数据应该是直接记录到base pool上的pg层的read_num上)</li>
+<li>这两个是怎么选择的呢?</li>
+</ul></li>
+<li>缓存命中 (cache pool的read)</li>
+</ul></li>
+<li>写
+<ul>
+<li>缓存不命中
+<ul>
+<li>write_proxy(proxy_write)</li>
+<li>promote_object</li>
+</ul></li>
+<li>缓存命中 (cache pool的write)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="源码阅读过程">源码阅读过程</h2>
+<h3 id="tier_proxy_read数据来源">tier_proxy_read数据来源</h3>
+<p>tier_proxy_read这个数据是哪里统计增加的?是在<code>finish_proxy_read</code>里增加的,那么同理</p>
+<p><a href="https://github.com/ceph/ceph/commit/70d3d08a0b2ac2f922ee8eaf5a7f261b919e6dd4" target="_blank" rel="noopener">osd: tiering: add proxy read support · ceph/ceph@70d3d08</a></p>
+<p>这次提交好像是个核心开发者的提交,当时不是走的github的pr?</p>
+<p>看了下代码,这里好像没有计数器,inc</p>
+<p>虽然是在ceph daemon osd.x perf dump里拿到的数据,但实际上还是pg层的,只是这个数据pg那边的接口暂时没找到能直接打印出来的方式.不对,这里虽然是PG类里的,但是数据记在了这个pg所属的osd上.</p>
+<p><a href="https://github.com/ceph/ceph/commit/b9ec7e64b7f59a92343ddc095e0a6b6c0dc50bfb" target="_blank" rel="noopener">osd: add proxy write perf counter · ceph/ceph@b9ec7e6</a></p>
+<p><a href="https://tracker.ceph.com/projects/ceph/repository/revisions/b9ec7e64b7f59a92343ddc095e0a6b6c0dc50bfb" target="_blank" rel="noopener">Revision b9ec7e64 - osd: add proxy write perf counter Signed-off-by: Zhiqiang Wang &lt;zhiqiang.wan... - Ceph - Ceph</a></p>
+<p>tracker单里咋也啥都没有呢?那他们怎么决定的呢?</p>
+<p>在这个提交里增加的计数器.这个是直接提交在master分支里的了…哎</p>
+<p>int PrimaryLogPG::do_osd_ops(OpContext *ctx, vector<osdop>&amp; ops)</osdop></p>
+<p>write这边是尝试写,或者跟tier有关的都会进行计数</p>
+<p>而read这边则是读一些元数据信息会触发读计数</p>
+<p>这样的话,write和read数据就没有那么准确了.</p>
+<p>pg的counter好像不够实时, 有一个类似<code>pg map</code>的同步周期的样子,待核对.</p>
+<p>rmw_flags flags这个是判断到底要不要promote,和may_proxy_write的结果判断的</p>
+<p>bool can_proxy_write = get_osdmap()-&gt;get_up_osd_features() &amp; CEPH_FEATURE_OSD_PROXY_WRITE_FEATURES;</p>
+<pre><code>uint64_t OSDMap::get_up_osd_features() const</code></pre>
+<p>{ return cached_up_osd_features; } void OSDMap::_calc_up_osd_features() 在这个函数里做的赋值,</p>
+<p><a href="https://github.com/Mirantis/ceph/commit/e0e765f9dd84be7af65887a101740f9fce22c3bd" target="_blank" rel="noopener">osd/OSDMap: cache get_up_osd_features · Mirantis/ceph@e0e765f</a></p>
+<p>在这次提交里做的改名,改成<code>cached_up_osd_features</code>,之前叫<code>uint64_t OSDMap::get_up_osd_features() const</code>, 每次都是重新查.</p>
+<p><a href="https://github.com/Mirantis/ceph/commit/1d8429de57c07a739ee6b58ba3de35874e7d85c0" target="_blank" rel="noopener">osd/OSDMap: get_up_osd_features() · Mirantis/ceph@1d8429d</a></p>
+<p>age Weil authored and Yan, Zheng committed on Dec 29, 2013</p>
+<p>struct osd_xinfo_t {</p>
+<p>变量在osdMap这个class里 mempool::osdmap::vector<osd_xinfo_t> osd_xinfo;</osd_xinfo_t></p>
+<h3 id="pg-stats">pg stats</h3>
+<h3 id="pool-stat方向">pool stat方向</h3>
+<p>dump时用的iops_wr和iops_rd</p>
+<p>int64_t iops_wr = pos_delta</p>
+<p>是从pg_sum_delta来的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">  mempool::pgmap::<span class="built_in">list</span>&lt; pair&lt;<span class="keyword">pool_stat_t</span>, <span class="keyword">utime_t</span>&gt; &gt; pg_sum_deltas;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> PGMap::update_global_delta(CephContext *cct,</span><br><span class="line">                                <span class="keyword">const</span> <span class="keyword">utime_t</span> ts, <span class="keyword">const</span> <span class="keyword">pool_stat_t</span>&amp; pg_sum_old)</span><br><span class="line">&#123;</span><br><span class="line">  update_delta(cct, ts, pg_sum_old, &amp;stamp, pg_sum, &amp;pg_sum_delta,</span><br><span class="line">               &amp;stamp_delta, &amp;pg_sum_deltas);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Aggregate current delta, and take out the last seen delta (if any) to</span></span><br><span class="line"><span class="comment">   * average it out.</span></span><br><span class="line"><span class="comment">   * Skip calculating delta while sum was not synchronized.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span>(!old_pool_sum.stats.sum.is_zero()) &#123;</span><br><span class="line">    delta_avg_list-&gt;push_back(make_pair(d,<span class="keyword">delta_t</span>));</span><br><span class="line">    *result_ts_delta += <span class="keyword">delta_t</span>;</span><br><span class="line">    result_pool_delta-&gt;stats.add(d.stats);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">size_t</span> s = cct ? cct-&gt;_conf-&gt;get_val&lt;<span class="keyword">uint64_t</span>&gt;(<span class="string">"mon_stat_smooth_intervals"</span>) : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (delta_avg_list-&gt;size() &gt; s) &#123;</span><br><span class="line">    result_pool_delta-&gt;stats.sub(delta_avg_list-&gt;front().first.stats);</span><br><span class="line">    *result_ts_delta -= delta_avg_list-&gt;front().second;</span><br><span class="line">    delta_avg_list-&gt;pop_front();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里add,实际对应的就是底层对每个num_write之类的变量做加减.</span></span><br><span class="line"></span><br><span class="line">  mempool::pgmap::<span class="built_in">list</span>&lt;pair&lt;<span class="keyword">pool_stat_t</span>,<span class="keyword">utime_t</span>&gt; &gt; *delta_avg_list)</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里的减,减去的是上一次收集的数据?</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">auto</span> ts = per_pool_sum_deltas_stamps.find(p-&gt;first);</span><br><span class="line">  assert(ts != per_pool_sum_deltas_stamps.end());</span><br><span class="line">  client_io_rate_summary(f, out, p-&gt;second.first, ts-&gt;second);</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里应该是pgmap维持那张pg_sum_deltas list里的stamp</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!stamp.is_zero() &amp;&amp; !pg_sum_old.stats.sum.is_zero()) &#123;</span><br><span class="line">    <span class="keyword">utime_t</span> <span class="keyword">delta_t</span>;</span><br><span class="line">    <span class="keyword">delta_t</span> = inc.stamp;</span><br><span class="line">    <span class="keyword">delta_t</span> -= stamp;</span><br><span class="line">    <span class="comment">// calculate a delta, and average over the last 2 deltas.</span></span><br><span class="line">    <span class="keyword">pool_stat_t</span> d = pg_sum;</span><br><span class="line">    d.stats.sub(pg_sum_old.stats);</span><br><span class="line">    pg_sum_deltas.push_back(make_pair(d, <span class="keyword">delta_t</span>));</span><br><span class="line">    stamp_delta += <span class="keyword">delta_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里的inc.stamp是什么东西?</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="built_in">list</span>&lt;Incremental*&gt; inc;</span><br><span class="line">  Incremental::generate_test_instances(inc);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Incremental</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    MEMPOOL_CLASS_HELPERS();</span><br><span class="line">    <span class="keyword">version_t</span> version;</span><br><span class="line">    mempool::pgmap::<span class="built_in">map</span>&lt;<span class="keyword">pg_t</span>,<span class="keyword">pg_stat_t</span>&gt; pg_stat_updates;</span><br><span class="line">    <span class="keyword">epoch_t</span> osdmap_epoch;</span><br><span class="line">    <span class="keyword">epoch_t</span> pg_scan;  <span class="comment">// osdmap epoch</span></span><br><span class="line">    mempool::pgmap::<span class="built_in">set</span>&lt;<span class="keyword">pg_t</span>&gt; pg_remove;</span><br><span class="line">    <span class="keyword">float</span> full_ratio;</span><br><span class="line">    <span class="keyword">float</span> nearfull_ratio;</span><br><span class="line">    <span class="keyword">utime_t</span> stamp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">pool_stat_t</span> d = pg_sum;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> PGMapDigest::decode(bufferlist::iterator&amp; p)</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClusterState::update_delta_stats()</span><br><span class="line">&#123;</span><br><span class="line">  pending_inc.stamp = ceph_clock_now();</span><br><span class="line">  pending_inc.version = pg_map.version + <span class="number">1</span>; <span class="comment">// to make apply_incremental happy</span></span><br><span class="line">  dout(<span class="number">10</span>) &lt;&lt; <span class="string">" v"</span> &lt;&lt; pending_inc.version &lt;&lt; dendl;</span><br><span class="line"></span><br><span class="line">  dout(<span class="number">30</span>) &lt;&lt; <span class="string">" pg_map before:\n"</span>;</span><br><span class="line">  <span class="function">JSONFormatter <span class="title">jf</span><span class="params">(<span class="literal">true</span>)</span></span>;</span><br><span class="line">  jf.dump_object(<span class="string">"pg_map"</span>, pg_map);</span><br><span class="line">  jf.flush(*_dout);</span><br><span class="line">  *_dout &lt;&lt; dendl;</span><br><span class="line">  dout(<span class="number">30</span>) &lt;&lt; <span class="string">" incremental:\n"</span>;</span><br><span class="line">  <span class="function">JSONFormatter <span class="title">jf</span><span class="params">(<span class="literal">true</span>)</span></span>;</span><br><span class="line">  jf.dump_object(<span class="string">"pending_inc"</span>, pending_inc);</span><br><span class="line">  jf.flush(*_dout);</span><br><span class="line">  *_dout &lt;&lt; dendl;</span><br><span class="line"></span><br><span class="line">  pg_map.apply_incremental(g_ceph_context, pending_inc);</span><br><span class="line">  pending_inc = PGMap::Incremental();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以pool_stat数据的更新,基本上就是和这个pg_sum数据的更新一致的.</p>
+<p>这里的<code>stamp</code>周期到底是多长呢?</p>
+<p>PGMap::apply_incremental</p>
+<p>像是在这merge的数据?</p>
+<p>在PGMonitor::tick里会更新这个delta的数据.</p>
+<h2 id="todo">Todo</h2>
+<h3 id="write_full">write_full?</h3>
+<h3 id="pg-counter有类似pg-map的同步周期">pg counter有类似<code>pg map</code>的同步周期?</h3>
+<h2 id="reference">Reference</h2>
+<ol type="1">
+<li><ceph源码分析></ceph源码分析></li>
+<li><a href="https://blog.csdn.net/CSND_PAN/article/details/78743426" target="_blank" rel="noopener">Ceph 学习——OSD读写流程与源码分析（一）_SEU_PAN的博客-CSDN博客_primarylogpg</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-07-05T16:09:21.000Z" itemprop="dateUpdated">2020-07-06 00:09:21</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tier/">tier</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/&title=《ceph之tier数据源码初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/&title=《ceph之tier数据源码初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之tier数据源码初探》 — 行路中.&url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/07/06/ceph之Nautilus版本引入的Perf统计/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ceph之Nautilus版本引入的Perf统计</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/29/ceph之tier效果收集/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ceph之tier效果收集</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/&title=《ceph之tier数据源码初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/&title=《ceph之tier数据源码初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之tier数据源码初探》 — 行路中.&url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

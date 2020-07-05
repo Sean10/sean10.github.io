@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>python常用调试 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="python,debug">
+    <meta name="description" content="Python常用调试方式  pdb 1python3 -m pdb xxx.py  break 或 b 设置断点 设置断点 continue 或 c 继续执行程序 list 或 l 查看当前行的代码段 step 或 s 进入函数 return 或 r 执行代码直到从当前函数返回 exit 或 q 中止并退出 next 或 n 执行下一行 pp 打印变量的值 help 帮助   批量执行输出 123">
+<meta name="keywords" content="python,debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python常用调试">
+<meta property="og:url" content="https://sean10.github.io/2020/06/23/python常用调试/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="Python常用调试方式  pdb 1python3 -m pdb xxx.py  break 或 b 设置断点 设置断点 continue 或 c 继续执行程序 list 或 l 查看当前行的代码段 step 或 s 进入函数 return 或 r 执行代码直到从当前函数返回 exit 或 q 中止并退出 next 或 n 执行下一行 pp 打印变量的值 help 帮助   批量执行输出 123">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://sean10.github.io/2020/06/23/python常用调试/2020-06-23-15-09-34.png">
+<meta property="og:image" content="https://sean10.github.io/2020/06/23/python常用调试/2020-06-23-17-50-47.png">
+<meta property="og:image" content="https://sean10.github.io/2020/06/23/python常用调试/2020-06-23-17-54-19.png">
+<meta property="og:image" content="https://sean10.github.io/2020/06/23/python常用调试/2020-06-23-17-55-52.png">
+<meta property="og:image" content="https://sean10.github.io/2020/06/23/python常用调试/2020-06-23-17-56-32.png">
+<meta property="og:updated_time" content="2020-06-23T16:36:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python常用调试">
+<meta name="twitter:description" content="Python常用调试方式  pdb 1python3 -m pdb xxx.py  break 或 b 设置断点 设置断点 continue 或 c 继续执行程序 list 或 l 查看当前行的代码段 step 或 s 进入函数 return 或 r 执行代码直到从当前函数返回 exit 或 q 中止并退出 next 或 n 执行下一行 pp 打印变量的值 help 帮助   批量执行输出 123">
+<meta name="twitter:image" content="https://sean10.github.io/2020/06/23/python常用调试/2020-06-23-15-09-34.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">python常用调试</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">python常用调试</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-23T12:17:08.000Z" itemprop="datePublished" class="page-time">
+  2020-06-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#python常用调试方式"><span class="post-toc-number">1.</span> <span class="post-toc-text">Python常用调试方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pdb"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">pdb</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#批量执行输出"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">批量执行输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#侵入式断点"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">侵入式断点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#断点"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">断点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#条件断点"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">条件断点</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件断点-1"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">条件断点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多线程调试"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">多线程调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pycharm常用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pycharm常用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#条件断点-2"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">条件断点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多线程调试-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">多线程调试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#健壮的logging机制"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">健壮的logging机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#example"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Example</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#远程同步"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">远程同步</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vscodesftp"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">vscode:sftp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#example-1"><span class="post-toc-number">1.4.1.1.</span> <span class="post-toc-text">Example</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于pycharm的deployment"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">基于pycharm的deployment</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">配置</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考文档</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-python常用调试"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">python常用调试</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-23 20:17:08" datetime="2020-06-23T12:17:08.000Z"  itemprop="datePublished">2020-06-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="python常用调试方式"><code>Python</code>常用调试方式</h1>
+<hr>
+<h2 id="pdb">pdb</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pdb xxx.py</span><br></pre></td></tr></table></figure>
+<ul>
+<li>break 或 b 设置断点 设置断点</li>
+<li>continue 或 c 继续执行程序</li>
+<li>list 或 l 查看当前行的代码段</li>
+<li>step 或 s 进入函数</li>
+<li>return 或 r 执行代码直到从当前函数返回</li>
+<li>exit 或 q 中止并退出</li>
+<li>next 或 n 执行下一行</li>
+<li>pp 打印变量的值</li>
+<li>help 帮助</li>
+</ul>
+<hr>
+<h3 id="批量执行输出">批量执行输出</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(Pdb) commands 1</span><br><span class="line">(com) p some_variable</span><br><span class="line">(com) p another</span><br><span class="line">(com) end</span><br><span class="line">(Pdb) c</span><br><span class="line"><span class="comment"># 会打印出some_variable和another</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="侵入式断点">侵入式断点</h3>
+<h4 id="断点">断点</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line">pdb.set_trace()</span><br></pre></td></tr></table></figure>
+<h4 id="条件断点">条件断点</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> a &gt; <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">15</span>:</span><br><span class="line">        print(a)</span><br><span class="line">        pdb.set_trace()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="条件断点-1">条件断点</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># b(reak) [([filename:]lineno | function) [, condition]]</span></span><br><span class="line">b temp.py:<span class="number">13</span>, a == <span class="number">15</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="多线程调试">多线程调试</h3>
+<p>pdb原生不支持多线程调试，但是基于这个开发的不少第三方库支持, 可能rpdb？详见下述</p>
+<ul>
+<li><a href="https://wiki.python.org/moin/PythonDebuggingTools" target="_blank" rel="noopener">PythonDebuggingTools - Python Wiki</a></li>
+</ul>
+<p>稍后讲下<code>pycharm</code>多线程调试</p>
+<hr>
+<h2 id="pycharm常用">pycharm常用</h2>
+<h3 id="条件断点-2">条件断点</h3>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/06/23/python常用调试/2020-06-23-15-09-34.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h3 id="多线程调试-1">多线程调试</h3>
+<p>pycharm是开发了pydevd这个插件来完成的远程调试、多线程调试的功能</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/06/23/python常用调试/2020-06-23-17-50-47.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h2 id="健壮的logging机制">健壮的logging机制</h2>
+<p>对于代码量一大，手动gdb肯定不方便，又不像二进制程序会出现coredump，所以gdb的<code>backtrace</code>经常需要用来排查段错误。</p>
+<p>日志才是最主要的排查手段，通过等级控制，打开debug日志复现一次，日志足够详细就能直接定位到问题行。如果不够详细，就需要补充了。</p>
+<hr>
+<h3 id="example">Example</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> RotatingFileHandler</span><br><span class="line"></span><br><span class="line">log_path = <span class="string">"./res/a.log"</span></span><br><span class="line">logger = logging.getLogger(<span class="string">"a"</span>)</span><br><span class="line">logger.setLevel(logging.DEBUG)</span><br><span class="line">fh = RotatingFileHandler(log_path, maxBytes=<span class="number">200000</span>, backupCount=<span class="number">7</span>, encoding=<span class="string">"utf-8"</span>)</span><br><span class="line">fh.setLevel(logging.INFO)</span><br><span class="line">console = logging.StreamHandler()</span><br><span class="line">console.setLevel(logging.DEBUG)</span><br><span class="line">fomatter = logging.Formatter(<span class="string">'%(asctime)s\t%(module)s\t%(message)s'</span>, <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span><br><span class="line">fh.setFormatter(fomatter)</span><br><span class="line">console.setFormatter(fomatter)</span><br><span class="line">logger.addHandler(fh)</span><br><span class="line">logger.addHandler(console)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="远程同步">远程同步</h2>
+<ul>
+<li>vscode: sftp</li>
+<li>pycharm: deployment</li>
+</ul>
+<hr>
+<h3 id="vscodesftp">vscode:sftp</h3>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/06/23/python常用调试/2020-06-23-17-54-19.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h4 id="example-1">Example</h4>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"Profile Name"</span>,</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"name_of_remote_host"</span>,</span><br><span class="line">    <span class="attr">"protocol"</span>: <span class="string">"ftp"</span>,</span><br><span class="line">    <span class="attr">"port"</span>: <span class="number">21</span>,</span><br><span class="line">    <span class="attr">"secure"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"username"</span>: <span class="string">"username"</span>,</span><br><span class="line">    <span class="attr">"remotePath"</span>: <span class="string">"/public_html/project"</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"password"</span>,  </span><br><span class="line">    <span class="attr">"uploadOnSave"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="基于pycharm的deployment">基于pycharm的deployment</h3>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/06/23/python常用调试/2020-06-23-17-55-52.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h4 id="配置">配置</h4>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/06/23/python常用调试/2020-06-23-17-56-32.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h2 id="参考文档">参考文档</h2>
+<ol type="1">
+<li><a href="https://docs.python.org/3/library/pdb.html" target="_blank" rel="noopener">pdb — The Python Debugger — Python 3.8.3 documentation</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-23T16:36:21.000Z" itemprop="dateUpdated">2020-06-24 00:36:21</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/debug/">debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/23/python常用调试/&title=《python常用调试》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/23/python常用调试/&title=《python常用调试》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/23/python常用调试/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python常用调试》 — 行路中.&url=https://sean10.github.io/2020/06/23/python常用调试/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/23/python常用调试/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/06/23/python单元测试mock/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">python单元测试mock和stub小记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/22/ceph之SafeTimer定时器受系统时钟跳变影响/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ceph之SafeTimer定时器受系统时钟跳变影响</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/23/python常用调试/&title=《python常用调试》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/23/python常用调试/&title=《python常用调试》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/23/python常用调试/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python常用调试》 — 行路中.&url=https://sean10.github.io/2020/06/23/python常用调试/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/23/python常用调试/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/06/23/python常用调试/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

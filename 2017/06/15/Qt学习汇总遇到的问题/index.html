@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>Qt学习汇总遇到的问题 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++,Qt">
+    <meta name="description" content="使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build 开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 &amp;gt">
+<meta name="keywords" content="C++,Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt学习汇总遇到的问题">
+<meta property="og:url" content="https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build 开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 &amp;gt">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Qt学习汇总遇到的问题">
+<meta name="twitter:description" content="使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build 开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 &amp;gt">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Qt学习汇总遇到的问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Qt学习汇总遇到的问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-15T08:42:46.000Z" itemprop="datePublished" class="page-time">
+  2017-06-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#还有解决粘包问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">还有解决粘包问题</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Qt学习汇总遇到的问题"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Qt学习汇总遇到的问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-15 16:42:46" datetime="2017-06-15T08:42:46.000Z"  itemprop="datePublished">2017-06-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build</p>
+<p>开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 &gt;:-1: error: symbol(s) not found for architecture x86_64 &gt;:-1: error: linker command failed with exit code 1 (use -v to see invocation)</p>
+<p>这个错误经常会出现</p>
+<hr>
+<p>c++跨文件或跨类传输变量参数是通过在对应文件声明类，然后调用该类获得参数的函数</p>
+<p>但是qt里我一旦这样做，就会出现上面那个系统错误。</p>
+<hr>
+<p>普通形参加不加const限定符对实参没有影响，引用形参和指针形参前面没有const限定符时，实参必须是非const的，而前面有const限定符时对实参也没有什么影响。</p>
+<p>为什么会出现这种情况？</p>
+<p>原因在于实参的传递方式不同，函数中的形参是普通形参的时，函数只是操纵的实参的副本，而无法去修改实参，实参会想，你形参反正改变不了我的值，那么你有没有const还有什么意义吗？引用形参和指针形参就下不同了，函数是对实参直接操纵，没有const的形参时实参的值是可以改变的，这种情况下怎能用函数来操纵const实参呢。</p>
+<hr>
+<p>ui文件似乎必须要建一个类通过setupUI才能使用 主要需要新建一个dialog来show就可以了</p>
+<table style="width:8%;">
+<colgroup>
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Qt的模态对话，setModal和dialog.exec() == box::accepted有什么区别？</td>
+</tr>
+</tbody>
+</table>
+<p>QT的close没有反应，似乎要使用事件循环</p>
+<hr>
+<p>setAttribute (Qt::WA_DeleteOnClose); 这个明明是解决内存泄露问题，为什么可以关闭窗口呢，而close却做不到</p>
+<hr>
+<p>qVector输入之后，造成implicitly deleted because base class “QObject” has a deleted copy constructor</p>
+<hr>
+<p>Qt 资源文件，可以通过添加qrc来实现路径的操作 但是 //路径这里存在问题，为什么添加了qrc之后依旧不需要前缀就可以使用了呢？ 明明理论上说要“:/db/user.db” 但只是“user.db”就可以使用了</p>
+<hr>
+<p>始终不能调用数据库，原因是我没有使用query.finish，以及建表语法出现了错误。</p>
+<hr>
+<p>事件似乎和信号有点相似，又有点不同。</p>
+<hr>
+<p>事件是一个新的概念，与信号不一样。</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>又遇到了当初的link错误，没有详细信息的那种 SF的答案是这个，感觉比较靠谱，我也确实有在Compile Output里看到问题，是client.o的问题，不过这个文件我都没有引用，为什么会错呢</td>
+</tr>
+<tr class="even">
+<td>Posting comment by N1ghtLight as an answer.</td>
+</tr>
+<tr class="odd">
+<td>Duplicate symbols found error is a linker error, which says that linker has found more than one symbols with the same name. Following are some common causes for this.</td>
+</tr>
+<tr class="even">
+<td>You have written a function definition in a header file (outside a class), which is included in two or more cpp files. You have defined a static variable twice. You have written a function definition twice in a cpp file. You can find out what are the duplicate symbols by checking Compile Output tab in Qt Creator</td>
+</tr>
+</tbody>
+</table>
+<p>把databaseControl设置继承QObject就出现编译不过的问题</p>
+<p>就是上面的link错误，不过更复杂</p>
+<hr>
+<p>遇到这个错误error: member function not viable this argument has type const 但是我一时忘了怎么解决的了</p>
+<hr>
+<p>call to implicitly-deleted copy constructor</p>
+<p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461: error: call to implicitly-deleted copy constructor of ‘centralAirConditioner’ current-&gt;v = new T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遇到这个错误，发现又是因为继承了基类QObject的原因</p>
+<hr>
+<p>暂时设计了从multithread发送信号到databaseControl,暂时没能测试出数据是否发送成功</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>好像知道为什么发送了信号，但槽函数没有执行的原因了，似乎是因为信号和槽不在一个线程里 但是默认是会执行异步的啊</td>
+</tr>
+<tr class="even">
+<td>上面的猜想是错误的，实际的问题是在于我把UserRegister写在mainwindow的构造函数里的，导致还没有执行connect就把信号已经发送出去了，所以这个信号浪费了</td>
+</tr>
+</tbody>
+</table>
+<p>稍后添加对于开关机的容错措施 数据锁尚未添加</p>
+<hr>
+<p>优先设置spinBox的lowtem会导致workTemperature变成这个lowTem,明明是满足他的约束的 噢，可能是因为spinBox一开始是0，没有设置，当有了约束之后，自动变成了18，满足了值变动，所以导致初始化被覆盖了。</p>
+<hr>
+<p>tcp粘包问题： 怎么分也需要双方组织一个比较好的包结构，所以一般可能会在头加一个数据长度之类的包，以确保接收。</p>
+<table style="width:6%;">
+<colgroup>
+<col style="width: 5%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>从控机修改工作模式，但没有发送给主控机的过程，这个问题有待修正 这里应该根据文档来写：从控机没有调整工作模式的机会，只能由主控机设定</td>
+</tr>
+</tbody>
+</table>
+<p>connectToHost似乎是mac的问题，大大的windows执行就没有问题。</p>
+<hr>
+<p>找到每次修改完工作温度，室温就顺便同步的原因了，是因为信号问题，每发送一个SignalSendRequest就执行了9次SendRequest. 但是没有找到有多次connect的函数啊。</p>
+<p>即便是用了uniqueConnection还是执行了多次。</p>
+<p>找到问题了，有另外一个函数不停发送了signal，定时发送</p>
+<hr>
+<p>第二次从控机开机，主控机上没有再显示出那台从控机状态？ why?</p>
+<h2 id="还有解决粘包问题">还有解决粘包问题</h2>
+<p>把室温用电子时钟模式展示出来</p>
+<hr>
+<p>可以使用doxygen来进行根据注释生成文档</p>
+<p>/** * 要输出成文档的注释 */</p>
+<p>或者 //!</p>
+<hr>
+<p>qmake project 变量使用</p>
+<p>一个pro生成多个app似乎现在不行了，只能通过subdirs来实现了？</p>
+<p>通过$$PWD来导入公用包</p>
+<p>用CLion的Cmake和 命令直接clang++都没办法把sqlite3成功编译通过，但是用Qt就能过，真的是奇特。</p>
+<p>sqlite3 使用怪怪的</p>
+<p>select * from sqlite_master;</p>
+<p>始终得到结果为空</p>
+<p>然后报错</p>
+<p>libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: SQL logic error</p>
+<p>CREATE TABLE main.table_name( column1 datatype PRIMARY KEY(one or more columns), column2 datatype, column3 datatype, ….. columnN datatype, );</p>
+<p>现在尝试用回俊宁大佬的库，但是连创建table都使用不了……</p>
+<p>找到了俊宁大佬自己的作业，从那里的实例来进行操作</p>
+<p>Qt dialog传递参数 https://blog.csdn.net/xzh_blue/article/details/51490747</p>
+<p>现在很奇怪，有时候能够充值上去，有时候就报这个错误，导致失败</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[INFO] send message: &#123;&quot;define&quot;:2&#125;</span><br><span class="line">[INFO] receive message: &#123;&quot;define&quot;:3,&quot;username&quot;:&quot;ls1&quot;&#125;</span><br><span class="line">[INFO] Get user balance request comes</span><br><span class="line">[INFO] send message: &#123;&quot;balance&quot;:0,&quot;define&quot;:1&#125;</span><br><span class="line">SQL error: &apos;UNIQUE constraint failed: OrderInfo.type&apos; at &apos;insert into OrderInfo(type,amount,out_account,in_account,record_time) values (4,25,&apos;cash&apos;,&apos;ls1&apos;,1536938826);&apos;</span><br><span class="line">[INFO] Someone offline, now 0 conne</span><br></pre></td></tr></table></figure>
+<p>C/S架构下， 登录过程中 密码 是否需要加密？</p>
+<p>出现了一个权限值为25，似乎是哪里传输的时候顺序出错了？把转账的值写入到了权限的位置？</p>
+<p><a href="https://blog.csdn.net/wenyun_kang/article/details/64439517" target="_blank" rel="noopener">QT 点击自定义QDialog类“确定”按钮 , 模态框立刻关闭 , 之后又做空值检查问题解决 - CSDN博客</a></p>
+<p>mac 自带openssl 0.98，而官方最新版 1.1</p>
+<p><a href="https://www.zhihu.com/question/34876910" target="_blank" rel="noopener">(6 条消息)UUID是如何保证唯一性的？ - 知乎</a></p>
+<p>现在有一个问题，我的tableView没有释放过standardItem，因此一定会出现内存泄露问题</p>
+<p><a href="https://www.zhihu.com/question/30507539" target="_blank" rel="noopener">(6 条消息)互联网中TCP Socket服务器的实现过程需要考虑哪些安全问题？ - 知乎</a></p>
+<p>引用openssl库的方式</p>
+<p>clang client.c -o client -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib -lcrypto -lssl</p>
+<p>像上面这样加上最后那4条就可以正常运行了</p>
+<p>openssl生成过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">mkdir misc</span><br><span class="line">cd misc</span><br><span class="line">sudo cp /usr/local/etc/openssl/openssl.cnf ./</span><br><span class="line">cp /usr/local/etc/openssl/misc/* ./</span><br><span class="line"></span><br><span class="line">//这里生成的是rsa的ca.key和 .rnd 输入密钥是fighton</span><br><span class="line">openssl genrsa -out ./private/ca.key -rand ./private/.rnd -des 2048</span><br><span class="line"></span><br><span class="line">// 这里确认了密钥，然后要求输入下面那些内容</span><br><span class="line">openssl req -new -x509 -days 3650 -key ./private/ca.key -out ./private/ca.crt -config openssl.cnf</span><br><span class="line"></span><br><span class="line">&lt;!-- Enter pass phrase for ./private/ca.key:</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Country Name (2 letter code) [AU]:ZH</span><br><span class="line">State or Province Name (full name) [Some-State]:Beijing</span><br><span class="line">Locality Name (eg, city) []:Beijing</span><br><span class="line">Organization Name (eg, company) [Internet Widgits Pty Ltd]:Hikvision</span><br><span class="line">Organizational Unit Name (eg, section) []:bjyf</span><br><span class="line">Common Name (e.g. server FQDN or YOUR name) []:sean10</span><br><span class="line">Email Address []:sean10reborn@gmail.com --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 这个应该是显示一下证书</span><br><span class="line">openssl x509 -in ./private/ca.crt -noout -text</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## </span><br><span class="line">// 产生server证书</span><br><span class="line"></span><br><span class="line">openssl genrsa -out ./private/server.key 1024</span><br><span class="line"></span><br><span class="line">openssl req -new -key ./private/server.key -out ./newcerts/server.csr -config openssl.cnf</span><br><span class="line">&lt;!-- You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter &apos;.&apos;, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Country Name (2 letter code) [AU]:ZH</span><br><span class="line">State or Province Name (full name) [Some-State]:Beijing</span><br><span class="line">Locality Name (eg, city) []:Beijing</span><br><span class="line">Organization Name (eg, company) [Internet Widgits Pty Ltd]:bjyf</span><br><span class="line">Organizational Unit Name (eg, section) []:hik</span><br><span class="line">Common Name (e.g. server FQDN or YOUR name) []:sean10</span><br><span class="line">Email Address []:sean10reborn@gmail.com</span><br><span class="line"></span><br><span class="line">Please enter the following &apos;extra&apos; attributes</span><br><span class="line">to be sent with your certificate request</span><br><span class="line">A challenge password []:helloworld</span><br><span class="line">An optional company name []:hik --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">touch index.txt</span><br><span class="line">touch serial</span><br><span class="line"></span><br><span class="line">echo 00 &gt; serial</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">openssl ca -in ./newcerts/server.csr -cert ./private/ca.crt -keyfile ./private/ca.key -config openssl.cnf -policy policy_anything -out ./certs/server.crt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">openssl genrsa -out ./private/proxy.key 1024</span><br><span class="line">//这步要是产生错误，请看后面的解决方法</span><br><span class="line">openssl req -new -key ./private/proxy.key -out ./newcerts/proxy.csr -config openssl.cnf</span><br><span class="line">openssl ca -in ./newcerts/proxy.csr -cert ./private/ca.crt -keyfile./private/ca.key -config openssl.cnf -policy policy_anything -out ./certs/proxy.crt</span><br><span class="line">openssl x509 -in ./certs/proxy.crt -noout -text</span><br></pre></td></tr></table></figure>
+<p><a href="http://seanlook.com/2015/01/18/openssl-self-sign-ca/" target="_blank" rel="noopener">基于OpenSSL自建CA和颁发SSL证书 | Sean’s Notes</a></p>
+<p>Qt 如何 引入 openssl库</p>
+<p><a href="https://blog.csdn.net/alspwx/article/details/12649225" target="_blank" rel="noopener">QT总结第3篇：如何在QT中添加.lib，.dll还有.h文件 - CSDN博客</a></p>
+<p>现在在编译时，ui_widget.h丢失？</p>
+<p>奇怪了。将lssl等加到LIBS这里之后，server可以编译了，但是client又出现了上面的问题，明明这次client一行代码都没改……</p>
+<p>终于发现了，我在socket.h里多导入了一个curve.h这个包，这个包里的一个函数qblog和 Qt 的一个包 重名了</p>
+<p>case中无法定义同一个变量</p>
+<p>用if else 代替 switch 语句;</p>
+<p>2：在case中用{}将代码括起来,这样在{}中就能定义变量了;</p>
+<p>3：如果变量在各个case中都要用的话,就把变量定义在switch外面吧;</p>
+<p>目前在switch case中定义的变量无法被后续的代码发现，从而使用</p>
+<p>可能是作用域的原因？</p>
+<p>想要手动定义，但是无法通过typeid .name 打印出来</p>
+<p>还需要找到办法手动定义</p>
+<p>openSSL <a href="https://www.cnblogs.com/f-ck-need-u/p/6091027.html" target="_blank" rel="noopener">OpenSSL主配置文件openssl.cnf - 骏马金龙 - 博客园</a></p>
+<p><a href="http://seanlook.com/2015/01/18/openssl-self-sign-ca/" target="_blank" rel="noopener">基于OpenSSL自建CA和颁发SSL证书 | Sean’s Notes</a></p>
+<p><a href="https://www.cnblogs.com/etangyushan/p/3679457.html" target="_blank" rel="noopener">使用c语言实现在linux下的openssl客户端和服务器端编程 - 欢跳的心 - 博客园</a></p>
+<p><a href="http://blog.51cto.com/mooon/909932" target="_blank" rel="noopener">openssl编程轻松入门（含完整示例）-飞月-51CTO博客</a></p>
+<p><a href="https://www.zhihu.com/question/41717174" target="_blank" rel="noopener">(6 条消息)用 C++ 写 HTTPS 客户端和服务器大体步骤有哪些？ - 知乎</a></p>
+<p><a href="http://www.cnblogs.com/LittleHann/p/3741907.html" target="_blank" rel="noopener">OPENSSL编程入门学习 - 骑着蜗牛逛世界 - 博客园</a></p>
+<p>用Cross Functional Vertical就可以画图了</p>
+<p>https://www.processon.com/view/5938c757e4b036140a0ef5ef?fromnew=1</p>
+<p>https://www.processon.com/diagrams/new#temp-system</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/&title=《Qt学习汇总遇到的问题》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/&title=《Qt学习汇总遇到的问题》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Qt学习汇总遇到的问题》 — 行路中.&url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/26/图形学复习笔记/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">图形学复习笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/21/git笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/&title=《Qt学习汇总遇到的问题》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/&title=《Qt学习汇总遇到的问题》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Qt学习汇总遇到的问题》 — 行路中.&url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/06/15/Qt学习汇总遇到的问题/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

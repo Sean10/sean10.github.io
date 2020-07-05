@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>mac OS memory与常规memory、swap | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Memory,OS">
+    <meta name="description" content="在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是使用默认设置的swap空间，结果并没有如想象的那样。">
+<meta name="keywords" content="Memory,OS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac OS memory与常规memory、swap">
+<meta property="og:url" content="https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是使用默认设置的swap空间，结果并没有如想象的那样。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1fr5g16dvejj30m30gcafa.jpg">
+<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mac OS memory与常规memory、swap">
+<meta name="twitter:description" content="在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是使用默认设置的swap空间，结果并没有如想象的那样。">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcly1fr5g16dvejj30m30gcafa.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mac OS memory与常规memory、swap</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mac OS memory与常规memory、swap</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-08T15:45:18.000Z" itemprop="datePublished" class="page-time">
+  2018-05-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简要"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内存详细"><span class="post-toc-number">2.</span> <span class="post-toc-text">内存详细</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#比较"><span class="post-toc-number">3.</span> <span class="post-toc-text">比较</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number"></span> <span class="post-toc-text">Reference</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-Mac-Memory与常规memory、swap"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mac OS memory与常规memory、swap</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-08 23:45:18" datetime="2018-05-08T15:45:18.000Z"  itemprop="datePublished">2018-05-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是使用默认设置的swap空间，结果并没有如想象的那样。</p>
+<a id="more"></a>
+<p>mac OS的activity monitor中的Memory提供了好多名词</p>
+<h2 id="简要">简要</h2>
+<ul>
+<li>Physical Memory: 实际RAM使用的</li>
+<li>Memory Used:
+<ul>
+<li>App Memory: APP使用的内存量，包含其虚拟内存和物理内存</li>
+<li>Wired Memory: 系统核心占用的，此内存中的信息无法移动到硬盘，因此必须保留在 RAM 中。联动内存的大小取决于当前使用的应用程序</li>
+<li>Compressed: RAM中被压缩的部分,从而让出一些RAM的空间给其他进程，</li>
+</ul></li>
+<li>Cached Files: 最近使用的内存被临时存储，在使用其他应用前再次打开会直接从这里访问，加快访问速度</li>
+<li>Swap Used: 硬盘中用来交换RAM中无用内容的大小</li>
+</ul>
+<h2 id="内存详细">内存详细</h2>
+<ul>
+<li>Real Memory Size: 被进程使用的实际内存</li>
+<li>Virtual Memory Size: 进程空间大小，64bit内存地址空间，所以会很大，不重要</li>
+<li>Shared Memory Size: 表示已经被加载到物理内存中的进程私有数据所对应的虚拟内存地址空间大小。</li>
+<li>Private Memory Size: 表示已经被加载到物理内存中的进程私有数据所对应的虚拟内存地址空间大小。</li>
+</ul>
+<h2 id="比较">比较</h2>
+<p>在操作系统书中讲述的内存管理，其实mac OS并没有与他有太大差别，现在理解来看大致思想还是相近的。</p>
+<p>看下mac OS是在哪个部分能够出现30G占用这种情况，是swap空间没有设置上限吗？</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://ws1.sinaimg.cn/large/006tKfTcly1fr5g16dvejj30m30gcafa.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>看下面的swap大小与上面的virtual memory size的确对上了，的确是swap空间够大的原因……而检测过程中，占用大量内存的问题所在是tensorboard,暂时只好手动导出数据用matplot画了。</p>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/Instrument-ActivityMonitor.html" target="_blank" rel="noopener">Apple Activity Monitor Instrument</a></li>
+<li><a href="https://www.zhihu.com/question/36188357" target="_blank" rel="noopener">Mac 的 memory 和 real size memory 有什么区别</a></li>
+<li><a href="http://elf8848.iteye.com/blog/1373854" target="_blank" rel="noopener">Mac OS 内存管理知识</a></li>
+<li><a href="https://apple.stackexchange.com/questions/107578/memory-terminology-in-mavericks-activity-monitory" target="_blank" rel="noopener">Memory terminology in Mavericks Activity Monitory</a></li>
+<li><a href="https://support.apple.com/en-us/HT201464" target="_blank" rel="noopener">How to use Activity Monitor on your Mac</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memory/">Memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/&title=《mac OS memory与常规memory、swap》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/&title=《mac OS memory与常规memory、swap》 — 行路中.&source=在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mac OS memory与常规memory、swap》 — 行路中.&url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/10/白帽子讲Web安全/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">白帽子讲Web安全Note</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/07/VMWare远程控制踩坑/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">VMWare远程控制tensorflow踩坑</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/&title=《mac OS memory与常规memory、swap》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/&title=《mac OS memory与常规memory、swap》 — 行路中.&source=在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mac OS memory与常规memory、swap》 — 行路中.&url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/05/08/Mac-Memory与常规memory、swap/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

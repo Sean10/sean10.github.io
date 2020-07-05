@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>使用reveal-md将markdown转slides | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="工具,node-js,markdown,pdf">
+    <meta name="description" content="前段时间看到了vue-mark-display这套功能，直接基于markdown生成slides，都不用去专门学习beamer那套，直接就能基于现有的markdown生成，感觉相当不错。 不过在折腾这套工具的时候，遇到一个问题，自己展示的时候用html没有问题，但是归档发布给其他人的时候，当然最好还是以pdf的形式嘛。这套工具不知道是以为没适配高分屏还是什么原因，通过Chrome和decktype">
+<meta name="keywords" content="工具,node-js,markdown,pdf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用reveal-md将markdown转slides">
+<meta property="og:url" content="https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="前段时间看到了vue-mark-display这套功能，直接基于markdown生成slides，都不用去专门学习beamer那套，直接就能基于现有的markdown生成，感觉相当不错。 不过在折腾这套工具的时候，遇到一个问题，自己展示的时候用html没有问题，但是归档发布给其他人的时候，当然最好还是以pdf的形式嘛。这套工具不知道是以为没适配高分屏还是什么原因，通过Chrome和decktype">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-23T13:03:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用reveal-md将markdown转slides">
+<meta name="twitter:description" content="前段时间看到了vue-mark-display这套功能，直接基于markdown生成slides，都不用去专门学习beamer那套，直接就能基于现有的markdown生成，感觉相当不错。 不过在折腾这套工具的时候，遇到一个问题，自己展示的时候用html没有问题，但是归档发布给其他人的时候，当然最好还是以pdf的形式嘛。这套工具不知道是以为没适配高分屏还是什么原因，通过Chrome和decktype">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用reveal-md将markdown转slides</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用reveal-md将markdown转slides</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-21T08:57:16.000Z" itemprop="datePublished" class="page-time">
+  2020-06-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定主题"><span class="post-toc-number">1.</span> <span class="post-toc-text">指定主题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件内嵌yaml输出参数"><span class="post-toc-number">2.</span> <span class="post-toc-text">文件内嵌yaml输出参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出pdf不建议使用不支持mathjax"><span class="post-toc-number">3.</span> <span class="post-toc-text">输出pdf（不建议使用，不支持mathjax）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用reveal.js的print-pdf推荐使用"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用reveal.js的print-pdf（推荐使用）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#遇到因为文件头部的yaml导致生成的html都无法使用的问题"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">遇到因为文件头部的yaml导致生成的html都无法使用的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#通过decktape输出pdf支持mathjax但暂时存在标题与图片间隙过大问题未修复pinned状态"><span class="post-toc-number">5.</span> <span class="post-toc-text">通过Decktape输出pdf(支持mathjax，但暂时存在标题与图片间隙过大问题未修复，pinned状态)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#存在图片和标题间距过大问题2"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">存在图片和标题间距过大问题[^2]</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#备注"><span class="post-toc-number">6.</span> <span class="post-toc-text">备注</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生成的目录结构"><span class="post-toc-number">7.</span> <span class="post-toc-text">生成的目录结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#scss编写"><span class="post-toc-number">8.</span> <span class="post-toc-text">scss编写</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">9.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用reveal-md将markdown转slides"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用reveal-md将markdown转slides</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-21 16:57:16" datetime="2020-06-21T08:57:16.000Z"  itemprop="datePublished">2020-06-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>前段时间看到了<code>vue-mark-display</code>这套功能，直接基于markdown生成slides，都不用去专门学习beamer那套，直接就能基于现有的markdown生成，感觉相当不错。</p>
+<p>不过在折腾这套工具的时候，遇到一个问题，自己展示的时候用html没有问题，但是归档发布给其他人的时候，当然最好还是以pdf的形式嘛。这套工具不知道是以为没适配高分屏还是什么原因，通过Chrome和decktype导出pdf时，文字布局一定会与页面上看到的不一致。</p>
+<p>具体也没细看了，这套工具终究是个人使用为主，可能开发者的使用场景不怎么需要导出，比如纯外网或内网部署了自己的静态网站之类的情况下。</p>
+<p>考虑到这套工具偏个性化，于是去找找适用性较广，功能做的比较完善的这类产品。</p>
+<p>发现了<code>reveal.js</code>这套目前来看star数应该是最多的，也支持所有我需要的功能，如markdown。还有人基于这套，做了一个一键使用的<code>reveal-md</code>，更加满足我的需求了。</p>
+<p>这篇文章主要讲的就是针对我的几个痛点，我怎么使用这套工具了。</p>
+<p>emm，发现几个问题，看看remark和remark-slide和spectacle这俩star更多的有没有解决这个问题呢？<code>reveal-md</code>作者没兴趣修这些问题……</p>
+<h2 id="指定主题">指定主题</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定官方提供的</span></span><br><span class="line">reveal-md slides.md --theme solarized</span><br><span class="line"><span class="comment"># 自定义scss</span></span><br><span class="line">reveal-md slides.md --theme theme/my-custom.css</span><br></pre></td></tr></table></figure>
+<h2 id="文件内嵌yaml输出参数">文件内嵌yaml输出参数</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: temp</span><br><span class="line">theme: solarized</span><br><span class="line">revealOptions:</span><br><span class="line"><span class="code">    transition: 'fade'</span></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## slide 1</span></span><br><span class="line"></span><br><span class="line">slide </span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">##  slide 2</span></span><br><span class="line"></span><br><span class="line">这种效果</span><br></pre></td></tr></table></figure>
+<h2 id="输出pdf不建议使用不支持mathjax">输出pdf（不建议使用，不支持mathjax）</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reveal-md slides.md --<span class="built_in">print</span> slides.pdf</span><br></pre></td></tr></table></figure>
+<p>html看到的公式和图片都是正常的。但是基于<code>Puppeteer</code>导出的时候，公式无法加载。按照<code>reveal.js</code>里说的，是已经支持了部分版本的mathjax了的，所以只能从这个工具使用的导出方式上来怀疑了。</p>
+<p>可能因为headless浏览器那边加载的问题？没加载指定的js之类的？导致无法解析出<code>mathjax</code>公式。可能是这个<code>reveal-md</code>里对puppeteer的使用上存在一些问题？因为看decktape底层应该也是基于puppeteer来做的。</p>
+<h2 id="使用reveal.js的print-pdf推荐使用">使用reveal.js的print-pdf（推荐使用）</h2>
+<p><del>emm，有人说reveal.js原生的<code>?print-pdf</code>已经修复了这些问题，但是reveal-md，怎么像是css不加载？</del></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reveal-md temp.md --static static</span><br><span class="line">python3 -m http.server</span><br><span class="line"><span class="comment">#然后在打开的页面里按下面增加print-pdf，保存成pdf</span></span><br></pre></td></tr></table></figure>
+<p>要在html后的<code>#</code>前增加?print-pdf，在<code>#</code>后面加是没用的……总算是意识到了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8000/index.html?print-pdf#/</span><br></pre></td></tr></table></figure>
+<h3 id="遇到因为文件头部的yaml导致生成的html都无法使用的问题">遇到因为文件头部的yaml导致生成的html都无法使用的问题</h3>
+<p>奇怪，前两天操作的时候怎么好像没遇到这个问题呢？</p>
+<p>node版本的问题嘛？不像啊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">是因为我去掉了水平Separator的设置，但是保留了下面这个</span><br><span class="line">verticalSeparator: &lt;!--v--&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="通过decktape输出pdf支持mathjax但暂时存在标题与图片间隙过大问题未修复pinned状态">通过Decktape输出pdf(支持mathjax，但暂时存在标题与图片间隙过大问题未修复，pinned状态)</h2>
+<p>使用<code>reveal-md</code>提供的生成Static文件的方式，再通过<code>decktape</code>将静态网页转成pdf。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reveal-md temp.md --static static</span><br><span class="line">decktape index.html new.pdf</span><br></pre></td></tr></table></figure>
+<p>根据下面[^2]里提到的问题，目前找到的有两种解决方式 1. 使用screenshots输出，再写个脚本拼接成pdf，可能会丢失一些动态效果？如果尺寸比图片小，也会丢失下面的内容……不过这个和html是表现一致的，所以如果图片在html有问题，还可以调整。 2. 使用增加size的方式，直到找到可以正确显示的方式。但是这样的size针对不同的图片大小，还需要手动调整…… 3. 使用1.0.0版本的decktape，这个版本还在使用phantomjs，但是我发现在高分屏幕环境，似乎存在一点问题.只能显示一部分，原本的中间的内容跑到了右下角去了。 4. 使用原生的print-pdf，但是好像我这边生成的好像怎么都加载不了css，位置始终在左侧.</p>
+<p>常用尺寸： * 2048x1536 * 1920x1080 * 2560x1440(screenshots)</p>
+<h3 id="存在图片和标题间距过大问题2">存在图片和标题间距过大问题[^2]</h3>
+<p>绕过方式如下:</p>
+<blockquote>
+<p>A workaround seems to be increasing (very much) the size. For example using –size=‘2048x1536’ instead of –size=‘1024x768’ works for me.</p>
+</blockquote>
+<p>但是这个存在一个问题，因为图片分辨率一旦超过设置的宽度，他这边就会无法显示了。</p>
+<p>可能相比之下还不如刚才那样直接输出。如果使用screenshots输出倒是没有一点问题。</p>
+<h2 id="备注">备注</h2>
+<p>在markdown文件每页中增加<code>Note:</code>，这页的剩下的部分就都会显示在注释中，打开本地web端访问slides后，按<code>s</code>会弹出注释页面，放到其他屏幕上就可以了。然后分别按<code>Cmd+Ctrl+f</code>全屏即可了。[^5]</p>
+<p>只不过这种只适合多屏幕场景了吧，不过对于投屏来说，的确就是多屏幕</p>
+<h2 id="生成的目录结构">生成的目录结构</h2>
+<p>本以为<code>Reveal.js</code>生成的<code>slides</code>是顺序的，但是发现实际是具有上下左右四个方向的……</p>
+<p>本以为直接是按照目录结构保证的，但是实际上来看，和我写的目录结构并不是完全匹配的。</p>
+<p>还得具体了解一下。</p>
+<blockquote>
+<p>横向的幻灯片代表一章, 纵向的幻灯片代表一章中的一节。那么横向的幻灯片在播放时是左右切换的, 而纵向的幻灯片是上下切换的。</p>
+</blockquote>
+<blockquote>
+<p>Reveal.js 里页面有两种页面类型，横向的一级页面、纵向的子页面。后者务必嵌套在前者里面。所谓的纵横比较好理解，键盘上的左右箭头控制一级页面，上下键移动子页面。</p>
+</blockquote>
+<p>说是这么说的.根据[^7]也是有人直接改了，让可以在section切换时，能够直接进入下一个section的开头，而不是按<code>Esc</code>看到的布局的右侧位置。</p>
+<p>又仔细翻了下文档，其实是由开关控制，决定是否要继承当前所在的section下属的纵向index的，关闭<code>navigationMode</code>就可以了。[^8]的<code>Navigation Mode</code>有提开关,既然有空格可以工作，暂时就不动这个了。</p>
+<p>还是暂时使用空格顺序切换吧。</p>
+<h2 id="scss编写">scss编写</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> reveal.js</span><br><span class="line">yarn</span><br><span class="line">yarn run build -- css-themes</span><br></pre></td></tr></table></figure>
+<p>在调试过程中，发现主要痛点在于默认主题的标题全部被强制大写了，导致看上去不是很符合我的预期，找了下可以在英文外增加代码符号```来完成绕过。</p>
+<h2 id="reference">Reference</h2>
+<ol type="1">
+<li><a href="https://github.com/webpro/reveal-md#theme" target="_blank" rel="noopener">webpro/reveal-md: reveal.js on steroids! Get beautiful reveal.js presentations from any Markdown file</a></li>
+<li><a href="https://github.com/astefanutti/decktape/issues/151" target="_blank" rel="noopener">weird spacing with reveal · Issue #151 · astefanutti/decktape</a></li>
+<li><a href="https://github.com/astefanutti/decktape" target="_blank" rel="noopener">astefanutti/decktape: PDF exporter for HTML presentations</a></li>
+<li><a href="https://www.npmtrends.com/remark-vs-remark-slide-vs-reveal-md-vs-reveal.js-vs-spectacle" target="_blank" rel="noopener">remark vs remark-slide vs reveal-md vs reveal.js vs spectacle | npm trends</a></li>
+<li><a href="https://github.com/hakimel/reveal.js/issues/404" target="_blank" rel="noopener">Presenter mode · Issue #404 · hakimel/reveal.js</a></li>
+<li><a href="https://sspai.com/post/40657" target="_blank" rel="noopener">Reveal.js：把你的 Markdown 文稿变成 PPT - 少数派</a></li>
+<li><a href="https://github.com/hakimel/reveal.js/issues/2504" target="_blank" rel="noopener">Forces left/right to go to top of previous/next section · Issue #2504 · hakimel/reveal.js</a></li>
+<li><a href="https://revealjs.com/vertical-slides/" target="_blank" rel="noopener">Vertical Slides | reveal.js</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-23T13:03:23.000Z" itemprop="dateUpdated">2020-06-23 21:03:23</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node-js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdf/">pdf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/&title=《使用reveal-md将markdown转slides》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/&title=《使用reveal-md将markdown转slides》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用reveal-md将markdown转slides》 — 行路中.&url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/06/22/ceph之SafeTimer定时器受系统时钟跳变影响/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ceph之SafeTimer定时器受系统时钟跳变影响</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/02/python单元测试框架比较/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">python单元测试框架比较</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/&title=《使用reveal-md将markdown转slides》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/&title=《使用reveal-md将markdown转slides》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用reveal-md将markdown转slides》 — 行路中.&url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/06/21/使用reveal-md将markdown转slides/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

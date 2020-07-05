@@ -32,6 +32,8 @@
 <meta name="twitter:title" content="行路中.">
 <meta name="twitter:description" content="笔记 随笔">
     
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
     <link rel="shortcut icon" href="/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
@@ -149,59 +151,11 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-huffman编码实现压缩与解压缩"
+            <article id="post-leetcode-260"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-13 21:23:00" datetime="2015-12-13T13:23:00.000Z"  itemprop="datePublished">2015-12-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/13/undefined/">huffman编码实现压缩与解压缩</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        题目：将任意一个指定的文件进行哈夫曼编码，并以真正的二进制位生成一个二进制文件（压缩文件）；反过来，可将一个压缩文件解码还原为原来的文件。
-以下是编码过程中需要注意的地方 1.读入字符 这里需要明白fread的运用。这段代码要实现的功能是对各类型文件进行转码，所以文本输入的方式fscanf不能在这里使用，只能用fread. 读入过程中需要记录文件中总计的单字节字符数量n，后面需要写入编码的文...
-    
-
-        <a href="/2015/12/13/undefined/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Huffman/">Huffman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/压缩/">压缩</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-用先序递归过程建立二叉树"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015-12-13 21:21:00" datetime="2015-12-13T13:21:00.000Z"  itemprop="datePublished">2015-12-13</time>
+        <time class="post-time" title="2015-12-19 20:27:00" datetime="2015-12-19T12:27:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -215,7 +169,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/13/undefined/">用先序递归过程建立二叉树</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-260/">leetcode 260</a>
     </h3>
   
 
@@ -225,18 +179,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        用先序递归过程建立二叉树 (存储结构：二叉链表) 输入数据按先序遍历所得序列输入，当某结点左子树或右子树为空时，输入‘*’号，如输入abc**d**e**得到的二叉树如下： 123  a b ec d
-代码如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495...
+        12345678910111213141516171819202122/** * Return an array of size *returnSize. * Note: The returned array must be malloced, assume caller calls free(). */int* singleNumber(int* nums, int numsSize, i...
     
 
-        <a href="/2015/12/13/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-260/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -245,60 +198,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-蒙特卡洛算法（简单理解）"
+            <article id="post-leetcode-226"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-09 17:23:00" datetime="2015-12-09T09:23:00.000Z"  itemprop="datePublished">2015-12-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/09/undefined/">蒙特卡洛算法（简单理解）</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        ###蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。
-
-A Monte Carlo algor...
-    
-
-        <a href="/2015/12/09/undefined/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-HDU2004"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015-12-03 15:43:00" datetime="2015-12-03T07:43:00.000Z"  itemprop="datePublished">2015-12-03</time>
+        <time class="post-time" title="2015-12-19 19:45:00" datetime="2015-12-19T11:45:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -312,7 +216,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/03/undefined/">HDU2004</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-226/">leetcode 226</a>
     </h3>
   
 
@@ -322,17 +226,17 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        123456789101112131415161718192021#include &lt;cstdio&gt;#include &lt;cstdlib&gt;int main()&#123;    int x;    while(scanf(&quot;%d&quot;,&amp;x)!=EOF)&#123;        if(x &gt;= 90 &amp;&amp; x&lt;= 1...
+        12345678910111213141516171819/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     struct TreeNode *left; *     struct TreeNode *right; * &#125;; */struct TreeNode*...
     
 
-        <a href="/2015/12/03/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-226/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/水题/">水题</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -341,11 +245,11 @@ A Monte Carlo algor...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-HDU2003"
+            <article id="post-leetcode-100"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-03 15:39:00" datetime="2015-12-03T07:39:00.000Z"  itemprop="datePublished">2015-12-03</time>
+        <time class="post-time" title="2015-12-19 19:24:00" datetime="2015-12-19T11:24:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -359,7 +263,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/03/undefined/">HDU2003</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-100/">leetcode 100</a>
     </h3>
   
 
@@ -369,17 +273,17 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        123456789101112#include &lt;cstdio&gt;#include &lt;cstdlib&gt;int main()&#123;    double x;    while(scanf(&quot;%lf&quot;,&amp;x)!=EOF)&#123;        if(x&lt;0)            x=-x;        printf(&quot...
+        1234567891011121314/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     struct TreeNode *left; *     struct TreeNode *right; * &#125;; */bool isSameTree(struct Tre...
     
 
-        <a href="/2015/12/03/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-100/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/水题/">水题</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -388,11 +292,11 @@ A Monte Carlo algor...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-HDU2002"
+            <article id="post-leetcode-283"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-03 15:31:00" datetime="2015-12-03T07:31:00.000Z"  itemprop="datePublished">2015-12-03</time>
+        <time class="post-time" title="2015-12-19 19:17:00" datetime="2015-12-19T11:17:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -406,7 +310,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/03/undefined/">HDU2002</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-283/">leetcode 283</a>
     </h3>
   
 
@@ -416,17 +320,17 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        严格来说，到最后我还是没找到为什么我本机的CB运行出来就是0，上传就能AC的原因。 12345678910111213#include &lt;stdio.h&gt;#include &lt;math.h&gt;#define PI 3.1415927int main()&#123;    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin); ...
+        123456789101112void moveZeroes(int* nums, int numsSize) &#123;    //int zeros = 0;    for(int i = numsSize-1;i &gt;= 0;i--)&#123;        if(nums[i] == 0)&#123;            for(int j = i;j &lt; numsS...
     
 
-        <a href="/2015/12/03/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-283/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/水题/">水题</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -435,11 +339,11 @@ A Monte Carlo algor...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-HDU2001"
+            <article id="post-leetcode-237"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-03 15:17:00" datetime="2015-12-03T07:17:00.000Z"  itemprop="datePublished">2015-12-03</time>
+        <time class="post-time" title="2015-12-19 15:12:00" datetime="2015-12-19T07:12:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -453,7 +357,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/03/undefined/">HDU2001</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-237/">leetcode 237</a>
     </h3>
   
 
@@ -463,17 +367,17 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        1234567891011#include &lt;stdio.h&gt;#include &lt;math.h&gt;int main()&#123;    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);    double x1 = 0,x2 = 0,y1 = 0,y2 = 0;    while(scanf(&quot;%lf %l...
+        12345678910111213/** * Definition for singly-linked list. * struct ListNode &#123; *     int val; *     struct ListNode *next; * &#125;; */void deleteNode(struct ListNode* node) &#123;    struct Li...
     
 
-        <a href="/2015/12/03/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-237/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/水题/">水题</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -482,11 +386,11 @@ A Monte Carlo algor...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-HDU2000"
+            <article id="post-leetcode-104"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-03 15:04:00" datetime="2015-12-03T07:04:00.000Z"  itemprop="datePublished">2015-12-03</time>
+        <time class="post-time" title="2015-12-19 15:06:00" datetime="2015-12-19T07:06:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
@@ -500,7 +404,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/03/undefined/">HDU2000</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-104/">leetcode 104</a>
     </h3>
   
 
@@ -510,17 +414,17 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 123456789101112131415161718192021222324252627282930313233343536#include &lt;cstdio&gt;#include &lt;cstring&gt;#include ...
+        1234567891011121314151617/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     struct TreeNode *left; *     struct TreeNode *right; * &#125;; */int maxDepth(struct ...
     
 
-        <a href="/2015/12/03/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-104/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/水题/">水题</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -529,14 +433,14 @@ A Monte Carlo algor...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-条件概率"
+            <article id="post-leetcode-258"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-02 21:19:00" datetime="2015-12-02T13:19:00.000Z"  itemprop="datePublished">2015-12-02</time>
+        <time class="post-time" title="2015-12-19 15:02:00" datetime="2015-12-19T07:02:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
 
 
 
@@ -547,7 +451,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/02/undefined/">条件概率</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode-258/">leetcode 258</a>
     </h3>
   
 
@@ -557,23 +461,18 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
-定义1.假设\(S\)是一个有\(n\)个元素的集合，均匀分布分配给\(S\)的每个元素\(\frac1n\)的概率。
+        123int addDigits(int num) &#123;    return (num != 0 &amp;&amp; num%9 == 0)?9:num%9;&#125;
 
-
-定义2.事件\(E\)的概率是\(E\)中所有结果出现的概率之和。如下：\[p(E)=\sum_{s \in E}p(s)\]. （注意：当\(E\)是一个有限集合时，\(\sum_{s \in E}p(s)\)是一个收敛有限级数。）
-
-这里事件的各个结果的概率计算依...
     
 
-        <a href="/2015/12/02/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode-258/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/概率/">概率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
     </div>
     
@@ -582,14 +481,14 @@ A Monte Carlo algor...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-有限概率（拉普拉斯概率）"
+            <article id="post-leetcode292"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2015-12-02 19:44:00" datetime="2015-12-02T11:44:00.000Z"  itemprop="datePublished">2015-12-02</time>
+        <time class="post-time" title="2015-12-19 14:50:00" datetime="2015-12-19T06:50:00.000Z"  itemprop="datePublished">2015-12-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
 
 
 
@@ -600,7 +499,7 @@ A Monte Carlo algor...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/02/undefined/">有限概率（拉普拉斯概率）</a>
+      <a class="post-title-link" href="/2015/12/19/leetcode292/">leetcode292</a>
     </h3>
   
 
@@ -610,22 +509,113 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ###有限概率（拉普拉斯概率）
-
-定义1.如果\(S\)是一个等可能结构的有限非空样本空间，\(E\)是一个作为\(S\)的子集的一个事件，那么\(E\)的概率为\(p(E)=\cfrac{|E|}{|S|}\).
-
-
-定理1.让\(E\)成为一个样本空间\(S\)中的一个事件。事件\(\overline{E}=S-E\)发生的概率，即事件\(E\)的补全事件，由以下公式给出\[p(\ove...
+        这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。
+数学方法 123bool canWinNim(int n) &#123;    return n%4;&#125;
+传统递归 1234567bool canWinNim(int n) &#123;    if(n &gt; 0 &amp;&amp; n &lt;= 3)        return true;   ...
     
 
-        <a href="/2015/12/02/undefined/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/19/leetcode292/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/概率/">概率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-poj-2752-前后缀匹配"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-12-19 14:16:00" datetime="2015-12-19T06:16:00.000Z"  itemprop="datePublished">2015-12-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/12/19/poj-2752-前后缀匹配/">poj 2752 前后缀匹配</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        kmp才能保证不超时 123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;stack&gt;#include &lt...
+    
+
+        <a href="/2015/12/19/poj-2752-前后缀匹配/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kmp/">kmp</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Hdu-4018-正则表达式（简单）"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-12-18 23:32:00" datetime="2015-12-18T15:32:00.000Z"  itemprop="datePublished">2015-12-18</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/12/18/Hdu-4018-正则表达式（简单）/">Hdu 4018 正则表达式（简单）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        1234567891011121314151617181920212223242526272829303132#include &lt;cstdio&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;int main()&#123;    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin); ...
+    
+
+        <a href="/2015/12/18/Hdu-4018-正则表达式（简单）/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
 
     </div>
     
@@ -638,7 +628,7 @@ A Monte Carlo algor...
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
     </div>
 </nav>
 
@@ -661,6 +651,8 @@ A Monte Carlo algor...
 
 
         <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
             <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
