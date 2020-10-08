@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="背景 最近要做痔疮手术, 术后有一段时间估计是还不能坐着的. 台式机就没有办法用上了, 但是笔记本的性能还是有点差,内存也不太够. 工具 主要有以下以及更多的访问方式  vnc的一系统访问方式  Apple Remote Desktop VNC等工具 封装了vnc协议的类似xrdp的工具  Jump Desktop  踩坑实验记录 vnc直接修改分辨率 一开始我直接用的自带的finder里的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-23T14:53:08.000Z">
+<meta property="og:updated_time" content="2020-09-20T08:32:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac远程桌面踩坑">
 <meta name="twitter:description" content="背景 最近要做痔疮手术, 术后有一段时间估计是还不能坐着的. 台式机就没有办法用上了, 但是笔记本的性能还是有点差,内存也不太够. 工具 主要有以下以及更多的访问方式  vnc的一系统访问方式  Apple Remote Desktop VNC等工具 封装了vnc协议的类似xrdp的工具  Jump Desktop  踩坑实验记录 vnc直接修改分辨率 一开始我直接用的自带的finder里的">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具"><span class="post-toc-number">2.</span> <span class="post-toc-text">工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#踩坑实验记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">踩坑实验记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vnc直接修改分辨率"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">vnc直接修改分辨率</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无显示器操作方案2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">无显示器操作方案[^2]</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方案"><span class="post-toc-number">4.</span> <span class="post-toc-text">方案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具"><span class="post-toc-number">2.</span> <span class="post-toc-text">工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#踩坑实验记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">踩坑实验记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vnc直接修改分辨率"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">vnc直接修改分辨率</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无显示器操作方案2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">无显示器操作方案[^2]</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无显示器竖屏方案3"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">无显示器竖屏方案[^3]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#fb-rotate"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">fb-rotate</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方案"><span class="post-toc-number">4.</span> <span class="post-toc-text">方案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -206,6 +206,11 @@
 <p>然而,很可惜, 经过调查, <code>mac</code>端主要也就上面这几种工具. <code>apple remote desktop</code>主要也只是基于<code>vnc</code>进行的封装,而vnc的渲染主要是在服务端进行的, 客户端只是直接显示的效果. 对于基于这种协议的远程访问工具只能直接修改服务端设备的分辨率来适应客户端, <code>linux</code>端至少看到的一般的解决方式都是这样的. 原生设置能够控制的分辨率还是有限, 最后我用了<code>SwitchResX</code>来进行的分辨率修改, 修改成拟合<code>1440*900</code>在客户端上用的.</p>
 <h3 id="无显示器操作方案2">无显示器操作方案[^2]</h3>
 <p>偶然看到好像有人提到没有接显示器的<code>mac mini</code>, 有人试着远程连接直接修改分辨率. 看到针对没有显示器连接的时候, 分辨率也能够修改. 我就试验了下<code>SwitchResx</code>, 发现居然的确显示了一个<code>Virtual Desktop</code>,可以修改的分辨率基本上都是客户端的分辨率. 基本上达到我的目的了.</p>
+<h3 id="无显示器竖屏方案3">无显示器竖屏方案[^3]</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#displayplacer</span></span><br><span class="line">➜  ~ displayplacer list</span><br><span class="line">Persistent screen id: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF</span><br><span class="line">Contextual screen id: 1104977160</span><br><span class="line">Type: MacBook built <span class="keyword">in</span> screen</span><br><span class="line">Resolution: 1440x900</span><br><span class="line">Hertz: 60</span><br><span class="line">Color Depth: 4</span><br><span class="line">Scaling:on</span><br><span class="line">Origin: (0,0) - main display</span><br><span class="line">Rotation: 0 - rotate internal screen example (may crash computer, but will be rotated after rebooting): `displayplacer <span class="string">"id:FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF degree:90"</span>`</span><br><span class="line">Resolutions <span class="keyword">for</span> rotation 0:</span><br><span class="line">  mode 0: res:1x1 hz:60 color_depth:4</span><br><span class="line">  mode 1: res:800x600 hz:60 color_depth:4</span><br><span class="line">  mode 2: res:1024x768 hz:60 color_depth:4</span><br><span class="line">  mode 3: res:1280x720 hz:60 color_depth:4</span><br><span class="line">  mode 4: res:1280x1024 hz:60 color_depth:4</span><br><span class="line">  mode 5: res:1440x900 hz:60 color_depth:4</span><br><span class="line">  mode 6: res:1680x1050 hz:60 color_depth:4</span><br><span class="line">  mode 7: res:1920x1080 hz:60 color_depth:4</span><br><span class="line">  mode 8: res:2560x1440 hz:60 color_depth:4</span><br><span class="line">  mode 9: res:2560x1600 hz:60 color_depth:4</span><br><span class="line">  mode 10: res:3840x2160 hz:60 color_depth:4</span><br><span class="line">  mode 11: res:1024x640 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 12: res:1152x720 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 13: res:1152x800 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 14: res:1440x900 hz:60 color_depth:4 scaling:on &lt;-- current mode</span><br><span class="line">  mode 15: res:1680x1050 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 16: res:1920x1200 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 17: res:1504x846 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 18: res:1920x1080 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 19: res:2048x1152 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 20: res:2304x1296 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 21: res:2560x1440 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 22: res:3008x1692 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 23: res:3360x1890 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 24: res:3840x2160 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 25: res:4096x2160 hz:60 color_depth:4 scaling:on</span><br><span class="line">  mode 26: res:1280x1024 hz:60 color_depth:4</span><br><span class="line"></span><br><span class="line">Execute the <span class="built_in">command</span> below to <span class="built_in">set</span> your screens to the current arrangement:</span><br><span class="line"></span><br><span class="line">displayplacer <span class="string">"id:FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF res:1440x900 hz:60 color_depth:4 scaling:on origin:(0,0) degree:0"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#Example:</span><br><span class="line">displayplacer &quot;id:18173D22-3EC6-E735-EEB4-B003BF681F30+F466F621-B5FA-04A0-0800-CFA6C258DECD res:1440x900 scaling:on origin:(0,0) degree:0&quot;</span><br><span class="line"></span><br><span class="line">displayplacer &quot;id:FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF res:1440x900 scaling:on origin:(0,0) degree:90&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="fb-rotate">fb-rotate</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fb-rotate -l</span><br></pre></td></tr></table></figure>
 <h2 id="方案">方案</h2>
 <p>最后总结的方案主要就是下述两种了. 1. 基于<code>SwitchResX</code>直接修改服务端的分辨率 2. 拔掉服务端连接的显示器,这个时候用<code>SwitchResX</code>基本上就可以设置成客户端的分辨率了.</p>
 <p>目前我主要用的就是第二套方案了.</p>
@@ -213,6 +218,8 @@
 <ol type="1">
 <li><a href="https://v2ex.com/t/649594" target="_blank" rel="noopener">Apple Remote Desktop 真是垃圾中的战斗机 - V2EX</a></li>
 <li><a href="https://apple.stackexchange.com/questions/116809/force-the-resolution-on-a-headless-mac-mini-server" target="_blank" rel="noopener">Force the resolution on a headless mac mini server - Ask Different</a></li>
+<li><a href="https://github.com/jakehilborn/displayplacer" target="_blank" rel="noopener">jakehilborn/displayplacer: macOS command line utility to configure multi-display resolutions and arrangements. Essentially XRandR for macOS.</a></li>
+<li><a href="https://github.com/CdLbB/fb-rotate" target="_blank" rel="noopener">CdLbB/fb-rotate: A Unix utility to rotate the display on any Mac and switch the primary display back and forth between displays.</a></li>
 </ol>
 
         </div>
@@ -222,7 +229,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-08-23T14:53:08.000Z" itemprop="dateUpdated">2020-08-23 22:53:08</time>
+    最后更新时间：<time datetime="2020-09-20T08:32:21.000Z" itemprop="dateUpdated">2020-09-20 16:32:21</time>
 </span><br>
 
 
@@ -302,7 +309,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/10/08/diff与merge实践初探/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">diff与merge实践初探</h4>
+      </a>
+    </div>
   
 
   
