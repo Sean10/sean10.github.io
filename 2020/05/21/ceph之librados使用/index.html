@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-21T13:00:14.000Z">
+<meta property="og:updated_time" content="2020-10-15T16:21:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之librados使用">
 <meta name="twitter:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">1.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发者模式2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -196,9 +196,12 @@
 <p>就目前而言，我在抓取IO等指标时，用的比较多的接口是<code>mon_command</code>和<code>mgr_command</code>，使用这几个接口能进行的操作，都有提供cli和rest接口。我主要是在使用cli熟悉接口之后，会去代码中的<code>MonCommands.h</code>和<code>MgrCommands.h</code>文件中去找相近的prefix，然后参照着使用。</p>
 <p>但是偶尔也是会遇到像<code>ceph osd pool stats</code>和<code>ceph pg ls-by-pools</code>这类没怎么能找到相关prefix的情况。这个时候可以充分利用起ceph这个cli入口其实是个python文本的功能了。</p>
 <p><code>python -m pgd /bin/ceph osd pool stats</code>执行，在<code>new_style_command</code>函数内的<code>json_command</code>处打断点，进入后，打印<code>cmddict</code>就可以看到cli发送出去的prefix拼接出来是什么样子的了，然后再拿着这个去代码里搜就好了。</p>
+<h2 id="开发者模式2">开发者模式[^2]</h2>
+<p><code>make vstart</code></p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
 <li><a href="https://docs.ceph.com/docs/master/rados/api/python/" target="_blank" rel="noopener">Librados (Python) — Ceph Documentation</a></li>
+<li><a href="https://www.dovefi.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3crush2%E6%89%8B%E5%8A%A8%E7%BC%96%E8%AF%91ceph%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8librados%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6/" target="_blank" rel="noopener">深入理解ceph crush(2)—-手动编译ceph集群并使用librados读写文件 · Dovefi never stop</a></li>
 </ol>
 
         </div>
@@ -208,7 +211,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-05-21T13:00:14.000Z" itemprop="dateUpdated">2020-05-21 21:00:14</time>
+    最后更新时间：<time datetime="2020-10-15T16:21:55.000Z" itemprop="dateUpdated">2020-10-16 00:21:55</time>
 </span><br>
 
 

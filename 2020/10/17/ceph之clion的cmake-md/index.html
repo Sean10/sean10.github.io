@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>ceph之clion的cmake.md | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ceph,编译">
+    <meta name="description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
+<meta name="keywords" content="ceph,编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ceph之clion的cmake.md">
+<meta property="og:url" content="https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-17T06:43:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ceph之clion的cmake.md">
+<meta name="twitter:description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ceph之clion的cmake.md</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ceph之clion的cmake.md</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-10-17T06:43:31.000Z" itemprop="datePublished" class="page-time">
+  2020-10-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调查"><span class="post-toc-number">1.</span> <span class="post-toc-text">调查</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践"><span class="post-toc-number">2.</span> <span class="post-toc-text">实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#luminous"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Luminous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后按照下述方案处理好软链和安装包之后的cmake选项"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">最后按照下述方案处理好软链和安装包之后的cmake选项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#官方文档方案"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">官方文档方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#出现的报错"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">出现的报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build-nss_include_dirs-nss_include_dir-notfound"><span class="post-toc-number">2.1.3.1.</span> <span class="post-toc-text">BUILD NSS_INCLUDE_DIRS: NSS_INCLUDE_DIR-NOTFOUND</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#not-find-pythonlibs-found-unsuitable-version-2.7.10-but-required3"><span class="post-toc-number">2.1.3.2.</span> <span class="post-toc-text">NOT find PythonLibs: Found unsuitable version “2.7.10”, but required[^3]</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#testbigendian.cmake49-message-no-suitable-type-found"><span class="post-toc-number">2.1.3.3.</span> <span class="post-toc-text">TestBigEndian.cmake:49 (message): no suitable type found</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nautilus"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Nautilus</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#遇到的问题"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#findboost-unknown-compiler-appleclang"><span class="post-toc-number">2.2.1.1.</span> <span class="post-toc-text">findboost unknown compiler: AppleClang</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">3.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ceph之clion的cmake-md"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ceph之clion的cmake.md</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-10-17 14:43:31" datetime="2020-10-17T06:43:31.000Z"  itemprop="datePublished">2020-10-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="调查">调查</h1>
+<p>按照一般的编译过程, 是可以在<code>CentOS</code>或者<code>Debian</code>系的环境里直接执行<code>do_cmake.sh</code>然后自动安装<code>install-deps.sh</code>, 然后关闭一堆功能触发<code>cmake</code>的.</p>
+<p>不过因为暂时没找到可以进行环境隔离比如通过在<code>docker</code>内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对docker做的一个fake版本), 从而绕过弄坏我的<code>OSX</code>宿主机的依赖的风险的. 在这个安装依赖的脚本中是有针对<code>freeBSD</code>的<code>pkg</code>安装命令的, 但是和目前主流推荐的<code>brew</code>还是不一样的, <code>pkg</code>还是给服务端使用为主. 怕产生污染, 所以我暂时选择手动来处理这个依赖的问题.</p>
+<p>当然, 如果有远程服务器, 可以利用<code>remote develop</code>, 通过服务器编译也能把成功建立索引.</p>
+<h1 id="实践">实践</h1>
+<p>采用官方给的关闭的大部分配置文件的方案[^1], 可以避过大部分坑, 至少<code>Luminous</code>版本做到了.</p>
+<h2 id="luminous">Luminous</h2>
+<h3 id="最后按照下述方案处理好软链和安装包之后的cmake选项">最后按照下述方案处理好软链和安装包之后的cmake选项</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.6.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.6m -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1/</span><br></pre></td></tr></table></figure>
+<h3 id="官方文档方案">官方文档方案</h3>
+<blockquote>
+<p>brew install llvm brew install snappy ccache cmake pkg-config pip install cython pip3 install cython brew cask install osxfuse mkdir build cd build export PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.48/lib/pkgconfig:/usr/local/Cellar/openssl/1.0.2t/lib/pkgconfig cmake .. -DBOOST_J=4<br>
+-DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang<br>
+-DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++<br>
+-DCMAKE_EXE_LINKER_FLAGS=“-L/usr/local/opt/llvm/lib”<br>
+-DENABLE_GIT_VERSION=OFF<br>
+-DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1<br>
+-DWITH_BABELTRACE=OFF<br>
+-DWITH_BLUESTORE=OFF<br>
+-DWITH_CCACHE=OFF<br>
+-DWITH_CEPHFS=OFF<br>
+-DWITH_KRBD=OFF<br>
+-DWITH_LIBCEPHFS=OFF<br>
+-DWITH_LTTNG=OFF<br>
+-DWITH_LZ4=OFF<br>
+-DWITH_MANPAGE=ON<br>
+-DWITH_MGR=OFF<br>
+-DWITH_MGR_DASHBOARD_FRONTEND=OFF<br>
+-DWITH_RADOSGW=OFF<br>
+-DWITH_RDMA=OFF<br>
+-DWITH_SPDK=OFF<br>
+-DWITH_SYSTEMD=OFF<br>
+-DWITH_TESTS=OFF<br>
+-DWITH_XFS=OFF</p>
+</blockquote>
+<p>由于我的主要目的是在<code>CLion</code>中使用, 所以我在<code>Perference-&gt;Build,Execution,Deployment-&gt;Cmake-&gt;Cmake Options</code>中添加的是上面的配置的单行形式.</p>
+<h3 id="出现的报错">出现的报错</h3>
+<h4 id="build-nss_include_dirs-nss_include_dir-notfound">BUILD NSS_INCLUDE_DIRS: NSS_INCLUDE_DIR-NOTFOUND</h4>
+<p>查看<code>find_package(NSS)</code>中调用的其实是<code>pkg-config</code>来查找<code>nss.pc</code>, 使用<code>pkg-config --cflags --libs nss</code>报不存在, 所以说明<code>pkg-config</code>的扫描路径中没有上面这个<code>pc</code>文件.</p>
+<p>通过<code>brew list nss</code>查找到<code>nss.pc</code>文件所在, 通过<code>pkg-config --variable pc_path pkg-config</code>找到<code>pc</code>的默认搜索路径, 有两种方案 1. 做个软链到<code>pkg-config</code>的默认搜索路径中 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/Cellar/nss/3.35/lib/pkgconfig/nss.pc  /usr/<span class="built_in">local</span>/lib/pkgconfig/nss.pc</span><br></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li><code>pkg_config</code>使用的搜索环境变量<code>PKG_CONFIG_PATH</code>中导入 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/<span class="built_in">local</span>/Cellar/nss/3.48/lib/pkgconfig:/usr/<span class="built_in">local</span>/Cellar/</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>我采用的第一种方案. 同理,还会出现<code>nspr</code>等需要这样处理的库.</p>
+<h4 id="not-find-pythonlibs-found-unsuitable-version-2.7.10-but-required3">NOT find PythonLibs: Found unsuitable version “2.7.10”, but required[^3]</h4>
+<p>在CMake选项中增加指定下述的python库和头文件路径 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.<span class="number">7</span>.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/<span class="keyword">include</span>/python2.<span class="number">7</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="testbigendian.cmake49-message-no-suitable-type-found">TestBigEndian.cmake:49 (message): no suitable type found</h4>
+<p>暂时看到的资料都是说需要看测试代码和修改cmake文件的样子, 我并不需要编译, 只是需要建立索引, 所以我暂时注释了这部分的检查[^4,5,6]</p>
+<h2 id="nautilus">Nautilus</h2>
+<p>采用同样的方案, 暂时未去推进.</p>
+<h3 id="遇到的问题">遇到的问题</h3>
+<h4 id="findboost-unknown-compiler-appleclang">findboost unknown compiler: AppleClang</h4>
+<p>报了一个暂时没去尝试解决的错误, 识别不了<code>clang</code>?</p>
+<h1 id="todo">todo</h1>
+<blockquote>
+<p>问题并不是真正的CMakeLists.txt. CLion解析了cmake中引用的所有源文件,以启用大多数功能(导航,code-completion,重构).根据我的经验,索引大型项目可以花费几分钟(十分钟).</p>
+</blockquote>
+<blockquote>
+<p>减轻这个问题的一种方法是标记项目的“第三方”目录:右键单击您的common目录和Mark directory as… &gt; Libraries.如果需要,您甚至可以将目录排除在项目之外.</p>
+<p>还请注意,CLion索引的结果被缓存:在初始索引之后,即使在重新启动项目时,只应修复经修改的文件(注意,修改CMakeLists中的构建选项可能触发完整的reindex)</p>
+</blockquote>
+<p>索引代码理论上只需要选择这些代码文件就可以, 但是实际上像ceph如果我cmake工程没能成功编译,他也是并没有把函数的调用关系给分析出来的. 哎, 静态分析功能还是得依赖clang.</p>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="https://docs.ceph.com/en/latest/dev/macos/" target="_blank" rel="noopener">build on MacOS — Ceph Documentation</a></li>
+<li><a href="https://www.cnblogs.com/flyinggod/p/12465966.html" target="_blank" rel="noopener">pkg-config 路径问题 - 采男孩的小蘑菇 - 博客园</a></li>
+<li><a href="https://github.com/pybind/pybind11/issues/99" target="_blank" rel="noopener">CMake finding Python library and Python interpreter mismatch during pybind11 build · Issue #99 · pybind/pybind11</a></li>
+<li><a href="https://hypernews.slac.stanford.edu/HyperNews/geant4/get/installconfig/1889/1.html%3Finline=1.html" target="_blank" rel="noopener">Re: Weird CMake failures building 10.4 on MacOS High Sierra (10.13)</a></li>
+<li><a href="https://gitlab.kitware.com/cmake/cmake/-/issues/16283" target="_blank" rel="noopener">TestBigEndian.cmake:51 (messag no suitable type found (#16283) · Issues · CMake / CMake · GitLab</a></li>
+<li><a href="https://stackoverflow.com/questions/13255491/cmake-internal-error-test-big-endian" target="_blank" rel="noopener">windows - CMake internal error (TEST_BIG_ENDIAN) - Stack Overflow</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-10-17T06:43:53.000Z" itemprop="dateUpdated">2020-10-17 14:43:53</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译/">编译</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之clion的cmake.md》 — 行路中.&url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/10/08/diff与merge实践初探/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">diff与merge实践初探</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之clion的cmake.md》 — 行路中.&url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>
