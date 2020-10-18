@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-17T03:31:33.000Z">
+<meta property="og:updated_time" content="2020-10-17T13:05:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之df原理">
 <meta name="twitter:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global"><span class="post-toc-number">1.</span> <span class="post-toc-text">global</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filestore"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bluestore"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">pool</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#filestore-1"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bluestore-1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nautilus变化"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nautilus变化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#luminous"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Luminous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool可用量计算"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">pool可用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用量计算"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">pool使用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd使用的空间"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">osd使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用的空间-used"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">pool使用的空间 used</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cephfs使用的空间"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">cephfs使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd特殊场景"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">osd特殊场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max_avaible"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">max_avaible</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rbd"><span class="post-toc-number">3.</span> <span class="post-toc-text">rbd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-du"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">rbd du</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-diff"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">rbd diff</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常情况"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#osd-down"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">osd down</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global"><span class="post-toc-number">1.</span> <span class="post-toc-text">global</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filestore"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bluestore"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">pool</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#filestore-1"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bluestore-1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nautilus变化"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nautilus变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量解释"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">变量解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#todo"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">todo</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#luminous"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Luminous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool可用量计算"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">pool可用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用量计算"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">pool使用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd使用的空间"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">osd使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-osd-df"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">ceph osd df</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用的空间-used"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">pool使用的空间 used</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cephfs使用的空间"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">cephfs使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd特殊场景"><span class="post-toc-number">2.2.7.</span> <span class="post-toc-text">osd特殊场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max_avaible"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">max_avaible</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rbd"><span class="post-toc-number">3.</span> <span class="post-toc-text">rbd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-du"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">rbd du</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-diff"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">rbd diff</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常情况"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#osd-down"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">osd down</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -216,7 +216,38 @@
 </ul>
 </blockquote>
 <p>所以在这个版本中将之前版本中存在的多种容量统计给分类了.</p>
-<p>pool级别分为 * 逻辑空间占用量, 主要针对的是写入多少, 不考虑由于<code>COW</code>引起的实际占用量较小 * 实际这个资源池里的OSD分配的空间大小(这里应该是不包含其他资源池因为复用osd占用的空间吧?) * compress的数据 , 分配的空间大小(包含副本/EC的开销), 也就是说除去副本数就是用户数据实际在设备里存储逇吧 * compress的用户数据大小?</p>
+<p>pool级别分为 * stored(old bytes used) 逻辑空间占用量, 主要针对的是写入多少, 不考虑由于<code>COW</code>引起的实际占用量较小 * store_nromalized = pool_stat.get_user_bytes(raw_used_rate, per_pool) * store_stats.data_stored / raw_used_rate * Bluestore.cc * res_statfs-&gt;data_stored += l.length * 传统模式 stats.sum.num_bytes + stats.sum.num_bytes_hit_set_archive; * 12版本好像没加命中集归档的容量 * 12版本这里直接拿的<code>sum.num_bytes</code> * 通过ceph report可以看到资源池的这个统计 * stored_raw(old raw bytes used) 用户使用的总容量, 包含所有osd除去降级的(这个应该是带副本的吧) * pool_stat.get_user_bytes(1.0, per_pool) * 这里应该是统计store_stats.data_stored的时候一些down的osd就不统计了, 所以为1.0的<code>raw_used_rate</code>. * new bytes used 实际这个资源池里的OSD分配的空间大小(这里应该是不包含其他资源池因为复用osd占用的空间吧?) * pool_stat.get_allocated_bytes * store_stats.allocated;<br>
+* compress_bytes_used compress的数据 , 分配的空间大小(包含副本/EC的开销), 也就是说除去副本数就是用户数据实际在设备里存储吧 * statfs.data_compressed_allocated * comprress_under_bytes compress的用户数据大小? * statfs.compressed_original</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">diagraph calltrace &#123;</span><br><span class="line">  Monitor::handle_command -&gt; mgrstatmon()-&gt;dump_cluster_stats</span><br><span class="line">  Monitor::handle_command -&gt; mgrstatmon()-&gt;dump_pool_stats -&gt; PGMapDigest::dump_pool_stats_full -&gt; pool_stat_t &amp;stat = pg_pool_sum.at(pool_id)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; pool_stat.get_allocated_bytes</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; store_nromalized = pool_stat.get_user_bytes(raw_used_rate, per_pool)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; pool_stat.get_used_bytes(1.0, per_pool)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; statfs.data_compressed_allocated</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; statfs.compressed_original</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pool_stat_t</span> &#123;</span></span><br><span class="line">  <span class="keyword">object_stat_collection_t</span> stats;</span><br><span class="line">  <span class="keyword">store_statfs_t</span> store_stats;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="变量解释">变量解释</h4>
+<ul>
+<li>raw_used_rate</li>
+<li>num_object_copies</li>
+<li>num_object_degraded</li>
+<li>per_pool
+<ul>
+<li>osd_sum.num_osds == osd_sum.num_per_pool_osds</li>
+<li><a href="https://github.com/ceph/ceph/commit/5dcb6d81bbc2a4c4d0da4a33d9f6bbba5065a1ad" target="_blank" rel="noopener">mon: use per-pool stats only when all OSDs are reporting · ceph/ceph@5dcb6d8</a></li>
+<li><a href="https://github.com/ceph/ceph/pull/19454" target="_blank" rel="noopener">osd: per-pool osd stats collection by ifed01 · Pull Request #19454 · ceph/ceph</a>
+<ul>
+<li>这里应该是引入点, 为了解决压缩率统计的问题?</li>
+</ul></li>
+<li><a href="https://tracker.ceph.com/issues/37565" target="_blank" rel="noopener">Backport #37565: luminous: OSD compression: incorrect display of the used disk space - bluestore - Ceph</a>
+<ul>
+<li>Luminous无法被backport. 哎</li>
+</ul></li>
+</ul></li>
+<li>data_stored</li>
+<li>num_bytes
+<ul>
+<li>这个还是在<code>PrimaryLogPG.cc</code>里进行统计</li>
+<li>PG::_update_calc_stats</li>
+<li>OSD::send_pg_stats</li>
+</ul></li>
+</ul>
+<h4 id="todo">todo</h4>
+<p>问题: * 资源池显示的使用量实际上并不是osd上实际分配和占用的, 那为什么资源池显示已用满了基本上就不让用了呢? 还是说这两个基本上是一致的? * 按照bluestore这层应该也是和<code>FileStore</code>时一样, 实际上是有洞的,这种情况下, 为什么不默认提供更多的空间呢? 是怕出问题吧? 只有当压缩的时候, 才提供? * compressed的容量是否</p>
 <h3 id="luminous">Luminous</h3>
 <h4 id="pool可用量计算">pool可用量计算</h4>
 <p>在代码中，在计算max_avail容量时，在<code>PGMap::get_rules_avail</code>函数中，mon会去迭代所有的资源池，根据<code>pool_id</code>拿到pool的如使用的<code>ruleno</code>的rule id、类型和size信息。拿到上述信息后，使用<code>ruleno</code>找到<code>crush map</code>信息，在这里建立一张基于crush map对各级bucket及osd进行广度优先搜索查找到的<code>map&lt;int, float&gt;</code>的<code>id</code>为key,<code>crush weight</code>为value的表，并进行归一化，让key更新为<code>weight/sum</code>的值。</p>
@@ -229,6 +260,7 @@
 <p>最后直接得到资源池可用空间<span class="math inline">\(\frac{max_avail}{raw_used_rate}\)</span></p>
 <h4 id="pool使用量计算">pool使用量计算</h4>
 <p>在<code>PGMapDigest</code>的成员变量<code>mempool::pgmap::unordered_map&lt;int32_t,pool_stat_t&gt; pg_pool_sum</code>中保存着pool的pg的对应资源池中的使用量<code>num_bytes</code>的和。该数据在<code>ceph df detail</code>中进行汇总</p>
+<p>可以用下面这个命令看到这些统计 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceph report</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pool_stat_t</span> &#123;</span></span><br><span class="line">  <span class="keyword">object_stat_collection_t</span> stats;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_stat_collection_t</span> &#123;</span></span><br><span class="line">  <span class="comment">/**************************************************************************</span></span><br><span class="line"><span class="comment">   * WARNING: be sure to update the operator== when adding/removing fields! *</span></span><br><span class="line"><span class="comment">   **************************************************************************/</span></span><br><span class="line">  <span class="keyword">object_stat_sum_t</span> sum;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_stat_sum_t</span> &#123;</span></span><br><span class="line">  <span class="comment">/**************************************************************************</span></span><br><span class="line"><span class="comment">   * WARNING: be sure to update operator==, floor, and split when</span></span><br><span class="line"><span class="comment">   * adding/removing fields!</span></span><br><span class="line"><span class="comment">   **************************************************************************/</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_bytes;    <span class="comment">// in bytes</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects;</span><br><span class="line">  <span class="keyword">int64_t</span> num_object_clones;</span><br><span class="line">  <span class="keyword">int64_t</span> num_object_copies;  <span class="comment">// num_objects * num_replicas</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_missing_on_primary;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_degraded;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_unfound;</span><br><span class="line">  <span class="keyword">int64_t</span> num_rd;</span><br><span class="line">  <span class="keyword">int64_t</span> num_rd_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_wr;</span><br><span class="line">  <span class="keyword">int64_t</span> num_wr_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_scrub_errors;	<span class="comment">// total deep and shallow scrub errors</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_recovered;</span><br><span class="line">  <span class="keyword">int64_t</span> num_bytes_recovered;</span><br><span class="line">  <span class="keyword">int64_t</span> num_keys_recovered;</span><br><span class="line">  <span class="keyword">int64_t</span> num_shallow_scrub_errors;</span><br><span class="line">  <span class="keyword">int64_t</span> num_deep_scrub_errors;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_dirty;</span><br><span class="line">  <span class="keyword">int64_t</span> num_whiteouts;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_omap;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_hit_set_archive;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_misplaced;</span><br><span class="line">  <span class="keyword">int64_t</span> num_bytes_hit_set_archive;</span><br><span class="line">  <span class="keyword">int64_t</span> num_flush;</span><br><span class="line">  <span class="keyword">int64_t</span> num_flush_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_evict;</span><br><span class="line">  <span class="keyword">int64_t</span> num_evict_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_promote;</span><br><span class="line">  <span class="keyword">int32_t</span> num_flush_mode_high;  <span class="comment">// 1 when in high flush mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int32_t</span> num_flush_mode_low;   <span class="comment">// 1 when in low flush mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int32_t</span> num_evict_mode_some;  <span class="comment">// 1 when in evict some mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int32_t</span> num_evict_mode_full;  <span class="comment">// 1 when in evict full mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_pinned;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_missing;</span><br><span class="line">  <span class="keyword">int64_t</span> num_legacy_snapsets; <span class="comment">///&lt; upper bound on pre-luminous-style SnapSets</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_large_omap_objects = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="osd使用的空间">osd使用的空间</h4>
 <p>12.2.13这部分函数似乎被重构了, <code>update_osd_stat</code>没有入参了.</p>
@@ -257,12 +289,80 @@
 <p>尝试搜索<code>num_bytes =</code>, 搜了下, 没有, 那应该意味着是通过聚合性质的做的计算, 按照<code>C++</code>的限制,应该是会通过字符串作为key的列表, 转换成对应的变量. emm, 只找到<code>dump</code>时的字符串与原始计数器 和 一个mon这里的<code>pcb.add_u64(</code>的任务, 这里的这个<code>mon</code>的东西是全局统计, 通过<code>PGMonitor::update_logger</code>这里更新.</p>
 <p>啊, 忘了, 应该搜<code>num_bytes +=</code>, 在<code>PrimaryLogPG.cc</code>里出现了osd的统计<code>ctx-&gt;delta_stats-&gt;num_bytes</code>, 在<code>osd_types.cc</code>里也出现了操作符重载的<code>void object_stat_sum_t::add</code>的操作.</p>
 <p>然后<code>publish_stats_to_osd</code></p>
+<p>pg_info_t -&gt; pg_stat_t -&gt; pg_stats_publish -&gt; osd_stat_updated = true -&gt; send_pg_stats -&gt; m-&gt;pg_stat[pg-&gt;info.pgid.pgid] = pg-&gt;pg_stats_publish;</p>
 <blockquote>
 <p>这里会将变化的pg的stat_queue_item入队到pg_stat_queue中。然后设置osd_stat_updated为True。入队之后，由tick_timer在C_Tick_WithoutOSDLock这个ctx中通过send_pg_stats()将PG的状态发送给Monitor。这样Monitor就可以知道pg的的变化了。</p>
 </blockquote>
+<p>mon哪里处理这个接收到的最新的pg数据呢? 搜索这个msg结构体中的<code>.pg_stat</code>, 看到个下面这个, 是不是<code>ClusterState::ingest_pgstats</code>呢, 的确是这个, 在<code>DaemonServer::ms_dispatch</code>中调用这个更新的数据</p>
+<p>在<code>ClusterState</code>中定义了<code>PGMap::Incremental pending_inc;</code>这里填充的<code>pg_stat_updates</code></p>
+<p>在比如<code>PGMap::apply_incremental</code>的好多地方都直接处理了这个更新的数据. 这样我就不好找到底把df的内容存哪去了.</p>
+<p>最后应该是存到了<code>PGMap</code>里的`mempool::pgmap::unordered_map&lt;pg_t,pg_stat_t&gt; pg_stat里.</p>
+<p>这个pgmap应该是哪里实例化的呢?</p>
+<p>PGMonitor ? 这个的初始化的<code>Monitor</code>在<code>ceph_mon.cc</code>里,</p>
+<p>似乎初始化<code>ceph-mon</code>的时候只读取了<code>version_t v = store-&gt;get(&quot;monmap&quot;, &quot;last_committed&quot;);</code>?</p>
+<h4 id="ceph-osd-df">ceph osd df</h4>
+<ul>
+<li>SIZE 没问题</li>
+<li>USE 是上面的store呢还是allocated?</li>
+<li>AVAIL 又是哪种呢?</li>
+</ul>
+<p>在正常情况下ceph osd df 看到的osd的used是跟ceph df看到的stored一致的, 但是这个数据是在osd这里实际存储的, 而ceph df却并不是</p>
+<p>这里看到的osd的容量是</p>
+<ul>
+<li><code>pgs-&gt;get_osd_sum().kb</code>
+<ul>
+<li>PGStatService *pgs</li>
+<li>PGMapStatService
+<ul>
+<li>get_osd_sum()
+<ul>
+<li>return pgmap.osd_sum;</li>
+<li>pgmap怎么更新? 指向的是ClusterState中的pg_map
+<ul>
+<li>mgr
+<ul>
+<li>ClusterState::ingest_pgstats</li>
+<li>ClusterState::notify_osdmap</li>
+</ul></li>
+<li>mon
+<ul>
+<li>tick()
+<ul>
+<li>send_report()</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>根据[^8]里可以看到这个<code>MonPGStatService</code>是<code>ceph-mon</code>把内容转嫁到<code>ceph-mgr</code>的中间层.</p>
 <h4 id="pool使用的空间-used">pool使用的空间 used</h4>
 <p>所以根据上面来看, 这边的容量并不是根据<code>osd_stat</code>汇总的了, 而是<code>pg</code>这层自己维护的?</p>
 <p>根据[^7]</p>
+<ul>
+<li>bytes used 逻辑空间占用量, 主要针对的是写入多少, 不考虑由于<code>COW</code>引起的实际占用量较小
+<ul>
+<li>12版本这里直接拿的<code>sum.num_bytes</code></li>
+<li>通过ceph report可以看到资源池的这个统计</li>
+</ul></li>
+<li>raw bytes used 用户使用的总容量, 包含所有osd除去降级的(这个应该是带副本的吧)
+<ul>
+<li>pool_stat.get_user_bytes(1.0, per_pool)</li>
+</ul></li>
+<li>compress_bytes_used compress的数据 , 分配的空间大小(包含副本/EC的开销), 也就是说除去副本数就是用户数据实际在设备里存储吧
+<ul>
+<li>statfs.data_compressed_allocated</li>
+<li>12版本还在osd里</li>
+</ul></li>
+<li>comprress_under_bytes compress的用户数据大小?
+<ul>
+<li>statfs.compressed_original</li>
+<li></li>
+</ul></li>
+</ul>
+<p>sum.num_bytes属于<code>pool_stat_t</code>里的<code>object_stat_collection_t stats</code>, 这个东西怎么从<code>pg_map</code>里得到的?</p>
+<p>在<code>PGMap::calc_stats</code>里似乎<code>pg_sum = pool_stat_t()</code>, 但是这个<code>pool_stat_t</code>的构造函数里只是构造并初始化为0, emm, 只在<code>decode</code>的时候被调用, 倒是的确没什么影响.</p>
 <h4 id="cephfs使用的空间">cephfs使用的空间</h4>
 <p>cephfs上删除太多文件, 出现了ceph df看到的used为<code>EiB</code>的情况, 通过<code>json</code>打印出来, 看到实际上统计的<code>bytes</code>为负数, 引起的.</p>
 <p>根据[^6], 好像说是和<code>cephfs</code>文件系统有关系?</p>
@@ -299,6 +399,7 @@
 <li><a href="https://github.com/ceph/ceph/pull/19454/files" target="_blank" rel="noopener">osd: per-pool osd stats collection by ifed01 · Pull Request #19454 · ceph/ceph</a></li>
 <li><a href="https://tracker.ceph.com/issues/16671" target="_blank" rel="noopener">Bug #16671: “ceph df”object num is negative - Ceph - Ceph</a></li>
 <li><a href="https://www.cnblogs.com/goldd/p/6610618.html" target="_blank" rel="noopener">Ceph中的容量计算与管理 - gold叠 - 博客园</a></li>
+<li><a href="https://runsisi.com/2019-02-27/ceph-pg-stat" class="uri" target="_blank" rel="noopener">https://runsisi.com/2019-02-27/ceph-pg-stat</a></li>
 </ol>
 
         </div>
@@ -308,7 +409,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-10-17T03:31:33.000Z" itemprop="dateUpdated">2020-10-17 11:31:33</time>
+    最后更新时间：<time datetime="2020-10-17T13:05:45.000Z" itemprop="dateUpdated">2020-10-17 21:05:45</time>
 </span><br>
 
 

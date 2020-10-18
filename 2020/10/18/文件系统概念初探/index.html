@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>文件系统概念初探 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="存储,文件系统">
+    <meta name="description" content="todo  为什么文件系统不默认提供每个目录的空间使用量呢?  多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢? 说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?  文件系统配额, 如果不开启的话, 怎么知道这个文件系统究竟有">
+<meta name="keywords" content="存储,文件系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件系统概念初探">
+<meta property="og:url" content="https://sean10.github.io/2020/10/18/文件系统概念初探/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="todo  为什么文件系统不默认提供每个目录的空间使用量呢?  多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢? 说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?  文件系统配额, 如果不开启的话, 怎么知道这个文件系统究竟有">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://sean10.github.io/2020/10/18/文件系统概念初探/文件系统设计_2020-10-18-21-27-06.png">
+<meta property="og:updated_time" content="2020-10-18T14:41:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件系统概念初探">
+<meta name="twitter:description" content="todo  为什么文件系统不默认提供每个目录的空间使用量呢?  多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢? 说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?  文件系统配额, 如果不开启的话, 怎么知道这个文件系统究竟有">
+<meta name="twitter:image" content="https://sean10.github.io/2020/10/18/文件系统概念初探/文件系统设计_2020-10-18-21-27-06.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">文件系统概念初探</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">文件系统概念初探</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-10-18T13:38:26.000Z" itemprop="datePublished" class="page-time">
+  2020-10-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#与块设备相比"><span class="post-toc-number">2.</span> <span class="post-toc-text">与块设备相比</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件系统概念"><span class="post-toc-number">3.</span> <span class="post-toc-text">文件系统概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多文件系统关联"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">多文件系统关联</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件系统布局"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">文件系统布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#引导块"><span class="post-toc-number">3.2.1.1.</span> <span class="post-toc-text">引导块</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#超级块"><span class="post-toc-number">3.2.1.2.</span> <span class="post-toc-text">超级块</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空闲空间块"><span class="post-toc-number">3.2.1.3.</span> <span class="post-toc-text">空闲空间块</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#日志结构文件系统log-structured-file-system-lfs"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">日志结构文件系统(Log structured File System, LFS)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#虚拟文件系统"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">虚拟文件系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件系统的管理和优化"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">文件系统的管理和优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#磁盘空间管理"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">磁盘空间管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#磁盘配额"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">磁盘配额</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#物理转储和逻辑转储"><span class="post-toc-number">3.3.2.1.</span> <span class="post-toc-text">物理转储和逻辑转储</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件系统性能"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">文件系统性能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高速缓存"><span class="post-toc-number">3.3.3.1.</span> <span class="post-toc-text">高速缓存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#块提前读"><span class="post-toc-number">3.3.3.2.</span> <span class="post-toc-text">块提前读</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#减少磁盘臂运动"><span class="post-toc-number">3.3.3.3.</span> <span class="post-toc-text">减少磁盘臂运动</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#磁盘碎片整理"><span class="post-toc-number">3.3.3.4.</span> <span class="post-toc-text">磁盘碎片整理</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件命名"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">文件命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件结构"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">文件结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件类型"><span class="post-toc-number">3.4.3.</span> <span class="post-toc-text">文件类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件访问"><span class="post-toc-number">3.4.4.</span> <span class="post-toc-text">文件访问</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件属性"><span class="post-toc-number">3.4.5.</span> <span class="post-toc-text">文件属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件操作"><span class="post-toc-number">3.4.6.</span> <span class="post-toc-text">文件操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目录"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">目录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一级目录系统"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">一级目录系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#层次文件目录"><span class="post-toc-number">3.5.2.</span> <span class="post-toc-text">层次文件目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#路径名"><span class="post-toc-number">3.5.3.</span> <span class="post-toc-text">路径名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#目录操作"><span class="post-toc-number">3.5.4.</span> <span class="post-toc-text">目录操作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#fuse支持"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">FUSE支持</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-文件系统概念初探"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">文件系统概念初探</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-10-18 21:38:26" datetime="2020-10-18T13:38:26.000Z"  itemprop="datePublished">2020-10-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="todo">todo</h1>
+<ul>
+<li>为什么文件系统不默认提供每个目录的空间使用量呢?
+<ul>
+<li>多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢?</li>
+<li>说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?</li>
+</ul></li>
+<li>文件系统配额, 如果不开启的话, 怎么知道这个文件系统究竟有多少空间可以用呢?</li>
+<li>文件系统写满时, 到底是哪层做的错误返回?
+<ul>
+<li>分配器提供的吧?</li>
+<li>所以对于分布式块设备上建的文件系统, 得是支持扩容的文件系统?</li>
+</ul></li>
+<li>文件系统中的原子事务如何实现? 幂等性如何保障</li>
+<li>extent技术</li>
+</ul>
+<h1 id="与块设备相比">与块设备相比</h1>
+<p>问题原因 * 如何找到你想要的信息 * 如何保证一个用户不会读取另一个用户的数据 * 如何得知哪些块是空闲的, 等等</p>
+<p>文件是上面这些问题的抽象解决.</p>
+<h1 id="文件系统概念">文件系统概念</h1>
+<h2 id="多文件系统关联">多文件系统关联</h2>
+<ul>
+<li>挂载时
+<ul>
+<li>分配一个新的inode指向新的文件系统的data block.</li>
+<li><blockquote>
+<p>挂载完成后，将在/proc/self/{mounts,mountstats,mountinfo}这三个文件中写入挂载记录和相关的挂载信息，并会将/proc/self/mounts中的信息同步到/etc/mtab文件中，当然，如果挂载时加了-n参数，将不会同步到/etc/mtab。[^3]</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="实现">实现</h2>
+<h3 id="文件系统布局">文件系统布局</h3>
+<h4 id="引导块">引导块</h4>
+<h4 id="超级块">超级块</h4>
+<ul>
+<li>文件系统的大小</li>
+<li>文件系统中的数据块数</li>
+<li>指示文件系统状态的标志</li>
+<li>分配组大小</li>
+</ul>
+<h4 id="空闲空间块">空闲空间块</h4>
+<ul>
+<li>bitmap位图</li>
+<li>bit vector 位向量</li>
+<li>链表 #### 碎片 #### inode ### 分配 思想</li>
+<li>有效利用文件空间</li>
+<li>快速访问文件 #### 连续分配</li>
+<li>CD-ROM
+<ul>
+<li>满的时候, 标记-1之类的. #### 链表分配</li>
+</ul></li>
+<li>随机访问难 #### 使用内存表进行链表分配</li>
+<li>引入索引的概念</li>
+<li>FAT(File Application Table)
+<ul>
+<li>整个链表都在内存中, 表占用空间较大(1T盘 1KB的块, 需要至少3-4个字节的管理, 需要3GB左右的内存)</li>
+<li>满的时候, 直接链表最后断开就行了. #### inode</li>
+</ul></li>
+<li>只有文件打开时, inode才在内存中, 解决FAT的问题</li>
+<li>inode在初始化文件系统时就给定了, 多大的块设置一个inode.</li>
+<li>128字节整数倍</li>
+<li>/etc/mk2fs.conf</li>
+<li>inode_ratio, 多大的块分配一个inode号</li>
+<li>ext4预留了inode用于比如/proc/, lost+found</li>
+<li>问题:
+<ul>
+<li>文件知道自己的inode之后, inode存储了什么东西,可以让他找到对应的所有块? [^3]
+<ul>
+<li>inode中保存了块的文件指针</li>
+<li>ext2/ext3 最多15个指针, 前12个直接寻址, 第13-15个分别一级,二级,三级间接寻址
+<ul>
+<li>一个4K block可以放4096/4=1024个指针. 即1024^3+ 1024^2 + 1024^1+12 = 1.1G个块指针, * 4K= 4T左右的大小</li>
+</ul></li>
+<li>ext4 使用了extent的方案</li>
+</ul></li>
+<li>满的时候, 最后一个磁盘地址不指向数据块, 而是指向一个包含额外磁盘块地址的地址 ### 目录的实现 ### 共享文件</li>
+</ul></li>
+<li>有向无环图</li>
+<li>硬链接</li>
+<li>软链接</li>
+<li>问题:
+<ul>
+<li>复制时如果不对符号链接进行区分, 会带来重复写入问题</li>
+</ul></li>
+</ul>
+<h3 id="日志结构文件系统log-structured-file-system-lfs">日志结构文件系统(Log structured File System, LFS)</h3>
+<ul>
+<li>性能问题</li>
+<li>背景:
+<ul>
+<li>不断增长的内存</li>
+<li>顺序I/O强于随机I/O</li>
+<li>现有低效率的文件系统</li>
+<li>文件系统不支持RAID(虚拟化)</li>
+<li>由于Page cache存在, 读性能基本不是问题</li>
+</ul></li>
+<li>数据结构
+<ul>
+<li>Inode</li>
+<li>Inode Map</li>
+<li>Segment</li>
+<li>Segment Usage Table ### 日志文件系统</li>
+</ul></li>
+<li>防止掉电/崩溃问题</li>
+<li>幂等性</li>
+<li>引入原子事务</li>
+</ul>
+<h3 id="虚拟文件系统">虚拟文件系统</h3>
+<ul>
+<li>VFS</li>
+<li>对用户进程的上层接口POSIX接口</li>
+<li>下层接口, 各文件系统提供的.</li>
+<li>vnode</li>
+<li></li>
+</ul>
+<h2 id="文件系统的管理和优化">文件系统的管理和优化</h2>
+<h3 id="磁盘空间管理">磁盘空间管理</h3>
+<ul>
+<li>分段管理</li>
+<li>分页管理 #### 块大小 #### 记录空闲块</li>
+<li>位图(bitmap)</li>
+<li>磁盘块链表</li>
+<li>问题
+<ul>
+<li>在内存中保留一个半满的指针块, 这样既处理文件的创建和删除, 又不会为空闲表进行磁盘IO</li>
+<li>磁盘处理一些列临时文件, 不需要进行任何磁盘IO</li>
+</ul></li>
+</ul>
+<h3 id="磁盘配额">磁盘配额</h3>
+<ul>
+<li>硬限制</li>
+<li>软限制
+<ul>
+<li>用于实现警告和用户权限控制的计数 ### 文件系统备份</li>
+</ul></li>
+<li>场景
+<ul>
+<li>从灾害中恢复</li>
+<li>从错误的操作中恢复
+<ul>
+<li>删除-&gt;回收站</li>
+</ul></li>
+</ul></li>
+<li>设计
+<ul>
+<li>备份整个文件系统还是只备份一部分文件</li>
+<li>增量转储</li>
+<li>压缩
+<ul>
+<li>备份过程中出错, 压缩文件是直接损坏还是可以纠正?</li>
+</ul></li>
+<li>正在使用的文件系统如何备份
+<ul>
+<li>设置时间点? 瞬时快照</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id="物理转储和逻辑转储">物理转储和逻辑转储</h4>
+<ul>
+<li>物理转储
+<ul>
+<li>全量备份</li>
+</ul></li>
+<li>坏块转储</li>
+<li>逻辑转储
+<ul>
+<li>维持一个<code>inode</code>为索引的<code>bitmap</code>, 修改过的文件被标记</li>
+</ul></li>
+<li>空洞问题的处理 ### 文件系统的一致性</li>
+<li>因为系统调用并不是原子事务的, 写操作复杂, 完全存在不一致可能性.</li>
+<li>fsck</li>
+<li>sfc(windows)</li>
+<li>块的一致性检查</li>
+<li>文件的一致性检查</li>
+<li>空闲块和已使用的块的表的对照
+<ul>
+<li>块丢失(missing block)</li>
+<li>块重复
+<ul>
+<li>空闲表中重复
+<ul>
+<li>直接标记就行</li>
+</ul></li>
+<li>不同文件使用了这个块
+<ul>
+<li>分配一个磁盘快, 把他插入到文件里, 比如文本文件打开中, 出现掉电, 中间插入乱码是不是就是这个做法?</li>
+</ul></li>
+<li>已使用和空闲表中均出现(就是删除过程只执行了一半)
+<ul>
+<li>应该也是优先分配一个新块, 插入到文件里</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>检查目录系统, 维护计数器表
+<ul>
+<li>检查inode数量与目录的关系</li>
+</ul></li>
+</ul>
+<h3 id="文件系统性能">文件系统性能</h3>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2020/10/18/文件系统概念初探/文件系统设计_2020-10-18-21-27-06.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="高速缓存">高速缓存</h4>
+<ul>
+<li>block cache</li>
+<li>buffer cache</li>
+<li>逻辑上属于磁盘, 实际通过内存来提供支持</li>
+<li>页面置换算法</li>
+</ul>
+<h4 id="块提前读">块提前读</h4>
+<ul>
+<li>考虑顺序读取, 进行预读取</li>
+<li>好像在磁盘驱动那层也有这个设计? 所以其实多层都提供了这样的功能?</li>
+</ul>
+<h4 id="减少磁盘臂运动">减少磁盘臂运动</h4>
+<ul>
+<li>块簇
+<ul>
+<li>以连续块簇来跟踪磁盘存储区.</li>
+<li>分配时尽量分配在同一个柱面上</li>
+<li>解决一个连续内容被分配在2个柱面上带来的寻道次数翻倍</li>
+</ul></li>
+<li>读文件至少2次磁盘访问
+<ul>
+<li>访问inode</li>
+<li>访问块</li>
+<li>原本inode放在磁盘开始位置, 所以inode到块的平均距离是柱面组的一半</li>
+<li>改到中间</li>
+</ul></li>
+</ul>
+<h4 id="磁盘碎片整理">磁盘碎片整理</h4>
+<ul>
+<li>删除文件, 回收磁盘块.</li>
+<li>defrag, 移动文件, 使空闲块连续分布</li>
+<li>ext2/ext3选择磁盘块的方式, 导致不怎么需要处理磁盘碎片整理[^2]
+<ul>
+<li>日文件系统分配策略上并不完全连续分布</li>
+<li>ext的延迟写入技术</li>
+<li>主要是FAT</li>
+</ul></li>
+</ul>
+<h2 id="文件">文件</h2>
+<h3 id="文件命名">文件命名</h3>
+<ul>
+<li>名字
+<ul>
+<li>unix 大小写敏感</li>
+<li>MS-DOS 大小写不敏感</li>
+</ul></li>
+<li>扩展名
+<ul>
+<li>unix 无感知
+<ul>
+<li>但是目前是不是也像window一样了</li>
+</ul></li>
+<li>windows 能够在操作系统层面设置不同扩展名对应的程序</li>
+</ul></li>
+</ul>
+<h3 id="文件结构">文件结构</h3>
+<p>目前都是字节序列, 用使用者自己进行定位. 这样的话其实和操作裸块也有点像吧? 的确</p>
+<p>不知道有没有采用树等结构化关系的, 感觉更适合更上层的应用自己抉择.</p>
+<h3 id="文件类型">文件类型</h3>
+<ul>
+<li>文件
+<ul>
+<li>由内核处理</li>
+</ul></li>
+<li>目录</li>
+<li>字符特殊文件
+<ul>
+<li>串行I/O设备</li>
+</ul></li>
+<li>块特殊文件
+<ul>
+<li>由设备驱动程序处理</li>
+</ul></li>
+</ul>
+<p>操作系统至少能识别自己的可执行文件. 所以文件系统和操作系统还是有一些绑定关系的?</p>
+<h3 id="文件访问">文件访问</h3>
+<h3 id="文件属性">文件属性</h3>
+<h3 id="文件操作">文件操作</h3>
+<ul>
+<li>create</li>
+<li>delete</li>
+<li>open</li>
+<li>close</li>
+<li>read</li>
+<li>write</li>
+<li>append</li>
+<li>seed</li>
+<li>get attributes</li>
+<li>set attributes</li>
+<li>rename</li>
+</ul>
+<h2 id="目录">目录</h2>
+<h3 id="一级目录系统">一级目录系统</h3>
+<ul>
+<li>根目录</li>
+</ul>
+<h3 id="层次文件目录">层次文件目录</h3>
+<h3 id="路径名">路径名</h3>
+<h3 id="目录操作">目录操作</h3>
+<ul>
+<li>create</li>
+<li>delete</li>
+<li>opendir</li>
+<li>closedir</li>
+<li>readdir</li>
+<li>rename</li>
+<li>link</li>
+<li>unlink</li>
+</ul>
+<h2 id="fuse支持">FUSE支持</h2>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="https://www.cnblogs.com/cxuanBlog/p/12565601.html" target="_blank" rel="noopener">简直不要太硬了！一文带你彻底理解文件系统 - 程序员cxuan - 博客园</a></li>
+<li><a href="https://www.zhihu.com/question/19853952" target="_blank" rel="noopener">(80 条消息) 为什么NTFS系统容易产生碎片而ext系列则不会？ - 知乎</a></li>
+<li><a href="https://www.junmajinlong.com/linux/ext_filesystem/" target="_blank" rel="noopener">ext文件系统机制原理剖析 | 骏马金龙</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-10-18T14:41:13.000Z" itemprop="dateUpdated">2020-10-18 22:41:13</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储/">存储</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件系统/">文件系统</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/18/文件系统概念初探/&title=《文件系统概念初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/18/文件系统概念初探/&title=《文件系统概念初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/18/文件系统概念初探/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《文件系统概念初探》 — 行路中.&url=https://sean10.github.io/2020/10/18/文件系统概念初探/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/18/文件系统概念初探/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/10/17/ceph之clion的cmake-md/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ceph之clion的cmake.md</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/18/文件系统概念初探/&title=《文件系统概念初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/18/文件系统概念初探/&title=《文件系统概念初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/18/文件系统概念初探/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《文件系统概念初探》 — 行路中.&url=https://sean10.github.io/2020/10/18/文件系统概念初探/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/18/文件系统概念初探/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/10/18/文件系统概念初探/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>
