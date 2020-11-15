@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-17T13:05:45.000Z">
+<meta property="og:updated_time" content="2020-10-29T09:14:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之df原理">
 <meta name="twitter:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global"><span class="post-toc-number">1.</span> <span class="post-toc-text">global</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filestore"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bluestore"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">pool</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#filestore-1"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bluestore-1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nautilus变化"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nautilus变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量解释"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">变量解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#todo"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">todo</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#luminous"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Luminous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool可用量计算"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">pool可用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用量计算"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">pool使用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd使用的空间"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">osd使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-osd-df"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">ceph osd df</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用的空间-used"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">pool使用的空间 used</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cephfs使用的空间"><span class="post-toc-number">2.2.6.</span> <span class="post-toc-text">cephfs使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd特殊场景"><span class="post-toc-number">2.2.7.</span> <span class="post-toc-text">osd特殊场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max_avaible"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">max_avaible</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rbd"><span class="post-toc-number">3.</span> <span class="post-toc-text">rbd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-du"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">rbd du</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-diff"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">rbd diff</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常情况"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#osd-down"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">osd down</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global"><span class="post-toc-number">1.</span> <span class="post-toc-text">global</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filestore"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bluestore"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">pool</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#filestore-1"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bluestore-1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nautilus变化"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nautilus变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量解释"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">变量解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#todo"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool可用量计算"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">pool可用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用量计算"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">pool使用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd使用的空间"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">osd使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-objectstore-tool查看osd数据库中bluestore-pg信息"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">ceph-objectstore-tool查看OSD数据库中bluestore pg信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-osd-df"><span class="post-toc-number">2.1.7.</span> <span class="post-toc-text">ceph osd df</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用的空间-used"><span class="post-toc-number">2.1.8.</span> <span class="post-toc-text">pool使用的空间 used</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cephfs使用的空间"><span class="post-toc-number">2.1.9.</span> <span class="post-toc-text">cephfs使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd特殊场景"><span class="post-toc-number">2.1.10.</span> <span class="post-toc-text">osd特殊场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max_avaible"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">max_avaible</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rbd"><span class="post-toc-number">3.</span> <span class="post-toc-text">rbd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-du"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">rbd du</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-diff"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">rbd diff</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常情况"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#osd-down"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">osd down</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -247,8 +247,7 @@
 </ul></li>
 </ul>
 <h4 id="todo">todo</h4>
-<p>问题: * 资源池显示的使用量实际上并不是osd上实际分配和占用的, 那为什么资源池显示已用满了基本上就不让用了呢? 还是说这两个基本上是一致的? * 按照bluestore这层应该也是和<code>FileStore</code>时一样, 实际上是有洞的,这种情况下, 为什么不默认提供更多的空间呢? 是怕出问题吧? 只有当压缩的时候, 才提供? * compressed的容量是否</p>
-<h3 id="luminous">Luminous</h3>
+<p>问题: * 资源池显示的使用量实际上并不是osd上实际分配和占用的, 那为什么资源池显示已用满了基本上就不让用了呢? 还是说这两个基本上是一致的? * 按照bluestore这层应该也是和<code>FileStore</code>时一样, 实际上是有洞的,这种情况下, 为什么不默认提供更多的空间呢? 是怕出问题吧? 只有当压缩的时候, 才提供? * compressed的容量是否 * used和 objects数量是否有关呢 * 像是rbd上层4K随机写, 在rados层看到的就是写了2W5的对象以后就100G了, rados还是按照4M对象创建了… * 按照之前我们看pg的op, 理论上应该和objects数量无关才对. * pg处理的是Rados层的请求, 所以其实问题在于rbd层的4k 是怎么转换到4M的. * 问题其实是写了这些对象以后, df看到的容量就满了, 而实际上osd还没满. ### Luminous</p>
 <h4 id="pool可用量计算">pool可用量计算</h4>
 <p>在代码中，在计算max_avail容量时，在<code>PGMap::get_rules_avail</code>函数中，mon会去迭代所有的资源池，根据<code>pool_id</code>拿到pool的如使用的<code>ruleno</code>的rule id、类型和size信息。拿到上述信息后，使用<code>ruleno</code>找到<code>crush map</code>信息，在这里建立一张基于crush map对各级bucket及osd进行广度优先搜索查找到的<code>map&lt;int, float&gt;</code>的<code>id</code>为key,<code>crush weight</code>为value的表，并进行归一化，让key更新为<code>weight/sum</code>的值。</p>
 <p>然后在计算资源池整体可用时，使用上面拿到的osd的<code>kb_avail</code>除以此处拿到的表中osd id对应的归一化结果，取得资源池原始的最大可用空间。</p>
@@ -300,6 +299,57 @@
 <p>这个pgmap应该是哪里实例化的呢?</p>
 <p>PGMonitor ? 这个的初始化的<code>Monitor</code>在<code>ceph_mon.cc</code>里,</p>
 <p>似乎初始化<code>ceph-mon</code>的时候只读取了<code>version_t v = store-&gt;get(&quot;monmap&quot;, &quot;last_committed&quot;);</code>?</p>
+<p>那数据难道还是在osd上? 而且mon数据丢失似乎是可以恢复过来的.</p>
+<p>通过ceph pg dump –format json-pretty是可以导出<code>num_bytes</code>的, 而<code>daemon osd.x perf dump</code>反而拿不到.</p>
+<p>通过<code>ceph-objectstore-tool</code>可以拿到<code>OSD里存的pg</code>的信息</p>
+<h4 id="ceph-objectstore-tool查看osd数据库中bluestore-pg信息">ceph-objectstore-tool查看OSD数据库中bluestore pg信息</h4>
+<p>如何解密然后修改呢</p>
+<p>export pg信息似乎走的是<code>RadosDump</code></p>
+<p>欸,如果我要修改某个值, 要停掉这个pg所在的所有osd?</p>
+<ul>
+<li>ObjectStoreTool::do_export
+<ul>
+<li>get_log
+<ul>
+<li>PGLog::IndexedLog
+<ul>
+<li>这个为啥不能用pg_log_t解码呢?</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>根据[^9这个来看,其实还是遵守了kv数据结构的,只是好像在哪层被过滤掉了?</p>
+<p>试了下, get-bytes拿到的是对象的内容</p>
+<p>那么是否说明其实也是计算, 而不是累加的呢?</p>
+<p>info这个数据似乎无从修改, 只有pg的元数据可以修改的样子?</p>
+<p>这个疑似PGLog::IndexedLog, 不知道怎么改</p>
+<p>按照现在看到的objects的问题, 是不是这个pg提供的objects指标全都是负数,所以上层统计的也都是</p>
+<p>但是现在在数据库里list, list不出这个pg, 是代表什么呢?</p>
+<p>我应该只能从代码到底是怎么list, 用的什么接口然后查不到这个pg来看吧?</p>
+<p>用<code>rados ls -p data02</code>, 因为这个资源池理论上其实不应该有任何object, 所以应该也是查不到东西, 但是实际存在了几个对象信息为负数的object.</p>
+<p>以osd级别来显示object, 看看带不带pg的信息.</p>
+<p>pg上面统计的信息, 感觉像是以object为单位处理的啊. 假如说真是以pg自己来存储自己的信息, 那么object和pg之间就存在歧义性了.</p>
+<p>ceph pg dump显示的pg id不完整, 被坑了.</p>
+<ul>
+<li>scrub是一个方案, 看看能不能修复他, 根据EC</li>
+<li>现在pg的指标是负数, 还有什么信息能够用来处理呢?object无法查到
+<ul>
+<li>rados ls 卡住,无论哪个, 可能受影响了</li>
+<li>ceph-objectstore-tool 查询这个pg, list也是空的</li>
+</ul></li>
+<li>ceph pg repair pg.$id 居然就修复了. 所以repair过程发生了什么</li>
+<li>todo
+<ul>
+<li>pgid居然是As1</li>
+</ul></li>
+<li>librados: wait_for_osdmap done waiting
+<ul>
+<li>是否代表某个客户端占用了这个吧所?</li>
+<li>打开–debug_objecter 40 –debug_rados 40看到的内容就是上述的.</li>
+<li>objecter给出的信息更多一点, 看着</li>
+<li>这中间慢在哪里呢?ms_dispatch</li>
+</ul></li>
+</ul>
 <h4 id="ceph-osd-df">ceph osd df</h4>
 <ul>
 <li>SIZE 没问题</li>
@@ -400,6 +450,7 @@
 <li><a href="https://tracker.ceph.com/issues/16671" target="_blank" rel="noopener">Bug #16671: “ceph df”object num is negative - Ceph - Ceph</a></li>
 <li><a href="https://www.cnblogs.com/goldd/p/6610618.html" target="_blank" rel="noopener">Ceph中的容量计算与管理 - gold叠 - 博客园</a></li>
 <li><a href="https://runsisi.com/2019-02-27/ceph-pg-stat" class="uri" target="_blank" rel="noopener">https://runsisi.com/2019-02-27/ceph-pg-stat</a></li>
+<li><a href="https://www.jianshu.com/p/174c9d376b83" target="_blank" rel="noopener">pglog出错导致osd启动失败的解决办法 - 简书</a></li>
 </ol>
 
         </div>
@@ -409,7 +460,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-10-17T13:05:45.000Z" itemprop="dateUpdated">2020-10-17 21:05:45</time>
+    最后更新时间：<time datetime="2020-10-29T09:14:38.000Z" itemprop="dateUpdated">2020-10-29 17:14:38</time>
 </span><br>
 
 

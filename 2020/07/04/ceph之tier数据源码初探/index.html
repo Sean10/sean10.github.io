@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="ceph,源码,tier">
+    <meta name="keywords" content="源码,ceph,tier">
     <meta name="description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
-<meta name="keywords" content="ceph,源码,tier">
+<meta name="keywords" content="源码,ceph,tier">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之tier数据源码初探">
 <meta property="og:url" content="https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-05T16:09:21.000Z">
+<meta property="og:updated_time" content="2020-10-18T15:19:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之tier数据源码初探">
 <meta name="twitter:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析关键点"><span class="post-toc-number">1.</span> <span class="post-toc-text">分析关键点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#埋点统计接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">埋点统计接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier主要触发任务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">tier主要触发任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据迁移"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数据迁移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#io操作"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">IO操作</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码阅读过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">源码阅读过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier_proxy_read数据来源"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">tier_proxy_read数据来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-stats"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pg stats</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pool-stat方向"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">pool stat方向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo"><span class="post-toc-number">3.</span> <span class="post-toc-text">Todo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#write_full"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">write_full?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-counter有类似pg-map的同步周期"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">pg counter有类似pg map的同步周期?</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析关键点"><span class="post-toc-number">1.</span> <span class="post-toc-text">分析关键点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#埋点统计接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">埋点统计接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier主要触发任务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">tier主要触发任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据迁移"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数据迁移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#io操作"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">IO操作</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码阅读过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">源码阅读过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier_proxy_read数据来源"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">tier_proxy_read数据来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-stats"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pg stats</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pool-stat方向"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">pool stat方向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#理论"><span class="post-toc-number">3.</span> <span class="post-toc-text">理论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推荐ssd用于wal-然后剩下的根据热数据大小控制缓存分层的大小3"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">推荐ssd用于WAL, 然后剩下的根据热数据大小控制缓存分层的大小[^3]</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo"><span class="post-toc-number">4.</span> <span class="post-toc-text">Todo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#write_full"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">write_full?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-counter有类似pg-map的同步周期"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">pg counter有类似pg map的同步周期?</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -256,6 +256,10 @@
 <p>PGMap::apply_incremental</p>
 <p>像是在这merge的数据?</p>
 <p>在PGMonitor::tick里会更新这个delta的数据.</p>
+<h2 id="理论">理论</h2>
+<p>因为太多人不推荐这个方案了, 所以看看有没有推荐的.</p>
+<h3 id="推荐ssd用于wal-然后剩下的根据热数据大小控制缓存分层的大小3">推荐ssd用于WAL, 然后剩下的根据热数据大小控制缓存分层的大小[^3]</h3>
+<p>所以理论上控制好, 还是有用的?</p>
 <h2 id="todo">Todo</h2>
 <h3 id="write_full">write_full?</h3>
 <h3 id="pg-counter有类似pg-map的同步周期">pg counter有类似<code>pg map</code>的同步周期?</h3>
@@ -263,6 +267,7 @@
 <ol type="1">
 <li><ceph源码分析></ceph源码分析></li>
 <li><a href="https://blog.csdn.net/CSND_PAN/article/details/78743426" target="_blank" rel="noopener">Ceph 学习——OSD读写流程与源码分析（一）_SEU_PAN的博客-CSDN博客_primarylogpg</a></li>
+<li><a href="https://stackoverflow.com/questions/61311797/what-is-the-best-size-for-cache-tier-in-ceph" target="_blank" rel="noopener">openstack - What is the best size for cache tier in Ceph? - Stack Overflow</a></li>
 </ol>
 
         </div>
@@ -272,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-07-05T16:09:21.000Z" itemprop="dateUpdated">2020-07-06 00:09:21</time>
+    最后更新时间：<time datetime="2020-10-18T15:19:06.000Z" itemprop="dateUpdated">2020-10-18 23:19:06</time>
 </span><br>
 
 
