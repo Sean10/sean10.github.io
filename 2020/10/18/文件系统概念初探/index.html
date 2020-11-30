@@ -30,7 +30,7 @@
 <meta property="og:description" content="todo  为什么文件系统不默认提供每个目录的空间使用量呢?  多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢? subvolume btrfs子文件系统支持 说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?  文件系统配额,">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://sean10.github.io/2020/10/18/文件系统概念初探/文件系统设计_2020-10-18-21-27-06.png">
-<meta property="og:updated_time" content="2020-11-15T17:24:24.946Z">
+<meta property="og:updated_time" content="2020-11-28T13:43:16.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件系统概念初探">
 <meta name="twitter:description" content="todo  为什么文件系统不默认提供每个目录的空间使用量呢?  多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢? subvolume btrfs子文件系统支持 说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?  文件系统配额,">
@@ -204,6 +204,7 @@
 </ul></li>
 <li>文件系统中的原子事务如何实现? 幂等性如何保障</li>
 <li>extent技术</li>
+<li>隐藏的预留容量, 超级块</li>
 </ul>
 <h1 id="与块设备相比">与块设备相比</h1>
 <p>问题原因 * 如何找到你想要的信息 * 如何保证一个用户不会读取另一个用户的数据 * 如何得知哪些块是空闲的, 等等</p>
@@ -530,7 +531,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-11-15T17:24:24.946Z" itemprop="dateUpdated">2020-11-16 01:24:24</time>
+    最后更新时间：<time datetime="2020-11-28T13:43:16.546Z" itemprop="dateUpdated">2020-11-28 21:43:16</time>
 </span><br>
 
 
