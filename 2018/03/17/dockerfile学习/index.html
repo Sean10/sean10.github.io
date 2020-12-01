@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-07T13:46:21.511Z">
+<meta property="og:updated_time" content="2020-11-30T17:10:21.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerfile学习">
 <meta name="twitter:description" content="现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dockerignore"><span class="post-toc-number">1.</span> <span class="post-toc-text">.dockerignore</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dockerignore"><span class="post-toc-number">2.</span> <span class="post-toc-text">.dockerignore</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
 
@@ -196,6 +196,10 @@
 <p>RUN是在Build时运行的，先于CMD和ENTRYPOINT。Build完成了，RUN也运行完成后，再运行CMD或者ENTRYPOINT。</p>
 <p>比如这个，最后的bash会覆盖CMD指定的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br></pre></td></tr></table></figure></p>
 <hr>
+<h1 id="todo">todo</h1>
+<ul>
+<li>docker如何使用相对路径的文件内?</li>
+</ul>
 <h1 id="dockerignore">.dockerignore</h1>
 <blockquote>
 <p>在docker命令行界面中发送上下文到docker的守护进程之前，它会检查上下文目录根路径下名为.dockerignore的文件，如果这个文件存在，命令行界面会修改上下文，排除那些被.dockerignore中的模式匹配到的文件和目录。</p>
@@ -214,7 +218,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-11-07T13:46:21.511Z" itemprop="dateUpdated">2020-11-07 21:46:21</time>
+    最后更新时间：<time datetime="2020-11-30T17:10:21.266Z" itemprop="dateUpdated">2020-12-01 01:10:21</time>
 </span><br>
 
 

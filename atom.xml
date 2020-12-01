@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sean10.github.io/"/>
-  <updated>2020-11-15T16:27:43.399Z</updated>
+  <updated>2020-12-01T17:29:49.976Z</updated>
   <id>https://sean10.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CLI转为http服务小探</title>
+    <link href="https://sean10.github.io/2020/12/02/CLI%E8%BD%AC%E4%B8%BAhttp%E6%9C%8D%E5%8A%A1%E5%B0%8F%E6%8E%A2/"/>
+    <id>https://sean10.github.io/2020/12/02/CLI%E8%BD%AC%E4%B8%BAhttp%E6%9C%8D%E5%8A%A1%E5%B0%8F%E6%8E%A2/</id>
+    <published>2020-12-01T17:29:22.000Z</published>
+    <updated>2020-12-01T17:29:49.976Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景">背景</h1><p>需要将现成的CLI转换为web服务的HTTP接口.</p><p>这个我记得之前看到哪篇文章推荐过, 但是一时想不起来了</p><p>想了想关键词</p><ul><li>CLI</li><li>command line</li><li>http</li><li>server</li><li>web<ul><li>终于把web这个带上之后, 用CLI to web server终于搜到一个相近的</li><li>w2c 这个python 程序<ul><li><a href="https://github.com/dongyx/c2w" target="_blank" rel="noopener">dongyx/c2w: convert CLI programs to Web services</a></li></ul></li><li>然后用这个里的描述, google终于找到了相似语义的, 我少了program, 导致CLI应该被理解成了终端输入参数的web服务, 也就是常见的web服务…</li><li>converts a CLI program to a Web service<ul><li><a href="https://nordicapis.com/the-return-of-the-cli-clis-being-used-by-api-related-companies/" target="_blank" rel="noopener">The Return of the CLI: CLIs Being Used by API-Related Companies | Nordic APIs |</a><ul><li>初看没看懂</li></ul></li><li><a href="https://www.codeproject.com/Questions/1129689/How-can-I-convert-my-console-application-to-a-web" target="_blank" rel="noopener">How can I convert my console application to a web service using visual studio 2013 - CodeProject</a><ul><li>hhh, 一个咨询解决方案的, 问题一致.</li><li>只不过我实现了一套, 现在想看看有没有更好的实现方案</li></ul></li></ul></li><li><a href="https://github.com/adamkewley/jobson" target="_blank" rel="noopener">adamkewley/jobson: A platform for transforming command-line applications into a job service.</a><ul><li>这个东西似乎是转换成任务, 结果不知道有没有返回的地方</li></ul></li><li><a href="https://www.reddit.com/r/linux/comments/i8p2fe/foss_convert_any_command_line_toolservice_into_a/" target="_blank" rel="noopener">(1) [FOSS] Convert any command line tool/service into a asynchronous REST API. [Python] : linux</a><ul><li>又拿到一个关键词, shell2http</li><li><a href="https://github.com/Eshaan7/Flask-Shell2HTTP" target="_blank" rel="noopener">Eshaan7/Flask-Shell2HTTP: Execute shell commands via HTTP server (via flask’s endpoints).</a></li><li><a href="https://github.com/adnanh/webhook" target="_blank" rel="noopener">adnanh/webhook: webhook is a lightweight incoming webhook server to run shell commands</a><ul><li>这个比较牛看起来, Star特别高, go实现</li></ul></li></ul></li><li><a href="http://techfeast-hiranya.blogspot.com/2015/06/expose-any-shell-command-or-script-as.html" target="_blank" rel="noopener">The Tech Feast: Expose Any Shell Command or Script as a Web API</a><ul><li>bash2http, 和上面的shell2http差不多</li></ul></li></ul></li><li>shell 2 http<ul><li>remote sh这个工具看起来也不错, 只是在页面填写bash 脚本, 然后指定服务器执行, 等同于web终端的感觉.</li></ul></li><li>command web server</li><li>expose shell scripts as web services<ul><li>又一个关键词 API</li><li><a href="https://github.com/lukasmartinelli/nigit" target="_blank" rel="noopener">lukasmartinelli/nigit: Web server that wraps around programs and shell scripts and exposes them as API</a><ul><li>wrap command to http API</li><li><a href="https://github.com/phonkee/goexpose" target="_blank" rel="noopener">phonkee/goexpose: Expose shellscripts, postgres queries, redis commands and other as rest server endpoints</a><ul><li>上一个开发者不维护了, 推荐用这个</li></ul></li></ul></li><li><a href="https://github.com/Andreweweith/Web-Based-Remote-Command-Server" target="_blank" rel="noopener">Andreweweith/Web-Based-Remote-Command-Server: Web server and interface to remotely execute Linux shell commands and display the results</a><ul><li>这个是C实现的一个http上输入命令底层执行,然后返回结果的那种.</li></ul></li><li><a href="https://github.com/bytestream/Web-Server" target="_blank" rel="noopener">bytestream/Web-Server: During my time at the University of Miami whilst studying CSC524 - Computer Networks I was also asked to build a basic web server using pure C. The web server can be used to process GET and POST requests whereby GET requests will serve a static file and POST requests with the addition of POST data will execute the file as if it were CGI and pipe the output back to the client. Again for security reasons it only serves files in the current working directory, and will also only execute shell programs.</a><ul><li>别人的一个大作业的成果.也是C实现的一个把shell通过API暴露.</li></ul></li><li><a href="https://github.com/dotnet/command-line-api" target="_blank" rel="noopener">dotnet/command-line-api: Command line parsing, invocation, and rendering of terminal output.</a><ul><li>.Net实现的, 感觉我的实现架构比较贴近这个</li></ul></li></ul></li><li>wrap command to http API<ul><li><a href="http://soaplab.sourceforge.net/soaplab2/" target="_blank" rel="noopener">Soaplab2</a><ul><li>看起来有点像需求的?</li></ul></li><li><a href="https://www.genivia.com/dev.html" target="_blank" rel="noopener">Genivia - Getting Started with C/C++ XML Data Bindings and XML SOAP/REST Web Services</a></li><li><a href="https://www.cnblogs.com/liushui-sky/p/9723397.html" target="_blank" rel="noopener">gsoap使用总结 - 苦涩的茶 - 博客园</a></li><li>WebService服务基本概念：就是一个应用程序，它向外界暴露出一个可以通过web进行调用的API，是分布式的服务组件。本质上就是要以标准的形式实现企业内外各个不同服务系统之间的互调和集成。</li><li>所以以前其实这个实现形式叫做webservice. 只是我们不止是函数, 包括命令.</li><li>所以这里其实针对静态语言以前的思路是实现一个DSL, 然后基于编写的DSL生成可编译的代码, 然后再编译出可执行程序, 对, 针对静态语言,其实这也是个思路, 使用yacc等词法分析器?<br></li><li><a href="https://stackoverflow.com/questions/2240258/how-to-wrap-a-c-library-so-that-it-can-be-called-from-a-web-service" target="_blank" rel="noopener">How to wrap a C library so that it can be called from a web service - Stack Overflow</a><ul><li>这里也提到了soaplib</li><li>mod-xmlrpc2</li></ul></li></ul></li><li>webservice<ul><li>command webservice<ul><li><a href="https://stackoverflow.com/questions/3574127/consuming-web-service-from-c-cli" target="_blank" rel="noopener">c# - Consuming Web Service from C++/CLI - Stack Overflow</a><ul><li>emm.</li></ul></li><li><a href="http://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc31727.0600/html/easws/CHDJGCDJ.htm" target="_blank" rel="noopener">SyBooks Online</a></li></ul></li></ul></li><li>proxy 忽然想到, proxy其实和wrap在这个场景里是同义词.</li></ul><h1 id="小结">小结</h1><p>所以根据上面的思路来看</p><h2 id="流程">流程</h2><ul><li>初始化<ul><li>解析配置文件, 其中包含CLI或函数对应的API路由</li></ul></li><li>decoder解析http协议</li><li>dispatch根据路由转发, 路由注册</li><li>进入函数或传入命令参数进行执行<ul><li>可能有前置处理参数逻辑, 一般定制性需要强一些</li><li>后置输出格式处理逻辑等</li></ul></li><li>encoder协议拼装返回</li></ul><h2 id="思路">思路</h2><ul><li>针对支持运行时元编程能力的语言(如python, go), 和我实现思路基本一致, 编写一套配置或叫做DSL, 运行时加载然后动态生成函数等.</li><li>针对不具有上述能力的语言, 有两种思路<ul><li>参数传入, 核心调度逻辑的函数基本只有一个<ul><li>如果是CLI, 则作为参数传入, 有一个统一system调用的函数封装<ul><li>如果是前置和后置逻辑需要用函数处理, 则像下面一样用字符串找到符号表里的函数指针.</li></ul></li><li>如果是函数, 我想的就是通过动态库的<code>dlysm</code>或者<code>libeffi</code>来根据配置中填写的函数名, 去进行调度.</li></ul></li><li>编写一套DSL, 在进入编译前, 根据编写的DSL生成一套代码, 这样就支持各式各样的函数了, 就是定制性维护可能代码量膨胀的较快? gsoap和soaplib应该是这套思路吧, 好像有点像是10年前的思路, 看snmp代码的时候也是这种思路, 从mib生成代码.<ul><li>这个的实现方式应该就多种多样了.</li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+&lt;p&gt;需要将现成的CLI转换为web服务的HTTP接口.&lt;/p&gt;
+&lt;p&gt;这个我记得之前看到哪篇文章推荐过, 但是一时想不起来了&lt;/p&gt;
+&lt;p&gt;想了想关键词&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CLI&lt;/li&gt;
+&lt;li&gt;command line&lt;/li
+      
+    
+    </summary>
+    
+    
+      <category term="专业" scheme="https://sean10.github.io/categories/pro/"/>
+    
+    
+      <category term="CLI" scheme="https://sean10.github.io/tags/CLI/"/>
+    
+      <category term="http" scheme="https://sean10.github.io/tags/http/"/>
+    
+      <category term="system" scheme="https://sean10.github.io/tags/system/"/>
+    
+  </entry>
   
   <entry>
     <title>代码分支模式初探</title>
@@ -132,11 +168,11 @@
     
       <category term="linux" scheme="https://sean10.github.io/tags/linux/"/>
     
-      <category term="git" scheme="https://sean10.github.io/tags/git/"/>
-    
       <category term="diff" scheme="https://sean10.github.io/tags/diff/"/>
     
       <category term="merge" scheme="https://sean10.github.io/tags/merge/"/>
+    
+      <category term="git" scheme="https://sean10.github.io/tags/git/"/>
     
   </entry>
   
@@ -513,9 +549,9 @@
       <category term="专业" scheme="https://sean10.github.io/categories/pro/"/>
     
     
-      <category term="源码" scheme="https://sean10.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
       <category term="C++" scheme="https://sean10.github.io/tags/C/"/>
+    
+      <category term="源码" scheme="https://sean10.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
       <category term="ceph" scheme="https://sean10.github.io/tags/ceph/"/>
     
@@ -1526,9 +1562,9 @@
     <link href="https://sean10.github.io/2018/03/17/dockerfile%E5%AD%A6%E4%B9%A0/"/>
     <id>https://sean10.github.io/2018/03/17/dockerfile%E5%AD%A6%E4%B9%A0/</id>
     <published>2018-03-17T12:06:44.000Z</published>
-    <updated>2020-11-07T13:46:21.511Z</updated>
+    <updated>2020-11-30T17:10:21.266Z</updated>
     
-    <content type="html"><![CDATA[<p>现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。</p><a id="more"></a><p>试着先给毕设用的环境写个dockerfile, 顺便提了个PR，希望能被合并吧。</p><p>在找错的过程中，看到好多人用docker run来后台执行命令，感觉好微妙，每次从镜像新建一个容器来执行命令，那旧的容器是继续保留吗？还是说生产环境的确就是这样做的。</p><p>可能因为我这算是学习环境，所以对Docker的变动都是在内部修改，并不完全是从dockerfile来的吧。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t sean10:tensorflow .</span><br></pre></td></tr></table></figure><p>在docker run时，最后的命令行参数是会和dockerfile中的RUN, CMD, ENTRYPOINT相关的。</p><p>RUN是在Build时运行的，先于CMD和ENTRYPOINT。Build完成了，RUN也运行完成后，再运行CMD或者ENTRYPOINT。</p><p>比如这个，最后的bash会覆盖CMD指定的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br></pre></td></tr></table></figure></p><hr><h1 id="dockerignore">.dockerignore</h1><blockquote><p>在docker命令行界面中发送上下文到docker的守护进程之前，它会检查上下文目录根路径下名为.dockerignore的文件，如果这个文件存在，命令行界面会修改上下文，排除那些被.dockerignore中的模式匹配到的文件和目录。</p></blockquote><h1 id="参考">参考</h1><ol type="1"><li><a href="https://segmentfault.com/q/1010000000417103" target="_blank" rel="noopener">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li><li><a href="https://www.binss.me/blog/learn-docker-with-me-about-run-entrypoint-and-cmd/" target="_blank" rel="noopener">跟我一起学Docker——RUN、ENTRYPOINT与CMD</a></li><li><a href="https://www.zhihu.com/question/61836409" target="_blank" rel="noopener">Docker容器怎样更改容器内应用程序的配置文件？</a></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。</p><a id="more"></a><p>试着先给毕设用的环境写个dockerfile, 顺便提了个PR，希望能被合并吧。</p><p>在找错的过程中，看到好多人用docker run来后台执行命令，感觉好微妙，每次从镜像新建一个容器来执行命令，那旧的容器是继续保留吗？还是说生产环境的确就是这样做的。</p><p>可能因为我这算是学习环境，所以对Docker的变动都是在内部修改，并不完全是从dockerfile来的吧。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t sean10:tensorflow .</span><br></pre></td></tr></table></figure><p>在docker run时，最后的命令行参数是会和dockerfile中的RUN, CMD, ENTRYPOINT相关的。</p><p>RUN是在Build时运行的，先于CMD和ENTRYPOINT。Build完成了，RUN也运行完成后，再运行CMD或者ENTRYPOINT。</p><p>比如这个，最后的bash会覆盖CMD指定的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br></pre></td></tr></table></figure></p><hr><h1 id="todo">todo</h1><ul><li>docker如何使用相对路径的文件内?</li></ul><h1 id="dockerignore">.dockerignore</h1><blockquote><p>在docker命令行界面中发送上下文到docker的守护进程之前，它会检查上下文目录根路径下名为.dockerignore的文件，如果这个文件存在，命令行界面会修改上下文，排除那些被.dockerignore中的模式匹配到的文件和目录。</p></blockquote><h1 id="参考">参考</h1><ol type="1"><li><a href="https://segmentfault.com/q/1010000000417103" target="_blank" rel="noopener">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li><li><a href="https://www.binss.me/blog/learn-docker-with-me-about-run-entrypoint-and-cmd/" target="_blank" rel="noopener">跟我一起学Docker——RUN、ENTRYPOINT与CMD</a></li><li><a href="https://www.zhihu.com/question/61836409" target="_blank" rel="noopener">Docker容器怎样更改容器内应用程序的配置文件？</a></li></ol>]]></content>
     
     <summary type="html">
     
@@ -4156,9 +4192,9 @@
       <category term="算法" scheme="https://sean10.github.io/categories/algorithm/"/>
     
     
-      <category term="栈" scheme="https://sean10.github.io/tags/%E6%A0%88/"/>
-    
       <category term="数据结构" scheme="https://sean10.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="栈" scheme="https://sean10.github.io/tags/%E6%A0%88/"/>
     
   </entry>
   
