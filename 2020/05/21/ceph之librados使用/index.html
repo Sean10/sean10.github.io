@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-13T13:57:26.731Z">
+<meta property="og:updated_time" content="2020-12-28T12:01:59.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之librados使用">
 <meta name="twitter:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发者模式2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">2.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发者模式2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">async模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#radosstripper理解"><span class="post-toc-number">3.</span> <span class="post-toc-text">radosstripper理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados连接过程"><span class="post-toc-number"></span> <span class="post-toc-text">rados连接过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -198,6 +198,37 @@
 <p><code>python -m pgd /bin/ceph osd pool stats</code>执行，在<code>new_style_command</code>函数内的<code>json_command</code>处打断点，进入后，打印<code>cmddict</code>就可以看到cli发送出去的prefix拼接出来是什么样子的了，然后再拿着这个去代码里搜就好了。</p>
 <h2 id="开发者模式2">开发者模式[^2]</h2>
 <p><code>make vstart</code></p>
+<h2 id="async模式">async模式</h2>
+<ul>
+<li>mon_command_async
+<ul>
+<li>好像RadosClient.cc里有这个异步下发任务, 但是似乎并没有对外提供成librados的接口.</li>
+<li>之后有空应该是可以利用这个封装出来使用的应该.</li>
+</ul></li>
+</ul>
+<h2 id="radosstripper理解">radosstripper理解</h2>
+<h1 id="rados连接过程">rados连接过程</h1>
+<ul>
+<li><p>似乎有加载client name.</p></li>
+<li>parse_config_files似乎还有指定不读取任何配置文件的时候, 即便是默认配置文件
+<ul>
+<li>global_pre_init里调用的似乎就是这个.</li>
+</ul></li>
+<li>“cdef class Rados(object):”-&gt;“name = ‘client.admin’”
+<ul>
+<li>默认name client.admin</li>
+</ul></li>
+<li></li>
+<li>context 是什么?</li>
+<li>rados_create2
+<ul>
+<li>rados_create_cct()</li>
+</ul></li>
+<li>librados::RadosClient::connect理解
+<ul>
+<li>monclient.init()</li>
+</ul></li>
+</ul>
 <h2 id="源码">源码</h2>
 <ul>
 <li>RadosClient</li>
@@ -219,7 +250,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-12-13T13:57:26.731Z" itemprop="dateUpdated">2020-12-13 21:57:26</time>
+    最后更新时间：<time datetime="2020-12-28T12:01:59.719Z" itemprop="dateUpdated">2020-12-28 20:01:59</time>
 </span><br>
 
 
@@ -392,7 +423,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2020</span>
+        <p><span>Sean10 &copy; 2015 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

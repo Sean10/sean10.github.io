@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-29T09:14:38.000Z">
+<meta property="og:updated_time" content="2020-12-28T11:36:03.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之df原理">
 <meta name="twitter:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
@@ -247,7 +247,7 @@
 </ul></li>
 </ul>
 <h4 id="todo">todo</h4>
-<p>问题: * 资源池显示的使用量实际上并不是osd上实际分配和占用的, 那为什么资源池显示已用满了基本上就不让用了呢? 还是说这两个基本上是一致的? * 按照bluestore这层应该也是和<code>FileStore</code>时一样, 实际上是有洞的,这种情况下, 为什么不默认提供更多的空间呢? 是怕出问题吧? 只有当压缩的时候, 才提供? * compressed的容量是否 * used和 objects数量是否有关呢 * 像是rbd上层4K随机写, 在rados层看到的就是写了2W5的对象以后就100G了, rados还是按照4M对象创建了… * 按照之前我们看pg的op, 理论上应该和objects数量无关才对. * pg处理的是Rados层的请求, 所以其实问题在于rbd层的4k 是怎么转换到4M的. * 问题其实是写了这些对象以后, df看到的容量就满了, 而实际上osd还没满. ### Luminous</p>
+<p>问题: * 资源池显示的使用量实际上并不是osd上实际分配和占用的, 那为什么资源池显示已用满了基本上就不让用了呢? 还是说这两个基本上是一致的? * 按照bluestore这层应该也是和<code>FileStore</code>时一样, 实际上是有洞的,这种情况下, 为什么不默认提供更多的空间呢? 是怕出问题吧? 只有当压缩的时候, 才提供? * compressed的容量是否 * used和 objects数量是否有关呢 * 像是rbd上层4K随机写, 在rados层看到的就是写了2W5的对象以后就100G了, rados还是按照4M对象创建了… * 按照之前我们看pg的op, 理论上应该和objects数量无关才对. * pg处理的是Rados层的请求, 所以其实问题在于rbd层的4k 是怎么转换到4M的. * 问题其实是写了这些对象以后, df看到的容量就满了, 而实际上osd还没满. * mon如何打印出他当前收集的容量信息呢? * ### Luminous</p>
 <h4 id="pool可用量计算">pool可用量计算</h4>
 <p>在代码中，在计算max_avail容量时，在<code>PGMap::get_rules_avail</code>函数中，mon会去迭代所有的资源池，根据<code>pool_id</code>拿到pool的如使用的<code>ruleno</code>的rule id、类型和size信息。拿到上述信息后，使用<code>ruleno</code>找到<code>crush map</code>信息，在这里建立一张基于crush map对各级bucket及osd进行广度优先搜索查找到的<code>map&lt;int, float&gt;</code>的<code>id</code>为key,<code>crush weight</code>为value的表，并进行归一化，让key更新为<code>weight/sum</code>的值。</p>
 <p>然后在计算资源池整体可用时，使用上面拿到的osd的<code>kb_avail</code>除以此处拿到的表中osd id对应的归一化结果，取得资源池原始的最大可用空间。</p>
@@ -460,7 +460,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-10-29T09:14:38.000Z" itemprop="dateUpdated">2020-10-29 17:14:38</time>
+    最后更新时间：<time datetime="2020-12-28T11:36:03.206Z" itemprop="dateUpdated">2020-12-28 19:36:03</time>
 </span><br>
 
 
@@ -633,7 +633,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2020</span>
+        <p><span>Sean10 &copy; 2015 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

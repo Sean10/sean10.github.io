@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-30T17:10:21.266Z">
+<meta property="og:updated_time" content="2021-01-02T14:02:29.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerfile学习">
 <meta name="twitter:description" content="现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dockerignore"><span class="post-toc-number">2.</span> <span class="post-toc-text">.dockerignore</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dockerignore"><span class="post-toc-number">2.</span> <span class="post-toc-text">.dockerignore</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker-stage"><span class="post-toc-number">3.</span> <span class="post-toc-text">docker stage</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#显示已下载的image的dockerfile"><span class="post-toc-number">4.</span> <span class="post-toc-text">显示已下载的image的dockerfile</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#systemd的docker内启动"><span class="post-toc-number">5.</span> <span class="post-toc-text">systemd的docker内启动</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
 
@@ -204,6 +204,13 @@
 <blockquote>
 <p>在docker命令行界面中发送上下文到docker的守护进程之前，它会检查上下文目录根路径下名为.dockerignore的文件，如果这个文件存在，命令行界面会修改上下文，排除那些被.dockerignore中的模式匹配到的文件和目录。</p>
 </blockquote>
+<h1 id="docker-stage">docker stage</h1>
+<p>如何显示之前下载过的<code>stage</code>用的image ?</p>
+<h1 id="显示已下载的image的dockerfile">显示已下载的image的dockerfile</h1>
+<h1 id="systemd的docker内启动">systemd的docker内启动</h1>
+<blockquote>
+<p>docker run -tid –name test_1 –privileged=true centos:latest /usr/sbin/init docker exec -it test_1 /bin/bash</p>
+</blockquote>
 <h1 id="参考">参考</h1>
 <ol type="1">
 <li><a href="https://segmentfault.com/q/1010000000417103" target="_blank" rel="noopener">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li>
@@ -218,7 +225,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-11-30T17:10:21.266Z" itemprop="dateUpdated">2020-12-01 01:10:21</time>
+    最后更新时间：<time datetime="2021-01-02T14:02:29.233Z" itemprop="dateUpdated">2021-01-02 22:02:29</time>
 </span><br>
 
 
@@ -391,7 +398,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2020</span>
+        <p><span>Sean10 &copy; 2015 - 2021</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
