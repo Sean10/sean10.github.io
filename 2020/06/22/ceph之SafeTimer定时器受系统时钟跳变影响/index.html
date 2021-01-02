@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="C++,ceph,源码,定时器">
+    <meta name="keywords" content="C++,源码,ceph,定时器">
     <meta name="description" content="最近遇到这样一个情况，ceph运行环境里时间被修改到以前的时间之后，ceph -s和ceph df都看不到在这之后创建的资源池了。 在大佬的带领下，得知了这部分数据来源于ceph-mgr的pgmap例行同步。时间出现变化之后，debug日志里也的确不再出现pgmap的同步日志了。从这个方向找到了入手点。">
-<meta name="keywords" content="C++,ceph,源码,定时器">
+<meta name="keywords" content="C++,源码,ceph,定时器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之SafeTimer定时器受系统时钟跳变影响">
 <meta property="og:url" content="https://sean10.github.io/2020/06/22/ceph之SafeTimer定时器受系统时钟跳变影响/index.html">

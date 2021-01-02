@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-02T14:02:29.233Z">
+<meta property="og:updated_time" content="2021-01-02T14:56:59.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dockerfile学习">
 <meta name="twitter:description" content="现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dockerignore"><span class="post-toc-number">2.</span> <span class="post-toc-text">.dockerignore</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker-stage"><span class="post-toc-number">3.</span> <span class="post-toc-text">docker stage</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#显示已下载的image的dockerfile"><span class="post-toc-number">4.</span> <span class="post-toc-text">显示已下载的image的dockerfile</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#systemd的docker内启动"><span class="post-toc-number">5.</span> <span class="post-toc-text">systemd的docker内启动</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#dockerignore"><span class="post-toc-number">2.</span> <span class="post-toc-text">.dockerignore</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker-stage"><span class="post-toc-number">3.</span> <span class="post-toc-text">docker stage</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#显示已下载的image的dockerfile"><span class="post-toc-number">4.</span> <span class="post-toc-text">显示已下载的image的dockerfile</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#systemd的docker内启动"><span class="post-toc-number">5.</span> <span class="post-toc-text">systemd的docker内启动</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#多重from-image"><span class="post-toc-number">6.</span> <span class="post-toc-text">多重from image</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
 
@@ -211,6 +211,8 @@
 <blockquote>
 <p>docker run -tid –name test_1 –privileged=true centos:latest /usr/sbin/init docker exec -it test_1 /bin/bash</p>
 </blockquote>
+<h1 id="多重from-image">多重from image</h1>
+<p><a href="https://www.cnblogs.com/dogecheng/p/11437413.html" target="_blank" rel="noopener">精简Docker镜像的几个方法 - 那少年和狗 - 博客园</a></p>
 <h1 id="参考">参考</h1>
 <ol type="1">
 <li><a href="https://segmentfault.com/q/1010000000417103" target="_blank" rel="noopener">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li>
@@ -225,7 +227,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-01-02T14:02:29.233Z" itemprop="dateUpdated">2021-01-02 22:02:29</time>
+    最后更新时间：<time datetime="2021-01-02T14:56:59.959Z" itemprop="dateUpdated">2021-01-02 22:56:59</time>
 </span><br>
 
 
