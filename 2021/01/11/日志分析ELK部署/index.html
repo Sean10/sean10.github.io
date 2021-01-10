@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>日志分析ELK部署 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ceph,ELK">
+    <meta name="description" content="部署 12345docker pull sebp/elkdocker run -p 5601:5601 -p 9200:9200  -p 5044:5044 \    -v /Users/sean10/Code/docker-volume/elk:/var/lib/elasticsearch \    -v /Users/sean10/Code/Algorithm_code/elk/logstas">
+<meta name="keywords" content="ceph,ELK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日志分析ELK部署">
+<meta property="og:url" content="https://sean10.github.io/2021/01/11/日志分析ELK部署/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="部署 12345docker pull sebp/elkdocker run -p 5601:5601 -p 9200:9200  -p 5044:5044 \    -v /Users/sean10/Code/docker-volume/elk:/var/lib/elasticsearch \    -v /Users/sean10/Code/Algorithm_code/elk/logstas">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-10T19:03:47.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="日志分析ELK部署">
+<meta name="twitter:description" content="部署 12345docker pull sebp/elkdocker run -p 5601:5601 -p 9200:9200  -p 5044:5044 \    -v /Users/sean10/Code/docker-volume/elk:/var/lib/elasticsearch \    -v /Users/sean10/Code/Algorithm_code/elk/logstas">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">日志分析ELK部署</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">日志分析ELK部署</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-10T19:03:17.000Z" itemprop="datePublished" class="page-time">
+  2021-01-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部署"><span class="post-toc-number">1.</span> <span class="post-toc-text">部署</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#filebeat"><span class="post-toc-number">2.</span> <span class="post-toc-text">Filebeat</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#logstash"><span class="post-toc-number">3.</span> <span class="post-toc-text">logstash</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">实验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导入log"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">导入log</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一般流程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">一般流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可能的问题"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">可能的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引过多-导致elasticsearch-429"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">索引过多, 导致elasticsearch 429</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#elasticsearch"><span class="post-toc-number">4.</span> <span class="post-toc-text">elasticsearch</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#kibana"><span class="post-toc-number">5.</span> <span class="post-toc-text">kibana</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">6.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-日志分析ELK部署"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">日志分析ELK部署</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-11 03:03:17" datetime="2021-01-10T19:03:17.000Z"  itemprop="datePublished">2021-01-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="部署">部署</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull sebp/elk</span><br><span class="line">docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 \</span><br><span class="line">    -v /Users/sean10/Code/docker-volume/elk:/var/lib/elasticsearch \</span><br><span class="line">    -v /Users/sean10/Code/Algorithm_code/elk/logstash.conf:/etc/logstash/conf.d/logstash.conf\</span><br><span class="line">     --name elk sebp/elk</span><br></pre></td></tr></table></figure>
+<h1 id="filebeat">Filebeat</h1>
+<p>日志数据采集器</p>
+<ul>
+<li>与logstash直接配置本地文件的读取是否存在差别呢?</li>
+</ul>
+<p>把<code>elk-logstash</code>的证书[^6], 和这个证书对应的域名加到hosts里解析, 成功导入了宿主机里的日志. 不过这种不修改<code>filter</code>的逻辑的日志, 只是把log的每行都记录成message了, 其实索引没利用起来的感觉. <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">output:</span></span><br><span class="line"><span class="attr">  logstash:</span></span><br><span class="line"><span class="attr">    enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    hosts:</span></span><br><span class="line"><span class="attr">      - elk:</span><span class="number">5044</span></span><br><span class="line"><span class="attr">    timeout:</span> <span class="number">15</span></span><br><span class="line"><span class="attr">    ssl:</span></span><br><span class="line"><span class="attr">      certificate_authorities:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">/etc/certs/logstash-beats.crt</span></span><br><span class="line"></span><br><span class="line"><span class="attr">filebeat:</span></span><br><span class="line"><span class="attr">  inputs:</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">"/var/log/ceph/*.log"</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name filebeat  --user=root -v /Users/sean10/Code/ceph/ceph-14.2.9/src/out:/var/<span class="built_in">log</span>/ceph -v /Users/sean10/Code/Algorithm_code/elk/logstash-beats.crt:/etc/certs/logstash-beats.crt -v /Users/sean10/Code/Algorithm_code/elk/filebeat.yml:/usr/share/filebeat/filebeat.yml -v /Users/sean10/Code/Algorithm_code/elk/hosts:/etc/hosts elastic/filebeat:7.10.1</span><br></pre></td></tr></table></figure>
+<h1 id="logstash">logstash</h1>
+<h2 id="配置">配置</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">input</span><br><span class="line">    file &#123;</span><br><span class="line">        path =&gt; [&quot;/var/log/*.log&quot;, &quot;/var/log/message&quot;]</span><br><span class="line">        type =&gt; &quot;system&quot;</span><br><span class="line">        start_position =&gt; &quot;beginning&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">#  if [type] == &quot;cephlog&quot; &#123;</span><br><span class="line"> grok &#123;</span><br><span class="line"> # https://github.com/ceph/ceph/blob/master/src/log/Entry.h</span><br><span class="line"> match =&gt; &#123; &quot;message&quot; =&gt; &quot;%&#123;TIMESTAMP_ISO8601:stamp&#125;\s%&#123;GREEDYDATA:msg&#125;&quot; &#125;</span><br><span class="line"> match =&gt; &#123; &quot;message&quot; =&gt; &quot;(?m)%&#123;TIMESTAMP_ISO8601:stamp&#125;\s%&#123;NOTSPACE:thread&#125;\s*%</span><br><span class="line">&#123;INT:prio&#125;\s(%&#123;WORD:subsys&#125;|):?\s%&#123;GREEDYDATA:msg&#125;&quot; &#125;</span><br><span class="line"> # https://github.com/ceph/ceph/blob/master/src/common/LogEntry.h</span><br><span class="line"> match =&gt; &#123; &quot;message&quot; =&gt; &quot;%&#123;TIMESTAMP_ISO8601:stamp&#125;\s%&#123;NOTSPACE:name&#125;\s%</span><br><span class="line">&#123;NOTSPACE:who_type&#125;\s%&#123;NOTSPACE:who_addr&#125;\s%&#123;INT:seq&#125;\s:\s%&#123;PROG:channel&#125;\s\[%</span><br><span class="line">&#123;WORD:prio&#125;\]\s%&#123;GREEDYDATA:msg&#125;&quot; &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> date &#123; match =&gt; [ &quot;stamp&quot;, &quot;yyyy-MM-dd HH:mm:ss.SSSSSS&quot;, &quot;ISO8601&quot; ] &#125;</span><br><span class="line">#  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从ceph文档里找来的Filter, 不过好像匹配失败了, 可能跟版本有关系吧.版本太低? 用第一个,至少时间戳出来了.</p>
+<h2 id="实验">实验</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/opt/logstash/bin/logstash --path.data /tmp/logstash/data \</span><br><span class="line">    -e <span class="string">'input &#123; stdin &#123; &#125; &#125; output &#123; elasticsearch &#123; hosts =&gt; ["localhost"] &#125; &#125;'</span></span><br></pre></td></tr></table></figure>
+<h2 id="导入log">导入log</h2>
+<p>似乎要导入log, 默认的<code>elk</code>的配置不行, 需要修改<code>logstash</code>的配置, 增加一些属性.</p>
+<h2 id="一般流程">一般流程</h2>
+<blockquote>
+<p>在日志存储服务器上安装filebeat filebeat将log存储目录下的所有log全部读取，发送到kafka logstash从kafka上读取日志，格式化后发送到elasticsearch elasticsearch正确索引后，response给logstash logstash更新kafka的offset，读取新的记录 一直循环以上步骤，直到所有的log都被写入到elasticsearch当中</p>
+</blockquote>
+<h2 id="可能的问题">可能的问题</h2>
+<h3 id="索引过多-导致elasticsearch-429">索引过多, 导致elasticsearch 429</h3>
+<blockquote>
+<p>正确的处理大量历史数据的导入 不过很诧异，我很难在网络上搜到有人提过429的问题。仔细回想以下，一定是我的集群太low了。整个elasticsearch cluster的索引处理能力太弱鸡。。。所以，在你的集群比较弱鸡的情况下该怎么处理？</p>
+<p>当然，最直接的方法就是减少索引的量，比如，你要导入10月1号之前的所有log，你直接把索引的名字命名为platform-2017-10-1，而不是platform-%{+YYYY.MM.dd}。就算是只有一个eleasticsearch node，2C4G，亦能在5分钟之内把1G的log全部索引完。等索引完这些历史数据之后，你再把logstash上的output规则改为platform-%{+YYYY.MM.dd}。</p>
+</blockquote>
+<h1 id="elasticsearch">elasticsearch</h1>
+<p>还是使用<code>volume</code>挂载 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">path:</span></span><br><span class="line"><span class="attr">  data:</span> <span class="string">/var/data/elasticsearch</span></span><br><span class="line"><span class="attr">  logs:</span> <span class="string">/var/log/elasticsearch</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="kibana">kibana</h1>
+<p>导入是导入成功了, 基本的搜索也有了, 但是显示出来的冗余内容有点多.</p>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="https://github.com/spujadas/elk-docker" target="_blank" rel="noopener">spujadas/elk-docker: Elasticsearch, Logstash, Kibana (ELK) Docker image</a></li>
+<li><a href="https://elk-docker.readthedocs.io/#usage" target="_blank" rel="noopener">elk-docker</a></li>
+<li><a href="https://blog.csdn.net/alan_liuyue/article/details/92582101" target="_blank" rel="noopener">ELK生态：Logstash增量读取log文件数据，导入到Elasticsearch_alan_liuyue的博客-CSDN博客</a></li>
+<li><a href="https://blog.csdn.net/u013613428/article/details/78216068" target="_blank" rel="noopener">用ELK导入历史log的正确姿势_点火三周的专栏-CSDN博客</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/107346014" target="_blank" rel="noopener">手把手教你实战docker容器下的ELK环境搭建 - 知乎</a></li>
+<li><a href="https://blog.csdn.net/xinluke/article/details/52121906" target="_blank" rel="noopener">fileBeat和Elk整合的问题_xinluke的专栏-CSDN博客</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-01-10T19:03:47.722Z" itemprop="dateUpdated">2021-01-11 03:03:47</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/">ELK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/11/日志分析ELK部署/&title=《日志分析ELK部署》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/11/日志分析ELK部署/&title=《日志分析ELK部署》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/11/日志分析ELK部署/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《日志分析ELK部署》 — 行路中.&url=https://sean10.github.io/2021/01/11/日志分析ELK部署/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/11/日志分析ELK部署/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/02/arch体验/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">arch体验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/11/日志分析ELK部署/&title=《日志分析ELK部署》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/11/日志分析ELK部署/&title=《日志分析ELK部署》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/11/日志分析ELK部署/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《日志分析ELK部署》 — 行路中.&url=https://sean10.github.io/2021/01/11/日志分析ELK部署/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/11/日志分析ELK部署/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/01/11/日志分析ELK部署/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>
