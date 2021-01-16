@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>hexo主题自定义--修改indigo tag显示 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="hexo,js">
+    <meta name="description" content="更换hexo-theme-indigo的时候，发现作者也是个简约主义啊，功能足够就行了，不需要更新，hhh。 增加引用 首先，将next主题中一直用的addthis统计与分享功能引入。 官网上很简单，就是一行html和js，不过似乎在我使用时，可能排版上与js中携带的addthis模块排版冲突了，导致没能显示出来 修改tag显示 主要的问题在于, 当写的Tag总计多了时, 观察不到哪些tag的文章">
+<meta name="keywords" content="hexo,js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo主题自定义--修改indigo tag显示">
+<meta property="og:url" content="https://sean10.github.io/2019/01/17/hexo主题自定义/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="更换hexo-theme-indigo的时候，发现作者也是个简约主义啊，功能足够就行了，不需要更新，hhh。 增加引用 首先，将next主题中一直用的addthis统计与分享功能引入。 官网上很简单，就是一行html和js，不过似乎在我使用时，可能排版上与js中携带的addthis模块排版冲突了，导致没能显示出来 修改tag显示 主要的问题在于, 当写的Tag总计多了时, 观察不到哪些tag的文章">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-16T13:57:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo主题自定义--修改indigo tag显示">
+<meta name="twitter:description" content="更换hexo-theme-indigo的时候，发现作者也是个简约主义啊，功能足够就行了，不需要更新，hhh。 增加引用 首先，将next主题中一直用的addthis统计与分享功能引入。 官网上很简单，就是一行html和js，不过似乎在我使用时，可能排版上与js中携带的addthis模块排版冲突了，导致没能显示出来 修改tag显示 主要的问题在于, 当写的Tag总计多了时, 观察不到哪些tag的文章">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">hexo主题自定义--修改indigo tag显示</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">hexo主题自定义--修改indigo tag显示</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-17T12:57:48.000Z" itemprop="datePublished" class="page-time">
+  2019-01-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#增加引用"><span class="post-toc-number">1.</span> <span class="post-toc-text">增加引用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改tag显示"><span class="post-toc-number">2.</span> <span class="post-toc-text">修改tag显示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加tag统计角标"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">增加tag统计角标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加排序未完成"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">增加排序(未完成)</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-hexo主题自定义"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hexo主题自定义--修改indigo tag显示</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-17 20:57:48" datetime="2019-01-17T12:57:48.000Z"  itemprop="datePublished">2019-01-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>更换hexo-theme-indigo的时候，发现作者也是个简约主义啊，功能足够就行了，不需要更新，hhh。</p>
+<h1 id="增加引用">增加引用</h1>
+<p>首先，将next主题中一直用的addthis统计与分享功能引入。</p>
+<p>官网上很简单，就是一行html和js，不过似乎在我使用时，可能排版上与js中携带的addthis模块排版冲突了，导致没能显示出来</p>
+<h1 id="修改tag显示">修改tag显示</h1>
+<p>主要的问题在于, 当写的Tag总计多了时, 观察不到哪些<code>tag</code>的文章比较多</p>
+<p>当时初步想的是<code>hexo-tag-cloud</code>或者是雷达图效果.</p>
+<p>不过想了下, 这方面如果更换, 可能css也得换, 修改较多.</p>
+<p>试试看能不能直接在tag名字后面加一个统计数字.</p>
+<p>这个<code>API</code>里理论上应该有提供</p>
+<p>翻了下代码, 感觉<code>layout/tags.ejs</code>有点像显示的代码, 翻到个函数<code>is_tag</code>, 全局没搜到, 那应该代表着这里的一些信息是从hexo或者<code>hexo</code>的插件里获取到的.</p>
+<p>的确,根据<a href="https://hexo.io/docs/helpers.html" target="_blank" rel="noopener">Helpers | Hexo</a>, 在这里找到了这个函数.</p>
+<p>对, 和页面上的<code>id</code>, <code>class</code>比对了下, 的确这里是正文中的<code>tag</code>和<code>post</code>显示的位置.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">        <span class="keyword">if</span>(is_tag()) &#123; %&gt;</span><br><span class="line">            &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"waterfall"</span>&gt;</span><br><span class="line">          &lt;% page.posts.each(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>)</span>&#123; %&gt;</span><br><span class="line"></span><br><span class="line">            &lt;%- partial(<span class="string">'_partial/archive'</span>, &#123;<span class="attr">post</span>: post, <span class="attr">date_format</span>: config.date_format&#125;) %&gt;</span><br><span class="line"></span><br><span class="line">        &lt;% &#125;) %&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;% &#125; else &#123;</span></span><br><span class="line"><span class="regexp">            site.tags.each(function(tag)&#123;</span></span><br><span class="line"><span class="regexp">                if(tag.length)&#123;</span></span><br><span class="line"><span class="regexp">            %&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            &lt;h3 class="archive-separator" id="tag-&lt;%=tag.name %&gt;"&gt;&lt;%=tag.name %&gt;&lt;/</span>h3&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"waterfall"</span>&gt;</span><br><span class="line">            &lt;% tag.posts.each(<span class="function"><span class="keyword">function</span>(<span class="params">post</span>)</span>&#123;  %&gt;</span><br><span class="line"></span><br><span class="line">                &lt;%- partial(<span class="string">'_partial/archive'</span>, &#123;<span class="attr">post</span>: post, <span class="attr">date_format</span>: config.date_format&#125;) %&gt;</span><br><span class="line"></span><br><span class="line">            &lt;% &#125;) %&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;% &#125;</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>开启<code>debug</code>模式, <code>hexo s --debug</code></p>
+<p>实验了下, 还是<code>header</code>处增加统计数字更明显一些. <code>tags-bar.ejs</code>文件</p>
+<h2 id="增加tag统计角标">增加tag统计角标</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"&lt;%- url_for(tag.path) %&gt;"</span> style=<span class="string">"-webkit-order:&lt;%= order%&gt;;order:&lt;%= order%&gt;"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"tags-list-item waves-effect waves-button waves-light&lt;% if(is_current(tag.path))&#123;%&gt; active&lt;%&#125;%&gt;"</span>&gt;&lt;%-tag.name%&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>增加了<code>sup</code>选项, 加了个角标,看起来还可以 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"&lt;%- url_for(tag.path) %&gt;"</span> style=<span class="string">"-webkit-order:&lt;%= order%&gt;;order:&lt;%= order%&gt;"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"tags-list-item waves-effect waves-button waves-light&lt;% if(is_current(tag.path))&#123;%&gt; active&lt;%&#125;%&gt;"</span>&gt;&lt;%-tag.name%&gt;&lt;sup&gt;&lt;%-tag.length%&gt;&lt;/sup&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="增加排序未完成">增加排序(未完成)</h2>
+<p>相对来说, 还是不太直观. 看下面这段代码, 看起来是在指定Tag在这个顺序中的位置.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = [];</span><br><span class="line"></span><br><span class="line">            (type === <span class="string">'tags'</span> ? site.tags : site.categories).each(<span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(o.posts.length) &#123;</span><br><span class="line">                    options.push(o)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> index = _.findIndex(options, <span class="function"><span class="keyword">function</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> is_current(o.path)</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">var</span> len = options.length</span><br><span class="line">            <span class="keyword">var</span> order = <span class="number">0</span></span><br><span class="line">            options.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tag, i</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(index &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">                    order = i</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span>( i &lt; index - <span class="number">1</span>) &#123;</span><br><span class="line">                        order = len - (index - <span class="number">1</span>) + i</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        order = i - (index - <span class="number">1</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            %&gt;</span><br></pre></td></tr></table></figure>
+<p><code>webkit-order</code>的作用是什么呢… 理解错了, 这个其实还是为了布局用的.</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-01-16T13:57:48.000Z" itemprop="dateUpdated">2021-01-16 21:57:48</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2019/01/17/hexo主题自定义/&title=《hexo主题自定义--修改indigo tag显示》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2019/01/17/hexo主题自定义/&title=《hexo主题自定义--修改indigo tag显示》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2019/01/17/hexo主题自定义/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo主题自定义--修改indigo tag显示》 — 行路中.&url=https://sean10.github.io/2019/01/17/hexo主题自定义/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2019/01/17/hexo主题自定义/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/10/05/小黑的故事梳理/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">小黑的故事梳理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/19/Python分享/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python脚本常用模块记录</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2019/01/17/hexo主题自定义/&title=《hexo主题自定义--修改indigo tag显示》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2019/01/17/hexo主题自定义/&title=《hexo主题自定义--修改indigo tag显示》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2019/01/17/hexo主题自定义/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo主题自定义--修改indigo tag显示》 — 行路中.&url=https://sean10.github.io/2019/01/17/hexo主题自定义/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2019/01/17/hexo主题自定义/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2019/01/17/hexo主题自定义/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>
