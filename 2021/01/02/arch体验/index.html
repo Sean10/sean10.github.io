@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="arch,laptop">
-    <meta name="description" content="背景 有点用腻了mbp的mac os系统的感觉,想换arch了. 因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux. 哎,但是看笔记本的品控上来说,可能还是mac os让人比较省心了. 至少售后给的新笔记本不会像xps那样经常出问题… 硬件 XPS(arch推荐比较多的是这个,但是因为品控问题不推荐的也是这个) 什么电流音之类的,决定还是不选这个了.">
+    <meta name="description" content="背景 有点用腻了mbp的mac os系统的感觉,想换arch了. 因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux. 但是嘛, 都用了一段时间之后回来想想, 最近我比较倾向于arch的原因主要是最近工作所需一直在用linux规范下的systemd控制下的CentOS, 用的比较熟悉了, 对目录结构比较清楚了, 而对于自己非常不熟悉的freeBSD基础">
 <meta name="keywords" content="arch,laptop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="arch体验">
 <meta property="og:url" content="https://sean10.github.io/2021/01/02/arch体验/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="背景 有点用腻了mbp的mac os系统的感觉,想换arch了. 因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux. 哎,但是看笔记本的品控上来说,可能还是mac os让人比较省心了. 至少售后给的新笔记本不会像xps那样经常出问题… 硬件 XPS(arch推荐比较多的是这个,但是因为品控问题不推荐的也是这个) 什么电流音之类的,决定还是不选这个了.">
+<meta property="og:description" content="背景 有点用腻了mbp的mac os系统的感觉,想换arch了. 因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux. 但是嘛, 都用了一段时间之后回来想想, 最近我比较倾向于arch的原因主要是最近工作所需一直在用linux规范下的systemd控制下的CentOS, 用的比较熟悉了, 对目录结构比较清楚了, 而对于自己非常不熟悉的freeBSD基础">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-02T15:04:34.054Z">
+<meta property="og:updated_time" content="2021-01-16T13:55:20.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="arch体验">
-<meta name="twitter:description" content="背景 有点用腻了mbp的mac os系统的感觉,想换arch了. 因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux. 哎,但是看笔记本的品控上来说,可能还是mac os让人比较省心了. 至少售后给的新笔记本不会像xps那样经常出问题… 硬件 XPS(arch推荐比较多的是这个,但是因为品控问题不推荐的也是这个) 什么电流音之类的,决定还是不选这个了.">
+<meta name="twitter:description" content="背景 有点用腻了mbp的mac os系统的感觉,想换arch了. 因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux. 但是嘛, 都用了一段时间之后回来想想, 最近我比较倾向于arch的原因主要是最近工作所需一直在用linux规范下的systemd控制下的CentOS, 用的比较熟悉了, 对目录结构比较清楚了, 而对于自己非常不熟悉的freeBSD基础">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -188,8 +188,9 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="背景">背景</h2>
 <p>有点用腻了mbp的mac os系统的感觉,想换arch了.</p>
-<p>因为总觉得mac系统里好乱, 好多感知不到的空间管理.</p>
-<p>而且终究只是unix, 并不是linux.</p>
+<p>因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix, 并不是linux.</p>
+<p>但是嘛, 都用了一段时间之后回来想想, 最近我比较倾向于<code>arch</code>的原因主要是最近工作所需一直在用<code>linux</code>规范下的<code>systemd</code>控制下的<code>CentOS</code>, 用的比较熟悉了, 对目录结构比较清楚了, 而对于自己非常不熟悉的<code>freeBSD</code>基础的mac, 有种不在自己控制内的感觉…</p>
+<p>现在想了想, 这其实不就是舒适区的问题吗? 学习一下mac的目录结构和日志排查等, 其实也并不会有多费事, 也并不会增加我记忆<code>unix</code>生态的混淆程度.</p>
 <p>哎,但是看笔记本的品控上来说,可能还是mac os让人比较省心了. 至少售后给的新笔记本不会像xps那样经常出问题…</p>
 <h2 id="硬件">硬件</h2>
 <h3 id="xpsarch推荐比较多的是这个但是因为品控问题不推荐的也是这个">XPS(arch推荐比较多的是这个,但是因为品控问题不推荐的也是这个)</h3>
@@ -294,7 +295,7 @@ grub-mkconfig -o /boot/grub/grub.cfg</p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-01-02T15:04:34.054Z" itemprop="dateUpdated">2021-01-02 23:04:34</time>
+    最后更新时间：<time datetime="2021-01-16T13:55:20.404Z" itemprop="dateUpdated">2021-01-16 21:55:20</time>
 </span><br>
 
 
