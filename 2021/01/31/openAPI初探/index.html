@@ -21,18 +21,20 @@
     
     
     <meta name="keywords" content="OpenAPI,API,SDK">
-    <meta name="description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?   概念  OpenAPI是一种机器可读的接口文件的规范.  主要功能  基于规范  生">
+    <meta name="description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢? 一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的">
 <meta name="keywords" content="OpenAPI,API,SDK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openAPI初探">
 <meta property="og:url" content="https://sean10.github.io/2021/01/31/openAPI初探/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?   概念  OpenAPI是一种机器可读的接口文件的规范.  主要功能  基于规范  生">
+<meta property="og:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢? 一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-31T07:30:16.087Z">
+<meta property="og:image" content="https://sean10.github.io/2021/01/31/openAPI初探/openAPI初探_2021-01-31-15-50-34.png">
+<meta property="og:updated_time" content="2021-01-31T08:08:34.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openAPI初探">
-<meta name="twitter:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?   概念  OpenAPI是一种机器可读的接口文件的规范.  主要功能  基于规范  生">
+<meta name="twitter:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢? 一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的">
+<meta name="twitter:image" content="https://sean10.github.io/2021/01/31/openAPI初探/openAPI初探_2021-01-31-15-50-34.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -192,12 +194,21 @@
 <ul>
 <li>提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢?</li>
 <li>虽然现在测试框架的确支持导入<code>openAPI</code>的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么<code>openAPI</code>不集成在里面呢?</li>
+<li>一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的功能, 应该由测试方面的工具来进行扩展,而不是一揽子全包含了. 也算是一个合理的解答了.</li>
 </ul></li>
 </ul>
 <h2 id="概念">概念</h2>
 <blockquote>
 <p>OpenAPI是一种机器可读的接口文件的规范.</p>
 </blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/2021/01/31/openAPI初探/openAPI初探_2021-01-31-15-50-34.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>基于这个规范的文档可以提供的信息, 将原本需要开源人员处理的工作转移到工具上.</p>
 <h2 id="主要功能">主要功能</h2>
 <ul>
 <li>基于规范
@@ -212,6 +223,10 @@
 <li>对于已经有API实现的情况, 可以使用工具从代码中导出OpenAPI规范. 从而生成文档.</li>
 <li>当代码版本较多等场景时, 能从对应的代码导出对应的API文档</li>
 <li>让代码与文档产生联动关系.</li>
+</ul></li>
+<li>扩展性
+<ul>
+<li>完全可以基于这套规范根据自己公司的需求进行扩展开发, 开发出对应的DSL.[^9]</li>
 </ul></li>
 </ul>
 <h1 id="配合postman-自动化测试">配合postman, 自动化测试</h1>
@@ -229,6 +244,11 @@
 <li><a href="https://www.mayi888.com/archives/58943" target="_blank" rel="noopener">使用Jmeter和Jenkins自动化测试OpenAPI – 小工蚁</a></li>
 <li><a href="https://openapi-map.apihandyman.io/" target="_blank" rel="noopener">OpenAPI Map</a></li>
 <li><a href="https://www.infoq.cn/article/buqfskxqpcbvlt0azvjk" target="_blank" rel="noopener">OpenAPI：为传统机器构建智能API-InfoQ</a></li>
+<li><a href="http://blog.eolinker.com/?p=2485" target="_blank" rel="noopener">使用OpenAPI构建更智能的API - EOLINEKR BLOG</a></li>
+<li><a href="https://ideasfortester.github.io/mixed-first/api_automation/APIAutomation/" target="_blank" rel="noopener">API 自动化测试 - 自动化测试</a></li>
+<li><a href="https://xie.infoq.cn/article/a9638e8a23cc7359696d1062b" target="_blank" rel="noopener">文档驱动开发模式在 AIMS 中的应用与实践 - InfoQ 写作平台</a></li>
+<li><a href="https://xie.infoq.cn/article/4d6e59755c1f78384f79a1753" target="_blank" rel="noopener">听说，阿里云给它的 OpenAPI 开发了一套编程语言 - InfoQ 写作平台</a></li>
+<li><a href="https://xie.infoq.cn/article/534c5217b2a3d59c9cf187fe0" target="_blank" rel="noopener">聊聊OpenAPI Specification（OAS） - InfoQ 写作平台</a></li>
 </ol>
 
         </div>
@@ -238,7 +258,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-01-31T07:30:16.087Z" itemprop="dateUpdated">2021-01-31 15:30:16</time>
+    最后更新时间：<time datetime="2021-01-31T08:08:34.043Z" itemprop="dateUpdated">2021-01-31 16:08:34</time>
 </span><br>
 
 
@@ -318,7 +338,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/01/31/vscode相关技巧/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vscode相关技巧</h4>
+      </a>
+    </div>
   
 
   
