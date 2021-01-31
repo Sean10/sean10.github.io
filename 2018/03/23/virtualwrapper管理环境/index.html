@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="在看工程源码时，要配置python2.7环境，这个时候发现一直用的virtualenvwrapper建立环境后就无法切换到2.7来安装环境了。 一开始找了好久，以为需要比如pyenv+virtualenv之类的多个工具才能管理python版本和环境。 结果找啊找发现，virtualenvwrapper就支持这个要求。 1mkvirtualenv --python python2.7 envname">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-08T15:11:42.000Z">
+<meta property="og:updated_time" content="2021-01-23T14:15:22.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="virtualwrapper管理环境">
 <meta name="twitter:description" content="在看工程源码时，要配置python2.7环境，这个时候发现一直用的virtualenvwrapper建立环境后就无法切换到2.7来安装环境了。 一开始找了好久，以为需要比如pyenv+virtualenv之类的多个工具才能管理python版本和环境。 结果找啊找发现，virtualenvwrapper就支持这个要求。 1mkvirtualenv --python python2.7 envname">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">1.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用功能"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用功能</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pycharm自带venv使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">pycharm自带venv使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -192,6 +192,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv --python python2.7 envname</span><br></pre></td></tr></table></figure>
 <p>不过在官方doc里倒是没能搜索到这个功能，只有<code>mkvirtualenv --help</code>才能看到这个功能……</p>
 <p>为什么把这里的help里的文字放到官方搜索里都搜不到…………</p>
+<h1 id="常用功能">常用功能</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv <span class="built_in">test</span> --python=python3</span><br><span class="line">lsvirtualenv</span><br><span class="line">workon <span class="built_in">test</span></span><br><span class="line">deactivate</span><br><span class="line">rmvirtualenv <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h1 id="pycharm自带venv使用">pycharm自带<code>venv</code>使用</h1>
 <h1 id="reference">Reference</h1>
 <ol type="1">
 <li><a href="http://blog.51cto.com/qicheng0211/1561685" target="_blank" rel="noopener">使用virtualenv搭建独立的python环境</a></li>
@@ -204,7 +207,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-10-08T15:11:42.000Z" itemprop="dateUpdated">2018-10-08 23:11:42</time>
+    最后更新时间：<time datetime="2021-01-23T14:15:22.962Z" itemprop="dateUpdated">2021-01-23 22:15:22</time>
 </span><br>
 
 

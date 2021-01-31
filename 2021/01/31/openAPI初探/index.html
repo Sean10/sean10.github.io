@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>openAPI初探 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="OpenAPI,API,SDK">
+    <meta name="description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?   概念  OpenAPI是一种机器可读的接口文件的规范.  主要功能  基于规范  生">
+<meta name="keywords" content="OpenAPI,API,SDK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openAPI初探">
+<meta property="og:url" content="https://sean10.github.io/2021/01/31/openAPI初探/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?   概念  OpenAPI是一种机器可读的接口文件的规范.  主要功能  基于规范  生">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-31T07:30:16.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="openAPI初探">
+<meta name="twitter:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?   概念  OpenAPI是一种机器可读的接口文件的规范.  主要功能  基于规范  生">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">openAPI初探</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">openAPI初探</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-31T07:29:57.000Z" itemprop="datePublished" class="page-time">
+  2021-01-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo未理解的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo(未理解的问题)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要功能"><span class="post-toc-number">3.</span> <span class="post-toc-text">主要功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配合postman-自动化测试"><span class="post-toc-number"></span> <span class="post-toc-text">配合postman, 自动化测试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ci"><span class="post-toc-number"></span> <span class="post-toc-text">CI</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number"></span> <span class="post-toc-text">Reference</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-openAPI初探"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">openAPI初探</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-31 15:29:57" datetime="2021-01-31T07:29:57.000Z"  itemprop="datePublished">2021-01-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="todo未理解的问题">todo(未理解的问题)</h2>
+<ul>
+<li>既然作为一个规范文档, 那么引导的<code>example</code>肯定得提供吧?
+<ul>
+<li>提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢?</li>
+<li>虽然现在测试框架的确支持导入<code>openAPI</code>的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么<code>openAPI</code>不集成在里面呢?</li>
+</ul></li>
+</ul>
+<h2 id="概念">概念</h2>
+<blockquote>
+<p>OpenAPI是一种机器可读的接口文件的规范.</p>
+</blockquote>
+<h2 id="主要功能">主要功能</h2>
+<ul>
+<li>基于规范
+<ul>
+<li>生成服务端Stub和客户端代码</li>
+<li>构建自动Mock</li>
+<li>生成可供开发人员你是用的API文档等</li>
+<li>开发人员可以花更少的时间去了解API的底层细节, 只关心API的上层重点即可.</li>
+</ul></li>
+<li>基于代码
+<ul>
+<li>对于已经有API实现的情况, 可以使用工具从代码中导出OpenAPI规范. 从而生成文档.</li>
+<li>当代码版本较多等场景时, 能从对应的代码导出对应的API文档</li>
+<li>让代码与文档产生联动关系.</li>
+</ul></li>
+</ul>
+<h1 id="配合postman-自动化测试">配合postman, 自动化测试</h1>
+<p>参照下面这篇文章, 其实就可以做到我们想要的效果. <a href="https://www.sohu.com/a/364536895_468635" target="_blank" rel="noopener">使用 Postman 测试你的 API_json</a></p>
+<p><a href="https://www.mayi888.com/archives/58943" target="_blank" rel="noopener">使用Jmeter和Jenkins自动化测试OpenAPI – 小工蚁</a></p>
+<p>ET应该可以做到<a href="https://www.eolinker.com/product/auto_test/" target="_blank" rel="noopener">API 自动化测试：零代码自动化、数据驱动测试、自动生成报告 - Eolinker API 全生命周期管理</a>这个的程度才对.</p>
+<h1 id="ci">CI</h1>
+<blockquote>
+<p>非常适合应用单元测试、应用代码覆盖以及做到daily build/tes</p>
+</blockquote>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="http://www.51testing.com/html/97/13997-88991.html" target="_blank" rel="noopener">Open API测试畅想 - 阿里巴巴一个测试架构师 - 51Testing软件测试网 51Testing软件测试网-软件测试人的精神家园</a></li>
+<li><a href="https://www.sohu.com/a/364536895_468635" target="_blank" rel="noopener">使用 Postman 测试你的 API_json</a></li>
+<li><a href="https://www.mayi888.com/archives/58943" target="_blank" rel="noopener">使用Jmeter和Jenkins自动化测试OpenAPI – 小工蚁</a></li>
+<li><a href="https://openapi-map.apihandyman.io/" target="_blank" rel="noopener">OpenAPI Map</a></li>
+<li><a href="https://www.infoq.cn/article/buqfskxqpcbvlt0azvjk" target="_blank" rel="noopener">OpenAPI：为传统机器构建智能API-InfoQ</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-01-31T07:30:16.087Z" itemprop="dateUpdated">2021-01-31 15:30:16</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenAPI/">OpenAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK/">SDK</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《openAPI初探》 — 行路中.&url=https://sean10.github.io/2021/01/31/openAPI初探/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/17/卡牌游戏之再玩ygocore-md/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">卡牌游戏之再玩ygocore.md</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《openAPI初探》 — 行路中.&url=https://sean10.github.io/2021/01/31/openAPI初探/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/01/31/openAPI初探/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>
