@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="Time Machine mac time machine限速  苹果官方直接就有给出解决方案，关闭限速即可 1sudo sysctl debug.lowpri_throttle_enabled=0   如果想要再开启，输入以下命令即可 1sudo sysctl debug.lowpri_throttle_enabled=1  查看time machine日志 123456789101112131">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-01-27T03:00:27.534Z">
+<meta property="og:updated_time" content="2021-02-17T04:09:28.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac系统使用小记.md">
 <meta name="twitter:description" content="Time Machine mac time machine限速  苹果官方直接就有给出解决方案，关闭限速即可 1sudo sysctl debug.lowpri_throttle_enabled=0   如果想要再开启，输入以下命令即可 1sudo sysctl debug.lowpri_throttle_enabled=1  查看time machine日志 123456789101112131">
@@ -225,6 +225,12 @@
 <p>mkdir -p $(brew –repo homebrew/core)</p>
 <p>git -C “<span class="math inline">\((brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git git -C &quot;\)</span>(brew –repo homebrew/core)” remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git git -C “<span class="math inline">\((brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git git -C &quot;\)</span>(brew –repo homebrew/cask-fonts)” remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git git -C “$(brew –repo homebrew/cask-drivers)” remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git</p>
 <p>brew底层用的还是Git,git现在通过改host还是不怎么能提速，虽然现在用不了proxychains4，但是似乎可以直接用<code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1086</code>直接用代理，唉，早知道这个就没那么多事情了。</p>
+<p>奇怪好像找到我的cask和homebrew不正常的原因了, 不知道为什么, 我执行上面的这堆命令的结果, git和目录的对应都是错的. cask的目录里的git却是什么Font的.</p>
+<p>/usr/local/Homebrew/Library/Taps/homebrew</p>
+<p>奇怪, 怎么好像这个目录下属的子目录里, 还是在brew那个仓库里呢… 是因为装的太早, 不是通过tap安装的?</p>
+<p>看起来的确是这个问题, 新装的这个version目录没问题</p>
+<p>brew tap homebrew/core brew tap homebrew/cask brew tap homebrew/cask-fonts brew tap homebrew/cask-drivers brew tap homebrew/cask-versions</p>
+<p>暂时不配置源了, 用代理下载也挺快. <a href="https://www.cnblogs.com/zmdComeOn/p/11990079.html" target="_blank" rel="noopener">安装HomeBrew 失败的解决方案(Error: Fetching /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core failed!) - 子钦加油 - 博客园</a></p>
 <h2 id="老是报caskroomhomebrew-cask卡住">老是报caskroom/homebrew-cask卡住</h2>
 <p>实际上不存在这个了, 已经改名成homebrew/homebrew-cask了.</p>
 <p><a href="https://stackoverflow.com/questions/58335410/error-caskroom-cask-was-moved-tap-homebrew-cask-cask-instead" target="_blank" rel="noopener">macos - Error: caskroom/cask was moved. Tap homebrew/cask-cask instead - Stack Overflow</a> # 降频</p>
@@ -281,7 +287,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-01-27T03:00:27.534Z" itemprop="dateUpdated">2021-01-27 11:00:27</time>
+    最后更新时间：<time datetime="2021-02-17T04:09:28.558Z" itemprop="dateUpdated">2021-02-17 12:09:28</time>
 </span><br>
 
 
