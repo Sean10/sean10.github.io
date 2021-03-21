@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-18T14:48:24.789Z">
+<meta property="og:updated_time" content="2021-03-11T13:33:50.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之tier数据源码初探">
 <meta name="twitter:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
@@ -191,7 +191,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tier_flush\tier_promote等数据</span></span><br><span class="line"></span><br><span class="line">ceph daemon osd.&#123;id&#125; perf dump | grep tier</span><br><span class="line"></span><br><span class="line"><span class="comment"># num_write\num_read\num_promote等数据</span></span><br><span class="line">ceph pg dump_json</span><br></pre></td></tr></table></figure>
 <h3 id="tier主要触发任务">tier主要触发任务</h3>
 <h4 id="数据迁移">数据迁移</h4>
-<p>下面的<code>flush</code>和<code>evict</code>动作主要根据热度命中集和当前空间占用的<code>ratio</code>有关. * flush * evict * promote(感觉只和这个有关系了)</p>
+<p>下面的<code>flush</code>和<code>evict</code>动作主要根据热度命中集和当前空间占用的<code>ratio</code>有关. * flush * evict * 主要zero, 因此主要是在ssd上的写. * 置零, 从op的角度应该也有什么东西能够观察到吧. * promote(感觉只和这个有关系了)</p>
 <h4 id="io操作">IO操作</h4>
 <p>根据<code>flush_mode</code>和<code>evict_mode</code>状态判断触发下面的<code>may_read</code>,<code>can_proxy_write</code>等操作的成功与否.</p>
 <p>下面的每一个操作好像都是<code>may</code>或者<code>can</code>的, 看上去像是有开关之类的.</p>
@@ -373,7 +373,7 @@ missing anything ?</li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-12-18T14:48:24.789Z" itemprop="dateUpdated">2020-12-18 22:48:24</time>
+    最后更新时间：<time datetime="2021-03-11T13:33:50.580Z" itemprop="dateUpdated">2021-03-11 21:33:50</time>
 </span><br>
 
 
