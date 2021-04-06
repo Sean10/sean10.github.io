@@ -151,6 +151,100 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Mac-Memory与常规memory、swap"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-08 23:45:18" datetime="2018-05-08T15:45:18.000Z"  itemprop="datePublished">2018-05-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/08/Mac-Memory与常规memory、swap/">mac OS memory与常规memory、swap</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        在跑Tensorflow的时候，在Mac上没有出现的内存耗尽导致的dead问题，出现在了ubuntu上，本以为会和mac一样用硬盘来进行交换内存，而不只是使用默认设置的swap空间，结果并没有如想象的那样。
+    
+
+        <a href="/2018/05/08/Mac-Memory与常规memory、swap/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memory/">Memory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/">OS</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-VMWare远程控制踩坑"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-05-07 18:14:08" datetime="2018-05-07T10:14:08.000Z"  itemprop="datePublished">2018-05-07</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/05/07/VMWare远程控制踩坑/">VMWare远程控制tensorflow踩坑</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        最近做毕设跑tensorflow占用资源挺大的，就想用旧电脑来跑，本来计划的是用旧电脑双系统里装好的ubuntu来跑，不过最近发现跑完保存模型和tensorboard，甚至在跑的时候就用了很多虚拟内存，至少mac上就达到了30G。这样的话，只给分配了20个G的ubuntu就相当不够用了。只好在windows上开虚拟机再配置一下远程了。
+    
+
+        <a href="/2018/05/07/VMWare远程控制踩坑/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMWare/">VMWare</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jupyter/">jupyter</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-LaTex学习记录"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -538,104 +632,6 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-iTerm-zsh加载缓慢"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-03-16 20:31:12" datetime="2018-03-16T12:31:12.000Z"  itemprop="datePublished">2018-03-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/03/16/iTerm-zsh加载缓慢/">iTerm &amp; zsh加载缓慢</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        最近iTerm每开一个tab都要等4、5秒的时间，按照ssd的加载速度来说这是本不应该发生的事情。
-顶部栏是从python-&gt;ruby等等的变化，最后才到菜单栏。
-猜想应该是导入的配置文件中导入了过多。
-找了一下其他人遇到的问题，发现果然主要都是nvm造成的影响，把nvm的导入注释掉，就恢复到了1、2s加载速度。
-不过，除此之外，iTerm默认是从系统的/usr/bin/login启动...
-    
-
-        <a href="/2018/03/16/iTerm-zsh加载缓慢/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iTerm/">iTerm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-刘慈欣谈科幻"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-03-15 20:08:27" datetime="2018-03-15T12:08:27.000Z"  itemprop="datePublished">2018-03-15</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/03/15/刘慈欣谈科幻/">刘慈欣谈科幻</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        在这本书中，大刘对于科幻在国内的地位以及趋势的理解认识逐渐展现，让人又一次为他所折服。
-    
-
-        <a href="/2018/03/15/刘慈欣谈科幻/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/刘慈欣/">刘慈欣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/科幻/">科幻</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/评论/">评论</a></li></ul>
 
     </div>
     

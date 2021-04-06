@@ -20,9 +20,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="C++,源码,ceph,定时器">
+    <meta name="keywords" content="源码,C++,ceph,定时器">
     <meta name="description" content="最近遇到这样一个情况，ceph运行环境里时间被修改到以前的时间之后，ceph -s和ceph df都看不到在这之后创建的资源池了。 在大佬的带领下，得知了这部分数据来源于ceph-mgr的pgmap例行同步。时间出现变化之后，debug日志里也的确不再出现pgmap的同步日志了。从这个方向找到了入手点。">
-<meta name="keywords" content="C++,源码,ceph,定时器">
+<meta name="keywords" content="源码,C++,ceph,定时器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之SafeTimer定时器受系统时钟跳变影响">
 <meta property="og:url" content="https://sean10.github.io/2020/06/22/ceph之SafeTimer定时器受系统时钟跳变影响/index.html">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="最近遇到这样一个情况，ceph运行环境里时间被修改到以前的时间之后，ceph -s和ceph df都看不到在这之后创建的资源池了。 在大佬的带领下，得知了这部分数据来源于ceph-mgr的pgmap例行同步。时间出现变化之后，debug日志里也的确不再出现pgmap的同步日志了。从这个方向找到了入手点。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://sean10.github.io/2020/06/22/ceph之SafeTimer定时器受系统时钟跳变影响/ceph之SafeTimer定时器受系统时钟跳变影响_2020-11-30-22-33-45.png">
-<meta property="og:updated_time" content="2020-11-30T14:33:48.093Z">
+<meta property="og:updated_time" content="2021-04-05T11:24:45.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之SafeTimer定时器受系统时钟跳变影响">
 <meta name="twitter:description" content="最近遇到这样一个情况，ceph运行环境里时间被修改到以前的时间之后，ceph -s和ceph df都看不到在这之后创建的资源池了。 在大佬的带领下，得知了这部分数据来源于ceph-mgr的pgmap例行同步。时间出现变化之后，debug日志里也的确不再出现pgmap的同步日志了。从这个方向找到了入手点。">
@@ -251,7 +251,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-11-30T14:33:48.093Z" itemprop="dateUpdated">2020-11-30 22:33:48</time>
+    最后更新时间：<time datetime="2021-04-05T11:24:45.805Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
 </span><br>
 
 
