@@ -52,6 +52,13 @@ categories: [专业]
 
 ![](SWIM协议/SWIM协议_2021-04-06-22-16-19.png)
 
+这里故障监测, 也存在一篇论文讲到`[SRDS 2004] The Phi Accrual Failure Detector`讲到可以通过概率模型来判断都次未响应后到底该节点是否已经离线, 还是只是网络波动缘由导致. 这个还挺可靠的, 的确某个设备的链路存在波动问题时, 常常代表他的响应会是长期离线的.
+
+> 1. 假设 heartbeat message 符合某一概率模型。例如定期发送的 heartbeat message 在有网络延迟的情况下，接收到消息的 interval 符合正态分布。
+> 2. 利用接收到的历史数据（滑动窗口），对概率模型参数进行极大似然估计。
+> 3. 利用估计得出的参数带入模型，计算在当前时刻接收到 heartbeat message 的概率
+> 区别于传统方法，此时不直接得出对端是否存活的判断，而是直接向上层应用返回这一概率，由上层应用自行进行解释，是这篇论文中提出的另一个“亮点"。
+
 ## Dissemination 模块，用于将Node主动加入、退出或失败的信息传播出去
 
 > 当Mi检测到Mj失败，会利用IP多播等方式，发送一条 failed(Mj) 的消息，收到消息的Node，会把Mj从本地Node表中踢除。
@@ -66,3 +73,4 @@ categories: [专业]
 1. [Scalable Weakly \| 大专栏](https://www.dazhuanlan.com/2019/11/04/5dbf34e0e3a3a/)
 2. [致远的 BLOG](http://understars.ltd/archives/swim.md
 3. [分布式系统中的 SWIM 成员协议 \- OSCHINA \- 中文开源技术交流社区](https://www.oschina.net/translate/swim?cmp))
+4. [论文笔记：\[SRDS 2004\] The Phi Accrual Failure Detector \- 知乎](https://zhuanlan.zhihu.com/p/33819239)

@@ -48,7 +48,10 @@ $$O(\frac{logn}{loglogn})$$
 ### 系统
 > 系统搭建承接了SOSP17的NetCache[2]工作，要具体理解本文的系统，还需追溯到NetCache去
 
+这篇`NetCache`里提到的主要架构应该是利用交换机和路由器来进行缓存读请求, 通过实现一套协议, 让存储服务器和交换机之间完成这个缓存数据的交互(读:查询, 写:write-through).
+
 # Reference
 1. [FAST 2019 DistCache · 阿吉的博客](https://jimchenglin.github.io/2019/04/15/FAST-2019-DistCache/)
 2. [\[Paper Review\]FAST'19 DistCache \- 知乎](https://zhuanlan.zhihu.com/p/59109563)
 3. X. Jin, X. Li, H. Zhang, R. Soulé, J. Lee, N. Foster, C. Kim, and I. Stoica, “NetCache: Balancing key-value stores with fast in-network caching,” in ACM SOSP, October 2017.
+4. [NetCache \-\- Balancing Key\-Value Stores with Fast In\-Network Caching · Columba M71's Blog](https://nan01ab.github.io/2018/05/NetCache.html)
