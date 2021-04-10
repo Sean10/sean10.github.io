@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sean10.github.io/"/>
-  <updated>2021-04-08T01:18:15.402Z</updated>
+  <updated>2021-04-10T14:23:47.504Z</updated>
   <id>https://sean10.github.io/</id>
   
   <author>
@@ -17,13 +17,78 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>分布式时钟之向量时钟</title>
+    <link href="https://sean10.github.io/2021/04/10/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8B%E5%90%91%E9%87%8F%E6%97%B6%E9%92%9F/"/>
+    <id>https://sean10.github.io/2021/04/10/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8B%E5%90%91%E9%87%8F%E6%97%B6%E9%92%9F/</id>
+    <published>2021-04-10T12:44:10.000Z</published>
+    <updated>2021-04-10T14:23:47.504Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="向量时钟">向量时钟</h1><blockquote><p>可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关系，那么说明出现了数据冲突。</p></blockquote><blockquote><p>向量时钟算法利用了向量这种数据结构将全局各个进程的逻辑时间戳广播给各个进程：每个进程发送事件时都会将当前进程已知的所有进程时间写入到一个向量中，附带在消息中</p></blockquote><h2 id="如何实现向量时钟">如何实现向量时钟</h2><blockquote><p>假设分布式系统中有 N 个进程，每个进程都有一个本地的向量时间戳 Ti，向量时钟算法实现如下：</p><p>对于进程 i 来说，Ti[i] 是进程 i 本地的逻辑时间 当进程 i 当有新的事件发生时，Ti[i] = Ti[i] + 1 当进程 i 发送消息时将它的向量时间戳(MT=Ti)附带在消息中。 接受消息的进程 j 更新本地的向量时间戳：Tj[k] = max(Tj[k], MT[k]) for k = 1 to N。（MT即消息中附带的向量时间戳）</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/10/分布式时钟之向量时钟/分布式时钟之向量时钟_2021-04-10-22-21-50.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><blockquote><p>假设有事件 a、b 分别在节点 P、Q 上发生，向量时钟分别为 Ta、Tb，如果 Tb[Q] &gt; Ta[Q] 并且 Tb[P] &gt;= Ta[P]，则a发生于b之前，记作 a -&gt; b，此时说明事件 a、b 有因果关系； 反之，如果 Tb[Q] &gt; Ta[Q] 并且 Tb[P] &lt; Ta[P]，则认为a、b同时发生，记作 a &lt;-&gt; b。例如上图中节点 B 上的第 4 个事件 (A:2，B:4，C:1) 与节点 C 上的第 2 个事件 (B:3，C:2) 没有因果关系，属于同时发生事件。</p></blockquote><h1 id="数据冲突检测">数据冲突检测</h1><p>根据这个, ceph里的<code>last_epoch_started</code>版本号应该也是起这个效果的吧, 具体分析待阅读到那个部分的代码再展开.</p><h1 id="reference">Reference</h1><ol type="1"><li><a href="https://zhuanlan.zhihu.com/p/56886156" target="_blank" rel="noopener">分布式系统：向量时钟 - 知乎</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;向量时钟&quot;&gt;向量时钟&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我
+      
+    
+    </summary>
+    
+    
+      <category term="专业" scheme="https://sean10.github.io/categories/pro/"/>
+    
+    
+      <category term="分布式" scheme="https://sean10.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="摘录" scheme="https://sean10.github.io/tags/%E6%91%98%E5%BD%95/"/>
+    
+      <category term="时钟" scheme="https://sean10.github.io/tags/%E6%97%B6%E9%92%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式时钟之Lamport逻辑时钟</title>
+    <link href="https://sean10.github.io/2021/04/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8BLamport%E9%80%BB%E8%BE%91%E6%97%B6%E9%92%9F/"/>
+    <id>https://sean10.github.io/2021/04/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8BLamport%E9%80%BB%E8%BE%91%E6%97%B6%E9%92%9F/</id>
+    <published>2021-04-08T11:50:07.000Z</published>
+    <updated>2021-04-10T14:22:31.633Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="背景">背景</h1><p>在看到这篇论文之前, 我所知道的只是linux上自带的时间戳和<code>ntp</code>协议, 以及内核里有一个每次开机启动时开始记录的<code>monotonic clock</code>可以用来保障时间一定是连续的.</p><p>但是对于分布式设备之间怎么判断互相的时间先后性, 这块是未知的.</p><p>比如针对leader节点发送一次自己的认证失效时间, 假如自己的物理时间戳比那个时间还早, 但真实世界的时间戳已经超期了, 到底是按失效还是有效来进行呢? 不过这个问题似乎可以通过失效后统一发送失效请求, 只要收到了, 或者自身参与选举时的时间加一个超时时间来判断超时来做.</p><p>所以, 跟大佬们说的一样, 因此问题的关键点在于节点间的交互要在事件的发生顺序上达成一致，而不是对于时间达成一致。</p><blockquote><p>在一个分布式系统中，你无法判断事件A是否发生在事件B之前，除非A和B存在某种依赖关系，即分布式系统中的事件仅仅是部分有序的。</p></blockquote><h1 id="逻辑时钟time-clocks-and-the-ordering-of-events-in-a-distributed-system">逻辑时钟(Time, clocks, and the ordering of events in a distributed system )</h1><p> 基于<code>Happended Before</code>偏序关系(因果一致性), 扩展出强一致性的全序关系.</p><p>根据[^1]可以得知下述概念.</p><blockquote><p>尝试使用逻辑时钟来解决分布式锁问题。</p><p>分布式锁问题本质上是对于共享资源的抢占问题，我们先对问题进行定义：</p><p>已经获得资源授权的进程，必须在资源分配给其他进程之前释放掉它； 资源请求必须按照请求发生的顺序进行授权； 在获得资源授权的所有进程最终释放资源后，所有的资源请求必须都已经被授权了。 首先我们假设，对于任意的两个进程Pi和Pj，它们之间传递的消息是按照发送顺序被接收到的, 并且所有的消息最终都会被接收到。每个进程会维护一个它自己的对其他所有进程都不可见的请求队列。我们假设该请求队列初始时刻只有一个消息（T0:P0）资源请求，P0代表初始时刻获得资源授权的那个进程，T0小于任意时钟初始值</p><p>为请求该项资源，进程Pi发送一个（Tm:Pi）资源请求（请求锁）消息给其他所有进程，并将该消息放入自己的请求队列，在这里Tm代表了消息的时间戳 当进程Pj收到（Tm:Pi）资源请求消息后，将它放到自己的请求队列中，并发送一个带时间戳的确认消息给Pi。(注：如果Pj已经发送了一个时间戳大于Tm的消息，那就可以不发送) 释放该项资源（释放锁）时，进程Pi从自己的消息队列中删除所有的（Tm:Pi）资源请求，同时给其他所有进程发送一个带有时间戳的Pi资源释放消息 当进程Pj收到Pi资源释放消息后，它就从自己的消息队列中删除所有的（Tm:Pi）资源请求 当同时满足如下两个条件时，就将资源分配（锁占用）给进程Pi： 按照全序关系排序后，（Tm:Pi）资源请求排在它的请求队列的最前面 i已经从所有其他进程都收到了时间戳&gt;Tm的消息</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/08/分布式时钟之Lamport逻辑时钟/分布式时钟之Lamport逻辑时钟_2021-04-10-22-22-30.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>按照大佬说的, 这个其实算得上是分布式一致性算法的雏形. 每次请求都带上一个逻辑时间戳.</p><h1 id="reference">Reference</h1><ol type="1"><li><a href="https://zhuanlan.zhihu.com/p/56146800" target="_blank" rel="noopener">分布式系统：Lamport 逻辑时钟 - 知乎</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+&lt;p&gt;在看到这篇论文之前, 我所知道的只是linux上自带的时间戳和&lt;code&gt;ntp&lt;/code&gt;协议, 以及内核里有一个每次开机启动时开始记录的&lt;code&gt;monotonic clock&lt;/code&gt;可以用来保障时间一定是连续的.&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="专业" scheme="https://sean10.github.io/categories/pro/"/>
+    
+    
+      <category term="分布式" scheme="https://sean10.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="论文" scheme="https://sean10.github.io/tags/%E8%AE%BA%E6%96%87/"/>
+    
+      <category term="摘录" scheme="https://sean10.github.io/tags/%E6%91%98%E5%BD%95/"/>
+    
+      <category term="时钟" scheme="https://sean10.github.io/tags/%E6%97%B6%E9%92%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DistCache分布式缓存</title>
     <link href="https://sean10.github.io/2021/04/07/DistCache%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/"/>
     <id>https://sean10.github.io/2021/04/07/DistCache%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/</id>
     <published>2021-04-07T12:29:19.000Z</published>
-    <updated>2021-04-08T01:18:15.402Z</updated>
+    <updated>2021-04-08T01:22:12.088Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="distcache-provable-load-balancing-for-largescale-storage-systems-with-distributed-caching1">DistCache: Provable Load Balancing for LargeScale Storage Systems with Distributed Caching[^1]</h1><h2 id="small-cache解决的ball-into-bins-问题">Small Cache解决的Ball into bins 问题</h2><blockquote><p>Balls into bins 问题讲的是如果有 M 个小球随机等概率地扔进 N 个垃圾桶, 那么装球最多的那个垃圾桶大概率会有多少个球?</p></blockquote><p><span class="math display">\[O(\frac{logn}{loglogn})\]</span></p><p>结果并不是正态分布的.</p><blockquote><p>上面那个公式计算的是 max load. 假设有 64 个 node, LB 随机分配流量, 那么 load 最大的 node, 负载将会是平均负载的 log 32 / log log 32 = 2.7 倍.</p></blockquote><blockquote><p>解决方案出奇的简单(起码理论上是这样的), 这就引出了 The Power of Two Random Choices. LB 在分流的时候, 随机比较两台(d = 2)后端服务器的 load, 选最小, 得到新 bound.</p></blockquote><blockquote><p><span class="math display">\[ O(loglogn/logd) \]</span> <code>log d</code>是常数, 可忽略. <span class="math display">\[ O(loglogn) \]</span> log log 32 = 1.2, 所以只需要预留20%.</p></blockquote><blockquote><p>2 choices 可以解决无状态的 load balance 问题, 但这对存储不起作用. 因为 LB 没有办法按 load 分流, 比如 key A 存在服务器 S 上, S 跑满了, LB 就能把 query redirect 到别的机器上吗?</p></blockquote><blockquote><p>Small Cache, Big Effect 这篇 paper 很大程度上解决了这个问题. LB 与 cache layer 存在很强的互补关系. LB 讨厌 imbalance, 但 cache 喜欢. query 越 skew, cache 效率越高.</p></blockquote><blockquote><p>在一个多 node 的存储系统, cache 至少要多少才有足够的信心说这个系统没有热点呢? paper 给出的答案吓死人了! 居然只要 <span class="math inline">\(O(nlogn)\)</span> !n 是 node 数量.</p></blockquote><h2 id="distcache">DistCache</h2><blockquote><p>Introduction：存储系统的工作负载高度倾斜，过载节点成为系统性能瓶颈，SoCC11[1]一篇文章证明了，n个存储节点，无论query是怎样的分布，缓存最热的O(nlogn)个对象即可均衡负载。SwitchKV和NetCache都使用该机制均衡KV存储集群的负载。单个缓存可以完成集群内的负载均衡（比如一个机柜），但集群规模不断扩展，集群间会出现负载不均的问题，也即过载集群的工作负载远高于其他集群，超过了该集群cache提供的缓存能力，该集群成为大规模集群的性能瓶颈。将一个集群视为One Big Server，m个集群视为m个Server，按照一个cache的机制进行扩展，采用更大的cache提供缓存功能，不具有可扩展性，即伴随着系统工作负载增加，heavy hitter需要的吞吐量势必超过One Big Cache的吞吐能力。</p></blockquote><blockquote><p>One Big Cache性能不足，扩展机制从One-Cache到Multi-Cache扩展，形成一层Cache Layer。现在就有两层cache，第一层cache layer，每个cache在所属集群中均衡负载，第二层cache均衡集群间的负载。怎么缓存heavy hitter和怎么在两层cache间query item成为了新的问题。如果采用replication机制，将第一层中最热的item复制到第二层的每个cache中，可以提供很强的读性能，但是在写的情况下，会带来很大的缓存一致性开销。如果采用partition机制，过载的cache热点无法打散，依旧是性能瓶颈。如何在partition和replication之间做trade off，平衡读写性能，是本文的关键。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/07/DistCache分布式缓存/DistCache分布式缓存_2021-04-08-09-15-25.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><blockquote><p>缓存热点时使用independent hash function，如图3，ABC三个热点hash到同一个cache中，在第二层hash时采用不同的hash函数，旨在将热点打散，如图中，ABC分别被打散到第二层的cache中了。查询时采用power-of-two-choices，如图3，query A时观察C1和C3的工作负载，查询工作负载小的cache节点。</p></blockquote><blockquote><p>作者给出的方案很简单, 就是双层 cache. 当前所有 cache server 的所有 KV 用一个新的 hash function 存在另一层 cache layer 里. 从数学和直觉上可以确保, 任意一层的 cache server 出现了热点, 那么这个热点的 KV 数据在另一个 cache layer 是分散的, 无热点的.</p><p>然后在哪一层 cache 找 key 的问题又可以转化为 The Power of Two Random Choices 问题, 选负载最低的.</p></blockquote><h3 id="系统">系统</h3><blockquote><p>系统搭建承接了SOSP17的NetCache[2]工作，要具体理解本文的系统，还需追溯到NetCache去</p></blockquote><h1 id="reference">Reference</h1><ol type="1"><li><a href="https://jimchenglin.github.io/2019/04/15/FAST-2019-DistCache/" target="_blank" rel="noopener">FAST 2019 DistCache · 阿吉的博客</a></li><li><a href="https://zhuanlan.zhihu.com/p/59109563" target="_blank" rel="noopener">[Paper Review]FAST’19 DistCache - 知乎</a></li><li>X. Jin, X. Li, H. Zhang, R. Soulé, J. Lee, N. Foster, C. Kim, and I. Stoica, “NetCache: Balancing key-value stores with fast in-network caching,” in ACM SOSP, October 2017.</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="distcache-provable-load-balancing-for-largescale-storage-systems-with-distributed-caching1">DistCache: Provable Load Balancing for LargeScale Storage Systems with Distributed Caching[^1]</h1><h2 id="small-cache解决的ball-into-bins-问题">Small Cache解决的Ball into bins 问题</h2><blockquote><p>Balls into bins 问题讲的是如果有 M 个小球随机等概率地扔进 N 个垃圾桶, 那么装球最多的那个垃圾桶大概率会有多少个球?</p></blockquote><p><span class="math display">\[O(\frac{logn}{loglogn})\]</span></p><p>结果并不是正态分布的.</p><blockquote><p>上面那个公式计算的是 max load. 假设有 64 个 node, LB 随机分配流量, 那么 load 最大的 node, 负载将会是平均负载的 log 32 / log log 32 = 2.7 倍.</p></blockquote><blockquote><p>解决方案出奇的简单(起码理论上是这样的), 这就引出了 The Power of Two Random Choices. LB 在分流的时候, 随机比较两台(d = 2)后端服务器的 load, 选最小, 得到新 bound.</p></blockquote><blockquote><p><span class="math display">\[ O(loglogn/logd) \]</span> <code>log d</code>是常数, 可忽略. <span class="math display">\[ O(loglogn) \]</span> log log 32 = 1.2, 所以只需要预留20%.</p></blockquote><blockquote><p>2 choices 可以解决无状态的 load balance 问题, 但这对存储不起作用. 因为 LB 没有办法按 load 分流, 比如 key A 存在服务器 S 上, S 跑满了, LB 就能把 query redirect 到别的机器上吗?</p></blockquote><blockquote><p>Small Cache, Big Effect 这篇 paper 很大程度上解决了这个问题. LB 与 cache layer 存在很强的互补关系. LB 讨厌 imbalance, 但 cache 喜欢. query 越 skew, cache 效率越高.</p></blockquote><blockquote><p>在一个多 node 的存储系统, cache 至少要多少才有足够的信心说这个系统没有热点呢? paper 给出的答案吓死人了! 居然只要 <span class="math inline">\(O(nlogn)\)</span> !n 是 node 数量.</p></blockquote><h2 id="distcache">DistCache</h2><blockquote><p>Introduction：存储系统的工作负载高度倾斜，过载节点成为系统性能瓶颈，SoCC11[1]一篇文章证明了，n个存储节点，无论query是怎样的分布，缓存最热的O(nlogn)个对象即可均衡负载。SwitchKV和NetCache都使用该机制均衡KV存储集群的负载。单个缓存可以完成集群内的负载均衡（比如一个机柜），但集群规模不断扩展，集群间会出现负载不均的问题，也即过载集群的工作负载远高于其他集群，超过了该集群cache提供的缓存能力，该集群成为大规模集群的性能瓶颈。将一个集群视为One Big Server，m个集群视为m个Server，按照一个cache的机制进行扩展，采用更大的cache提供缓存功能，不具有可扩展性，即伴随着系统工作负载增加，heavy hitter需要的吞吐量势必超过One Big Cache的吞吐能力。</p></blockquote><blockquote><p>One Big Cache性能不足，扩展机制从One-Cache到Multi-Cache扩展，形成一层Cache Layer。现在就有两层cache，第一层cache layer，每个cache在所属集群中均衡负载，第二层cache均衡集群间的负载。怎么缓存heavy hitter和怎么在两层cache间query item成为了新的问题。如果采用replication机制，将第一层中最热的item复制到第二层的每个cache中，可以提供很强的读性能，但是在写的情况下，会带来很大的缓存一致性开销。如果采用partition机制，过载的cache热点无法打散，依旧是性能瓶颈。如何在partition和replication之间做trade off，平衡读写性能，是本文的关键。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/07/DistCache分布式缓存/DistCache分布式缓存_2021-04-08-09-15-25.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><blockquote><p>缓存热点时使用independent hash function，如图3，ABC三个热点hash到同一个cache中，在第二层hash时采用不同的hash函数，旨在将热点打散，如图中，ABC分别被打散到第二层的cache中了。查询时采用power-of-two-choices，如图3，query A时观察C1和C3的工作负载，查询工作负载小的cache节点。</p></blockquote><blockquote><p>作者给出的方案很简单, 就是双层 cache. 当前所有 cache server 的所有 KV 用一个新的 hash function 存在另一层 cache layer 里. 从数学和直觉上可以确保, 任意一层的 cache server 出现了热点, 那么这个热点的 KV 数据在另一个 cache layer 是分散的, 无热点的.</p><p>然后在哪一层 cache 找 key 的问题又可以转化为 The Power of Two Random Choices 问题, 选负载最低的.</p></blockquote><h3 id="系统">系统</h3><blockquote><p>系统搭建承接了SOSP17的NetCache[2]工作，要具体理解本文的系统，还需追溯到NetCache去</p></blockquote><p>这篇<code>NetCache</code>里提到的主要架构应该是利用交换机和路由器来进行缓存读请求, 通过实现一套协议, 让存储服务器和交换机之间完成这个缓存数据的交互(读:查询, 写:write-through).</p><h1 id="reference">Reference</h1><ol type="1"><li><a href="https://jimchenglin.github.io/2019/04/15/FAST-2019-DistCache/" target="_blank" rel="noopener">FAST 2019 DistCache · 阿吉的博客</a></li><li><a href="https://zhuanlan.zhihu.com/p/59109563" target="_blank" rel="noopener">[Paper Review]FAST’19 DistCache - 知乎</a></li><li>X. Jin, X. Li, H. Zhang, R. Soulé, J. Lee, N. Foster, C. Kim, and I. Stoica, “NetCache: Balancing key-value stores with fast in-network caching,” in ACM SOSP, October 2017.</li><li><a href="https://nan01ab.github.io/2018/05/NetCache.html" target="_blank" rel="noopener">NetCache -- Balancing Key-Value Stores with Fast In-Network Caching · Columba M71’s Blog</a></li></ol>]]></content>
     
     <summary type="html">
     
@@ -53,9 +118,9 @@
     <link href="https://sean10.github.io/2021/04/06/SWIM%E5%8D%8F%E8%AE%AE/"/>
     <id>https://sean10.github.io/2021/04/06/SWIM%E5%8D%8F%E8%AE%AE/</id>
     <published>2021-04-06T15:07:08.000Z</published>
-    <updated>2021-04-06T15:07:42.827Z</updated>
+    <updated>2021-04-08T01:26:05.309Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="论文">论文 <scalable weakly-consistent="" infection-style="" process="" group="" membership="" protocol=""></scalable></h1><blockquote><p>可扩展弱一致性感染型进程组成员协议</p><p>进程组的成员关系协议</p><ul><li>可伸缩性</li><li>弱一致性</li><li>感染性</li></ul><p>用于分布式系统中进程的健康检测或者说错误检测</p><p>SWIM是通过Gossip实现的Membership保持协议，也就是维护分布式系统节点的状态</p></blockquote><h1 id="成员资格协议">成员资格协议</h1><blockquote><p>成员资格协议的可伸缩型和执行效率主要由以下几个方面确定：</p><p>完备性：是不是每个失效的进程最终都能够检测到？</p><p>失效节点的检测速度：一个节点失效到它被非失效节点检测到的平均时间间隔是多长？</p><p>准确性：实际上进程未失效但却被认为是失效的频度（即误判率）是多少？</p><p>信息量：每个节点生成的网络通信的信息量有多大，它是否也是分布式的？</p><p>理想情况下，我们需要这样的协议：它一定要完全100%准确，这就意味着可以检测到每一个失效进程，而且不存在任何误判。然而，像分布式系统里的其他协议一样，存在这样的事实：在异步网络上保证100%的完备和准确是不可能的。因此许多成员资格协议（包括SWIM)为了完备性就会降低准确性，同时尽最大可能降低误判率。</p></blockquote><h1 id="模块">模块</h1><h2 id="failure-detector-用于node失败检测">Failure Detector, 用于Node失败检测</h2><blockquote><p>概念：</p><p>T’: 协议周期，2次探测的时间间隔 k: k个节点 该协议中，若Mi检测Mj状态，则先发一个ping包到Mj，若Mj未在超时时间内ack，则Mi随机选择k个节点，发送间接探测ping-req包，k个节点如Mh收到ping-req请求，将会ping Mj并将结果返回给Mi。若任意一个ping-req返回Mj存活，则Mj存活。</p><p>上述过程，包含3个round-trip的网络过程，Mi-&gt;Mj, Mi-&gt;Mh, Mh-&gt;Mj，所以T’ 要大于3个超时；如T’=1s, timeout=200ms</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/06/SWIM协议/SWIM协议_2021-04-06-22-16-19.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="dissemination-模块用于将node主动加入退出或失败的信息传播出去">Dissemination 模块，用于将Node主动加入、退出或失败的信息传播出去</h2><blockquote><p>当Mi检测到Mj失败，会利用IP多播等方式，发送一条 failed(Mj) 的消息，收到消息的Node，会把Mj从本地Node表中踢除。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/06/SWIM协议/SWIM协议_2021-04-06-22-56-27.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h1 id="思考">思考</h1><p>所以理论上, 基于这个的linux集群网络稳定性监控机制应该是有的吧.</p><h1 id="reference">Reference</h1><ol type="1"><li><a href="https://www.dazhuanlan.com/2019/11/04/5dbf34e0e3a3a/" target="_blank" rel="noopener">Scalable Weakly | 大专栏</a></li><li>[致远的 BLOG](http://understars.ltd/archives/swim.md</li><li><a href="https://www.oschina.net/translate/swim?cmp" target="_blank" rel="noopener">分布式系统中的 SWIM 成员协议 - OSCHINA - 中文开源技术交流社区</a>)</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="论文">论文 <scalable weakly-consistent="" infection-style="" process="" group="" membership="" protocol=""></scalable></h1><blockquote><p>可扩展弱一致性感染型进程组成员协议</p><p>进程组的成员关系协议</p><ul><li>可伸缩性</li><li>弱一致性</li><li>感染性</li></ul><p>用于分布式系统中进程的健康检测或者说错误检测</p><p>SWIM是通过Gossip实现的Membership保持协议，也就是维护分布式系统节点的状态</p></blockquote><h1 id="成员资格协议">成员资格协议</h1><blockquote><p>成员资格协议的可伸缩型和执行效率主要由以下几个方面确定：</p><p>完备性：是不是每个失效的进程最终都能够检测到？</p><p>失效节点的检测速度：一个节点失效到它被非失效节点检测到的平均时间间隔是多长？</p><p>准确性：实际上进程未失效但却被认为是失效的频度（即误判率）是多少？</p><p>信息量：每个节点生成的网络通信的信息量有多大，它是否也是分布式的？</p><p>理想情况下，我们需要这样的协议：它一定要完全100%准确，这就意味着可以检测到每一个失效进程，而且不存在任何误判。然而，像分布式系统里的其他协议一样，存在这样的事实：在异步网络上保证100%的完备和准确是不可能的。因此许多成员资格协议（包括SWIM)为了完备性就会降低准确性，同时尽最大可能降低误判率。</p></blockquote><h1 id="模块">模块</h1><h2 id="failure-detector-用于node失败检测">Failure Detector, 用于Node失败检测</h2><blockquote><p>概念：</p><p>T’: 协议周期，2次探测的时间间隔 k: k个节点 该协议中，若Mi检测Mj状态，则先发一个ping包到Mj，若Mj未在超时时间内ack，则Mi随机选择k个节点，发送间接探测ping-req包，k个节点如Mh收到ping-req请求，将会ping Mj并将结果返回给Mi。若任意一个ping-req返回Mj存活，则Mj存活。</p><p>上述过程，包含3个round-trip的网络过程，Mi-&gt;Mj, Mi-&gt;Mh, Mh-&gt;Mj，所以T’ 要大于3个超时；如T’=1s, timeout=200ms</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/06/SWIM协议/SWIM协议_2021-04-06-22-16-19.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>这里故障监测, 也存在一篇论文讲到<code>[SRDS 2004] The Phi Accrual Failure Detector</code>讲到可以通过概率模型来判断都次未响应后到底该节点是否已经离线, 还是只是网络波动缘由导致. 这个还挺可靠的, 的确某个设备的链路存在波动问题时, 常常代表他的响应会是长期离线的.</p><blockquote><ol type="1"><li>假设 heartbeat message 符合某一概率模型。例如定期发送的 heartbeat message 在有网络延迟的情况下，接收到消息的 interval 符合正态分布。</li><li>利用接收到的历史数据（滑动窗口），对概率模型参数进行极大似然估计。</li><li>利用估计得出的参数带入模型，计算在当前时刻接收到 heartbeat message 的概率 区别于传统方法，此时不直接得出对端是否存活的判断，而是直接向上层应用返回这一概率，由上层应用自行进行解释，是这篇论文中提出的另一个“亮点”。</li></ol></blockquote><h2 id="dissemination-模块用于将node主动加入退出或失败的信息传播出去">Dissemination 模块，用于将Node主动加入、退出或失败的信息传播出去</h2><blockquote><p>当Mi检测到Mj失败，会利用IP多播等方式，发送一条 failed(Mj) 的消息，收到消息的Node，会把Mj从本地Node表中踢除。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="/2021/04/06/SWIM协议/SWIM协议_2021-04-06-22-56-27.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h1 id="思考">思考</h1><p>所以理论上, 基于这个的linux集群网络稳定性监控机制应该是有的吧.</p><h1 id="reference">Reference</h1><ol type="1"><li><a href="https://www.dazhuanlan.com/2019/11/04/5dbf34e0e3a3a/" target="_blank" rel="noopener">Scalable Weakly | 大专栏</a></li><li>[致远的 BLOG](http://understars.ltd/archives/swim.md</li><li><a href="https://www.oschina.net/translate/swim?cmp" target="_blank" rel="noopener">分布式系统中的 SWIM 成员协议 - OSCHINA - 中文开源技术交流社区</a>)</li><li><a href="https://zhuanlan.zhihu.com/p/33819239" target="_blank" rel="noopener">论文笔记：[SRDS 2004] The Phi Accrual Failure Detector - 知乎</a></li></ol>]]></content>
     
     <summary type="html">
     
@@ -4649,9 +4714,9 @@
       <category term="算法" scheme="https://sean10.github.io/categories/algorithm/"/>
     
     
-      <category term="数据结构" scheme="https://sean10.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
       <category term="栈" scheme="https://sean10.github.io/tags/%E6%A0%88/"/>
+    
+      <category term="数据结构" scheme="https://sean10.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   

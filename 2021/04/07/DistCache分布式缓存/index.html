@@ -30,7 +30,7 @@
 <meta property="og:description" content="DistCache: Provable Load Balancing for LargeScale Storage Systems with Distributed Caching[^1] Small Cache解决的Ball into bins 问题  Balls into bins 问题讲的是如果有 M 个小球随机等概率地扔进 N 个垃圾桶, 那么装球最多的那个垃圾桶大概率会有多少个球?  \">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://sean10.github.io/2021/04/07/DistCache分布式缓存/DistCache分布式缓存_2021-04-08-09-15-25.png">
-<meta property="og:updated_time" content="2021-04-08T01:18:15.402Z">
+<meta property="og:updated_time" content="2021-04-08T01:22:12.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DistCache分布式缓存">
 <meta name="twitter:description" content="DistCache: Provable Load Balancing for LargeScale Storage Systems with Distributed Caching[^1] Small Cache解决的Ball into bins 问题  Balls into bins 问题讲的是如果有 M 个小球随机等概率地扔进 N 个垃圾桶, 那么装球最多的那个垃圾桶大概率会有多少个球?  \">
@@ -238,11 +238,13 @@
 <blockquote>
 <p>系统搭建承接了SOSP17的NetCache[2]工作，要具体理解本文的系统，还需追溯到NetCache去</p>
 </blockquote>
+<p>这篇<code>NetCache</code>里提到的主要架构应该是利用交换机和路由器来进行缓存读请求, 通过实现一套协议, 让存储服务器和交换机之间完成这个缓存数据的交互(读:查询, 写:write-through).</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
 <li><a href="https://jimchenglin.github.io/2019/04/15/FAST-2019-DistCache/" target="_blank" rel="noopener">FAST 2019 DistCache · 阿吉的博客</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/59109563" target="_blank" rel="noopener">[Paper Review]FAST’19 DistCache - 知乎</a></li>
 <li>X. Jin, X. Li, H. Zhang, R. Soulé, J. Lee, N. Foster, C. Kim, and I. Stoica, “NetCache: Balancing key-value stores with fast in-network caching,” in ACM SOSP, October 2017.</li>
+<li><a href="https://nan01ab.github.io/2018/05/NetCache.html" target="_blank" rel="noopener">NetCache -- Balancing Key-Value Stores with Fast In-Network Caching · Columba M71’s Blog</a></li>
 </ol>
 
         </div>
@@ -252,7 +254,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-08T01:18:15.402Z" itemprop="dateUpdated">2021-04-08 09:18:15</time>
+    最后更新时间：<time datetime="2021-04-08T01:22:12.088Z" itemprop="dateUpdated">2021-04-08 09:22:12</time>
 </span><br>
 
 
@@ -332,7 +334,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/04/08/分布式时钟之Lamport逻辑时钟/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">分布式时钟之Lamport逻辑时钟</h4>
+      </a>
+    </div>
   
 
   

@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://sean10.github.io/2021/04/06/SWIM协议/SWIM协议_2021-04-06-22-16-19.png">
 <meta property="og:image" content="https://sean10.github.io/2021/04/06/SWIM协议/SWIM协议_2021-04-06-22-56-27.png">
-<meta property="og:updated_time" content="2021-04-06T15:07:42.827Z">
+<meta property="og:updated_time" content="2021-04-08T01:26:05.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SWIM协议">
 <meta name="twitter:description" content="论文   可扩展弱一致性感染型进程组成员协议 进程组的成员关系协议  可伸缩性 弱一致性 感染性  用于分布式系统中进程的健康检测或者说错误检测 SWIM是通过Gossip实现的Membership保持协议，也就是维护分布式系统节点的状态  成员资格协议  成员资格协议的可伸缩型和执行效率主要由以下几个方面确定： 完备性：是不是每个失效的进程最终都能够检测到？ 失效节点的检测速度：一个节点失效到它">
@@ -224,6 +224,14 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
+<p>这里故障监测, 也存在一篇论文讲到<code>[SRDS 2004] The Phi Accrual Failure Detector</code>讲到可以通过概率模型来判断都次未响应后到底该节点是否已经离线, 还是只是网络波动缘由导致. 这个还挺可靠的, 的确某个设备的链路存在波动问题时, 常常代表他的响应会是长期离线的.</p>
+<blockquote>
+<ol type="1">
+<li>假设 heartbeat message 符合某一概率模型。例如定期发送的 heartbeat message 在有网络延迟的情况下，接收到消息的 interval 符合正态分布。</li>
+<li>利用接收到的历史数据（滑动窗口），对概率模型参数进行极大似然估计。</li>
+<li>利用估计得出的参数带入模型，计算在当前时刻接收到 heartbeat message 的概率 区别于传统方法，此时不直接得出对端是否存活的判断，而是直接向上层应用返回这一概率，由上层应用自行进行解释，是这篇论文中提出的另一个“亮点”。</li>
+</ol>
+</blockquote>
 <h2 id="dissemination-模块用于将node主动加入退出或失败的信息传播出去">Dissemination 模块，用于将Node主动加入、退出或失败的信息传播出去</h2>
 <blockquote>
 <p>当Mi检测到Mj失败，会利用IP多播等方式，发送一条 failed(Mj) 的消息，收到消息的Node，会把Mj从本地Node表中踢除。</p>
@@ -242,6 +250,7 @@
 <li><a href="https://www.dazhuanlan.com/2019/11/04/5dbf34e0e3a3a/" target="_blank" rel="noopener">Scalable Weakly | 大专栏</a></li>
 <li>[致远的 BLOG](http://understars.ltd/archives/swim.md</li>
 <li><a href="https://www.oschina.net/translate/swim?cmp" target="_blank" rel="noopener">分布式系统中的 SWIM 成员协议 - OSCHINA - 中文开源技术交流社区</a>)</li>
+<li><a href="https://zhuanlan.zhihu.com/p/33819239" target="_blank" rel="noopener">论文笔记：[SRDS 2004] The Phi Accrual Failure Detector - 知乎</a></li>
 </ol>
 
         </div>
@@ -251,7 +260,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-06T15:07:42.827Z" itemprop="dateUpdated">2021-04-06 23:07:42</time>
+    最后更新时间：<time datetime="2021-04-08T01:26:05.309Z" itemprop="dateUpdated">2021-04-08 09:26:05</time>
 </span><br>
 
 
