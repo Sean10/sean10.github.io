@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="python,编程范式,code,paradigm,exception">
-    <meta name="description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1except CustomExcept">
+    <meta name="description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 面向切面编程(AOP)[^6] Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1exc">
 <meta name="keywords" content="python,编程范式,code,paradigm,exception">
 <meta property="og:type" content="article">
 <meta property="og:title" content="异常处理实践初探">
 <meta property="og:url" content="https://sean10.github.io/2020/06/25/异常处理实践初探/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1except CustomExcept">
+<meta property="og:description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 面向切面编程(AOP)[^6] Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1exc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.059Z">
+<meta property="og:updated_time" content="2021-04-11T07:14:56.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异常处理实践初探">
-<meta name="twitter:description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1except CustomExcept">
+<meta name="twitter:description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 面向切面编程(AOP)[^6] Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1exc">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常的使用场景"><span class="post-toc-number">2.</span> <span class="post-toc-text">异常的使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo异常的代码可读性"><span class="post-toc-number">3.</span> <span class="post-toc-text">Todo:异常的代码可读性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#捕获异常记录到日志里"><span class="post-toc-number">4.</span> <span class="post-toc-text">捕获异常记录到日志里</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意点"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">注意点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单元测试不可疏忽"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">单元测试不可疏忽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">样例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口拟定正常"><span class="post-toc-number">5.</span> <span class="post-toc-text">接口拟定正常</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#直接抛出exception打断运行"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">直接抛出Exception打断运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exception作为返回值"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">exception作为返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不捕获异常上层也不做捕获直接抛出"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">不捕获异常,上层也不做捕获,直接抛出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#section"><span class="post-toc-number">6.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">7.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常的使用场景"><span class="post-toc-number">2.</span> <span class="post-toc-text">异常的使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面向切面编程aop6"><span class="post-toc-number">3.</span> <span class="post-toc-text">面向切面编程(AOP)[^6]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo异常的代码可读性"><span class="post-toc-number">4.</span> <span class="post-toc-text">Todo:异常的代码可读性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#捕获异常记录到日志里"><span class="post-toc-number">5.</span> <span class="post-toc-text">捕获异常记录到日志里</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意点"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">注意点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单元测试不可疏忽"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">单元测试不可疏忽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">样例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口拟定正常"><span class="post-toc-number">6.</span> <span class="post-toc-text">接口拟定正常</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#直接抛出exception打断运行"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">直接抛出Exception打断运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exception作为返回值"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">exception作为返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不捕获异常上层也不做捕获直接抛出"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">不捕获异常,上层也不做捕获,直接抛出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#section"><span class="post-toc-number">7.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">8.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -190,6 +190,7 @@
 <p>在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式?</p>
 <h2 id="异常的使用场景">异常的使用场景</h2>
 <p>详见<a href="/2020/06/24/if-else与try-catch初理解/">if-else与try-catch初理解</a></p>
+<h2 id="面向切面编程aop6">面向切面编程(AOP)[^6]</h2>
 <h2 id="todo异常的代码可读性">Todo:异常的代码可读性</h2>
 <p>像是如果一个业务逻辑里要执行多种封装的接口调用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># code 1</span></span><br><span class="line"><span class="keyword">except</span> CustomException:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># code 2</span></span><br><span class="line"><span class="keyword">except</span> CustomException2:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
@@ -237,6 +238,7 @@
 <li><a href="https://juejin.im/post/5c85a09e518825657a3d6b4a" target="_blank" rel="noopener">Python 工匠： 异常处理的三个好习惯 - 掘金</a></li>
 <li><a href="https://dev.to/wemake-services/python-exceptions-considered-an-anti-pattern-17o9" target="_blank" rel="noopener">Python exceptions considered an anti-pattern - DEV</a></li>
 <li><a href="https://github.com/python/typing/issues/71" target="_blank" rel="noopener">declaring exceptions in stubs · Issue #71 · python/typing</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/65889466" target="_blank" rel="noopener">Python小书4-统一异常处理 - 知乎</a></li>
 </ol>
 
         </div>
@@ -246,7 +248,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.059Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2021-04-11T07:14:56.384Z" itemprop="dateUpdated">2021-04-11 15:14:56</time>
 </span><br>
 
 

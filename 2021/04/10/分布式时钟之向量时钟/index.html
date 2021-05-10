@@ -21,19 +21,19 @@
     
     
     <meta name="keywords" content="分布式,摘录,时钟">
-    <meta name="description" content="向量时钟  可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关系，那么说明出现了数据冲突">
+    <meta name="description" content="向量时钟 vector clock  可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关">
 <meta name="keywords" content="分布式,摘录,时钟">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式时钟之向量时钟">
 <meta property="og:url" content="https://sean10.github.io/2021/04/10/分布式时钟之向量时钟/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="向量时钟  可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关系，那么说明出现了数据冲突">
+<meta property="og:description" content="向量时钟 vector clock  可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://sean10.github.io/2021/04/10/分布式时钟之向量时钟/分布式时钟之向量时钟_2021-04-10-22-21-50.png">
-<meta property="og:updated_time" content="2021-04-10T14:23:47.504Z">
+<meta property="og:updated_time" content="2021-04-10T14:25:44.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式时钟之向量时钟">
-<meta name="twitter:description" content="向量时钟  可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关系，那么说明出现了数据冲突">
+<meta name="twitter:description" content="向量时钟 vector clock  可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关">
 <meta name="twitter:image" content="https://sean10.github.io/2021/04/10/分布式时钟之向量时钟/分布式时钟之向量时钟_2021-04-10-22-21-50.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
@@ -162,7 +162,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#向量时钟"><span class="post-toc-number">1.</span> <span class="post-toc-text">向量时钟</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何实现向量时钟"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">如何实现向量时钟</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据冲突检测"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据冲突检测</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#向量时钟-vector-clock"><span class="post-toc-number">1.</span> <span class="post-toc-text">向量时钟 vector clock</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何实现向量时钟"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">如何实现向量时钟</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据冲突检测"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据冲突检测</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -188,7 +188,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="向量时钟">向量时钟</h1>
+            <h1 id="向量时钟-vector-clock">向量时钟 vector clock</h1>
 <blockquote>
 <p>可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发生的关系，那么说明出现了数据冲突。</p>
 </blockquote>
@@ -224,7 +224,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-10T14:23:47.504Z" itemprop="dateUpdated">2021-04-10 22:23:47</time>
+    最后更新时间：<time datetime="2021-04-10T14:25:44.837Z" itemprop="dateUpdated">2021-04-10 22:25:44</time>
 </span><br>
 
 
@@ -304,7 +304,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2021/04/10/systemd之systemd-tty-ask-password-agent卡住-md/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">systemd之systemd-tty-ask-password-agent卡住.md</h4>
+      </a>
+    </div>
   
 
   
