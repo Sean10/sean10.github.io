@@ -53,6 +53,16 @@ categories: [专业]
 
 更换之后, 至少`Ctrl+c`是没有问题的, 在`insert`模式下
 
+### 配置默认insertmode
+
+
+``` vim
+" 添加vim开启默认insert
+autocmt WinEnter * startinsert
+```
+
+[Setting to open editors in insert mode by default · Issue \#613 · asvetliakov/vscode\-neovim](https://github.com/asvetliakov/vscode-neovim/issues/613)
+
 ## vim插件快速打开关闭
 ```
 Command->toggleVim
