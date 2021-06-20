@@ -45,7 +45,12 @@ categories: [专业]
 > Ctrl + Shift + V 预览Markdown文件【编译后】
 > Ctrl + K v 在边栏打开渲染后的视图【新建】
 
+## 搜索窗口切换到下一个匹配对象
 
+* F4
+* shift+F4 回到上一个
+
+[visual studio code \- vscode key binding for "goto next search result on the search results pane"? \- Stack Overflow](https://stackoverflow.com/questions/39773141/vscode-key-binding-for-goto-next-search-result-on-the-search-results-pane)
 
 # vim
 ## neovim
@@ -78,8 +83,15 @@ Command->toggleVim
 
 似乎我升级了下搜狗输入法就好了, 至少5.9.0.11685目前没什么问题.
 
+# 所见即所得插件(markless)
+
+哇, 今天偶然看到的这个插件, 太厉害了, 完全兼容我其他的插件的快捷键, 不需要学习成本, 直接就能享受`typora`的效果.
+
+
+
 # 快捷键
 快速切换tab, `Option+Cmd+左右方向键`
+
 
 
 # 中文分词[^4]

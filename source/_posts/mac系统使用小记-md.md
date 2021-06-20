@@ -263,6 +263,17 @@ sudo pmset -b tcpkeepalive 0
 主要用的这个`[GitHub \- blind\-oracle/transmission\-trackers: Script to automatically add trackers from a list to all torrents in Transmission](https://github.com/blind-oracle/transmission-trackers)`
 
 
+# CPU/GPU
+## windowsserver的CPU占用高
+这个是mac的图形界面展示的进程, 因为是集成显卡, 所以集显能力不足的时候, cpu占用会偏高.
+
+有人说是降低透明度就可以不卡顿, 不知道是否有效.
+
+> 在System Preferences > Keyboard中， 将Key Repeat跟Delay Until Repeat往左边设置：
+
+有人说这样设计也能好转. 姑且看看吧.[^11]
+
+
 # Reference
 1. [当 Mac 升级到 Catalina 时，苹果在硬盘里施了点魔法 \- 少数派](https://sspai.com/post/57052)
 2. [闲聊ReFS与APFS \- 知乎](https://zhuanlan.zhihu.com/p/30721313)
@@ -274,3 +285,4 @@ sudo pmset -b tcpkeepalive 0
 8. [Disabling the suspend feature for a virtual machine in VMware Fusion and VMware Workstation \(2056501\)](https://kb.vmware.com/s/article/2056501)
 9. [macOS 电源管理修复 MacBook 休眠耗电大问题 \- Marco Nie](https://blog.niekun.net/archives/1622.html)
 10. [BT种子获取更多连接的方案（增加trackerslist） \| Boris的备份库房](https://boriskp.github.io/trackerslist/)
+11. [Mac系统WindowServer进程占用CPU资源问题 \| Hanjie's Blog](http://www.luohanjie.com/2017-01-16/mac-windowserver-process-cpu-resources.html)

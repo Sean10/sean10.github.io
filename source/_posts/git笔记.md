@@ -189,6 +189,11 @@ w强制回滚，用来撤销失败的调试
 
 
 
+## gitlab/github免密
+
+使用ssh密钥时, .ssh/config里的host和对应的`IdentifyFile`也要指定.
+
+然后git config 看到的username和credential也要对应.
 
 # 参考
 1. [git gc功能](http://blog.csdn.net/lihuanshuai/article/details/37345565)

@@ -152,10 +152,14 @@ categories: [专业]
 
 # ansible使用
 
+## 开源许可证
+根据[GPL license implies that my plugins are also GPL \(MPD's note: it does not\) · Issue \#8864 · ansible/ansible](https://github.com/ansible/ansible/issues/8864)可知, 虽然`ansible`是`GPL 3.0`, 但是由于我们编写的部署脚本是被`ansible`读取执行, 并非链接. 因此可自行决定使用的许可证.
+
 ## 调试方式
 * epdb
 * -vvvvvv 
   * 虽然文档中只写了`-vvv`, 但是实际上代码里有一部分写了`vvvvvv`的函数.
+  * 达到这个等级的时候, library里写的logging日志就能输出了.
 * 设置ANSIBLE_KEEP_REMOTTE_FILES=1, 然后再运行Ansbile命令
   * ansible运行前生成的临时脚本就会保存下来, 不会被删除了.
 
@@ -206,7 +210,23 @@ loop: "{{ xxx }}"
 ```
 
 ### run_once
-当我不需要指定哪个节点来执行一个集群任务的时候, 直接用run_once就可以ile,他会直接指定第一台.
+当我不需要指定哪个节点来执行一个集群任务的时候, 直接用run_once就可以ile,他会直接指定第一台
+
+### group_vars 自定义相对路径?
+不可以, 只能是当前执行hosts所在的目录的相对路径
+
+
+### roles搜搜路径
+可以修改`ansible.cfg`内的配置
+
+### shell模块指定路径
+
+```
+name: xxx
+shell: xxx
+args:
+  chdir: /home/
+```
 
 ### role
 自定义模块, 内部包含具体的`task`
@@ -393,7 +413,120 @@ pools:
 
 ```
 
+
+
 [to\_nice\_yaml output not as expected · Issue \#16707 · ansible/ansible](https://github.com/ansible/ansible/issues/16707)
+
+
+### 当我需要with_items内部针对每个循环做一个检查, 然后这个检查结果给下一个任务的每个循环使用时, 应该怎么做呢?
+
+如果我把这个封装成一个block, 然后每个block只处理其中一个任务的时候, 这个每个循环的变量怎么穿进去呢?
+
+比如`register`和`with_items`混用时, 是什么效果呢? 拿到的好像就是每条任务注册结果的列表.
+
+`when`和`with_items`一起使用时, 是每次都执行一次when
+
+好像可以利用changed这个
+
+### import_playbook可以组合多个playbook
+import_playbook不支持传入指定参数.  
+
+
+### refresh_inventory
+强制重新读取inventory
+
+``` yml
+- name: refresh
+  meta: refresh_inventory
+```
+
+### 如何将set_fact的host级别的变量转发到其他host里
+
+``` yaml
+- name: set fact on swarm nodes
+  set_fact: docker_worker_token="{{ some_var }}"
+  delegate_to: "{{ item }}"
+  delegate_facts: True
+  with_items: "{{ groups['all'] }}"
+
+```
+
+[ansible \- If set\_fact is scoped to a host, can I use 'dummy' host as a global variable map? \- Stack Overflow](https://stackoverflow.com/questions/39207616/if-set-fact-is-scoped-to-a-host-can-i-use-dummy-host-as-a-global-variable-map)
+
+### all.yml里的group_vars能被其他host的task读取吗?
+
+### 修改hosts文件之后的refresh_inventory之后的task没有输出在日志中
+
+根据这个[\(1\) meta: refresh\_inventory does not include previously absent hosts in task execution : ansible](https://www.reddit.com/r/ansible/comments/caawtb/meta_refresh_inventory_does_not_include/)
+
+和我的实际结果, 当我在多个Task中间加了一个`meta: refresh_inventory`之后, 后面的任务就一个都不执行了. 如果`import_playbook`了, playbook倒是还会执行.
+
+目前还没怎么看到代码, 为什么会失败.
+
+解决方案目前是知道了, 写两个host, 上一个playbook的最后一步就是`refresh_inventory`, 下一个playbook再使用这个group
+
+
+
+### include_vars加载远程节点的配置 , 配合delegate_to疑问
+
+结论, 不支持远程节点. 所以只能自己先把文件复制到本节点, 再进行导入
+
+
+#### 查找
+[Controlling where tasks run: delegation and local actions — Ansible Documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html)
+
+好像有`remote_src`选项
+
+> To assign included variables to a different host than inventory_hostname, use delegate_to and set delegate_facts=yes.
+
+[include\_vars is unable to load files from remote · Issue \#58169 · ansible/ansible](https://github.com/ansible/ansible/issues/58169)
+
+根据上面这篇`issue`可以知道, `remote_src`是不准备支持的.
+
+> The error message is on a generic function, was added for users that were using actions that did allow remote_src, though clearly when added they missed the confusion possible for other actions. We should fix the error message, but i would not try to personalize it too much or we will end up with similar ticket for other actions.
+
+### 同步远程节点的配置文件到指定节点 synchronize
+
+### 复制文件到本地 fetch
+
+``` ansible
+tasks:
+     - name: Fetch the file from the mwiapp01 to master
+       run_once: yes
+       fetch: src=/tmp/app01-to-app02.jar dest=buffer/ flat=yes
+       when: "{{ inventory_hostname == 'mwiapp01' }}"
+```
+
+### 被跳过的任务依旧注册了变量, 导致覆盖了
+ansible skipped task still register value
+
+可以用以下方式绕过, 或者register不同名字变量, set_fact到同一个上(set_fact支持when)
+``` yaml 
+  register: "{{ 'real_variable' if some_condition else 'cool_story_bro' }}"
+  when: some_condition
+```
+
+### gather_fact 缓存数据失效
+我遇到了修改了系统的hostname, 不过在有些节点, fact结果还被缓存了, 没有重新收集的问题
+
+
+在运行中重新收集可以用以下命令
+``` 
+- name: do facts module to get latest information
+  setup:
+```
+
+我试了下, 重新创建`playbook`即便是同主机组好像也清理不干净, 我直接在原来的playbook里加了下述任务, 然后再注释掉重新执行就可以了.
+
+``` yaml
+tasks:
+  - name: clear facts
+    meta: clear_facts
+
+```
+
+
+
 
 # Reference
 1. [ceph\-ansible 使用 \| Bolog](https://zhoubofsy.github.io/2019/09/28/storage/ceph/ceph-ansible-usage/)
