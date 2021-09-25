@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>微信聊天记录及语音导出方案实践 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="wechat,ffmpeg">
+    <meta name="description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
+<meta name="keywords" content="wechat,ffmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信聊天记录及语音导出方案实践">
+<meta property="og:url" content="https://sean10.github.io/2021/09/18/微信语音导出/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-09-20T04:22:33.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信聊天记录及语音导出方案实践">
+<meta name="twitter:description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">微信聊天记录及语音导出方案实践</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">微信聊天记录及语音导出方案实践</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-09-17T17:02:34.000Z" itemprop="datePublished" class="page-time">
+  2021-09-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调查"><span class="post-toc-number">2.</span> <span class="post-toc-text">调查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目前主流的方案是手动点击收藏-然后把语音转存为笔记-然后实际就变成了一份silk文件-在android或者在pc上就能够从目录里提取出来-进行编码转换."><span class="post-toc-number">2.1.</span> <span class="post-toc-text">目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wechatexporter导出ios设备"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">wechatExporter导出ios设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wxbackup导出ios设备"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">wxbackup导出ios设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微痕迹-app"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">微痕迹 app</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微信语音导出助手-for-android"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">微信语音导出助手 for android</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#手动导出转换语音"><span class="post-toc-number">3.</span> <span class="post-toc-text">手动导出转换语音</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进入微信聊天记录所在位置"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">0. 进入微信聊天记录所在位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#复制出音频-按照时间顺序重命名."><span class="post-toc-number">3.2.</span> <span class="post-toc-text">1. 复制出音频, 按照时间顺序重命名.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#silk解码转换为mp3"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2. silk解码转换为mp3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装ffmpeg"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">3. 安装ffmpeg</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#筛选后-拼接mp3"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4. 筛选后, 拼接mp3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#校验拼接后的mp3长度和"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5. 校验拼接后的mp3长度和</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用wxbackup完整导出聊天记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用wxbackup完整导出聊天记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用微信自带的迁移聊天记录功能迁移到ipadiphone上"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1. 使用微信自带的迁移聊天记录功能迁移到ipad/iphone上</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将ipad连接到macpc上-将ios设备进行整机备份"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2. 将ipad连接到mac/pc上, 将ios设备进行整机备份</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3. 备份后, 使用wxbackup的软件, 指定ios设备在mac/pc里的备份数据库路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#点进各个对话目录里index.html查看和微信一般的web页面来看记录吧"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4. 点进各个对话目录里index.html查看和微信一般的web页面来看记录吧</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-微信语音导出"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">微信聊天记录及语音导出方案实践</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-09-18 01:02:34" datetime="2021-09-17T17:02:34.000Z"  itemprop="datePublished">2021-09-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="背景">背景</h1>
+<p>需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件.</p>
+<h1 id="调查">调查</h1>
+<h2 id="目前主流的方案是手动点击收藏-然后把语音转存为笔记-然后实际就变成了一份silk文件-在android或者在pc上就能够从目录里提取出来-进行编码转换.">目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换.</h2>
+<h2 id="wechatexporter导出ios设备">wechatExporter导出ios设备</h2>
+<h2 id="wxbackup导出ios设备">wxbackup导出ios设备</h2>
+<h2 id="微痕迹-app">微痕迹 app</h2>
+<h2 id="微信语音导出助手-for-android">微信语音导出助手 for android</h2>
+<h1 id="手动导出转换语音">手动导出转换语音</h1>
+<h2 id="进入微信聊天记录所在位置">0. 进入微信聊天记录所在位置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/Downloads/voice</span><br><span class="line"><span class="built_in">cd</span> ~/Library/Containers/com.tencent.xinWeChat/Data</span><br></pre></td></tr></table></figure>
+<h2 id="复制出音频-按照时间顺序重命名.">1. 复制出音频, 按照时间顺序重命名.</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">'*.silk'</span> | xargs -L1 -I &#123;&#125; cp -af &#123;&#125; ~/Downloads/voice/ </span><br><span class="line"><span class="built_in">cd</span> ~/Downloads/voice/</span><br><span class="line">i=1; <span class="keyword">for</span> x <span class="keyword">in</span> `ls -tr *.silk`; <span class="keyword">do</span> cp -af <span class="variable">$x</span> <span class="string">"<span class="variable">$i</span>"</span>.silk; <span class="built_in">let</span> i=i+1; <span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="silk解码转换为mp3">2. silk解码转换为mp3</h2>
+<p><a href="https://github.com/kn007/silk-v3-decoder" target="_blank" rel="noopener">kn007/silk-v3-decoder: [Skype Silk Codec SDK]Decode silk v3 audio files (like wechat amr, aud files, qq slk files) and convert to other format (like mp3). Batch conversion support.</a></p>
+<p>主要使用以上脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh converter.sh ~/Downloads/voice ~/Downloads/out mp3</span><br></pre></td></tr></table></figure>
+<h3 id="安装ffmpeg">3. 安装<code>ffmpeg</code></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+<h2 id="筛选后-拼接mp3">4. 筛选后, 拼接mp3</h2>
+<p>生成要拼接的文件的目录. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ./ | xargs -I &#123;&#125;  realpath &#123;&#125; | xargs -I &#123;&#125; <span class="built_in">echo</span> <span class="string">"file '"</span><span class="string">"&#123;&#125;"</span><span class="string">"'"</span> &gt;&gt; ~/Downloads/filelist.txt</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>ffmpeg</code>进行拼接 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f concat -safe 0 -i filelist.txt -y output.mp3</span><br></pre></td></tr></table></figure></p>
+<h2 id="校验拼接后的mp3长度和">5. 校验拼接后的<code>mp3</code>长度和</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 xx.py <span class="variable">$&#123;mp3_path&#125;</span></span><br></pre></td></tr></table></figure>
+<p>输出的结果和我上面拼接后的文件的长度一致, ok<sub>没问题</sub></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_file_duration</span><span class="params">(file)</span>:</span></span><br><span class="line">    process = subprocess.Popen(<span class="string">"ffprobe &#123;&#125; -print_format json -show_format -show_streams"</span>.format(file), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line">    stdout = process.communicate()[<span class="number">0</span>]</span><br><span class="line">    logging.debug(<span class="string">f"stdout: <span class="subst">&#123;stdout&#125;</span>"</span>)</span><br><span class="line">    format_data = json.loads(stdout)</span><br><span class="line">    duration = parse_duration(file, format_data)</span><br><span class="line">    <span class="keyword">return</span> duration</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_duration</span><span class="params">(file, data)</span>:</span></span><br><span class="line">    format_data = data.get(<span class="string">'format'</span>, &#123;&#125;)</span><br><span class="line">    res = float(format_data.get(<span class="string">'duration'</span>))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> res:</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        logging.error(<span class="string">f"<span class="subst">&#123;file&#125;</span> cannot get duration"</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mp3_files</span><span class="params">(path)</span>:</span></span><br><span class="line">    files = list(glob.glob(os.path.join(path, <span class="string">"*.mp3"</span>)))</span><br><span class="line">    <span class="keyword">return</span> files</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_duration</span><span class="params">(data_list)</span>:</span></span><br><span class="line">    res = sum(data_list)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    logging.basicConfig(level=logging.INFO)</span><br><span class="line">    result = []</span><br><span class="line">    files = get_mp3_files(sys.argv[<span class="number">1</span>])</span><br><span class="line">    logging.debug(files)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        result.append(get_file_duration(file))</span><br><span class="line">    print(calc_duration(result))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<h1 id="使用wxbackup完整导出聊天记录">使用wxbackup完整导出聊天记录</h1>
+<h2 id="使用微信自带的迁移聊天记录功能迁移到ipadiphone上">1. 使用微信自带的迁移聊天记录功能迁移到ipad/iphone上</h2>
+<p>用<code>ipad/iphone</code>登录同一个微信账号, 需要安卓机和<code>ios</code>设备在同一个局域网(即同一<code>Wifi</code>里), 然后进入<code>设置 -&gt; 聊天 -&gt; 聊天记录备份与迁移</code>.</p>
+<h2 id="将ipad连接到macpc上-将ios设备进行整机备份">2. 将ipad连接到<code>mac</code>/<code>pc</code>上, 将ios设备进行整机备份</h2>
+<p>高版本<code>macOS</code>比如<code>10.15</code>是在<code>finder</code>里进行的备份, 低版本则在<code>itunes</code>中.</p>
+<p>参照<code>apple</code>官方文档即可, <a href="https://support.apple.com/zh-cn/HT203977" target="_blank" rel="noopener">如何备份您的 iPhone、iPad 和 iPod touch - Apple 支持 (中国)</a></p>
+<h2 id="备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径">3. 备份后, 使用wxbackup的软件, 指定<code>ios</code>设备在<code>mac/pc</code>里的备份数据库路径</h2>
+<p>可能因为<code>finder</code>高版本导致默认打开软件时没找到备份路径, 手动指定到<code>~/Library/Application Support/MobileSync/Backup</code>即可. 就立刻会显示出微信的聊天记录了.</p>
+<p>不过似乎存在一个缺憾, 不能全选导出. 只能一个个选择导出? (PS.可能我一开始不点到具体的聊天记录可能就行了)</p>
+<h2 id="点进各个对话目录里index.html查看和微信一般的web页面来看记录吧">4. 点进各个对话目录里<code>index.html</code>查看和微信一般的<code>web</code>页面来看记录吧</h2>
+<h1 id="reference">Reference</h1>
+<ol type="1">
+<li><a href="https://kn007.net/topics/batch-convert-silk-v3-audio-files-to-mp3-in-windows/" target="_blank" rel="noopener">Windows下批量转换Silk v3音频文件为MP3格式 | kn007的个人博客</a></li>
+<li><a href="https://github.com/mryqu/mryqu.github.io/blob/f48df2cb1fc0e604eca4c5452b5c7498fe5717bd/content/post/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA%E5%92%8C%E8%BD%AC%E6%8D%A2.md" target="_blank" rel="noopener">mryqu.github.io/微信语音导出和转换.md at f48df2cb1fc0e604eca4c5452b5c7498fe5717bd · mryqu/mryqu.github.io</a></li>
+<li><a href="https://www.yinxiang.com/everhub/note/1157fbcf-0363-4bd4-b015-e2a95aad59c3" target="_blank" rel="noopener">关于微信语音导出，这个方法强烈建议~</a></li>
+<li><a href="https://ds666.fun/2019/08/02/%E6%89%B9%E9%87%8F%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E6%B6%88%E6%81%AF%E4%B8%BAmp3%E5%B9%B6%E9%99%84python%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E8%84%9A%E6%9C%AC/" target="_blank" rel="noopener">批量导出微信语音消息为mp3并附python修改文件名脚本 | 韶华尐沐</a></li>
+<li><a href="https://vector0902.ml:5444/blog/?p=2692" target="_blank" rel="noopener">批量导出微信语音的方法（技术向） – vector090’s blog</a></li>
+<li><a href="https://www.123455.xyz/2021/04/blog-post_3.html" target="_blank" rel="noopener">微信聊天记录导出方案总结</a></li>
+<li><a href="https://www.zhihu.com/question/30112442" target="_blank" rel="noopener">(1 封私信 / 20 条消息) 如何导出微信【收藏】中的语音文件？ - 知乎</a></li>
+<li><a href="https://github.com/tsycnh/WeChatExporter" target="_blank" rel="noopener">tsycnh/WeChatExporter: 一个可以快速导出、查看你的微信聊天记录的工具</a></li>
+<li><a href="http://wxbackup.imxfd.com/" target="_blank" rel="noopener">微信聊天记录导出</a></li>
+<li><a href="https://github.com/RobertWang/Collections/blob/c9901d41cb43ba8cbb04d8331b853fd3da13a3bf/2021/06/06/GitHub%20%E5%87%BA%E5%93%81%EF%BC%9A%E4%B8%80%E9%94%AE%E5%AF%BC%E5%87%BA%E8%A7%A3%E5%AF%86%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95.md" target="_blank" rel="noopener">Collections/GitHub 出品：一键导出解密微信聊天记录.md at c9901d41cb43ba8cbb04d8331b853fd3da13a3bf · RobertWang/Collections</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-09-20T04:22:33.171Z" itemprop="dateUpdated">2021-09-20 12:22:33</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ffmpeg/">ffmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat/">wechat</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信聊天记录及语音导出方案实践》 — 行路中.&url=https://sean10.github.io/2021/09/18/微信语音导出/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/09/08/IO路径流向初探/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">IO路径流向初探</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信聊天记录及语音导出方案实践》 — 行路中.&url=https://sean10.github.io/2021/09/18/微信语音导出/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/09/18/微信语音导出/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

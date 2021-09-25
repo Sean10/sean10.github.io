@@ -151,6 +151,160 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Qt学习汇总遇到的问题"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-06-15 16:42:46" datetime="2017-06-15T08:42:46.000Z"  itemprop="datePublished">2017-06-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/06/15/Qt学习汇总遇到的问题/">Qt学习汇总遇到的问题</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build
+开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误 ...
+    
+
+        <a href="/2017/06/15/Qt学习汇总遇到的问题/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-git笔记"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-21 00:12:09" datetime="2017-02-20T16:12:09.000Z"  itemprop="datePublished">2017-02-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/21/git笔记/">git笔记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        常用命令
+切换分支
+git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &quot;void ss()&quot; /path/file
+查看未提交的文件修改
+1git show
+show not staged
+1git diff
+tag功能
+子模块
+git subtree(第三方, 独立仓库子树合并)
+git submodule(独立的子仓库)
+记录
+git的快照流是指什么？ (参见 Git 内部原理 来了解更多关于到底 .git 文件夹中包含了哪些文件的信息。) 事实上，如果你的服务器的磁盘坏掉了，你通常可以使用任何一个克隆下来的用户端来重建服务器上的仓库（虽然可能会丢失某些服务器端的挂钩设置，但是所有版本的数据仍在，详见 在服务器上搭建 Git ）。
+    
+
+        <a href="/2017/02/21/git笔记/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-C-Note"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-02-10 22:49:18" datetime="2017-02-10T14:49:18.000Z"  itemprop="datePublished">2017-02-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/02/10/C-Note/">C++_Note</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build
+    
+
+        <a href="/2017/02/10/C-Note/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-《星之梦》传播星空之人"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -474,150 +628,6 @@
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动漫/">动漫</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/综述/">综述</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-一省幕间"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-05-16 22:48:28" datetime="2016-05-16T14:48:28.000Z"  itemprop="datePublished">2016-05-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/05/16/一省幕间/">一省幕间</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-算来已经快整3周没听课了，整日在刷小说中，试着以放纵来令自己对小说失望，不过成效些微，反倒进度缺失的确实很多。
-近来，从动漫同人到电影同人，再到架空历史、竞技，再回到科幻、奇幻、玄幻，爱好的小说类型愈发的变化，曾经最喜欢看的西红柿、三少的小白文倒是无法再入口，其剧情框架已被用烂了，再无出彩的创意，始终从零打怪升级，无非依靠主角光环，不见出彩伏笔，亦不见大气世界观，不过满足了大家的YY想法。...
-    
-
-        <a href="/2016/05/16/一省幕间/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暮省/">暮省</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-反思"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-04-19 23:31:21" datetime="2016-04-19T15:31:21.000Z"  itemprop="datePublished">2016-04-19</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/19/反思/">一省吾身</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        近来，明明是在时间最紧迫的时刻，作业堆积如山、学姐布置的任务ddl也在迫近，可我却始终感觉缺了点什么似的，用最近看的村上春树的书中常提到的话来说恐怕就是“留在此处的只是我的一半，另一半怕是已然随着某事离开”。
-    
-
-        <a href="/2016/04/19/反思/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/暮省/">暮省</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-情书"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2016-04-16 11:47:43" datetime="2016-04-16T03:47:43.000Z"  itemprop="datePublished">2016-04-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/16/情书/">《情书》：平淡-回忆</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        为图方便，这部电影是从B站上拉标签看评论找到的。
-看过了村上春树的几部小说以后，加之桥本爱的《small forest》，对日本的作品的初印象就是非常的平静，在长达1个多小时的作品中逐渐静下来，在看这部片时感觉尤为深刻。
-    
-
-        <a href="/2016/04/16/情书/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/影评/">影评</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日本/">日本</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爱情/">爱情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/青春/">青春</a></li></ul>
 
     </div>
     
