@@ -187,13 +187,39 @@ w强制回滚，用来撤销失败的调试
 
 `git prune`功能，似乎是在遇到大文件的问题,有意思，这个git的垃圾回收问题以前倒是没遇到过呢
 
+# git status显示utf-8中文
 
+```
+git config --global core.quotepath false
+```
 
-## gitlab/github免密
+# gitlab/github免密
 
 使用ssh密钥时, .ssh/config里的host和对应的`IdentifyFile`也要指定.
 
 然后git config 看到的username和credential也要对应.
+
+# git merge
+## 从指定分支合入log到当前分支
+
+
+# git rebase
+``` bash
+➜  markless git:(dev) git push origin dev
+To https://github.com/sean10/markless.git
+ ! [rejected]        dev -> dev (non-fast-forward)
+error: failed to push some refs to 'https://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@github.com/sean10/markless.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+可以用下述强制命令.
+
+``` bash
+git push --force-with-lease origin dev  
+```
 
 # 参考
 1. [git gc功能](http://blog.csdn.net/lihuanshuai/article/details/37345565)

@@ -22,6 +22,9 @@ sudo sysctl debug.lowpri_throttle_enabled=0
 sudo sysctl debug.lowpri_throttle_enabled=1
 ```
 
+## 清理
+不能直接删除那个硬盘里的目录, 必须得`tmutils`来清理, 预计可能是增量备份. 我当时删的时候没意识到这点, 当时手动删的几个目录完全没被识别出已经被释放, 从而腾出空间.
+
 ## 查看time machine日志
 ``` bash
 sudo less +F "/Volumes/MacBackup/Backups.backupdb/MacBook Pro/2020-08-05-163227.inProgress/.Backup.618330747.626060.log"
@@ -272,6 +275,37 @@ sudo pmset -b tcpkeepalive 0
 > 在System Preferences > Keyboard中， 将Key Repeat跟Delay Until Repeat往左边设置：
 
 有人说这样设计也能好转. 姑且看看吧.[^11]
+
+## 通过`Turbo Boost Switcher`暂时关闭睿频, 姑且在cpu满载100%的时候, 风扇不会那么容易转了
+
+## ## 通过`appPolice`或者`cputhrottle`等限制指定进程的cpu
+`cputhrottle`好像不能用, 源码编译后, `sudo`运行还是报这个
+
+``` bash
+cputhrottle libc++abi.dylib: terminating with uncaught exception of type Process::ManipulatorException: Error on task_for_pid
+```
+
+简单看[bash \- Iterate over pgrep results \- Stack Overflow](https://stackoverflow.com/questions/54242957/iterate-over-pgrep-results)
+好像是`API`在高版本改了? 不能用这个了?
+
+# android投屏mac
+
+[\(1 封私信 / 20 条消息\) 如何将android手机屏幕投影至Mac？ \- 知乎](https://www.zhihu.com/question/38722634)
+
+# automator
+## finder增加右键按钮
+
+参考[在 Finder 的右键菜单中添加「Open in VSCode」 \| 始终](https://liam.page/2020/04/22/Open-in-VSCode-on-macOS/)
+
+在`automator`中可以增加比如`open in vscode`的能力~
+
+![](mac系统使用小记-md/mac系统使用小记-md_2021-09-16-23-33-29.png)
+
+# android投屏
+## 基于DLNA的`Macast`
+* 装到mac上之后, 可以直接投屏到mac上
+
+
 
 
 # Reference

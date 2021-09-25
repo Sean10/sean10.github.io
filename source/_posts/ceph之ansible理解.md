@@ -525,6 +525,14 @@ tasks:
 
 ```
 
+### ansible的changed_when属性, 设置为false时, 当某个节点任务失败, 会让这个节点退出后续的任务执行?
+
+目前是遇到这样一个问题, 直接导致后续的任务执行时节点缺失.
+
+看概念就只是:
+
+> A boolean indicating if the task had to make changes to the target or delegated host.
+
 
 
 

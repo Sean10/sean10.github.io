@@ -87,6 +87,10 @@ Command->toggleVim
 
 哇, 今天偶然看到的这个插件, 太厉害了, 完全兼容我其他的插件的快捷键, 不需要学习成本, 直接就能享受`typora`的效果.
 
+开发修改
+
+# 关闭回车会触发自动补全, 修改为tab. 避免无需补充时, 不得不补充问题
+在`Suggestions`里的`Accept Suggestion On Enter`. 修改为`Off`即可
 
 
 # 快捷键
@@ -101,6 +105,46 @@ Command->toggleVim
 
 # markdown的`Cmd+B`覆盖了`vscode`的`outline`打开和关闭. 
 * 被markdown覆盖掉了怎么办? 我暂时选择删除markdown的这个快捷键
+
+
+# 自动补全
+## TabNine AI自动补全
+
+# git
+## gitlens
+
+# remote develop
+remote ssh配置环境变量的时候
+
+需要配置一下`~/.profile`, 因为`~/.bashrc`在非交互式窗口不会被初始化. 
+
+# Intelligence
+## python
+一开始用的`pylance`和`jedi`. 这次看`pyx`代码的时候这俩都不支持, 就换回了`microsoft python`.
+
+
+# highlight
+`shift+f8`高亮, 应该类似`SourceInsight`的效果.
+
+# C/C++索引
+
+在`settings.json`中增加下述
+```
+"files.exclude": {
+      "**/.xxxx": true
+},
+"search.exclude": {
+    "**/.xxxx": true
+ },
+
+```
+
+而不用在`c_cpp_properties.json`中增加任何处理.
+
+但是最好创建个这个文件, 好像就能够索引了.
+
+# todo
+## 存在一个问题, 不知道为什么有时候`cmd+c`和`cmd+v`在比如find或者`ctrl+p`的窗口无法粘贴.
 
 
 
