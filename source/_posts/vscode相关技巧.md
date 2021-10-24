@@ -96,6 +96,7 @@ Command->toggleVim
 # 快捷键
 快速切换tab, `Option+Cmd+左右方向键`
 
+通过`Cmd+1`等切换主窗口`cursor`.
 
 
 # 中文分词[^4]
@@ -142,6 +143,26 @@ remote ssh配置环境变量的时候
 而不用在`c_cpp_properties.json`中增加任何处理.
 
 但是最好创建个这个文件, 好像就能够索引了.
+
+# container使用
+
+[Developing inside a Container using Visual Studio Code Remote Development](https://code.visualstudio.com/docs/remote/containers)
+
+[Get started with development Containers in Visual Studio Code](https://code.visualstudio.com/docs/remote/containers-tutorial)
+
+## container版本就是在满足的linux开发容器里再装一个vscode-server
+
+## remote版本, 就是单纯的自己选一个编译环境,  然后装好vscode-server的服务器上连接上.
+
+## 插件安装失败, 指定代理地址.
+
+[visual studio code \- VSCode Remote Container \- extensions not installing on dev container using docker\-compose \- Stack Overflow](https://stackoverflow.com/questions/55992660/vscode-remote-container-extensions-not-installing-on-dev-container-using-docke)
+mac上的Docker是跑在虚拟机里的, 所以即便设置`--net=host`, 实际上还是和宿主机差一级, 所以这里指定宿主机的内网ip的话, 其实是可以通讯了的.
+
+
+## vscode 卡顿, `process Explorer`中显示`extension Host` cpu 100%+
+
+根据这个[Performance Issues · microsoft/vscode Wiki](https://github.com/Microsoft/vscode/wiki/Performance-Issues#profile-the-running-extensions)定位方式, 查到`profiling time`中`todo tree`插件占用了4s多, 可能是因为这个文件中内容太多, 导致慢了. 把这个插件禁用, 就不卡顿了.
 
 # todo
 ## 存在一个问题, 不知道为什么有时候`cmd+c`和`cmd+v`在比如find或者`ctrl+p`的窗口无法粘贴.
