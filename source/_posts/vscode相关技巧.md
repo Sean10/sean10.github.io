@@ -51,6 +51,9 @@ categories: [专业]
 * shift+F4 回到上一个
 
 [visual studio code \- vscode key binding for "goto next search result on the search results pane"? \- Stack Overflow](https://stackoverflow.com/questions/39773141/vscode-key-binding-for-goto-next-search-result-on-the-search-results-pane)
+## vscode将cursor从左侧搜索窗口切换到主窗口的快捷键是啥? 
+`cmt+1`
+
 
 # vim
 ## neovim
@@ -163,6 +166,11 @@ mac上的Docker是跑在虚拟机里的, 所以即便设置`--net=host`, 实际�
 ## vscode 卡顿, `process Explorer`中显示`extension Host` cpu 100%+
 
 根据这个[Performance Issues · microsoft/vscode Wiki](https://github.com/Microsoft/vscode/wiki/Performance-Issues#profile-the-running-extensions)定位方式, 查到`profiling time`中`todo tree`插件占用了4s多, 可能是因为这个文件中内容太多, 导致慢了. 把这个插件禁用, 就不卡顿了.
+
+# 打包
+* vscode的插件应该可以直接打包,
+  * [How do I back up my VS Code settings and list of installed extensions? \- Super User](https://superuser.com/questions/1080682/how-do-i-back-up-my-vs-code-settings-and-list-of-installed-extensions/1113025)
+  * 即便直接打包这个~/.vscode/extensions目录不行, 直接根据列表下载vsix应该也可以
 
 # todo
 ## 存在一个问题, 不知道为什么有时候`cmd+c`和`cmd+v`在比如find或者`ctrl+p`的窗口无法粘贴.
