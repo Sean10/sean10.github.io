@@ -52,3 +52,8 @@ Breakpoint 2 at 0x400550
 Starting program: /my_prg
 Breakpoint 1, 0x0000000000400550 in main ()
 
+
+# 反编译
+从debuginfo里目前初步来看, 得到的结果预期也看不到啥理想的内容. 暂时放弃
+
+[java \- Decompile C code with debug info? \- Stack Overflow](https://stackoverflow.com/questions/15609440/decompile-c-code-with-debug-info)

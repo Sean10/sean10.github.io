@@ -12,10 +12,11 @@ categories: [专业]
 * 暂时是通过左侧的全局搜索, 定位到当前文件来进行搜索的.
 
 
+# 支持
 ## 类似typora的所见即所得插件支持
 * 即时渲染
 * 有一些unote之类的`web editor`嵌入到`vscode`中打开, 这样的话也算是实现了一个所见即所得的编辑器, 不过不是基于Vscode的倒是了. 不过这种情况下有些vscode配置的快捷键应该还是可以用的.
-
+* 目前基于`markless`自己维护了一个`markless_sean10`. 暂时用起来还是不错的.
 
 
 ## 同义词模糊搜索功能(fuzzy search)
@@ -24,6 +25,9 @@ categories: [专业]
   * 只能搜索文件名, 还是有点欠缺的
 * 不知道这个模糊搜索能不能做到NLP的水平呢?
 * 中文的似乎暂时没有, 别的都是直接基于`fzf`的
+
+## 目录搜索窗口显示搜索结果的行号
+*  已经支持了, `search.showLineNumbers`打开这个选项即可, 默认未开
 
 ## 是不是有什么功能能够搜索整个目录里所有的todo内容呢?
 
@@ -171,6 +175,14 @@ mac上的Docker是跑在虚拟机里的, 所以即便设置`--net=host`, 实际�
 * vscode的插件应该可以直接打包,
   * [How do I back up my VS Code settings and list of installed extensions? \- Super User](https://superuser.com/questions/1080682/how-do-i-back-up-my-vs-code-settings-and-list-of-installed-extensions/1113025)
   * 即便直接打包这个~/.vscode/extensions目录不行, 直接根据列表下载vsix应该也可以
+
+
+# API
+## DecorationRenderOptions
+[https://d\.shikey\.com/jike/已完结的课程/34 玩转VS Code/35讲插件开发（四）：Decorations装饰器\.html](https://d.shikey.com/jike/%E5%B7%B2%E5%AE%8C%E7%BB%93%E7%9A%84%E8%AF%BE%E7%A8%8B/34%20%E7%8E%A9%E8%BD%ACVS%20Code/35%E8%AE%B2%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9ADecorations%E8%A3%85%E9%A5%B0%E5%99%A8.html)
+
+
+
 
 # todo
 ## 存在一个问题, 不知道为什么有时候`cmd+c`和`cmd+v`在比如find或者`ctrl+p`的窗口无法粘贴.
