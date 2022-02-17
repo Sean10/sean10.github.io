@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.032Z">
+<meta property="og:updated_time" content="2021-12-19T10:32:06.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之tier数据源码初探">
 <meta name="twitter:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
@@ -321,6 +321,7 @@ missing anything ?</li>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint64_t</span> over = full_micro - evict_target;</span><br><span class="line"><span class="keyword">uint64_t</span> span = <span class="number">1000000</span> - evict_target;</span><br><span class="line">evict_effort = MAX(over * <span class="number">1000000</span> / span,</span><br><span class="line">                   (<span class="keyword">unsigned</span>) (<span class="number">1000000.0</span> * cct-&gt;_conf-&gt;osd_agent_min_evict_effort));</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">full_micro =</span><br><span class="line">        num_user_objects * avg_size * <span class="number">1000000</span> /</span><br><span class="line">        MAX(pool.info.target_max_bytes / divisor, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p>根据目前的理解, 当full_ratio达到1000000时, 根据上文, 也就是只有当达到<code>target_max_bytes</code>的时候才会彻底阻塞, 在这之前都是不会停止写io的.</p>
+<p>TODO: 目前看到的是, flush和evict的速度, 基本取决于osd的业务压力, 会让存储空间瓶颈停留在80%.</p>
 <h3 id="evict_effort与实际速度的计算"><code>evict_effort</code>与实际速度的计算</h3>
 <p>根据默认配置可知, <code>osd_agent_min_evict_effort</code>默认值为<code>0.1</code>,即默认的<code>evict_effort</code>为<code>0.1</code>.</p>
 <p><code>osd_agent_quantize_effort</code>默认值同样为<code>0.1</code></p>
@@ -373,7 +374,7 @@ missing anything ?</li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.032Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2021-12-19T10:32:06.482Z" itemprop="dateUpdated">2021-12-19 18:32:06</time>
 </span><br>
 
 
@@ -546,7 +547,7 @@ missing anything ?</li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2021</span>
+        <p><span>Sean10 &copy; 2015 - 2022</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

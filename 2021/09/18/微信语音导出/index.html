@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-09-20T04:22:33.171Z">
+<meta property="og:updated_time" content="2022-01-18T16:40:22.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信聊天记录及语音导出方案实践">
 <meta name="twitter:description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
@@ -217,10 +217,10 @@
 <p>用<code>ipad/iphone</code>登录同一个微信账号, 需要安卓机和<code>ios</code>设备在同一个局域网(即同一<code>Wifi</code>里), 然后进入<code>设置 -&gt; 聊天 -&gt; 聊天记录备份与迁移</code>.</p>
 <h2 id="将ipad连接到macpc上-将ios设备进行整机备份">2. 将ipad连接到<code>mac</code>/<code>pc</code>上, 将ios设备进行整机备份</h2>
 <p>高版本<code>macOS</code>比如<code>10.15</code>是在<code>finder</code>里进行的备份, 低版本则在<code>itunes</code>中.</p>
-<p>参照<code>apple</code>官方文档即可, <a href="https://support.apple.com/zh-cn/HT203977" target="_blank" rel="noopener">如何备份您的 iPhone、iPad 和 iPod touch - Apple 支持 (中国)</a></p>
+<p>参照<code>apple</code>官方文档即可, <a href="https://support.apple.com/zh-cn/HT203977" target="_blank" rel="noopener">如何备份您的 iPhone、iPad 和 iPod touch - Apple 支持 (中国)</a> 备份速度通过lightning转usb-c, 最快也只有40MB/s, <a href="https://discussions.apple.com/thread/7168951" target="_blank" rel="noopener">how long should an initial backup take on… - Apple Community</a></p>
 <h2 id="备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径">3. 备份后, 使用wxbackup的软件, 指定<code>ios</code>设备在<code>mac/pc</code>里的备份数据库路径</h2>
 <p>可能因为<code>finder</code>高版本导致默认打开软件时没找到备份路径, 手动指定到<code>~/Library/Application Support/MobileSync/Backup</code>即可. 就立刻会显示出微信的聊天记录了.</p>
-<p>不过似乎存在一个缺憾, 不能全选导出. 只能一个个选择导出? (PS.可能我一开始不点到具体的聊天记录可能就行了)</p>
+<p>不过似乎存在一个缺憾, 不能全选导出. 只能一个个选择导出.</p>
 <h2 id="点进各个对话目录里index.html查看和微信一般的web页面来看记录吧">4. 点进各个对话目录里<code>index.html</code>查看和微信一般的<code>web</code>页面来看记录吧</h2>
 <h1 id="reference">Reference</h1>
 <ol type="1">
@@ -243,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-09-20T04:22:33.171Z" itemprop="dateUpdated">2021-09-20 12:22:33</time>
+    最后更新时间：<time datetime="2022-01-18T16:40:22.446Z" itemprop="dateUpdated">2022-01-19 00:40:22</time>
 </span><br>
 
 
@@ -416,7 +416,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2021</span>
+        <p><span>Sean10 &copy; 2015 - 2022</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

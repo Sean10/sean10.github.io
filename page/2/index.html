@@ -151,6 +151,56 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-分布式时钟之Lamport逻辑时钟"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-04-08 19:50:07" datetime="2021-04-08T11:50:07.000Z"  itemprop="datePublished">2021-04-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/04/08/分布式时钟之Lamport逻辑时钟/">分布式时钟之Lamport逻辑时钟</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        背景
+在看到这篇论文之前, 我所知道的只是linux上自带的时间戳和ntp协议, 以及内核里有一个每次开机启动时开始记录的monotonic clock可以用来保障时间一定是连续的.
+但是对于分布式设备之间怎么判断互相的时间先后性, 这块是未知的.
+比如针对leader节点发送一次自己的认证失效时间, 假如自己的物理时间戳比那个时间还早, 但真实世界的时间戳已经超期了, 到底是按失效还是有...
+    
+
+        <a href="/2021/04/08/分布式时钟之Lamport逻辑时钟/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摘录/">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时钟/">时钟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-DistCache分布式缓存"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -402,10 +452,11 @@ ansible比较大的几个优点
 
 暂时是通过左侧的全局搜索, 定位到当前文件来进行搜索的.
 
+支持
 类似typora的所见即所得插件支持
 
 即时渲染
-有一些unote之类的web editor嵌入到vscode中打开, 这样的话也算是实现了一个所见即所得的编辑器, 不过不是基于Vscode的倒是了. 不过这种情况下有些vscode配置的快捷键应该还是...
+有一些unote之类的web editor嵌入到vscode中打开, 这样的话也算是实现了一个所见即所得的编辑器, 不过不是基于Vscode的倒是了. 不过这种情况下有些vscode配置的快捷键应...
     
 
         <a href="/2021/01/31/vscode相关技巧/" class="post-more waves-effect waves-button">
@@ -526,6 +577,55 @@ ansible比较大的几个优点
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-vscode之markdown引用zotero参考文献"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-01-17 16:40:53" datetime="2021-01-17T08:40:53.000Z"  itemprop="datePublished">2021-01-17</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/01/17/vscode之markdown引用zotero参考文献/">vscode之markdown引用zotero参考文献</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        需求
+我的主要需求, 只是当我需要写引用时, 排序能够自动调整,而不是我手动去填写数字. 如果能够让最后的参考文献也能够像用Latex时一样自动生成就更好不过了.
+初步的一个思路是, 因为我主要需要的是纯文本, 然后在使用hexo-render-pandoc生成为网页时, 能够把索引给使用上. 预计是在使用pandoc的生成过程中, 将markdown文件中的引用的key给转换成对应的索引....
+    
+
+        <a href="/2021/01/17/vscode之markdown引用zotero参考文献/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zotero/">zotero</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-mac系统使用小记-md"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -581,107 +681,12 @@ mac time machine限速
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-2020年终总结"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-11 22:28:02" datetime="2021-01-11T14:28:02.000Z"  itemprop="datePublished">2021-01-11</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/11/2020年终总结/">2020年终总结</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        今年主要的感触在项目中, 基本上就是一些沟通与落地方面是否双向澄清,全环节负责的人是否都已经理解需求及实现了. 人月神话中的沟通的代价, 想来过程中的人员澄清应该占用了一部分. 即便简单的项目, 也存在SE, DE, 开发者三人的环节. 这种常见的一般都会一个会议, 或直接在工位旁边完成澄清的过程. 而对于今年主要遇到的跨大部门的大型项目, 一个OR基本上就存在了2倍的人员对接. 每个环境都...
-    
-
-        <a href="/2021/01/11/2020年终总结/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-日志分析ELK部署"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-11 03:03:17" datetime="2021-01-10T19:03:17.000Z"  itemprop="datePublished">2021-01-11</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/11/日志分析ELK部署/">日志分析ELK部署</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        部署
-12345docker pull sebp/elkdocker run -p 5601:5601 -p 9200:9200  -p 5044:5044 \    -v /Users/sean10/Code/docker-volume/elk:/var/lib/elasticsearch \    -v /Users/sean10/Code/Algorithm_code/elk/logs...
-    
-
-        <a href="/2021/01/11/日志分析ELK部署/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/">ELK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </div>
 </nav>
 
@@ -711,7 +716,7 @@ mac time machine限速
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2021</span>
+        <p><span>Sean10 &copy; 2015 - 2022</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

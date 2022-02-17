@@ -30,7 +30,7 @@
 <meta property="og:description" content="理解 大家最受影响的就是一半时间开发, 一半时间运维的这个问题. 利用一个成熟的配置文件, 快速部署起自己需要的环境, 而不是一步步通过页面控制点击, 这是一个很省力的事情. 将运维中与部署相关的事情通过一些成熟的模板化的配置文件来提供, 最好不过了. ansible比较大的几个优点  由于是开源框架, 基于ansible的针对其他开源软件的配套代价较多  比如集成钉钉等  配置文件化管理部署成熟">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://sean10.github.io/2021/02/18/ceph之ansible理解/ceph之ansible理解_2020-11-12-00-49-50.png">
-<meta property="og:updated_time" content="2021-06-29T02:11:04.790Z">
+<meta property="og:updated_time" content="2021-12-02T12:19:51.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之ansible理解">
 <meta name="twitter:description" content="理解 大家最受影响的就是一半时间开发, 一半时间运维的这个问题. 利用一个成熟的配置文件, 快速部署起自己需要的环境, 而不是一步步通过页面控制点击, 这是一个很省力的事情. 将运维中与部署相关的事情通过一些成熟的模板化的配置文件来提供, 最好不过了. ansible比较大的几个优点  由于是开源框架, 基于ansible的针对其他开源软件的配套代价较多  比如集成钉钉等  配置文件化管理部署成熟">
@@ -263,7 +263,11 @@
 <ul>
 <li>语义多层架构</li>
 <li>基于ssh, push/pull均支持</li>
-<li>cephadm是使用工具的配置语法进行部署后, 为了更强程度的自定义而进阶开发的产物.</li>
+<li>cephadm是使用工具的配置语法进行部署后, 为了更强程度的自定义而进阶开发的产物.
+<ul>
+<li>TODO:设计角度, 为什么cephadm用了docker?</li>
+<li>另外, cephadm支持所有业务的部署能力是否和这个有关?</li>
+</ul></li>
 </ul></li>
 <li>SaltStack
 <ul>
@@ -547,7 +551,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-06-29T02:11:04.790Z" itemprop="dateUpdated">2021-06-29 10:11:04</time>
+    最后更新时间：<time datetime="2021-12-02T12:19:51.377Z" itemprop="dateUpdated">2021-12-02 20:19:51</time>
 </span><br>
 
 
@@ -720,7 +724,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2021</span>
+        <p><span>Sean10 &copy; 2015 - 2022</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

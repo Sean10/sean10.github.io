@@ -151,6 +151,69 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-ceph之dashboard"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-12-02 19:26:04" datetime="2021-12-02T11:26:04.000Z"  itemprop="datePublished">2021-12-02</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/12/02/ceph之dashboard/">ceph之dashboard社区状态小探</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        本篇主要是把旧文重新整理一下.
+定位
+目前已经为唯一的非自研的开源对接ceph的, 已将grafana嵌入.
+
+监控/告警
+
+支持大部分想看到的数据
+
+实施方面, 对接cephadm?
+
+那是否对接ceph-ansible?
+
+不对接, 但是ceph-ansible似乎也对接了cephadm, 作为cephadm的上层统一管理?
+
+ceph-orch的能力?
+
+Orchestrator CL...
+    
+
+        <a href="/2021/12/02/ceph之dashboard/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dashboard/">dashboard</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-团队管理初探"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -611,62 +674,12 @@ SyslogHandler的syslog协议部分主要遵循RFC5424.
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-分布式时钟之Lamport逻辑时钟"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-04-08 19:50:07" datetime="2021-04-08T11:50:07.000Z"  itemprop="datePublished">2021-04-08</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/04/08/分布式时钟之Lamport逻辑时钟/">分布式时钟之Lamport逻辑时钟</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        背景
-在看到这篇论文之前, 我所知道的只是linux上自带的时间戳和ntp协议, 以及内核里有一个每次开机启动时开始记录的monotonic clock可以用来保障时间一定是连续的.
-但是对于分布式设备之间怎么判断互相的时间先后性, 这块是未知的.
-比如针对leader节点发送一次自己的认证失效时间, 假如自己的物理时间戳比那个时间还早, 但真实世界的时间戳已经超期了, 到底是按失效还是有...
-    
-
-        <a href="/2021/04/08/分布式时钟之Lamport逻辑时钟/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摘录/">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时钟/">时钟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
 <nav id="page-nav">
     <div class="inner">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </div>
 </nav>
 
@@ -696,7 +709,7 @@ SyslogHandler的syslog协议部分主要遵循RFC5424.
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2021</span>
+        <p><span>Sean10 &copy; 2015 - 2022</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
