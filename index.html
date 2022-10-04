@@ -319,6 +319,65 @@ Orchestrator CL...
         </li>
     
         <li class="post-list-item fade">
+            <article id="post-高可用初理解"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-11-27 23:17:08" datetime="2021-11-27T15:17:08.000Z"  itemprop="datePublished">2021-11-27</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/11/27/高可用初理解/">高可用初理解</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        定义上, 高可用其实分为以下几种.
+
+冗余
+
+以及可以基于这个剩下的节点提供除冗余外的完整的服务.
+
+降级
+
+关闭某些功能的情况下继续提供服务.
+
+熔断
+
+熔断更多指检测到连续故障, 让后续的也先拦截掉, 避免无法提供服务但依旧冲击服务压力. 检测到恢复之后再自愈那种. ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时候应该是阻塞, 而并没有通过熔断中断io. 但是如...
+    
+
+        <a href="/2021/11/27/高可用初理解/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keepalived/">keepalived</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高可用/">高可用</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-团队管理初探"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -423,6 +482,54 @@ wxbackup导出ios设备
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ffmpeg/">ffmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat/">wechat</a></li></ul>
 
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vscode之markless二次开发"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-09-17 00:39:15" datetime="2021-09-16T16:39:15.082Z"  itemprop="datePublished">2021-09-17</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/09/17/vscode之markless二次开发/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        理解
+markdown是有对应的标准的. 似乎这篇可以参考?
+下面todo中提到的一些list的识别场景, 其实这篇spec有做一定的边界澄清?
+CommonMark Spec
+中文版CommonMark Spec
+Issue
+comments 现在
+长期运行后, 似乎会出现资源占用问题, 卡顿
+疑似是1.0.25这次这个增加自定义引起的这个问题
+似乎是1.0.25去掉了memoize引起的...
+    
+
+        <a href="/2021/09/17/vscode之markless二次开发/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
     </div>
     
 </article>
@@ -574,106 +681,6 @@ SyslogHandler的syslog协议部分主要遵循RFC5424.
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译/">编译</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ceph之luminous-github版本编译undefined-reference"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-05-15 21:34:46" datetime="2021-05-15T13:34:46.000Z"  itemprop="datePublished">2021-05-15</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/05/15/ceph之luminous-github版本编译undefined-reference/">ceph之luminous_github版本编译undefined_reference</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        主要问题是从svn下载的最新版的liminous分支, 编译时报这个错误
-1234567891011121314151617181920undefined reference to OSD::HeartbeatInfo::HEARTBEAT_MAX_CONN``这条修复了这个问题[osd: make OSD::HEARTBEAT\_MAX\_CONN inline by tchaikov ·...
-    
-
-        <a href="/2021/05/15/ceph之luminous-github版本编译undefined-reference/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ceph之mon-client时间长排查"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-04-26 19:56:42" datetime="2021-04-26T11:56:42.000Z"  itemprop="datePublished">2021-04-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/04/26/ceph之mon-client时间长排查/">ceph之mon_client时间长排查</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        背景
-在使用12.2.1版本时, 发现经常会出现需要10+秒才能返回ceph -s的现象, 偶尔又1s内就返回了.
-排查
-首先, time ceph -s --debug_monc 40 --debug_ms 40看下详细日志有没有记录在哪呢?
-看了下, 应该是在跟mon通信过程, 但是好像不知道发生了什么.
-咨询了一下大神给了个关键词, objecter, 打开debug后看到一部分内容了...
-    
-
-        <a href="/2021/04/26/ceph之mon-client时间长排查/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mon/">mon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/超时/">超时</a></li></ul>
 
     </div>
     

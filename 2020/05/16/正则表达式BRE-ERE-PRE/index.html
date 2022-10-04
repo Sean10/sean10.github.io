@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="概述 在开发过程中，经验遇到使用不同语言不同工具时，正则表达式无法直接复用的问题。主要原因在于不同语言使用的正则表达式的标准也是不一样的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.910Z">
+<meta property="og:updated_time" content="2022-07-29T06:59:17.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式BRE&#x2F;ERE&#x2F;PRE">
 <meta name="twitter:description" content="概述 在开发过程中，经验遇到使用不同语言不同工具时，正则表达式无法直接复用的问题。主要原因在于不同语言使用的正则表达式的标准也是不一样的。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要区别1"><span class="post-toc-number">2.</span> <span class="post-toc-text">主要区别[^1]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用支持"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用支持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grep"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">grep</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sed"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">sed</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#awk"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">awk</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Python</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">4.</span> <span class="post-toc-text">疑问</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要区别1"><span class="post-toc-number">2.</span> <span class="post-toc-text">主要区别[^1]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用支持"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用支持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grep"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">grep</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sed"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">sed</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#awk"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">awk</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">Python</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#疑问"><span class="post-toc-number">4.</span> <span class="post-toc-text">疑问</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用"><span class="post-toc-number"></span> <span class="post-toc-text">常用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不包含指定字符串所在行"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">不包含指定字符串所在行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#零宽断言"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">零宽断言</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">1.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -238,6 +238,11 @@
 <li>当我需要严格的全部匹配结果的时候…应该怎么做呢?</li>
 </ul></li>
 </ul>
+<h1 id="常用">常用</h1>
+<h3 id="不包含指定字符串所在行">不包含指定字符串所在行</h3>
+<p>不包含<code>kuebelet</code>的行 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^((?!kubelet).)*$</span><br></pre></td></tr></table></figure></p>
+<h3 id="零宽断言">零宽断言</h3>
+<p>在<code>aaa</code>后面的字符串, 不捕获aaa. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?&lt;=aaa).*</span><br></pre></td></tr></table></figure></p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
 <li><a href="https://jerkwin.github.io/2014/04/03/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" target="_blank" rel="noopener">正则表达式基础知识|Jerkwin</a></li>
@@ -250,7 +255,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.910Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2022-07-29T06:59:17.377Z" itemprop="dateUpdated">2022-07-29 14:59:17</time>
 </span><br>
 
 

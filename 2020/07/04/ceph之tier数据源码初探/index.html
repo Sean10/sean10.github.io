@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="源码,ceph,tier">
-    <meta name="description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
+    <meta name="description" content="理解 rados实现思路 TODO: rados对象相比一个文件, 其实差别就在于rados对象自带了offset位置的概念. 并不存在太多其他的元数据信息. 所以基本可以忽略rados对象的元数据信息? onode等可能不行? rados层的聚合, 即在tier上的时候, 表现就是存在这个rados对象, 但是这个rados对象只被识别出几K实际写入的对象大小. 而如果是聚合拼接时, 则意味着,">
 <meta name="keywords" content="源码,ceph,tier">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之tier数据源码初探">
 <meta property="og:url" content="https://sean10.github.io/2020/07/04/ceph之tier数据源码初探/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
+<meta property="og:description" content="理解 rados实现思路 TODO: rados对象相比一个文件, 其实差别就在于rados对象自带了offset位置的概念. 并不存在太多其他的元数据信息. 所以基本可以忽略rados对象的元数据信息? onode等可能不行? rados层的聚合, 即在tier上的时候, 表现就是存在这个rados对象, 但是这个rados对象只被识别出几K实际写入的对象大小. 而如果是聚合拼接时, 则意味着,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-03-10T12:18:21.696Z">
+<meta property="og:updated_time" content="2022-06-06T15:31:35.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之tier数据源码初探">
-<meta name="twitter:description" content="分析关键点 埋点统计接口 123456# tier_flush\tier_promote等数据ceph daemon osd.&amp;#123;id&amp;#125; perf dump | grep tier# num_write\num_read\num_promote等数据ceph pg dump_json tier主要触发任务 数据迁移 下面的flush和evict动作主要根据热度命中集和当前空间占用">
+<meta name="twitter:description" content="理解 rados实现思路 TODO: rados对象相比一个文件, 其实差别就在于rados对象自带了offset位置的概念. 并不存在太多其他的元数据信息. 所以基本可以忽略rados对象的元数据信息? onode等可能不行? rados层的聚合, 即在tier上的时候, 表现就是存在这个rados对象, 但是这个rados对象只被识别出几K实际写入的对象大小. 而如果是聚合拼接时, 则意味着,">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析关键点"><span class="post-toc-number">1.</span> <span class="post-toc-text">分析关键点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#埋点统计接口"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">埋点统计接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier主要触发任务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">tier主要触发任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据迁移"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数据迁移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#io操作"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">IO操作</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码阅读过程"><span class="post-toc-number">2.</span> <span class="post-toc-text">源码阅读过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier_proxy_read数据来源"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">tier_proxy_read数据来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-stats"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">pg stats</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pool-stat方向"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">pool stat方向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#理论"><span class="post-toc-number">3.</span> <span class="post-toc-text">理论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推荐ssd用于wal-然后剩下的根据热数据大小控制缓存分层的大小3"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">推荐ssd用于WAL, 然后剩下的根据热数据大小控制缓存分层的大小[^3]</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下刷"><span class="post-toc-number"></span> <span class="post-toc-text">下刷</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#理解"><span class="post-toc-number">1.</span> <span class="post-toc-text">理解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flush-逻辑5"><span class="post-toc-number">2.</span> <span class="post-toc-text">flush 逻辑[^5]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#evict逻辑"><span class="post-toc-number">3.</span> <span class="post-toc-text">evict逻辑</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#blocked-时间"><span class="post-toc-number">4.</span> <span class="post-toc-text">blocked 时间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#evict_effort与实际速度的计算"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">evict_effort与实际速度的计算</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#maybe_handle_cache"><span class="post-toc-number">5.</span> <span class="post-toc-text">maybe_handle_cache</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调用链"><span class="post-toc-number">6.</span> <span class="post-toc-text">调用链</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#命中集"><span class="post-toc-number"></span> <span class="post-toc-text">命中集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">Todo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#write_full"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">write_full?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-counter有类似pg-map的同步周期"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">pg counter有类似pg map的同步周期?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算什么时候会达到平衡的时候-预计应该是会与tier的flush速度evict速度-是否等同于上层下发的写io速度相平衡-也就是我们需要得到evict速度的增长曲线-得到evict与容量占比的计算公式-然后计算上flush的计算速度与osd-盘性能的相关性-再计算一下业务的压力-就可以得到到底设置多大的上水线可以让这个缓存池满足使用了."><span class="post-toc-number">1.3.</span> <span class="post-toc-text">计算什么时候会达到平衡的时候, 预计应该是会与tier的flush速度+evict速度 是否等同于上层下发的写io速度相平衡? 也就是我们需要得到evict速度的增长曲线, 得到evict与容量占比的计算公式, 然后计算上flush的计算速度与osd, 盘性能的相关性, 再计算一下业务的压力, 就可以得到到底设置多大的上水线可以让这个缓存池满足使用了.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tieragentstate"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TierAgentState</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#理解"><span class="post-toc-number">1.</span> <span class="post-toc-text">理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rados实现思路"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">rados实现思路</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tier理解边界"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">tier理解边界</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命中率"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">命中率</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#拆解"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">拆解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态定义"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">状态定义</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分析"><span class="post-toc-number">2.</span> <span class="post-toc-text">分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分析关键点"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">分析关键点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#埋点统计接口"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">埋点统计接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier主要触发任务"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">tier主要触发任务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据迁移"><span class="post-toc-number">2.1.2.1.</span> <span class="post-toc-text">数据迁移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#io操作"><span class="post-toc-number">2.1.2.2.</span> <span class="post-toc-text">IO操作</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码阅读过程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">源码阅读过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tier_proxy_read数据来源"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">tier_proxy_read数据来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-stats"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">pg stats</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pool-stat方向"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">pool stat方向</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#理论"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">理论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推荐ssd用于wal-然后剩下的根据热数据大小控制缓存分层的大小3"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">推荐ssd用于WAL, 然后剩下的根据热数据大小控制缓存分层的大小[^3]</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下刷"><span class="post-toc-number">3.</span> <span class="post-toc-text">下刷</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#理解-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">理解</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flush-逻辑5"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">flush 逻辑[^5]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#evict逻辑"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">evict逻辑</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#blocked-时间"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">blocked 时间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#evict_effort与实际速度的计算"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">evict_effort与实际速度的计算</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#maybe_handle_cache"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">maybe_handle_cache</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调用链"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">调用链</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#命中集"><span class="post-toc-number">4.</span> <span class="post-toc-text">命中集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Todo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#write_full"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">write_full?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pg-counter有类似pg-map的同步周期"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">pg counter有类似pg map的同步周期?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算什么时候会达到平衡的时候-预计应该是会与tier的flush速度evict速度-是否等同于上层下发的写io速度相平衡-也就是我们需要得到evict速度的增长曲线-得到evict与容量占比的计算公式-然后计算上flush的计算速度与osd-盘性能的相关性-再计算一下业务的压力-就可以得到到底设置多大的上水线可以让这个缓存池满足使用了."><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">计算什么时候会达到平衡的时候, 预计应该是会与tier的flush速度+evict速度 是否等同于上层下发的写io速度相平衡? 也就是我们需要得到evict速度的增长曲线, 得到evict与容量占比的计算公式, 然后计算上flush的计算速度与osd, 盘性能的相关性, 再计算一下业务的压力, 就可以得到到底设置多大的上水线可以让这个缓存池满足使用了.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tieragentstate"><span class="post-toc-number">4.1.4.</span> <span class="post-toc-text">TierAgentState</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Reference</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -186,7 +186,166 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="分析关键点">分析关键点</h2>
+            <h1 id="理解">理解</h1>
+<h3 id="rados实现思路">rados实现思路</h3>
+<p>TODO: rados对象相比一个文件, 其实差别就在于rados对象自带了offset位置的概念. 并不存在太多其他的元数据信息.</p>
+<p>所以基本可以忽略rados对象的元数据信息? onode等可能不行?</p>
+<p>rados层的聚合, 即在tier上的时候, 表现就是存在这个rados对象, 但是这个rados对象只被识别出几K实际写入的对象大小. 而如果是聚合拼接时, 则意味着, 上层其实访问的也是这个大对象. 但是只访问这个对象中的一部分的时候, 怎么办呢?</p>
+<p>tier层访问的rados对象还是小的. 但是每次落下去会合并成大的. 那问题就来了. 读上来的时候读上来一批小对象, 第二次合并的时候的小对象必然不会是第一次那种组合了. 会是一个新的组合. 这个时候要落hdd, 如果直接合并, 那就是一批新的. 除非有一个journal的实现, 每次请求都是一种journal.</p>
+<p>tier的删和读, 写, 都以4M为粒度最好?</p>
+<p>这些索引数据, 预计是需要放在ssd上的.</p>
+<p>除非是对象存储那种, 只写一次, 所以他的小对象聚合, 不用考虑修改的问题. 只有写和读.</p>
+<p>都是写少读多. 那理论上写完, 读的时候涉及部分小对象的逻辑? 难道通过预读来减少大合并文件中只有几个小文件才是用户要读的文件的问题?</p>
+<p>所以针对这种通用场景, 只有一种办法, 那就是日志层级. 将随机写转换为顺序写, 然后通过compaction等方式把日志转化成实际的对象?</p>
+<p>适合写多读少场景.</p>
+<p>通过拆分整块写, 可以避免读那个被写了部分的offset的问题.</p>
+<p>改数据的时候没问题, 通过gc来处理, 每次都写新的大对象.</p>
+<p>读的时候, 就通过预读, 调整预读的大小等来完成覆盖. 如果预读的效果不好, 那其实还不如直接就读这个4K对象, 如果能够分析出行为, 则可以试试预读512K, 1M等方式.</p>
+<h2 id="tier理解边界">tier理解边界</h2>
+<ul>
+<li>如果是以短时间的访问粒度, 拆解全随机和存在热数据比例?</li>
+<li><p>即存取周期</p></li>
+<li>无热数据, db,wal分离的hdd性能好.
+<ul>
+<li>关键延时点: promote</li>
+</ul></li>
+<li>有热数据, 开命中集tier好, 则tier能作为热数据访问的介质, 其他数据依旧访问hdd
+<ul>
+<li>关键延时点proxy</li>
+</ul></li>
+<li>待定
+<ul>
+<li>有部分热数据, tier远比每日访问的数据大, 关闭命中集此时能让ssd提供比hdd更多的IOPS</li>
+</ul></li>
+</ul>
+<p>主要拆解为 * 目标小io IOPS高, 延时低. 尽量让任意组合的ssd和hdd, 均能用出ssd的能力?</p>
+<ul>
+<li>延时
+<ul>
+<li>读延时</li>
+<li>写延时</li>
+</ul></li>
+<li>命中率
+<ul>
+<li>淘汰算法</li>
+<li>缓存大小, 热数据大小</li>
+</ul></li>
+</ul>
+<h2 id="命中率">命中率</h2>
+<p>ssd的容量大小, 其实取决于热数据到底有多少? 刚好卡在热数据范围最好.</p>
+<p>如果完全没有热数据情况下, 即便都落ssd, 也价值不大?</p>
+<p>缓存击穿时, 我感觉还是一种关键, 但是主要是需要硬盘不成为瓶颈的情况下, 这样按理论上就不会受到flush和evict影响, 剩下的就是writeback和writethrough的差异了</p>
+<p>TODO: 单纯命令集的效果的话, 应该就是ssd承接部分命中的请求, 未命中的请求全落hdd.</p>
+<p>这样ssd的使用率如果命中的请求打不满, 那就浪费很大. 所以可能需要配合小对象都落ssd的方案, 这样就可以提高ssd的利用率? 这个方案应该是主流方案吧?</p>
+<h2 id="问题">问题</h2>
+<ul>
+<li>所有rbd, 超出tier大小性能差, 随着越大, 性能越差, 直到下限
+<ul>
+<li>多个rbd, 并不会存储冷热数据(指的是淘汰策略), 命中次数多的依旧会被踢掉. 表现是flush /evict很多</li>
+</ul></li>
+<li><p>tier不满的情况下, 对象不存在的第一次写时, 缓存层应该能全部缓住. 但是启动hit_set时, 存在与刚才那句预期不符. promote应该只产生一次请求就可以了.</p></li>
+<li>缓存击穿定义是?
+<ul>
+<li>目前现场的压力时确实有点大.</li>
+<li>导致IOPS上不去的一个因素, 是否就是这种击穿状态下, IOPS被flush和evict占用的?</li>
+</ul></li>
+<li>G5那种, 每天预计访问1-2T数据, 而缓存池20T以上, 总数据100T+, 是否能保障使用?
+<ul>
+<li>1个T数据, 今天, 因为tier足够大, 在ceph的热数据概念下, 其实这批数据不算热数据.</li>
+<li>这种其实也是一种智能promote的能力, 如果缓存池比较大的情况下.(持疑问)</li>
+</ul></li>
+</ul>
+<h2 id="拆解">拆解</h2>
+<ul>
+<li>性能 跟延时有关, 以及队列深度.
+<ul>
+<li>IOPS, 1ms=1000IOPS</li>
+<li>多队列情况下, 就有一定的放大.</li>
+<li>固态, 支持多队列, 一般队列深度是8, 总IOPS会相比单队列强很多. 在平均延时可能上涨一部分的情况下.
+<ul>
+<li>多队列.</li>
+<li>nvme的队列深度一般是32/64.</li>
+</ul></li>
+<li>软件层面, 内核提供的aio的syscall, aio_submit, aio_getevent这套能把一个队列中的多个op异步下发.</li>
+<li>软件层面的这种多队列怎么实现, 应该还是依托上面固态的硬件的.</li>
+</ul></li>
+<li>promote
+<ul>
+<li>对象进入blocked状态, 等待取上来</li>
+</ul></li>
+<li>flush+evict
+<ul>
+<li>flush本身, 如果盘的压力没满, 会阻塞write. (这个是个影响点, 可能影响的是evict)
+<ul>
+<li>flush和write同一个对象, 会阻塞. (待定)</li>
+<li>这种情况下如果发现阻塞了, 重新入队, 如果稳态测试这个场景, 理论上性能应该会相比普通场景性能会下降一笔.</li>
+</ul></li>
+<li>evict是目前影响最大的, 淘汰算法.
+<ul>
+<li>跟hit_set有关</li>
+<li>应该是会阻塞write.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="状态定义">状态定义</h3>
+<ul>
+<li>写满</li>
+<li>常态
+<ul>
+<li>指的是访问的部分对象需要从底下promote</li>
+<li>淘汰算法已经在常态生效
+<ul>
+<li>即我们场景里的flush+evict状态</li>
+</ul></li>
+</ul></li>
+<li>击穿, 最差性能
+<ul>
+<li>因为底下太多, 实际上基本命中不了了, 每次都是promote. 即底下hdd的性能.</li>
+<li>让他直接落hdd反而更好</li>
+</ul></li>
+<li><p>tier的大小, 是应该跟着业务, 让他起到部分命中的效果.</p></li>
+<li><p>根据上面的evict, 应该就需要针对业务, 提高命中率的方案, 在对象粒度不变的情况下, 可以提高性能.</p></li>
+</ul>
+<p>开了命中集之后的方案来进行.</p>
+<ul>
+<li>新写对象的性能
+<ul>
+<li>其实可以当做问题来解决, 这些对象不应该落到hdd上.</li>
+<li>全写新对象的测试场景, 4K, 只要没被flush过一次, 就不会走到需要hdd读一遍的情况</li>
+<li>fio 新对象</li>
+</ul></li>
+<li>这批对象全部写满了, 小于tier大小, 然后全部不在tier上.
+<ul>
+<li>手动写的librbd, 每个4M只写其中1个4K, 延时肯定都是hdd+ssd的延时, 那IOPS比裸压hdd的IOPS更低.</li>
+<li>rados flush-and-evict.</li>
+<li>走自己的librbd的下入, 每个4M, 1024次4K. 第一次肯定是不命中. 第一遍所有请求都是不重复的4M的. 第二次才开始剩下的.</li>
+<li>剩下的平均延时应该就是1次hdd+1023次ssd . 理论上限.</li>
+</ul></li>
+<li><p>rbd_index分离, rbd_header一整个rbd也才读一次, 应该不至于有什么影响.</p></li>
+<li>常态逻辑下需要支持的场景
+<ul>
+<li>分散对象, 即大部分场景不存在重复命中, 可能是将来深度学习模型能够解决的问题</li>
+<li>重复命中的问题, 然后控制重复命中的频次和比例, 比如说100%对象都重复1次, 或者60%的对象重复一次, LRU的命中效率是多少.
+<ul>
+<li>1G的内存 和 2G的对象,,LRU: 可能60%</li>
+</ul></li>
+<li>几个用来的计算的参数
+<ul>
+<li><ul>
+<li>tier大小与业务总数据大小关系</li>
+</ul></li>
+<li>重复对象的比例, 以及重复次数</li>
+<li>现在的管理对象粒度(现在是固定的4M)</li>
+</ul></li>
+</ul></li>
+<li><p>加个指标, 命中的范围. 只是举例</p></li>
+<li>0-1ms, 10%</li>
+<li>1-10ms, 20%</li>
+<li><p>10ms-20ms, 10%</p></li>
+<li><p>小对象, 提高对象粒度</p></li>
+</ul>
+<h1 id="分析">分析</h1>
+<h2 id="分析关键点">分析关键点</h2>
 <h3 id="埋点统计接口">埋点统计接口</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tier_flush\tier_promote等数据</span></span><br><span class="line"></span><br><span class="line">ceph daemon osd.&#123;id&#125; perf dump | grep tier</span><br><span class="line"></span><br><span class="line"><span class="comment"># num_write\num_read\num_promote等数据</span></span><br><span class="line">ceph pg dump_json</span><br></pre></td></tr></table></figure>
 <h3 id="tier主要触发任务">tier主要触发任务</h3>
@@ -284,7 +443,7 @@ above the threshold, and do not turn off until we are the same amount below
 the target.
 
 Signed-off-by: Sage Weil &lt;sage@inktank.com&gt;</code></pre>
-<h2 id="理解">理解</h2>
+<h2 id="理解-1">理解</h2>
 <blockquote>
 <p>该值需要根据缓存池的容量大小以及副本个数来设置，以三副本为例，target_max_bytes 不应该超过容量的 1/3，如果实际的负载使得存储池中的数据大小达到了容量的 1/3，后续的 IO 将被阻塞，所以需要设置别的参数来避免池中的数据到达该阈值。</p>
 </blockquote>
@@ -354,6 +513,7 @@ missing anything ?</li>
 </ul></li>
 </ul>
 <h1 id="命中集">命中集</h1>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (hit_set)</span><br><span class="line">  agent_estimate_temp(soid, &amp;temp);</span><br><span class="line">agent_state-&gt;temp_hist.add(temp);</span><br><span class="line">agent_state-&gt;temp_hist.get_position_micro(temp, &amp;temp_lower, &amp;temp_upper);</span><br></pre></td></tr></table></figure>
 <p><code>pow2_hist_t</code>: histogram of ages we’ve encountered.</p>
 <p>应该是位运算. cbits, 64字节, 值为1, bin得到的就是1, 值为2, 则得到的是2, 因为要去除前导的0, 值为4, 得到3, 8得到4.</p>
 <p>hist_t里存的啥? 好像low和up得到的就是bin前面的, 和加上bin之后的差值.</p>
@@ -399,7 +559,7 @@ missing anything ?</li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-03-10T12:18:21.696Z" itemprop="dateUpdated">2022-03-10 20:18:21</time>
+    最后更新时间：<time datetime="2022-06-06T15:31:35.559Z" itemprop="dateUpdated">2022-06-06 23:31:35</time>
 </span><br>
 
 

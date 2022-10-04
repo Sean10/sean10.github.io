@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="编程范式,code,paradigm">
-    <meta name="description" content="这两种其实在python里属于防御性编程下属的两种风格  if…else属于LBYL(Look before you leap) try…catch属于EAFP(easier to ask for forgiveness than permission)  就目前的理解上来说，主要的差异点好像在于以下  EAFP  一旦出现异常，存在性能上较差的问题，但是如果在正常逻辑，倒是没有固定成本 业务逻辑">
+    <meta name="description" content="这两种其实在python里属于防御性编程下属的两种风格  if…else属于LBYL(Look before you leap) try…catch属于EAFP(easier to ask for forgiveness than permission)  就代码风格上差异来说，主要的差异点好像在于以下 总结 针对不同类型的业务代码，其实是根据场景都适用的。  当业务逻辑中，异常场景不少见的时候，">
 <meta name="keywords" content="编程范式,code,paradigm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="if...else(LBYL)与try...catch(EAFP)初理解">
 <meta property="og:url" content="https://sean10.github.io/2020/06/24/if-else与try-catch初理解/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="这两种其实在python里属于防御性编程下属的两种风格  if…else属于LBYL(Look before you leap) try…catch属于EAFP(easier to ask for forgiveness than permission)  就目前的理解上来说，主要的差异点好像在于以下  EAFP  一旦出现异常，存在性能上较差的问题，但是如果在正常逻辑，倒是没有固定成本 业务逻辑">
+<meta property="og:description" content="这两种其实在python里属于防御性编程下属的两种风格  if…else属于LBYL(Look before you leap) try…catch属于EAFP(easier to ask for forgiveness than permission)  就代码风格上差异来说，主要的差异点好像在于以下 总结 针对不同类型的业务代码，其实是根据场景都适用的。  当业务逻辑中，异常场景不少见的时候，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.802Z">
+<meta property="og:updated_time" content="2022-07-21T03:20:04.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="if...else(LBYL)与try...catch(EAFP)初理解">
-<meta name="twitter:description" content="这两种其实在python里属于防御性编程下属的两种风格  if…else属于LBYL(Look before you leap) try…catch属于EAFP(easier to ask for forgiveness than permission)  就目前的理解上来说，主要的差异点好像在于以下  EAFP  一旦出现异常，存在性能上较差的问题，但是如果在正常逻辑，倒是没有固定成本 业务逻辑">
+<meta name="twitter:description" content="这两种其实在python里属于防御性编程下属的两种风格  if…else属于LBYL(Look before you leap) try…catch属于EAFP(easier to ask for forgiveness than permission)  就代码风格上差异来说，主要的差异点好像在于以下 总结 针对不同类型的业务代码，其实是根据场景都适用的。  当业务逻辑中，异常场景不少见的时候，">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo"><span class="post-toc-number">1.</span> <span class="post-toc-text">Todo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态分析exception"><span class="post-toc-number">2.</span> <span class="post-toc-text">静态分析Exception</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eafp"><span class="post-toc-number">2.</span> <span class="post-toc-text">EAFP</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#faq"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">FAQ</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lbyl"><span class="post-toc-number">3.</span> <span class="post-toc-text">LBYL</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#静态分析对exception的支持"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">静态分析对Exception的支持</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number"></span> <span class="post-toc-text">Reference</span></a>
         </nav>
     </aside>
 
@@ -191,47 +191,108 @@
 <li>if…else属于LBYL(Look before you leap)</li>
 <li>try…catch属于EAFP(easier to ask for forgiveness than permission)</li>
 </ul>
-<p>就目前的理解上来说，主要的差异点好像在于以下</p>
-<ul>
-<li>EAFP
-<ul>
-<li>一旦出现异常，存在性能上较差的问题，但是如果在正常逻辑，倒是没有固定成本</li>
-<li>业务逻辑会非常顺畅，所有的异常判断全部在业务逻辑外
-<ul>
-<li>这里应该有一点前提，业务逻辑封装的足够合适，否则每行做异常封装的话，看上去也并不美观</li>
-</ul></li>
-<li>各种 io 操作，包括但不限于网络请求、文件读者、数据库 crud…</li>
-</ul></li>
-<li>LBYL
-<ul>
-<li>固定的检查耗时成本，但是其实消耗不大，因为<code>if</code>是最适合编译器和处理器做分支预测优化的部分了*。</li>
-<li>存在<code>race condition</code>的潜在问题</li>
-<li>参数检查会混杂在业务逻辑中
-<ul>
-<li>不过这里也有一个疑惑点，如果封装的恰当，应该很多逻辑都是在入参检查处，这样的话倒也不会影响到业务逻辑部分的阅读。</li>
-</ul></li>
-</ul></li>
-</ul>
-<p>所以，针对不同类型的业务代码，其实是根据场景都适用的。</p>
+<p>就代码风格上差异来说，主要的差异点好像在于以下</p>
+<h3 id="总结">总结</h3>
+<p>针对不同类型的业务代码，其实是根据场景都适用的。</p>
 <ul>
 <li>当业务逻辑中，异常场景不少见的时候，用LBYL处理更合适</li>
 <li>当业务逻辑中，大部分场景是走的正常分支，只有少部分时候由于环境、网络波动等因素出现异常时，用EAFP更合适。
 <ul>
-<li>python官方是更推荐<code>EAFP</code>的</li>
+<li>按python哲学, 是更推荐<code>EAFP</code>的, 但是也不排斥利用静态语言的特性做一定程度的防御式编程</li>
 <li>也有人更推荐LBYL[^5]</li>
 </ul></li>
 </ul>
-<h2 id="todo">Todo</h2>
-<p>需要考虑的场景 * 如果是EAFP，因为未进行各种检查引起的问题，是否会需要回滚？ * 还是说，如果拆分的足够合适，做了基本的入参检查之后，代码中在调用其他函数时，进行异常处理就可以了？是否需要捕捉，然后抛出一个自定义的未知异常呢？</p>
-<h2 id="静态分析exception">静态分析<code>Exception</code></h2>
-<p>好像在<code>mypy</code>里支持了静态分析异常?</p>
+<blockquote>
+<p>Python 的动态类型（duck typing）决定了 EAFP，而 Java等强类型（strong typing）决定了 LBYL。语言之间的设计哲学差异，Java 对类型要求非常严格，要求明确，类/方法等，它假定你应该知道，任何时候你正在使用的对象类型，以及它能做什么。相反，Python 的鸭子类型意味着你不必明确的知道对象的显示类型是什么，你只需要关心你在使用时候它能有相应的反馈。在这种宽松的限制下，唯一明确的态度就是认为代码会工作，准备面对结果。 这无关语言的好坏，每一门语言都有自己的哲学与态度，正确的对待，理解。</p>
+</blockquote>
+<p>上面这句话说的很对, 对于python来说, 他提供了动态/静态语言的能力, 剩下的取决于开发者自身的运用了.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>预计成功比例</th>
+<th>业务逻辑可阅读性</th>
+<th>存在潜在不可控问题时的处理逻辑</th>
+<th>预检查成本</th>
+<th>多线程race condtion 风险</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EAFP</td>
+<td>高</td>
+<td>高(异常拆分恰当)</td>
+<td>省力. 通过父异常统一拦截</td>
+<td>低</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td>LBYL</td>
+<td>低</td>
+<td>高(在python3.6, mypy之后, 参数校验可从业务逻辑中去除)</td>
+<td>费力. 需要一个个异常判定, 工作量大, 风险高</td>
+<td>一般低, 偶尔高</td>
+<td>有</td>
+</tr>
+</tbody>
+</table>
+<h3 id="eafp">EAFP</h3>
+<ul>
+<li>一旦出现异常，存在性能上较差的问题，但是如果在正常逻辑，倒是没有固定成本
+<ul>
+<li>即预期大多数时间会是成功的</li>
+</ul></li>
+<li>业务逻辑代码阅读会非常顺畅，所有的异常判断全部在业务逻辑外
+<ul>
+<li>这里应该有一点前提，业务逻辑封装的足够合适，否则每行做异常封装的话，看上去也并不美观</li>
+</ul></li>
+<li>潜在不可控的问题: 如各种 io 操作，包括但不限于网络请求、文件读者、数据库 crud…</li>
+<li>预检查成本高: 如对下层产生的压力足以等同于正常请求, 为了性能可能更推荐EAFP.</li>
+</ul>
+<h4 id="faq">FAQ</h4>
+<ul>
+<li>如果是EAFP，因为未进行各种检查引起的问题，是否会需要回滚？
+<ul>
+<li>EAFP每个独立的exception针对对应的逻辑其实都应该做到幂等性, 进行独立rollback. 即EAFP的逻辑其实也是要拆分的恰当的, 不能通过一个大的try…catch…全包裹住, 异常</li>
+<li>如果拆分的足够合适，做了基本的入参检查之后，代码中在调用其他函数时，进行异常处理就可以.
+<ul>
+<li>建议捕捉下层收到的系统层级异常，然后抛出一个自定义的异常. 而不是将底层异常直接上传. 因为每个逻辑层次的错误代表不同的含义, 如最下层收到的参数的类型错误, 对应上层其实是某个逻辑错误.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id="lbyl">LBYL</h3>
+<ul>
+<li>固定的检查耗时成本，但是其实消耗不大，因为<code>if</code>是最适合编译器和处理器做分支预测优化的部分了*。
+<ul>
+<li>仅部分正常校验也会对下层业务产生较大压力时, 性能优化可解</li>
+</ul></li>
+<li>存在多线程<code>race condition</code>的潜在问题</li>
+<li>预检查会混杂在业务逻辑中
+<ul>
+<li>不过这里其实也取决于代码内聚解耦能力, 如果封装的恰当，应该很多逻辑都是在函数入口封装掉，这样的话倒也不会影响到业务逻辑部分的阅读。</li>
+<li>参数类型检查, 在python3.6前的开始推行<code>type annotion</code>后, 通过<code>typing</code>特性的类型标注后, LBYL的参数检查可以不用再显式<code>isinstance</code>来判断了, 即解除了一个缺点: <code>参数检查会混杂在业务逻辑中</code>的劣势.</li>
+</ul></li>
+<li>预计操作失败的时间占比较高时</li>
+</ul>
+<h4 id="静态分析对exception的支持">静态分析对<code>Exception</code>的支持</h4>
+<p>好像在<code>mypy</code>里这个是在计划支持中, 具体进展暂未了解到. 但大致的趋势是2者皆可用. 并不绝对.</p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
 <li><a href="https://zhuanlan.zhihu.com/p/36167239" target="_blank" rel="noopener">Python Tips - 防御性编程风格 EAFP vs LBYL - 知乎</a></li>
-<li><a href="https://www.zhihu.com/question/354242039" target="_blank" rel="noopener">(11 封私信 / 1 条消息) 如何理解 EAFP 和 LBYL 两种编程风格的区别？ - 知乎</a></li>
+<li><a href="https://www.zhihu.com/question/354242039" target="_blank" rel="noopener">如何理解 EAFP 和 LBYL 两种编程风格的区别？ - 知乎</a></li>
 <li><a href="https://www.v2ex.com/t/620135" target="_blank" rel="noopener">方式 1 和方式 2 的却别到底在哪里？ - V2EX</a></li>
 <li><a href="https://jeffknupp.com/blog/2013/02/06/write-cleaner-python-use-exceptions/" target="_blank" rel="noopener">Write Cleaner Python: Use Exceptions</a></li>
 <li><a href="https://www.joelonsoftware.com/2003/10/13/13/" target="_blank" rel="noopener">13 – Joel on Software</a></li>
+<li><a href="https://blog.csdn.net/weixin_44772030/article/details/106661363" target="_blank" rel="noopener">Python鸭子类型 duck typing_Keyboard Interrupt的博客-CSDN博客</a></li>
+<li><a href="https://stackoverflow.com/questions/58936504/python-and-eafp-principle-any-way-of-differentiating-betweeen-2-exceptions-of-t" target="_blank" rel="noopener">Python and EAFP principle: any way of differentiating betweeen 2 exceptions of the same type? - Stack Overflow</a></li>
 </ol>
 
         </div>
@@ -241,7 +302,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.802Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2022-07-21T03:20:04.236Z" itemprop="dateUpdated">2022-07-21 11:20:04</time>
 </span><br>
 
 

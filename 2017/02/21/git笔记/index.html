@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="git">
-    <meta name="description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &amp;quot;void ss()&amp;quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 子模块 git subtree(第三方, 独立仓库">
+    <meta name="description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &amp;quot;void ss()&amp;quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 如何找到tag是从哪个分支的哪个commit打出?">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git笔记">
 <meta property="og:url" content="https://sean10.github.io/2017/02/21/git笔记/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &amp;quot;void ss()&amp;quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 子模块 git subtree(第三方, 独立仓库">
+<meta property="og:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &amp;quot;void ss()&amp;quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 如何找到tag是从哪个分支的哪个commit打出?">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-02-16T15:11:21.040Z">
+<meta property="og:updated_time" content="2022-06-16T12:43:15.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git笔记">
-<meta name="twitter:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &amp;quot;void ss()&amp;quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 子模块 git subtree(第三方, 独立仓库">
+<meta name="twitter:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &amp;quot;void ss()&amp;quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 如何找到tag是从哪个分支的哪个commit打出?">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#切换分支"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">切换分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看未提交的文件修改"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">查看未提交的文件修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#show-not-staged"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">show not staged</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tag功能"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">tag功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#子模块"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">子模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-subtree第三方-独立仓库子树合并"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">git subtree(第三方, 独立仓库子树合并)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-submodule独立的子仓库"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">git submodule(独立的子仓库)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加git-submodule"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">添加git submodule</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#记录"><span class="post-toc-number">2.</span> <span class="post-toc-text">记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-status显示utf-8中文"><span class="post-toc-number">3.</span> <span class="post-toc-text">git status显示utf-8中文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlabgithub免密"><span class="post-toc-number">4.</span> <span class="post-toc-text">gitlab/github免密</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-merge"><span class="post-toc-number">5.</span> <span class="post-toc-text">git merge</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从指定分支合入log到当前分支"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">从指定分支合入log到当前分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-pull-和git-pull-rebase"><span class="post-toc-number">6.</span> <span class="post-toc-text">git pull 和git pull –rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-number">7.</span> <span class="post-toc-text">git rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">8.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#切换分支"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">切换分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看未提交的文件修改"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">查看未提交的文件修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#show-not-staged"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">show not staged</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tag功能"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">tag功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何找到tag是从哪个分支的哪个commit打出"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">如何找到tag是从哪个分支的哪个commit打出?</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#子模块"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">子模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-subtree第三方-独立仓库子树合并"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">git subtree(第三方, 独立仓库子树合并)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-submodule独立的子仓库"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">git submodule(独立的子仓库)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加git-submodule"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">添加git submodule</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#submodule的submodule"><span class="post-toc-number">1.4.2.2.</span> <span class="post-toc-text">submodule的submodule</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#回滚.-git-reset---hard即可."><span class="post-toc-number">2.</span> <span class="post-toc-text">回滚. git reset --hard即可.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-status显示utf-8中文"><span class="post-toc-number">4.</span> <span class="post-toc-text">git status显示utf-8中文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlabgithub免密"><span class="post-toc-number">5.</span> <span class="post-toc-text">gitlab/github免密</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-merge"><span class="post-toc-number">6.</span> <span class="post-toc-text">git merge</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从指定分支合入log到当前分支"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">从指定分支合入log到当前分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-pull-和git-pull-rebase"><span class="post-toc-number">7.</span> <span class="post-toc-text">git pull 和git pull –rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-number">8.</span> <span class="post-toc-text">git rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">9.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
 
@@ -194,6 +194,7 @@
 <h3 id="show-not-staged">show not staged</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
 <h2 id="tag功能">tag功能</h2>
+<h3 id="如何找到tag是从哪个分支的哪个commit打出">如何找到tag是从哪个分支的哪个commit打出?</h3>
 <h2 id="子模块">子模块</h2>
 <h3 id="git-subtree第三方-独立仓库子树合并">git subtree(第三方, 独立仓库子树合并)</h3>
 <h3 id="git-submodule独立的子仓库">git submodule(独立的子仓库)</h3>
@@ -203,9 +204,13 @@
 <li>git submodule init</li>
 <li>git submodule update</li>
 </ol>
+<p>或者 git submodule update –init –recursive</p>
 <h4 id="添加git-submodule">添加git submodule</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br><span class="line">git diff --cached</span><br><span class="line">git commit -m <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
-<p>回滚. <code>git reset --hard</code>即可.</p>
+<h4 id="submodule的submodule">submodule的submodule</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+<p>理论上这个可以, 那我编译时还触发了git clone的应该是因为代码并不是完全用submodule维持的关系了把?</p>
+<h1 id="回滚.-git-reset---hard即可.">回滚. <code>git reset --hard</code>即可.</h1>
 <h1 id="记录">记录</h1>
 <p>git的快照流是指什么？ (参见 Git 内部原理 来了解更多关于到底 .git 文件夹中包含了哪些文件的信息。) 事实上，如果你的服务器的磁盘坏掉了，你通常可以使用任何一个克隆下来的用户端来重建服务器上的仓库（虽然可能会丢失某些服务器端的挂钩设置，但是所有版本的数据仍在，详见 在服务器上搭建 Git ）。</p>
 <a id="more"></a>
@@ -289,7 +294,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-02-16T15:11:21.040Z" itemprop="dateUpdated">2022-02-16 23:11:21</time>
+    最后更新时间：<time datetime="2022-06-16T12:43:15.756Z" itemprop="dateUpdated">2022-06-16 20:43:15</time>
 </span><br>
 
 

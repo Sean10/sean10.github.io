@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.526Z">
+<meta property="og:updated_time" content="2022-06-06T05:50:28.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ceph之librados使用">
 <meta name="twitter:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发者模式2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">async模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#radosstripper理解"><span class="post-toc-number">3.</span> <span class="post-toc-text">radosstripper理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados连接过程"><span class="post-toc-number"></span> <span class="post-toc-text">rados连接过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发者模式2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">async模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#radosstripper理解"><span class="post-toc-number">3.</span> <span class="post-toc-text">radosstripper理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados连接过程"><span class="post-toc-number"></span> <span class="post-toc-text">rados连接过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超时参数"><span class="post-toc-number">2.</span> <span class="post-toc-text">超时参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -236,6 +236,12 @@
 <li>AioCompletionImpl</li>
 <li>osdc</li>
 </ul>
+<h2 id="超时参数">超时参数</h2>
+<ul>
+<li>client_mount_timeout</li>
+<li>rados_osd_op_timeout</li>
+<li>rados_mon_op_timeout</li>
+</ul>
 <h2 id="reference">Reference</h2>
 <ol type="1">
 <li><a href="https://docs.ceph.com/docs/master/rados/api/python/" target="_blank" rel="noopener">Librados (Python) — Ceph Documentation</a></li>
@@ -250,7 +256,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.526Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2022-06-06T05:50:28.711Z" itemprop="dateUpdated">2022-06-06 13:50:28</time>
 </span><br>
 
 

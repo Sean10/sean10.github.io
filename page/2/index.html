@@ -151,6 +151,106 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-ceph之luminous-github版本编译undefined-reference"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-05-15 21:34:46" datetime="2021-05-15T13:34:46.000Z"  itemprop="datePublished">2021-05-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/05/15/ceph之luminous-github版本编译undefined-reference/">ceph之luminous_github版本编译undefined_reference</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        主要问题是从svn下载的最新版的liminous分支, 编译时报这个错误
+1234567891011121314151617181920undefined reference to OSD::HeartbeatInfo::HEARTBEAT_MAX_CONN``这条修复了这个问题[osd: make OSD::HEARTBEAT\_MAX\_CONN inline by tchaikov ·...
+    
+
+        <a href="/2021/05/15/ceph之luminous-github版本编译undefined-reference/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ceph之mon-client时间长排查"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-04-26 19:56:42" datetime="2021-04-26T11:56:42.000Z"  itemprop="datePublished">2021-04-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/04/26/ceph之mon-client时间长排查/">ceph之mon_client时间长排查</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        背景
+在使用12.2.1版本时, 发现经常会出现需要10+秒才能返回ceph -s的现象, 偶尔又1s内就返回了.
+排查
+首先, time ceph -s --debug_monc 40 --debug_ms 40看下详细日志有没有记录在哪呢?
+看了下, 应该是在跟mon通信过程, 但是好像不知道发生了什么.
+咨询了一下大神给了个关键词, objecter, 打开debug后看到一部分内容了...
+    
+
+        <a href="/2021/04/26/ceph之mon-client时间长排查/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mon/">mon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/超时/">超时</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-systemd之systemd-tty-ask-password-agent卡住-md"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -545,16 +645,14 @@ ansible比较大的几个优点
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        todo
-目前vscode似乎还没有支持一个当前文件所有搜索项的列表显示的功能
-
-暂时是通过左侧的全局搜索, 定位到当前文件来进行搜索的.
-
-支持
+        支持
 类似typora的所见即所得插件支持
 
 即时渲染
-有一些unote之类的web editor嵌入到vscode中打开, 这样的话也算是实现了一个所见即所得的编辑器, 不过不是基于Vscode的倒是了. 不过这种情况下有些vscode配置的快捷键应...
+有一些unote之类的web editor嵌入到vscode中打开, 这样的话也算是实现了一个所见即所得的编辑器, 不过不是基于Vscode的倒是了. 不过这种情况下有些vscode配置的快捷键应该还是可以用的.
+目前基于markless自己维护了一个markless_sean10. 暂时用起来还是不错的.
+
+同义词模糊搜索功能(fuz...
     
 
         <a href="/2021/01/31/vscode相关技巧/" class="post-more waves-effect waves-button">
@@ -565,108 +663,6 @@ ansible比较大的几个优点
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-openAPI初探"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-31 15:29:57" datetime="2021-01-31T07:29:57.000Z"  itemprop="datePublished">2021-01-31</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/31/openAPI初探/">openAPI初探</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        todo(未理解的问题)
-
-既然作为一个规范文档, 那么引导的example肯定得提供吧?
-
-提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢?
-虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢?
-一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试...
-    
-
-        <a href="/2021/01/31/openAPI初探/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenAPI/">OpenAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK/">SDK</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-卡牌游戏之再玩ygocore-md"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-17 18:59:45" datetime="2021-01-17T10:59:45.000Z"  itemprop="datePublished">2021-01-17</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/17/卡牌游戏之再玩ygocore-md/">卡牌游戏之再玩ygocore.md</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        背景
-万智牌看着是不是跟D&amp;D有点关系?, 旅法师之类的. 看起来是集卡式游戏的始祖级别? 看大家的评论中, 这个的设计师考虑的比较好, 平衡性等都考虑的不错.
-游戏王嘛, 动画, 漫画, 实体卡的宣传都非常广, 只不过实体卡等那部分不是官方, 而是盗版, 在国内的市场里占了很大一部分, 相当部分的人的童年基本上都看过游戏王, 至少我是这样的. 而万智牌我就到了大学才看到同学在玩, ...
-    
-
-        <a href="/2021/01/17/卡牌游戏之再玩ygocore-md/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ygo/">ygo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/游戏王/">游戏王</a></li></ul>
 
     </div>
     
