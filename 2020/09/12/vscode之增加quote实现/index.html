@@ -160,7 +160,10 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加quote功能"><span class="post-toc-number">1.</span> <span class="post-toc-text">增加quote功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#找一下该插件中提供文本内容的显示的接口"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1. 找一下该插件中提供文本内容的显示的接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#寻找如何根据获取选中内容部分的当前行内容的行首指针."><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2. 寻找如何根据获取选中内容部分的当前行内容的行首指针.</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#针对第三种需求的三种状态切换"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3. 针对第三种需求的三种状态切换</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加quote功能"><span class="post-toc-number">1.</span> <span class="post-toc-text">增加quote功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#找一下该插件中提供文本内容的显示的接口"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.
+找一下该插件中提供文本内容的显示的接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#寻找如何根据获取选中内容部分的当前行内容的行首指针."><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.
+寻找如何根据获取选中内容部分的当前行内容的行首指针.</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#针对第三种需求的三种状态切换"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3.
+针对第三种需求的三种状态切换</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -187,8 +190,16 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="增加quote功能">增加quote功能</h2>
-<p>主要有整理笔记时, 有些内容需要注意引用的需求, 在给[^2]提交PR后很可惜作者一直没有上线, 就去提交给了markdown all in one, 在大佬们的讨论中, 发现这样一个场景, markdown的语法中对于引用只要求&gt;符号即可, 但是在各渲染及自动补充的实现中, 追加空格是个优雅的习惯. 然后在[^3]的review中, 大佬发现针对是否增加空格, 针对多级列表, github的markdown渲染的表现还不一致. 这就导致这套实现存在局限性了, 轻易引入存在较大bug风险了.</p>
-<p>所以这个插件暂时主要用于下述需求的场景, 对于需要对多级列表等进行引用的场景, 还没有一个比较好的方案.</p>
+<p>主要有整理笔记时, 有些内容需要注意引用的需求,
+在给[^2]提交PR后很可惜作者一直没有上线, 就去提交给了markdown all in one,
+在大佬们的讨论中, 发现这样一个场景,
+markdown的语法中对于引用只要求&gt;符号即可,
+但是在各渲染及自动补充的实现中, 追加空格是个优雅的习惯.
+然后在[^3]的review中, 大佬发现针对是否增加空格, 针对多级列表,
+github的markdown渲染的表现还不一致. 这就导致这套实现存在局限性了,
+轻易引入存在较大bug风险了.</p>
+<p>所以这个插件暂时主要用于下述需求的场景,
+对于需要对多级列表等进行引用的场景, 还没有一个比较好的方案.</p>
 <p>自己先单独封装了一个来使用.</p>
 <h3 id="场景">场景</h3>
 <ul>
@@ -205,23 +216,34 @@
 <li>每行选中文本的行首增加<code>&gt;</code>即可.</li>
 <li>或者根据每行行首绝对如何反转,是增加还是删除
 <ul>
-<li>不对,根据我个人的需求, 应该是三种状态, 如果存在未补全的, 则补全. 如果全部补全了才需要进行反转.</li>
+<li>不对,根据我个人的需求, 应该是三种状态, 如果存在未补全的, 则补全.
+如果全部补全了才需要进行反转.</li>
 </ul></li>
 </ul></li>
-<li>针对一些非标准格式的quote是否需要支持修改? 增加一个修正吧. 只要是匹配规则的, 都进行修正. 主要只针对缩进的吧.</li>
+<li>针对一些非标准格式的quote是否需要支持修改? 增加一个修正吧.
+只要是匹配规则的, 都进行修正. 主要只针对缩进的吧.</li>
 </ul>
 <h3 id="实现">实现</h3>
-<h4 id="找一下该插件中提供文本内容的显示的接口">1. 找一下该插件中提供文本内容的显示的接口</h4>
+<h4 id="找一下该插件中提供文本内容的显示的接口">1.
+找一下该插件中提供文本内容的显示的接口</h4>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> editor = <span class="built_in">window</span>.activeTextEditor;</span><br><span class="line"><span class="keyword">let</span> lineIndex = editor.selection.active.line;</span><br><span class="line"><span class="keyword">let</span> lineText = editor.document.lineAt(lineIndex).text;</span><br></pre></td></tr></table></figure>
 <p>上面的接口似乎满足了第一需求</p>
-<h4 id="寻找如何根据获取选中内容部分的当前行内容的行首指针.">2. 寻找如何根据获取选中内容部分的当前行内容的行首指针.</h4>
+<h4 id="寻找如何根据获取选中内容部分的当前行内容的行首指针.">2.
+寻找如何根据获取选中内容部分的当前行内容的行首指针.</h4>
 <p>这个通过获取到start所在line的Start就可以了.</p>
-<h4 id="针对第三种需求的三种状态切换">3. 针对第三种需求的三种状态切换</h4>
+<h4 id="针对第三种需求的三种状态切换">3.
+针对第三种需求的三种状态切换</h4>
 <p>进行简化</p>
 <p>场景一和场景二的最终动作都是在该行增加<code>&gt;</code></p>
-<p>场景一和场景二? 增加一个循环, 一开始获取到<code>selection</code>的时候就可以设置为循环, 最后处理为循环内每行遍历. 如果是场景一和场景二那就是处理当行</p>
+<p>场景一和场景二? 增加一个循环,
+一开始获取到<code>selection</code>的时候就可以设置为循环,
+最后处理为循环内每行遍历. 如果是场景一和场景二那就是处理当行</p>
 <p>都是根据遍历后的状态进行处理.</p>
-<p>首先一开始,场景一可以提取为场景二, 获取到指针所在行的全部内容, 场景三, 由于我们不关心尾部内容,因此其实也就是场景二的状态,只需要处理<code>start</code>所在指针的内容.(PS, 后来发现如果不关心尾部内容,也是存在问题的, 插入内容的时候直接导致尾部的文字会被替换一部分)</p>
+<p>首先一开始,场景一可以提取为场景二, 获取到指针所在行的全部内容,
+场景三,
+由于我们不关心尾部内容,因此其实也就是场景二的状态,只需要处理<code>start</code>所在指针的内容.(PS,
+后来发现如果不关心尾部内容,也是存在问题的,
+插入内容的时候直接导致尾部的文字会被替换一部分)</p>
 
         </div>
 

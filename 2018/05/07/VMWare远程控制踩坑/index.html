@@ -193,7 +193,8 @@
 <p>不过在使用VMWare共享文件夹给ubuntu的时候倒是遭遇了一些问题。</p>
 <h1 id="legacy-install">1. legacy install</h1>
 <p>一开始为了减少桌面环境的资源占用，修改了grub的选项，默认启动命令行界面了。理论上这个部分对我之后安装vmware-tools是没有什么影响的，照常挂载cdrom,<code>mount -t auto /dev/cdrom /mnt/cdrom</code>，然后解压到根目录执行就好。</p>
-<p>vmware据说是安装了vmware tools以后就可以访问共享文件夹，但是在ubuntu里安装失败多次，成功一次以后依旧没能发现那个文件夹。</p>
+<p>vmware据说是安装了vmware
+tools以后就可以访问共享文件夹，但是在ubuntu里安装失败多次，成功一次以后依旧没能发现那个文件夹。</p>
 <p><code>sudo ./vmware-install.pl -d</code>之后是完全不够的</p>
 <p>需要按照2对tools打一个补丁，</p>
 <p>然后使用更新的vmfuse替换mount，``之后就能访问共享文件夹了。</p>
@@ -220,9 +221,13 @@
 <ol type="1">
 <li><a href="https://ask.csdn.net/questions/163546" target="_blank" rel="noopener">vmhgfs-fuse替换mount</a></li>
 <li><a href="https://askubuntu.com/questions/762755/no-vmhgfs-file-system-installed-to-use-use-shared-folder" target="_blank" rel="noopener">vmware-tools-patches</a></li>
-<li><a href="https://pip.pypa.io/en/stable/installing/" target="_blank" rel="noopener">pip install doc</a></li>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/" target="_blank" rel="noopener">tsinghua pypi</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/31074090" target="_blank" rel="noopener">Anaconda &amp; ipython路径问题 &amp; jupyter notebook 启动核心问题（使用方法&amp;不常见的问题）</a></li>
+<li><a href="https://pip.pypa.io/en/stable/installing/" target="_blank" rel="noopener">pip install
+doc</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/" target="_blank" rel="noopener">tsinghua
+pypi</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/31074090" target="_blank" rel="noopener">Anaconda &amp;
+ipython路径问题 &amp; jupyter notebook
+启动核心问题（使用方法&amp;不常见的问题）</a></li>
 <li><a href="https://letianfeng.github.io/python/2018/04/24/jupyter_and_python_kernel.html" target="_blank" rel="noopener">jupyter与python的内核</a></li>
 </ol>
 

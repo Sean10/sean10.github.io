@@ -182,7 +182,8 @@
             <p>最近刚入职，做的还比较简单，熟悉libvirt，把KVM镜像给压缩一下。</p>
 <a id="more"></a>
 <p>KVM主要硬盘镜像有qcow2和raw两种类型。</p>
-<p>qcow2格式是copy on write的，使用时才占用硬盘空间，而raw则是创建时即分配了。</p>
+<p>qcow2格式是copy on
+write的，使用时才占用硬盘空间，而raw则是创建时即分配了。</p>
 <p>使用<code>ll -h</code>和<code>du -h</code>可以看到实际分配的和磁盘占用的大小。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qemu-img convert -f qcow2 -c -O qcow2 xx.qcow2 xx_compressed.qcow2</span><br></pre></td></tr></table></figure>
 <p>通过上述命令可以实现qcow2格式的压缩，但是无法更改硬盘初始创建时上限的大小。只有raw格式可以减小上限，一开始以为只有上限压缩了以后，才能把这样的镜像放到较小的硬盘分区里。</p>

@@ -160,7 +160,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tcp-qos-问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP Qos 问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#udp-加速"><span class="post-toc-number">2.</span> <span class="post-toc-text">UDP 加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rttround-trip-time-rtoretransmission-timeout"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">RTT(round trip time) &amp;&amp; RTO(Retransmission timeout)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据链路层arq与传输层arq区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据链路层ARQ与传输层ARQ区别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tcp-qos-问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP Qos 问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#udp-加速"><span class="post-toc-number">2.</span> <span class="post-toc-text">UDP 加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rttround-trip-time-rtoretransmission-timeout"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">RTT(round trip
+time) &amp;&amp; RTO(Retransmission timeout)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据链路层arq与传输层arq区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据链路层ARQ与传输层ARQ区别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -202,11 +203,15 @@
 <li>ACK+UNA VS UNA</li>
 <li>非退让流控
 <ul>
-<li>KCP正常模式同TCP一样使用公平退让法则，即发送窗口大小由：发送缓存大小、接收 端剩余接收缓存大小、丢包退让及慢启动这四要素决定。但传送及时性要求很高的小 数据时，可选择通过配置跳过后两步，仅用前两项来控制发送频率。以牺牲部分公平 性及带宽利用率之代价，换取了开着BT都能流畅传输的效果。</li>
+<li>KCP正常模式同TCP一样使用公平退让法则，即发送窗口大小由：发送缓存大小、接收
+端剩余接收缓存大小、丢包退让及慢启动这四要素决定。但传送及时性要求很高的小
+数据时，可选择通过配置跳过后两步，仅用前两项来控制发送频率。以牺牲部分公平
+性及带宽利用率之代价，换取了开着BT都能流畅传输的效果。</li>
 </ul></li>
 </ul>
 </blockquote>
-<h2 id="rttround-trip-time-rtoretransmission-timeout">RTT(round trip time) &amp;&amp; RTO(Retransmission timeout)</h2>
+<h2 id="rttround-trip-time-rtoretransmission-timeout">RTT(round trip
+time) &amp;&amp; RTO(Retransmission timeout)</h2>
 <p>RTT: 数据包往返时间 RTO: 超时重传时间</p>
 <p>RTO重传间隔是指数增加的。丢包一次后，下一次重传RTO会从1，2，4，8……。叫做指数回避策略。(RTO下限200ms,写在协议里的，无法修改)</p>
 <h1 id="数据链路层arq与传输层arq区别">数据链路层ARQ与传输层ARQ区别</h1>
@@ -215,8 +220,10 @@
 <h1 id="reference">Reference</h1>
 <ol type="1">
 <li><a href="https://www.oschina.net/p/kcp" target="_blank" rel="noopener">kcp 详解</a></li>
-<li><a href="http://weakyon.com/2015/07/30/the-impact-fo-rto-to-tcp-timeout.html" target="_blank" rel="noopener">RTO 对TCP超时的影响</a></li>
-<li><a href="https://sheepbao.github.io/post/tcp_rto_research_and_golang_implement/" target="_blank" rel="noopener">TCP RTO 计算方法及Go实现验证</a></li>
+<li><a href="http://weakyon.com/2015/07/30/the-impact-fo-rto-to-tcp-timeout.html" target="_blank" rel="noopener">RTO
+对TCP超时的影响</a></li>
+<li><a href="https://sheepbao.github.io/post/tcp_rto_research_and_golang_implement/" target="_blank" rel="noopener">TCP
+RTO 计算方法及Go实现验证</a></li>
 </ol>
 
         </div>

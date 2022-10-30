@@ -151,6 +151,66 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-联调集成质量小思"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2022-10-30 01:01:47" datetime="2022-10-29T17:01:47.000Z"  itemprop="datePublished">2022-10-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2022/10/30/联调集成质量小思/">联调集成质量小思</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        问题背景
+写本文的背景, 主要来源于项目开发过程中的一些问题,
+属于是十分影响进度的那类.
+
+联调期间发现一些与约定接口文档不同问题, 导致存在的重新联调.
+
+变更比例相对较大.
+
+业务的开发/调试需要等待平台上游功能开发完.
+
+如OS组和集群组的平台功能完毕后,
+依赖这俩部分提供的基础系统与数据库的业务组件方能开工.
+这部分过程中, 其他组其实无法投入这部分的开发.
+但是联调又基本就是同一...
+    
+
+        <a href="/2022/10/30/联调集成质量小思/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流程/">流程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-ceph社区进展跟进2022Q1+Q2"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -180,7 +240,9 @@
 
     
         17.2.0 正式发布
-Ceph.io — v17.2.0 Quincy released * telementry report优化, 是否可以满足性能问题定位?
+Ceph.io
+— v17.2.0 Quincy released * telementry report优化,
+是否可以满足性能问题定位?
 
 the “kvs” Ceph object class is not packaged anymore.
 
@@ -188,7 +250,8 @@ the “kvs” Ceph object class is not packaged anymore.
 
 
 crimson相关
-根据History for src/crimson -quincy ceph...
+根据History
+for src/crimson -quincy ceph...
     
 
         <a href="/2022/04/18/ceph社区进展跟进2022Q1+Q2/" class="post-more waves-effect waves-button">
@@ -236,8 +299,12 @@ crimson相关
 
     
         概览
-ashfinal/awesome-hammerspoon: awesome configuration for Hammerspoon. 开源,有点厉害,初步看着像是提供了整套操纵mac桌面的Lua API. 基本上是等同于alfred的效果了吧?
-参照ashfinal/awesome-hammerspoon: awesome configuration for Hammerspoon...
+ashfinal/awesome-hammerspoon:
+awesome configuration for Hammerspoon.
+开源,有点厉害,初步看着像是提供了整套操纵mac桌面的Lua API.
+基本上是等同于alfred的效果了吧?
+参照ashfinal/awesome-hammerspoon:
+awesome configuration for Hammerspoon...
     
 
         <a href="/2022/02/20/hammerspoon神器扩展/" class="post-more waves-effect waves-button">
@@ -296,11 +363,13 @@ ashfinal/awesome-hammerspoon: awesome configuration for Hammerspoon. 开源,有�
 
 那是否对接ceph-ansible?
 
-不对接, 但是ceph-ansible似乎也对接了cephadm, 作为cephadm的上层统一管理?
+不对接, 但是ceph-ansible似乎也对接了cephadm,
+作为cephadm的上层统一管理?
 
 ceph-orch的能力?
 
-Orchestrator CL...
+Orchestrator
+CL...
     
 
         <a href="/2021/12/02/ceph之dashboard/" class="post-more waves-effect waves-button">
@@ -347,7 +416,8 @@ Orchestrator CL...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        定义上, 高可用其实分为以下几种.
+        定义上,
+高可用其实分为以下几种.
 
 冗余
 
@@ -359,7 +429,10 @@ Orchestrator CL...
 
 熔断
 
-熔断更多指检测到连续故障, 让后续的也先拦截掉, 避免无法提供服务但依旧冲击服务压力. 检测到恢复之后再自愈那种. ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时候应该是阻塞, 而并没有通过熔断中断io. 但是如...
+熔断更多指检测到连续故障, 让后续的也先拦截掉,
+避免无法提供服务但依旧冲击服务压力. 检测到恢复之后再自愈那种.
+ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时候应该是阻塞,
+而并没有通过熔断中断io. 但是如...
     
 
         <a href="/2021/11/27/高可用初理解/" class="post-more waves-effect waves-button">
@@ -407,7 +480,9 @@ Orchestrator CL...
 
     
         背景
-近年来, 在组织团队的任务跟进方面, 存在一部分欠缺, 存在进度滞后的现象. 进展存在阻塞, 但是又没有及时感知到, 申请杨州哥等协助, 导致问题长期阻塞的情况.
+近年来, 在组织团队的任务跟进方面, 存在一部分欠缺, 存在进度滞后的现象.
+进展存在阻塞, 但是又没有及时感知到, 申请杨州哥等协助,
+导致问题长期阻塞的情况.
 因此在这里整理了一下目前主要的几个诉求.
 诉求
 记录和评估方面
@@ -464,9 +539,12 @@ irdms有工...
 
     
         背景
-需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件.
+需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接.
+指向多个文件.
 调查
-目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换.
+目前主流的方案是手动点击收藏,
+然后把语音转存为笔记, 然后实际就变成了一份silk文件,
+在android或者在pc上就能够从目录里提取出来, 进行编码转换.
 wechatExporter导出ios设备
 wxbackup导出ios设备
 微痕迹 app
@@ -517,12 +595,15 @@ wxbackup导出ios设备
     
         理解
 markdown是有对应的标准的. 似乎这篇可以参考?
-下面todo中提到的一些list的识别场景, 其实这篇spec有做一定的边界澄清?
+下面todo中提到的一些list的识别场景,
+其实这篇spec有做一定的边界澄清?
 CommonMark Spec
-中文版CommonMark Spec
+中文版CommonMark
+Spec
 Issue
 comments 现在
-长期运行后, 似乎会出现资源占用问题, 卡顿
+长期运行后,
+似乎会出现资源占用问题, 卡顿
 疑似是1.0.25这次这个增加自定义引起的这个问题
 似乎是1.0.25去掉了memoize引起的...
     
@@ -621,7 +702,11 @@ https://www.kernel...
         标准
 支持的日志等级
 SyslogHandler的syslog协议部分主要遵循RFC5424.
-在安装了systemd和rsyslog的设备上, 如果启用了syslog协议, 日志一般会先经由systemd-journald管控的/dev/log套接字, 由rsyslog从systemd-journald的socket中读取日志, 而后根据rsyslog的过滤器写入到/var/log/me...
+在安装了systemd和rsyslog的设备上,
+如果启用了syslog协议,
+日志一般会先经由systemd-journald管控的/dev/log套接字,
+由rsyslog从systemd-journald的socket中读取日志,
+而后根据rsyslog的过滤器写入到/var/log/me...
     
 
         <a href="/2021/08/13/python日志模块初探/" class="post-more waves-effect waves-button">
@@ -632,55 +717,6 @@ SyslogHandler的syslog协议部分主要遵循RFC5424.
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library/">library</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ceph之docker内crimson编译"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-06-23 09:21:25" datetime="2021-06-23T01:21:25.000Z"  itemprop="datePublished">2021-06-23</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/06/23/ceph之docker内crimson编译/">ceph之docker内crimson编译</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        配置
-配置了一个CentOS 8的容器, 执行下以下内容
-123456WITH_SEASTAR=true ./install-deps.shmkdir build &amp;&amp; cd build# 以下这步官网里没提, 导致失败的.# . /opt/rh/gcc-toolset-9/enablecmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_...
-    
-
-        <a href="/2021/06/23/ceph之docker内crimson编译/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译/">编译</a></li></ul>
 
     </div>
     

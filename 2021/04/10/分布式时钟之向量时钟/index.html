@@ -197,8 +197,13 @@
 </blockquote>
 <h2 id="如何实现向量时钟">如何实现向量时钟</h2>
 <blockquote>
-<p>假设分布式系统中有 N 个进程，每个进程都有一个本地的向量时间戳 Ti，向量时钟算法实现如下：</p>
-<p>对于进程 i 来说，Ti[i] 是进程 i 本地的逻辑时间 当进程 i 当有新的事件发生时，Ti[i] = Ti[i] + 1 当进程 i 发送消息时将它的向量时间戳(MT=Ti)附带在消息中。 接受消息的进程 j 更新本地的向量时间戳：Tj[k] = max(Tj[k], MT[k]) for k = 1 to N。（MT即消息中附带的向量时间戳）</p>
+<p>假设分布式系统中有 N 个进程，每个进程都有一个本地的向量时间戳
+Ti，向量时钟算法实现如下：</p>
+<p>对于进程 i 来说，Ti[i] 是进程 i 本地的逻辑时间 当进程 i
+当有新的事件发生时，Ti[i] = Ti[i] + 1 当进程 i
+发送消息时将它的向量时间戳(MT=Ti)附带在消息中。 接受消息的进程 j
+更新本地的向量时间戳：Tj[k] = max(Tj[k], MT[k]) for k = 1 to
+N。（MT即消息中附带的向量时间戳）</p>
 </blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -208,13 +213,21 @@
                 <div class="image-caption"></div>
             </figure>
 <blockquote>
-<p>假设有事件 a、b 分别在节点 P、Q 上发生，向量时钟分别为 Ta、Tb，如果 Tb[Q] &gt; Ta[Q] 并且 Tb[P] &gt;= Ta[P]，则a发生于b之前，记作 a -&gt; b，此时说明事件 a、b 有因果关系； 反之，如果 Tb[Q] &gt; Ta[Q] 并且 Tb[P] &lt; Ta[P]，则认为a、b同时发生，记作 a &lt;-&gt; b。例如上图中节点 B 上的第 4 个事件 (A:2，B:4，C:1) 与节点 C 上的第 2 个事件 (B:3，C:2) 没有因果关系，属于同时发生事件。</p>
+<p>假设有事件 a、b 分别在节点 P、Q 上发生，向量时钟分别为 Ta、Tb，如果
+Tb[Q] &gt; Ta[Q] 并且 Tb[P] &gt;= Ta[P]，则a发生于b之前，记作 a -&gt;
+b，此时说明事件 a、b 有因果关系； 反之，如果 Tb[Q] &gt; Ta[Q] 并且 Tb[P]
+&lt; Ta[P]，则认为a、b同时发生，记作 a &lt;-&gt; b。例如上图中节点 B
+上的第 4 个事件 (A:2，B:4，C:1) 与节点 C 上的第 2 个事件 (B:3，C:2)
+没有因果关系，属于同时发生事件。</p>
 </blockquote>
 <h1 id="数据冲突检测">数据冲突检测</h1>
-<p>根据这个, ceph里的<code>last_epoch_started</code>版本号应该也是起这个效果的吧, 具体分析待阅读到那个部分的代码再展开.</p>
+<p>根据这个,
+ceph里的<code>last_epoch_started</code>版本号应该也是起这个效果的吧,
+具体分析待阅读到那个部分的代码再展开.</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="https://zhuanlan.zhihu.com/p/56886156" target="_blank" rel="noopener">分布式系统：向量时钟 - 知乎</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/56886156" target="_blank" rel="noopener">分布式系统：向量时钟
+- 知乎</a></li>
 </ol>
 
         </div>

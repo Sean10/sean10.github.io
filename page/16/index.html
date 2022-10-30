@@ -151,6 +151,56 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-huffman编码实现压缩与解压缩"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2015-12-13 21:23:00" datetime="2015-12-13T13:23:00.000Z"  itemprop="datePublished">2015-12-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2015/12/13/huffman编码实现压缩与解压缩/">huffman编码实现压缩与解压缩</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        题目：将任意一个指定的文件进行哈夫曼编码，并以真正的二进制位生成一个二进制文件（压缩文件）；反过来，可将一个压缩文件解码还原为原来的文件。
+以下是编码过程中需要注意的地方 1.读入字符
+这里需要明白fread的运用。这段代码要实现的功能是对各类型文件进行转码，所以文本输入的方式fscanf不能在这里使用，只能用fread.
+读入过程中需要记录文件中总计的单字节字符数量n，后面需要写入编码的文...
+    
+
+        <a href="/2015/12/13/huffman编码实现压缩与解压缩/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Huffman/">Huffman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/压缩/">压缩</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-用先序递归过程建立二叉树"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -179,7 +229,9 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        用先序递归过程建立二叉树 (存储结构：二叉链表) 输入数据按先序遍历所得序列输入，当某结点左子树或右子树为空时，输入‘*’号，如输入abc**d**e**得到的二叉树如下： 123  a b ec d
+        用先序递归过程建立二叉树 (存储结构：二叉链表)
+输入数据按先序遍历所得序列输入，当某结点左子树或右子树为空时，输入‘*’号，如输入abc**d**e**得到的二叉树如下：
+123  a b ec d
 代码如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495...
     
 
@@ -227,7 +279,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ###蒙特卡洛算法(Monte Carlo Algorithm) 在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。
+        ###蒙特卡洛算法(Monte Carlo Algorithm)
+在这本书里面，前面我们已经学到的算法都是属于确定性算法。有这样一种情况，一个确定性算法不得不仔细判断大量的甚至指数级的可能事件。在这种情况下，我们用到了下面现在我们要学习的一种特殊类的概率算法。该算法在不同的运行步数下提供随机性的选择，在应对决策问题的情况下，这种算法叫做蒙特卡洛算法。
 
 A Monte Carlo algor...
     
@@ -370,7 +423,8 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        严格来说，到最后我还是没找到为什么我本机的CB运行出来就是0，上传就能AC的原因。 12345678910111213#include &lt;stdio.h&gt;#include &lt;math.h&gt;#define PI 3.1415927int main()&#123;    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin); ...
+        严格来说，到最后我还是没找到为什么我本机的CB运行出来就是0，上传就能AC的原因。
+12345678910111213#include &lt;stdio.h&gt;#include &lt;math.h&gt;#define PI 3.1415927int main()&#123;    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin); ...
     
 
         <a href="/2015/12/03/HDU2002/" class="post-more waves-effect waves-button">
@@ -464,7 +518,8 @@ A Monte Carlo algor...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。 真的是代码打得太少了。 123456789101112131415161718192021222324252627282930313233343536#include &lt;cstdio&gt;#include &lt;cstring&gt;#include ...
+        自从那次校赛没过以后就一直没心思做题，现在连水题要注意的PE也交了6次再看了一份AC代码才想起来，多输出了空格再换行也是会PE的。
+真的是代码打得太少了。 123456789101112131415161718192021222324252627282930313233343536#include &lt;cstdio&gt;#include &lt;cstring&gt;#include ...
     
 
         <a href="/2015/12/03/HDU2000/" class="post-more waves-effect waves-button">
@@ -515,7 +570,8 @@ A Monte Carlo algor...
 定义1.假设\(S\)是一个有\(n\)个元素的集合，均匀分布分配给\(S\)的每个元素\(\frac1n\)的概率。
 
 
-定义2.事件\(E\)的概率是\(E\)中所有结果出现的概率之和。如下：\[p(E)=\sum_{s \in E}p(s)\]. （注意：当\(E\)是一个有限集合时，\(\sum_{s \in E}p(s)\)是一个收敛有限级数。）
+定义2.事件\(E\)的概率是\(E\)中所有结果出现的概率之和。如下：\[p(E)=\sum_{s \in E}p(s)\]. （注意：当\(E\)是一个有限集合时，\(\sum_{s \in
+E}p(s)\)是一个收敛有限级数。）
 
 这里事件的各个结果的概率计算依...
     
@@ -580,58 +636,6 @@ A Monte Carlo algor...
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/概率/">概率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/离散数学/">离散数学</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-二叉树——森林的带度数层次序列存储"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2015-12-01 18:09:00" datetime="2015-12-01T10:09:00.000Z"  itemprop="datePublished">2015-12-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">算法</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2015/12/01/二叉树——森林的带度数层次序列存储/">二叉树——森林的带度数层次序列存储</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        题目链接 总时间限制: 1000ms 内存限制: 65536kB 描述 对于树和森林等非线性结构，我们往往需要将其序列化以便存储。有一种树的存储方式称为带度数的层次序列。我们可以通过层次遍历的方式将森林序列转化为多个带度数的层次序列。
-例如对于以下森林： 
-                
-                    
-                    
-         ...
-    
-
-        <a href="/2015/12/01/二叉树——森林的带度数层次序列存储/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉树/">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树/">树</a></li></ul>
 
     </div>
     

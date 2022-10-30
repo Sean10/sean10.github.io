@@ -160,7 +160,11 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#样例"><span class="post-toc-number">2.</span> <span class="post-toc-text">样例</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#increase-the-default-a-bit-in-order-to-allow-many-simultaneous"><span class="post-toc-number">3.</span> <span class="post-toc-text">Increase the default a bit in order to allow many simultaneous</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#files-to-be-monitored-we-might-need-a-lot-of-fds."><span class="post-toc-number">4.</span> <span class="post-toc-text">files to be monitored, we might need a lot of fds.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#new2.sh"><span class="post-toc-number">5.</span> <span class="post-toc-text">new2.sh</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#new1.service"><span class="post-toc-number">6.</span> <span class="post-toc-text">new1.service</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#increase-the-default-a-bit-in-order-to-allow-many-simultaneous-1"><span class="post-toc-number">7.</span> <span class="post-toc-text">Increase the default a bit in order to allow many simultaneous</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#files-to-be-monitored-we-might-need-a-lot-of-fds.-1"><span class="post-toc-number">8.</span> <span class="post-toc-text">files to be monitored, we might need a lot of fds.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#new.sh"><span class="post-toc-number">9.</span> <span class="post-toc-text">new.sh</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#样例"><span class="post-toc-number">2.</span> <span class="post-toc-text">样例</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#increase-the-default-a-bit-in-order-to-allow-many-simultaneous"><span class="post-toc-number">3.</span> <span class="post-toc-text">Increase
+the default a bit in order to allow many simultaneous</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#files-to-be-monitored-we-might-need-a-lot-of-fds."><span class="post-toc-number">4.</span> <span class="post-toc-text">files to be
+monitored, we might need a lot of fds.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#new2.sh"><span class="post-toc-number">5.</span> <span class="post-toc-text">new2.sh</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#new1.service"><span class="post-toc-number">6.</span> <span class="post-toc-text">new1.service</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#increase-the-default-a-bit-in-order-to-allow-many-simultaneous-1"><span class="post-toc-number">7.</span> <span class="post-toc-text">Increase
+the default a bit in order to allow many simultaneous</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#files-to-be-monitored-we-might-need-a-lot-of-fds.-1"><span class="post-toc-number">8.</span> <span class="post-toc-text">files to be
+monitored, we might need a lot of fds.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#new.sh"><span class="post-toc-number">9.</span> <span class="post-toc-text">new.sh</span></a></li></ol>
         </nav>
     </aside>
 
@@ -187,8 +191,13 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="背景">背景</h1>
-<p>这个问题其实之前遇到的还挺多的, 简单来说, 就是某个A服务启动B服务, 但是B服务又必须等待另一个服务启动完毕(比如A服务), 产生了一定的死锁. 而在<code>ps</code>的进程表中看到的就是<code>systemd-tty-ask-password-agent</code>这样一个<code>agent</code>进程卡住. 一般查一下当前卡住的<code>service</code>和他依赖的<code>after</code>,<code>before</code>的几个服务, 就知道了, 一般就是循环死锁了.</p>
-<p>具体理论这块还没去查源码, 暂时只能给个结论.有大佬看过的话, 希望也能分享下~</p>
+<p>这个问题其实之前遇到的还挺多的, 简单来说, 就是某个A服务启动B服务,
+但是B服务又必须等待另一个服务启动完毕(比如A服务), 产生了一定的死锁.
+而在<code>ps</code>的进程表中看到的就是<code>systemd-tty-ask-password-agent</code>这样一个<code>agent</code>进程卡住.
+一般查一下当前卡住的<code>service</code>和他依赖的<code>after</code>,<code>before</code>的几个服务,
+就知道了, 一般就是循环死锁了.</p>
+<p>具体理论这块还没去查源码, 暂时只能给个结论.有大佬看过的话,
+希望也能分享下~</p>
 <h1 id="样例">样例</h1>
 <p>``` bash # new2.service [Unit]<br>
 Description=System Logging Service<br>
@@ -198,8 +207,10 @@ Documentation=https://www.rsyslog.com/doc/</p>
 Type=forking<br>
 EnvironmentFile=-/etc/sysconfig/rsyslog<br>
 ExecStart=/root/new2.sh</p>
-<h1 id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous">Increase the default a bit in order to allow many simultaneous</h1>
-<h1 id="files-to-be-monitored-we-might-need-a-lot-of-fds.">files to be monitored, we might need a lot of fds.</h1>
+<h1 id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous">Increase
+the default a bit in order to allow many simultaneous</h1>
+<h1 id="files-to-be-monitored-we-might-need-a-lot-of-fds.">files to be
+monitored, we might need a lot of fds.</h1>
 <p>[Install]<br>
 WantedBy=multi-user.target</p>
 <h1 id="new2.sh">new2.sh</h1>
@@ -214,8 +225,10 @@ After=new2.service</p>
 Type=forking<br>
 EnvironmentFile=-/etc/sysconfig/rsyslog<br>
 ExecStart=/root/new1.sh</p>
-<h1 id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous-1">Increase the default a bit in order to allow many simultaneous</h1>
-<h1 id="files-to-be-monitored-we-might-need-a-lot-of-fds.-1">files to be monitored, we might need a lot of fds.</h1>
+<h1 id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous-1">Increase
+the default a bit in order to allow many simultaneous</h1>
+<h1 id="files-to-be-monitored-we-might-need-a-lot-of-fds.-1">files to be
+monitored, we might need a lot of fds.</h1>
 <p>[Install]<br>
 WantedBy=multi-user.target</p>
 <h1 id="new.sh">new.sh</h1>

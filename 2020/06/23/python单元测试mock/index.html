@@ -187,10 +187,12 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="背景">背景</h2>
-<p>单测主要遇到需要<code>mock</code>数据的场景目前遇到比较多的是两类 * HTTP接口 * 对底层业务逻辑API</p>
+<p>单测主要遇到需要<code>mock</code>数据的场景目前遇到比较多的是两类 *
+HTTP接口 * 对底层业务逻辑API</p>
 <p>HTTP接口相关的mock工具非常多了，暂时就不具体说了。这篇主要记录的是针对依赖的API的mock。</p>
 <p>在python单元测试数据mock有两座山，一个是<code>unittest.mock</code>，一个是<code>pytest</code>的<code>mockeypatch</code>。当然，还有一些<code>easymock</code>之类的库，但是没去研究，暂时搁置。</p>
-<p>很多文章里提到<a href="http://xunitpatterns.com/Test%20Double.html" target="_blank" rel="noopener">Test Double at XUnitPatterns.com</a>，好像TDD开发中的概念，这里做了非常详细的划分。</p>
+<p>很多文章里提到<a href="http://xunitpatterns.com/Test%20Double.html" target="_blank" rel="noopener">Test Double at
+XUnitPatterns.com</a>，好像TDD开发中的概念，这里做了非常详细的划分。</p>
 <p>不过，主体上其实对数据的模拟主要是2点。 * mock * stub</p>
 <h2 id="mock与stub">mock与stub</h2>
 <ul>
@@ -203,7 +205,8 @@
 <p><code>mock</code>应该主要指的是检查函数的调用、异常的触发情况，而<code>stub</code>主要就负责提供我们要的模拟数据</p>
 <h3 id="具体使用方式">具体使用方式</h3>
 <p>主要使用的是<code>pytest</code>及<code>pytest-mock</code>，<code>pytest-mock</code>提供了一个<code>mocker</code>的<code>fixture</code>。</p>
-<p>PS. <code>fixture</code>是pytest的一个封装，将一个函数封装，作为全局参数使用，在被写入某些函数的参数时，这些被封装的函数会执行一遍（对于像<code>patch</code>这类修改运行时的操作，能够保留）</p>
+<p>PS.
+<code>fixture</code>是pytest的一个封装，将一个函数封装，作为全局参数使用，在被写入某些函数的参数时，这些被封装的函数会执行一遍（对于像<code>patch</code>这类修改运行时的操作，能够保留）</p>
 <h4 id="patch基本使用">patch基本使用</h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="patch调用封装的接口">patch调用封装的接口</h4>
@@ -221,11 +224,16 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myMethod = Mock(side_effect=KeyError(<span class="string">'whatever'</span>))</span><br><span class="line"><span class="keyword">with</span> self.assertRaises(KeyError):</span><br><span class="line">    myMethod()</span><br></pre></td></tr></table></figure>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="http://hongyitong.github.io/2016/12/23/%E6%B5%85%E8%B0%88mock%E5%92%8Cstub/" target="_blank" rel="noopener">浅谈mock和stub | 忆桐之家的博客</a></li>
-<li><a href="https://docs.python.org/3/library/unittest.mock.html" target="_blank" rel="noopener">unittest.mock — mock object library — Python 3.8.3 documentation</a></li>
-<li><a href="https://docs.pytest.org/en/latest/monkeypatch.html" target="_blank" rel="noopener">Monkeypatching/mocking modules and environments — pytest documentation</a></li>
-<li><a href="https://www.toptal.com/python/an-introduction-to-mocking-in-python" target="_blank" rel="noopener">Python Mocking: A Guide to Better Unit Tests | Toptal</a></li>
-<li><a href="https://blog.woodcoding.com/%E6%B5%8B%E8%AF%95/2019/03/31/first-to-touch-unittest/" target="_blank" rel="noopener">简述软件开发中的单元测试 | 无人之岛</a></li>
+<li><a href="http://hongyitong.github.io/2016/12/23/%E6%B5%85%E8%B0%88mock%E5%92%8Cstub/" target="_blank" rel="noopener">浅谈mock和stub
+| 忆桐之家的博客</a></li>
+<li><a href="https://docs.python.org/3/library/unittest.mock.html" target="_blank" rel="noopener">unittest.mock
+— mock object library — Python 3.8.3 documentation</a></li>
+<li><a href="https://docs.pytest.org/en/latest/monkeypatch.html" target="_blank" rel="noopener">Monkeypatching/mocking
+modules and environments — pytest documentation</a></li>
+<li><a href="https://www.toptal.com/python/an-introduction-to-mocking-in-python" target="_blank" rel="noopener">Python
+Mocking: A Guide to Better Unit Tests | Toptal</a></li>
+<li><a href="https://blog.woodcoding.com/%E6%B5%8B%E8%AF%95/2019/03/31/first-to-touch-unittest/" target="_blank" rel="noopener">简述软件开发中的单元测试
+| 无人之岛</a></li>
 </ol>
 
         </div>

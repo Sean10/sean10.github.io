@@ -186,18 +186,27 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>前段时间, windows Terminal 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linux设备做开发。 <a id="more"></a></p>
-<p>我之前的方案是自己搭了个本地虚拟机做跳板，这个虚拟机里装了tmux，然后我通过windows上可以ssh的工具ssh上去使用<code>tmux</code>， 再开多个<code>pane</code>ssh开发机。</p>
+            <p>前段时间, windows Terminal
+1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linux设备做开发。
+<a id="more"></a></p>
+<p>我之前的方案是自己搭了个本地虚拟机做跳板，这个虚拟机里装了tmux，然后我通过windows上可以ssh的工具ssh上去使用<code>tmux</code>，
+再开多个<code>pane</code>ssh开发机。</p>
 <p>tmux通过快捷键切换、创建、分割、临时全屏化pane来操作还是非常便捷的。</p>
 <p>目前我是使用的putty作为ssh工具。之前使用过cygwin（MSYS)，不过在这些环境下启动tmux，当时是在创建切换pane上有些或多或少的问题。听说MSYS2之前也已经出了，似乎已经比较成熟了，大佬们也可以试试。</p>
-<p>我最近已经比较图稳定了，之前遇到的或多或少的问题有比如我需要显示编码从UTF-8临时切换到GBK，在这个时候有些工具会把分隔栏变成错误字符。还有我需要简洁的全屏，只需要通过tmux来控制和切换窗口，像xshell和CRT等工具对我来说就有些功能过冗余了。当然，像能和这两个工具结合在一起的文件传输插件还是挺不错的，不过也可以通过samba和IDE的remote devetop的sync功能将就将就，对于偶尔才会有代码以外的文件需要替换时，winscp足够使用了。</p>
-<p>去年好像windows 10 开始官方提供OpenSSH支持，我立马也就升级了。不过很可惜在powershell和cmd环境中，像Ctrl+C等快捷键会直接被powershell给捕获，导致即便用这两个窗口ssh到了设备上，表现也并不是那么好。另外powershell和cmd的默认字体和高亮的美观度也不是很喜欢……</p>
-<p>根据windows terminal的文档[^2]中所说的快捷键使用，基本上我用到的tmux功能都可以修改windows terminal的profile来模拟一致。且针对windows上需要临时复制单pane的内容时，这个相比putty能够不用单独全屏化窗口再复制，算是一个优势。</p>
+<p>我最近已经比较图稳定了，之前遇到的或多或少的问题有比如我需要显示编码从UTF-8临时切换到GBK，在这个时候有些工具会把分隔栏变成错误字符。还有我需要简洁的全屏，只需要通过tmux来控制和切换窗口，像xshell和CRT等工具对我来说就有些功能过冗余了。当然，像能和这两个工具结合在一起的文件传输插件还是挺不错的，不过也可以通过samba和IDE的remote
+devetop的sync功能将就将就，对于偶尔才会有代码以外的文件需要替换时，winscp足够使用了。</p>
+<p>去年好像windows 10
+开始官方提供OpenSSH支持，我立马也就升级了。不过很可惜在powershell和cmd环境中，像Ctrl+C等快捷键会直接被powershell给捕获，导致即便用这两个窗口ssh到了设备上，表现也并不是那么好。另外powershell和cmd的默认字体和高亮的美观度也不是很喜欢……</p>
+<p>根据windows
+terminal的文档[^2]中所说的快捷键使用，基本上我用到的tmux功能都可以修改windows
+terminal的profile来模拟一致。且针对windows上需要临时复制单pane的内容时，这个相比putty能够不用单独全屏化窗口再复制，算是一个优势。</p>
 <p>不过现在唯一的不足就在于，在这个版本暂时没有临时zoom全屏化单个pane的功能，根据[^1]中说的，<code>#996</code>暂时也没有纳入<code>1.x</code>的计划中，在<code>2.0</code>中才会发布。这就有点可惜了，只能再期待了。</p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="https://github.com/microsoft/terminal/issues/1000" target="_blank" rel="noopener">Scenario: Add support for panes · Issue #1000 · microsoft/terminal</a></li>
-<li><a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/key-bindings#tab-management-commands" target="_blank" rel="noopener">Windows Terminal Key Bindings | Microsoft Docs</a></li>
+<li><a href="https://github.com/microsoft/terminal/issues/1000" target="_blank" rel="noopener">Scenario: Add
+support for panes · Issue #1000 · microsoft/terminal</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/key-bindings#tab-management-commands" target="_blank" rel="noopener">Windows
+Terminal Key Bindings | Microsoft Docs</a></li>
 </ol>
 
         </div>
@@ -252,7 +261,8 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linu..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal
+1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linu..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -408,7 +418,8 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linu..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal
+1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linu..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>

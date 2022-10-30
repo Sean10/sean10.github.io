@@ -188,11 +188,14 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>现在装的环境有点多了，一不留神就会改动了其他工具使用的环境，这种环境下学下docker可以保障运行环境的一致性。</p>
 <a id="more"></a>
-<p>试着先给毕设用的环境写个dockerfile, 顺便提了个PR，希望能被合并吧。</p>
-<p>在找错的过程中，看到好多人用docker run来后台执行命令，感觉好微妙，每次从镜像新建一个容器来执行命令，那旧的容器是继续保留吗？还是说生产环境的确就是这样做的。</p>
+<p>试着先给毕设用的环境写个dockerfile,
+顺便提了个PR，希望能被合并吧。</p>
+<p>在找错的过程中，看到好多人用docker
+run来后台执行命令，感觉好微妙，每次从镜像新建一个容器来执行命令，那旧的容器是继续保留吗？还是说生产环境的确就是这样做的。</p>
 <p>可能因为我这算是学习环境，所以对Docker的变动都是在内部修改，并不完全是从dockerfile来的吧。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t sean10:tensorflow .</span><br></pre></td></tr></table></figure>
-<p>在docker run时，最后的命令行参数是会和dockerfile中的RUN, CMD, ENTRYPOINT相关的。</p>
+<p>在docker run时，最后的命令行参数是会和dockerfile中的RUN, CMD,
+ENTRYPOINT相关的。</p>
 <p>RUN是在Build时运行的，先于CMD和ENTRYPOINT。Build完成了，RUN也运行完成后，再运行CMD或者ENTRYPOINT。</p>
 <p>比如这个，最后的bash会覆盖CMD指定的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br></pre></td></tr></table></figure></p>
 <hr>
@@ -209,10 +212,12 @@
 <h1 id="显示已下载的image的dockerfile">显示已下载的image的dockerfile</h1>
 <h1 id="systemd的docker内启动">systemd的docker内启动</h1>
 <blockquote>
-<p>docker run -tid –name test_1 –privileged=true centos:latest /usr/sbin/init docker exec -it test_1 /bin/bash</p>
+<p>docker run -tid –name test_1 –privileged=true centos:latest
+/usr/sbin/init docker exec -it test_1 /bin/bash</p>
 </blockquote>
 <h1 id="多重from-image">多重from image</h1>
-<p><a href="https://www.cnblogs.com/dogecheng/p/11437413.html" target="_blank" rel="noopener">精简Docker镜像的几个方法 - 那少年和狗 - 博客园</a></p>
+<p><a href="https://www.cnblogs.com/dogecheng/p/11437413.html" target="_blank" rel="noopener">精简Docker镜像的几个方法
+- 那少年和狗 - 博客园</a></p>
 <h1 id="参考">参考</h1>
 <ol type="1">
 <li><a href="https://segmentfault.com/q/1010000000417103" target="_blank" rel="noopener">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li>

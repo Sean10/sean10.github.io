@@ -160,7 +160,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提交"><span class="post-toc-number">1.</span> <span class="post-toc-text">提交</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#crushmap变更时-df容量不准确"><span class="post-toc-number"></span> <span class="post-toc-text">crushmap变更时, df容量不准确</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo-这中间也没干啥-数字在变化-默认的元数据"><span class="post-toc-number">1.</span> <span class="post-toc-text">TODO: 这中间也没干啥, 数字在变化? 默认的元数据?</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提交"><span class="post-toc-number">1.</span> <span class="post-toc-text">提交</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#crushmap变更时-df容量不准确"><span class="post-toc-number"></span> <span class="post-toc-text">crushmap变更时, df容量不准确</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo-这中间也没干啥-数字在变化-默认的元数据"><span class="post-toc-number">1.</span> <span class="post-toc-text">TODO:
+这中间也没干啥, 数字在变化? 默认的元数据?</span></a></li></ol>
         </nav>
     </aside>
 
@@ -187,7 +188,8 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。</p>
-<p>尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd out了之后，<code>ceph df</code>拿到的<code>MAX AVAIL</code>始终没有变化。</p>
+<p>尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd
+out了之后，<code>ceph df</code>拿到的<code>MAX AVAIL</code>始终没有变化。</p>
 <a id="more"></a>
 <p>这样对于使用者来说是存在问题的，当出现降级的情况时，若业务层使用这个接口看到资源池仍有可用空间，但实际上依旧up的osd并不能提供这些空间，是会导致业务人员出现误判……直接导致业务数据写不下去的情况的。</p>
 <p>代码里是这样写了，但是是否上面的想法只是我们理解错误产生的误用呢？</p>
@@ -195,50 +197,78 @@
 <p>先搜索主要代码</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PGMap.cc</span></span><br><span class="line"><span class="keyword">int64_t</span> proj = (<span class="keyword">int64_t</span>)(avail / (<span class="keyword">double</span>)p-&gt;second);</span><br></pre></td></tr></table></figure>
 <p>利用blame查找每行的记录，还是不错的。</p>
-<p><a href="https://tracker.ceph.com/issues/10257#note-1" target="_blank" rel="noopener">Bug #10257: Ceph df doesn’t report MAX AVAIL correctly when using rulesets and OSD in ruleset is down and out - Ceph - Ceph</a></p>
+<p><a href="https://tracker.ceph.com/issues/10257#note-1" target="_blank" rel="noopener">Bug #10257:
+Ceph df doesn’t report MAX AVAIL correctly when using rulesets and OSD
+in ruleset is down and out - Ceph - Ceph</a></p>
 <p>这篇里只加了跳过kb=0的选项</p>
-<p><a href="https://github.com/ceph/ceph/pull/17513" target="_blank" rel="noopener">mon: incorrect MAX AVAIL in “ceph df” by liuchang0812 · Pull Request #17513 · ceph/ceph</a></p>
+<p><a href="https://github.com/ceph/ceph/pull/17513" target="_blank" rel="noopener">mon: incorrect MAX
+AVAIL in “ceph df” by liuchang0812 · Pull Request #17513 ·
+ceph/ceph</a></p>
 <p>这篇里好像是之前漏了/raw_used_rate这个副本size</p>
-<p><a href="https://github.com/ceph/ceph/pull/12923/commits/f223ac92917f4bc18e5b9b3ad61afa155e4d088a" target="_blank" rel="noopener">mon/PGMap: factor mon_osd_full_ratio into MAX AVAIL calc by liewegas · Pull Request #12923 · ceph/ceph</a></p>
+<p><a href="https://github.com/ceph/ceph/pull/12923/commits/f223ac92917f4bc18e5b9b3ad61afa155e4d088a" target="_blank" rel="noopener">mon/PGMap:
+factor mon_osd_full_ratio into MAX AVAIL calc by liewegas · Pull Request
+#12923 · ceph/ceph</a></p>
 <p>这个操作引入的full_ratio参数到MAX AVAIL计算中</p>
-<p><a href="https://github.com/ceph/ceph/commit/d10c6c26f9ef7372e2c95da79d23b07ce5f4e0e5#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">mon/PGMap: Fix %USED calculation bug. · ceph/ceph@d10c6c2</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/d10c6c26f9ef7372e2c95da79d23b07ce5f4e0e5#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">mon/PGMap:
+Fix %USED calculation bug. · ceph/ceph@d10c6c2</a></p>
 <p>修复%USED（raw的应该) 没有乘以副本数的问题。</p>
-<p><a href="https://github.com/ceph/ceph/commit/7ca25dfd5a4f05d1f942b73f08e82b8694a73c99#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">osd,os,mon: extend ‘ceph df’ report to provide both USED and RAW_USED · ceph/ceph@7ca25df</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/7ca25dfd5a4f05d1f942b73f08e82b8694a73c99#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">osd,os,mon:
+extend ‘ceph df’ report to provide both USED and RAW_USED ·
+ceph/ceph@7ca25df</a></p>
 <p>这个应该是在L之后的版本，在这次commit中引入Statfs这个中间结构用来存储total、avail，免于直接接触kb</p>
-<p><a href="https://github.com/ceph/ceph/commit/738789b0577f879bb756d65b71066300902ab116#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">mon/PGMap: GLOBAL -&gt; RAW STORAGE in ‘df’ output · ceph/ceph@738789b</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/738789b0577f879bb756d65b71066300902ab116#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">mon/PGMap:
+GLOBAL -&gt; RAW STORAGE in ‘df’ output · ceph/ceph@738789b</a></p>
 <p>这个也是L之后的版本，把ceph df输出的GLOBAL改成了RAW，防止错误理解</p>
 <p>get_rule_weight_osd_map这个函数的新增并没有看出有立刻被用在计算资源池容量这里。</p>
 <p>应该可以从这个接口被调用的地方来分析，新增的人是否没考虑过osd异常的场景？</p>
-<p><a href="https://github.com/ceph/ceph/commit/8f2521617ee31453909ddd0a6a5fd177c8fbf034" target="_blank" rel="noopener">mon/PGMap: move summary information into parent PGMapDigest object · ceph/ceph@8f25216</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/8f2521617ee31453909ddd0a6a5fd177c8fbf034" target="_blank" rel="noopener">mon/PGMap:
+move summary information into parent PGMapDigest object ·
+ceph/ceph@8f25216</a></p>
 <p>这里被重构，挪了一下位置……</p>
-<p><a href="https://github.com/ceph/ceph/commit/f223ac92917f4bc18e5b9b3ad61afa155e4d088a" target="_blank" rel="noopener">mon/PGMap: factor mon_osd_full_ratio into MAX AVAIL calc · ceph/ceph@f223ac9</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/f223ac92917f4bc18e5b9b3ad61afa155e4d088a" target="_blank" rel="noopener">mon/PGMap:
+factor mon_osd_full_ratio into MAX AVAIL calc ·
+ceph/ceph@f223ac9</a></p>
 <p>这里又被做了格式化，哎</p>
-<p><a href="https://github.com/ceph/ceph/commit/519a01d973f10b97e4ba497e065fdf53b6064029" target="_blank" rel="noopener">mon: move “df” dump code from PGMonitor to PGMap · ceph/ceph@519a01d</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/519a01d973f10b97e4ba497e065fdf53b6064029" target="_blank" rel="noopener">mon:
+move “df” dump code from PGMonitor to PGMap · ceph/ceph@519a01d</a></p>
 <p>这里又重构了……</p>
 <p>在这次提交以前这部分代码在src/mon/PGMonitor.cc</p>
-<p><a href="https://github.com/ceph/ceph/commit/024caa721d6632eda0cdcdd704188de209f30bd6" target="_blank" rel="noopener">mon/pgmonitor: use appropriate forced conversions in get_rule_avail · ceph/ceph@024caa7</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/024caa721d6632eda0cdcdd704188de209f30bd6" target="_blank" rel="noopener">mon/pgmonitor:
+use appropriate forced conversions in get_rule_avail ·
+ceph/ceph@024caa7</a></p>
 <p>哎，这次对这行改了下显式类型转换，从float改成double</p>
-<p><a href="https://tracker.ceph.com/issues/10257#note-1" target="_blank" rel="noopener">Bug #10257: Ceph df doesn’t report MAX AVAIL correctly when using rulesets and OSD in ruleset is down and out - Ceph - Ceph</a></p>
-<p>这个看起来和OSD out相关，但很可惜，只处理了错误计算为0的问题，并没有考虑正常场景？</p>
-<p><a href="https://github.com/ceph/ceph/commit/7a9652b58ea70f9a484a135bde20d872616c5947" target="_blank" rel="noopener">mon: include ‘max avail’ in df output · ceph/ceph@7a9652b</a></p>
+<p><a href="https://tracker.ceph.com/issues/10257#note-1" target="_blank" rel="noopener">Bug #10257:
+Ceph df doesn’t report MAX AVAIL correctly when using rulesets and OSD
+in ruleset is down and out - Ceph - Ceph</a></p>
+<p>这个看起来和OSD
+out相关，但很可惜，只处理了错误计算为0的问题，并没有考虑正常场景？</p>
+<p><a href="https://github.com/ceph/ceph/commit/7a9652b58ea70f9a484a135bde20d872616c5947" target="_blank" rel="noopener">mon:
+include ‘max avail’ in df output · ceph/ceph@7a9652b</a></p>
 <p>终于找到了引入的地方,这里增加的max avail的值。</p>
-<p><a href="https://github.com/ceph/ceph/commit/04d0526718ccfc220b4fe0c9046ac58899d9dafc" target="_blank" rel="noopener">PGMonitor: fix bug in caculating pool avail space · ceph/ceph@04d0526</a></p>
+<p><a href="https://github.com/ceph/ceph/commit/04d0526718ccfc220b4fe0c9046ac58899d9dafc" target="_blank" rel="noopener">PGMonitor:
+fix bug in caculating pool avail space · ceph/ceph@04d0526</a></p>
 <p>这里处理的那个osd_map</p>
 <h2 id="提交">提交</h2>
 <p>在最新的分支里，也没有相关信息。看起来得提个ISSUE看看有没有答复了。</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Environment: Luminous 12.2.12</span><br><span class="line"></span><br><span class="line">I have a question about the pool's <span class="code">`MAX AVAIL`</span> of <span class="code">`ceph df`</span>.</span><br><span class="line"></span><br><span class="line">When i out a osd, the <span class="code">`MAX AVAIL`</span> doesn't change. Only when i remove the osd from the crush map of the pool, the <span class="code">`MAX AVAIL`</span> decrese.</span><br><span class="line"></span><br><span class="line">For example,  I have a pool with 10 osd. When 9 osds out, <span class="code">`ceph df`</span> still output the MAX AVAIL with 10 osds, not the remained 1 osd. Only when i remove the out osds from the crush map, the MAX AVAIL changed to the remained size. </span><br><span class="line"></span><br><span class="line">But in my understanding, when the osd out, the recovery begin. When the recovery begins, the out osd has no use for the pool. If <span class="code">`MAX AVAIL`</span> doesn't change, It may provide error avail size for the users.</span><br><span class="line"></span><br><span class="line">The calculate logic is in <span class="code">`PGMap::get_rules_avail`</span>. Maybe after called <span class="code">`get_rule_weight_osd_map`</span>, we could recalculate the weight map to remove the osd which <span class="code">`osd_info.kb`</span> is zero. </span><br><span class="line"></span><br><span class="line">Or could modify the <span class="code">`get_rule_weight_osd_map`</span>, but i don't know whether there is some other impact.</span><br></pre></td></tr></table></figure>
 <p>新建了这个issue, 希望能得到回复吧。</p>
-<p><a href="https://tracker.ceph.com/issues/45809" target="_blank" rel="noopener">Bug #45809: When out a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
+<p><a href="https://tracker.ceph.com/issues/45809" target="_blank" rel="noopener">Bug #45809: When out
+a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
 <h1 id="crushmap变更时-df容量不准确">crushmap变更时, df容量不准确</h1>
 <ul>
-<li>看资源池为什么df输出的不对, 是否是osd_stat此时没收集完? 如何判断? 怀疑是pg peer完毕之前引起的. 以前创建的慢感知不到,现在可以感知了</li>
-<li>osd_stat</li>
+<li><p>看资源池为什么df输出的不对, 是否是osd_stat此时没收集完? 如何判断?
+怀疑是pg peer完毕之前引起的.
+以前创建的慢感知不到,现在可以感知了</p></li>
+<li><p>osd_stat</p></li>
 <li><p>TODO: 为什么网卡异常会引起应用层乱序?</p></li>
-<li>资源池Df的信息, 目前来看, 其实是从crush rule里读的, 这里似乎维持了一个缓存?</li>
-<li>crush_rule显示了一个3副本前的raw 容量.</li>
-<li><p>如果是新建的rule, 则重新计算. 但是如果只是crush map变更呢? 如何感知重新计算呢?</p></li>
+<li><p>资源池Df的信息, 目前来看, 其实是从crush rule里读的,
+这里似乎维持了一个缓存?</p></li>
+<li><p>crush_rule显示了一个3副本前的raw 容量.</p></li>
+<li><p>如果是新建的rule, 则重新计算. 但是如果只是crush map变更呢?
+如何感知重新计算呢?</p></li>
 </ul>
-<p>不对啊, 看着是每次df都重新计算的, 那个<code>avail_by_rule</code>是个函数内变量.</p>
+<p>不对啊, 看着是每次df都重新计算的,
+那个<code>avail_by_rule</code>是个函数内变量.</p>
 <p>没有调用啊?</p>
 <p>我建了个新的crush rule ,为啥日志里没变更呢?</p>
 <p>一点没有?</p>
@@ -248,49 +278,71 @@
 <p>大致知道了, 如果这个crush rule的容量还没被加载, 返回就是0</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int64_t</span> get_rule_avail(<span class="keyword">int</span> ruleno) <span class="keyword">const</span> &#123;</span><br><span class="line">  <span class="keyword">auto</span> i = avail_space_by_rule.find(ruleno);</span><br><span class="line">  <span class="keyword">if</span> (i != avail_space_by_rule.end())</span><br><span class="line">    <span class="keyword">return</span> avail_space_by_rule[ruleno];</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以, 其实就是这个容量触发更新的地方怀疑不够及时?</p>
-<p>目前疑似<code>PGMapStatService</code>的<code>dump_pool_stats</code>触发<code>PGMap</code>的<code>dump_pool_stats_full</code> 只有这一个地方触发更新.</p>
+<p>目前疑似<code>PGMapStatService</code>的<code>dump_pool_stats</code>触发<code>PGMap</code>的<code>dump_pool_stats_full</code>
+只有这一个地方触发更新.</p>
 <p><code>pgservice-&gt;dump_pool_stats(osdmon()-&gt;osdmap, &amp;ds, f.get(), verbose);</code>需要的是这个.</p>
 <p>mgr的接口和mon的<code>ceph df</code>函数理论上触发更新?</p>
-<p>根据这个<code>const MonPGStatService *pgservice;</code>, 其实就一个触发来源才对呀? 走<code>mgr</code>的<code>service</code>, 似乎的确不走那个更新的地方, 那我理解错了.</p>
-<p>不对, <code>PGMapStatService</code>这里的调用是会走到<code>PGMap</code>里的<code>dump_pool_stats</code>.</p>
+<p>根据这个<code>const MonPGStatService *pgservice;</code>,
+其实就一个触发来源才对呀? 走<code>mgr</code>的<code>service</code>,
+似乎的确不走那个更新的地方, 那我理解错了.</p>
+<p>不对,
+<code>PGMapStatService</code>这里的调用是会走到<code>PGMap</code>里的<code>dump_pool_stats</code>.</p>
 <p>这里其实继承了?<code>class PGMonStatService : public MonPGStatService, public PGMapStatService</code></p>
 <p><code>MonPGStatService</code>这个和上面这几个什么关联性呢?</p>
 <p>和<code>PGMapStatService</code>同时被继承到一个class里?</p>
 <p>所以关键应该是在这个共同的派生类上?</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PGMonitor</span> :</span> <span class="keyword">public</span> PaxosService &#123;</span><br><span class="line">  PGMap pg_map;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;PGMonStatService&gt; pgservice;</span><br></pre></td></tr></table></figure>
 <p><code>PGMonStatService</code>的构造函数里会传入这个,</p>
-<p><code>PGMonitor</code>是这个<code>class PGMonitor : public PaxosService</code>, 有点遗忘了, 负责的是<code>PaxosService</code></p>
-<p>是不是可以理解为, 这个就是<code>PGMap</code>的更新的一致性代码管理方.</p>
-<p>TODO: 比如这个<code>PGMonStatService</code>使用了<code>PGMonitor</code>的哪些函数接口?</p>
-<p>TODO: 题外话, <code>PaxosService</code>的is_readable不知道怎么理解.</p>
+<p><code>PGMonitor</code>是这个<code>class PGMonitor : public PaxosService</code>,
+有点遗忘了, 负责的是<code>PaxosService</code></p>
+<p>是不是可以理解为,
+这个就是<code>PGMap</code>的更新的一致性代码管理方.</p>
+<p>TODO:
+比如这个<code>PGMonStatService</code>使用了<code>PGMonitor</code>的哪些函数接口?</p>
+<p>TODO: 题外话,
+<code>PaxosService</code>的is_readable不知道怎么理解.</p>
 <p>获取pgmap的元数据的时候, 好像是通过这个来查的</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dump_info</span><span class="params">(Formatter *f)</span> <span class="keyword">const</span> override </span>&#123;</span><br><span class="line">  f-&gt;dump_object(<span class="string">"pgmap"</span>, pgmap);</span><br><span class="line">  f-&gt;dump_unsigned(<span class="string">"pgmap_first_committed"</span>, pgmon-&gt;get_first_committed());</span><br><span class="line">  f-&gt;dump_unsigned(<span class="string">"pgmap_last_committed"</span>, pgmon-&gt;get_last_committed());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以刚才继承的那俩类, 还有在单独提供使用吗?</p>
 <p><code>MonPGStatService</code></p>
-<p><code>Monitor</code>里搞了个这个<code>const MonPGStatService *pgservice;</code> 现在看来这个并不是pg的<code>paxosservice</code></p>
-<p>TODO: <code>MgrStatMonitor</code>和<code>MonStatMonitor</code>有什么关联性?</p>
+<p><code>Monitor</code>里搞了个这个<code>const MonPGStatService *pgservice;</code>
+现在看来这个并不是pg的<code>paxosservice</code></p>
+<p>TODO:
+<code>MgrStatMonitor</code>和<code>MonStatMonitor</code>有什么关联性?</p>
 <p><code>MgrPGStatService : public MonPGStatService</code>继承关系</p>
-<p>似乎这个是在<code>MgrStatMonitor</code>这里初始化的, 所以又到了mgr这里?</p>
-<p>根据下面这个, 是<code>12</code>版本及以后用<code>MgrStatMonitor</code>, <code>PGMonitor</code>是以前的呢?</p>
+<p>似乎这个是在<code>MgrStatMonitor</code>这里初始化的,
+所以又到了mgr这里?</p>
+<p>根据下面这个,
+是<code>12</code>版本及以后用<code>MgrStatMonitor</code>,
+<code>PGMonitor</code>是以前的呢?</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// make sure we&apos;re using the right pg service.. remove me post-luminous!</span><br><span class="line">if (osdmap.require_osd_release &gt;= CEPH_RELEASE_LUMINOUS) &#123;</span><br><span class="line">  dout(10) &lt;&lt; __func__ &lt;&lt; &quot; pgservice is mgrstat&quot; &lt;&lt; dendl;</span><br><span class="line">  mon-&gt;pgservice = mon-&gt;mgrstatmon()-&gt;get_pg_stat_service();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  dout(10) &lt;&lt; __func__ &lt;&lt; &quot; pgservice is pg&quot; &lt;&lt; dendl;</span><br><span class="line">  mon-&gt;pgservice = mon-&gt;pgmon()-&gt;get_pg_stat_service();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>require_osd_release luminous</code>, 所以实际上走进的代码应该是MgrStatMonitor?</p>
+<p><code>require_osd_release luminous</code>,
+所以实际上走进的代码应该是MgrStatMonitor?</p>
 <p>走的其实是<code>digest</code>的<code>dump_pool_stats</code></p>
-<p>// FIXME: we don’t guarantee avail_space_by_rule is up-to-date before this function is invoked</p>
+<p>// FIXME: we don’t guarantee avail_space_by_rule is up-to-date before
+this function is invoked</p>
 <p>官方在这里其实也写了, 等待修复.</p>
-<p>目前来看, 只有触发一下PGMap的<code>get_rules_avail</code>才能够更新数据. 所以在Digest里有办法更新嘛?</p>
+<p>目前来看,
+只有触发一下PGMap的<code>get_rules_avail</code>才能够更新数据.
+所以在Digest里有办法更新嘛?</p>
 <p>目前初步看, 只有<code>ActivePyModules</code>里会触发PGmap的</p>
 <p><code>class ClusterState</code>这里是干啥的呢?</p>
 <p><code>PGMapStatService</code>里也会.</p>
-<p>但是这个目前只在<code>ClusterState</code>里使用了, mon里实际上并不使用<code>PGMonitor</code>的查询接口了.</p>
+<p>但是这个目前只在<code>ClusterState</code>里使用了,
+mon里实际上并不使用<code>PGMonitor</code>的查询接口了.</p>
 <p>似乎只有<code>PGMonitor</code>使用<code>PGMap</code></p>
 <p>那digest这个到底?</p>
 <blockquote>
-<p>mon/PGMap: move summary information into parent PGMapDigest object</p>
+<p>mon/PGMap: move summary information into parent PGMapDigest
+object</p>
 </blockquote>
-<p>Everything summary-ish that we need to send to the mon is moved into a parent class. The child PGMap retains the detail.</p>
-<p>The parent gets its own encode(), and PGMap::encode_digest() will call it to encode just the summary info.</p>
-<p>Squashed in here is a new num_pg_by_osd that could have been done in a preceding patch but I did things in the wrong order. :(</p>
-<p>Signed-off-by: Sage Weil <a href="mailto:sage@redhat.com" target="_blank" rel="noopener">sage@redhat.com</a></p>
+<p>Everything summary-ish that we need to send to the mon is moved into
+a parent class. The child PGMap retains the detail.</p>
+<p>The parent gets its own encode(), and PGMap::encode_digest() will
+call it to encode just the summary info.</p>
+<p>Squashed in here is a new num_pg_by_osd that could have been done in
+a preceding patch but I did things in the wrong order. :(</p>
+<p>Signed-off-by: Sage Weil <a href="mailto:sage@redhat.com" class="email" target="_blank" rel="noopener">sage@redhat.com</a></p>
 <p>所以其实这个digest就是pgmap的一个封装版本.</p>
 <p>在<code>void DaemonServer::send_report</code>这里会触发</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   cluster_state.with_osdmap([&amp;](const OSDMap&amp; osdmap) &#123;</span><br><span class="line">// FIXME: no easy way to get mon features here.  this will do for</span><br><span class="line">// now, though, as long as we don&apos;t make a backward-incompat change.</span><br><span class="line">pg_map.encode_digest(osdmap, m-&gt;get_data(), CEPH_FEATURES_ALL);</span><br></pre></td></tr></table></figure>
@@ -305,7 +357,8 @@
 <p>所以关键问题还是crush的更新阶段?</p>
 <p>抓一下那次异常时的osd map看看</p>
 <p>11-12 10:38:55 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ceph osd getmap 110 -o osdmap.110</span><br><span class="line">osdmaptool osdmap.110 --export-crush crush.110</span><br><span class="line">crushtool -d crush.110 -o crush.110.txt</span><br><span class="line">##测试均衡分布</span><br><span class="line">osdmaptool osdmap.1034  --test-map-pgs-dump --pool 10</span><br><span class="line">osdmaptool osdmap.1034 --tree</span><br><span class="line">#打印ceph osd tree</span><br><span class="line"></span><br><span class="line">ceph osd  getcrushmap -o &#123;compiled-crushmap-filename&#125;</span><br><span class="line"></span><br><span class="line"> ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-3/ --pgid 4.0 obj4 dump</span><br></pre></td></tr></table></figure></p>
-<p>2021-11-12 10:38:54.756557 7f87acd59700 0 log_channel(cluster) log [DBG] : osdmap e76: 6 total, 6 up, 6 in</p>
+<p>2021-11-12 10:38:54.756557 7f87acd59700 0 log_channel(cluster) log
+[DBG] : osdmap e76: 6 total, 6 up, 6 in</p>
 <p>ceph osd dump 76 得到的没有容量</p>
 <p><code>osdmon()-&gt;osdmap</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class OSDMonitor *osdmon() &#123;</span><br><span class="line">  return (class OSDMonitor *)paxos_service[PAXOS_OSDMAP];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -320,16 +373,25 @@
 <p>ceph mon remove {mon-id}</p>
 <p>奇怪, 现阶段的问题是, 资源池都不显示. 而不是单纯不显示数字.</p>
 <p>osdmap意思是也没更新引起的?</p>
-<p>资源池名字和crush rule也都是从osd map里拿的. 那为啥会出现容量为0, 但是资源池存在的情况呢?</p>
+<p>资源池名字和crush rule也都是从osd map里拿的. 那为啥会出现容量为0,
+但是资源池存在的情况呢?</p>
 <p>那就代表上一次的osd map里还存在crush rule为0, 但是pool存在的那次.</p>
-<h2 id="todo-这中间也没干啥-数字在变化-默认的元数据">TODO: 这中间也没干啥, 数字在变化? 默认的元数据?</h2>
-<p>2021-11-15 10:00:02.105074 7f0947dbe700 4 wc 1: 128092917534 2021-11-15 10:02:01.659658 7f0947dbe700 4 wc 1: 128092671774 2021-11-15 10:03:01.454611 7f0947dbe700 4 wc 1: 128092426014 2021-11-15 10:10:01.699644 7f2e29b8c700 4 wc 1: 128092770078 2021-11-15 10:10:01.854774 7f2e29b8c700 4 wc 1: 128092770078 2021-11-15 10:11:01.675594 7f2e29b8c700 4 wc 1: 128092917534</p>
+<h2 id="todo-这中间也没干啥-数字在变化-默认的元数据">TODO:
+这中间也没干啥, 数字在变化? 默认的元数据?</h2>
+<p>2021-11-15 10:00:02.105074 7f0947dbe700 4 wc 1: 128092917534
+2021-11-15 10:02:01.659658 7f0947dbe700 4 wc 1: 128092671774 2021-11-15
+10:03:01.454611 7f0947dbe700 4 wc 1: 128092426014 2021-11-15
+10:10:01.699644 7f2e29b8c700 4 wc 1: 128092770078 2021-11-15
+10:10:01.854774 7f2e29b8c700 4 wc 1: 128092770078 2021-11-15
+10:11:01.675594 7f2e29b8c700 4 wc 1: 128092917534</p>
 <p>TODO: 待整理本片的内容.</p>
 <ul>
-<li>pgmap 是怎么知道他用的哪个pgmap_digest的变量的呢? 是全局只会有一个嘛? 还是怎么做到的呢?</li>
+<li>pgmap 是怎么知道他用的哪个pgmap_digest的变量的呢?
+是全局只会有一个嘛? 还是怎么做到的呢?</li>
 <li></li>
 </ul>
-<p><code>Mgr</code>里似乎做的初始化<code>DaemonServer</code>, <code>DaemonServer</code>初始化的时候从上级收到<code>ClusterState</code>对象.</p>
+<p><code>Mgr</code>里似乎做的初始化<code>DaemonServer</code>,
+<code>DaemonServer</code>初始化的时候从上级收到<code>ClusterState</code>对象.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Mgr::Mgr(MonClient *monc_, <span class="keyword">const</span> MgrMap&amp; mgrmap,</span><br><span class="line">         PyModuleRegistry *py_module_registry_,</span><br><span class="line">	 Messenger *clientm_, Objecter *objecter_,</span><br><span class="line">	 Client* client_, LogChannelRef clog_, LogChannelRef audit_clog_) :</span><br><span class="line">  monc(monc_),</span><br><span class="line">  objecter(objecter_),</span><br><span class="line">  client(client_),</span><br><span class="line">  client_messenger(clientm_),</span><br><span class="line">  lock(<span class="string">"Mgr::lock"</span>),</span><br><span class="line">  timer(g_ceph_context, lock),</span><br><span class="line">  finisher(g_ceph_context, <span class="string">"Mgr"</span>, <span class="string">"mgr-fin"</span>),</span><br><span class="line">  digest_received(<span class="literal">false</span>),</span><br><span class="line">  py_module_registry(py_module_registry_),</span><br><span class="line">  cluster_state(monc, <span class="literal">nullptr</span>, mgrmap),</span><br><span class="line">  server(monc, finisher, daemon_state, cluster_state, *py_module_registry,</span><br><span class="line">         clog_, audit_clog_),</span><br><span class="line">  <span class="built_in">clog</span>(clog_),</span><br><span class="line">  audit_clog(audit_clog_),</span><br><span class="line">  initialized(<span class="literal">false</span>),</span><br><span class="line">  initializing(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
 <p>TODO:<code>cluster_state</code>是从monc来的?</p>
 <p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ceph_mgr.c</span></span><br><span class="line">  <span class="function">MgrStandby <span class="title">mgr</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">  <span class="keyword">int</span> rc = mgr.init();</span><br></pre></td></tr></table></figure></p>
@@ -387,7 +449,8 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&source=ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。
-尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd out了之后，..." data-title=" QQ">
+尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd
+out了之后，..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -544,7 +607,8 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&source=ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。
-尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd out了之后，..." data-title=" QQ">
+尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd
+out了之后，..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
