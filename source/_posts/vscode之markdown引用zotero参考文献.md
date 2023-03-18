@@ -1,11 +1,15 @@
 ---
 title: vscode之markdown引用zotero参考文献
-subtitle: vscode
+tags:
+  - zotero
+  - vscode
+categories:
+  - 专业
+subtitle: tech
 date: 2021-01-17 16:40:53
 updated:
-tags: [zotero, vscode]
-categories: [专业]
 ---
+
 
 
 # 需求
@@ -20,8 +24,17 @@ categories: [专业]
 
 暂时好像是没找到这个结论.
 
-## 一个简易方案
-在引用中使用[^1], 在参考文献位置则是即可完成链接的功能.
+## 一个简易方案[^sspai][^pandoc]
+
+[^pandoc]: [Pandoc \- Pandoc User’s Guide](https://pandoc.org/MANUAL.html#footnotes)
+
+[^sspai]: [5\.4 如何用 Markdown 写论文？ \- 少数派](https://sspai.com/post/57082)
+
+
+在引用中使用[^vscode-zotero], 在参考文献位置则是即可完成链接的功能.
+
+[^vscode-zotero]: [mblode/vscode\-zotero: Zotero Better Bibtex citations for VS Code](https://github.com/mblode/vscode-zotero)
+
 ```
 [^1]:xxx
 ```
@@ -31,9 +44,7 @@ categories: [专业]
 [Pandoc \- Pandoc User’s Guide](https://pandoc.org/MANUAL.html#pandocs-markdown)
 Citation rendering
 
-# 实践
+### 问题
+#### 前面的引用的后面的链接的脚注编号变成从1开始
 
-[@lushashaFenBuShiCunChucephDeShuJuFenBuYouHuaFangFa2016]
-
-# Reference
-[mblode/vscode\-zotero: Zotero Better Bibtex citations for VS Code](https://github.com/mblode/vscode-zotero)
+所以脚注内的内容, 最好不用编号, 而是实际的指代. 且将参考文献直接放在该段后. 通过渲染自动挪到文章/页最后.

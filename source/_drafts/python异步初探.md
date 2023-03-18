@@ -14,6 +14,18 @@ categories: [专业]
 
 唉，暂时由于ddl将近，并且aiohttp运行失败，还是用回最初的多进程版本了。
 
+TODO: 单进程同步和异步io, 差异?
+
+
+# async
+
+> Running code in executor means to run it in OS threads.[^OS_threads]
+
+[^OS_threads]:[python \- Why doesn't asyncio always use executors? \- Stack Overflow](https://stackoverflow.com/questions/53260688/why-doesnt-asyncio-always-use-executors)
+
+# future
+
+> Future相对于async, await的最大优势在于它提供了强大的链式调用，链式调用优势在于可以明确代码执行前后依赖关系以及实现异常的捕获
 
 # Reference
 1. [How to use HTTPS proxy with aiohttp?](https://github.com/aio-libs/aiohttp/issues/845)

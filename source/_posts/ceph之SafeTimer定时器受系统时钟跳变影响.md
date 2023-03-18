@@ -126,6 +126,8 @@ DESCRIPTION
 
 所以都只是部分组件已支持, 只是`mgr`没有支持, 目前来看也没有统一迁移到支持的计划. 
 
+官方已提供[common/Timer: use mono\_clock for clock\_t by tchaikov · Pull Request \#39273 · ceph/ceph](https://github.com/ceph/ceph/pull/39273)
+
 ## Reference
 1. 《Ceph源码分析》
 2. [ceph中的SafeTimer类详解\_turou3442的博客\-CSDN博客\_ceph mds 定时器safe\_timer线程cpu占用率高](https://blog.csdn.net/turou3442/article/details/96441221)

@@ -16,9 +16,10 @@ WITH_SEASTAR=true ./install-deps.sh
 mkdir build && cd build
 # 以下这步官网里没提, 导致失败的.
 # . /opt/rh/gcc-toolset-9/enable
-cmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRONTEND=OFF ..
+cmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRONTEND=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on ..
 make -j18 crimson-osd
 ```
+
 
 用服务器跑很快就失败了...发现主要是少了这个一点`. /opt/rh/gcc-toolset-9/enable`, 导致默认用的是`gcc 8`
 
@@ -29,6 +30,9 @@ make -j18 crimson-osd
 归档一下`docker save sean10/centos_ceph_clion:pacific_v1.0.0 | gzip > centos_ceph_clion_pacific_v1.0.0.tar.gz `
 
 提交到`[sean10/centos\_ceph\_clion Tags](https://hub.docker.com/repository/docker/sean10/centos_ceph_clion/tags?page=1&ordering=last_updated)`这里了.
+
+
+编译内存大概占用了13个g?  4G内存+15G的swap, 用掉了内存+9个G
 
 # docker压缩优化
 
@@ -147,6 +151,35 @@ Boost库还没下载下来, 所以直接编译`seastar`是肯定成功不了的.
 这个`ceph.spec.in`是怎么生成的暂时没找到, 不过有个`make-dist`的脚本,这里有生成的操作,  这里触发应该有用吧
 
 通过`make -n`可以看到使用的`c++`的路径不对, 是低版本的, 果然, 我用的`Makefile`版本不对. 必须得更新一下. 删掉整个`build`目录, 先执行`. /opt/rh/gcc-toolset-9/enable`, 这次生成的`Makefile`版本对了.
+
+
+
+# 从虚拟机开始
+
+``` bash
+# 找一下怎么直接触发
+grep -rn "SEASTAR"git submodule foreach --recursive git reset --hard
+
+export WITH_SEASTAR=ON;
+bash install-deps.sh
+
+cmake ..
+ccache ninja
+
+```
+
+## stream 9 编译
+
+[Feature \#51156: qa: Teuthology Testing on Centos 9 Stream \- Ceph \- Ceph](https://tracker.ceph.com/issues/51156)
+
+[ktdreyer/ceph\-el9](https://github.com/ktdreyer/ceph-el9)
+
+```
+dnf copr enable -y ceph/el9 centos-stream-9
+```
+
+通过操作该项即可正常执行install-deps.sh
+
 
 # Reference
 1. [Crimson developer documentation — Ceph Documentation](https://docs.ceph.com/en/latest/dev/crimson/index.html)

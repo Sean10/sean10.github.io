@@ -233,6 +233,49 @@ CPU会被暂停, 所以可能一些程序如果没做IO超时处理,就会直接
 
 试试.
 
+## 长句 搜狗/百度输入法 输入长句时 有上限 尝试用原生
+
+已给搜狗和百度输入法提供了反馈, 留了邮箱, 不知道有没有反馈了. 
+
+* return可以在中文模式下 直接输入英文
+* Caps才是切换中英文按钮
+
+类似下面这俩微软输入法的问题一样.
+
+[微软拼音长句输入字数限制问题](https://social.technet.microsoft.com/Forums/systemcenter/ro-RO/0653e7ed-2155-4842-baf3-66a64d88e25b/24494367192534038899382712147736755208372338325968384802104638?forum=2087)
+
+[微软拼音长句输入字数限制问题](https://social.technet.microsoft.com/Forums/sqlserver/cs-CZ/0653e7ed-2155-4842-baf3-66a64d88e25b/24494367192534038899382712147736755208372338325968384802104638?forum=2087)
+
+
+
+## 输入法 输入卡顿
+
+[BigSur 自带中文输入法卡顿 \- V2EX](https://www.v2ex.com/t/731025)
+
+跟这个表现很像. 卡顿的时候window server占用也高.
+
+当前是Monterey 12.6版本.
+
+看到这个愈发感觉还是搞个纯linux笔记本省事...
+
+> 其原因似乎是 Google Chrome 浏览器自带的一个更新组件 Keystone 触发了 macOS 内部的某种 bug。有很多其他用户也都发现了这两者间的关联。触发这个问题并不要求 Chrome 正在运行，部分用户仅仅是安装 Chrome 就可轻易重现。
+
+[降低 WindowServer 的 CPU 占用 \- My Nook](https://blog.mynook.info/post/macos-windowserver-calm-down/)
+
+
+确实, 关了chrome, 立马表现就正常了...
+
+开了chrome之后又复现了...
+
+[1158402 \- Chrome/Keystone causing abnormally high WindowServer CPU usage when not running? \- chromium](https://bugs.chromium.org/p/chromium/issues/detail?id=1158402#c18)
+
+问题单仍旧在这里.
+
+临时先切换成Edge了. 虽然vscode有我那个markless问题引起的卡顿, 但是应该没延迟到那个程度.
+
+
+
+
 # mac不自动连接热点
 
 `10.15`版本, 我点开wifi管理, 发现居然直接就有一个`Automatically join this network`的选项,而我没有勾选这个.
@@ -278,7 +321,14 @@ sudo pmset -b tcpkeepalive 0
 
 ## 通过`Turbo Boost Switcher`暂时关闭睿频, 姑且在cpu满载100%的时候, 风扇不会那么容易转了
 
-## ## 通过`appPolice`或者`cputhrottle`等限制指定进程的cpu
+## 通过cpulimit对指定进程的cpu使用进行限制.
+
+[opsengine/cpulimit: CPU usage limiter for Linux](https://github.com/opsengine/cpulimit)
+
+[有没有办法限制某个程序进程的 CPU 占用率呢？ \- V2EX](https://v2ex.com/t/775774)
+
+### 作废, cputhrottle的task_for_pid函数无法使用, appPolice无法显示出我想限制的指定进程
+通过`appPolice`或者`cputhrottle`等限制指定进程的cpu
 `cputhrottle`好像不能用, 源码编译后, `sudo`运行还是报这个
 
 ``` bash
@@ -288,9 +338,12 @@ cputhrottle libc++abi.dylib: terminating with uncaught exception of type Process
 简单看[bash \- Iterate over pgrep results \- Stack Overflow](https://stackoverflow.com/questions/54242957/iterate-over-pgrep-results)
 好像是`API`在高版本改了? 不能用这个了?
 
-# android投屏mac
 
-[\(1 封私信 / 20 条消息\) 如何将android手机屏幕投影至Mac？ \- 知乎](https://www.zhihu.com/question/38722634)
+## app tamer for mac (cpu优化电池管理工具)
+
+资源占用过高
+
+)
 
 # automator
 ## finder增加右键按钮
@@ -302,8 +355,353 @@ cputhrottle libc++abi.dylib: terminating with uncaught exception of type Process
 ![](mac系统使用小记-md/mac系统使用小记-md_2021-09-16-23-33-29.png)
 
 # android投屏
+
+[\(1 封私信 / 20 条消息\) 如何将android手机屏幕投影至Mac？ \- 知乎](https://www.zhihu.com/question/38722634
+
+
 ## 基于DLNA的`Macast`
 * 装到mac上之后, 可以直接投屏到mac上
+
+
+## 万物互联 KDE connect (mac+android)
+
+## QtScrapy 即Scrapy的图形化版本
+
+[barry\-ran/QtScrcpy: Android real\-time display control software](https://github.com/barry-ran/QtScrcpy)
+### 步骤
+```
+无线连接步骤（保证手机和电脑在同一个局域网）：
+安卓手机端在开发者选项中打开usb调试
+通过usb连接安卓手机到电脑
+点击刷新设备，会看到有设备号更新出来
+点击获取设备IP
+点击启动adbd
+无线连接
+再次点击刷新设备，发现多出了一个IP地址开头的设备，选择这个设备
+启动服务
+备注：启动adbd以后不用再连着usb线了，以后连接断开都不再需要，除非安卓adbd停了需要重新启动
+```
+
+
+### 控制
+MIUI注意除了USB调试还需要开启`USB调试(安全设置)`
+
+# linux替代命令
+## ldd == otool -L
+
+
+# 网络
+
+## 针对不同wifi, 使用不同dns
+
+mac, 应该可以做到, 针对不同的wifi, 切换不同的dns服务器
+
+> Mac下面的根据场景切换网络配置
+> 我们只需要在连接一个新网络时，添加一个位置描述，然后跟之前一样设置各连接参数，然后应用。
+> 
+> 之后在场景发生变化后，如果想切换不同位置的网络配置时，在位置处选择你之前添加好的场景，然后应用就可以了
+
+
+![](mac系统使用小记-md/mac系统使用小记-md_2022-02-17-16-00-17.png)
+
+[macOS 自定义场景以快速切换不同的网络连接参数\_weixin\_33755847的博客\-CSDN博客](https://blog.csdn.net/weixin_33755847/article/details/91745270)
+
+wifi profile switcher
+
+
+[Mac OS 自动根据 WI\-FI 名字改变网络位置 \- Razeen\`s Blog](https://razeen.me/posts/auto-change-network-location-base-on-name-of-wifi/)
+
+
+
+# 系统插件功能实现 hammerspoon
+
+参照[hammerspoon扩展](hammerspoon神器扩展.md)方式配置.
+
+# 硬件相关
+
+## 触控板或者键盘操作一下, 屏幕下半个屏幕闪烁, 外接屏幕也不停刷新.
+
+疑似某个软件引起的? 但是在家里又没有这个问题.
+
+会不会是chrome开几百个窗口, 某个窗口引起的?
+
+*重启设备后恢复*, 看起来还是跟软件有关.
+
+## 左上侧的type-c口充不了电了
+
+
+
+
+# 代理
+
+## clash配置
+
+配置proxy-groups设置`url-test`就自动选最快的了, 就不需要手动更改了. 不过注意需要把`直接连接`的这个代理从选择的这里去掉, 不然延时一般都是最低
+``` yaml
+proxy-groups:
+  -
+    name: 🔰国外流量
+    type: url-test
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    proxies:
+      - '广东移动转台湾HiNet[M][倍率:1]'
+      - '广东移动转新加坡Azure[倍率:0.9]'
+      - '广东移动转日本NTT[倍率:0.8]'
+```
+
+## chrome代理问题
+
+我看我的`switchOmega`已经停用很久了, 这次想考虑easyconnect和clash并存, 好像就要改浏览器的路由.
+
+看到配置的地方了, 是在`Wifi`的高级选项里设置了的proxies, 这里增加了公司的url bypass之后能共存了.
+
+# 录屏
+
+## 终端录屏 asciinema
+
+
+# 显示
+
+## 分辨率 27寸 4K , 1920x1080感觉能显示的窗口太少
+
+[Mac 4K 显示器 如何设置缩放？ \- V2EX](https://v2ex.com/t/759674)
+
+按option显示成2304x1296 感觉字大小刚好, 又能显示多个窗口了.
+
+# 邮箱
+
+## qq邮箱 mail好像一改密码又登录不上了.
+
+mac mail邮箱登录密码必须手动生成授权码
+
+手动输入 且 敲回车
+
+不能复制粘贴, 也不能直接点击验证/ok
+
+[\(1 封私信 / 73 条消息\) mac邮件添加邮箱无法验证，求大神帮助？ \- 知乎](https://www.zhihu.com/question/42011333)
+
+# 进程
+
+## sysmond: activity monitor的监控进程.
+
+# GNU tools
+
+```
+ brew install coreutils
+ brew install findutils
+ brew install gnu-sed
+ brew install gnu-indent
+ brew install gnu-tar
+ brew install gnu-which
+ brew install gnutls
+ brew install grep
+ brew install gzip
+ brew install screen
+ brew install watch
+ brew install wdiff --with-gettext
+ brew install wget
+ brew install less
+ brew install unzip
+
+
+ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
+export PATH="/usr/local/opt/ed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+```
+
+# 鼠标
+
+## 滚动加速度 导致 鼠标滚动会跳来跳去
+
+```
+
+defaults write .GlobalPreferences com.apple.mouse.scaling 0
+```
+
+这条疑似有效?
+
+[\(1 封私信 / 80 条消息\) mac os 苹果系统如何关闭鼠标滚轮加速？ \- 知乎](https://www.zhihu.com/question/68155111)
+
+
+## parallel desktop 虚拟机内鼠标飘: 关闭对鼠标的游戏优化即可
+
+# 任务栏
+
+## 小图标过多 
+
+对于不需要的, 直接`cmd`+拖拽下来就能删除该图标
+
+比如搜狗输入法的图标就被我删了.
+
+### Bartender bar
+
+根据下面大佬安利的, 采用bartender 类似windows的小图标隐藏的效果一样, 可以折叠掉小图标. 
+
+这里来看, 确实似乎不够人性化, 程序的应用菜单, 确实会占用不少屏幕, 这样任务栏对于需要大量插件的用户来说, 确实会产生冲突, 这种情况下应该提供一种折叠之类的方案来提供支持.
+
+[macOS 顶上菜单栏空间不够，右侧小图标满了放不下了，一些图标直接显示不出来直接隐藏了，这种情况怎么解决呢？ \- V2EX](https://www.v2ex.com/t/521579)
+
+[Mac 選單列空間不夠嗎？Bartender 讓你擁有第二選單，隱藏不需要的圖示 \- Rockyhsu](https://www.rockyhsu.com/bartender-4-review/)
+
+# Command Line Tools
+## python
+
+``` bash
+
+ll /usr/local/Cellar/python@3.*        
+/usr/local/Cellar/python@3.10:
+total 0
+drwxr-xr-x 13 sean10 416 Oct  5 02:45 3.10.7
+
+/usr/local/Cellar/python@3.9:
+total 0
+drwxr-xr-x 13 sean10 416 Sep 18  2021 3.9.7
+
+
+➜  sean10.github.io git:(hexo) ✗ ll /usr/local/bin/python3*
+lrwxr-xr-x 1 sean10 40 Oct  5 02:44 /usr/local/bin/python3 -> ../Cellar/python@3.10/3.10.7/bin/python3
+lrwxr-xr-x 1 sean10 47 Oct  5 02:44 /usr/local/bin/python3-config -> ../Cellar/python@3.10/3.10.7/bin/python3-config
+lrwxr-xr-x 1 sean10 43 Oct  5 02:44 /usr/local/bin/python3.10 -> ../Cellar/python@3.10/3.10.7/bin/python3.10
+lrwxr-xr-x 1 sean10 50 Oct  5 02:44 /usr/local/bin/python3.10-config -> ../Cellar/python@3.10/3.10.7/bin/python3.10-config
+lrwxr-xr-x 1 sean10 40 Sep 18  2021 /usr/local/bin/python3.9 -> ../Cellar/python@3.9/3.9.7/bin/python3.9
+lrwxr-xr-x 1 sean10 47 Sep 18  2021 /usr/local/bin/python3.9-config -> ../Cellar/python@3.9/3.9.7/bin/python3.9-config
+
+
+```
+
+像这里看到的, 其实升级的时候, 旧版本也保留了.
+
+但是发现`/usr/bin/python3`居然是个python3.8版本, 这里就需要确认下这个环境里之前是咋装进来的了.
+
+
+``` bash
+➜  sean10.github.io git:(hexo) ✗ pip3 --version            
+pip 20.2.3 from /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/site-packages/pip (python 3.8)
+➜  sean10.github.io git:(hexo) ✗ ll /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework                 
+total 0
+lrwxr-xr-x 1 root  24 Oct  5 02:40 Headers -> Versions/Current/Headers
+lrwxr-xr-x 1 root  24 Oct  5 02:40 Python3 -> Versions/Current/Python3
+lrwxr-xr-x 1 root  26 Oct  5 02:40 Resources -> Versions/Current/Resources
+drwxr-xr-x 5 root 160 Oct  5 02:42 Versions
+➜  sean10.github.io git:(hexo) ✗ ll /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions 
+total 0
+drwxr-xr-x 10 root 320 May  3  2020 3.7
+drwxr-xr-x 10 root 320 Apr 30 13:40 3.8
+lrwxr-xr-x  1 root   3 Oct  5 02:40 Current -> 3.8
+➜  sean10.github.io git:(hexo) ✗ stat /usr/bin/python3
+  File: /usr/bin/python3
+  Size: 167120    	Blocks: 24         IO Block: 4096   regular file
+Device: 1,9	Inode: 1152921500312781207  Links: 76
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/   wheel)
+Access: 2022-08-24 16:59:39.000000000 +0800
+Modify: 2022-08-24 16:59:39.000000000 +0800
+Change: 2022-08-24 16:59:39.000000000 +0800
+ Birth: 2022-08-24 16:59:39.000000000 +0800
+```
+
+根据这段判断, 比较像是CLT装进来的...但是时间戳和我今天装的好像对不上...怎么确认CLT不同版本里对应的python版本呢?
+
+
+> From the Xcode 11 release notes...
+
+
+> 
+> ”In future versions of macOS, scripting language runtimes won’t be available by default, and may require you to install an additional package. If your software depends on scripting languages, it’s recommended that you bundle the runtime within the app.”
+> 
+> 
+> 
+> It might be available in the short term, but not the long term.
+
+
+
+根据上面这句可以得知, CLT不再安装python3, 即可以通过brew或者pyenv管理了.
+
+暂时先不管, 但是如果需要清理
+
+* /usr/bin/python3
+* /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions 
+
+
+# OCR, 12版本支持了`实况文本`, 用mac原生软件预览图片时, 鼠标放过去就自动OCR了.
+
+### 是否可以直接弹出预览的窗口, 而不要二次手动打开?
+
+#### 通过hammerspoon, 绑定一个快捷键, 截图后自动调用preview去打开预览的图片?
+
+
+
+# 显示器
+
+### 12.6 升级大概2周后, 外接显示器忽然没信号了.
+
+睡眠后, 尝试激活, 发现无信号了.
+
+#### 解决方式: 拔掉显示器电源几十秒后, 恢复了.
+
+
+#### 已尝试
+1. type-c转dp线, 插其他人mac和显示器上通过
+2. mac接其他人的拓展坞, 走htmi通过
+3. 其他mac接这个type-c转dp和显示器你 ,依旧无信号.
+
+#### 怀疑点
+1. 这台电脑的type-c转dp协议出问题
+2. 显示器整体出问题
+3. 显示器的dp口出问题
+
+下一步尝试type-c转hdmi线, 公司有个, 主要需要出去拿.
+
+
+# airpods 已修复 支持记忆非ios设备或者ios设备上上一次连接设备
+
+[AirPods Pro won't autoconnect to Anroid Phone : airpods](https://www.reddit.com/r/airpods/comments/qcm4sg/comment/i8y12i9/)
+
+[AirPods Pro won't autoconnect to Anroid Phone : airpods](https://www.reddit.com/r/airpods/comments/qcm4sg/comment/i8y12i9/)
+
+
+# 投屏 
+## ios设备, 升级即可mirror
+
+## android 设备  QtScrcpy即可
+
+## 显示同步(没有难度, 随便点一键连接也可以)
+
+wifi连接的延时稍高一点, 还是usb连接比较稳定.
+
+### 音频同步
+点击`安装sndcpy`, 会报`AudioOutput::" "/bin/bash: sndcpy.sh: No such file or directory\n"`
+
+["AudioOutput::" "/bin/bash: sndcpy\.sh: No such file or directory\\n" · Issue \#643 · barry\-ran/QtScrcpy](https://github.com/barry-ran/QtScrcpy/issues/643)
+
+参考这个["AudioOutput::" "/bin/bash: sndcpy\.sh: No such file or directory\\n" · Issue \#643 · barry\-ran/QtScrcpy](https://github.com/barry-ran/QtScrcpy/issues/643), 接着usb线的情况下, `cd /Applications/QtScrcpy.app/Contents/MacOS && /bin/bash sndcpy.sh`即可成功安装. 然后就点击开始音频即可.
+
+
+
+## 电池
+
+![[Pasted image 20230218225149.png]]
+
+根据这个来看, design好像是5000, 差的有点多.
+
+
+## dropbox 同步问题
+
+自从升级了Dropbox到了CloudStorage之后, 目录迁移到`/Users/sean10/Library/CloudStorage/Dropbox`之后, 出现了老是在下载云端文件的情况.
+
+我期望的使用方式是跟之前版本一样, 没有变化时就是操作本地文件, 比如我外部打开整个目录, 直接触发全目录搜索就可以了, 不需要做什么多余的事情.
+
+但是目前的体验就是会出现一直在转圈, 等待从云端同步.  如果真的要做这种逻辑, 那这种在云端的盘还不如hdd呢...
+
+[No longer have offline access automatically? \- Page 5 \- Dropbox Community](https://www.dropboxforum.com/t5/View-download-and-export/Request-All-files-available-offline-by-default/m-p/644830)
+
+这里看到的讨论是都遇到了相同的问题.
 
 
 

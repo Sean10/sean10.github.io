@@ -48,8 +48,27 @@ categories: [专业]
 ## 使用scite-zotero-plugin进行分析文献
 
 
+## 使用sci-hub自动下载
+
+按照[更新版｜Zotero搭配Sci\-Hub，真香！](https://mp.weixin.qq.com/s/QMSG24tgn4z8ShfE9pVYMg)这篇文章中的配置, 找一个当前`sci-hub`最新的域名即可.
+
+## webdav对接 用于zotero 6.0的ipad版本.(20230227从zotfile迁移到坚果云)
+
+
+
+### 坚果云
+
+[使用Zotero进行从未有过的畅快学术体验 \- Eddy's World](https://iloveocean.top/index.php/archives/16/)
+
+### 阿里云盘 自己部署webdav
+
+### dropbox 自己部署webdav
+
+
+
 # Reference
 1. [Zotero 作者按西文的方式显示，如何调整为中式？](https://www.zhihu.com/question/58599043)
 2. [参考文献管理工具zotero的使用经验分享](http://muchong.com/html/201410/7981977.html)
 3. [ZotFile \+ 同步盘，实现Zotero文献跨平台同步！](https://iseex.github.io/2020-03/zotfile-linked-file/)
 4. [在 iPad 上优雅地看文献：Zotero \+ ZotFile \+ 坚果云](https://gaolei.xyz/2020/04/%E5%9C%A8-ipad-%E4%B8%8A%E4%BC%98%E9%9B%85%E5%9C%B0%E7%9C%8B%E6%96%87%E7%8C%AE-zotero-zotfile-%E5%9D%9A%E6%9E%9C%E4%BA%91/)
+5. [使用Zotero进行从未有过的畅快学术体验 \- Eddy's World](https://iloveocean.top/index.php/archives/16/)

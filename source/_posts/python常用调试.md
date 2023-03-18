@@ -180,3 +180,21 @@ logger.addHandler(console)
 ## 参考文档
 1. [pdb — The Python Debugger — Python 3\.8\.3 documentation](https://docs.python.org/3/library/pdb.html)
 
+
+
+
+# 段错误分析
+
+``` bash
+
+
+py-bt
+
+
+```
+
+
+
+### FAQ
+
+#### py-bt Unable to locate python frame

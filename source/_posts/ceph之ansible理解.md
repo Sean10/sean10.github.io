@@ -53,7 +53,7 @@ categories: [专业]
 > unsafe_cleanup_data.yml 用来清理掉 PD、TiKV、TiDB 的数据。执行时会先将对应服务停止，然后再清理数据，操作不可逆，需要谨慎。这个操作不涉及监控。
 > 
 
-## 并行任务引擎
+## 并行任务引擎
 
 > 作业编排：可以自由选择相应的原子化操作，编排和发布新的作业流程
 > 
@@ -86,6 +86,8 @@ categories: [专业]
   * 语义多层架构
   * 基于ssh, push/pull均支持
   * cephadm是使用工具的配置语法进行部署后, 为了更强程度的自定义而进阶开发的产物.
+    * TODO:设计角度, 为什么cephadm用了docker?
+    * 另外, cephadm支持所有业务的部署能力是否和这个有关?
 * SaltStack
   * 基于python的开源CM工具
   * CS架构
@@ -238,6 +240,23 @@ args:
 #### include_task
 在role内使用`include_task`无法使用`start-at-task`直接跳转, 而`import_task`可以
 
+
+##### 配合tags需注意使用apply
+
+
+``` yaml
+
+- name: Include and run an inner and an outer task
+  include_tasks:
+    file: install.yml
+    apply:
+      tags: install
+  tags: install
+```
+
+[Ansible include\_tasks will not run when tags are specified \- Stack Overflow](https://stackoverflow.com/questions/65464394/ansible-include-tasks-will-not-run-when-tags-are-specified)
+
+
 ### ad-hoc
 全节点临时执行的命令, 这个对于排查问题全节点查日志的时候还是用的比较多的.
 
@@ -305,6 +324,8 @@ vagrant 启动失败了, 似乎我用的centos景象不太一样, 找个docker h
   the_output: "{{ restdata.json.parameter[1] }}"
 ```
 
+set_fact 是注册到hostvars , 即注册到不同的host里变量. 
+
 ### 要使用json_query , 需要安装jmespath
 ### ansible使用register就会被标记成changed?
 ### 为什么我用filter, 带上2个大括号就无法识别出对象了呢?
@@ -364,7 +385,14 @@ ansible 是只检测stdout是否被污染, 所以如果我把信息写到Stderr�
 
 
 ### group_vars的读取时间是什么时候嗯
-只会在执行role的时候去读取对应的`group_vars`中的变量
+~~只会在执行role的时候去读取对应的`group_vars`中的变量~~
+
+以上是错误的, 根据[Ansible Configuration Settings — Ansible Documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)通过`ansible.cfg`里增加`debug = True`, 发现group_vars的load过程, 在`plugins/vars/host_group_vars.py`代码中, 实际上在初始化阶段, 就根据每个执行任务的节点在哪些主机组里, 把对应的group_vars目录下的主机组的配置给load了. 并不是运行阶段才进行...
+
+
+
+
+
 
 
 ### 怎么将当前读入的配置及收集到的`facts`配置导出呢

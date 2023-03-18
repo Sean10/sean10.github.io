@@ -24,6 +24,28 @@ tmux通过快捷键切换、创建、分割、临时全屏化pane来操作还是
 
 不过现在唯一的不足就在于，在这个版本暂时没有临时zoom全屏化单个pane的功能，根据[^1]中说的，`#996`暂时也没有纳入`1.x`的计划中，在`2.0`中才会发布。这就有点可惜了，只能再期待了。
 
+
+## tmux
+
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+~/.tmux.conf
+set -g mode-keys vi
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+​
+set -g @continuum-save-interval '15'
+set -g @continuum-restore 'on'
+set -g @resurrect-capture-pane-contents 'on'
+​
+# Other config ...
+​
+run -b '~/.tmux/plugins/tpm/tpm'
+
+```
+
 ## Reference
 1. [Scenario: Add support for panes · Issue \#1000 · microsoft/terminal](https://github.com/microsoft/terminal/issues/1000)
 2. [Windows Terminal Key Bindings \| Microsoft Docs](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/key-bindings#tab-management-commands)

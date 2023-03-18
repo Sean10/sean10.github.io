@@ -779,7 +779,7 @@ log适合的场景：
 
 # now check the gpg signature please! Done? OK:
 
-
+```
 tar xf thrift-0.9.2.tar.gz
 cd thrift-0.9.2
 ./configure --with-cpp --with-java=no --with-python=no --with-lua=no --with-perl=no --enable-shared=yes --enable-static=yes --enable-tutorial=no --with-qt4=no --prefix=/usr/local
@@ -856,4 +856,11 @@ IR feature: prefix data，在function entry前添加任意字节。用于GHC TAB
 [从\-fpatchable\-function\-entry=N\[,M\]说起 \- 知乎](https://zhuanlan.zhihu.com/p/104683907)
 
 
-
+
+
+# 理解
+
+[第 2 章：结构化数据的价值 · OpenTelemetry 可观测性的未来](https://jimmysong.io/opentelemetry-obervability/the-value-of-structured-data.html)
+
+这篇讲的挺好, 可观测性的分析价值. 
+

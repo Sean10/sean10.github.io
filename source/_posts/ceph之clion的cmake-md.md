@@ -185,12 +185,14 @@ OSD=3 MON=3 MGR=1 CEPH_BUILD_ROOT=/ceph/build bash -x ./vstart.sh -n
 ## Luminous
 ### 最后按照下述方案处理好软链和安装包之后的cmake选项
 ```
--DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS="-L/usr/local/opt/llvm/lib"   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1/
+-DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS="-L/usr/local/opt/llvm/lib"   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS="-L/usr/local/opt/llvm/lib"   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/
 ```
 
 
 
 ### 官方文档方案
+
+
 ``` bash
 brew install llvm
 brew install snappy ccache cmake pkg-config
@@ -259,6 +261,32 @@ export PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.48/lib/pkgconfig:/usr/local/Cella
 #### findboost unknown compiler: AppleClang
 报了一个暂时没去尝试解决的错误, 识别不了`clang`? 
 
+
+## master
+
+```
+export PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.35/lib/pkgconfig:/usr/local/Cellar/openssl@1.1/1.1.1o/lib/pkgconfig
+```
+
+把这里unknown compiler这段给屏蔽掉, 试试.
+```
+  if(CMAKE_CXX_COMPILER_ID STREQUAL GNU)
+    set(toolset gcc)
+  elseif(CMAKE_CXX_COMPILER_ID STREQUAL Clang)
+    set(toolset clang)
+  else()
+  # 换成这个
+    set(toolset clang)
+  #   message(SEND_ERROR "unknown compiler: ${CMAKE_CXX_COMPILER_ID}")
+  endif()
+  ```
+
+
+```
+cmake -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS="-L/usr/local/opt/llvm/lib"   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS="-L/usr/local/opt/llvm/lib"   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/ ..
+```
+
+用来索引好像还是用的.
 
 ## 调试增加选项
 ```

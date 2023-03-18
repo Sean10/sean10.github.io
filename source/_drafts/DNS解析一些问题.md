@@ -28,6 +28,15 @@ categories: [专业]
 
 nginx负载均衡，反向代理
 
+
+# dnsmasq
+
+基于dnsmasq运行dns SRV-host查询能力
+
+除了记录了服务器地址, 还记录了端口.
+
+[DNS SRV介绍（一种用DNS做服务发现的方法）By李佶澳](https://www.lijiaocn.com/%E6%8A%80%E5%B7%A7/2017/03/06/dns-srv.html)
+
 # Reference
 
 1. []()

@@ -71,7 +71,19 @@ Rados.pg_command(self, pgid, cmd, inbuf, timeout=0)
 * AioCompletionImpl
 * osdc
 
+## 超时参数
 
+* client_mount_timeout
+	* client
+* rados_osd_op_timeout
+	* 连接上osd后, osd断开的时间
+* rados_mon_op_timeout
+	* 连接上mon后,mon响应的超时时间
+
+
+# rados lock
+
+## [samba/ctdb\_mutex\_ceph\_rados\_helper\.c at master · samba\-team/samba](https://github.com/samba-team/samba/blob/master/ctdb/utils/ceph/ctdb_mutex_ceph_rados_helper.c)
 
 ## Reference
 1. [Librados \(Python\) — Ceph Documentation](https://docs.ceph.com/docs/master/rados/api/python/)
