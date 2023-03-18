@@ -4,7 +4,7 @@
 const pathFn = require('path');
 const fs = require('fs');
 const parseConfig = require('hexo-deployer-git/lib/parse_config');
-const spawn = require('hexo-util/lib/spawn');
+const hexo_util = require('hexo-util');
 const Hexo = require('hexo');
 
 async function sync_deploy_history() {
@@ -18,7 +18,7 @@ async function sync_deploy_history() {
 
   // For git cmd
   function git(...args) {
-    return spawn('git', args, {
+    return hexo_util.spawn('git', args, {
       verbose: true,
       stdio: 'inherit'
     });
