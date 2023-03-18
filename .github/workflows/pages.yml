@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to deploy blog.
     steps:
-    - run: sudo apt-get install pandoc
-
     - name: Checkout
       uses: actions/checkout@v1
       with:
