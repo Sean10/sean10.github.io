@@ -21,18 +21,19 @@
     
     
     <meta name="keywords" content="mac,iTerm">
-    <meta name="description" content="最近iTerm每开一个tab都要等4、5秒的时间，按照ssd的加载速度来说这是本不应该发生的事情。 顶部栏是从python-&amp;gt;ruby等等的变化，最后才到菜单栏。 猜想应该是导入的配置文件中导入了过多。 找了一下其他人遇到的问题，发现果然主要都是nvm造成的影响，把nvm的导入注释掉，就恢复到了1、2s加载速度。 不过，除此之外，iTerm默认是从系统的/usr/bin/login启动，启动">
-<meta name="keywords" content="mac,iTerm">
+    <meta name="description" content="最近iTerm每开一个tab都要等4、5秒的时间，按照ssd的加载速度来说这是本不应该发生的事情。 顶部栏是从python-&gt;ruby等等的变化，最后才到菜单栏。 猜想应该是导入的配置文件中导入了过多。 找了一下其他人遇到的问题，发现果然主要都是nvm造成的影响，把nvm的导入注释掉，就恢复到了1、2s加载速度。 不过，除此之外，iTerm默认是从系统的&#x2F;usr&#x2F;bin&#x2F;login启动，启动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iTerm &amp; zsh加载缓慢">
-<meta property="og:url" content="https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/index.html">
+<meta property="og:url" content="https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="最近iTerm每开一个tab都要等4、5秒的时间，按照ssd的加载速度来说这是本不应该发生的事情。 顶部栏是从python-&amp;gt;ruby等等的变化，最后才到菜单栏。 猜想应该是导入的配置文件中导入了过多。 找了一下其他人遇到的问题，发现果然主要都是nvm造成的影响，把nvm的导入注释掉，就恢复到了1、2s加载速度。 不过，除此之外，iTerm默认是从系统的/usr/bin/login启动，启动">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.847Z">
+<meta property="og:description" content="最近iTerm每开一个tab都要等4、5秒的时间，按照ssd的加载速度来说这是本不应该发生的事情。 顶部栏是从python-&gt;ruby等等的变化，最后才到菜单栏。 猜想应该是导入的配置文件中导入了过多。 找了一下其他人遇到的问题，发现果然主要都是nvm造成的影响，把nvm的导入注释掉，就恢复到了1、2s加载速度。 不过，除此之外，iTerm默认是从系统的&#x2F;usr&#x2F;bin&#x2F;login启动，启动">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-16T12:31:12.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.831Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="mac">
+<meta property="article:tag" content="iTerm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iTerm &amp; zsh加载缓慢">
-<meta name="twitter:description" content="最近iTerm每开一个tab都要等4、5秒的时间，按照ssd的加载速度来说这是本不应该发生的事情。 顶部栏是从python-&amp;gt;ruby等等的变化，最后才到菜单栏。 猜想应该是导入的配置文件中导入了过多。 找了一下其他人遇到的问题，发现果然主要都是nvm造成的影响，把nvm的导入注释掉，就恢复到了1、2s加载速度。 不过，除此之外，iTerm默认是从系统的/usr/bin/login启动，启动">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
         </nav>
     </aside>
 
@@ -195,14 +196,14 @@
 <ol type="1">
 <li>清除日志</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /private/var/log/asl/*.asl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /private/var/log/asl/*.asl</span><br></pre></td></tr></table></figure>
 <ol start="2" type="1">
 <li>更换启动shell 在Iterm Perferences&gt;Profile&gt;General&gt;Command
 设置为/bin/zsh</li>
 </ol>
 <h1 id="参考资料">参考资料</h1>
 <ol type="1">
-<li><a href="https://blog.jonslow.com/iterm2-launch-accelerate/" target="_blank" rel="noopener">iTerm
+<li><a target="_blank" rel="noopener" href="https://blog.jonslow.com/iterm2-launch-accelerate/">iTerm
 2、Terminal 启动加速</a></li>
 </ol>
 
@@ -213,7 +214,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.847Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.831Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -235,7 +236,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iTerm/">iTerm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iTerm/" rel="tag">iTerm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
 
 
             
@@ -248,7 +249,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/&title=《iTerm & zsh加载缓慢》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/&title=《iTerm & zsh加载缓慢》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -258,22 +259,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/&title=《iTerm & zsh加载缓慢》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/&title=《iTerm & zsh加载缓慢》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iTerm & zsh加载缓慢》 — 行路中.&url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iTerm & zsh加载缓慢》 — 行路中.&url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -296,7 +297,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/17/dockerfile学习/" id="post-prev" class="post-nav-link">
+      <a href="/2018/03/17/dockerfile%E5%AD%A6%E4%B9%A0/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">dockerfile学习</h4>
       </a>
@@ -305,7 +306,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/03/15/刘慈欣谈科幻/" id="post-next" class="post-nav-link">
+      <a href="/2018/03/15/%E5%88%98%E6%85%88%E6%AC%A3%E8%B0%88%E7%A7%91%E5%B9%BB/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">刘慈欣谈科幻</h4>
       </a>
@@ -329,7 +330,7 @@
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -350,6 +351,9 @@
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -382,11 +386,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -404,7 +408,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/&title=《iTerm & zsh加载缓慢》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/&title=《iTerm & zsh加载缓慢》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -414,22 +418,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/&title=《iTerm & zsh加载缓慢》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/&title=《iTerm & zsh加载缓慢》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iTerm & zsh加载缓慢》 — 行路中.&url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iTerm & zsh加载缓慢》 — 行路中.&url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -440,7 +444,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/03/16/iTerm-zsh加载缓慢/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/03/16/iTerm-zsh%E5%8A%A0%E8%BD%BD%E7%BC%93%E6%85%A2/" alt="微信分享二维码">
 </div>
 
 
@@ -456,7 +460,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -476,7 +480,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

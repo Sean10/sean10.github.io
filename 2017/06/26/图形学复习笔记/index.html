@@ -22,13 +22,12 @@
     
     <meta name="keywords" content="图形学,openGL">
     <meta name="description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
-<meta name="keywords" content="图形学,openGL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图形学复习笔记">
-<meta property="og:url" content="https://sean10.github.io/2017/06/26/图形学复习笔记/index.html">
+<meta property="og:url" content="https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg">
@@ -74,10 +73,12 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.588Z">
+<meta property="article:published_time" content="2017-06-26T08:35:28.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.905Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="图形学">
+<meta property="article:tag" content="openGL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图形学复习笔记">
-<meta name="twitter:description" content="第一章 计算机图形学概论 1． 比较计算机图形学与图象处理技术相同点和不同点。 Computer Graphics将抽象的语义信息转化成图像(数据转换为图形)，Computer Vision从图像中提取抽象的语义信息。Image Processing（图像处理）探索的是从一个图像或者一组图像之间的互相转化和关系，与语义信息无关。 图形学输入的是对虚拟场景的描述，通常为多边形数组，而输出的则是图像，">
 <meta name="twitter:image" content="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
@@ -86,10 +87,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -206,48 +207,48 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一章-计算机图形学概论"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一章 计算机图形学概论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较计算机图形学与图象处理技术相同点和不同点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1．
-比较计算机图形学与图象处理技术相同点和不同点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列举三个计算机图形的应用实例"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2．
-列举三个计算机图形的应用实例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述计算机图形学发展动向"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3． 简述计算机图形学发展动向。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二章-计算机图形系统概述"><span class="post-toc-number">2.</span> <span class="post-toc-text">第二章 计算机图形系统概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#叙述计算机图形系统的基本功能"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1．
-叙述计算机图形系统的基本功能。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入设备可有哪几种逻辑功能请举出各自对应的物理设备"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2．
-输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#画出图形软件的层次结构及主要组成"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3．
-画出图形软件的层次结构及主要组成。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#颜色查找表的概念及实现原理"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4．
-颜色查找表的概念及实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#光栅扫描显示器结构与工作原理"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5.
-光栅扫描显示器结构与工作原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么要制订图形软件标准举例说明它的分类"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">6．
-什么要制订图形软件标准？举例说明它的分类。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三章-基本图形生成算法"><span class="post-toc-number">3.</span> <span class="post-toc-text">第三章 基本图形生成算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bresenham-直线生成算法原理它与-dda-算法相比有何改进"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1．
-Bresenham 直线生成算法原理。它与 DDA 算法相比，有何改进？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较几种常用画圆弧算法的原理和效率"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2．
-比较几种常用画圆弧算法的原理和效率。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述两种字符生成方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3． 简述两种字符生成方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#何谓四连通和八连通写出一种边界表示的八连通区域填充算法"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4．
-何谓四连通和八连通？写出一种边界表示的八连通区域填充算法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解释活化边表的思想以多边形区域填充为例介绍它的应用"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5．
-解释活化边表的思想，以多边形区域填充为例介绍它的应用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#已知多边形各个顶点的坐标为22-24-86-122-81-62及-22-在用扫描线填充算法实现扫描转换时-写出其边表et和全部的活化边表aet的内容"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">6．已知多边形各个顶点的坐标为(2,2),
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E6%A6%82%E8%AE%BA"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一章 计算机图形学概论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AF%94%E8%BE%83%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E4%B8%8E%E5%9B%BE%E8%B1%A1%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF%E7%9B%B8%E5%90%8C%E7%82%B9%E5%92%8C%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1．
+比较计算机图形学与图象处理技术相同点和不同点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%97%E4%B8%BE%E4%B8%89%E4%B8%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2．
+列举三个计算机图形的应用实例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%80%E8%BF%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%8F%91%E5%B1%95%E5%8A%A8%E5%90%91"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3． 简述计算机图形学发展动向。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="post-toc-number">2.</span> <span class="post-toc-text">第二章 计算机图形系统概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%99%E8%BF%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1．
+叙述计算机图形系统的基本功能。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BE%93%E5%85%A5%E8%AE%BE%E5%A4%87%E5%8F%AF%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E9%80%BB%E8%BE%91%E5%8A%9F%E8%83%BD%E8%AF%B7%E4%B8%BE%E5%87%BA%E5%90%84%E8%87%AA%E5%AF%B9%E5%BA%94%E7%9A%84%E7%89%A9%E7%90%86%E8%AE%BE%E5%A4%87"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2．
+输入设备可有哪几种逻辑功能？请举出各自对应的物理设备。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%BB%E5%87%BA%E5%9B%BE%E5%BD%A2%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%8F%8A%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3．
+画出图形软件的层次结构及主要组成。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%9C%E8%89%B2%E6%9F%A5%E6%89%BE%E8%A1%A8%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4．
+颜色查找表的概念及实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%89%E6%A0%85%E6%89%AB%E6%8F%8F%E6%98%BE%E7%A4%BA%E5%99%A8%E7%BB%93%E6%9E%84%E4%B8%8E%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5.
+光栅扫描显示器结构与工作原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%B6%E8%AE%A2%E5%9B%BE%E5%BD%A2%E8%BD%AF%E4%BB%B6%E6%A0%87%E5%87%86%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">6．
+什么要制订图形软件标准？举例说明它的分类。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%BD%A2%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95"><span class="post-toc-number">3.</span> <span class="post-toc-text">第三章 基本图形生成算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bresenham-%E7%9B%B4%E7%BA%BF%E7%94%9F%E6%88%90%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%AE%83%E4%B8%8E-dda-%E7%AE%97%E6%B3%95%E7%9B%B8%E6%AF%94%E6%9C%89%E4%BD%95%E6%94%B9%E8%BF%9B"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1．
+Bresenham 直线生成算法原理。它与 DDA 算法相比，有何改进？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AF%94%E8%BE%83%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%94%BB%E5%9C%86%E5%BC%A7%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E6%95%88%E7%8E%87"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2．
+比较几种常用画圆弧算法的原理和效率。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%A4%E7%A7%8D%E5%AD%97%E7%AC%A6%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3． 简述两种字符生成方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%95%E8%B0%93%E5%9B%9B%E8%BF%9E%E9%80%9A%E5%92%8C%E5%85%AB%E8%BF%9E%E9%80%9A%E5%86%99%E5%87%BA%E4%B8%80%E7%A7%8D%E8%BE%B9%E7%95%8C%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%85%AB%E8%BF%9E%E9%80%9A%E5%8C%BA%E5%9F%9F%E5%A1%AB%E5%85%85%E7%AE%97%E6%B3%95"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4．
+何谓四连通和八连通？写出一种边界表示的八连通区域填充算法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E9%87%8A%E6%B4%BB%E5%8C%96%E8%BE%B9%E8%A1%A8%E7%9A%84%E6%80%9D%E6%83%B3%E4%BB%A5%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%8C%BA%E5%9F%9F%E5%A1%AB%E5%85%85%E4%B8%BA%E4%BE%8B%E4%BB%8B%E7%BB%8D%E5%AE%83%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5．
+解释活化边表的思想，以多边形区域填充为例介绍它的应用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B7%B2%E7%9F%A5%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%90%84%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87%E4%B8%BA22-24-86-122-81-62%E5%8F%8A-22-%E5%9C%A8%E7%94%A8%E6%89%AB%E6%8F%8F%E7%BA%BF%E5%A1%AB%E5%85%85%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%89%AB%E6%8F%8F%E8%BD%AC%E6%8D%A2%E6%97%B6-%E5%86%99%E5%87%BA%E5%85%B6%E8%BE%B9%E8%A1%A8et%E5%92%8C%E5%85%A8%E9%83%A8%E7%9A%84%E6%B4%BB%E5%8C%96%E8%BE%B9%E8%A1%A8aet%E7%9A%84%E5%86%85%E5%AE%B9"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">6．已知多边形各个顶点的坐标为(2,2),
 (2,4), (8,6), (12,2), (8,1), (6,2)及 (2,2),
 在用扫描线填充算法实现扫描转换时,
-写出其边表(ET)和全部的活化边表(AET)的内容。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设计和实现一个图形函数库具有绘制直线段任意圆弧椭圆弧-多边形区域的阴影填充和颜色填充等功能仅调用画点函数"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">7.
+写出其边表(ET)和全部的活化边表(AET)的内容。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%9B%BE%E5%BD%A2%E5%87%BD%E6%95%B0%E5%BA%93%E5%85%B7%E6%9C%89%E7%BB%98%E5%88%B6%E7%9B%B4%E7%BA%BF%E6%AE%B5%E4%BB%BB%E6%84%8F%E5%9C%86%E5%BC%A7%E6%A4%AD%E5%9C%86%E5%BC%A7-%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%8C%BA%E5%9F%9F%E7%9A%84%E9%98%B4%E5%BD%B1%E5%A1%AB%E5%85%85%E5%92%8C%E9%A2%9C%E8%89%B2%E5%A1%AB%E5%85%85%E7%AD%89%E5%8A%9F%E8%83%BD%E4%BB%85%E8%B0%83%E7%94%A8%E7%94%BB%E7%82%B9%E5%87%BD%E6%95%B0"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">7.
 设计和实现一个图形函数库，具有绘制直线段、任意圆弧、椭圆弧、
-多边形区域的阴影填充和颜色填充等功能。（仅调用画点函数）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四章-图形变换与裁剪"><span class="post-toc-number">4.</span> <span class="post-toc-text">第四章 图形变换与裁剪</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是灭点"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1．什么是灭点?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试用几种不同顺序的简单几何变换求出将平面上的任一线段p1x1-y1-p2x2-y2变换成与-x-轴重合的变换阵并说明其等效性"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2．试用几种不同顺序的简单几何变换,求出将平面上的任一线段P1(x1,
-y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#已知-oxyz-坐标系下平面方程是-xyzd0试求变换距阵-t使该平面在-oxyz坐标系下变成-z0"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3．已知
-OXYZ 坐标系下平面方程是 x+y+z+d=0，试求变换距阵 T，使该平面在
-O’X’Y’Z’坐标系下变成 z’=0。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试简述二维图形裁剪的基本原理及可选用的裁剪策略."><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4．试简述二维图形裁剪的基本原理及可选用的裁剪策略.</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第五章-人机交互技术"><span class="post-toc-number">5.</span> <span class="post-toc-text">第五章 人机交互技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本的交互任务有哪些它们可用什么设备执行"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.
-基本的交互任务有哪些？它们可用什么设备执行？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#举例说明-windows-系统常用的交互方式编程实现其中一例"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2. 举例说明
-WINDOWS 系统常用的交互方式，编程实现其中一例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#叙述设计人机交互的一般风格和原则"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3.
-叙述设计人机交互的一般风格和原则。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第六章-曲线曲面的表示"><span class="post-toc-number">6.</span> <span class="post-toc-text">第六章 曲线曲面的表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bezier-曲线具有哪些特性试用-n-的归纳法证明其凸包性"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">1. Bezier
-曲线具有哪些特性？试用 n 的归纳法证明其凸包性。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#b-样条曲线的定义及其特点"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">2. B 样条曲线的定义及其特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较-bezier-曲面和ｂ样条曲面的功能特点"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">3. 比较 Bezier
-曲面和Ｂ样条曲面的功能特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#coons-曲面片构造方法及其特点"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">4. Coons
-曲面片构造方法及其特点。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第七章-三维实体的造型"><span class="post-toc-number">7.</span> <span class="post-toc-text">第七章 三维实体的造型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#体素构造表示法中两物体正则运算的公式并举例说明它们的计算方-法"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">1.
-体素构造表示法中两物体正则运算的公式，并举例说明它们的计算方 法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#形体的拓扑信息和几何信息各包含哪些内容举例说明它们起何作用"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">2.
-形体的拓扑信息和几何信息各包含哪些内容？举例说明它们起何作用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#欧拉公式及其应用意义"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">3. 欧拉公式及其应用意义。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试写出判定空间任意位置的两个长方体是否相交的算法"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">4.
-试写出判定空间任意位置的两个长方体是否相交的算法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试比较实体的边界表示扫移表示csg-表示及八叉树表示的优缺点-说明它们适应的应用"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">5.
+多边形区域的阴影填充和颜色填充等功能。（仅调用画点函数）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%9B%BE%E5%BD%A2%E5%8F%98%E6%8D%A2%E4%B8%8E%E8%A3%81%E5%89%AA"><span class="post-toc-number">4.</span> <span class="post-toc-text">第四章 图形变换与裁剪</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%81%AD%E7%82%B9"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1．什么是灭点?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%95%E7%94%A8%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E9%A1%BA%E5%BA%8F%E7%9A%84%E7%AE%80%E5%8D%95%E5%87%A0%E4%BD%95%E5%8F%98%E6%8D%A2%E6%B1%82%E5%87%BA%E5%B0%86%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E4%BB%BB%E4%B8%80%E7%BA%BF%E6%AE%B5p1x1-y1-p2x2-y2%E5%8F%98%E6%8D%A2%E6%88%90%E4%B8%8E-x-%E8%BD%B4%E9%87%8D%E5%90%88%E7%9A%84%E5%8F%98%E6%8D%A2%E9%98%B5%E5%B9%B6%E8%AF%B4%E6%98%8E%E5%85%B6%E7%AD%89%E6%95%88%E6%80%A7"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2．试用几种不同顺序的简单几何变换,求出将平面上的任一线段P1(x1,
+y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B7%B2%E7%9F%A5-oxyz-%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E5%B9%B3%E9%9D%A2%E6%96%B9%E7%A8%8B%E6%98%AF-xyzd0%E8%AF%95%E6%B1%82%E5%8F%98%E6%8D%A2%E8%B7%9D%E9%98%B5-t%E4%BD%BF%E8%AF%A5%E5%B9%B3%E9%9D%A2%E5%9C%A8-oxyz%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E5%8F%98%E6%88%90-z0"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3．已知
+OXYZ 坐标系下平面方程是 x+y+z+d&#x3D;0，试求变换距阵 T，使该平面在
+O’X’Y’Z’坐标系下变成 z’&#x3D;0。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%95%E7%AE%80%E8%BF%B0%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E8%A3%81%E5%89%AA%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%8F%8A%E5%8F%AF%E9%80%89%E7%94%A8%E7%9A%84%E8%A3%81%E5%89%AA%E7%AD%96%E7%95%A5."><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4．试简述二维图形裁剪的基本原理及可选用的裁剪策略.</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E6%8A%80%E6%9C%AF"><span class="post-toc-number">5.</span> <span class="post-toc-text">第五章 人机交互技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E4%BA%A4%E4%BA%92%E4%BB%BB%E5%8A%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AE%83%E4%BB%AC%E5%8F%AF%E7%94%A8%E4%BB%80%E4%B9%88%E8%AE%BE%E5%A4%87%E6%89%A7%E8%A1%8C"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.
+基本的交互任务有哪些？它们可用什么设备执行？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E-windows-%E7%B3%BB%E7%BB%9F%E5%B8%B8%E7%94%A8%E7%9A%84%E4%BA%A4%E4%BA%92%E6%96%B9%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%85%B6%E4%B8%AD%E4%B8%80%E4%BE%8B"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2. 举例说明
+WINDOWS 系统常用的交互方式，编程实现其中一例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%99%E8%BF%B0%E8%AE%BE%E8%AE%A1%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E7%9A%84%E4%B8%80%E8%88%AC%E9%A3%8E%E6%A0%BC%E5%92%8C%E5%8E%9F%E5%88%99"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3.
+叙述设计人机交互的一般风格和原则。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%9B%B2%E7%BA%BF%E6%9B%B2%E9%9D%A2%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="post-toc-number">6.</span> <span class="post-toc-text">第六章 曲线曲面的表示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bezier-%E6%9B%B2%E7%BA%BF%E5%85%B7%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E6%80%A7%E8%AF%95%E7%94%A8-n-%E7%9A%84%E5%BD%92%E7%BA%B3%E6%B3%95%E8%AF%81%E6%98%8E%E5%85%B6%E5%87%B8%E5%8C%85%E6%80%A7"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">1. Bezier
+曲线具有哪些特性？试用 n 的归纳法证明其凸包性。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#b-%E6%A0%B7%E6%9D%A1%E6%9B%B2%E7%BA%BF%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">2. B 样条曲线的定义及其特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AF%94%E8%BE%83-bezier-%E6%9B%B2%E9%9D%A2%E5%92%8C%EF%BD%82%E6%A0%B7%E6%9D%A1%E6%9B%B2%E9%9D%A2%E7%9A%84%E5%8A%9F%E8%83%BD%E7%89%B9%E7%82%B9"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">3. 比较 Bezier
+曲面和Ｂ样条曲面的功能特点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#coons-%E6%9B%B2%E9%9D%A2%E7%89%87%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E5%8F%8A%E5%85%B6%E7%89%B9%E7%82%B9"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">4. Coons
+曲面片构造方法及其特点。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E4%B8%89%E7%BB%B4%E5%AE%9E%E4%BD%93%E7%9A%84%E9%80%A0%E5%9E%8B"><span class="post-toc-number">7.</span> <span class="post-toc-text">第七章 三维实体的造型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%93%E7%B4%A0%E6%9E%84%E9%80%A0%E8%A1%A8%E7%A4%BA%E6%B3%95%E4%B8%AD%E4%B8%A4%E7%89%A9%E4%BD%93%E6%AD%A3%E5%88%99%E8%BF%90%E7%AE%97%E7%9A%84%E5%85%AC%E5%BC%8F%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9-%E6%B3%95"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">1.
+体素构造表示法中两物体正则运算的公式，并举例说明它们的计算方 法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BD%A2%E4%BD%93%E7%9A%84%E6%8B%93%E6%89%91%E4%BF%A1%E6%81%AF%E5%92%8C%E5%87%A0%E4%BD%95%E4%BF%A1%E6%81%AF%E5%90%84%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E8%B5%B7%E4%BD%95%E4%BD%9C%E7%94%A8"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">2.
+形体的拓扑信息和几何信息各包含哪些内容？举例说明它们起何作用。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8%E6%84%8F%E4%B9%89"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">3. 欧拉公式及其应用意义。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%95%E5%86%99%E5%87%BA%E5%88%A4%E5%AE%9A%E7%A9%BA%E9%97%B4%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%95%BF%E6%96%B9%E4%BD%93%E6%98%AF%E5%90%A6%E7%9B%B8%E4%BA%A4%E7%9A%84%E7%AE%97%E6%B3%95"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">4.
+试写出判定空间任意位置的两个长方体是否相交的算法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%95%E6%AF%94%E8%BE%83%E5%AE%9E%E4%BD%93%E7%9A%84%E8%BE%B9%E7%95%8C%E8%A1%A8%E7%A4%BA%E6%89%AB%E7%A7%BB%E8%A1%A8%E7%A4%BAcsg-%E8%A1%A8%E7%A4%BA%E5%8F%8A%E5%85%AB%E5%8F%89%E6%A0%91%E8%A1%A8%E7%A4%BA%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9-%E8%AF%B4%E6%98%8E%E5%AE%83%E4%BB%AC%E9%80%82%E5%BA%94%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">5.
 试比较实体的边界表示、扫移表示、CSG 表示及八叉树表示的优缺点。
-说明它们适应的应用。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第八章-消隐技术"><span class="post-toc-number">8.</span> <span class="post-toc-text">第八章 消隐技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为何要进行隐藏面的消除"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">1. 为何要进行隐藏面的消除？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述区域子分消隐算法思想和描述"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">2.
-简述区域子分消隐算法思想和描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述-z-缓存消隐算法思想和描述"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">3. 简述 Z
-缓存消隐算法思想和描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#比较几种主要的隐藏面的消除算法的特点"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">4.
-比较几种主要的隐藏面的消除算法的特点。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第九章-真实感图形技术"><span class="post-toc-number">9.</span> <span class="post-toc-text">第九章 真实感图形技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用框图描述三维真实感图形的产生流程"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">1.
-用框图描述三维真实感图形的产生流程。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#phong-局部光照模型及其实现算法描述"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">2. Phong
-局部光照模型及其实现算法描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#叙述-phong-多边形明暗处理算法原理-与-gouraud-算法比较它的优缺-点"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">3.
-叙述 Phong 多边形明暗处理算法原理, 与 Gouraud 算法比较它的优缺 点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#何为全局光照模型典型的模型举例"><span class="post-toc-number">9.4.</span> <span class="post-toc-text">4.
-何为全局光照模型，典型的模型举例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现真实感绘制的光线跟踪技术的主要思想和算法描述"><span class="post-toc-number">9.5.</span> <span class="post-toc-text">5.
-实现真实感绘制的光线跟踪技术的主要思想和算法描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加速光线跟踪算法的主要方法"><span class="post-toc-number">9.6.</span> <span class="post-toc-text">6. 加速光线跟踪算法的主要方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#何谓纹理映射简述其实现原理"><span class="post-toc-number">9.7.</span> <span class="post-toc-text">7.
-何谓纹理映射，简述其实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试写出将一幅图片贴到三维圆柱体表面的算法"><span class="post-toc-number">9.8.</span> <span class="post-toc-text">8.
-试写出将一幅图片贴到三维圆柱体表面的算法。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第十章-open-gl-简介"><span class="post-toc-number">10.</span> <span class="post-toc-text">第十章 OPEN GL 简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#试设计一个室内三维环境-并利用-open-gl-展示它的三维效果要求1包含基本的实体元素球多面体锥体柱体曲面等-2有全局光照效果和纹理功能-3程序具有交互功能"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">1.
+说明它们适应的应用。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%B6%88%E9%9A%90%E6%8A%80%E6%9C%AF"><span class="post-toc-number">8.</span> <span class="post-toc-text">第八章 消隐技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E8%BF%9B%E8%A1%8C%E9%9A%90%E8%97%8F%E9%9D%A2%E7%9A%84%E6%B6%88%E9%99%A4"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">1. 为何要进行隐藏面的消除？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%80%E8%BF%B0%E5%8C%BA%E5%9F%9F%E5%AD%90%E5%88%86%E6%B6%88%E9%9A%90%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E5%92%8C%E6%8F%8F%E8%BF%B0"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">2.
+简述区域子分消隐算法思想和描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%80%E8%BF%B0-z-%E7%BC%93%E5%AD%98%E6%B6%88%E9%9A%90%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3%E5%92%8C%E6%8F%8F%E8%BF%B0"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">3. 简述 Z
+缓存消隐算法思想和描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AF%94%E8%BE%83%E5%87%A0%E7%A7%8D%E4%B8%BB%E8%A6%81%E7%9A%84%E9%9A%90%E8%97%8F%E9%9D%A2%E7%9A%84%E6%B6%88%E9%99%A4%E7%AE%97%E6%B3%95%E7%9A%84%E7%89%B9%E7%82%B9"><span class="post-toc-number">8.4.</span> <span class="post-toc-text">4.
+比较几种主要的隐藏面的消除算法的特点。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E7%9C%9F%E5%AE%9E%E6%84%9F%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF"><span class="post-toc-number">9.</span> <span class="post-toc-text">第九章 真实感图形技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%A8%E6%A1%86%E5%9B%BE%E6%8F%8F%E8%BF%B0%E4%B8%89%E7%BB%B4%E7%9C%9F%E5%AE%9E%E6%84%9F%E5%9B%BE%E5%BD%A2%E7%9A%84%E4%BA%A7%E7%94%9F%E6%B5%81%E7%A8%8B"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">1.
+用框图描述三维真实感图形的产生流程。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#phong-%E5%B1%80%E9%83%A8%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">2. Phong
+局部光照模型及其实现算法描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%99%E8%BF%B0-phong-%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%98%8E%E6%9A%97%E5%A4%84%E7%90%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86-%E4%B8%8E-gouraud-%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83%E5%AE%83%E7%9A%84%E4%BC%98%E7%BC%BA-%E7%82%B9"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">3.
+叙述 Phong 多边形明暗处理算法原理, 与 Gouraud 算法比较它的优缺 点。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%95%E4%B8%BA%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B%E5%85%B8%E5%9E%8B%E7%9A%84%E6%A8%A1%E5%9E%8B%E4%B8%BE%E4%BE%8B"><span class="post-toc-number">9.4.</span> <span class="post-toc-text">4.
+何为全局光照模型，典型的模型举例。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%9C%9F%E5%AE%9E%E6%84%9F%E7%BB%98%E5%88%B6%E7%9A%84%E5%85%89%E7%BA%BF%E8%B7%9F%E8%B8%AA%E6%8A%80%E6%9C%AF%E7%9A%84%E4%B8%BB%E8%A6%81%E6%80%9D%E6%83%B3%E5%92%8C%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="post-toc-number">9.5.</span> <span class="post-toc-text">5.
+实现真实感绘制的光线跟踪技术的主要思想和算法描述。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8A%A0%E9%80%9F%E5%85%89%E7%BA%BF%E8%B7%9F%E8%B8%AA%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="post-toc-number">9.6.</span> <span class="post-toc-text">6. 加速光线跟踪算法的主要方法。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%95%E8%B0%93%E7%BA%B9%E7%90%86%E6%98%A0%E5%B0%84%E7%AE%80%E8%BF%B0%E5%85%B6%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="post-toc-number">9.7.</span> <span class="post-toc-text">7.
+何谓纹理映射，简述其实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%95%E5%86%99%E5%87%BA%E5%B0%86%E4%B8%80%E5%B9%85%E5%9B%BE%E7%89%87%E8%B4%B4%E5%88%B0%E4%B8%89%E7%BB%B4%E5%9C%86%E6%9F%B1%E4%BD%93%E8%A1%A8%E9%9D%A2%E7%9A%84%E7%AE%97%E6%B3%95"><span class="post-toc-number">9.8.</span> <span class="post-toc-text">8.
+试写出将一幅图片贴到三维圆柱体表面的算法。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-open-gl-%E7%AE%80%E4%BB%8B"><span class="post-toc-number">10.</span> <span class="post-toc-text">第十章 OPEN GL 简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%AE%A4%E5%86%85%E4%B8%89%E7%BB%B4%E7%8E%AF%E5%A2%83-%E5%B9%B6%E5%88%A9%E7%94%A8-open-gl-%E5%B1%95%E7%A4%BA%E5%AE%83%E7%9A%84%E4%B8%89%E7%BB%B4%E6%95%88%E6%9E%9C%E8%A6%81%E6%B1%821%E5%8C%85%E5%90%AB%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%AE%9E%E4%BD%93%E5%85%83%E7%B4%A0%E7%90%83%E5%A4%9A%E9%9D%A2%E4%BD%93%E9%94%A5%E4%BD%93%E6%9F%B1%E4%BD%93%E6%9B%B2%E9%9D%A2%E7%AD%89-2%E6%9C%89%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7%E6%95%88%E6%9E%9C%E5%92%8C%E7%BA%B9%E7%90%86%E5%8A%9F%E8%83%BD-3%E7%A8%8B%E5%BA%8F%E5%85%B7%E6%9C%89%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">1.
 试设计一个室内三维环境, 并利用 OPEN GL
 展示它的三维效果。要求：(1)包含基本的实体元素：球、多面体、锥体、柱体、曲面等；
 (2)有全局光照效果和纹理功能； (3)程序具有交互功能。</span></a></li></ol></li></ol>
@@ -287,7 +288,7 @@ Processing（图像处理）探索的是从一个图像或者一组图像之间�
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg" alt="" title="">
+                    <img src="https://pic2.zhimg.com/dd44910dd5928eea0206c2c1c200458d_r.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -330,7 +331,7 @@ Processing（图像处理）探索的是从一个图像或者一组图像之间�
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxhnrc7agj31200m841q.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -352,7 +353,7 @@ Processing（图像处理）探索的是从一个图像或者一组图像之间�
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxhs5gh1lj30yy0ggwgc.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -365,7 +366,7 @@ Processing（图像处理）探索的是从一个图像或者一组图像之间�
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxhv179vbj30z40ekdi9.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxhv179vbj30z40ekdi9.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -451,21 +452,21 @@ Bresenham 直线生成算法原理。它与 DDA 算法相比，有何改进？</
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxlixlj38j30uy0jkjte.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxlixlj38j30uy0jkjte.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxlj92ec4j313a0lgtan.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -486,14 +487,14 @@ y1), P2(x2, y2)变换成与 X 轴重合的变换阵,并说明其等效性。</h3
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmi0znwoj30v80v4433.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmi0znwoj30v80v4433.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmid8igvj31180ycq9b.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmid8igvj31180ycq9b.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -511,54 +512,55 @@ O’X’Y’Z’坐标系下变成 z’=0。</h3>
 编码裁剪法(Sutherland-Cohen算法) <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxow9qi0fj315s0nmdnw.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxow9qi0fj315s0nmdnw.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure> <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxowgvxxyj316e0satbz.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure> <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxowqbws0j31520pytio.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxowgvxxyj316e0satbz.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox3ge2oj30ze0ww442.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxowqbws0j31520pytio.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure> <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox9xbl4j314s0v0jw3.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox3ge2oj30ze0ww442.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure> <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoxgj3lnj31460vktbn.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxox9xbl4j314s0v0jw3.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure> <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoxngfihj314s0n441a.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoxgj3lnj31460vktbn.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoxngfihj314s0n441a.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure> * 中点分割裁剪法 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxm94eayqj31900wogqd.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxm94eayqj31900wogqd.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
-            </figure>
-* 多边形的裁剪 * 逐边裁剪法 * 双边裁剪法</p>
+            </figure> * 多边形的裁剪 *
+逐边裁剪法 * 双边裁剪法</p>
 <h2 id="第五章-人机交互技术">第五章 人机交互技术</h2>
 <h3 id="基本的交互任务有哪些它们可用什么设备执行">1.
 基本的交互任务有哪些？它们可用什么设备执行？</h3>
@@ -591,21 +593,21 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmtkh0bsj31900w6jxn.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmtkh0bsj31900w6jxn.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmttb1hkj317a0w847j.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmttb1hkj317a0w847j.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmu0svh1j317e0ryah1.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxmu0svh1j317e0ryah1.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -614,42 +616,42 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmxqacfxj313o0n6jwh.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxmxqacfxj313o0n6jwh.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmxxr2wij317k0qodnu.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmxxr2wij317k0qodnu.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmy55psuj310y0qg77b.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmy55psuj310y0qg77b.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmycwhevj316w0qktgo.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmycwhevj316w0qktgo.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmyl3qsej31020p40us.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxmyl3qsej31020p40us.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmys8m11j31940vkgyx.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxmys8m11j31940vkgyx.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -666,14 +668,14 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnb3rmn9j316u0psai6.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnb3rmn9j316u0psai6.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnbss16mj318g0w6q9r.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnbss16mj318g0w6q9r.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -698,7 +700,7 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 提供检查输入信息几何一致性功能。 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgyby1965zj31960vu154.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgyby1965zj31960vu154.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
@@ -741,7 +743,7 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnj97d12j31080r676f.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -754,7 +756,7 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnjx8essj315y0swju9.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -787,20 +789,20 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 最大Z值所对应点的颜色存入显示器的帧缓存FB。 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnwnofuej312a0w00vx.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxnwnofuej312a0w00vx.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
 <p><strong>算法描述</strong> <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnz0q222j31720mi0ym.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxnz0q222j31720mi0ym.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure> <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxnz9kkimj316y0o07ah.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxnz9kkimj316y0o07ah.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
@@ -826,28 +828,28 @@ see is what you get) , 直接操作(direct manipulate)及菜单和图形符号
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoa4f4gvj319c0s8agx.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoa4f4gvj319c0s8agx.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoacz8tbj31920tudm1.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxoacz8tbj31920tudm1.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxob3r961j316m0pagrt.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxob3r961j316m0pagrt.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxoba8n9ej31920jmacd.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxoba8n9ej31920jmacd.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -879,7 +881,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg" alt="" title="">
+                    <img src="http://ww1.sinaimg.cn/large/006tNc79ly1fgxoe2npm1j319g0u4wqg.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -890,42 +892,42 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxof13rtnj314s0gy10v.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxof13rtnj314s0gy10v.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxof7wxhuj312u0qkjtv.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxof7wxhuj312u0qkjtv.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxofkccc9j31am0kmjya.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxofkccc9j31am0kmjya.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg" alt="" title="">
+                    <img src="http://ww3.sinaimg.cn/large/006tNc79ly1fgxoft2gb5j315e0sqjtx.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg" alt="" title="">
+                    <img src="http://ww2.sinaimg.cn/large/006tNc79ly1fgxog5p78jj317y0ukq8p.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg" alt="" title="">
+                    <img src="http://ww4.sinaimg.cn/large/006tNc79ly1fgxogeft2vj318g0sqn2s.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -949,7 +951,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 展示它的三维效果。要求：(1)包含基本的实体元素：球、多面体、锥体、柱体、曲面等；
 (2)有全局光照效果和纹理功能； (3)程序具有交互功能。</h3>
 <p>第二次大作业。</p>
-<p><a href="https://github.com/Sean10/graphicsLearning" target="_blank" rel="noopener">附录</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Sean10/graphicsLearning">附录</a></p>
 
         </div>
 
@@ -958,7 +960,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.588Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.905Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -980,7 +982,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openGL/">openGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图形学/">图形学</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openGL/" rel="tag">openGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">图形学</a></li></ul>
 
 
             
@@ -993,7 +995,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/26/图形学复习笔记/&title=《图形学复习笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《图形学复习笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -1003,22 +1005,22 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/26/图形学复习笔记/&title=《图形学复习笔记》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《图形学复习笔记》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/26/图形学复习笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图形学复习笔记》 — 行路中.&url=https://sean10.github.io/2017/06/26/图形学复习笔记/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图形学复习笔记》 — 行路中.&url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/26/图形学复习笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -1041,7 +1043,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/06/27/Unix编程环境复习笔记/" id="post-prev" class="post-nav-link">
+      <a href="/2017/06/27/Unix%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Unix编程环境复习笔记</h4>
       </a>
@@ -1050,7 +1052,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/06/15/Qt学习汇总遇到的问题/" id="post-next" class="post-nav-link">
+      <a href="/2017/06/15/Qt%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">Qt学习汇总遇到的问题</h4>
       </a>
@@ -1074,7 +1076,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -1095,6 +1097,9 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -1127,11 +1132,11 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -1149,7 +1154,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/26/图形学复习笔记/&title=《图形学复习笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《图形学复习笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -1159,22 +1164,22 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/26/图形学复习笔记/&title=《图形学复习笔记》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=《图形学复习笔记》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/26/图形学复习笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图形学复习笔记》 — 行路中.&url=https://sean10.github.io/2017/06/26/图形学复习笔记/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《图形学复习笔记》 — 行路中.&url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/26/图形学复习笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -1185,7 +1190,7 @@ b.对多边形顶点的光亮度插值计算出多边 形内任一点的光亮�
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/06/26/图形学复习笔记/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/06/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
 </div>
 
 
@@ -1201,7 +1206,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -1221,7 +1226,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

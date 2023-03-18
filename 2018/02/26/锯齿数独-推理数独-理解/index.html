@@ -22,19 +22,20 @@
     
     <meta name="keywords" content="数独,sudoku">
     <meta name="description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
-<meta name="keywords" content="数独,sudoku">
 <meta property="og:type" content="article">
 <meta property="og:title" content="锯齿数独_推理数独 解法">
-<meta property="og:url" content="https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/index.html">
+<meta property="og:url" content="https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1foubneiifqj30l60ksjt8.jpg">
-<meta property="og:updated_time" content="2018-02-26T17:25:45.000Z">
+<meta property="article:published_time" content="2018-02-26T13:25:45.000Z">
+<meta property="article:modified_time" content="2018-02-26T17:25:45.000Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="数独">
+<meta property="article:tag" content="sudoku">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="锯齿数独_推理数独 解法">
-<meta name="twitter:description" content="推理数独： 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。 如右侧为1：30则表示数字1对应线连接的格子中数字的和为30. Neighbourhood:Enter numbers from 1 to 9 once each, into the nine circles. For each number, the sum of">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
@@ -43,10 +44,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -163,7 +164,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#example"><span class="post-toc-number">1.</span> <span class="post-toc-text">Example:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#example"><span class="post-toc-number">1.</span> <span class="post-toc-text">Example:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
         </nav>
     </aside>
 
@@ -197,12 +198,12 @@ Neighbourhood:Enter numbers from 1 to 9 once each, into the nine
 circles. For each number, the sum of all numbers connected to it is
 given.</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="example">Example:</h1>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg" alt="" title="">
+                    <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fou65xfb29j30kw0kcwg1.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -215,11 +216,11 @@ given.</p>
 </ul>
 <p>将4出路标记为1，按逆时针递增标记</p>
 <p>算法大致是下面这样，只是脑海里按照下面这个思路迭代了几次就能实验出结果了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0. 将图中数字降序排列</span><br><span class="line">1. for 取最大数置于4出路处（即1号位）</span><br><span class="line">2. 	for 取最小数，置于与4出路直连的2个2出路处（即2与7号位）</span><br><span class="line">3. 			迭代求解</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0. 将图中数字降序排列</span><br><span class="line">1. for 取最大数置于4出路处（即1号位）</span><br><span class="line">2. 	for 取最小数，置于与4出路直连的2个2出路处（即2与7号位）</span><br><span class="line">3. 			迭代求解</span><br></pre></td></tr></table></figure>
 <p>答案: <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://ws2.sinaimg.cn/large/006tNc79gy1foubneiifqj30l60ksjt8.jpg" alt="" title="">
+                    <img src="https://ws2.sinaimg.cn/large/006tNc79gy1foubneiifqj30l60ksjt8.jpg" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
@@ -228,7 +229,7 @@ given.</p>
 数之道的这类题是直接生成了图片再发到浏览器的，看来不能直接读包然后发回结果了。需要进行一下识图了。</p>
 <h1 id="参考资料">参考资料</h1>
 <ol type="1">
-<li><a href="http://www.sudokufans.org.cn/tl.index.php" target="_blank" rel="noopener">独 数之道
+<li><a target="_blank" rel="noopener" href="http://www.sudokufans.org.cn/tl.index.php">独 数之道
 锯齿数独-&gt;推理数独</a>(需注册登录才能访问)</li>
 </ol>
 
@@ -261,7 +262,7 @@ given.</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sudoku/">sudoku</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数独/">数独</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sudoku/" rel="tag">sudoku</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%8B%AC/" rel="tag">数独</a></li></ul>
 
 
             
@@ -274,7 +275,7 @@ given.</p>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/&title=《锯齿数独_推理数独 解法》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/&title=《锯齿数独_推理数独 解法》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -284,7 +285,7 @@ given.</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/&title=《锯齿数独_推理数独 解法》 — 行路中.&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/&title=《锯齿数独_推理数独 解法》 — 行路中.&source=
 推理数独：
 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。
 如右侧为1：30则表示..." data-title=" QQ">
@@ -292,17 +293,17 @@ given.</p>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《锯齿数独_推理数独 解法》 — 行路中.&url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《锯齿数独_推理数独 解法》 — 行路中.&url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -325,7 +326,7 @@ given.</p>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/05/算法学习目录/" id="post-prev" class="post-nav-link">
+      <a href="/2018/03/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">算法学习目录</h4>
       </a>
@@ -334,7 +335,7 @@ given.</p>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/02/24/数独note/" id="post-next" class="post-nav-link">
+      <a href="/2018/02/24/%E6%95%B0%E7%8B%ACnote/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">数独note</h4>
       </a>
@@ -358,7 +359,7 @@ given.</p>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -379,6 +380,9 @@ given.</p>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -411,11 +415,11 @@ given.</p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -433,7 +437,7 @@ given.</p>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/&title=《锯齿数独_推理数独 解法》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/&title=《锯齿数独_推理数独 解法》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -443,7 +447,7 @@ given.</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/&title=《锯齿数独_推理数独 解法》 — 行路中.&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/&title=《锯齿数独_推理数独 解法》 — 行路中.&source=
 推理数独：
 将1～9填入空格内，使格内数字满足右侧对应关系：每个圆圈连接的其它数字的和等于右侧对应关系中圆圈内的数字对应的数字。
 如右侧为1：30则表示..." data-title=" QQ">
@@ -451,17 +455,17 @@ given.</p>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《锯齿数独_推理数独 解法》 — 行路中.&url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《锯齿数独_推理数独 解法》 — 行路中.&url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -472,7 +476,7 @@ given.</p>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/02/26/锯齿数独-推理数独-理解/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/" alt="微信分享二维码">
 </div>
 
 
@@ -488,7 +492,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -508,7 +512,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

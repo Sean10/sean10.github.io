@@ -22,17 +22,17 @@
     
     <meta name="keywords" content="ceph">
     <meta name="description" content="ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。 尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd out了之后，ceph df拿到的MAX AVAIL始终没有变化。">
-<meta name="keywords" content="ceph">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之df的MAX AVAIL">
-<meta property="og:url" content="https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。 尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd out了之后，ceph df拿到的MAX AVAIL始终没有变化。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-09T02:41:36.069Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-28T10:50:05.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.863Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="ceph">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ceph之df的MAX AVAIL">
-<meta name="twitter:description" content="ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。 尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd out了之后，ceph df拿到的MAX AVAIL始终没有变化。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#提交"><span class="post-toc-number">1.</span> <span class="post-toc-text">提交</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#crushmap变更时-df容量不准确"><span class="post-toc-number"></span> <span class="post-toc-text">crushmap变更时, df容量不准确</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo-这中间也没干啥-数字在变化-默认的元数据"><span class="post-toc-number">1.</span> <span class="post-toc-text">TODO:
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E4%BA%A4"><span class="post-toc-number">1.</span> <span class="post-toc-text">提交</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#crushmap%E5%8F%98%E6%9B%B4%E6%97%B6-df%E5%AE%B9%E9%87%8F%E4%B8%8D%E5%87%86%E7%A1%AE"><span class="post-toc-number"></span> <span class="post-toc-text">crushmap变更时, df容量不准确</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo-%E8%BF%99%E4%B8%AD%E9%97%B4%E4%B9%9F%E6%B2%A1%E5%B9%B2%E5%95%A5-%E6%95%B0%E5%AD%97%E5%9C%A8%E5%8F%98%E5%8C%96-%E9%BB%98%E8%AE%A4%E7%9A%84%E5%85%83%E6%95%B0%E6%8D%AE"><span class="post-toc-number">1.</span> <span class="post-toc-text">TODO:
 这中间也没干啥, 数字在变化? 默认的元数据?</span></a></li></ol>
         </nav>
     </aside>
@@ -190,70 +190,70 @@
             <p>ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。</p>
 <p>尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd
 out了之后，<code>ceph df</code>拿到的<code>MAX AVAIL</code>始终没有变化。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>这样对于使用者来说是存在问题的，当出现降级的情况时，若业务层使用这个接口看到资源池仍有可用空间，但实际上依旧up的osd并不能提供这些空间，是会导致业务人员出现误判……直接导致业务数据写不下去的情况的。</p>
 <p>代码里是这样写了，但是是否上面的想法只是我们理解错误产生的误用呢？</p>
 <p>向上追溯一下这段关键计算的提交记录吧，看看有没有相关场景。</p>
 <p>先搜索主要代码</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PGMap.cc</span></span><br><span class="line"><span class="keyword">int64_t</span> proj = (<span class="keyword">int64_t</span>)(avail / (<span class="keyword">double</span>)p-&gt;second);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PGMap.cc</span></span><br><span class="line"><span class="type">int64_t</span> proj = (<span class="type">int64_t</span>)(avail / (<span class="type">double</span>)p-&gt;second);</span><br></pre></td></tr></table></figure>
 <p>利用blame查找每行的记录，还是不错的。</p>
-<p><a href="https://tracker.ceph.com/issues/10257#note-1" target="_blank" rel="noopener">Bug #10257:
-Ceph df doesn’t report MAX AVAIL correctly when using rulesets and OSD
+<p><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/10257#note-1">Bug #10257:
+Ceph df doesn't report MAX AVAIL correctly when using rulesets and OSD
 in ruleset is down and out - Ceph - Ceph</a></p>
 <p>这篇里只加了跳过kb=0的选项</p>
-<p><a href="https://github.com/ceph/ceph/pull/17513" target="_blank" rel="noopener">mon: incorrect MAX
-AVAIL in “ceph df” by liuchang0812 · Pull Request #17513 ·
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/17513">mon: incorrect MAX
+AVAIL in "ceph df" by liuchang0812 · Pull Request #17513 ·
 ceph/ceph</a></p>
 <p>这篇里好像是之前漏了/raw_used_rate这个副本size</p>
-<p><a href="https://github.com/ceph/ceph/pull/12923/commits/f223ac92917f4bc18e5b9b3ad61afa155e4d088a" target="_blank" rel="noopener">mon/PGMap:
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/12923/commits/f223ac92917f4bc18e5b9b3ad61afa155e4d088a">mon/PGMap:
 factor mon_osd_full_ratio into MAX AVAIL calc by liewegas · Pull Request
 #12923 · ceph/ceph</a></p>
 <p>这个操作引入的full_ratio参数到MAX AVAIL计算中</p>
-<p><a href="https://github.com/ceph/ceph/commit/d10c6c26f9ef7372e2c95da79d23b07ce5f4e0e5#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">mon/PGMap:
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/d10c6c26f9ef7372e2c95da79d23b07ce5f4e0e5#diff-ecab4c883be988760d61a8a883ddc23f">mon/PGMap:
 Fix %USED calculation bug. · ceph/ceph@d10c6c2</a></p>
 <p>修复%USED（raw的应该) 没有乘以副本数的问题。</p>
-<p><a href="https://github.com/ceph/ceph/commit/7ca25dfd5a4f05d1f942b73f08e82b8694a73c99#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">osd,os,mon:
-extend ‘ceph df’ report to provide both USED and RAW_USED ·
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/7ca25dfd5a4f05d1f942b73f08e82b8694a73c99#diff-ecab4c883be988760d61a8a883ddc23f">osd,os,mon:
+extend 'ceph df' report to provide both USED and RAW_USED ·
 ceph/ceph@7ca25df</a></p>
 <p>这个应该是在L之后的版本，在这次commit中引入Statfs这个中间结构用来存储total、avail，免于直接接触kb</p>
-<p><a href="https://github.com/ceph/ceph/commit/738789b0577f879bb756d65b71066300902ab116#diff-ecab4c883be988760d61a8a883ddc23f" target="_blank" rel="noopener">mon/PGMap:
-GLOBAL -&gt; RAW STORAGE in ‘df’ output · ceph/ceph@738789b</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/738789b0577f879bb756d65b71066300902ab116#diff-ecab4c883be988760d61a8a883ddc23f">mon/PGMap:
+GLOBAL -&gt; RAW STORAGE in 'df' output · ceph/ceph@738789b</a></p>
 <p>这个也是L之后的版本，把ceph df输出的GLOBAL改成了RAW，防止错误理解</p>
 <p>get_rule_weight_osd_map这个函数的新增并没有看出有立刻被用在计算资源池容量这里。</p>
 <p>应该可以从这个接口被调用的地方来分析，新增的人是否没考虑过osd异常的场景？</p>
-<p><a href="https://github.com/ceph/ceph/commit/8f2521617ee31453909ddd0a6a5fd177c8fbf034" target="_blank" rel="noopener">mon/PGMap:
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/8f2521617ee31453909ddd0a6a5fd177c8fbf034">mon/PGMap:
 move summary information into parent PGMapDigest object ·
 ceph/ceph@8f25216</a></p>
 <p>这里被重构，挪了一下位置……</p>
-<p><a href="https://github.com/ceph/ceph/commit/f223ac92917f4bc18e5b9b3ad61afa155e4d088a" target="_blank" rel="noopener">mon/PGMap:
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/f223ac92917f4bc18e5b9b3ad61afa155e4d088a">mon/PGMap:
 factor mon_osd_full_ratio into MAX AVAIL calc ·
 ceph/ceph@f223ac9</a></p>
 <p>这里又被做了格式化，哎</p>
-<p><a href="https://github.com/ceph/ceph/commit/519a01d973f10b97e4ba497e065fdf53b6064029" target="_blank" rel="noopener">mon:
-move “df” dump code from PGMonitor to PGMap · ceph/ceph@519a01d</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/519a01d973f10b97e4ba497e065fdf53b6064029">mon:
+move "df" dump code from PGMonitor to PGMap · ceph/ceph@519a01d</a></p>
 <p>这里又重构了……</p>
 <p>在这次提交以前这部分代码在src/mon/PGMonitor.cc</p>
-<p><a href="https://github.com/ceph/ceph/commit/024caa721d6632eda0cdcdd704188de209f30bd6" target="_blank" rel="noopener">mon/pgmonitor:
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/024caa721d6632eda0cdcdd704188de209f30bd6">mon/pgmonitor:
 use appropriate forced conversions in get_rule_avail ·
 ceph/ceph@024caa7</a></p>
 <p>哎，这次对这行改了下显式类型转换，从float改成double</p>
-<p><a href="https://tracker.ceph.com/issues/10257#note-1" target="_blank" rel="noopener">Bug #10257:
-Ceph df doesn’t report MAX AVAIL correctly when using rulesets and OSD
+<p><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/10257#note-1">Bug #10257:
+Ceph df doesn't report MAX AVAIL correctly when using rulesets and OSD
 in ruleset is down and out - Ceph - Ceph</a></p>
 <p>这个看起来和OSD
 out相关，但很可惜，只处理了错误计算为0的问题，并没有考虑正常场景？</p>
-<p><a href="https://github.com/ceph/ceph/commit/7a9652b58ea70f9a484a135bde20d872616c5947" target="_blank" rel="noopener">mon:
-include ‘max avail’ in df output · ceph/ceph@7a9652b</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/7a9652b58ea70f9a484a135bde20d872616c5947">mon:
+include 'max avail' in df output · ceph/ceph@7a9652b</a></p>
 <p>终于找到了引入的地方,这里增加的max avail的值。</p>
-<p><a href="https://github.com/ceph/ceph/commit/04d0526718ccfc220b4fe0c9046ac58899d9dafc" target="_blank" rel="noopener">PGMonitor:
+<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/04d0526718ccfc220b4fe0c9046ac58899d9dafc">PGMonitor:
 fix bug in caculating pool avail space · ceph/ceph@04d0526</a></p>
 <p>这里处理的那个osd_map</p>
 <h2 id="提交">提交</h2>
 <p>在最新的分支里，也没有相关信息。看起来得提个ISSUE看看有没有答复了。</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Environment: Luminous 12.2.12</span><br><span class="line"></span><br><span class="line">I have a question about the pool's <span class="code">`MAX AVAIL`</span> of <span class="code">`ceph df`</span>.</span><br><span class="line"></span><br><span class="line">When i out a osd, the <span class="code">`MAX AVAIL`</span> doesn't change. Only when i remove the osd from the crush map of the pool, the <span class="code">`MAX AVAIL`</span> decrese.</span><br><span class="line"></span><br><span class="line">For example,  I have a pool with 10 osd. When 9 osds out, <span class="code">`ceph df`</span> still output the MAX AVAIL with 10 osds, not the remained 1 osd. Only when i remove the out osds from the crush map, the MAX AVAIL changed to the remained size. </span><br><span class="line"></span><br><span class="line">But in my understanding, when the osd out, the recovery begin. When the recovery begins, the out osd has no use for the pool. If <span class="code">`MAX AVAIL`</span> doesn't change, It may provide error avail size for the users.</span><br><span class="line"></span><br><span class="line">The calculate logic is in <span class="code">`PGMap::get_rules_avail`</span>. Maybe after called <span class="code">`get_rule_weight_osd_map`</span>, we could recalculate the weight map to remove the osd which <span class="code">`osd_info.kb`</span> is zero. </span><br><span class="line"></span><br><span class="line">Or could modify the <span class="code">`get_rule_weight_osd_map`</span>, but i don't know whether there is some other impact.</span><br></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Environment: Luminous 12.2.12</span><br><span class="line"></span><br><span class="line">I have a question about the pool&#x27;s <span class="code">`MAX AVAIL`</span> of <span class="code">`ceph df`</span>.</span><br><span class="line"></span><br><span class="line">When i out a osd, the <span class="code">`MAX AVAIL`</span> doesn&#x27;t change. Only when i remove the osd from the crush map of the pool, the <span class="code">`MAX AVAIL`</span> decrese.</span><br><span class="line"></span><br><span class="line">For example,  I have a pool with 10 osd. When 9 osds out, <span class="code">`ceph df`</span> still output the MAX AVAIL with 10 osds, not the remained 1 osd. Only when i remove the out osds from the crush map, the MAX AVAIL changed to the remained size. </span><br><span class="line"></span><br><span class="line">But in my understanding, when the osd out, the recovery begin. When the recovery begins, the out osd has no use for the pool. If <span class="code">`MAX AVAIL`</span> doesn&#x27;t change, It may provide error avail size for the users.</span><br><span class="line"></span><br><span class="line">The calculate logic is in <span class="code">`PGMap::get_rules_avail`</span>. Maybe after called <span class="code">`get_rule_weight_osd_map`</span>, we could recalculate the weight map to remove the osd which <span class="code">`osd_info.kb`</span> is zero. </span><br><span class="line"></span><br><span class="line">Or could modify the <span class="code">`get_rule_weight_osd_map`</span>, but i don&#x27;t know whether there is some other impact.</span><br></pre></td></tr></table></figure>
 <p>新建了这个issue, 希望能得到回复吧。</p>
-<p><a href="https://tracker.ceph.com/issues/45809" target="_blank" rel="noopener">Bug #45809: When out
-a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
+<p><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/45809">Bug #45809: When out
+a osd, the `MAX AVAIL` doesn't change. - Ceph - Ceph</a></p>
 <h1 id="crushmap变更时-df容量不准确">crushmap变更时, df容量不准确</h1>
 <ul>
 <li><p>看资源池为什么df输出的不对, 是否是osd_stat此时没收集完? 如何判断?
@@ -276,7 +276,7 @@ a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
 <p>理解错了, 的确是通过这个变量缓存的.</p>
 <p><code>dump_pool_stats_full</code>在这里才会真实的去触发?</p>
 <p>大致知道了, 如果这个crush rule的容量还没被加载, 返回就是0</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int64_t</span> get_rule_avail(<span class="keyword">int</span> ruleno) <span class="keyword">const</span> &#123;</span><br><span class="line">  <span class="keyword">auto</span> i = avail_space_by_rule.find(ruleno);</span><br><span class="line">  <span class="keyword">if</span> (i != avail_space_by_rule.end())</span><br><span class="line">    <span class="keyword">return</span> avail_space_by_rule[ruleno];</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int64_t</span> <span class="title">get_rule_avail</span><span class="params">(<span class="type">int</span> ruleno)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> i = avail_space_by_rule.<span class="built_in">find</span>(ruleno);</span><br><span class="line">  <span class="keyword">if</span> (i != avail_space_by_rule.<span class="built_in">end</span>())</span><br><span class="line">    <span class="keyword">return</span> avail_space_by_rule[ruleno];</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以, 其实就是这个容量触发更新的地方怀疑不够及时?</p>
 <p>目前疑似<code>PGMapStatService</code>的<code>dump_pool_stats</code>触发<code>PGMap</code>的<code>dump_pool_stats_full</code>
 只有这一个地方触发更新.</p>
@@ -291,7 +291,7 @@ a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
 <p><code>MonPGStatService</code>这个和上面这几个什么关联性呢?</p>
 <p>和<code>PGMapStatService</code>同时被继承到一个class里?</p>
 <p>所以关键应该是在这个共同的派生类上?</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PGMonitor</span> :</span> <span class="keyword">public</span> PaxosService &#123;</span><br><span class="line">  PGMap pg_map;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;PGMonStatService&gt; pgservice;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PGMonitor</span> : <span class="keyword">public</span> PaxosService &#123;</span><br><span class="line">  PGMap pg_map;</span><br><span class="line">  std::unique_ptr&lt;PGMonStatService&gt; pgservice;</span><br></pre></td></tr></table></figure>
 <p><code>PGMonStatService</code>的构造函数里会传入这个,</p>
 <p><code>PGMonitor</code>是这个<code>class PGMonitor : public PaxosService</code>,
 有点遗忘了, 负责的是<code>PaxosService</code></p>
@@ -302,7 +302,7 @@ a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
 <p>TODO: 题外话,
 <code>PaxosService</code>的is_readable不知道怎么理解.</p>
 <p>获取pgmap的元数据的时候, 好像是通过这个来查的</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dump_info</span><span class="params">(Formatter *f)</span> <span class="keyword">const</span> override </span>&#123;</span><br><span class="line">  f-&gt;dump_object(<span class="string">"pgmap"</span>, pgmap);</span><br><span class="line">  f-&gt;dump_unsigned(<span class="string">"pgmap_first_committed"</span>, pgmon-&gt;get_first_committed());</span><br><span class="line">  f-&gt;dump_unsigned(<span class="string">"pgmap_last_committed"</span>, pgmon-&gt;get_last_committed());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dump_info</span><span class="params">(Formatter *f)</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">  f-&gt;<span class="built_in">dump_object</span>(<span class="string">&quot;pgmap&quot;</span>, pgmap);</span><br><span class="line">  f-&gt;<span class="built_in">dump_unsigned</span>(<span class="string">&quot;pgmap_first_committed&quot;</span>, pgmon-&gt;<span class="built_in">get_first_committed</span>());</span><br><span class="line">  f-&gt;<span class="built_in">dump_unsigned</span>(<span class="string">&quot;pgmap_last_committed&quot;</span>, pgmon-&gt;<span class="built_in">get_last_committed</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以刚才继承的那俩类, 还有在单独提供使用吗?</p>
 <p><code>MonPGStatService</code></p>
 <p><code>Monitor</code>里搞了个这个<code>const MonPGStatService *pgservice;</code>
@@ -315,11 +315,11 @@ a osd, the `MAX AVAIL` doesn’t change. - Ceph - Ceph</a></p>
 <p>根据下面这个,
 是<code>12</code>版本及以后用<code>MgrStatMonitor</code>,
 <code>PGMonitor</code>是以前的呢?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// make sure we&apos;re using the right pg service.. remove me post-luminous!</span><br><span class="line">if (osdmap.require_osd_release &gt;= CEPH_RELEASE_LUMINOUS) &#123;</span><br><span class="line">  dout(10) &lt;&lt; __func__ &lt;&lt; &quot; pgservice is mgrstat&quot; &lt;&lt; dendl;</span><br><span class="line">  mon-&gt;pgservice = mon-&gt;mgrstatmon()-&gt;get_pg_stat_service();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  dout(10) &lt;&lt; __func__ &lt;&lt; &quot; pgservice is pg&quot; &lt;&lt; dendl;</span><br><span class="line">  mon-&gt;pgservice = mon-&gt;pgmon()-&gt;get_pg_stat_service();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// make sure we&#x27;re using the right pg service.. remove me post-luminous!</span><br><span class="line">if (osdmap.require_osd_release &gt;= CEPH_RELEASE_LUMINOUS) &#123;</span><br><span class="line">  dout(10) &lt;&lt; __func__ &lt;&lt; &quot; pgservice is mgrstat&quot; &lt;&lt; dendl;</span><br><span class="line">  mon-&gt;pgservice = mon-&gt;mgrstatmon()-&gt;get_pg_stat_service();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  dout(10) &lt;&lt; __func__ &lt;&lt; &quot; pgservice is pg&quot; &lt;&lt; dendl;</span><br><span class="line">  mon-&gt;pgservice = mon-&gt;pgmon()-&gt;get_pg_stat_service();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>require_osd_release luminous</code>,
 所以实际上走进的代码应该是MgrStatMonitor?</p>
 <p>走的其实是<code>digest</code>的<code>dump_pool_stats</code></p>
-<p>// FIXME: we don’t guarantee avail_space_by_rule is up-to-date before
+<p>// FIXME: we don't guarantee avail_space_by_rule is up-to-date before
 this function is invoked</p>
 <p>官方在这里其实也写了, 等待修复.</p>
 <p>目前来看,
@@ -342,10 +342,10 @@ a parent class. The child PGMap retains the detail.</p>
 call it to encode just the summary info.</p>
 <p>Squashed in here is a new num_pg_by_osd that could have been done in
 a preceding patch but I did things in the wrong order. :(</p>
-<p>Signed-off-by: Sage Weil <a href="mailto:sage@redhat.com" class="email" target="_blank" rel="noopener">sage@redhat.com</a></p>
+<p>Signed-off-by: Sage Weil <a href="mailto:sage@redhat.com" class="email">sage@redhat.com</a></p>
 <p>所以其实这个digest就是pgmap的一个封装版本.</p>
 <p>在<code>void DaemonServer::send_report</code>这里会触发</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   cluster_state.with_osdmap([&amp;](const OSDMap&amp; osdmap) &#123;</span><br><span class="line">// FIXME: no easy way to get mon features here.  this will do for</span><br><span class="line">// now, though, as long as we don&apos;t make a backward-incompat change.</span><br><span class="line">pg_map.encode_digest(osdmap, m-&gt;get_data(), CEPH_FEATURES_ALL);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   cluster_state.with_osdmap([&amp;](const OSDMap&amp; osdmap) &#123;</span><br><span class="line">// FIXME: no easy way to get mon features here.  this will do for</span><br><span class="line">// now, though, as long as we don&#x27;t make a backward-incompat change.</span><br><span class="line">pg_map.encode_digest(osdmap, m-&gt;get_data(), CEPH_FEATURES_ALL);</span><br></pre></td></tr></table></figure>
 <p>这里会定时将pgmap给更新?</p>
 <p>mgr的捕捉得通过asok的文件链接直接找. mgr_tick_period</p>
 <p>2s更新一次, 那问题就是这个日志在哪?</p>
@@ -356,20 +356,20 @@ a preceding patch but I did things in the wrong order. :(</p>
 <p>如果这个间隔被我改大了之后, ceph df的结果是查不到.</p>
 <p>所以关键问题还是crush的更新阶段?</p>
 <p>抓一下那次异常时的osd map看看</p>
-<p>11-12 10:38:55 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ceph osd getmap 110 -o osdmap.110</span><br><span class="line">osdmaptool osdmap.110 --export-crush crush.110</span><br><span class="line">crushtool -d crush.110 -o crush.110.txt</span><br><span class="line">##测试均衡分布</span><br><span class="line">osdmaptool osdmap.1034  --test-map-pgs-dump --pool 10</span><br><span class="line">osdmaptool osdmap.1034 --tree</span><br><span class="line">#打印ceph osd tree</span><br><span class="line"></span><br><span class="line">ceph osd  getcrushmap -o &#123;compiled-crushmap-filename&#125;</span><br><span class="line"></span><br><span class="line"> ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-3/ --pgid 4.0 obj4 dump</span><br></pre></td></tr></table></figure></p>
+<p>11-12 10:38:55 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ceph osd getmap 110 -o osdmap.110</span><br><span class="line">osdmaptool osdmap.110 --export-crush crush.110</span><br><span class="line">crushtool -d crush.110 -o crush.110.txt</span><br><span class="line">##测试均衡分布</span><br><span class="line">osdmaptool osdmap.1034  --test-map-pgs-dump --pool 10</span><br><span class="line">osdmaptool osdmap.1034 --tree</span><br><span class="line">#打印ceph osd tree</span><br><span class="line"></span><br><span class="line">ceph osd  getcrushmap -o &#123;compiled-crushmap-filename&#125;</span><br><span class="line"></span><br><span class="line"> ceph-objectstore-tool --data-path /var/lib/ceph/osd/ceph-3/ --pgid 4.0 obj4 dump</span><br></pre></td></tr></table></figure></p>
 <p>2021-11-12 10:38:54.756557 7f87acd59700 0 log_channel(cluster) log
 [DBG] : osdmap e76: 6 total, 6 up, 6 in</p>
 <p>ceph osd dump 76 得到的没有容量</p>
 <p><code>osdmon()-&gt;osdmap</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class OSDMonitor *osdmon() &#123;</span><br><span class="line">  return (class OSDMonitor *)paxos_service[PAXOS_OSDMAP];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class OSDMonitor *osdmon() &#123;</span><br><span class="line">  return (class OSDMonitor *)paxos_service[PAXOS_OSDMAP];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其实计算的时候, 还需要一个osd_stat</p>
 <p>所以有没有办法得到完整的<code>PGMap</code>?</p>
 <p>资源池存在,但是crush rule是新建的这种.</p>
 <p>复现了. emm.</p>
 <p>第一种:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(gdb) bt</span><br><span class="line">#0  PGMap::get_rules_avail (this=this@entry=0x5627ee1b9f90, osdmap=..., avail_map=avail_map@entry=0x5627ee1b9fc0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.cc:940</span><br><span class="line">#1  0x00005627e27d4846 in PGMap::encode_digest (this=this@entry=0x5627ee1b9f90, osdmap=..., bl=..., features=features@entry=4611087853746454523)</span><br><span class="line">    at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.cc:1579</span><br><span class="line">#2  0x00005627e28193a3 in operator() (osdmap=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/DaemonServer.cc:1454</span><br><span class="line">#3  with_osdmap&lt;DaemonServer::send_report()::__lambda31::__lambda32&gt; (cb=&lt;optimized out&gt;, this=0x7ffe277a5fa0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/osdc/Objecter.h:2045</span><br><span class="line">#4  with_osdmap&lt;DaemonServer::send_report()::__lambda31::__lambda32&gt; (this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:129</span><br><span class="line">#5  operator() (pg_map=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/DaemonServer.cc:1470</span><br><span class="line">#6  with_pgmap&lt;DaemonServer::send_report()::__lambda31&gt; (cb=&lt;optimized out&gt;, this=0x5627ee1b9c30) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:105</span><br><span class="line">#7  DaemonServer::send_report (this=this@entry=0x5627ee1ba930) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/DaemonServer.cc:1471</span><br><span class="line">#8  0x00005627e286ba2e in Mgr::tick (this=0x5627ee1b9800) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/Mgr.cc:626</span><br><span class="line">#9  0x00005627e28621fd in MgrStandby::tick (this=0x7ffe277a59e0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/MgrStandby.cc:197</span><br><span class="line">#10 0x00005627e282668a in operator() (a0=&lt;optimized out&gt;, this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/build/boost/include/boost/function/function_template.hpp:760</span><br><span class="line">#11 FunctionContext::finish (this=&lt;optimized out&gt;, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:493</span><br><span class="line">#12 0x00005627e2821bc9 in Context::complete (this=0x5627ed8f6c30, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:70</span><br><span class="line">#13 0x00005627e2999074 in SafeTimer::timer_thread (this=0x7ffe277a76f0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/common/Timer.cc:97</span><br><span class="line">#14 0x00005627e299aa9d in SafeTimerThread::entry (this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/common/Timer.cc:30</span><br><span class="line">#15 0x00007f365a1dedd5 in start_thread () from /lib64/libpthread.so.0</span><br><span class="line">#16 0x00007f36592b9ead in clone () from /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(gdb) bt</span><br><span class="line">#0  PGMap::get_rules_avail (this=this@entry=0x5627ee1b9f90, osdmap=..., avail_map=avail_map@entry=0x5627ee1b9fc0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.cc:940</span><br><span class="line">#1  0x00005627e27d4846 in PGMap::encode_digest (this=this@entry=0x5627ee1b9f90, osdmap=..., bl=..., features=features@entry=4611087853746454523)</span><br><span class="line">    at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.cc:1579</span><br><span class="line">#2  0x00005627e28193a3 in operator() (osdmap=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/DaemonServer.cc:1454</span><br><span class="line">#3  with_osdmap&lt;DaemonServer::send_report()::__lambda31::__lambda32&gt; (cb=&lt;optimized out&gt;, this=0x7ffe277a5fa0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/osdc/Objecter.h:2045</span><br><span class="line">#4  with_osdmap&lt;DaemonServer::send_report()::__lambda31::__lambda32&gt; (this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:129</span><br><span class="line">#5  operator() (pg_map=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/DaemonServer.cc:1470</span><br><span class="line">#6  with_pgmap&lt;DaemonServer::send_report()::__lambda31&gt; (cb=&lt;optimized out&gt;, this=0x5627ee1b9c30) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:105</span><br><span class="line">#7  DaemonServer::send_report (this=this@entry=0x5627ee1ba930) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/DaemonServer.cc:1471</span><br><span class="line">#8  0x00005627e286ba2e in Mgr::tick (this=0x5627ee1b9800) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/Mgr.cc:626</span><br><span class="line">#9  0x00005627e28621fd in MgrStandby::tick (this=0x7ffe277a59e0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/MgrStandby.cc:197</span><br><span class="line">#10 0x00005627e282668a in operator() (a0=&lt;optimized out&gt;, this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/build/boost/include/boost/function/function_template.hpp:760</span><br><span class="line">#11 FunctionContext::finish (this=&lt;optimized out&gt;, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:493</span><br><span class="line">#12 0x00005627e2821bc9 in Context::complete (this=0x5627ed8f6c30, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:70</span><br><span class="line">#13 0x00005627e2999074 in SafeTimer::timer_thread (this=0x7ffe277a76f0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/common/Timer.cc:97</span><br><span class="line">#14 0x00005627e299aa9d in SafeTimerThread::entry (this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/common/Timer.cc:30</span><br><span class="line">#15 0x00007f365a1dedd5 in start_thread () from /lib64/libpthread.so.0</span><br><span class="line">#16 0x00007f36592b9ead in clone () from /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
 <p>第二种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">(gdb) bt</span><br><span class="line">#0  PGMap::get_rules_avail (this=this@entry=0x559f786fff90, osdmap=..., avail_map=avail_map@entry=0x559f786fffc0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.cc:940</span><br><span class="line">#1  0x0000559f6d4bbe50 in PGMap::dump_pool_stats_full (this=0x559f786fff90, osd_map=..., ss=0x0, f=0x7ff400f95f60, verbose=&lt;optimized out&gt;)</span><br><span class="line">    at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.h:454</span><br><span class="line">#2  0x0000559f6d4ecb7d in operator() (osd_map=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModules.cc:296</span><br><span class="line">#3  with_osdmap&lt;ActivePyModules::get_python(const string&amp;)::__lambda17::__lambda18&gt; (cb=&lt;optimized out&gt;, this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/osdc/Objecter.h:2045</span><br><span class="line">#4  with_osdmap&lt;ActivePyModules::get_python(const string&amp;)::__lambda17::__lambda18&gt; (this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:129</span><br><span class="line">#5  operator() (pg_map=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModules.cc:297</span><br><span class="line">#6  with_pgmap&lt;ActivePyModules::get_python(const string&amp;)::__lambda17&gt; (cb=&lt;optimized out&gt;, this=0x559f786ffc30) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:105</span><br><span class="line">#7  ActivePyModules::get_python (this=0x559f779abe00, what=&quot;df&quot;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModules.cc:298</span><br><span class="line">#8  0x0000559f6d50b1fd in ceph_state_get (self=0x7ff4015c10a0, args=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/BaseMgrModule.cc:334</span><br><span class="line">#9  0x00007ff42b518cf0 in PyEval_EvalFrameEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#10 0x00007ff42b5186bd in PyEval_EvalFrameEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#11 0x00007ff42b5186bd in PyEval_EvalFrameEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#12 0x00007ff42b51b03d in PyEval_EvalCodeEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#13 0x00007ff42b4a4978 in function_call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#14 0x00007ff42b47fa63 in PyObject_Call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#15 0x00007ff42b48ea55 in instancemethod_call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#16 0x00007ff42b47fa63 in PyObject_Call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#17 0x00007ff42b47fb45 in call_function_tail () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#18 0x00007ff42b47fe7b in PyObject_CallMethod () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#19 0x0000559f6d50fcff in ActivePyModule::notify (this=0x559f7841f440, notify_type=&quot;pg_summary&quot;, notify_id=&quot;&quot;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModule.cc:90</span><br><span class="line">#20 0x0000559f6d4da68a in operator() (a0=&lt;optimized out&gt;, this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/build/boost/include/boost/function/function_template.hpp:760</span><br><span class="line">#21 FunctionContext::finish (this=&lt;optimized out&gt;, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:493</span><br><span class="line">#22 0x0000559f6d4d5bc9 in Context::complete (this=0x559f78b0e6f0, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:70</span><br><span class="line">#23 0x0000559f6d64f748 in Finisher::finisher_thread_entry (this=0x559f786ff940) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/common/Finisher.cc:72</span><br><span class="line">#24 0x00007ff4295a9dd5 in start_thread () from /lib64/libpthread.so.0</span><br><span class="line">#25 0x00007ff428684ead in clone () from /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">(gdb) bt</span><br><span class="line">#0  PGMap::get_rules_avail (this=this@entry=0x559f786fff90, osdmap=..., avail_map=avail_map@entry=0x559f786fffc0) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.cc:940</span><br><span class="line">#1  0x0000559f6d4bbe50 in PGMap::dump_pool_stats_full (this=0x559f786fff90, osd_map=..., ss=0x0, f=0x7ff400f95f60, verbose=&lt;optimized out&gt;)</span><br><span class="line">    at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mon/PGMap.h:454</span><br><span class="line">#2  0x0000559f6d4ecb7d in operator() (osd_map=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModules.cc:296</span><br><span class="line">#3  with_osdmap&lt;ActivePyModules::get_python(const string&amp;)::__lambda17::__lambda18&gt; (cb=&lt;optimized out&gt;, this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/osdc/Objecter.h:2045</span><br><span class="line">#4  with_osdmap&lt;ActivePyModules::get_python(const string&amp;)::__lambda17::__lambda18&gt; (this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:129</span><br><span class="line">#5  operator() (pg_map=..., __closure=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModules.cc:297</span><br><span class="line">#6  with_pgmap&lt;ActivePyModules::get_python(const string&amp;)::__lambda17&gt; (cb=&lt;optimized out&gt;, this=0x559f786ffc30) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ClusterState.h:105</span><br><span class="line">#7  ActivePyModules::get_python (this=0x559f779abe00, what=&quot;df&quot;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModules.cc:298</span><br><span class="line">#8  0x0000559f6d50b1fd in ceph_state_get (self=0x7ff4015c10a0, args=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/BaseMgrModule.cc:334</span><br><span class="line">#9  0x00007ff42b518cf0 in PyEval_EvalFrameEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#10 0x00007ff42b5186bd in PyEval_EvalFrameEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#11 0x00007ff42b5186bd in PyEval_EvalFrameEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#12 0x00007ff42b51b03d in PyEval_EvalCodeEx () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#13 0x00007ff42b4a4978 in function_call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#14 0x00007ff42b47fa63 in PyObject_Call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#15 0x00007ff42b48ea55 in instancemethod_call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#16 0x00007ff42b47fa63 in PyObject_Call () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#17 0x00007ff42b47fb45 in call_function_tail () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#18 0x00007ff42b47fe7b in PyObject_CallMethod () from /lib64/libpython2.7.so.1.0</span><br><span class="line">#19 0x0000559f6d50fcff in ActivePyModule::notify (this=0x559f7841f440, notify_type=&quot;pg_summary&quot;, notify_id=&quot;&quot;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/mgr/ActivePyModule.cc:90</span><br><span class="line">#20 0x0000559f6d4da68a in operator() (a0=&lt;optimized out&gt;, this=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/build/boost/include/boost/function/function_template.hpp:760</span><br><span class="line">#21 FunctionContext::finish (this=&lt;optimized out&gt;, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:493</span><br><span class="line">#22 0x0000559f6d4d5bc9 in Context::complete (this=0x559f78b0e6f0, r=&lt;optimized out&gt;) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/include/Context.h:70</span><br><span class="line">#23 0x0000559f6d64f748 in Finisher::finisher_thread_entry (this=0x559f786ff940) at /home/wangchao/rpmbuild/BUILD/ceph-12.2.12/src/common/Finisher.cc:72</span><br><span class="line">#24 0x00007ff4295a9dd5 in start_thread () from /lib64/libpthread.so.0</span><br><span class="line">#25 0x00007ff428684ead in clone () from /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
 <p>ceph mon remove {mon-id}</p>
 <p>奇怪, 现阶段的问题是, 资源池都不显示. 而不是单纯不显示数字.</p>
 <p>osdmap意思是也没更新引起的?</p>
@@ -392,9 +392,9 @@ a preceding patch but I did things in the wrong order. :(</p>
 </ul>
 <p><code>Mgr</code>里似乎做的初始化<code>DaemonServer</code>,
 <code>DaemonServer</code>初始化的时候从上级收到<code>ClusterState</code>对象.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Mgr::Mgr(MonClient *monc_, <span class="keyword">const</span> MgrMap&amp; mgrmap,</span><br><span class="line">         PyModuleRegistry *py_module_registry_,</span><br><span class="line">	 Messenger *clientm_, Objecter *objecter_,</span><br><span class="line">	 Client* client_, LogChannelRef clog_, LogChannelRef audit_clog_) :</span><br><span class="line">  monc(monc_),</span><br><span class="line">  objecter(objecter_),</span><br><span class="line">  client(client_),</span><br><span class="line">  client_messenger(clientm_),</span><br><span class="line">  lock(<span class="string">"Mgr::lock"</span>),</span><br><span class="line">  timer(g_ceph_context, lock),</span><br><span class="line">  finisher(g_ceph_context, <span class="string">"Mgr"</span>, <span class="string">"mgr-fin"</span>),</span><br><span class="line">  digest_received(<span class="literal">false</span>),</span><br><span class="line">  py_module_registry(py_module_registry_),</span><br><span class="line">  cluster_state(monc, <span class="literal">nullptr</span>, mgrmap),</span><br><span class="line">  server(monc, finisher, daemon_state, cluster_state, *py_module_registry,</span><br><span class="line">         clog_, audit_clog_),</span><br><span class="line">  <span class="built_in">clog</span>(clog_),</span><br><span class="line">  audit_clog(audit_clog_),</span><br><span class="line">  initialized(<span class="literal">false</span>),</span><br><span class="line">  initializing(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Mgr::<span class="built_in">Mgr</span>(MonClient *monc_, <span class="type">const</span> MgrMap&amp; mgrmap,</span><br><span class="line">         PyModuleRegistry *py_module_registry_,</span><br><span class="line">	 Messenger *clientm_, Objecter *objecter_,</span><br><span class="line">	 Client* client_, LogChannelRef clog_, LogChannelRef audit_clog_) :</span><br><span class="line">  <span class="built_in">monc</span>(monc_),</span><br><span class="line">  <span class="built_in">objecter</span>(objecter_),</span><br><span class="line">  <span class="built_in">client</span>(client_),</span><br><span class="line">  <span class="built_in">client_messenger</span>(clientm_),</span><br><span class="line">  <span class="built_in">lock</span>(<span class="string">&quot;Mgr::lock&quot;</span>),</span><br><span class="line">  <span class="built_in">timer</span>(g_ceph_context, lock),</span><br><span class="line">  <span class="built_in">finisher</span>(g_ceph_context, <span class="string">&quot;Mgr&quot;</span>, <span class="string">&quot;mgr-fin&quot;</span>),</span><br><span class="line">  <span class="built_in">digest_received</span>(<span class="literal">false</span>),</span><br><span class="line">  <span class="built_in">py_module_registry</span>(py_module_registry_),</span><br><span class="line">  <span class="built_in">cluster_state</span>(monc, <span class="literal">nullptr</span>, mgrmap),</span><br><span class="line">  <span class="built_in">server</span>(monc, finisher, daemon_state, cluster_state, *py_module_registry,</span><br><span class="line">         clog_, audit_clog_),</span><br><span class="line">  <span class="built_in">clog</span>(clog_),</span><br><span class="line">  <span class="built_in">audit_clog</span>(audit_clog_),</span><br><span class="line">  <span class="built_in">initialized</span>(<span class="literal">false</span>),</span><br><span class="line">  <span class="built_in">initializing</span>(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
 <p>TODO:<code>cluster_state</code>是从monc来的?</p>
-<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ceph_mgr.c</span></span><br><span class="line">  <span class="function">MgrStandby <span class="title">mgr</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">  <span class="keyword">int</span> rc = mgr.init();</span><br></pre></td></tr></table></figure></p>
+<p><code>c++ // ceph_mgr.c   MgrStandby mgr(argc, argv);   int rc = mgr.init();</code></p>
 
         </div>
 
@@ -403,7 +403,7 @@ a preceding patch but I did things in the wrong order. :(</p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-12-09T02:41:36.069Z" itemprop="dateUpdated">2021-12-09 10:41:36</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.863Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -425,7 +425,7 @@ a preceding patch but I did things in the wrong order. :(</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li></ul>
 
 
             
@@ -438,7 +438,7 @@ a preceding patch but I did things in the wrong order. :(</p>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -448,24 +448,24 @@ a preceding patch but I did things in the wrong order. :(</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&source=ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&source=ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。
 尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd
 out了之后，..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df的MAX AVAIL》 — 行路中.&url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df的MAX AVAIL》 — 行路中.&url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -488,7 +488,7 @@ out了之后，..." data-title=" QQ">
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/05/28/黑苹果AMD显卡风扇降速/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/28/%E9%BB%91%E8%8B%B9%E6%9E%9CAMD%E6%98%BE%E5%8D%A1%E9%A3%8E%E6%89%87%E9%99%8D%E9%80%9F/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">黑苹果AMD显卡风扇降速</h4>
       </a>
@@ -497,7 +497,7 @@ out了之后，..." data-title=" QQ">
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">windows terminal1.0暂时还无法替代tmux</h4>
       </a>
@@ -521,7 +521,7 @@ out了之后，..." data-title=" QQ">
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -542,6 +542,9 @@ out了之后，..." data-title=" QQ">
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -574,11 +577,11 @@ out了之后，..." data-title=" QQ">
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -596,7 +599,7 @@ out了之后，..." data-title=" QQ">
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -606,24 +609,24 @@ out了之后，..." data-title=" QQ">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&source=ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/&title=《ceph之df的MAX AVAIL》 — 行路中.&source=ceph df输出的统计数据的计算法昂是比我一眼以为的要复杂一些。
 尤其是MAX AVAIL这个值。目前遇到的问题是发现在L版本,当osd
 out了之后，..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df的MAX AVAIL》 — 行路中.&url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df的MAX AVAIL》 — 行路中.&url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -634,7 +637,7 @@ out了之后，..." data-title=" QQ">
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/28/ceph之df的MAX-AVAIL/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/" alt="微信分享二维码">
 </div>
 
 
@@ -650,7 +653,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -670,7 +673,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

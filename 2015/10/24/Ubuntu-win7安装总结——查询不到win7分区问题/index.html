@@ -22,17 +22,17 @@
     
     <meta name="keywords" content="app">
     <meta name="description" content="这两天在学校计划装个linux以后用来写代码，windows下面就专心玩好了。 本来搜了下经验，以为很轻松（虽然事实上知道怎么弄，不出错就确实很轻松啦）。然后，就那么把原来的win7系统不自觉的全格了，直到花了1天半的时间之后，搜linux下怎么看不到win7的硬盘搜不到结果，忽然点开linux下的computer的property看了下之后，发现原本一直以为的linux只是在隔出来的50G下玩的">
-<meta name="keywords" content="app">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu+win7安装总结——查询不到win7分区问题">
-<meta property="og:url" content="https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/index.html">
+<meta property="og:url" content="https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="这两天在学校计划装个linux以后用来写代码，windows下面就专心玩好了。 本来搜了下经验，以为很轻松（虽然事实上知道怎么弄，不出错就确实很轻松啦）。然后，就那么把原来的win7系统不自觉的全格了，直到花了1天半的时间之后，搜linux下怎么看不到win7的硬盘搜不到结果，忽然点开linux下的computer的property看了下之后，发现原本一直以为的linux只是在隔出来的50G下玩的">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.560Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-10-24T12:01:00.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.900Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="app">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu+win7安装总结——查询不到win7分区问题">
-<meta name="twitter:description" content="这两天在学校计划装个linux以后用来写代码，windows下面就专心玩好了。 本来搜了下经验，以为很轻松（虽然事实上知道怎么弄，不出错就确实很轻松啦）。然后，就那么把原来的win7系统不自觉的全格了，直到花了1天半的时间之后，搜linux下怎么看不到win7的硬盘搜不到结果，忽然点开linux下的computer的property看了下之后，发现原本一直以为的linux只是在隔出来的50G下玩的">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -191,7 +191,7 @@ OK，知道现在电脑里什么都没了以后，轻松了/</p>
 进入ubuntu安装界面以后，之前都按continue就可以，到分区前一步，如果显示出已检测到win7系统，那么就说明你硬盘格式和标识都是正确的，下一步也就不会出现下一步不显示win7已经分好的磁盘的问题了。</p>
 如果没有显示检测出win7，现在按照我查的资料来理解。
 安装win7的时候是MBR分区模式，安装ubuntu时，自动识别为GPT分区模式，执行以下命令就可以让Ubuntu以MBR执行。
-在试用版里输入一下命令即可 &lt;pre class=“brush:bash”;&gt;sudo dd
+在试用版里输入一下命令即可 &lt;pre class="brush:bash";&gt;sudo dd
 if=/dev/zero of=/dev/sda bs=1 count=8 seek=512
 
 <p>这会抹去 Primary GPT header 里的 GPT
@@ -206,7 +206,7 @@ signature。请不要输错任何一个字，包括空格。
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.560Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.900Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -228,7 +228,7 @@ signature。请不要输错任何一个字，包括空格。
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/">app</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/" rel="tag">app</a></li></ul>
 
 
             
@@ -241,7 +241,7 @@ signature。请不要输错任何一个字，包括空格。
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -251,22 +251,22 @@ signature。请不要输错任何一个字，包括空格。
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -289,7 +289,7 @@ signature。请不要输错任何一个字，包括空格。
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2015/10/25/《龙珠之复活的F》休闲的龙珠/" id="post-prev" class="post-nav-link">
+      <a href="/2015/10/25/%E3%80%8A%E9%BE%99%E7%8F%A0%E4%B9%8B%E5%A4%8D%E6%B4%BB%E7%9A%84F%E3%80%8B%E4%BC%91%E9%97%B2%E7%9A%84%E9%BE%99%E7%8F%A0/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">《龙珠之复活的F》休闲的龙珠</h4>
       </a>
@@ -298,7 +298,7 @@ signature。请不要输错任何一个字，包括空格。
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2015/10/24/Ubuntu下安装xampp总结/" id="post-next" class="post-nav-link">
+      <a href="/2015/10/24/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85xampp%E6%80%BB%E7%BB%93/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">Ubuntu下安装xampp总结</h4>
       </a>
@@ -322,7 +322,7 @@ signature。请不要输错任何一个字，包括空格。
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -343,6 +343,9 @@ signature。请不要输错任何一个字，包括空格。
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -375,11 +378,11 @@ signature。请不要输错任何一个字，包括空格。
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -397,7 +400,7 @@ signature。请不要输错任何一个字，包括空格。
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -407,22 +410,22 @@ signature。请不要输错任何一个字，包括空格。
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/&title=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu+win7安装总结——查询不到win7分区问题》 — 行路中.&url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -433,7 +436,7 @@ signature。请不要输错任何一个字，包括空格。
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2015/10/24/Ubuntu-win7安装总结——查询不到win7分区问题/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2015/10/24/Ubuntu-win7%E5%AE%89%E8%A3%85%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E6%9F%A5%E8%AF%A2%E4%B8%8D%E5%88%B0win7%E5%88%86%E5%8C%BA%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
 </div>
 
 
@@ -449,7 +452,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -469,7 +472,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

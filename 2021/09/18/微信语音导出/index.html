@@ -22,17 +22,18 @@
     
     <meta name="keywords" content="wechat,ffmpeg">
     <meta name="description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
-<meta name="keywords" content="wechat,ffmpeg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信聊天记录及语音导出方案实践">
-<meta property="og:url" content="https://sean10.github.io/2021/09/18/微信语音导出/index.html">
+<meta property="og:url" content="https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-01-18T16:40:22.446Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-17T17:02:34.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.874Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="wechat">
+<meta property="article:tag" content="ffmpeg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信聊天记录及语音导出方案实践">
-<meta name="twitter:description" content="背景 需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接. 指向多个文件. 调查 目前主流的方案是手动点击收藏, 然后把语音转存为笔记, 然后实际就变成了一份silk文件, 在android或者在pc上就能够从目录里提取出来, 进行编码转换. wechatExporter导出ios设备 wxbackup导出ios设备 微痕迹 app 微信语音导出助手 for android 手">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,16 +161,16 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调查"><span class="post-toc-number">2.</span> <span class="post-toc-text">调查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目前主流的方案是手动点击收藏-然后把语音转存为笔记-然后实际就变成了一份silk文件-在android或者在pc上就能够从目录里提取出来-进行编码转换."><span class="post-toc-number">2.1.</span> <span class="post-toc-text">目前主流的方案是手动点击收藏,
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B0%83%E6%9F%A5"><span class="post-toc-number">2.</span> <span class="post-toc-text">调查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%89%8D%E4%B8%BB%E6%B5%81%E7%9A%84%E6%96%B9%E6%A1%88%E6%98%AF%E6%89%8B%E5%8A%A8%E7%82%B9%E5%87%BB%E6%94%B6%E8%97%8F-%E7%84%B6%E5%90%8E%E6%8A%8A%E8%AF%AD%E9%9F%B3%E8%BD%AC%E5%AD%98%E4%B8%BA%E7%AC%94%E8%AE%B0-%E7%84%B6%E5%90%8E%E5%AE%9E%E9%99%85%E5%B0%B1%E5%8F%98%E6%88%90%E4%BA%86%E4%B8%80%E4%BB%BDsilk%E6%96%87%E4%BB%B6-%E5%9C%A8android%E6%88%96%E8%80%85%E5%9C%A8pc%E4%B8%8A%E5%B0%B1%E8%83%BD%E5%A4%9F%E4%BB%8E%E7%9B%AE%E5%BD%95%E9%87%8C%E6%8F%90%E5%8F%96%E5%87%BA%E6%9D%A5-%E8%BF%9B%E8%A1%8C%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2."><span class="post-toc-number">2.1.</span> <span class="post-toc-text">目前主流的方案是手动点击收藏,
 然后把语音转存为笔记, 然后实际就变成了一份silk文件,
-在android或者在pc上就能够从目录里提取出来, 进行编码转换.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wechatexporter导出ios设备"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">wechatExporter导出ios设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wxbackup导出ios设备"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">wxbackup导出ios设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微痕迹-app"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">微痕迹 app</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微信语音导出助手-for-android"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">微信语音导出助手 for android</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#手动导出转换语音"><span class="post-toc-number">3.</span> <span class="post-toc-text">手动导出转换语音</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进入微信聊天记录所在位置"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">0. 进入微信聊天记录所在位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#复制出音频-按照时间顺序重命名."><span class="post-toc-number">3.2.</span> <span class="post-toc-text">1. 复制出音频,
-按照时间顺序重命名.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#silk解码转换为mp3"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2. silk解码转换为mp3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装ffmpeg"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">3. 安装ffmpeg</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#筛选后-拼接mp3"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4. 筛选后, 拼接mp3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#校验拼接后的mp3长度和"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5.
-校验拼接后的mp3长度和</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用wxbackup完整导出聊天记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用wxbackup完整导出聊天记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用微信自带的迁移聊天记录功能迁移到ipadiphone上"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.
-使用微信自带的迁移聊天记录功能迁移到ipad/iphone上</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将ipad连接到macpc上-将ios设备进行整机备份"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.
-将ipad连接到mac/pc上,
-将ios设备进行整机备份</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.
+在android或者在pc上就能够从目录里提取出来, 进行编码转换.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wechatexporter%E5%AF%BC%E5%87%BAios%E8%AE%BE%E5%A4%87"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">wechatExporter导出ios设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#wxbackup%E5%AF%BC%E5%87%BAios%E8%AE%BE%E5%A4%87"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">wxbackup导出ios设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E7%97%95%E8%BF%B9-app"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">微痕迹 app</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA%E5%8A%A9%E6%89%8B-for-android"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">微信语音导出助手 for android</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%87%BA%E8%BD%AC%E6%8D%A2%E8%AF%AD%E9%9F%B3"><span class="post-toc-number">3.</span> <span class="post-toc-text">手动导出转换语音</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9B%E5%85%A5%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">0. 进入微信聊天记录所在位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%8D%E5%88%B6%E5%87%BA%E9%9F%B3%E9%A2%91-%E6%8C%89%E7%85%A7%E6%97%B6%E9%97%B4%E9%A1%BA%E5%BA%8F%E9%87%8D%E5%91%BD%E5%90%8D."><span class="post-toc-number">3.2.</span> <span class="post-toc-text">1. 复制出音频,
+按照时间顺序重命名.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#silk%E8%A7%A3%E7%A0%81%E8%BD%AC%E6%8D%A2%E4%B8%BAmp3"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">2. silk解码转换为mp3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85ffmpeg"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">3. 安装ffmpeg</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AD%9B%E9%80%89%E5%90%8E-%E6%8B%BC%E6%8E%A5mp3"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4. 筛选后, 拼接mp3</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%A1%E9%AA%8C%E6%8B%BC%E6%8E%A5%E5%90%8E%E7%9A%84mp3%E9%95%BF%E5%BA%A6%E5%92%8C"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">5.
+校验拼接后的mp3长度和</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8wxbackup%E5%AE%8C%E6%95%B4%E5%AF%BC%E5%87%BA%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用wxbackup完整导出聊天记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%B8%A6%E7%9A%84%E8%BF%81%E7%A7%BB%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%8A%9F%E8%83%BD%E8%BF%81%E7%A7%BB%E5%88%B0ipadiphone%E4%B8%8A"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.
+使用微信自带的迁移聊天记录功能迁移到ipad&#x2F;iphone上</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B0%86ipad%E8%BF%9E%E6%8E%A5%E5%88%B0macpc%E4%B8%8A-%E5%B0%86ios%E8%AE%BE%E5%A4%87%E8%BF%9B%E8%A1%8C%E6%95%B4%E6%9C%BA%E5%A4%87%E4%BB%BD"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.
+将ipad连接到mac&#x2F;pc上,
+将ios设备进行整机备份</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%87%E4%BB%BD%E5%90%8E-%E4%BD%BF%E7%94%A8wxbackup%E7%9A%84%E8%BD%AF%E4%BB%B6-%E6%8C%87%E5%AE%9Aios%E8%AE%BE%E5%A4%87%E5%9C%A8macpc%E9%87%8C%E7%9A%84%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93%E8%B7%AF%E5%BE%84"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.
 备份后, 使用wxbackup的软件,
-指定ios设备在mac/pc里的备份数据库路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#点进各个对话目录里index.html查看和微信一般的web页面来看记录吧"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4.
+指定ios设备在mac&#x2F;pc里的备份数据库路径</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%82%B9%E8%BF%9B%E5%90%84%E4%B8%AA%E5%AF%B9%E8%AF%9D%E7%9B%AE%E5%BD%95%E9%87%8Cindex.html%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%BE%AE%E4%BF%A1%E4%B8%80%E8%88%AC%E7%9A%84web%E9%A1%B5%E9%9D%A2%E6%9D%A5%E7%9C%8B%E8%AE%B0%E5%BD%95%E5%90%A7"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4.
 点进各个对话目录里index.html查看和微信一般的web页面来看记录吧</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
@@ -209,27 +210,27 @@
 <h2 id="微信语音导出助手-for-android">微信语音导出助手 for android</h2>
 <h1 id="手动导出转换语音">手动导出转换语音</h1>
 <h2 id="进入微信聊天记录所在位置">0. 进入微信聊天记录所在位置</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/Downloads/voice</span><br><span class="line"><span class="built_in">cd</span> ~/Library/Containers/com.tencent.xinWeChat/Data</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/Downloads/voice</span><br><span class="line"><span class="built_in">cd</span> ~/Library/Containers/com.tencent.xinWeChat/Data </span><br></pre></td></tr></table></figure>
 <h2 id="复制出音频-按照时间顺序重命名.">1. 复制出音频,
 按照时间顺序重命名.</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">'*.silk'</span> | xargs -L1 -I &#123;&#125; cp -af &#123;&#125; ~/Downloads/voice/ </span><br><span class="line"><span class="built_in">cd</span> ~/Downloads/voice/</span><br><span class="line">i=1; <span class="keyword">for</span> x <span class="keyword">in</span> `ls -tr *.silk`; <span class="keyword">do</span> cp -af <span class="variable">$x</span> <span class="string">"<span class="variable">$i</span>"</span>.silk; <span class="built_in">let</span> i=i+1; <span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&#x27;*.silk&#x27;</span> | xargs -L1 -I &#123;&#125; <span class="built_in">cp</span> -af &#123;&#125; ~/Downloads/voice/ </span><br><span class="line"><span class="built_in">cd</span> ~/Downloads/voice/</span><br><span class="line">i=1; <span class="keyword">for</span> x <span class="keyword">in</span> `<span class="built_in">ls</span> -<span class="built_in">tr</span> *.silk`; <span class="keyword">do</span> <span class="built_in">cp</span> -af <span class="variable">$x</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span>.silk; <span class="built_in">let</span> i=i+1; <span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="silk解码转换为mp3">2. silk解码转换为mp3</h2>
-<p><a href="https://github.com/kn007/silk-v3-decoder" target="_blank" rel="noopener">kn007/silk-v3-decoder:
+<p><a target="_blank" rel="noopener" href="https://github.com/kn007/silk-v3-decoder">kn007/silk-v3-decoder:
 [Skype Silk Codec SDK]Decode silk v3 audio files (like wechat amr, aud
 files, qq slk files) and convert to other format (like mp3). Batch
 conversion support.</a></p>
 <p>主要使用以上脚本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh converter.sh ~/Downloads/voice ~/Downloads/out mp3</span><br></pre></td></tr></table></figure>
 <h3 id="安装ffmpeg">3. 安装<code>ffmpeg</code></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ffmpeg</span><br></pre></td></tr></table></figure>
 <h2 id="筛选后-拼接mp3">4. 筛选后, 拼接mp3</h2>
-<p>生成要拼接的文件的目录. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ./ | xargs -I &#123;&#125;  realpath &#123;&#125; | xargs -I &#123;&#125; <span class="built_in">echo</span> <span class="string">"file '"</span><span class="string">"&#123;&#125;"</span><span class="string">"'"</span> &gt;&gt; ~/Downloads/filelist.txt</span><br></pre></td></tr></table></figure></p>
+<p>生成要拼接的文件的目录. <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> ./ | xargs -I &#123;&#125;  <span class="built_in">realpath</span> &#123;&#125; | xargs -I &#123;&#125; <span class="built_in">echo</span> <span class="string">&quot;file &#x27;&quot;</span><span class="string">&quot;&#123;&#125;&quot;</span><span class="string">&quot;&#x27;&quot;</span> &gt;&gt; ~/Downloads/filelist.txt</span><br></pre></td></tr></table></figure></p>
 <p>使用<code>ffmpeg</code>进行拼接 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f concat -safe 0 -i filelist.txt -y output.mp3</span><br></pre></td></tr></table></figure></p>
 <h2 id="校验拼接后的mp3长度和">5.
 校验拼接后的<code>mp3</code>长度和</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 xx.py <span class="variable">$&#123;mp3_path&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python3 xx.py <span class="variable">$&#123;mp3_path&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>输出的结果和我上面拼接后的文件的长度一致, ok<sub>没问题</sub></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_file_duration</span><span class="params">(file)</span>:</span></span><br><span class="line">    process = subprocess.Popen(<span class="string">"ffprobe &#123;&#125; -print_format json -show_format -show_streams"</span>.format(file), shell=<span class="keyword">True</span>, stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line">    stdout = process.communicate()[<span class="number">0</span>]</span><br><span class="line">    logging.debug(<span class="string">f"stdout: <span class="subst">&#123;stdout&#125;</span>"</span>)</span><br><span class="line">    format_data = json.loads(stdout)</span><br><span class="line">    duration = parse_duration(file, format_data)</span><br><span class="line">    <span class="keyword">return</span> duration</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_duration</span><span class="params">(file, data)</span>:</span></span><br><span class="line">    format_data = data.get(<span class="string">'format'</span>, &#123;&#125;)</span><br><span class="line">    res = float(format_data.get(<span class="string">'duration'</span>))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> res:</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        logging.error(<span class="string">f"<span class="subst">&#123;file&#125;</span> cannot get duration"</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mp3_files</span><span class="params">(path)</span>:</span></span><br><span class="line">    files = list(glob.glob(os.path.join(path, <span class="string">"*.mp3"</span>)))</span><br><span class="line">    <span class="keyword">return</span> files</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_duration</span><span class="params">(data_list)</span>:</span></span><br><span class="line">    res = sum(data_list)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    logging.basicConfig(level=logging.INFO)</span><br><span class="line">    result = []</span><br><span class="line">    files = get_mp3_files(sys.argv[<span class="number">1</span>])</span><br><span class="line">    logging.debug(files)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        result.append(get_file_duration(file))</span><br><span class="line">    print(calc_duration(result))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_file_duration</span>(<span class="params">file</span>):</span><br><span class="line">    process = subprocess.Popen(<span class="string">&quot;ffprobe &#123;&#125; -print_format json -show_format -show_streams&quot;</span>.<span class="built_in">format</span>(file), shell=<span class="literal">True</span>, stdout=subprocess.PIPE, stderr=subprocess.PIPE)</span><br><span class="line">    stdout = process.communicate()[<span class="number">0</span>]</span><br><span class="line">    logging.debug(<span class="string">f&quot;stdout: <span class="subst">&#123;stdout&#125;</span>&quot;</span>)</span><br><span class="line">    format_data = json.loads(stdout)</span><br><span class="line">    duration = parse_duration(file, format_data)</span><br><span class="line">    <span class="keyword">return</span> duration</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_duration</span>(<span class="params">file, data</span>):</span><br><span class="line">    format_data = data.get(<span class="string">&#x27;format&#x27;</span>, &#123;&#125;)</span><br><span class="line">    res = <span class="built_in">float</span>(format_data.get(<span class="string">&#x27;duration&#x27;</span>))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> res:</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        logging.error(<span class="string">f&quot;<span class="subst">&#123;file&#125;</span> cannot get duration&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_mp3_files</span>(<span class="params">path</span>):</span><br><span class="line">    files = <span class="built_in">list</span>(glob.glob(os.path.join(path, <span class="string">&quot;*.mp3&quot;</span>)))</span><br><span class="line">    <span class="keyword">return</span> files</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calc_duration</span>(<span class="params">data_list</span>):</span><br><span class="line">    res = <span class="built_in">sum</span>(data_list)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    logging.basicConfig(level=logging.INFO)</span><br><span class="line">    result = []</span><br><span class="line">    files = get_mp3_files(sys.argv[<span class="number">1</span>])</span><br><span class="line">    logging.debug(files)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        result.append(get_file_duration(file))</span><br><span class="line">    <span class="built_in">print</span>(calc_duration(result))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="使用wxbackup完整导出聊天记录">使用wxbackup完整导出聊天记录</h1>
 <h2 id="使用微信自带的迁移聊天记录功能迁移到ipadiphone上">1.
 使用微信自带的迁移聊天记录功能迁移到ipad/iphone上</h2>
@@ -241,9 +242,9 @@ conversion support.</a></p>
 将ios设备进行整机备份</h2>
 <p>高版本<code>macOS</code>比如<code>10.15</code>是在<code>finder</code>里进行的备份,
 低版本则在<code>itunes</code>中.</p>
-<p>参照<code>apple</code>官方文档即可, <a href="https://support.apple.com/zh-cn/HT203977" target="_blank" rel="noopener">如何备份您的
+<p>参照<code>apple</code>官方文档即可, <a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT203977">如何备份您的
 iPhone、iPad 和 iPod touch - Apple 支持 (中国)</a>
-备份速度通过lightning转usb-c, 最快也只有40MB/s, <a href="https://discussions.apple.com/thread/7168951" target="_blank" rel="noopener">how long should an
+备份速度通过lightning转usb-c, 最快也只有40MB/s, <a target="_blank" rel="noopener" href="https://discussions.apple.com/thread/7168951">how long should an
 initial backup take on… - Apple Community</a></p>
 <h2 id="备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径">3.
 备份后, 使用wxbackup的软件,
@@ -256,23 +257,23 @@ initial backup take on… - Apple Community</a></p>
 点进各个对话目录里<code>index.html</code>查看和微信一般的<code>web</code>页面来看记录吧</h2>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="https://kn007.net/topics/batch-convert-silk-v3-audio-files-to-mp3-in-windows/" target="_blank" rel="noopener">Windows下批量转换Silk
+<li><a target="_blank" rel="noopener" href="https://kn007.net/topics/batch-convert-silk-v3-audio-files-to-mp3-in-windows/">Windows下批量转换Silk
 v3音频文件为MP3格式 | kn007的个人博客</a></li>
-<li><a href="https://github.com/mryqu/mryqu.github.io/blob/f48df2cb1fc0e604eca4c5452b5c7498fe5717bd/content/post/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA%E5%92%8C%E8%BD%AC%E6%8D%A2.md" target="_blank" rel="noopener">mryqu.github.io/微信语音导出和转换.md
+<li><a target="_blank" rel="noopener" href="https://github.com/mryqu/mryqu.github.io/blob/f48df2cb1fc0e604eca4c5452b5c7498fe5717bd/content/post/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA%E5%92%8C%E8%BD%AC%E6%8D%A2.md">mryqu.github.io/微信语音导出和转换.md
 at f48df2cb1fc0e604eca4c5452b5c7498fe5717bd ·
 mryqu/mryqu.github.io</a></li>
-<li><a href="https://www.yinxiang.com/everhub/note/1157fbcf-0363-4bd4-b015-e2a95aad59c3" target="_blank" rel="noopener">关于微信语音导出，这个方法强烈建议~</a></li>
-<li><a href="https://ds666.fun/2019/08/02/%E6%89%B9%E9%87%8F%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E6%B6%88%E6%81%AF%E4%B8%BAmp3%E5%B9%B6%E9%99%84python%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E8%84%9A%E6%9C%AC/" target="_blank" rel="noopener">批量导出微信语音消息为mp3并附python修改文件名脚本
+<li><a target="_blank" rel="noopener" href="https://www.yinxiang.com/everhub/note/1157fbcf-0363-4bd4-b015-e2a95aad59c3">关于微信语音导出，这个方法强烈建议~</a></li>
+<li><a target="_blank" rel="noopener" href="https://ds666.fun/2019/08/02/%E6%89%B9%E9%87%8F%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E6%B6%88%E6%81%AF%E4%B8%BAmp3%E5%B9%B6%E9%99%84python%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E8%84%9A%E6%9C%AC/">批量导出微信语音消息为mp3并附python修改文件名脚本
 | 韶华尐沐</a></li>
-<li><a href="https://vector0902.ml:5444/blog/?p=2692" target="_blank" rel="noopener">批量导出微信语音的方法（技术向）
-– vector090’s blog</a></li>
-<li><a href="https://www.123455.xyz/2021/04/blog-post_3.html" target="_blank" rel="noopener">微信聊天记录导出方案总结</a></li>
-<li><a href="https://www.zhihu.com/question/30112442" target="_blank" rel="noopener">(1 封私信 / 20
+<li><a target="_blank" rel="noopener" href="https://vector0902.ml:5444/blog/?p=2692">批量导出微信语音的方法（技术向）
+– vector090's blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.123455.xyz/2021/04/blog-post_3.html">微信聊天记录导出方案总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/30112442">(1 封私信 / 20
 条消息) 如何导出微信【收藏】中的语音文件？ - 知乎</a></li>
-<li><a href="https://github.com/tsycnh/WeChatExporter" target="_blank" rel="noopener">tsycnh/WeChatExporter:
+<li><a target="_blank" rel="noopener" href="https://github.com/tsycnh/WeChatExporter">tsycnh/WeChatExporter:
 一个可以快速导出、查看你的微信聊天记录的工具</a></li>
-<li><a href="http://wxbackup.imxfd.com/" target="_blank" rel="noopener">微信聊天记录导出</a></li>
-<li><a href="https://github.com/RobertWang/Collections/blob/c9901d41cb43ba8cbb04d8331b853fd3da13a3bf/2021/06/06/GitHub%20%E5%87%BA%E5%93%81%EF%BC%9A%E4%B8%80%E9%94%AE%E5%AF%BC%E5%87%BA%E8%A7%A3%E5%AF%86%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95.md" target="_blank" rel="noopener">Collections/GitHub
+<li><a target="_blank" rel="noopener" href="http://wxbackup.imxfd.com/">微信聊天记录导出</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/RobertWang/Collections/blob/c9901d41cb43ba8cbb04d8331b853fd3da13a3bf/2021/06/06/GitHub%20%E5%87%BA%E5%93%81%EF%BC%9A%E4%B8%80%E9%94%AE%E5%AF%BC%E5%87%BA%E8%A7%A3%E5%AF%86%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95.md">Collections/GitHub
 出品：一键导出解密微信聊天记录.md at
 c9901d41cb43ba8cbb04d8331b853fd3da13a3bf ·
 RobertWang/Collections</a></li>
@@ -285,7 +286,7 @@ RobertWang/Collections</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-01-18T16:40:22.446Z" itemprop="dateUpdated">2022-01-19 00:40:22</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.874Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -307,7 +308,7 @@ RobertWang/Collections</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ffmpeg/">ffmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat/">wechat</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat/" rel="tag">wechat</a></li></ul>
 
 
             
@@ -320,7 +321,7 @@ RobertWang/Collections</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -330,22 +331,22 @@ RobertWang/Collections</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信聊天记录及语音导出方案实践》 — 行路中.&url=https://sean10.github.io/2021/09/18/微信语音导出/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信聊天记录及语音导出方案实践》 — 行路中.&url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -368,7 +369,7 @@ RobertWang/Collections</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2021/10/24/团队管理初探/" id="post-prev" class="post-nav-link">
+      <a href="/2021/10/24/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86%E5%88%9D%E6%8E%A2/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">团队管理初探</h4>
       </a>
@@ -377,9 +378,9 @@ RobertWang/Collections</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2021/09/17/vscode之markless二次开发/" id="post-next" class="post-nav-link">
+      <a href="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">[no title]</h4>
+        <h4 class="title">IO路径流向初探</h4>
       </a>
     </div>
   
@@ -401,7 +402,7 @@ RobertWang/Collections</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -422,6 +423,9 @@ RobertWang/Collections</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -454,11 +458,11 @@ RobertWang/Collections</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -476,7 +480,7 @@ RobertWang/Collections</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -486,22 +490,22 @@ RobertWang/Collections</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/09/18/微信语音导出/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/&title=《微信聊天记录及语音导出方案实践》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信聊天记录及语音导出方案实践》 — 行路中.&url=https://sean10.github.io/2021/09/18/微信语音导出/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信聊天记录及语音导出方案实践》 — 行路中.&url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/09/18/微信语音导出/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -512,7 +516,7 @@ RobertWang/Collections</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/09/18/微信语音导出/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/09/18/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA/" alt="微信分享二维码">
 </div>
 
 
@@ -528,7 +532,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -548,7 +552,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

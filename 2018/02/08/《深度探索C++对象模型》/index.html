@@ -22,17 +22,17 @@
     
     <meta name="keywords" content="C++">
     <meta name="description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
-<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《深度探索C++对象模型》Note">
-<meta property="og:url" content="https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/index.html">
+<meta property="og:url" content="https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.586Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-08T06:00:07.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.905Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《深度探索C++对象模型》Note">
-<meta name="twitter:description" content="static initialization保证了在main函数执行以前已经实例化类。 不过实际依赖于开发环境。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#简单对象模型"><span class="post-toc-number">1.</span> <span class="post-toc-text">简单对象模型</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#表格驱动对象模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">表格驱动对象模型</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#c对象模型"><span class="post-toc-number">3.</span> <span class="post-toc-text">c++对象模型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#构造函数语意学"><span class="post-toc-number"></span> <span class="post-toc-text">构造函数语意学</span></a>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E7%AE%80%E5%8D%95%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">1.</span> <span class="post-toc-text">简单对象模型</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E8%A1%A8%E6%A0%BC%E9%A9%B1%E5%8A%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">2.</span> <span class="post-toc-text">表格驱动对象模型</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#c%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="post-toc-number">3.</span> <span class="post-toc-text">c++对象模型</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%AF%AD%E6%84%8F%E5%AD%A6"><span class="post-toc-number"></span> <span class="post-toc-text">构造函数语意学</span></a>
         </nav>
     </aside>
 
@@ -188,10 +188,10 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>static initialization保证了在main函数执行以前已经实例化类。</p>
 <p>不过实际依赖于开发环境。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>译者推荐阅读一、三、四章</p>
 <p>似乎&lt;&lt;不推荐作为类的成员函数，会由于左操作数是该实例而导致ostream只能是第二个参数，不过这本书中屡屡都是作为成员函数使用的，而且依旧是正常使用，这个疑问保留。（或许inline具有使其为非成员函数的功能？）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sales_item item;</span><br><span class="line">item &lt;&lt; <span class="built_in">cout</span>;</span><br><span class="line"></span><br><span class="line">似乎会变成这样，但是书里还是正常的。</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sales_item item;</span><br><span class="line">item &lt;&lt; cout;</span><br><span class="line"></span><br><span class="line">似乎会变成这样，但是书里还是正常的。</span><br></pre></td></tr></table></figure>
 <p>泛型 就是 参数化吗？</p>
 <p>不定长参数如何参数化？书上那个看不太懂</p>
 <h6 id="简单对象模型">简单对象模型</h6>
@@ -211,7 +211,7 @@
 <p>向前预览(lookahead)？</p>
 <p>编译器应该是能够做到经过unparser工具处理后，可以还原原本使用的关键词的。（来自cfront
 中遭遇过的bug)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct mumble &#123;</span><br><span class="line">	char pc[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct mumble &#123;</span><br><span class="line">	char pc[1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这种通过malloc来分配的可变数组为什么违背了c++的规范呢，成为c++的陷阱？</p>
 <blockquote>
 <p>指定多个access section，内含数据</p>
@@ -261,7 +261,7 @@ optimization(NRV)身上</p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.586Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.905Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -283,7 +283,7 @@ optimization(NRV)身上</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
 
 
             
@@ -296,7 +296,7 @@ optimization(NRV)身上</p>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/&title=《《深度探索C++对象模型》Note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/&title=《《深度探索C++对象模型》Note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -306,23 +306,23 @@ optimization(NRV)身上</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/&title=《《深度探索C++对象模型》Note》 — 行路中.&source=static initialization保证了在main函数执行以前已经实例化类。
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/&title=《《深度探索C++对象模型》Note》 — 行路中.&source=static initialization保证了在main函数执行以前已经实例化类。
 不过实际依赖于开发环境。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深度探索C++对象模型》Note》 — 行路中.&url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深度探索C++对象模型》Note》 — 行路中.&url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -378,7 +378,7 @@ optimization(NRV)身上</p>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -399,6 +399,9 @@ optimization(NRV)身上</p>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -431,11 +434,11 @@ optimization(NRV)身上</p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -453,7 +456,7 @@ optimization(NRV)身上</p>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/&title=《《深度探索C++对象模型》Note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/&title=《《深度探索C++对象模型》Note》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -463,23 +466,23 @@ optimization(NRV)身上</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/&title=《《深度探索C++对象模型》Note》 — 行路中.&source=static initialization保证了在main函数执行以前已经实例化类。
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/&title=《《深度探索C++对象模型》Note》 — 行路中.&source=static initialization保证了在main函数执行以前已经实例化类。
 不过实际依赖于开发环境。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深度探索C++对象模型》Note》 — 行路中.&url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《《深度探索C++对象模型》Note》 — 行路中.&url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -490,7 +493,7 @@ optimization(NRV)身上</p>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/02/08/《深度探索C++对象模型》/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/02/08/%E3%80%8A%E6%B7%B1%E5%BA%A6%E6%8E%A2%E7%B4%A2C++%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E3%80%8B/" alt="微信分享二维码">
 </div>
 
 
@@ -506,7 +509,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -526,7 +529,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

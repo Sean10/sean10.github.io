@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="leetcode">
-    <meta name="description" content="这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。 数学方法 123bool canWinNim(int n) &amp;#123;    return n%4;&amp;#125; 传统递归 1234567bool canWinNim(int n) &amp;#123;    if(n &amp;gt; 0 &amp;amp;&amp;amp; n &amp;lt;= 3)        return true;    if">
-<meta name="keywords" content="leetcode">
+    <meta name="description" content="这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。 数学方法 123bool canWinNim(int n) &amp;#123;    return n%4;&amp;#125; 传统递归 1234567bool canWinNim(int n) &amp;#123;    if(n &gt; 0 &amp;&amp; n &lt;&#x3D; 3)        return true;    if">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode292">
 <meta property="og:url" content="https://sean10.github.io/2015/12/19/leetcode292/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。 数学方法 123bool canWinNim(int n) &amp;#123;    return n%4;&amp;#125; 传统递归 1234567bool canWinNim(int n) &amp;#123;    if(n &amp;gt; 0 &amp;amp;&amp;amp; n &amp;lt;= 3)        return true;    if">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.872Z">
+<meta property="og:description" content="这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。 数学方法 123bool canWinNim(int n) &amp;#123;    return n%4;&amp;#125; 传统递归 1234567bool canWinNim(int n) &amp;#123;    if(n &gt; 0 &amp;&amp; n &lt;&#x3D; 3)        return true;    if">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-12-19T06:50:00.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.852Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode292">
-<meta name="twitter:description" content="这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。 数学方法 123bool canWinNim(int n) &amp;#123;    return n%4;&amp;#125; 传统递归 1234567bool canWinNim(int n) &amp;#123;    if(n &amp;gt; 0 &amp;amp;&amp;amp; n &amp;lt;= 3)        return true;    if">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -180,8 +180,8 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>这道题传统递归在leetcode上会超时，不过我觉得传统思路还是可以保留的。</p>
-<p>数学方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    return n%4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>传统递归 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    if(n &gt; 0 &amp;&amp; n &lt;= 3)</span><br><span class="line">        return true;</span><br><span class="line">    if(canWinNim(n-1)&amp;&amp;canWinNim(n-2)&amp;&amp;canWinNim(n-3))</span><br><span class="line">        return false;</span><br><span class="line">    else return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数学方法 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    return n%4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>传统递归 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bool canWinNim(int n) &#123;</span><br><span class="line">    if(n &gt; 0 &amp;&amp; n &lt;= 3)</span><br><span class="line">        return true;</span><br><span class="line">    if(canWinNim(n-1)&amp;&amp;canWinNim(n-2)&amp;&amp;canWinNim(n-3))</span><br><span class="line">        return false;</span><br><span class="line">    else return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         </div>
 
@@ -190,7 +190,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.872Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.852Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -212,7 +212,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
 
 
             
@@ -282,7 +282,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2015/12/19/poj-2752-前后缀匹配/" id="post-next" class="post-nav-link">
+      <a href="/2015/12/19/poj-2752-%E5%89%8D%E5%90%8E%E7%BC%80%E5%8C%B9%E9%85%8D/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">poj 2752 前后缀匹配</h4>
       </a>
@@ -306,7 +306,7 @@
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -327,6 +327,9 @@
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -359,11 +362,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -433,7 +436,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -453,7 +456,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

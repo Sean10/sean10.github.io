@@ -22,17 +22,17 @@
     
     <meta name="keywords" content="C++">
     <meta name="description" content="使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build">
-<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++_Note">
 <meta property="og:url" content="https://sean10.github.io/2017/02/10/C-Note/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.875Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-10T14:49:18.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.853Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++_Note">
-<meta name="twitter:description" content="使用qt信号槽时，始终no such slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？ 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用 moc工具进行扩展 这个时候先执行qmake，再build">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#还有解决粘包问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">还有解决粘包问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储持续性"><span class="post-toc-number">2.</span> <span class="post-toc-text">存储持续性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自动存储持续性"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自动存储持续性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态存储持续性"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">静态存储持续性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程存储持续性c11"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">线程存储持续性(C++11)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态存储持续性"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">动态存储持续性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#名称空间"><span class="post-toc-number">3.</span> <span class="post-toc-text">名称空间</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#继承"><span class="post-toc-number"></span> <span class="post-toc-text">继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多态公有继承"><span class="post-toc-number">1.</span> <span class="post-toc-text">多态公有继承</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#抽象基类"><span class="post-toc-number"></span> <span class="post-toc-text">抽象基类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#继承和动态内存分配"><span class="post-toc-number">1.</span> <span class="post-toc-text">继承和动态内存分配</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#友元类"><span class="post-toc-number"></span> <span class="post-toc-text">友元类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lambda表达式"><span class="post-toc-number"></span> <span class="post-toc-text">lambda表达式</span></a>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%98%E6%9C%89%E8%A7%A3%E5%86%B3%E7%B2%98%E5%8C%85%E9%97%AE%E9%A2%98"><span class="post-toc-number">1.</span> <span class="post-toc-text">还有解决粘包问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AD%98%E5%82%A8%E6%8C%81%E7%BB%AD%E6%80%A7"><span class="post-toc-number">2.</span> <span class="post-toc-text">存储持续性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AD%98%E5%82%A8%E6%8C%81%E7%BB%AD%E6%80%A7"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">自动存储持续性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%99%E6%80%81%E5%AD%98%E5%82%A8%E6%8C%81%E7%BB%AD%E6%80%A7"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">静态存储持续性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%AD%98%E5%82%A8%E6%8C%81%E7%BB%AD%E6%80%A7c11"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">线程存储持续性(C++11)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E6%8C%81%E7%BB%AD%E6%80%A7"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">动态存储持续性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%8D%E7%A7%B0%E7%A9%BA%E9%97%B4"><span class="post-toc-number">3.</span> <span class="post-toc-text">名称空间</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="post-toc-number"></span> <span class="post-toc-text">继承</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%9A%E6%80%81%E5%85%AC%E6%9C%89%E7%BB%A7%E6%89%BF"><span class="post-toc-number">1.</span> <span class="post-toc-text">多态公有继承</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="post-toc-number"></span> <span class="post-toc-text">抽象基类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="post-toc-number">1.</span> <span class="post-toc-text">继承和动态内存分配</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%8B%E5%85%83%E7%B1%BB"><span class="post-toc-number"></span> <span class="post-toc-text">友元类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-number"></span> <span class="post-toc-text">lambda表达式</span></a>
         </nav>
     </aside>
 
@@ -190,7 +190,7 @@
 slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原因是什么呢？
 在类声明的开始位置必须加上Q_OBJECT语句，这条语句是不可缺少的，它将告诉编译器在编译之前必须先应用
 moc工具进行扩展 这个时候先执行qmake，再build</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>开了一个refresh信号的线程，但是一使用emit signalRefresh就爆出系统错误
 &gt;:-1: error: symbol(s) not found for architecture x86_64 &gt;:-1:
 error: linker command failed with exit code 1 (use -v to see
@@ -222,12 +222,12 @@ box::accepted有什么区别？</td>
 <p>setAttribute (Qt::WA_DeleteOnClose);
 这个明明是解决内存泄露问题，为什么可以关闭窗口呢，而close却做不到</p>
 <hr>
-<p>qVector输入之后，造成implicitly deleted because base class “QObject”
+<p>qVector输入之后，造成implicitly deleted because base class "QObject"
 has a deleted copy constructor</p>
 <hr>
 <p>Qt 资源文件，可以通过添加qrc来实现路径的操作 但是
 //路径这里存在问题，为什么添加了qrc之后依旧不需要前缀就可以使用了呢？
-明明理论上说要”:/db/user.db” 但只是”user.db”就可以使用了</p>
+明明理论上说要":/db/user.db" 但只是"user.db"就可以使用了</p>
 <hr>
 <p>始终不能调用数据库，原因是我没有使用query.finish，以及建表语法出现了错误。</p>
 <hr>
@@ -260,7 +260,7 @@ const 但是我一时忘了怎么解决的了</p>
 <p>call to implicitly-deleted copy constructor</p>
 <p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461:
 error: call to implicitly-deleted copy constructor of
-‘centralAirConditioner’ current-&gt;v = new
+'centralAirConditioner' current-&gt;v = new
 T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 遇到这个错误，发现又是因为继承了基类QObject的原因</p>
@@ -336,7 +336,7 @@ T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^
 <hr>
 <p>tmp[] = {9,9}; //vector_2 = tmp; vector<int> vector_2(tmp,
 tmp+1);</int></p>
-<p>这样就报出了 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">code.cpp:158:9: error: expected expression</span><br><span class="line">    tmp[] = &#123;9,9&#125;;</span><br><span class="line">        ^</span><br><span class="line">code.cpp:158:13: error: expected expression</span><br><span class="line">    tmp[] = &#123;9,9&#125;;</span><br><span class="line">            ^</span><br><span class="line">2 errors generated.</span><br></pre></td></tr></table></figure></p>
+<p>这样就报出了 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">code.cpp:158:9: error: expected expression</span><br><span class="line">    tmp[] = &#123;9,9&#125;;</span><br><span class="line">        ^</span><br><span class="line">code.cpp:158:13: error: expected expression</span><br><span class="line">    tmp[] = &#123;9,9&#125;;</span><br><span class="line">            ^</span><br><span class="line">2 errors generated.</span><br></pre></td></tr></table></figure></p>
 <p>奇怪，用<code>vector&lt;int&gt; vector_2(begin(tmp), end(tmp));</code>
 同样也有这个问题，但是上面那个赋{1}的单项的就没有问题。</p>
 <p>发现问题了，只能初始化的时候直接赋列表值，之后就只能一个个赋，或者再定义一个了。</p>
@@ -391,7 +391,7 @@ float到double) 3. 标准转换(int to char,long to double) 4.
 specialized”并不一定意味着显示具体化，指编译器推断使用哪种类型时执行的转换最少。</p>
 <p>这个属于C++98增加的函数模板的部分排序规则</p>
 <p>不知道模板函数中，应该在声明中使用哪种类型，现在可以用关键字decltype</p>
-<p>还有一种函数声明语法（C++11后置返回类型) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">double h(int x, float y);</span><br><span class="line">变成</span><br><span class="line">auto h(int x, float y) -&gt; double;</span><br><span class="line"></span><br><span class="line">使用</span><br><span class="line">template &lt;class T1, class T2&gt;</span><br><span class="line">auto gt(T1 x, T2 y) -&gt; deltype(x+y)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    return x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还有一种函数声明语法（C++11后置返回类型) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">double h(int x, float y);</span><br><span class="line">变成</span><br><span class="line">auto h(int x, float y) -&gt; double;</span><br><span class="line"></span><br><span class="line">使用</span><br><span class="line">template &lt;class T1, class T2&gt;</span><br><span class="line">auto gt(T1 x, T2 y) -&gt; deltype(x+y)</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    return x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>c++内存模型</p>
 <h2 id="存储持续性">存储持续性</h2>
 <h3 id="自动存储持续性">自动存储持续性</h3>
@@ -411,23 +411,20 @@ int;在buffer中建立，buffer指定的是静态内存中，不能用delete</p>
 声明为const成员变量</p>
 <p>用枚举来创建符号常量 可以用static在类声明中定义常量 static const int
 Mouth = 12; ^ | 像这样</p>
-<p>c++11提供了新枚举 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">egg</span> &#123;</span>Small, Medium, Large, Junbo&#125;;</span><br><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">t_shirt</span> &#123;</span>Small, Medium, Large, junbo&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>不过这种不支持隐式类型转换，不能自动变成int，需要显式转换</p>
-<p>当构造函数只接受一个参数是，下面这3个是等价的 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Swtonewt incognito = <span class="number">275</span>;</span><br><span class="line"><span class="function">Swtonewt <span class="title">incognito</span><span class="params">(<span class="number">275</span>)</span></span>;</span><br><span class="line">Swtonewt incognito = Swtonewt(<span class="number">275</span>);</span><br></pre></td></tr></table></figure></p>
-<p>不过，如果把构造函数声明成explicit，就不能用上面的第一行了，就关闭了隐式自动转换</p>
-<p>转换函数： 把类赋给基本类型变量： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>转换函数必须是类方法；</li>
-<li>转换函数不能指定返回类型</li>
-<li>转换函数不能有参数</li>
-</ul>
+<p>c++11提供了新枚举 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">egg</span> &#123;Small, Medium, Large, Junbo&#125;;</span><br><span class="line"><span class="keyword">enum class</span> <span class="title class_">t_shirt</span> &#123;Small, Medium, Large, junbo&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+不过这种不支持隐式类型转换，不能自动变成int，需要显式转换</p>
+<p>当构造函数只接受一个参数是，下面这3个是等价的 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Swtonewt incognito = <span class="number">275</span>;</span><br><span class="line"><span class="function">Swtonewt <span class="title">incognito</span><span class="params">(<span class="number">275</span>)</span></span>;</span><br><span class="line">Swtonewt incognito = <span class="built_in">Swtonewt</span>(<span class="number">275</span>);</span><br></pre></td></tr></table></figure>
+不过，如果把构造函数声明成explicit，就不能用上面的第一行了，就关闭了隐式自动转换</p>
+<p>转换函数： 把类赋给基本类型变量： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure> *
+转换函数必须是类方法； * 转换函数不能指定返回类型 *
+转换函数不能有参数</p>
 <p>过程中自动应用了类型转换</p>
 <p>出现多个转换函数，用隐式存在二义性时，编译器会error</p>
 <p>类中的静态存储类 static声明的变量
 即便有多个类副本，也只有一个这个变量，是共享的。</p>
 <p>C++11提供了2个特殊成员函数： 移动构造函数和移动赋值运算符</p>
 <p>c++11空指针nullptr</p>
-<p>静态类成员函数，只能用这种方法调用 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count = String::HowMany();</span><br></pre></td></tr></table></figure></p>
+<p>静态类成员函数，只能用这种方法调用 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> count = String::<span class="built_in">HowMany</span>();</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <h1 id="继承">继承</h1>
 <p>继承is-a关系：公有继承 is a kind of关系</p>
 <p>而不是has a 关系</p>
@@ -452,11 +449,12 @@ Mouth = 12; ^ | 像这样</p>
 of return type</p>
 <h1 id="抽象基类">抽象基类</h1>
 <p>ABC概念 使用纯虚函数
-包含纯虚函数的对象只能用作基类，无法被定义，声明结尾为0 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">Area</span><span class="params">()</span> <span class="keyword">const</span> </span>= <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+包含纯虚函数的对象只能用作基类，无法被定义，声明结尾为0
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">Area</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <h2 id="继承和动态内存分配">继承和动态内存分配</h2>
 <h1 id="友元类">友元类</h1>
 <h1 id="lambda表达式">lambda表达式</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[](<span class="keyword">int</span> x) &#123;<span class="keyword">return</span> x % <span class="number">3</span> == <span class="number">0</span>;&#125;<span class="comment">//匿名函数</span></span><br><span class="line"></span><br><span class="line">[](<span class="keyword">double</span> x)-&gt;<span class="keyword">double</span>&#123;<span class="keyword">int</span> y = x; <span class="keyword">return</span> x-y;&#125;<span class="comment">//不止一句时要用后置语法，因为只有一句返回语句组成lambda时，自动类型推断才管用。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[](<span class="type">int</span> x) &#123;<span class="keyword">return</span> x % <span class="number">3</span> == <span class="number">0</span>;&#125;<span class="comment">//匿名函数</span></span><br><span class="line"></span><br><span class="line">[](<span class="type">double</span> x)-&gt;<span class="type">double</span>&#123;<span class="type">int</span> y = x; <span class="keyword">return</span> x-y;&#125;<span class="comment">//不止一句时要用后置语法，因为只有一句返回语句组成lambda时，自动类型推断才管用。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>基类动态内存分配，派生类不用，则不用显示定义析构函数、复制构造函数和复制运算符
 派生类有，则需要，并且派生类的复制构造函数需要调用基类的复制构造函数（因为没有权限访问基类成员）</p>
 <p>c++11添加了可以继承的构造函数，不过默认不开</p>
@@ -484,7 +482,7 @@ score.begin()挺有意思的</vector></p>
 <p>迭代器类型只是概念性描述</p>
 <p>adapter，一个类或函数，可以将一些其他接口转换为STL使用的接口</p>
 <p>看不太懂</p>
-<p>就像这样 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span></span><br><span class="line"></span><br><span class="line">ostream_iterator&lt;<span class="keyword">int</span>,<span class="keyword">char</span>&gt; out_iter(<span class="built_in">cout</span>, <span class="string">" "</span>);</span><br></pre></td></tr></table></figure></p>
+<p>就像这样 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iterator&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">ostream_iterator&lt;<span class="type">int</span>,<span class="type">char</span>&gt; <span class="title">out_iter</span><span class="params">(cout, <span class="string">&quot; &quot;</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>vector反向打印</p>
 <p>可以使用rbegin()的指向超尾的反向迭代器，rend()返回一个只想第一个元素的反向迭代器</p>
 <p>插入迭代器</p>
@@ -495,7 +493,7 @@ score.begin()挺有意思的</vector></p>
 <p>右值引用（完全不记得了）</p>
 <p>包装器，std::function&lt;double(char, int)&gt; ef</p>
 <p>c++11，atomic原子操作，并行编程</p>
-<p>多个专业库 regex支持正则表达式 —</p>
+<p>多个专业库 regex支持正则表达式 ---</p>
 <p>不会写widget，所以先写console版本测试时，发现conio.h不是ANSI
 C标准的，在mac平台C++中 并不支持。</p>
 <table style="width:4%;">
@@ -513,12 +511,12 @@ C标准的，在mac平台C++中 并不支持。</p>
 <td>hash在C++11有了元编程</td>
 </tr>
 <tr class="even">
-<td><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hash&lt;<span class="built_in">string</span>&gt; h;</span><br><span class="line"><span class="keyword">size_t</span> n = h(url);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; n;</span><br></pre></td></tr></table></figure></td>
+<td><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hash&lt;string&gt; h;</span><br><span class="line"><span class="type">size_t</span> n = <span class="built_in">h</span>(url);</span><br><span class="line">cout &lt;&lt; n;</span><br></pre></td></tr></table></figure></td>
 </tr>
 </tbody>
 </table>
 <p>c++ stringstream getline作为分隔符相当好用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(getline(ss, temp, <span class="string">','</span>))</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="built_in">getline</span>(ss, temp, <span class="string">&#x27;,&#x27;</span>))</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -527,7 +525,7 @@ C标准的，在mac平台C++中 并不支持。</p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.875Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.853Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -549,7 +547,7 @@ C标准的，在mac平台C++中 并不支持。</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
 
 
             
@@ -612,7 +610,7 @@ slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/02/21/git笔记/" id="post-prev" class="post-nav-link">
+      <a href="/2017/02/21/git%E7%AC%94%E8%AE%B0/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">git笔记</h4>
       </a>
@@ -621,7 +619,7 @@ slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/01/04/《星之梦》传播星空之人/" id="post-next" class="post-nav-link">
+      <a href="/2017/01/04/%E3%80%8A%E6%98%9F%E4%B9%8B%E6%A2%A6%E3%80%8B%E4%BC%A0%E6%92%AD%E6%98%9F%E7%A9%BA%E4%B9%8B%E4%BA%BA/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">《星之梦》传播星空之人</h4>
       </a>
@@ -645,7 +643,7 @@ slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -666,6 +664,9 @@ slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -698,11 +699,11 @@ slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -774,7 +775,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -794,7 +795,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

@@ -22,19 +22,20 @@
     
     <meta name="keywords" content="hexo,vs code">
     <meta name="description" content="背景 最近发现用外部OSS图床，在本地处理归档文件资源时，不是那么的方便。且自己用的腾讯云COS的上传插件没做对剪切板中图片上传的功能，导致每次粘贴图片都得多一步去获取文件的绝对路径或者选中文件。 然后发现vs code有个Paste Image的插件可以做到直接将剪切板的图片放到本地指定相对路径的功能。 但是对于发布到github page上的文章呢，图片资源怎么才能使用相对路径呢？ 就发现he">
-<meta name="keywords" content="hexo,vs code">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo结合PasteImage使用相对路径图片">
-<meta property="og:url" content="https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="背景 最近发现用外部OSS图床，在本地处理归档文件资源时，不是那么的方便。且自己用的腾讯云COS的上传插件没做对剪切板中图片上传的功能，导致每次粘贴图片都得多一步去获取文件的绝对路径或者选中文件。 然后发现vs code有个Paste Image的插件可以做到直接将剪切板的图片放到本地指定相对路径的功能。 但是对于发布到github page上的文章呢，图片资源怎么才能使用相对路径呢？ 就发现he">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/hexo结合PasteImage使用本地图片_2020-06-24-00-47-39.png">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.822Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sean10.github.io/.io//hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87_2020-06-24-00-47-39.png">
+<meta property="article:published_time" content="2020-06-23T16:46:35.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.823Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="vs code">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo结合PasteImage使用相对路径图片">
-<meta name="twitter:description" content="背景 最近发现用外部OSS图床，在本地处理归档文件资源时，不是那么的方便。且自己用的腾讯云COS的上传插件没做对剪切板中图片上传的功能，导致每次粘贴图片都得多一步去获取文件的绝对路径或者选中文件。 然后发现vs code有个Paste Image的插件可以做到直接将剪切板的图片放到本地指定相对路径的功能。 但是对于发布到github page上的文章呢，图片资源怎么才能使用相对路径呢？ 就发现he">
-<meta name="twitter:image" content="https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/hexo结合PasteImage使用本地图片_2020-06-24-00-47-39.png">
+<meta name="twitter:image" content="https://sean10.github.io/.io//hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87_2020-06-24-00-47-39.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -42,10 +43,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -162,7 +163,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">hexo配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pasteimage配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">PasteImage配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图示配置如下"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">图示配置如下</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo%E9%85%8D%E7%BD%AE"><span class="post-toc-number">2.</span> <span class="post-toc-text">hexo配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pasteimage%E9%85%8D%E7%BD%AE"><span class="post-toc-number">3.</span> <span class="post-toc-text">PasteImage配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BE%E7%A4%BA%E9%85%8D%E7%BD%AE%E5%A6%82%E4%B8%8B"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">图示配置如下</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -195,7 +196,7 @@
 <p>就发现<code>hexo 3</code>提供了一部分功能（即便现在4了，好像也暂时没有更进一步优化的计划，relative
 path没怎么搜到有人提PR了）。</p>
 <p>按照hexo的意思是不使用标准markdown语法，而是使用下面这种提供的外部语法来处理……</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img slug [title] %&#125;</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
 <p>不太能接受，然后发现配合一个好多年前的插件<code>hexo-asset-image</code>就可以做到对于用户可以无感知的使用相对路径的图片了。</p>
 <h2 id="hexo配置">hexo配置</h2>
 <ol start="0" type="1">
@@ -207,24 +208,24 @@ path没怎么搜到有人提PR了）。</p>
 <li>原因在于作者不再维护了，npm源里一直没有重新打包的内容</li>
 </ol></li>
 </ol>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-  var endPos = link.lastIndexOf('.');</span></span><br><span class="line"><span class="addition">+  var endPos = link.length-1;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-  var endPos = link.lastIndexOf(&#x27;.&#x27;);</span></span><br><span class="line"><span class="addition">+  var endPos = link.length-1;</span></span><br></pre></td></tr></table></figure>
 <p>原始的<code>md</code>文件中的图片路径依旧可以用正常的相对路径<code>![](hexo结合PasteImage使用本地图片/hexo结合PasteImage使用本地图片_2020-06-24-00-47-39.png)</code>，
 在<code>hexo g</code>时生成的文件中的图片资源路径会被这个插件自动转换成url后静态文件相对于静态文件根目录的绝对路径。</p>
 <h2 id="pasteimage配置">PasteImage配置</h2>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"pasteImage.namePrefix"</span>: <span class="string">"$&#123;currentFileNameWithoutExt&#125;_"</span>,</span><br><span class="line">    <span class="attr">"pasteImage.defaultName"</span>: <span class="string">"YMMDDHHmmss"</span>,</span><br><span class="line">    <span class="attr">"pasteImage.path"</span>: <span class="string">"$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;"</span>,</span><br><span class="line">    <span class="attr">"pasteImage.basePath"</span>: <span class="string">"$&#123;currentFileDir&#125;"</span>,</span><br><span class="line">    <span class="attr">"pasteImage.forceUnixStyleSeparator"</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;pasteImage.namePrefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;currentFileNameWithoutExt&#125;_&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pasteImage.defaultName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;YMMDDHHmmss&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pasteImage.path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pasteImage.basePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;currentFileDir&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pasteImage.forceUnixStyleSeparator&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="图示配置如下">图示配置如下</h3>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2020/06/24/hexo结合PasteImage使用本地图片/hexo结合PasteImage使用本地图片_2020-06-24-00-47-39.png" alt="" title="">
+                    <img src="/.io//hexo结合PasteImage使用本地图片_2020-06-24-00-47-39.png" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="http://www.itomtan.com/2017/09/29/the-problem-when-use-post-asset-folder/" target="_blank" rel="noopener">Hexo开启post_asset_folder后,
-安装hexo-asset-image,不起作用的问题 | Tomtan’s Blog</a></li>
-<li><a href="https://github.com/xcodebuild/hexo-asset-image/issues/47" target="_blank" rel="noopener">域名是xxx.io的情况下，图片路径会从原本/xxx.jpg变成
+<li><a target="_blank" rel="noopener" href="http://www.itomtan.com/2017/09/29/the-problem-when-use-post-asset-folder/">Hexo开启post_asset_folder后,
+安装hexo-asset-image,不起作用的问题 | Tomtan's Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xcodebuild/hexo-asset-image/issues/47">域名是xxx.io的情况下，图片路径会从原本/xxx.jpg变成
 /.io/xxx.jpg · Issue #47 · xcodebuild/hexo-asset-image</a></li>
 </ol>
 
@@ -235,7 +236,7 @@ path没怎么搜到有人提PR了）。</p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.822Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.823Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -257,7 +258,7 @@ path没怎么搜到有人提PR了）。</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vs-code/">vs code</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vs-code/" rel="tag">vs code</a></li></ul>
 
 
             
@@ -270,7 +271,7 @@ path没怎么搜到有人提PR了）。</p>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -280,22 +281,22 @@ path没怎么搜到有人提PR了）。</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo结合PasteImage使用相对路径图片》 — 行路中.&url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo结合PasteImage使用相对路径图片》 — 行路中.&url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -318,7 +319,7 @@ path没怎么搜到有人提PR了）。</p>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/06/24/if-else与try-catch初理解/" id="post-prev" class="post-nav-link">
+      <a href="/2020/06/24/if-else%E4%B8%8Etry-catch%E5%88%9D%E7%90%86%E8%A7%A3/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">if...else(LBYL)与try...catch(EAFP)初理解</h4>
       </a>
@@ -327,7 +328,7 @@ path没怎么搜到有人提PR了）。</p>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/23/python单元测试mock/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/23/python%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95mock/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">python单元测试mock和stub小记</h4>
       </a>
@@ -351,7 +352,7 @@ path没怎么搜到有人提PR了）。</p>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -372,6 +373,9 @@ path没怎么搜到有人提PR了）。</p>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -404,11 +408,11 @@ path没怎么搜到有人提PR了）。</p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -426,7 +430,7 @@ path没怎么搜到有人提PR了）。</p>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -436,22 +440,22 @@ path没怎么搜到有人提PR了）。</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/&title=《hexo结合PasteImage使用相对路径图片》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo结合PasteImage使用相对路径图片》 — 行路中.&url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo结合PasteImage使用相对路径图片》 — 行路中.&url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -462,7 +466,7 @@ path没怎么搜到有人提PR了）。</p>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/06/24/hexo结合PasteImage使用本地图片/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/06/24/hexo%E7%BB%93%E5%90%88PasteImage%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" alt="微信分享二维码">
 </div>
 
 
@@ -478,7 +482,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -498,7 +502,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

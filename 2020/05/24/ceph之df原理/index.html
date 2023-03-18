@@ -22,17 +22,18 @@
     
     <meta name="keywords" content="ceph,存储">
     <meta name="description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
-<meta name="keywords" content="ceph,存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之df原理">
-<meta property="og:url" content="https://sean10.github.io/2020/05/24/ceph之df原理/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.086Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-24T12:04:33.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.894Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="ceph">
+<meta property="article:tag" content="存储">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ceph之df原理">
-<meta name="twitter:description" content="ceph df主要得到的是global以及每个pool的used以及max_available.">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,8 +161,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global"><span class="post-toc-number">1.</span> <span class="post-toc-text">global</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filestore"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bluestore"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">pool</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#filestore-1"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bluestore-1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nautilus变化"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nautilus变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量解释"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">变量解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#todo"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool可用量计算"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">pool可用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用量计算"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">pool使用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd使用的空间"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">osd使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-objectstore-tool查看osd数据库中bluestore-pg信息"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">ceph-objectstore-tool查看OSD数据库中bluestore
-pg信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-osd-df"><span class="post-toc-number">2.1.7.</span> <span class="post-toc-text">ceph osd df</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool使用的空间-used"><span class="post-toc-number">2.1.8.</span> <span class="post-toc-text">pool使用的空间 used</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cephfs使用的空间"><span class="post-toc-number">2.1.9.</span> <span class="post-toc-text">cephfs使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd特殊场景"><span class="post-toc-number">2.1.10.</span> <span class="post-toc-text">osd特殊场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max_avaible"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">max_avaible</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rbd"><span class="post-toc-number">3.</span> <span class="post-toc-text">rbd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-du"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">rbd du</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-diff"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">rbd diff</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常情况"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#osd-down"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">osd down</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#global"><span class="post-toc-number">1.</span> <span class="post-toc-text">global</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#filestore"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bluestore"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pool"><span class="post-toc-number">2.</span> <span class="post-toc-text">pool</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#filestore-1"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">FileStore</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bluestore-1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">BlueStore</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nautilus%E5%8F%98%E5%8C%96"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nautilus变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%98%E9%87%8F%E8%A7%A3%E9%87%8A"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">变量解释</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#todo"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool%E5%8F%AF%E7%94%A8%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">pool可用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool%E4%BD%BF%E7%94%A8%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">pool使用量计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A9%BA%E9%97%B4"><span class="post-toc-number">2.1.5.</span> <span class="post-toc-text">osd使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-objectstore-tool%E6%9F%A5%E7%9C%8Bosd%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%ADbluestore-pg%E4%BF%A1%E6%81%AF"><span class="post-toc-number">2.1.6.</span> <span class="post-toc-text">ceph-objectstore-tool查看OSD数据库中bluestore
+pg信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ceph-osd-df"><span class="post-toc-number">2.1.7.</span> <span class="post-toc-text">ceph osd df</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pool%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A9%BA%E9%97%B4-used"><span class="post-toc-number">2.1.8.</span> <span class="post-toc-text">pool使用的空间 used</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cephfs%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A9%BA%E9%97%B4"><span class="post-toc-number">2.1.9.</span> <span class="post-toc-text">cephfs使用的空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#osd%E7%89%B9%E6%AE%8A%E5%9C%BA%E6%99%AF"><span class="post-toc-number">2.1.10.</span> <span class="post-toc-text">osd特殊场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max_avaible"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">max_avaible</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rbd"><span class="post-toc-number">3.</span> <span class="post-toc-text">rbd</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-du"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">rbd du</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rbd-diff"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">rbd diff</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5"><span class="post-toc-number">4.</span> <span class="post-toc-text">异常情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#osd-down"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">osd down</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -188,14 +189,14 @@ pg信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="pos
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>ceph df主要得到的是global以及每个pool的used以及max_available.</p>
-<a id="more"></a>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#Montor.cc文件入口ceph df</span><br><span class="line">pgservice-&gt;dump_fs_stats(&amp;ds, f.get(), verbose);</span><br><span class="line">pgservice-&gt;dump_pool_stats(osdmon()-&gt;osdmap, &amp;ds, f.get(), verbose);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#Montor.cc文件入口ceph df</span><br><span class="line">pgservice-&gt;<span class="built_in">dump_fs_stats</span>(&amp;ds, f.<span class="built_in">get</span>(), verbose);</span><br><span class="line">pgservice-&gt;<span class="built_in">dump_pool_stats</span>(<span class="built_in">osdmon</span>()-&gt;osdmap, &amp;ds, f.<span class="built_in">get</span>(), verbose);</span><br></pre></td></tr></table></figure>
 <h2 id="global">global</h2>
 <h3 id="filestore">FileStore</h3>
 <p>ceph上个版本使用filestore时，计算是基于osd的所在磁盘的statfs来计算的。因此，rbd层面的大的稀疏文件，在落到osd层上之后实际就并不占用那么多了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 主体函数</span><br><span class="line">PGMapDigest::dump_fs_stats</span><br><span class="line">    osd_sum</span><br><span class="line">PGMap::calc_stats</span><br><span class="line">    osd_sum = <span class="keyword">osd_stat_t</span>();</span><br><span class="line">OSDService::update_osd_stat</span><br><span class="line"></span><br><span class="line">KStore::statfs</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 主体函数</span><br><span class="line">PGMapDigest::dump_fs_stats</span><br><span class="line">    osd_sum</span><br><span class="line">PGMap::calc_stats</span><br><span class="line">    osd_sum = <span class="built_in">osd_stat_t</span>();</span><br><span class="line">OSDService::update_osd_stat</span><br><span class="line"></span><br><span class="line">KStore::statfs</span><br></pre></td></tr></table></figure>
 <h3 id="bluestore">BlueStore</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PGMapDigest::dump_fs_stats</span><br><span class="line">    osd_sum</span><br><span class="line">PGMap::calc_stats</span><br><span class="line">    osd_sum = <span class="keyword">osd_stat_t</span>();</span><br><span class="line">#疑似现在只有这个函数会刷新数据了</span><br><span class="line">OSD::tick_without_osd_lock()</span><br><span class="line">OSDService::set_statfs</span><br><span class="line">BlueStore::statfs（找不到怎么那边怎么调用到bluestore的，直接来找同名函数了，理论上应该是继承的接口吧？）</span><br><span class="line">BlueFS::get_free</span><br><span class="line"></span><br><span class="line">bluefs这块还不太理解……</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PGMapDigest::dump_fs_stats</span><br><span class="line">    osd_sum</span><br><span class="line">PGMap::calc_stats</span><br><span class="line">    osd_sum = <span class="built_in">osd_stat_t</span>();</span><br><span class="line">#疑似现在只有这个函数会刷新数据了</span><br><span class="line">OSD::<span class="built_in">tick_without_osd_lock</span>()</span><br><span class="line">OSDService::set_statfs</span><br><span class="line">BlueStore::statfs（找不到怎么那边怎么调用到bluestore的，直接来找同名函数了，理论上应该是继承的接口吧？）</span><br><span class="line">BlueFS::get_free</span><br><span class="line"></span><br><span class="line">bluefs这块还不太理解……</span><br></pre></td></tr></table></figure>
 <h2 id="pool">pool</h2>
 <p>是否可以理解为，如果不使用ceph
 df提供的接口，手动去计算可用pg的容量，就可以直接代表可用容量？</p>
@@ -203,24 +204,24 @@ df提供的接口，手动去计算可用pg的容量，就可以直接代表可�
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PGMapDigest::dump_pool_stats_full</span><br><span class="line">PGMapDigest::dump_object_stat_sum</span><br><span class="line">疑似是在osd写入时做的更新？</span><br><span class="line">PrimaryLogPG::write_update_size_and_usage</span><br></pre></td></tr></table></figure>
 <h4 id="bluestore-1">BlueStore</h4>
 <p>待阅读</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PGMapDigest::dump_pool_stats_full</span><br><span class="line">    PGMap.cc: pool_raw_used_rate</span><br><span class="line">PGMapDigest::dump_object_stat_sum   这里似乎计算的是去除降级后的？</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">仅在MgrStatMonitor::preprocess_statfs中出现了</span><br><span class="line">PGMapDigest::get_statfs（这个像是已经deprecated?)</span><br><span class="line">    PGMapDiest::get_pool_free_space</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PGMapDigest::dump_pool_stats_full</span><br><span class="line">    PGMap.cc: pool_raw_used_rate</span><br><span class="line">PGMapDigest::dump_object_stat_sum   这里似乎计算的是去除降级后的？</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">仅在MgrStatMonitor::preprocess_statfs中出现了</span><br><span class="line">PGMapDigest::get_statfs（这个像是已经deprecated?)</span><br><span class="line">    PGMapDiest::get_pool_free_space</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="nautilus变化">Nautilus变化</h3>
 <p>根据[^5]可以知道</p>
 <blockquote>
 <ul>
 <li>ceph df [detail] output (POOLS section) has been modified in json
 format:</li>
-<li>‘bytes used’ column renamed to ‘stored’. Represents amount of data
+<li>'bytes used' column renamed to 'stored'. Represents amount of data
 stored by the user.</li>
-<li>‘raw bytes used’ column renamed to “stored_raw”. Totals of user data
+<li>'raw bytes used' column renamed to "stored_raw". Totals of user data
 over all OSD excluding degraded.</li>
-<li>new ‘bytes_used’ column now represent amount of space allocated by
+<li>new 'bytes_used' column now represent amount of space allocated by
 all OSD nodes.</li>
-<li>‘kb_used’ column - the same as ‘bytes_used’ but in KB.</li>
-<li>new column ‘compress_bytes_used’ - amount of space allocated for
+<li>'kb_used' column - the same as 'bytes_used' but in KB.</li>
+<li>new column 'compress_bytes_used' - amount of space allocated for
 compressed data. I.e. comrpessed data plus all the allocation,
 replication and erasure coding overhead.</li>
-<li>new column ‘compress_under_bytes’ amount of data passed through
+<li>new column 'compress_under_bytes' amount of data passed through
 compression (summed over all replicas) and beneficial enough to be
 stored in a compressed form.</li>
 </ul>
@@ -245,8 +246,8 @@ pool_stat.get_user_bytes(1.0, per_pool) *
 也就是说除去副本数就是用户数据实际在设备里存储吧 *
 statfs.data_compressed_allocated * comprress_under_bytes
 compress的用户数据大小? * statfs.compressed_original</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">diagraph calltrace &#123;</span><br><span class="line">  Monitor::handle_command -&gt; mgrstatmon()-&gt;dump_cluster_stats</span><br><span class="line">  Monitor::handle_command -&gt; mgrstatmon()-&gt;dump_pool_stats -&gt; PGMapDigest::dump_pool_stats_full -&gt; pool_stat_t &amp;stat = pg_pool_sum.at(pool_id)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; pool_stat.get_allocated_bytes</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; store_nromalized = pool_stat.get_user_bytes(raw_used_rate, per_pool)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; pool_stat.get_used_bytes(1.0, per_pool)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; statfs.data_compressed_allocated</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; statfs.compressed_original</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pool_stat_t</span> &#123;</span></span><br><span class="line">  <span class="keyword">object_stat_collection_t</span> stats;</span><br><span class="line">  <span class="keyword">store_statfs_t</span> store_stats;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">diagraph calltrace &#123;</span><br><span class="line">  Monitor::handle_command -&gt; mgrstatmon()-&gt;dump_cluster_stats</span><br><span class="line">  Monitor::handle_command -&gt; mgrstatmon()-&gt;dump_pool_stats -&gt; PGMapDigest::dump_pool_stats_full -&gt; pool_stat_t &amp;stat = pg_pool_sum.at(pool_id)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; pool_stat.get_allocated_bytes</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; store_nromalized = pool_stat.get_user_bytes(raw_used_rate, per_pool)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; pool_stat.get_used_bytes(1.0, per_pool)</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; statfs.data_compressed_allocated</span><br><span class="line">  pool_stat_t &amp;stat = pg_pool_sum.at(pool_id) -&gt; statfs.compressed_original</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">pool_stat_t</span> &#123;</span><br><span class="line">  <span class="type">object_stat_collection_t</span> stats;</span><br><span class="line">  <span class="type">store_statfs_t</span> store_stats;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="变量解释">变量解释</h4>
 <ul>
 <li>raw_used_rate</li>
@@ -255,15 +256,15 @@ compress的用户数据大小? * statfs.compressed_original</p>
 <li>per_pool
 <ul>
 <li>osd_sum.num_osds == osd_sum.num_per_pool_osds</li>
-<li><a href="https://github.com/ceph/ceph/commit/5dcb6d81bbc2a4c4d0da4a33d9f6bbba5065a1ad" target="_blank" rel="noopener">mon:
+<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/5dcb6d81bbc2a4c4d0da4a33d9f6bbba5065a1ad">mon:
 use per-pool stats only when all OSDs are reporting ·
 ceph/ceph@5dcb6d8</a></li>
-<li><a href="https://github.com/ceph/ceph/pull/19454" target="_blank" rel="noopener">osd: per-pool osd
+<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/19454">osd: per-pool osd
 stats collection by ifed01 · Pull Request #19454 · ceph/ceph</a>
 <ul>
 <li>这里应该是引入点, 为了解决压缩率统计的问题?</li>
 </ul></li>
-<li><a href="https://tracker.ceph.com/issues/37565" target="_blank" rel="noopener">Backport #37565:
+<li><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/37565">Backport #37565:
 luminous: OSD compression: incorrect display of the used disk space -
 bluestore - Ceph</a>
 <ul>
@@ -286,9 +287,10 @@ bluestore - Ceph</a>
 实际上是有洞的,这种情况下, 为什么不默认提供更多的空间呢? 是怕出问题吧?
 只有当压缩的时候, 才提供? * compressed的容量是否 * used和
 objects数量是否有关呢 * 像是rbd上层4K随机写,
-在rados层看到的就是写了2W5的对象以后就100G了, rados还是按照4M对象创建了…
-* 按照之前我们看pg的op, 理论上应该和objects数量无关才对. *
-pg处理的是Rados层的请求, 所以其实问题在于rbd层的4k 是怎么转换到4M的. *
+在rados层看到的就是写了2W5的对象以后就100G了,
+rados还是按照4M对象创建了... * 按照之前我们看pg的op,
+理论上应该和objects数量无关才对. * pg处理的是Rados层的请求,
+所以其实问题在于rbd层的4k 是怎么转换到4M的. *
 问题其实是写了这些对象以后, df看到的容量就满了, 而实际上osd还没满. *
 mon如何打印出他当前收集的容量信息呢? * ### Luminous</p>
 <h4 id="pool可用量计算">pool可用量计算</h4>
@@ -306,14 +308,14 @@ id对应的归一化结果，取得资源池原始的最大可用空间。</p>
 <h4 id="pool使用量计算">pool使用量计算</h4>
 <p>在<code>PGMapDigest</code>的成员变量<code>mempool::pgmap::unordered_map&lt;int32_t,pool_stat_t&gt; pg_pool_sum</code>中保存着pool的pg的对应资源池中的使用量<code>num_bytes</code>的和。该数据在<code>ceph df detail</code>中进行汇总</p>
 <p>可以用下面这个命令看到这些统计 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceph report</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pool_stat_t</span> &#123;</span></span><br><span class="line">  <span class="keyword">object_stat_collection_t</span> stats;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_stat_collection_t</span> &#123;</span></span><br><span class="line">  <span class="comment">/**************************************************************************</span></span><br><span class="line"><span class="comment">   * WARNING: be sure to update the operator== when adding/removing fields! *</span></span><br><span class="line"><span class="comment">   **************************************************************************/</span></span><br><span class="line">  <span class="keyword">object_stat_sum_t</span> sum;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">object_stat_sum_t</span> &#123;</span></span><br><span class="line">  <span class="comment">/**************************************************************************</span></span><br><span class="line"><span class="comment">   * WARNING: be sure to update operator==, floor, and split when</span></span><br><span class="line"><span class="comment">   * adding/removing fields!</span></span><br><span class="line"><span class="comment">   **************************************************************************/</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_bytes;    <span class="comment">// in bytes</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects;</span><br><span class="line">  <span class="keyword">int64_t</span> num_object_clones;</span><br><span class="line">  <span class="keyword">int64_t</span> num_object_copies;  <span class="comment">// num_objects * num_replicas</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_missing_on_primary;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_degraded;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_unfound;</span><br><span class="line">  <span class="keyword">int64_t</span> num_rd;</span><br><span class="line">  <span class="keyword">int64_t</span> num_rd_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_wr;</span><br><span class="line">  <span class="keyword">int64_t</span> num_wr_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_scrub_errors;	<span class="comment">// total deep and shallow scrub errors</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_recovered;</span><br><span class="line">  <span class="keyword">int64_t</span> num_bytes_recovered;</span><br><span class="line">  <span class="keyword">int64_t</span> num_keys_recovered;</span><br><span class="line">  <span class="keyword">int64_t</span> num_shallow_scrub_errors;</span><br><span class="line">  <span class="keyword">int64_t</span> num_deep_scrub_errors;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_dirty;</span><br><span class="line">  <span class="keyword">int64_t</span> num_whiteouts;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_omap;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_hit_set_archive;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_misplaced;</span><br><span class="line">  <span class="keyword">int64_t</span> num_bytes_hit_set_archive;</span><br><span class="line">  <span class="keyword">int64_t</span> num_flush;</span><br><span class="line">  <span class="keyword">int64_t</span> num_flush_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_evict;</span><br><span class="line">  <span class="keyword">int64_t</span> num_evict_kb;</span><br><span class="line">  <span class="keyword">int64_t</span> num_promote;</span><br><span class="line">  <span class="keyword">int32_t</span> num_flush_mode_high;  <span class="comment">// 1 when in high flush mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int32_t</span> num_flush_mode_low;   <span class="comment">// 1 when in low flush mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int32_t</span> num_evict_mode_some;  <span class="comment">// 1 when in evict some mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int32_t</span> num_evict_mode_full;  <span class="comment">// 1 when in evict full mode, otherwise 0</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_pinned;</span><br><span class="line">  <span class="keyword">int64_t</span> num_objects_missing;</span><br><span class="line">  <span class="keyword">int64_t</span> num_legacy_snapsets; <span class="comment">///&lt; upper bound on pre-luminous-style SnapSets</span></span><br><span class="line">  <span class="keyword">int64_t</span> num_large_omap_objects = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">pool_stat_t</span> &#123;</span><br><span class="line">  <span class="type">object_stat_collection_t</span> stats;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">object_stat_collection_t</span> &#123;</span><br><span class="line">  <span class="comment">/**************************************************************************</span></span><br><span class="line"><span class="comment">   * WARNING: be sure to update the operator== when adding/removing fields! *</span></span><br><span class="line"><span class="comment">   **************************************************************************/</span></span><br><span class="line">  <span class="type">object_stat_sum_t</span> sum;</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">object_stat_sum_t</span> &#123;</span><br><span class="line">  <span class="comment">/**************************************************************************</span></span><br><span class="line"><span class="comment">   * WARNING: be sure to update operator==, floor, and split when</span></span><br><span class="line"><span class="comment">   * adding/removing fields!</span></span><br><span class="line"><span class="comment">   **************************************************************************/</span></span><br><span class="line">  <span class="type">int64_t</span> num_bytes;    <span class="comment">// in bytes</span></span><br><span class="line">  <span class="type">int64_t</span> num_objects;</span><br><span class="line">  <span class="type">int64_t</span> num_object_clones;</span><br><span class="line">  <span class="type">int64_t</span> num_object_copies;  <span class="comment">// num_objects * num_replicas</span></span><br><span class="line">  <span class="type">int64_t</span> num_objects_missing_on_primary;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_degraded;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_unfound;</span><br><span class="line">  <span class="type">int64_t</span> num_rd;</span><br><span class="line">  <span class="type">int64_t</span> num_rd_kb;</span><br><span class="line">  <span class="type">int64_t</span> num_wr;</span><br><span class="line">  <span class="type">int64_t</span> num_wr_kb;</span><br><span class="line">  <span class="type">int64_t</span> num_scrub_errors;	<span class="comment">// total deep and shallow scrub errors</span></span><br><span class="line">  <span class="type">int64_t</span> num_objects_recovered;</span><br><span class="line">  <span class="type">int64_t</span> num_bytes_recovered;</span><br><span class="line">  <span class="type">int64_t</span> num_keys_recovered;</span><br><span class="line">  <span class="type">int64_t</span> num_shallow_scrub_errors;</span><br><span class="line">  <span class="type">int64_t</span> num_deep_scrub_errors;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_dirty;</span><br><span class="line">  <span class="type">int64_t</span> num_whiteouts;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_omap;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_hit_set_archive;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_misplaced;</span><br><span class="line">  <span class="type">int64_t</span> num_bytes_hit_set_archive;</span><br><span class="line">  <span class="type">int64_t</span> num_flush;</span><br><span class="line">  <span class="type">int64_t</span> num_flush_kb;</span><br><span class="line">  <span class="type">int64_t</span> num_evict;</span><br><span class="line">  <span class="type">int64_t</span> num_evict_kb;</span><br><span class="line">  <span class="type">int64_t</span> num_promote;</span><br><span class="line">  <span class="type">int32_t</span> num_flush_mode_high;  <span class="comment">// 1 when in high flush mode, otherwise 0</span></span><br><span class="line">  <span class="type">int32_t</span> num_flush_mode_low;   <span class="comment">// 1 when in low flush mode, otherwise 0</span></span><br><span class="line">  <span class="type">int32_t</span> num_evict_mode_some;  <span class="comment">// 1 when in evict some mode, otherwise 0</span></span><br><span class="line">  <span class="type">int32_t</span> num_evict_mode_full;  <span class="comment">// 1 when in evict full mode, otherwise 0</span></span><br><span class="line">  <span class="type">int64_t</span> num_objects_pinned;</span><br><span class="line">  <span class="type">int64_t</span> num_objects_missing;</span><br><span class="line">  <span class="type">int64_t</span> num_legacy_snapsets; <span class="comment">///&lt; upper bound on pre-luminous-style SnapSets</span></span><br><span class="line">  <span class="type">int64_t</span> num_large_omap_objects = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="osd使用的空间">osd使用的空间</h4>
 <p>12.2.13这部分函数似乎被重构了,
 <code>update_osd_stat</code>没有入参了.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> OSD::heartbeat()</span><br><span class="line">-&gt;</span><br><span class="line"><span class="keyword">void</span> OSDService::update_osd_stat(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; hb_peers)</span><br><span class="line">-&gt; </span><br><span class="line"><span class="keyword">int</span> BlueStore::statfs(struct <span class="keyword">store_statfs_t</span> *buf)</span><br><span class="line">这里通过指针设置了`Compress`和`compress_origin`的变量.</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">OSD::heartbeat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">-&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">OSDService::update_osd_stat</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; hb_peers)</span></span></span><br><span class="line"><span class="function">-&gt; </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">BlueStore::statfs</span><span class="params">(<span class="keyword">struct</span> <span class="type">store_statfs_t</span> *buf)</span></span></span><br><span class="line"><span class="function">这里通过指针设置了`Compress`和`compress_origin`的变量.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br></pre></td></tr></table></figure>
 <p>这里有个<code>available</code>, 为什么压缩后,
 这里显示的减去之后获取到的容量还是实际使用了<code>compress_origin</code>的空间?</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">store_statfs_t</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">store_statfs_t</span> </span><br></pre></td></tr></table></figure>
 <p>这里的<code>available</code>是什么时候计算的?</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceph daemon osd.1 pref dump | grep bluestore</span><br></pre></td></tr></table></figure>
 <ul>
@@ -378,7 +380,7 @@ pg_stat里.</p>
 这个的初始化的<code>Monitor</code>在<code>ceph_mon.cc</code>里,</p>
 <p>似乎初始化<code>ceph-mon</code>的时候只读取了<code>version_t v = store-&gt;get("monmap", "last_committed");</code>?</p>
 <p>那数据难道还是在osd上? 而且mon数据丢失似乎是可以恢复过来的.</p>
-<p>通过ceph pg dump –format
+<p>通过ceph pg dump --format
 json-pretty是可以导出<code>num_bytes</code>的,
 而<code>daemon osd.x perf dump</code>反而拿不到.</p>
 <p>通过<code>ceph-objectstore-tool</code>可以拿到<code>OSD里存的pg</code>的信息</p>
@@ -432,7 +434,7 @@ pg信息</h4>
 <li>librados: wait_for_osdmap done waiting
 <ul>
 <li>是否代表某个客户端占用了这个吧所?</li>
-<li>打开–debug_objecter 40 –debug_rados 40看到的内容就是上述的.</li>
+<li>打开--debug_objecter 40 --debug_rados 40看到的内容就是上述的.</li>
 <li>objecter给出的信息更多一点, 看着</li>
 <li>这中间慢在哪里呢?ms_dispatch</li>
 </ul></li>
@@ -539,7 +541,7 @@ min(\frac{osd\_avail_0}{\frac{weight_0}{\sum_{i=0}^nweight_i}},
 <p>根据[^4], 好像<code>rbd</code>的<code>discard</code>选项,
 影响这个容量的问题.</p>
 <h3 id="rbd-diff">rbd diff</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rbd diff rbd/zp | awk <span class="string">'&#123; SUM += $2 &#125; END &#123; print SUM/1024/1024 " MB" &#125;'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rbd diff rbd/zp | awk <span class="string">&#x27;&#123; SUM += $2 &#125; END &#123; print SUM/1024/1024 &quot; MB&quot; &#125;&#x27;</span></span><br></pre></td></tr></table></figure>
 <h2 id="异常情况">异常情况</h2>
 <h3 id="osd-down">osd down</h3>
 <p>对容量无影响 ### osd out <del>在未达到min
@@ -547,22 +549,22 @@ size阶段可继续使用的pool，只有osd正式out了，容量才会变更。
 <p>仅当被从crush中挪走或不存在in的osd，才会真的容量变化。</p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="https://blog.csdn.net/weixin_44389885/article/details/101478537?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=ceph%20df&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-101478537" target="_blank" rel="noopener">Ceph
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44389885/article/details/101478537?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=ceph%20df&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-101478537">Ceph
 df分析_运维_weixin_44389885的博客-CSDN博客</a></li>
-<li><a href="https://blog.csdn.net/pansaky/article/details/86690230?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase" target="_blank" rel="noopener">ceph全局GLOBAL容量和POOLS级别容量计算_awk_pansaky的博客-CSDN博客</a>$$</li>
-<li><a href="https://www.cnblogs.com/goldd/p/6610618.html" target="_blank" rel="noopener">Ceph中的容量计算与管理
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/pansaky/article/details/86690230?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase">ceph全局GLOBAL容量和POOLS级别容量计算_awk_pansaky的博客-CSDN博客</a>$$</li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/goldd/p/6610618.html">Ceph中的容量计算与管理
 - gold叠 - 博客园</a></li>
-<li><a href="https://stackoverflow.com/questions/55962248/how-to-explain-ceph-space-usage" target="_blank" rel="noopener">kubernetes
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55962248/how-to-explain-ceph-space-usage">kubernetes
 - How to explain Ceph space usage - Stack Overflow</a></li>
-<li><a href="https://github.com/ceph/ceph/pull/19454/files" target="_blank" rel="noopener">osd:
+<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/19454/files">osd:
 per-pool osd stats collection by ifed01 · Pull Request #19454 ·
 ceph/ceph</a></li>
-<li><a href="https://tracker.ceph.com/issues/16671" target="_blank" rel="noopener">Bug #16671: “ceph
-df”object num is negative - Ceph - Ceph</a></li>
-<li><a href="https://www.cnblogs.com/goldd/p/6610618.html" target="_blank" rel="noopener">Ceph中的容量计算与管理
+<li><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/16671">Bug #16671: "ceph
+df"object num is negative - Ceph - Ceph</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/goldd/p/6610618.html">Ceph中的容量计算与管理
 - gold叠 - 博客园</a></li>
-<li><a href="https://runsisi.com/2019-02-27/ceph-pg-stat" target="_blank" rel="noopener">https://runsisi.com/2019-02-27/ceph-pg-stat</a></li>
-<li><a href="https://www.jianshu.com/p/174c9d376b83" target="_blank" rel="noopener">pglog出错导致osd启动失败的解决办法
+<li><a target="_blank" rel="noopener" href="https://runsisi.com/2019-02-27/ceph-pg-stat">https://runsisi.com/2019-02-27/ceph-pg-stat</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/174c9d376b83">pglog出错导致osd启动失败的解决办法
 - 简书</a></li>
 </ol>
 
@@ -573,7 +575,7 @@ df”object num is negative - Ceph - Ceph</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.086Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.894Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -595,7 +597,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储/">存储</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li></ul>
 
 
             
@@ -608,7 +610,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/24/ceph之df原理/&title=《ceph之df原理》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/&title=《ceph之df原理》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -618,22 +620,22 @@ df”object num is negative - Ceph - Ceph</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/24/ceph之df原理/&title=《ceph之df原理》 — 行路中.&source=ceph df主要得到的是global以及每个pool的used以及max_available." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/&title=《ceph之df原理》 — 行路中.&source=ceph df主要得到的是global以及每个pool的used以及max_available." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/24/ceph之df原理/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df原理》 — 行路中.&url=https://sean10.github.io/2020/05/24/ceph之df原理/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df原理》 — 行路中.&url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/24/ceph之df原理/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -656,7 +658,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">windows terminal1.0暂时还无法替代tmux</h4>
       </a>
@@ -665,7 +667,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/21/ceph之librados使用/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">ceph之librados使用</h4>
       </a>
@@ -689,7 +691,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -710,6 +712,9 @@ df”object num is negative - Ceph - Ceph</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -742,11 +747,11 @@ df”object num is negative - Ceph - Ceph</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -764,7 +769,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/24/ceph之df原理/&title=《ceph之df原理》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/&title=《ceph之df原理》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -774,22 +779,22 @@ df”object num is negative - Ceph - Ceph</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/24/ceph之df原理/&title=《ceph之df原理》 — 行路中.&source=ceph df主要得到的是global以及每个pool的used以及max_available." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/&title=《ceph之df原理》 — 行路中.&source=ceph df主要得到的是global以及每个pool的used以及max_available." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/24/ceph之df原理/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df原理》 — 行路中.&url=https://sean10.github.io/2020/05/24/ceph之df原理/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之df原理》 — 行路中.&url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/24/ceph之df原理/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -800,7 +805,7 @@ df”object num is negative - Ceph - Ceph</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/24/ceph之df原理/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
 </div>
 
 
@@ -816,7 +821,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -836,7 +841,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

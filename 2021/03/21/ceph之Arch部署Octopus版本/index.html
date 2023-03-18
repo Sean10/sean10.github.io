@@ -22,17 +22,18 @@
     
     <meta name="keywords" content="ceph,arch">
     <meta name="description" content="arch安装实验 1pacman -Syy ceph 安装完发生了一个奇怪的问题, ceph -v执行报缺rados库, python3-rados装到了python3.9的site-package里, 但是我设备里pacman目前只装了python3.8, 这个的包里没有看到这个库 执行了pacman -Syy python升级到3.9, 可以用了, 升级过程中python3.9的库里少了好多我">
-<meta name="keywords" content="ceph,arch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之Arch部署Octopus版本">
-<meta property="og:url" content="https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/index.html">
+<meta property="og:url" content="https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="arch安装实验 1pacman -Syy ceph 安装完发生了一个奇怪的问题, ceph -v执行报缺rados库, python3-rados装到了python3.9的site-package里, 但是我设备里pacman目前只装了python3.8, 这个的包里没有看到这个库 执行了pacman -Syy python升级到3.9, 可以用了, 升级过程中python3.9的库里少了好多我">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.861Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-21T13:55:55.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.838Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="ceph">
+<meta property="article:tag" content="arch">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ceph之Arch部署Octopus版本">
-<meta name="twitter:description" content="arch安装实验 1pacman -Syy ceph 安装完发生了一个奇怪的问题, ceph -v执行报缺rados库, python3-rados装到了python3.9的site-package里, 但是我设备里pacman目前只装了python3.8, 这个的包里没有看到这个库 执行了pacman -Syy python升级到3.9, 可以用了, 升级过程中python3.9的库里少了好多我">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#arch安装实验"><span class="post-toc-number">1.</span> <span class="post-toc-text">arch安装实验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部署"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">部署</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重设"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">重设</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些小问题"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">一些小问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#快速启动ceph调试环境"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">快速启动ceph调试环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#arch%E5%AE%89%E8%A3%85%E5%AE%9E%E9%AA%8C"><span class="post-toc-number">1.</span> <span class="post-toc-text">arch安装实验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%83%A8%E7%BD%B2"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">部署</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%8D%E8%AE%BE"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">重设</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">一些小问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8ceph%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">快速启动ceph调试环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -201,7 +202,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 虽然<code>pacman</code>里没有, 但是<code>AUR</code>源里有.</p>
 <p><code>yay -Syy cephadm</code>就安装上了.</p>
 <h2 id="部署">部署</h2>
-<p>cephadm bootstrap –mon-ip 192.168.115.130</p>
+<p>cephadm bootstrap --mon-ip 192.168.115.130</p>
 <p>发现官方文档里没提需要安装<code>chrony</code>,
 <code>docker</code>,配置<code>hostname</code>,
 配置<code>/etc/hosts</code>.</p>
@@ -219,8 +220,8 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 <p>成功建出来了,
 发现默认就有一个<code>device_health_metrics</code>的名字的资源池.</p>
 <h2 id="重设">重设</h2>
-<p>sudo cephadm rm-cluster –fsid d9850914-866a-11eb-8eec-000c2934ee39
-–force</p>
+<p>sudo cephadm rm-cluster --fsid d9850914-866a-11eb-8eec-000c2934ee39
+--force</p>
 <h3 id="一些小问题">一些小问题</h3>
 <p>我居然在没清理干净集群的情况下, 成功部署了一次?</p>
 <h2 id="快速启动ceph调试环境">快速启动ceph调试环境</h2>
@@ -228,7 +229,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 没有.</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="https://blog.51cto.com/hongchen99/2507660" target="_blank" rel="noopener">使用cephadm快速搭建ceph集群-胡源的博客-51CTO博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/hongchen99/2507660">使用cephadm快速搭建ceph集群-胡源的博客-51CTO博客</a></li>
 </ol>
 
         </div>
@@ -238,7 +239,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.861Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.838Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -260,7 +261,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arch/">arch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arch/" rel="tag">arch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li></ul>
 
 
             
@@ -273,7 +274,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/&title=《ceph之Arch部署Octopus版本》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/&title=《ceph之Arch部署Octopus版本》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -283,22 +284,22 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/&title=《ceph之Arch部署Octopus版本》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/&title=《ceph之Arch部署Octopus版本》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之Arch部署Octopus版本》 — 行路中.&url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之Arch部署Octopus版本》 — 行路中.&url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -321,7 +322,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2021/04/06/SWIM协议/" id="post-prev" class="post-nav-link">
+      <a href="/2021/04/06/SWIM%E5%8D%8F%E8%AE%AE/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">SWIM协议</h4>
       </a>
@@ -330,7 +331,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2021/02/18/ceph之ansible理解/" id="post-next" class="post-nav-link">
+      <a href="/2021/02/18/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">ceph之ansible理解</h4>
       </a>
@@ -354,7 +355,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -375,6 +376,9 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -407,11 +411,11 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -429,7 +433,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/&title=《ceph之Arch部署Octopus版本》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/&title=《ceph之Arch部署Octopus版本》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -439,22 +443,22 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/&title=《ceph之Arch部署Octopus版本》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/&title=《ceph之Arch部署Octopus版本》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之Arch部署Octopus版本》 — 行路中.&url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之Arch部署Octopus版本》 — 行路中.&url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -465,7 +469,7 @@ python3-rados装到了<code>python3.9</code>的<code>site-package</code>里,
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/03/21/ceph之Arch部署Octopus版本/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/" alt="微信分享二维码">
 </div>
 
 
@@ -481,7 +485,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -501,7 +505,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

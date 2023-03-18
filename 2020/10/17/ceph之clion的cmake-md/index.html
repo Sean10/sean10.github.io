@@ -22,17 +22,18 @@
     
     <meta name="keywords" content="ceph,编译">
     <meta name="description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
-<meta name="keywords" content="ceph,编译">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之clion的cmake.md">
-<meta property="og:url" content="https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-06-21T12:23:33.894Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-17T06:43:31.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.888Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="ceph">
+<meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ceph之clion的cmake.md">
-<meta name="twitter:description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,15 +161,15 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#调查"><span class="post-toc-number">1.</span> <span class="post-toc-text">调查</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker调试用运行"><span class="post-toc-number">2.</span> <span class="post-toc-text">docker调试用运行</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vstart.sh"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">vstart.sh</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cephdaemon9"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ceph/daemon[^9]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自制docker调试"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">自制Docker调试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#opensuse-ceph-dev-docker"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">opensuse ceph-dev-docker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python-devel-not-found."><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">python-devel not found.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#tmubleweed-的repo路径"><span class="post-toc-number">2.4.1.1.</span> <span class="post-toc-text">tmubleweed 的repo路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#某些疑似镜像源中似乎还有python2的库"><span class="post-toc-number">2.4.1.2.</span> <span class="post-toc-text">某些疑似镜像源中似乎还有python2的库</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#稳定的leap-15版本的nautilus编译"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">稳定的Leap
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B0%83%E6%9F%A5"><span class="post-toc-number">1.</span> <span class="post-toc-text">调查</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker%E8%B0%83%E8%AF%95%E7%94%A8%E8%BF%90%E8%A1%8C"><span class="post-toc-number">2.</span> <span class="post-toc-text">docker调试用运行</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vstart.sh"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">vstart.sh</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cephdaemon9"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ceph&#x2F;daemon[^9]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%87%AA%E5%88%B6docker%E8%B0%83%E8%AF%95"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">自制Docker调试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#opensuse-ceph-dev-docker"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">opensuse ceph-dev-docker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python-devel-not-found."><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">python-devel not found.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#tmubleweed-%E7%9A%84repo%E8%B7%AF%E5%BE%84"><span class="post-toc-number">2.4.1.1.</span> <span class="post-toc-text">tmubleweed 的repo路径</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%90%E4%BA%9B%E7%96%91%E4%BC%BC%E9%95%9C%E5%83%8F%E6%BA%90%E4%B8%AD%E4%BC%BC%E4%B9%8E%E8%BF%98%E6%9C%89python2%E7%9A%84%E5%BA%93"><span class="post-toc-number">2.4.1.2.</span> <span class="post-toc-text">某些疑似镜像源中似乎还有python2的库</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A8%B3%E5%AE%9A%E7%9A%84leap-15%E7%89%88%E6%9C%AC%E7%9A%84nautilus%E7%BC%96%E8%AF%91"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">稳定的Leap
 15版本的nautilus编译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ccache-make--j8-ceph-mon"><span class="post-toc-number">2.4.2.1.</span> <span class="post-toc-text">ccache make -j8 ceph-mon</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vstart.sh-erasure-code"><span class="post-toc-number">2.4.2.2.</span> <span class="post-toc-text">vstart.sh erasure-code</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#vstart.sh-error-error-creating-empty-object-store-in-datacephbuilddevosd0-22-invalid-argument"><span class="post-toc-number">2.4.2.3.</span> <span class="post-toc-text">vstart.sh
-ERROR: error creating empty object store in /data/ceph/build/dev/osd0:
-(22) Invalid argument</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实践"><span class="post-toc-number">3.</span> <span class="post-toc-text">实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker编译"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Docker编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#官方ci10"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">官方CI[^10]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#luminous"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Luminous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后按照下述方案处理好软链和安装包之后的cmake选项"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">最后按照下述方案处理好软链和安装包之后的cmake选项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#官方文档方案"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">官方文档方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#出现的报错"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">出现的报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build-nss_include_dirs-nss_include_dir-notfound"><span class="post-toc-number">3.3.3.1.</span> <span class="post-toc-text">BUILD
+ERROR: error creating empty object store in &#x2F;data&#x2F;ceph&#x2F;build&#x2F;dev&#x2F;osd0:
+(22) Invalid argument</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%9E%E8%B7%B5"><span class="post-toc-number">3.</span> <span class="post-toc-text">实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker%E7%BC%96%E8%AF%91"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Docker编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%98%E6%96%B9ci10"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">官方CI[^10]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#luminous"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Luminous</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%90%8E%E6%8C%89%E7%85%A7%E4%B8%8B%E8%BF%B0%E6%96%B9%E6%A1%88%E5%A4%84%E7%90%86%E5%A5%BD%E8%BD%AF%E9%93%BE%E5%92%8C%E5%AE%89%E8%A3%85%E5%8C%85%E4%B9%8B%E5%90%8E%E7%9A%84cmake%E9%80%89%E9%A1%B9"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">最后按照下述方案处理好软链和安装包之后的cmake选项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E6%96%B9%E6%A1%88"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">官方文档方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%BA%E7%8E%B0%E7%9A%84%E6%8A%A5%E9%94%99"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">出现的报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#build-nss_include_dirs-nss_include_dir-notfound"><span class="post-toc-number">3.3.3.1.</span> <span class="post-toc-text">BUILD
 NSS_INCLUDE_DIRS: NSS_INCLUDE_DIR-NOTFOUND</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#not-find-pythonlibs-found-unsuitable-version-2.7.10-but-required3"><span class="post-toc-number">3.3.3.2.</span> <span class="post-toc-text">NOT
-find PythonLibs: Found unsuitable version “2.7.10”, but
+find PythonLibs: Found unsuitable version &quot;2.7.10&quot;, but
 required[^3]</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#testbigendian.cmake49-message-no-suitable-type-found"><span class="post-toc-number">3.3.3.3.</span> <span class="post-toc-text">TestBigEndian.cmake:49
-(message): no suitable type found</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nautilus"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Nautilus</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#遇到的问题"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#findboost-unknown-compiler-appleclang"><span class="post-toc-number">3.4.1.1.</span> <span class="post-toc-text">findboost unknown
-compiler: AppleClang</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#master"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">master</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试增加选项"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">调试增加选项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#github版本cmake报缺失rocksdb和zstd"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">github版本cmake报缺失rocksdb和zstd</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">4.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+(message): no suitable type found</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nautilus"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Nautilus</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#findboost-unknown-compiler-appleclang"><span class="post-toc-number">3.4.1.1.</span> <span class="post-toc-text">findboost unknown
+compiler: AppleClang</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#master"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">master</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95%E5%A2%9E%E5%8A%A0%E9%80%89%E9%A1%B9"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">调试增加选项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#github%E7%89%88%E6%9C%ACcmake%E6%8A%A5%E7%BC%BA%E5%A4%B1rocksdb%E5%92%8Czstd"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">github版本cmake报缺失rocksdb和zstd</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">4.</span> <span class="post-toc-text">todo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -214,18 +215,18 @@ deps中出现了systemd, 而docker内使用使用的一个fake-systemd,
 <p>根据[^11]的<code>image</code>的<code>build</code>仓库来看,
 这个docker也是可以来触发编译的?</p>
 <blockquote>
-<p>make CEPH_DEVEL=true FLAVORS=“luminous-12.2.13,centos,7” build
+<p>make CEPH_DEVEL=true FLAVORS="luminous-12.2.13,centos,7" build
 单看这个脚本, 看起来可以编出来的样子.</p>
 </blockquote>
 <blockquote>
-<p>make CEPH_DEVEL=true FLAVORS=“nautilus,centos,7” build
+<p>make CEPH_DEVEL=true FLAVORS="nautilus,centos,7" build
 这里为什么这个版本的centos里装的是真实的systemd?,
-我之前拿官方的centos的image就是<code>fake-systemd</code>呢… 搜了下,
+我之前拿官方的centos的image就是<code>fake-systemd</code>呢... 搜了下,
 用<code>fakesystemd</code>是为了<code>cgroup</code>与宿主机的隔离.
 手动卸载再安装其实也是可以的.</p>
 </blockquote>
 <p>不对,
-这个镜像里是直接配置的<code>yum install -y ceph-mon</code>等…不是编译出来的…</p>
+这个镜像里是直接配置的<code>yum install -y ceph-mon</code>等...不是编译出来的...</p>
 <h2 id="自制docker调试">自制Docker调试</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name centos-test centos:centos7</span><br></pre></td></tr></table></figure>
 <h2 id="opensuse-ceph-dev-docker">opensuse ceph-dev-docker</h2>
@@ -248,7 +249,7 @@ deps中出现了systemd, 而docker内使用使用的一个fake-systemd,
 看上去是<code>suse</code>的<code>tumbleweed</code>现在的源里没<code>python2</code>的包了[^14]?
 而这个仓库里的<code>master</code>分支如果编<code>ceph</code>还没去除<code>python2</code>的版本,
 就会有问题.</p>
-<p>根据这个来看<a href="https://lists.opensuse.org/opensuse-factory/2020-01/msg00126.html" target="_blank" rel="noopener">Re:
+<p>根据这个来看<a target="_blank" rel="noopener" href="https://lists.opensuse.org/opensuse-factory/2020-01/msg00126.html">Re:
 [opensuse-factory] Removal of Python2 from openSUSE Tumbleweed</a></p>
 <p>高版本的suse把python2彻底抛弃了, 但是是不是也有办法加回来安装呢?
 搜了一圈, 主流的思路是这种大版本迭代, 如果始终要考虑老版本兼容性,
@@ -269,38 +270,38 @@ deps中出现了systemd, 而docker内使用使用的一个fake-systemd,
 <p>Factory 和 Tumbleweed 合并了, 所以直接使用 factory 的源就好.
 不过大多数镜像只提供了 repo-oss 和 repo-non-oss 这两个源</p>
 <p>https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
-搜出来显示这个,但是这个路径实际上已经不存在了…不知道怎么给他们提</p>
-<p><a href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython%3AFactory&amp;package=python" target="_blank" rel="noopener">Install
-package devel:languages:python:Factory / python</a> <a href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython&amp;package=python-virtualenv" target="_blank" rel="noopener">Install
+搜出来显示这个,但是这个路径实际上已经不存在了...不知道怎么给他们提</p>
+<p><a target="_blank" rel="noopener" href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython%3AFactory&amp;package=python">Install
+package devel:languages:python:Factory / python</a> <a target="_blank" rel="noopener" href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython&amp;package=python-virtualenv">Install
 package devel:languages:python / python-virtualenv</a></p>
-<p><a href="https://zh.opensuse.org/openSUSE:Build_Service_%E4%BB%93%E5%BA%93%E8%AF%A6%E8%A7%A3" target="_blank" rel="noopener">openSUSE:Build
+<p><a target="_blank" rel="noopener" href="https://zh.opensuse.org/openSUSE:Build_Service_%E4%BB%93%E5%BA%93%E8%AF%A6%E8%A7%A3">openSUSE:Build
 Service 仓库详解 - openSUSE Wiki</a></p>
 <p>看上去这上面源里的是src.rpm. 咋Search能看到, 就是提示转不上呢?
 我先配置上面这个, 给装上去了.</p>
 <h4 id="某些疑似镜像源中似乎还有python2的库">某些疑似镜像源中似乎还有python2的库</h4>
-<p><a href="https://ftp.lysator.liu.se/pub/opensuse/tumbleweed/repo/oss/x86_64/?C=M&amp;O=A" target="_blank" rel="noopener">Index
+<p><a target="_blank" rel="noopener" href="https://ftp.lysator.liu.se/pub/opensuse/tumbleweed/repo/oss/x86_64/?C=M&amp;O=A">Index
 of /pub/opensuse/tumbleweed/repo/oss/x86_64/</a></p>
 <p>但是下面这个源里明明也是oss, 但是却有呢?</p>
 <h3 id="稳定的leap-15版本的nautilus编译">稳定的Leap
 15版本的nautilus编译</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export NAME=ceph-dev-nautilus</span><br><span class="line">export VERSION=nautilus</span><br><span class="line">export CEPH=/Users/sean10/Code/ceph/ceph-14.2.9</span><br><span class="line">export CCACHE=/Users/sean10/Code/ceph/ceph-ccache-14.2.9</span><br><span class="line">cd /share/bin/nautilus</span><br><span class="line">bash -x ./setup.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export NAME=ceph-dev-nautilus</span><br><span class="line">export VERSION=nautilus</span><br><span class="line">export CEPH=/Users/sean10/Code/ceph/ceph-14.2.9</span><br><span class="line">export CCACHE=/Users/sean10/Code/ceph/ceph-ccache-14.2.9</span><br><span class="line">cd /share/bin/nautilus</span><br><span class="line">bash -x ./setup.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这个倒是安装成功, 开始触发编译了.</p>
 <p>不过中间<code>dashboard</code>的<code>frontend</code>在安装pip时报了点<code>Input/Output Error</code>,
 暂时不是重点,
 在<code>setup-ceph.sh</code>里设置<code>-DWITH_MGR_DASHBOARD_FRONTEND=OFF</code>,
-就可以通过编译了. 就是本地编译有点慢…</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /ceph/src</span><br><span class="line">OSD=3 MON=3 MGR=1 CEPH_BUILD_ROOT=/ceph/build bash -x ./vstart.sh -n</span><br></pre></td></tr></table></figure>
+就可以通过编译了. 就是本地编译有点慢...</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /ceph/src</span><br><span class="line">OSD=3 MON=3 MGR=1 CEPH_BUILD_ROOT=/ceph/build bash -x ./vstart.sh -n </span><br></pre></td></tr></table></figure>
 <h4 id="ccache-make--j8-ceph-mon">ccache make -j8 ceph-mon</h4>
 <blockquote>
 <p>[ 97%] Building CXX object
 src/mon/CMakeFiles/mon.dir/AuthMonitor.cc.o c++: internal compiler
 error: Killed (program cc1plus) Please submit a full bug report, with
-preprocessed source if appropriate. See <a href="https://bugs.opensuse.org/" class="uri" target="_blank" rel="noopener">https://bugs.opensuse.org/</a> for instructions. make[3]:
+preprocessed source if appropriate. See <a target="_blank" rel="noopener" href="https://bugs.opensuse.org/" class="uri">https://bugs.opensuse.org/</a> for instructions. make[3]:
 *** [src/mon/CMakeFiles/mon.dir/build.make:351:
 src/mon/CMakeFiles/mon.dir/MonmapMonitor.cc.o] Error 4</p>
 </blockquote>
 <p>看着跟<code>OOM</code>的表现有点像.</p>
-<p>根据<a href="https://stackoverflow.com/questions/30887143/make-j-8-g-internal-compiler-error-killed-program-cc1plus" target="_blank" rel="noopener">linux
+<p>根据<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30887143/make-j-8-g-internal-compiler-error-killed-program-cc1plus">linux
 - make -j 8 g++: internal compiler error: Killed (program cc1plus) -
 Stack Overflow</a>这篇说的, 可能是我开的线程太多,
 给他分配的内存又没那么多引起的? 我试试</p>
@@ -311,14 +312,14 @@ Stack Overflow</a>这篇说的, 可能是我开的线程太多,
 /ceph/build/lib/erasure-code/libec_jerasure.so: cannot open shared
 object file: No such file or directory</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╭─root@ceph-dev-nautilus /ceph </span><br><span class="line">╰─<span class="comment"># cat src/vstart.sh | grep erasure-code  </span></span><br><span class="line">        [ -z <span class="string">"<span class="variable">$EC_PATH</span>"</span> ] &amp;&amp; EC_PATH=<span class="variable">$CEPH_LIB</span>/erasure-code</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╭─root@ceph-dev-nautilus /ceph </span><br><span class="line">╰─<span class="comment"># cat src/vstart.sh | grep erasure-code  </span></span><br><span class="line">        [ -z <span class="string">&quot;<span class="variable">$EC_PATH</span>&quot;</span> ] &amp;&amp; EC_PATH=<span class="variable">$CEPH_LIB</span>/erasure-code</span><br></pre></td></tr></table></figure>
 <p>暂时没找到怎么只是make ,
 生成到<code>build/lib/erasure-code</code>目录下的功能.</p>
 <h4 id="vstart.sh-error-error-creating-empty-object-store-in-datacephbuilddevosd0-22-invalid-argument">vstart.sh
 ERROR: error creating empty object store in /data/ceph/build/dev/osd0:
 (22) Invalid argument</h4>
-<p>根据<a href="https://tracker.ceph.com/issues/23433" target="_blank" rel="noopener">Support #23433:
-Ceph cluster doesn’t start - ERROR: error creating empty object store in
+<p>根据<a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/23433">Support #23433:
+Ceph cluster doesn't start - ERROR: error creating empty object store in
 /data/ceph/build/dev/osd0: (22) Invalid argument - bluestore -
 Ceph</a>这里的回复, 看起来这个是因为毕竟是虚拟化的,
 所以指向的/dev/目录下的内容并不是块设备引起的吧?</p>
@@ -333,9 +334,9 @@ Ceph</a>这里的回复, 看起来这个是因为毕竟是虚拟化的,
 并不是直接提供运行<code>vstart.sh</code>来调试编译版本的.</p>
 <h2 id="luminous">Luminous</h2>
 <h3 id="最后按照下述方案处理好软链和安装包之后的cmake选项">最后按照下述方案处理好软链和安装包之后的cmake选项</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/</span><br></pre></td></tr></table></figure>
 <h3 id="官方文档方案">官方文档方案</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">brew install llvm</span><br><span class="line">brew install snappy ccache cmake pkg-config</span><br><span class="line">pip install cython</span><br><span class="line">pip3 install cython</span><br><span class="line">brew cask install osxfuse</span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/<span class="built_in">local</span>/Cellar/nss/3.48/lib/pkgconfig:/usr/<span class="built_in">local</span>/Cellar/openssl/1.0.2t/lib/pkgconfig</span><br><span class="line">cmake .. -DBOOST_J=4 \</span><br><span class="line">  -DCMAKE_C_COMPILER=/usr/<span class="built_in">local</span>/opt/llvm/bin/clang \</span><br><span class="line">  -DCMAKE_CXX_COMPILER=/usr/<span class="built_in">local</span>/opt/llvm/bin/clang++ \</span><br><span class="line">  -DCMAKE_EXE_LINKER_FLAGS=<span class="string">"-L/usr/local/opt/llvm/lib"</span> \</span><br><span class="line">  -DENABLE_GIT_VERSION=OFF \</span><br><span class="line">  -DSNAPPY_ROOT_DIR=/usr/<span class="built_in">local</span>/Cellar/snappy/1.1.7_1 \</span><br><span class="line">  -DWITH_BABELTRACE=OFF \</span><br><span class="line">  -DWITH_BLUESTORE=OFF \</span><br><span class="line">  -DWITH_CCACHE=OFF \</span><br><span class="line">  -DWITH_CEPHFS=OFF \</span><br><span class="line">  -DWITH_KRBD=OFF \</span><br><span class="line">  -DWITH_LIBCEPHFS=OFF \</span><br><span class="line">  -DWITH_LTTNG=OFF \</span><br><span class="line">  -DWITH_LZ4=OFF \</span><br><span class="line">  -DWITH_MANPAGE=ON \</span><br><span class="line">  -DWITH_MGR=OFF \</span><br><span class="line">  -DWITH_MGR_DASHBOARD_FRONTEND=OFF \</span><br><span class="line">  -DWITH_RADOSGW=OFF \</span><br><span class="line">  -DWITH_RDMA=OFF \</span><br><span class="line">  -DWITH_SPDK=OFF \</span><br><span class="line">  -DWITH_SYSTEMD=OFF \</span><br><span class="line">  -DWITH_TESTS=OFF \</span><br><span class="line">  -DWITH_XFS=OFF</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">brew install llvm</span><br><span class="line">brew install snappy ccache cmake pkg-config</span><br><span class="line">pip install cython</span><br><span class="line">pip3 install cython</span><br><span class="line">brew cask install osxfuse</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.48/lib/pkgconfig:/usr/local/Cellar/openssl/1.0.2t/lib/pkgconfig</span><br><span class="line">cmake .. -DBOOST_J=4 \</span><br><span class="line">  -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang \</span><br><span class="line">  -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ \</span><br><span class="line">  -DCMAKE_EXE_LINKER_FLAGS=<span class="string">&quot;-L/usr/local/opt/llvm/lib&quot;</span> \</span><br><span class="line">  -DENABLE_GIT_VERSION=OFF \</span><br><span class="line">  -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1 \</span><br><span class="line">  -DWITH_BABELTRACE=OFF \</span><br><span class="line">  -DWITH_BLUESTORE=OFF \</span><br><span class="line">  -DWITH_CCACHE=OFF \</span><br><span class="line">  -DWITH_CEPHFS=OFF \</span><br><span class="line">  -DWITH_KRBD=OFF \</span><br><span class="line">  -DWITH_LIBCEPHFS=OFF \</span><br><span class="line">  -DWITH_LTTNG=OFF \</span><br><span class="line">  -DWITH_LZ4=OFF \</span><br><span class="line">  -DWITH_MANPAGE=ON \</span><br><span class="line">  -DWITH_MGR=OFF \</span><br><span class="line">  -DWITH_MGR_DASHBOARD_FRONTEND=OFF \</span><br><span class="line">  -DWITH_RADOSGW=OFF \</span><br><span class="line">  -DWITH_RDMA=OFF \</span><br><span class="line">  -DWITH_SPDK=OFF \</span><br><span class="line">  -DWITH_SYSTEMD=OFF \</span><br><span class="line">  -DWITH_TESTS=OFF \</span><br><span class="line">  -DWITH_XFS=OFF</span><br></pre></td></tr></table></figure>
 <p>由于我的主要目的是在<code>CLion</code>中使用,
 所以我在<code>Perference-&gt;Build,Execution,Deployment-&gt;Cmake-&gt;Cmake Options</code>中添加的是上面的配置的单行形式.</p>
 <h3 id="出现的报错">出现的报错</h3>
@@ -347,15 +348,13 @@ NSS_INCLUDE_DIRS: NSS_INCLUDE_DIR-NOTFOUND</h4>
 <p>通过<code>brew list nss</code>查找到<code>nss.pc</code>文件所在,
 通过<code>pkg-config --variable pc_path pkg-config</code>找到<code>pc</code>的默认搜索路径,
 有两种方案 1. 做个软链到<code>pkg-config</code>的默认搜索路径中
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/Cellar/nss/3.35/lib/pkgconfig/nss.pc  /usr/<span class="built_in">local</span>/lib/pkgconfig/nss.pc</span><br></pre></td></tr></table></figure></p>
-<ol start="2" type="1">
-<li><code>pkg_config</code>使用的搜索环境变量<code>PKG_CONFIG_PATH</code>中导入
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/<span class="built_in">local</span>/Cellar/nss/3.48/lib/pkgconfig:/usr/<span class="built_in">local</span>/Cellar/</span><br></pre></td></tr></table></figure></li>
-</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/local/Cellar/nss/3.35/lib/pkgconfig/nss.pc  /usr/local/lib/pkgconfig/nss.pc </span><br></pre></td></tr></table></figure> 2.
+<code>pkg_config</code>使用的搜索环境变量<code>PKG_CONFIG_PATH</code>中导入
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.48/lib/pkgconfig:/usr/local/Cellar/</span><br></pre></td></tr></table></figure></p>
 <p>我采用的第一种方案.
 同理,还会出现<code>nspr</code>等需要这样处理的库.</p>
 <h4 id="not-find-pythonlibs-found-unsuitable-version-2.7.10-but-required3">NOT
-find PythonLibs: Found unsuitable version “2.7.10”, but
+find PythonLibs: Found unsuitable version "2.7.10", but
 required[^3]</h4>
 <p>在CMake选项中增加指定下述的python库和头文件路径 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.<span class="number">7</span>.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/<span class="keyword">include</span>/python2.<span class="number">7</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="testbigendian.cmake49-message-no-suitable-type-found">TestBigEndian.cmake:49
@@ -370,12 +369,12 @@ required[^3]</h4>
 compiler: AppleClang</h4>
 <p>报了一个暂时没去尝试解决的错误, 识别不了<code>clang</code>?</p>
 <h2 id="master">master</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.35/lib/pkgconfig:/usr/local/Cellar/openssl@1.1/1.1.1o/lib/pkgconfig</span><br></pre></td></tr></table></figure>
-<p>把这里unknown compiler这段给屏蔽掉, 试试. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(CMAKE_CXX_COMPILER_ID STREQUAL GNU)</span><br><span class="line">  set(toolset gcc)</span><br><span class="line">elseif(CMAKE_CXX_COMPILER_ID STREQUAL Clang)</span><br><span class="line">  set(toolset clang)</span><br><span class="line">else()</span><br><span class="line"># 换成这个</span><br><span class="line">  set(toolset clang)</span><br><span class="line">#   message(SEND_ERROR &quot;unknown compiler: $&#123;CMAKE_CXX_COMPILER_ID&#125;&quot;)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/ ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.35/lib/pkgconfig:/usr/local/Cellar/openssl@1.1/1.1.1o/lib/pkgconfig</span><br></pre></td></tr></table></figure>
+<p>把这里unknown compiler这段给屏蔽掉, 试试. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if(CMAKE_CXX_COMPILER_ID STREQUAL GNU)</span><br><span class="line">  set(toolset gcc)</span><br><span class="line">elseif(CMAKE_CXX_COMPILER_ID STREQUAL Clang)</span><br><span class="line">  set(toolset clang)</span><br><span class="line">else()</span><br><span class="line"># 换成这个</span><br><span class="line">  set(toolset clang)</span><br><span class="line">#   message(SEND_ERROR &quot;unknown compiler: $&#123;CMAKE_CXX_COMPILER_ID&#125;&quot;)</span><br><span class="line">endif()</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/ ..</span><br></pre></td></tr></table></figure>
 <p>用来索引好像还是用的.</p>
 <h2 id="调试增加选项">调试增加选项</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure CFLAGS=&apos;-g3 -O0&apos; CXXFLAGS=&apos;-g3 -O0&apos;.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure CFLAGS=&#x27;-g3 -O0&#x27; CXXFLAGS=&#x27;-g3 -O0&#x27;.</span><br></pre></td></tr></table></figure>
 <h2 id="github版本cmake报缺失rocksdb和zstd">github版本cmake报缺失rocksdb和zstd</h2>
 <p>git里面有一些submodule, 这部分我没能拖回来, 导致这些目录是空的,
 静态编译没能启动.</p>
@@ -398,7 +397,7 @@ CLion解析了cmake中引用的所有源文件,以启用大多数功能(导航,c
 </blockquote>
 <blockquote>
 <p>减轻这个问题的一种方法是标记项目的“第三方”目录:右键单击您的common目录和Mark
-directory as… &gt;
+directory as... &gt;
 Libraries.如果需要,您甚至可以将目录排除在项目之外.</p>
 <p>还请注意,CLion索引的结果被缓存:在初始索引之后,即使在重新启动项目时,只应修复经修改的文件(注意,修改CMakeLists中的构建选项可能触发完整的reindex)</p>
 </blockquote>
@@ -412,36 +411,36 @@ ceph这种形式直接安装成果物构造image.
 </ul>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="https://docs.ceph.com/en/latest/dev/macos/" target="_blank" rel="noopener">build on MacOS
+<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/macos/">build on MacOS
 — Ceph Documentation</a></li>
-<li><a href="https://www.cnblogs.com/flyinggod/p/12465966.html" target="_blank" rel="noopener">pkg-config
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/flyinggod/p/12465966.html">pkg-config
 路径问题 - 采男孩的小蘑菇 - 博客园</a></li>
-<li><a href="https://github.com/pybind/pybind11/issues/99" target="_blank" rel="noopener">CMake finding
+<li><a target="_blank" rel="noopener" href="https://github.com/pybind/pybind11/issues/99">CMake finding
 Python library and Python interpreter mismatch during pybind11 build ·
 Issue #99 · pybind/pybind11</a></li>
-<li><a href="https://hypernews.slac.stanford.edu/HyperNews/geant4/get/installconfig/1889/1.html%3Finline=1.html" target="_blank" rel="noopener">Re:
+<li><a target="_blank" rel="noopener" href="https://hypernews.slac.stanford.edu/HyperNews/geant4/get/installconfig/1889/1.html%3Finline=1.html">Re:
 Weird CMake failures building 10.4 on MacOS High Sierra (10.13)</a></li>
-<li><a href="https://gitlab.kitware.com/cmake/cmake/-/issues/16283" target="_blank" rel="noopener">TestBigEndian.cmake:51
+<li><a target="_blank" rel="noopener" href="https://gitlab.kitware.com/cmake/cmake/-/issues/16283">TestBigEndian.cmake:51
 (messag no suitable type found (#16283) · Issues · CMake / CMake ·
 GitLab</a></li>
-<li><a href="https://stackoverflow.com/questions/13255491/cmake-internal-error-test-big-endian" target="_blank" rel="noopener">windows
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13255491/cmake-internal-error-test-big-endian">windows
 - CMake internal error (TEST_BIG_ENDIAN) - Stack Overflow</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/98625873" target="_blank" rel="noopener">dockerize
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98625873">dockerize
 ceph集群和shell脚本编程 - 知乎</a></li>
-<li><a href="http://www.shalandis.com/original/2016/05/19/CEPH-CRUSH-algorithm-source-code-analysis/" target="_blank" rel="noopener">CEPH
+<li><a target="_blank" rel="noopener" href="http://www.shalandis.com/original/2016/05/19/CEPH-CRUSH-algorithm-source-code-analysis/">CEPH
 CRUSH algorithm source code analysis</a></li>
-<li><a href="https://hub.docker.com/r/ceph/daemon" target="_blank" rel="noopener">ceph/daemon - Docker
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/r/ceph/daemon">ceph/daemon - Docker
 Hub</a></li>
-<li><a href="https://quay.io/repository/ceph-ci/ceph/manifest/sha256:7d170b95bd9861be7279a1d7cda1c3a5dd39469ebc5ff94c84e5c4e1ebbce42d" target="_blank" rel="noopener">Quay
+<li><a target="_blank" rel="noopener" href="https://quay.io/repository/ceph-ci/ceph/manifest/sha256:7d170b95bd9861be7279a1d7cda1c3a5dd39469ebc5ff94c84e5c4e1ebbce42d">Quay
 Container Registry · Quay</a></li>
-<li><a href="https://github.com/ceph/ceph-container" target="_blank" rel="noopener">ceph/ceph-container:
+<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph-container">ceph/ceph-container:
 Docker files and images to run Ceph in containers</a></li>
-<li><a href="https://github.com/ricardoasmarques/ceph-dev-docker" target="_blank" rel="noopener">ricardoasmarques/ceph-dev-docker</a></li>
-<li><a href="https://docs.ceph.com/en/latest/install/build-ceph/" target="_blank" rel="noopener">Build
+<li><a target="_blank" rel="noopener" href="https://github.com/ricardoasmarques/ceph-dev-docker">ricardoasmarques/ceph-dev-docker</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/install/build-ceph/">Build
 Ceph — Ceph Documentation</a></li>
-<li><a href="https://forums.opensuse.org/showthread.php/540286-Cant-install-python-lxml-Opensuse-Tumbleweed" target="_blank" rel="noopener">TUMBLEWEED
+<li><a target="_blank" rel="noopener" href="https://forums.opensuse.org/showthread.php/540286-Cant-install-python-lxml-Opensuse-Tumbleweed">TUMBLEWEED
 Cant install python-lxml Opensuse Tumbleweed</a></li>
-<li><a href="http://www.itocm.com/a/127B85AF17F747AE9C864B7246E91248" target="_blank" rel="noopener">ceph
+<li><a target="_blank" rel="noopener" href="http://www.itocm.com/a/127B85AF17F747AE9C864B7246E91248">ceph
 luminous版本编译及部署 | itocm.com</a></li>
 </ol>
 
@@ -452,7 +451,7 @@ luminous版本编译及部署 | itocm.com</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-06-21T12:23:33.894Z" itemprop="dateUpdated">2022-06-21 20:23:33</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.888Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -474,7 +473,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译/">编译</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91/" rel="tag">编译</a></li></ul>
 
 
             
@@ -487,7 +486,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -497,22 +496,22 @@ luminous版本编译及部署 | itocm.com</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之clion的cmake.md》 — 行路中.&url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之clion的cmake.md》 — 行路中.&url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -535,7 +534,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/10/18/文件系统概念初探/" id="post-prev" class="post-nav-link">
+      <a href="/2020/10/18/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E5%88%9D%E6%8E%A2/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">文件系统概念初探</h4>
       </a>
@@ -544,7 +543,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/10/08/diff与merge实践初探/" id="post-next" class="post-nav-link">
+      <a href="/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">diff与merge实践初探</h4>
       </a>
@@ -568,7 +567,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -589,6 +588,9 @@ luminous版本编译及部署 | itocm.com</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -621,11 +623,11 @@ luminous版本编译及部署 | itocm.com</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -643,7 +645,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -653,22 +655,22 @@ luminous版本编译及部署 | itocm.com</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/&title=《ceph之clion的cmake.md》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之clion的cmake.md》 — 行路中.&url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之clion的cmake.md》 — 行路中.&url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -679,7 +681,7 @@ luminous版本编译及部署 | itocm.com</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/10/17/ceph之clion的cmake-md/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/" alt="微信分享二维码">
 </div>
 
 
@@ -695,7 +697,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -715,7 +717,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

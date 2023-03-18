@@ -22,17 +22,18 @@
     
     <meta name="keywords" content="wiki,centos">
     <meta name="description" content="之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。">
-<meta name="keywords" content="wiki,centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="部署Moin_wiki记录">
-<meta property="og:url" content="https://sean10.github.io/2018/05/30/部署beibq-wiki/index.html">
+<meta property="og:url" content="https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.846Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-30T15:16:46.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.831Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="wiki">
+<meta property="article:tag" content="centos">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="部署Moin_wiki记录">
-<meta name="twitter:description" content="之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装moinmoin"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Moinmoin</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装mysql虽然最后这个框架没用到"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装Mysql(虽然最后这个框架没用到)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85moinmoin"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Moinmoin</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85mysql%E8%99%BD%E7%84%B6%E6%9C%80%E5%90%8E%E8%BF%99%E4%B8%AA%E6%A1%86%E6%9E%B6%E6%B2%A1%E7%94%A8%E5%88%B0"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装Mysql(虽然最后这个框架没用到)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -187,15 +188,15 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。</p>
-<a id="more"></a>
+<span id="more"></span>
 <hr>
 <h1 id="安装moinmoin">安装Moinmoin</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl http://static.moinmo.in/files/moin-1.9.9.tar.gz -o moin-1.9.9.tar.gz</span><br><span class="line">python2.7 wikiserver.py</span><br><span class="line"></span><br><span class="line"># 开放端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 18082 -j ACCEPT</span><br><span class="line">/etc/rc.d/init.d/iptables save</span><br><span class="line">/etc/init.d/iptables restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl http://static.moinmo.in/files/moin-1.9.9.tar.gz -o moin-1.9.9.tar.gz</span><br><span class="line">python2.7 wikiserver.py</span><br><span class="line"></span><br><span class="line"># 开放端口</span><br><span class="line">iptables -A INPUT -p tcp --dport 18082 -j ACCEPT</span><br><span class="line">/etc/rc.d/init.d/iptables save</span><br><span class="line">/etc/init.d/iptables restart</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="安装mysql虽然最后这个框架没用到">安装Mysql(虽然最后这个框架没用到)</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el6-1.noarch.rpm</span><br><span class="line">yum localinstall mysql80-community-release-el6-1.noarch.rpm</span><br><span class="line"></span><br><span class="line">yum repolist enabled | grep &quot;mysql.*-community.*&quot;</span><br><span class="line"></span><br><span class="line">sudo yum install mysql-community-server</span><br><span class="line"></span><br><span class="line">service mysqld start</span><br><span class="line"></span><br><span class="line">sudo grep &apos;temporary password&apos; /var/log/mysqld.log</span><br><span class="line"></span><br><span class="line"># passwd: 5!iozIn&amp;t;Vw</span><br><span class="line">mysql -uroot -p</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;fighton&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># executing</span><br><span class="line">pip3.6 install -r requirements.txt</span><br><span class="line"># 缺少mysql_config</span><br><span class="line"></span><br><span class="line">yum install mysql-devel</span><br><span class="line"></span><br><span class="line">python3 manage.py runserver -h 0.0.0.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql80-community-release-el6-1.noarch.rpm</span><br><span class="line">yum localinstall mysql80-community-release-el6-1.noarch.rpm</span><br><span class="line"></span><br><span class="line">yum repolist enabled | grep &quot;mysql.*-community.*&quot;</span><br><span class="line"></span><br><span class="line">sudo yum install mysql-community-server</span><br><span class="line"></span><br><span class="line">service mysqld start</span><br><span class="line"></span><br><span class="line">sudo grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br><span class="line"></span><br><span class="line"># passwd: 5!iozIn&amp;t;Vw</span><br><span class="line">mysql -uroot -p</span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;fighton&#x27;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># executing</span><br><span class="line">pip3.6 install -r requirements.txt</span><br><span class="line"># 缺少mysql_config</span><br><span class="line"></span><br><span class="line">yum install mysql-devel</span><br><span class="line"></span><br><span class="line">python3 manage.py runserver -h 0.0.0.0</span><br></pre></td></tr></table></figure>
 <h1 id="reference">reference</h1>
 <ol type="1">
-<li><a href="https://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html" target="_blank" rel="noopener">Installing
+<li><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html">Installing
 MySQL on Linux Using the MySQL Yum Repository</a></li>
 </ol>
 
@@ -206,7 +207,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.846Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.831Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -228,7 +229,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wiki/">wiki</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wiki/" rel="tag">wiki</a></li></ul>
 
 
             
@@ -241,7 +242,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/05/30/部署beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -251,22 +252,22 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/05/30/部署beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&source=之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&source=之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/05/30/部署beibq-wiki/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《部署Moin_wiki记录》 — 行路中.&url=https://sean10.github.io/2018/05/30/部署beibq-wiki/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《部署Moin_wiki记录》 — 行路中.&url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/05/30/部署beibq-wiki/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -289,7 +290,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/06/02/租房布置搭配/" id="post-prev" class="post-nav-link">
+      <a href="/2018/06/02/%E7%A7%9F%E6%88%BF%E5%B8%83%E7%BD%AE%E6%90%AD%E9%85%8D/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">租房布置搭配</h4>
       </a>
@@ -298,7 +299,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/05/16/zotero使用记录/" id="post-next" class="post-nav-link">
+      <a href="/2018/05/16/zotero%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">zotero使用记录</h4>
       </a>
@@ -322,7 +323,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -343,6 +344,9 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -375,11 +379,11 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -397,7 +401,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/05/30/部署beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -407,22 +411,22 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/05/30/部署beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&source=之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/&title=《部署Moin_wiki记录》 — 行路中.&source=之前一直想写一个论坛或者wiki，不过最近感觉想先部署着，以后慢慢改了。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/05/30/部署beibq-wiki/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《部署Moin_wiki记录》 — 行路中.&url=https://sean10.github.io/2018/05/30/部署beibq-wiki/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《部署Moin_wiki记录》 — 行路中.&url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/05/30/部署beibq-wiki/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -433,7 +437,7 @@ MySQL on Linux Using the MySQL Yum Repository</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/05/30/部署beibq-wiki/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/05/30/%E9%83%A8%E7%BD%B2beibq-wiki/" alt="微信分享二维码">
 </div>
 
 
@@ -449,7 +453,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -469,7 +473,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

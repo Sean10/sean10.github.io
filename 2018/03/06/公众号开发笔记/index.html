@@ -22,17 +22,17 @@
     
     <meta name="keywords" content="微信">
     <meta name="description" content="试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。">
-<meta name="keywords" content="微信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="公众号开发笔记">
-<meta property="og:url" content="https://sean10.github.io/2018/03/06/公众号开发笔记/index.html">
+<meta property="og:url" content="https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.900Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-06T07:49:46.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.863Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="微信">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="公众号开发笔记">
-<meta name="twitter:description" content="试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#遇到问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">遇到问题:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在用搬瓦工服务器处理消息时似乎那边收不到我的消息但是认证token那个收发包过程还是通过了的暂时怀疑是服务器端口冲突了但是iptables并没有查到冲突问题用nginx映射时倒是才提示端口已占用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在centos6安装python时出现了"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">在centos6安装python时，出现了</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考资料:</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98"><span class="post-toc-number">1.</span> <span class="post-toc-text">遇到问题:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9C%A8%E7%94%A8%E6%90%AC%E7%93%A6%E5%B7%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%A4%84%E7%90%86%E6%B6%88%E6%81%AF%E6%97%B6%E4%BC%BC%E4%B9%8E%E9%82%A3%E8%BE%B9%E6%94%B6%E4%B8%8D%E5%88%B0%E6%88%91%E7%9A%84%E6%B6%88%E6%81%AF%E4%BD%86%E6%98%AF%E8%AE%A4%E8%AF%81token%E9%82%A3%E4%B8%AA%E6%94%B6%E5%8F%91%E5%8C%85%E8%BF%87%E7%A8%8B%E8%BF%98%E6%98%AF%E9%80%9A%E8%BF%87%E4%BA%86%E7%9A%84%E6%9A%82%E6%97%B6%E6%80%80%E7%96%91%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%8F%A3%E5%86%B2%E7%AA%81%E4%BA%86%E4%BD%86%E6%98%AFiptables%E5%B9%B6%E6%B2%A1%E6%9C%89%E6%9F%A5%E5%88%B0%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E7%94%A8nginx%E6%98%A0%E5%B0%84%E6%97%B6%E5%80%92%E6%98%AF%E6%89%8D%E6%8F%90%E7%A4%BA%E7%AB%AF%E5%8F%A3%E5%B7%B2%E5%8D%A0%E7%94%A8"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9C%A8centos6%E5%AE%89%E8%A3%85python%E6%97%B6%E5%87%BA%E7%8E%B0%E4%BA%86"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">在centos6安装python时，出现了</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考资料:</span></a></li></ol>
         </nav>
     </aside>
 
@@ -187,17 +187,17 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>首先，id/secret/token设置需要记录下。测试接口似乎可以使用ngrok这样工具。</p>
 <p>未认证的订阅号的被动回复权限理论上是满足我的需求了的。</p>
 <hr>
 <h1 id="遇到问题">遇到问题:</h1>
 <h2 id="在用搬瓦工服务器处理消息时似乎那边收不到我的消息但是认证token那个收发包过程还是通过了的暂时怀疑是服务器端口冲突了但是iptables并没有查到冲突问题用nginx映射时倒是才提示端口已占用">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</h2>
 <h2 id="在centos6安装python时出现了">在centos6安装python时，出现了</h2>
-<p><code>ModuleNotFoundError: No module named '_sqlite3'</code>,在<a href="https://stackoverflow.com/questions/1210664/no-module-named-sqlite3" target="_blank" rel="noopener">SF</a>，似乎是python3.6移除了3.5中的_sqlite3.so，不过按照最高票的cp
+<p><code>ModuleNotFoundError: No module named '_sqlite3'</code>,在<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1210664/no-module-named-sqlite3">SF</a>，似乎是python3.6移除了3.5中的_sqlite3.so，不过按照最高票的cp
 python2的module过去再altinstall会引发新的<code>ImportError: dynamic module does not define module export function (PyInit__sqlite3)</code></p>
 <p>最后，只是configure时(添加个动态库选项)[http://blog.csdn.net/jaket5219999/article/details/53512071]就可以了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enable-loadable-sqlite-extensions</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enable-loadable-sqlite-extensions</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <h1 id="参考资料">参考资料:</h1>
 <ol type="1">
 <li>https://stackoverflow.com/questions/1210664/no-module-named-sqlite3</li>
@@ -212,7 +212,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.900Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.863Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -234,7 +234,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li></ul>
 
 
             
@@ -247,7 +247,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/06/公众号开发笔记/&title=《公众号开发笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/&title=《公众号开发笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -257,22 +257,22 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/06/公众号开发笔记/&title=《公众号开发笔记》 — 行路中.&source=试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/&title=《公众号开发笔记》 — 行路中.&source=试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/06/公众号开发笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《公众号开发笔记》 — 行路中.&url=https://sean10.github.io/2018/03/06/公众号开发笔记/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《公众号开发笔记》 — 行路中.&url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/06/公众号开发笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -295,7 +295,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/08/《最好的告别》note/" id="post-prev" class="post-nav-link">
+      <a href="/2018/03/08/%E3%80%8A%E6%9C%80%E5%A5%BD%E7%9A%84%E5%91%8A%E5%88%AB%E3%80%8Bnote/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">《最好的告别》note</h4>
       </a>
@@ -304,7 +304,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/03/05/算法学习目录/" id="post-next" class="post-nav-link">
+      <a href="/2018/03/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">算法学习目录</h4>
       </a>
@@ -328,7 +328,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -349,6 +349,9 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -381,11 +384,11 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -403,7 +406,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/06/公众号开发笔记/&title=《公众号开发笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/&title=《公众号开发笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -413,22 +416,22 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/06/公众号开发笔记/&title=《公众号开发笔记》 — 行路中.&source=试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/&title=《公众号开发笔记》 — 行路中.&source=试着用微信公众号来做一些bot的任务，这里稍稍记些笔记吧。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/06/公众号开发笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《公众号开发笔记》 — 行路中.&url=https://sean10.github.io/2018/03/06/公众号开发笔记/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《公众号开发笔记》 — 行路中.&url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/06/公众号开发笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -439,7 +442,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/03/06/公众号开发笔记/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/03/06/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
 </div>
 
 
@@ -455,7 +458,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -475,7 +478,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

@@ -22,19 +22,21 @@
     
     <meta name="keywords" content="OpenAPI,API,SDK">
     <meta name="description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢? 一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的">
-<meta name="keywords" content="OpenAPI,API,SDK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openAPI初探">
-<meta property="og:url" content="https://sean10.github.io/2021/01/31/openAPI初探/index.html">
+<meta property="og:url" content="https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢? 一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://sean10.github.io/2021/01/31/openAPI初探/openAPI初探_2021-01-31-15-50-34.png">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.043Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sean10.github.io/.io//openAPI%E5%88%9D%E6%8E%A2_2021-01-31-15-50-34.png">
+<meta property="article:published_time" content="2021-01-31T07:29:57.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.884Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="OpenAPI">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="SDK">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openAPI初探">
-<meta name="twitter:description" content="todo(未理解的问题)  既然作为一个规范文档, 那么引导的example肯定得提供吧?  提供了之后, 那为什么不能多几个example? 直接做成支持测试框架的呢? 虽然现在测试框架的确支持导入openAPI的文档, 但是这些测试框架中需要用的参数数据是另外填写的, 为什么openAPI不集成在里面呢? 一个初步的结论: OpenAPI只做规范特定领域的事情, 单元测试及更进一步的测试领域的">
-<meta name="twitter:image" content="https://sean10.github.io/2021/01/31/openAPI初探/openAPI初探_2021-01-31-15-50-34.png">
+<meta name="twitter:image" content="https://sean10.github.io/.io//openAPI%E5%88%9D%E6%8E%A2_2021-01-31-15-50-34.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -42,10 +44,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -162,7 +164,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo未理解的问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo(未理解的问题)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要功能"><span class="post-toc-number">3.</span> <span class="post-toc-text">主要功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配合postman-自动化测试"><span class="post-toc-number"></span> <span class="post-toc-text">配合postman, 自动化测试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ci"><span class="post-toc-number"></span> <span class="post-toc-text">CI</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number"></span> <span class="post-toc-text">Reference</span></a>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo%E6%9C%AA%E7%90%86%E8%A7%A3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-number">1.</span> <span class="post-toc-text">todo(未理解的问题)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post-toc-number">2.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="post-toc-number">3.</span> <span class="post-toc-text">主要功能</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E5%90%88postman-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="post-toc-number"></span> <span class="post-toc-text">配合postman, 自动化测试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ci"><span class="post-toc-number"></span> <span class="post-toc-text">CI</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number"></span> <span class="post-toc-text">Reference</span></a>
         </nav>
     </aside>
 
@@ -210,7 +212,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/2021/01/31/openAPI初探/openAPI初探_2021-01-31-15-50-34.png" alt="" title="">
+                    <img src="/.io//openAPI初探_2021-01-31-15-50-34.png" alt title>
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -241,11 +243,11 @@
 </ul></li>
 </ul>
 <h1 id="配合postman-自动化测试">配合postman, 自动化测试</h1>
-<p>参照下面这篇文章, 其实就可以做到我们想要的效果. <a href="https://www.sohu.com/a/364536895_468635" target="_blank" rel="noopener">使用 Postman 测试你的
+<p>参照下面这篇文章, 其实就可以做到我们想要的效果. <a target="_blank" rel="noopener" href="https://www.sohu.com/a/364536895_468635">使用 Postman 测试你的
 API_json</a></p>
-<p><a href="https://www.mayi888.com/archives/58943" target="_blank" rel="noopener">使用Jmeter和Jenkins自动化测试OpenAPI
+<p><a target="_blank" rel="noopener" href="https://www.mayi888.com/archives/58943">使用Jmeter和Jenkins自动化测试OpenAPI
 – 小工蚁</a></p>
-<p>ET应该可以做到<a href="https://www.eolinker.com/product/auto_test/" target="_blank" rel="noopener">API
+<p>ET应该可以做到<a target="_blank" rel="noopener" href="https://www.eolinker.com/product/auto_test/">API
 自动化测试：零代码自动化、数据驱动测试、自动生成报告 - Eolinker API
 全生命周期管理</a>这个的程度才对.</p>
 <h1 id="ci">CI</h1>
@@ -254,24 +256,24 @@ API_json</a></p>
 </blockquote>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="http://www.51testing.com/html/97/13997-88991.html" target="_blank" rel="noopener">Open
+<li><a target="_blank" rel="noopener" href="http://www.51testing.com/html/97/13997-88991.html">Open
 API测试畅想 - 阿里巴巴一个测试架构师 - 51Testing软件测试网
 51Testing软件测试网-软件测试人的精神家园</a></li>
-<li><a href="https://www.sohu.com/a/364536895_468635" target="_blank" rel="noopener">使用 Postman
+<li><a target="_blank" rel="noopener" href="https://www.sohu.com/a/364536895_468635">使用 Postman
 测试你的 API_json</a></li>
-<li><a href="https://www.mayi888.com/archives/58943" target="_blank" rel="noopener">使用Jmeter和Jenkins自动化测试OpenAPI
+<li><a target="_blank" rel="noopener" href="https://www.mayi888.com/archives/58943">使用Jmeter和Jenkins自动化测试OpenAPI
 – 小工蚁</a></li>
-<li><a href="https://openapi-map.apihandyman.io/" target="_blank" rel="noopener">OpenAPI Map</a></li>
-<li><a href="https://www.infoq.cn/article/buqfskxqpcbvlt0azvjk" target="_blank" rel="noopener">OpenAPI：为传统机器构建智能API-InfoQ</a></li>
-<li><a href="http://blog.eolinker.com/?p=2485" target="_blank" rel="noopener">使用OpenAPI构建更智能的API -
+<li><a target="_blank" rel="noopener" href="https://openapi-map.apihandyman.io/">OpenAPI Map</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/buqfskxqpcbvlt0azvjk">OpenAPI：为传统机器构建智能API-InfoQ</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.eolinker.com/?p=2485">使用OpenAPI构建更智能的API -
 EOLINEKR BLOG</a></li>
-<li><a href="https://ideasfortester.github.io/mixed-first/api_automation/APIAutomation/" target="_blank" rel="noopener">API
+<li><a target="_blank" rel="noopener" href="https://ideasfortester.github.io/mixed-first/api_automation/APIAutomation/">API
 自动化测试 - 自动化测试</a></li>
-<li><a href="https://xie.infoq.cn/article/a9638e8a23cc7359696d1062b" target="_blank" rel="noopener">文档驱动开发模式在
+<li><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/a9638e8a23cc7359696d1062b">文档驱动开发模式在
 AIMS 中的应用与实践 - InfoQ 写作平台</a></li>
-<li><a href="https://xie.infoq.cn/article/4d6e59755c1f78384f79a1753" target="_blank" rel="noopener">听说，阿里云给它的
+<li><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/4d6e59755c1f78384f79a1753">听说，阿里云给它的
 OpenAPI 开发了一套编程语言 - InfoQ 写作平台</a></li>
-<li><a href="https://xie.infoq.cn/article/534c5217b2a3d59c9cf187fe0" target="_blank" rel="noopener">聊聊OpenAPI
+<li><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/534c5217b2a3d59c9cf187fe0">聊聊OpenAPI
 Specification（OAS） - InfoQ 写作平台</a></li>
 </ol>
 
@@ -282,7 +284,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.043Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.884Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -304,7 +306,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenAPI/">OpenAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK/">SDK</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenAPI/" rel="tag">OpenAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK/" rel="tag">SDK</a></li></ul>
 
 
             
@@ -317,7 +319,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/&title=《openAPI初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -327,22 +329,22 @@ Specification（OAS） - InfoQ 写作平台</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/&title=《openAPI初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《openAPI初探》 — 行路中.&url=https://sean10.github.io/2021/01/31/openAPI初探/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《openAPI初探》 — 行路中.&url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -365,7 +367,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2021/01/31/vscode相关技巧/" id="post-prev" class="post-nav-link">
+      <a href="/2021/01/31/vscode%E7%9B%B8%E5%85%B3%E6%8A%80%E5%B7%A7/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">vscode相关技巧</h4>
       </a>
@@ -374,7 +376,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2021/01/17/卡牌游戏之再玩ygocore-md/" id="post-next" class="post-nav-link">
+      <a href="/2021/01/17/%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F%E4%B9%8B%E5%86%8D%E7%8E%A9ygocore-md/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">卡牌游戏之再玩ygocore.md</h4>
       </a>
@@ -398,7 +400,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -419,6 +421,9 @@ Specification（OAS） - InfoQ 写作平台</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -451,11 +456,11 @@ Specification（OAS） - InfoQ 写作平台</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -473,7 +478,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/&title=《openAPI初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -483,22 +488,22 @@ Specification（OAS） - InfoQ 写作平台</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/31/openAPI初探/&title=《openAPI初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/&title=《openAPI初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《openAPI初探》 — 行路中.&url=https://sean10.github.io/2021/01/31/openAPI初探/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《openAPI初探》 — 行路中.&url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/31/openAPI初探/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -509,7 +514,7 @@ Specification（OAS） - InfoQ 写作平台</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/01/31/openAPI初探/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/" alt="微信分享二维码">
 </div>
 
 
@@ -525,7 +530,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -545,7 +550,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

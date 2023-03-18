@@ -21,18 +21,20 @@
     
     
     <meta name="keywords" content="ceph,docker,编译">
-    <meta name="description" content="配置 配置了一个CentOS 8的容器, 执行下以下内容 123456WITH_SEASTAR=true ./install-deps.shmkdir build &amp;amp;&amp;amp; cd build# 以下这步官网里没提, 导致失败的.# . /opt/rh/gcc-toolset-9/enablecmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRO">
-<meta name="keywords" content="ceph,docker,编译">
+    <meta name="description" content="配置 配置了一个CentOS 8的容器, 执行下以下内容 123456WITH_SEASTAR&#x3D;true .&#x2F;install-deps.shmkdir build &amp;&amp; cd build# 以下这步官网里没提, 导致失败的.# . &#x2F;opt&#x2F;rh&#x2F;gcc-toolset-9&#x2F;enablecmake -DWITH_SEASTAR&#x3D;ON -DWITH_MGR_DASHBOARD_FRO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之docker内crimson编译">
-<meta property="og:url" content="https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/index.html">
+<meta property="og:url" content="https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="配置 配置了一个CentOS 8的容器, 执行下以下内容 123456WITH_SEASTAR=true ./install-deps.shmkdir build &amp;amp;&amp;amp; cd build# 以下这步官网里没提, 导致失败的.# . /opt/rh/gcc-toolset-9/enablecmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRO">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-06-21T11:01:47.224Z">
+<meta property="og:description" content="配置 配置了一个CentOS 8的容器, 执行下以下内容 123456WITH_SEASTAR&#x3D;true .&#x2F;install-deps.shmkdir build &amp;&amp; cd build# 以下这步官网里没提, 导致失败的.# . &#x2F;opt&#x2F;rh&#x2F;gcc-toolset-9&#x2F;enablecmake -DWITH_SEASTAR&#x3D;ON -DWITH_MGR_DASHBOARD_FRO">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-23T01:21:25.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.873Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="ceph">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="编译">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ceph之docker内crimson编译">
-<meta name="twitter:description" content="配置 配置了一个CentOS 8的容器, 执行下以下内容 123456WITH_SEASTAR=true ./install-deps.shmkdir build &amp;amp;&amp;amp; cd build# 以下这步官网里没提, 导致失败的.# . /opt/rh/gcc-toolset-9/enablecmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRO">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +42,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,10 +162,11 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker压缩优化"><span class="post-toc-number">2.</span> <span class="post-toc-text">docker压缩优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#报错"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cmake_cxx_compiler-could-be-found."><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">CMAKE_CXX_COMPILER could be
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker%E5%8E%8B%E7%BC%A9%E4%BC%98%E5%8C%96"><span class="post-toc-number">2.</span> <span class="post-toc-text">docker压缩优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8A%A5%E9%94%99"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">报错</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cmake_cxx_compiler-could-be-found."><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">CMAKE_CXX_COMPILER could be
 found.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#target-seastar-links-to-target-lz4lz4-but-the-target-was-not-found."><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">target
-“seastar” links to target “lz4::lz4” but the target was not found.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#could-not-find-lz4-missing-lz4_library"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">Could NOT find LZ4
-(missing: LZ4_LIBRARY)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stream-9-编译"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">stream 9 编译</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+&quot;seastar&quot; links to target &quot;lz4::lz4&quot; but the target was not found.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#could-not-find-lz4-missing-lz4_library"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">Could NOT find LZ4
+(missing: LZ4_LIBRARY)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cannot-deduce-template-arguments-for-tuple"><span class="post-toc-number">2.1.4.</span> <span class="post-toc-text">cannot deduce
+template arguments for &#39;tuple&#39;</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BB%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BC%80%E5%A7%8B"><span class="post-toc-number">3.</span> <span class="post-toc-text">从虚拟机开始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stream-9-%E7%BC%96%E8%AF%91"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">stream 9 编译</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -191,8 +194,8 @@ found.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="配置">配置</h1>
 <p>配置了一个<code>CentOS 8</code>的容器, 执行下以下内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">WITH_SEASTAR=<span class="literal">true</span> ./install-deps.sh</span><br><span class="line">mkdir build &amp;&amp; <span class="built_in">cd</span> build</span><br><span class="line"><span class="comment"># 以下这步官网里没提, 导致失败的.</span></span><br><span class="line"><span class="comment"># . /opt/rh/gcc-toolset-9/enable</span></span><br><span class="line">cmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRONTEND=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on ..</span><br><span class="line">make -j18 crimson-osd</span><br></pre></td></tr></table></figure>
-<p>用服务器跑很快就失败了…发现主要是少了这个一点<code>. /opt/rh/gcc-toolset-9/enable</code>,
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">WITH_SEASTAR=<span class="literal">true</span> ./install-deps.sh</span><br><span class="line"><span class="built_in">mkdir</span> build &amp;&amp; <span class="built_in">cd</span> build</span><br><span class="line"><span class="comment"># 以下这步官网里没提, 导致失败的.</span></span><br><span class="line"><span class="comment"># . /opt/rh/gcc-toolset-9/enable</span></span><br><span class="line">cmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_FRONTEND=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on ..</span><br><span class="line">make -j18 crimson-osd</span><br></pre></td></tr></table></figure>
+<p>用服务器跑很快就失败了...发现主要是少了这个一点<code>. /opt/rh/gcc-toolset-9/enable</code>,
 导致默认用的是<code>gcc 8</code></p>
 <p>好像找到个<code>Dockerfile.in</code>,
 这里好像匹配了<code>jenkins</code>里面的操作,
@@ -213,12 +216,12 @@ found.</h3>
 那就是<code>cmake</code>没能识别到gcc的环境变量?</p>
 <p>嗯, 我没装<code>gcc-c++</code>, 所以的确识别不到.</p>
 <h3 id="target-seastar-links-to-target-lz4lz4-but-the-target-was-not-found.">target
-“seastar” links to target “lz4::lz4” but the target was not found.</h3>
+"seastar" links to target "lz4::lz4" but the target was not found.</h3>
 <p>好像缺失的<code>lz4</code>的库?</p>
 <p>姑且试了下,
 好像是<code>/usr/lib64/pkgconfig/lz4.pc</code>不存在,但是实际上<code>/usr/lib64/pkgconfig/liblz4.pc</code>存在,
 我做了个软链, 过了第一个, 但是后面还是报了上面这条报错.</p>
-<p>–debug-output</p>
+<p>--debug-output</p>
 <p>CMake Warning (dev) at
 /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:273
 (message): The package name passed to
@@ -243,9 +246,9 @@ This warning is for project developers. Use -Wno-dev to suppress it.</p>
 那就是这个库提供的内容没有在他们的搜索路径里导致的</p>
 <p>好像<code>FindLZ4.cmake</code>和<code>Findlz4.cmake</code>本身是不一样的.
 我试验了一下, 直接把这几个文件作为<code>CMakeLists.txt</code>的时候,
-后者那个小写文件是能够找到的, 而第一个则是找不到的…</p>
+后者那个小写文件是能够找到的, 而第一个则是找不到的...</p>
 <p>但是我把第二个文件覆盖掉第一个问题, 则是不工作的.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- Checking for one of the modules &apos;liblz4&apos;                                                       </span><br><span class="line">CMake Warning (dev) at /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:273 (message):</span><br><span class="line">  The package name passed to `find_package_handle_standard_args` (lz4) does                       </span><br><span class="line">  not match the name of the calling package (LZ4).  This can lead to problems                     </span><br><span class="line">  in calling code that expects `find_package` result variables (e.g.,                             </span><br><span class="line">  `_FOUND`) to follow a certain pattern.                                                          </span><br><span class="line">Call Stack (most recent call first):                                                              </span><br><span class="line">  cmake/modules/FindLZ4.cmake:45 (find_package_handle_standard_args)                              </span><br><span class="line">  CMakeLists.txt:325 (find_package)                                                               </span><br><span class="line">This warning is for project developers.  Use -Wno-dev to suppress it.                             </span><br><span class="line">                                                                                                  </span><br><span class="line">-- Found lz4: /usr/lib64/liblz4.so (found version &quot;1.8.3&quot;)                                        </span><br><span class="line">-- Looking for LZ4_compress_default                                                    </span><br><span class="line">-- Looking for LZ4_compress_default - found</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- Checking for one of the modules &#x27;liblz4&#x27;                                                       </span><br><span class="line">CMake Warning (dev) at /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:273 (message):</span><br><span class="line">  The package name passed to `find_package_handle_standard_args` (lz4) does                       </span><br><span class="line">  not match the name of the calling package (LZ4).  This can lead to problems                     </span><br><span class="line">  in calling code that expects `find_package` result variables (e.g.,                             </span><br><span class="line">  `_FOUND`) to follow a certain pattern.                                                          </span><br><span class="line">Call Stack (most recent call first):                                                              </span><br><span class="line">  cmake/modules/FindLZ4.cmake:45 (find_package_handle_standard_args)                              </span><br><span class="line">  CMakeLists.txt:325 (find_package)                                                               </span><br><span class="line">This warning is for project developers.  Use -Wno-dev to suppress it.                             </span><br><span class="line">                                                                                                  </span><br><span class="line">-- Found lz4: /usr/lib64/liblz4.so (found version &quot;1.8.3&quot;)                                        </span><br><span class="line">-- Looking for LZ4_compress_default                                                    </span><br><span class="line">-- Looking for LZ4_compress_default - found                                                       </span><br></pre></td></tr></table></figure>
 <p>所以是不是有地方定义了大写的<code>LZ4:LZ4</code>,
 所以才导致必须有一个大写的导入.</p>
 <p>奇怪,
@@ -258,21 +261,53 @@ This warning is for project developers. Use -Wno-dev to suppress it.</p>
 理论上这个位置就不是一个动态生成的路径啊?</p>
 <p>这里一直提到的<code>The package name passed to find_package_handle_standard_args (lz4) does not match the name of the calling package (LZ4).  This can lead to problems in calling code that expects</code>find_package<code>result variables (e.g.,</code>这里的<code>calling package</code>到底是什么意思呢?</p>
 <p>根据<code>cmake</code>里这段代码</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span> (DEFINED CMAKE_FIND_PACKAGE_NAME</span><br><span class="line">      <span class="keyword">AND</span> NOT FPHSA_NAME_MISMATCHED</span><br><span class="line">      <span class="keyword">AND</span> NOT _NAME <span class="keyword">STREQUAL</span> CMAKE_FIND_PACKAGE_NAME)</span><br><span class="line">    <span class="keyword">message</span>(AUTHOR_WARNING</span><br><span class="line">      <span class="string">"The package name passed to `find_package_handle_standard_args` "</span></span><br><span class="line">      <span class="string">"($&#123;_NAME&#125;) does not match the name of the calling package "</span></span><br><span class="line">      <span class="string">"($&#123;CMAKE_FIND_PACKAGE_NAME&#125;). This can lead to problems in clling "</span></span><br><span class="line">      <span class="string">"code that expects `find_package` result variables (e.g., `_FOUND`) "</span></span><br><span class="line">      <span class="string">"to follow a certain pattern."</span>)</span><br><span class="line">  <span class="keyword">endif</span> ()</span><br><span class="line"></span><br><span class="line">``CMAKE_FIND_PACKAGE_NAME``</span><br><span class="line">  the ``&lt;PackageName&gt;`` which is searched for</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span> (<span class="keyword">DEFINED</span> CMAKE_FIND_PACKAGE_NAME</span><br><span class="line">      <span class="keyword">AND</span> <span class="keyword">NOT</span> FPHSA_NAME_MISMATCHED</span><br><span class="line">      <span class="keyword">AND</span> <span class="keyword">NOT</span> _NAME <span class="keyword">STREQUAL</span> CMAKE_FIND_PACKAGE_NAME)</span><br><span class="line">    <span class="keyword">message</span>(AUTHOR_WARNING</span><br><span class="line">      <span class="string">&quot;The package name passed to `find_package_handle_standard_args` &quot;</span></span><br><span class="line">      <span class="string">&quot;($&#123;_NAME&#125;) does not match the name of the calling package &quot;</span></span><br><span class="line">      <span class="string">&quot;($&#123;CMAKE_FIND_PACKAGE_NAME&#125;). This can lead to problems in clling &quot;</span></span><br><span class="line">      <span class="string">&quot;code that expects `find_package` result variables (e.g., `_FOUND`) &quot;</span></span><br><span class="line">      <span class="string">&quot;to follow a certain pattern.&quot;</span>)</span><br><span class="line">  <span class="keyword">endif</span> ()</span><br><span class="line"></span><br><span class="line">``CMAKE_FIND_PACKAGE_NAME``</span><br><span class="line">  the ``&lt;PackageName&gt;`` which is searched for</span><br></pre></td></tr></table></figure>
 <p>也就是调用<code>find_package(LZ4)</code>了.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  src/seastar/cmake/SeastarDependencies.cmake:98 (find_package</span><br><span class="line">  src/seastar/CMakeLists.txt:330 (seastar_find_dependencies)  </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">所以是来自这个文件, 传递了`lz4`为要找的包, 但是实际上只找到了`findLZ4.cmake`. 但是他隶属于`seastar`目录, 在那个目录里, 有一个findlz4小写的. 所以我怀疑是嵌套的`cmake`作用域之类的问题?</span><br><span class="line"></span><br><span class="line">build目录下有一个`Makefile.cmake`如何理解?</span><br><span class="line"></span><br><span class="line">这个文件是从`CMakeLists.txt`里生成出来的? 的确是生辰出来的...</span><br><span class="line"></span><br><span class="line">Boost库还没下载下来, 所以直接编译`seastar`是肯定成功不了的.</span><br><span class="line"></span><br><span class="line">最后复制了seastar目录下的`cmake/Findlz4.cmake`到了`cmake/modules`目录下, 和`FindLZ4.cmake`在一起, 就能过了.</span><br><span class="line"></span><br><span class="line">不过我推测,应该还有个`CMAKE_FIND_ROOT_PATH`这种东西可能在工作, 可以让`seastar`目录在加载时, 自动使用当前目录的`cmake`来进行`find_package`操作, 不过目前没找到...</span><br><span class="line"></span><br><span class="line">### cannot deduce template arguments for &apos;tuple&apos;  </span><br><span class="line">这次是编译报错. 看着比较像是c++支持语言版本不足, 看了下, 官方的`jenkins`里是有安装了`gcc-toolset-9`这个操作的, 所以按理来说应该是用`gcc 9`版本编译才对.</span><br><span class="line"></span><br><span class="line">果然, 在`ceph.spec.in`里是有加载这个`toolset`的操作的.</span><br></pre></td></tr></table></figure>
-<p>. /opt/rh/gcc-toolset-9/enable <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这个`ceph.spec.in`是怎么生成的暂时没找到, 不过有个`make-dist`的脚本,这里有生成的操作,  这里触发应该有用吧</span><br><span class="line"></span><br><span class="line">通过`make -n`可以看到使用的`c++`的路径不对, 是低版本的, 果然, 我用的`Makefile`版本不对. 必须得更新一下. 删掉整个`build`目录, 先执行`. /opt/rh/gcc-toolset-9/enable`, 这次生成的`Makefile`版本对了.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 从虚拟机开始</span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line"># 找一下怎么直接触发</span><br><span class="line">grep -rn &quot;SEASTAR&quot;git submodule foreach --recursive git reset --hard</span><br><span class="line"></span><br><span class="line">export WITH_SEASTAR=ON;</span><br><span class="line">bash install-deps.sh</span><br><span class="line"></span><br><span class="line">cmake ..</span><br><span class="line">ccache ninja</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">src/seastar/cmake/SeastarDependencies.cmake:98 (find_package</span><br><span class="line">src/seastar/CMakeLists.txt:330 (seastar_find_dependencies)  </span><br></pre></td></tr></table></figure>
+<p>所以是来自这个文件, 传递了<code>lz4</code>为要找的包,
+但是实际上只找到了<code>findLZ4.cmake</code>.
+但是他隶属于<code>seastar</code>目录, 在那个目录里, 有一个findlz4小写的.
+所以我怀疑是嵌套的<code>cmake</code>作用域之类的问题?</p>
+<p>build目录下有一个<code>Makefile.cmake</code>如何理解?</p>
+<p>这个文件是从<code>CMakeLists.txt</code>里生成出来的?
+的确是生辰出来的...</p>
+<p>Boost库还没下载下来,
+所以直接编译<code>seastar</code>是肯定成功不了的.</p>
+<p>最后复制了seastar目录下的<code>cmake/Findlz4.cmake</code>到了<code>cmake/modules</code>目录下,
+和<code>FindLZ4.cmake</code>在一起, 就能过了.</p>
+<p>不过我推测,应该还有个<code>CMAKE_FIND_ROOT_PATH</code>这种东西可能在工作,
+可以让<code>seastar</code>目录在加载时,
+自动使用当前目录的<code>cmake</code>来进行<code>find_package</code>操作,
+不过目前没找到...</p>
+<h3 id="cannot-deduce-template-arguments-for-tuple">cannot deduce
+template arguments for 'tuple'</h3>
+<p>这次是编译报错. 看着比较像是c++支持语言版本不足, 看了下,
+官方的<code>jenkins</code>里是有安装了<code>gcc-toolset-9</code>这个操作的,
+所以按理来说应该是用<code>gcc 9</code>版本编译才对.</p>
+<p>果然,
+在<code>ceph.spec.in</code>里是有加载这个<code>toolset</code>的操作的.
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">. /opt/rh/gcc-toolset-9/enable</span><br></pre></td></tr></table></figure></p>
+<p>这个<code>ceph.spec.in</code>是怎么生成的暂时没找到,
+不过有个<code>make-dist</code>的脚本,这里有生成的操作,
+这里触发应该有用吧</p>
+<p>通过<code>make -n</code>可以看到使用的<code>c++</code>的路径不对,
+是低版本的, 果然, 我用的<code>Makefile</code>版本不对. 必须得更新一下.
+删掉整个<code>build</code>目录,
+先执行<code>. /opt/rh/gcc-toolset-9/enable</code>,
+这次生成的<code>Makefile</code>版本对了.</p>
+<h1 id="从虚拟机开始">从虚拟机开始</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找一下怎么直接触发</span></span><br><span class="line">grep -rn <span class="string">&quot;SEASTAR&quot;</span>git submodule foreach --recursive git reset --hard</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> WITH_SEASTAR=ON;</span><br><span class="line">bash install-deps.sh</span><br><span class="line"></span><br><span class="line">cmake ..</span><br><span class="line">ccache ninja</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="stream-9-编译">stream 9 编译</h2>
-<p><a href="https://tracker.ceph.com/issues/51156" target="_blank" rel="noopener">Feature #51156: qa:
+<p><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/51156">Feature #51156: qa:
 Teuthology Testing on Centos 9 Stream - Ceph - Ceph</a></p>
-<p><a href="https://github.com/ktdreyer/ceph-el9" target="_blank" rel="noopener">ktdreyer/ceph-el9</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf copr enable -y ceph/el9 centos-stream-9</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/ktdreyer/ceph-el9">ktdreyer/ceph-el9</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf copr enable -y ceph/el9 centos-stream-9</span><br></pre></td></tr></table></figure>
 <p>通过操作该项即可正常执行install-deps.sh</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="https://docs.ceph.com/en/latest/dev/crimson/index.html" target="_blank" rel="noopener">Crimson
+<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/crimson/index.html">Crimson
 developer documentation — Ceph Documentation</a></li>
-<li><a href="https://docs.ceph.com/en/latest/dev/crimson/crimson/" target="_blank" rel="noopener">crimson —
+<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/crimson/crimson/">crimson —
 Ceph Documentation</a></li>
 </ol>
 
@@ -283,7 +318,7 @@ Ceph Documentation</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-06-21T11:01:47.224Z" itemprop="dateUpdated">2022-06-21 19:01:47</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.873Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -305,7 +340,7 @@ Ceph Documentation</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译/">编译</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91/" rel="tag">编译</a></li></ul>
 
 
             
@@ -318,7 +353,7 @@ Ceph Documentation</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/&title=《ceph之docker内crimson编译》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/&title=《ceph之docker内crimson编译》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -328,22 +363,22 @@ Ceph Documentation</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/&title=《ceph之docker内crimson编译》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/&title=《ceph之docker内crimson编译》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之docker内crimson编译》 — 行路中.&url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之docker内crimson编译》 — 行路中.&url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -366,7 +401,7 @@ Ceph Documentation</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2021/08/13/python日志模块初探/" id="post-prev" class="post-nav-link">
+      <a href="/2021/08/13/python%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%E5%88%9D%E6%8E%A2/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">python日志模块初探</h4>
       </a>
@@ -375,7 +410,7 @@ Ceph Documentation</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2021/05/15/ceph之luminous-github版本编译undefined-reference/" id="post-next" class="post-nav-link">
+      <a href="/2021/05/15/ceph%E4%B9%8Bluminous-github%E7%89%88%E6%9C%AC%E7%BC%96%E8%AF%91undefined-reference/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">ceph之luminous_github版本编译undefined_reference</h4>
       </a>
@@ -399,7 +434,7 @@ Ceph Documentation</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -420,6 +455,9 @@ Ceph Documentation</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -452,11 +490,11 @@ Ceph Documentation</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -474,7 +512,7 @@ Ceph Documentation</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/&title=《ceph之docker内crimson编译》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/&title=《ceph之docker内crimson编译》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -484,22 +522,22 @@ Ceph Documentation</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/&title=《ceph之docker内crimson编译》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/&title=《ceph之docker内crimson编译》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之docker内crimson编译》 — 行路中.&url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之docker内crimson编译》 — 行路中.&url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -510,7 +548,7 @@ Ceph Documentation</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/06/23/ceph之docker内crimson编译/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/" alt="微信分享二维码">
 </div>
 
 
@@ -526,7 +564,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -546,7 +584,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

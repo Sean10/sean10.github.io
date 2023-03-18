@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="git">
-    <meta name="description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &quot;void ss()&quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 如何找到tag是从哪个分支的哪个commit打出? 子模块 git s">
-<meta name="keywords" content="git">
+    <meta name="description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &quot;void ss()&quot; &#x2F;path&#x2F;file 查看未提交的文件修改 1git show show not staged 1git diff 查看指定commit存在哪些分支 1git branch -r --contain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git笔记">
-<meta property="og:url" content="https://sean10.github.io/2017/02/21/git笔记/index.html">
+<meta property="og:url" content="https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &quot;void ss()&quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 如何找到tag是从哪个分支的哪个commit打出? 子模块 git s">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-10-26T12:51:00.110Z">
+<meta property="og:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &quot;void ss()&quot; &#x2F;path&#x2F;file 查看未提交的文件修改 1git show show not staged 1git diff 查看指定commit存在哪些分支 1git branch -r --contain">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-20T16:12:09.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.882Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git笔记">
-<meta name="twitter:description" content="常用命令 切换分支 git reset --hard ## 查看操作历史，寻找之前记录的分支 git reflog ## 查找指定行的commit log git log -S &quot;void ss()&quot; /path/file 查看未提交的文件修改 1git show show not staged 1git diff tag功能 如何找到tag是从哪个分支的哪个commit打出? 子模块 git s">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +40,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,10 +160,10 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#切换分支"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">切换分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看未提交的文件修改"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">查看未提交的文件修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#show-not-staged"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">show not staged</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tag功能"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">tag功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何找到tag是从哪个分支的哪个commit打出"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">如何找到tag是从哪个分支的哪个commit打出?</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#子模块"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">子模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-subtree第三方-独立仓库子树合并"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">git subtree(第三方,
-独立仓库子树合并)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-submodule独立的子仓库"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">git submodule(独立的子仓库)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加git-submodule"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">添加git submodule</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#submodule的submodule"><span class="post-toc-number">1.4.2.2.</span> <span class="post-toc-text">submodule的submodule</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#回滚.-git-reset---hard即可."><span class="post-toc-number">2.</span> <span class="post-toc-text">回滚.
-git reset --hard即可.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-diff-与vscode对接"><span class="post-toc-number">3.</span> <span class="post-toc-text">git diff 与vscode对接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#潜在问题-好像在difftool这个交互进程退出前-会在dock上弹出很多个vscode的图标"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">潜在问题:
-好像在difftool这个交互进程退出前, 会在dock上弹出很多个vscode的图标</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-status显示utf-8中文"><span class="post-toc-number">5.</span> <span class="post-toc-text">git status显示utf-8中文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlabgithub免密"><span class="post-toc-number">6.</span> <span class="post-toc-text">gitlab/github免密</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-merge"><span class="post-toc-number">7.</span> <span class="post-toc-text">git merge</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从指定分支合入log到当前分支"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">从指定分支合入log到当前分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-pull-和git-pull-rebase"><span class="post-toc-number">8.</span> <span class="post-toc-text">git pull 和git pull –rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-number">9.</span> <span class="post-toc-text">git rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">10.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">切换分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AA%E6%8F%90%E4%BA%A4%E7%9A%84%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">查看未提交的文件修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#show-not-staged"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">show not staged</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%87%E5%AE%9Acommit%E5%AD%98%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%88%86%E6%94%AF"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">查看指定commit存在哪些分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%A2%AB%E5%88%A0%E9%99%A4%E7%9A%84%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E7%9A%84commit"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">查看被删除的文件相关的commit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9F%A5%E7%9C%8Btag%E4%B9%8B%E9%97%B4%E5%B7%AE%E5%BC%82%E7%9A%84commit"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">查看tag之间差异的commit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tag%E5%8A%9F%E8%83%BD"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">tag功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0tag%E6%98%AF%E4%BB%8E%E5%93%AA%E4%B8%AA%E5%88%86%E6%94%AF%E7%9A%84%E5%93%AA%E4%B8%AAcommit%E6%89%93%E5%87%BA"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">如何找到tag是从哪个分支的哪个commit打出?</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">子模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-subtree%E7%AC%AC%E4%B8%89%E6%96%B9-%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E5%AD%90%E6%A0%91%E5%90%88%E5%B9%B6"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">git subtree(第三方,
+独立仓库子树合并)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-submodule%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%AD%90%E4%BB%93%E5%BA%93"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">git submodule(独立的子仓库)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0git-submodule"><span class="post-toc-number">1.7.2.1.</span> <span class="post-toc-text">添加git submodule</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#submodule%E7%9A%84submodule"><span class="post-toc-number">1.7.2.2.</span> <span class="post-toc-text">submodule的submodule</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9B%9E%E6%BB%9A.-git-reset---hard%E5%8D%B3%E5%8F%AF."><span class="post-toc-number">2.</span> <span class="post-toc-text">回滚.
+git reset --hard即可.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-diff-%E4%B8%8Evscode%E5%AF%B9%E6%8E%A5"><span class="post-toc-number">3.</span> <span class="post-toc-text">git diff 与vscode对接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%BD%9C%E5%9C%A8%E9%97%AE%E9%A2%98-%E5%A5%BD%E5%83%8F%E5%9C%A8difftool%E8%BF%99%E4%B8%AA%E4%BA%A4%E4%BA%92%E8%BF%9B%E7%A8%8B%E9%80%80%E5%87%BA%E5%89%8D-%E4%BC%9A%E5%9C%A8dock%E4%B8%8A%E5%BC%B9%E5%87%BA%E5%BE%88%E5%A4%9A%E4%B8%AAvscode%E7%9A%84%E5%9B%BE%E6%A0%87"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">潜在问题:
+好像在difftool这个交互进程退出前, 会在dock上弹出很多个vscode的图标</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%AE%B0%E5%BD%95"><span class="post-toc-number">4.</span> <span class="post-toc-text">记录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-status%E6%98%BE%E7%A4%BAutf-8%E4%B8%AD%E6%96%87"><span class="post-toc-number">5.</span> <span class="post-toc-text">git status显示utf-8中文</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlabgithub%E5%85%8D%E5%AF%86"><span class="post-toc-number">6.</span> <span class="post-toc-text">gitlab&#x2F;github免密</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-merge"><span class="post-toc-number">7.</span> <span class="post-toc-text">git merge</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8E%E6%8C%87%E5%AE%9A%E5%88%86%E6%94%AF%E5%90%88%E5%85%A5log%E5%88%B0%E5%BD%93%E5%89%8D%E5%88%86%E6%94%AF"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">从指定分支合入log到当前分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-pull-%E5%92%8Cgit-pull---rebase"><span class="post-toc-number">8.</span> <span class="post-toc-text">git pull 和git pull --rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-number">9.</span> <span class="post-toc-text">git rebase</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83"><span class="post-toc-number">10.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
 
@@ -198,6 +198,12 @@ git reset --hard即可.</span></a></li><li class="post-toc-item post-toc-level-1
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show</span><br></pre></td></tr></table></figure>
 <h3 id="show-not-staged">show not staged</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<h2 id="查看指定commit存在哪些分支">查看指定commit存在哪些分支</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r --contains xxx</span><br></pre></td></tr></table></figure>
+<h2 id="查看被删除的文件相关的commit">查看被删除的文件相关的commit</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git log --all -- src/mgr/PyModule.cc</span><br></pre></td></tr></table></figure>
+<h2 id="查看tag之间差异的commit">查看tag之间差异的commit</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> v12.2.12..v13.0.2 src/mgr</span><br></pre></td></tr></table></figure>
 <h2 id="tag功能">tag功能</h2>
 <h3 id="如何找到tag是从哪个分支的哪个commit打出">如何找到tag是从哪个分支的哪个commit打出?</h3>
 <h2 id="子模块">子模块</h2>
@@ -210,9 +216,9 @@ git reset --hard即可.</span></a></li><li class="post-toc-item post-toc-level-1
 <li>git submodule init</li>
 <li>git submodule update</li>
 </ol>
-<p>或者 git submodule update –init –recursive</p>
+<p>或者 git submodule update --init --recursive</p>
 <h4 id="添加git-submodule">添加git submodule</h4>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br><span class="line">git diff --cached</span><br><span class="line">git commit -m <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br><span class="line">git diff --cached</span><br><span class="line">git commit -m <span class="string">&quot;xxx&quot;</span></span><br></pre></td></tr></table></figure>
 <h4 id="submodule的submodule">submodule的submodule</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
 <p>理论上这个可以, 那我编译时还触发了git
@@ -221,7 +227,7 @@ clone的应该是因为代码并不是完全用submodule维持的关系了把?</
 <code>git reset --hard</code>即可.</h1>
 <h1 id="git-diff-与vscode对接">git diff 与vscode对接</h1>
 <p>git支持通过difftool对接一些外部插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git config --global difftool.code.cmd <span class="string">'code --wait --diff $LOCAL $REMOTE'</span></span><br><span class="line"></span><br><span class="line">git config --global mergetool.code.cmd <span class="string">'code --wait $MERGED'</span></span><br><span class="line"></span><br><span class="line">git config --global -l</span><br><span class="line"></span><br><span class="line">git difftool dev</span><br><span class="line">git difftool -t code dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git mergetool -t code dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">git config --global difftool.code.cmd <span class="string">&#x27;code --wait --diff $LOCAL $REMOTE&#x27;</span></span><br><span class="line"></span><br><span class="line">git config --global mergetool.code.cmd <span class="string">&#x27;code --wait $MERGED&#x27;</span></span><br><span class="line"></span><br><span class="line">git config --global -l</span><br><span class="line"></span><br><span class="line">git difftool dev</span><br><span class="line">git difftool -t code dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git mergetool -t code dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="潜在问题-好像在difftool这个交互进程退出前-会在dock上弹出很多个vscode的图标">潜在问题:
 好像在difftool这个交互进程退出前, 会在dock上弹出很多个vscode的图标</h3>
 <h1 id="记录">记录</h1>
@@ -229,7 +235,7 @@ clone的应该是因为代码并不是完全用submodule维持的关系了把?</
 文件夹中包含了哪些文件的信息。)
 事实上，如果你的服务器的磁盘坏掉了，你通常可以使用任何一个克隆下来的用户端来重建服务器上的仓库（虽然可能会丢失某些服务器端的挂钩设置，但是所有版本的数据仍在，详见
 在服务器上搭建 Git ）。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p><code>$ git clone https://github.com/libgit2/libgit2 mylibgit</code></p>
 <p>这将执行与上一个命令相同的操作，不过在本地创建的仓库名字变为
 mylibgit。</p>
@@ -245,7 +251,7 @@ Git将会介绍所有这些协议在服务器端如何配置使用，以及各�
 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。
 在这种情况下，我们可以创建一个名为 .gitignore
 的文件，列出要忽略的文件模式。 来看一个实际的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat .gitignore</span><br><span class="line">*.[oa]</span><br><span class="line">*~</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat .gitignore</span><br><span class="line">*.[oa]</span><br><span class="line">*~</span><br></pre></td></tr></table></figure>
 <p>第一行告诉 Git 忽略所有以 .o 或 .a
 结尾的文件。一般这类对象文件和存档文件都是编译过程中出现的。 第二行告诉
 Git 忽略所有以波浪符（~）结尾的文件，许多文本编辑软件（比如
@@ -267,7 +273,7 @@ c）；问号（?）只匹配一个任意字符；如果在方括号中使用短
 [0-9] 表示匹配所有 0 到 9 的数字）。 使用两个星号（*)
 表示匹配任意中间目录，比如a/**/z 可以匹配 a/z, a/b/z 或 a/b/c/z等。</p>
 </blockquote>
-<p>我们再看一个 .gitignore 文件的例子： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># no .a files</span></span><br><span class="line">*.a</span><br><span class="line"></span><br><span class="line"><span class="comment"># but do track lib.a, even though you're ignoring .a files above</span></span><br><span class="line">!lib.a</span><br><span class="line"></span><br><span class="line"><span class="comment"># only ignore the TODO file in the current directory, not subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore all files in the build/ directory</span></span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore doc/notes.txt, but not doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore all .pdf files in the doc/ directory</span></span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure></p>
+<p>我们再看一个 .gitignore 文件的例子： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># no .a files</span></span><br><span class="line">*.a</span><br><span class="line"></span><br><span class="line"><span class="comment"># but do track lib.a, even though you&#x27;re ignoring .a files above</span></span><br><span class="line">!lib.a</span><br><span class="line"></span><br><span class="line"><span class="comment"># only ignore the TODO file in the current directory, not subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore all files in the build/ directory</span></span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore doc/notes.txt, but not doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># ignore all .pdf files in the doc/ directory</span></span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure></p>
 <p>TIP GitHub 有一个十分详细的针对数十种项目及语言的 .gitignore
 文件列表，你可以在 https://github.com/github/gitignore 找到它.</p>
 <p>查看已暂存和未暂存的修改</p>
@@ -277,12 +283,10 @@ c）；问号（?）只匹配一个任意字符；如果在方括号中使用短
 换句话说，你想让文件保留在磁盘，但是并不想让 Git 继续跟踪。 当你忘记添加
 .gitignore 文件，不小心把一个很大的日志文件或一堆 .a
 这样的编译生成文件添加到暂存区时，这一做法尤其有用。
-为达到这一目的，使用 –cached 选项： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached README</span><br><span class="line">git rm 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。 比方说：</span><br><span class="line"></span><br><span class="line">$ git rm log/\*.log</span><br></pre></td></tr></table></figure></p>
-<p>注意到星号 * 之前的反斜杠 ， 因为 Git
-有它自己的文件模式扩展匹配方式，所以我们不用 shell 来帮忙展开。
-此命令删除 log/ 目录下扩展名为 .log 的所有文件。 类似的比如：
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm \*~</span><br></pre></td></tr></table></figure></p>
-<p>该命令为删除以 ~ 结尾的所有文件。.</p>
+为达到这一目的，使用 --cached 选项： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached README</span><br><span class="line">git rm 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。 比方说：</span><br><span class="line"></span><br><span class="line">$ git rm log/\*.log</span><br></pre></td></tr></table></figure> 注意到星号 *
+之前的反斜杠 ， 因为 Git 有它自己的文件模式扩展匹配方式，所以我们不用
+shell 来帮忙展开。 此命令删除 log/ 目录下扩展名为 .log 的所有文件。
+类似的比如： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm \*~</span><br></pre></td></tr></table></figure> 该命令为删除以 ~ 结尾的所有文件。.</p>
 <p>Git 保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。</p>
 <p>http://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF</p>
 <p>远程分支不太能够理解，比如远程仓库和本地仓库分支之间fetch什么的
@@ -305,7 +309,7 @@ awesomebranch 分支。</p>
 默认情况下它会在终端中提示服务器是否允许你进行推送。</p>
 <p>如果不想在每一次推送时都输入用户名与密码，你可以设置一个 “credential
 cache”。 最简单的方式就是将其保存在内存中几分钟，可以简单地运行 git
-config –global credential.helper cache 来设置它。</p>
+config --global credential.helper cache 来设置它。</p>
 <p>想要了解更多关于不同验证缓存的可用选项，查看 凭证存储。</p>
 <p>git branch 如何切换一个本地分支跟踪远程仓库的分支 git checkout</p>
 <p>哑（Dumb） HTTP 协议 如果服务器没有提供智能 HTTP 协议的服务，Git
@@ -315,7 +319,7 @@ config –global credential.helper cache 来设置它。</p>
 跟目录，设置一个叫做 post-update 的挂钩就可以了（见 Git 钩子）。
 此时，只要能访问 web 服务器上你的版本库，就可以克隆你的版本库。
 下面是设置从 HTTP 访问版本库的方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cd /var/www/htdocs/</span><br><span class="line">$ git clone --bare /path/to/git_project gitproject.git</span><br><span class="line">$ cd gitproject.git</span><br><span class="line">$ mv hooks/post-update.sample hooks/post-update</span><br><span class="line">$ chmod a+x hooks/post-update</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cd /var/www/htdocs/</span><br><span class="line">$ git clone --bare /path/to/git_project gitproject.git</span><br><span class="line">$ cd gitproject.git</span><br><span class="line">$ mv hooks/post-update.sample hooks/post-update</span><br><span class="line">$ chmod a+x hooks/post-update</span><br></pre></td></tr></table></figure>
 <p>这样就可以了。 Git 自带的 post-update 挂钩会默认执行合适的命令（git
 update-server-info），来确保通过 HTTP 的获取和克隆操作正常工作。
 这条命令会在你通过 SSH
@@ -326,7 +330,7 @@ update-server-info），来确保通过 HTTP 的获取和克隆操作正常工�
 的数据是以基本的静态文件形式提供的（详情见 Git 内部原理）。</p>
 <p>通常的，会在可以提供读／写的智能 HTTP 服务和简单的只读的哑 HTTP
 服务之间选一个。 极少会将二者混合提供服务。</p>
-<p>git pull返回错误“You asked to pull from the remote ‘origin’, but did
+<p>git pull返回错误“You asked to pull from the remote 'origin', but did
 not specify a branch. Because this is not the default configured remote
 for your current branch, you must specify a branch on the command
 line.”</p>
@@ -336,12 +340,12 @@ line.”</p>
 <p>w强制回滚，用来撤销失败的调试 <code>git reset --hard HEAD</code></p>
 <blockquote>
 <p>Auto packing the repository in background for optimum performance.
-See “git help gc” for manual housekeeping. error: The last gc run
+See "git help gc" for manual housekeeping. error: The last gc run
 reported the following. Please correct the root cause and remove
 .git/gc.log. Automatic cleanup will not be performed until the file is
 removed.</p>
-<p>warning: There are too many unreachable loose objects; run ‘git
-prune’ to remove them.</p>
+<p>warning: There are too many unreachable loose objects; run 'git
+prune' to remove them.</p>
 </blockquote>
 <blockquote>
 <p>Git的底层并没有采用 CVS、SVN
@@ -349,30 +353,30 @@ prune’ to remove them.</p>
 Git
 分支的使用效率；但也容易导致代码仓库中内容重复程度过高，从而仓库体积过大。当遇到这种情况时，或者需要将仓库推送到远程主机时，就需要Git中的gc（garbage
 collect）功能，也就是垃圾回收功能。</p>
-<p>大体来说，当运行 “git gc” 命令时，Git会收集所有松散对象并将它们存入
+<p>大体来说，当运行 "git gc" 命令时，Git会收集所有松散对象并将它们存入
 packfile，合并这些 packfile 进一个大的 packfile，然后将不被任何 commit
 引用并且已存在一段时间 (数月) 的对象删除。 此外，Git还会将所有引用
 (references) 并入一个单独文件</p>
 </blockquote>
 <p><code>git prune</code>功能，似乎是在遇到大文件的问题,有意思，这个git的垃圾回收问题以前倒是没遇到过呢</p>
 <h1 id="git-status显示utf-8中文">git status显示utf-8中文</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath false</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath false</span><br></pre></td></tr></table></figure>
 <h1 id="gitlabgithub免密">gitlab/github免密</h1>
 <p>使用ssh密钥时,
 .ssh/config里的host和对应的<code>IdentifyFile</code>也要指定.</p>
 <p>然后git config 看到的username和credential也要对应.</p>
 <h1 id="git-merge">git merge</h1>
 <h2 id="从指定分支合入log到当前分支">从指定分支合入log到当前分支</h2>
-<h1 id="git-pull-和git-pull-rebase">git pull 和git pull –rebase</h1>
+<h1 id="git-pull-和git-pull---rebase">git pull 和git pull --rebase</h1>
 <h1 id="git-rebase">git rebase</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  markless git:(dev) git push origin dev</span><br><span class="line">To https://github.com/sean10/markless.git</span><br><span class="line"> ! [rejected]        dev -&gt; dev (non-fast-forward)</span><br><span class="line">error: failed to push some refs to <span class="string">'https://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@github.com/sean10/markless.git'</span></span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br><span class="line">hint: its remote counterpart. Integrate the remote changes (e.g.</span><br><span class="line">hint: <span class="string">'git pull ...'</span>) before pushing again.</span><br><span class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  markless git:(dev) git push origin dev</span><br><span class="line">To https://github.com/sean10/markless.git</span><br><span class="line"> ! [rejected]        dev -&gt; dev (non-fast-forward)</span><br><span class="line">error: failed to push some refs to <span class="string">&#x27;https://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@github.com/sean10/markless.git&#x27;</span></span><br><span class="line">hint: Updates were rejected because the tip of your current branch is behind</span><br><span class="line">hint: its remote counterpart. Integrate the remote changes (e.g.</span><br><span class="line">hint: <span class="string">&#x27;git pull ...&#x27;</span>) before pushing again.</span><br><span class="line">hint: See the <span class="string">&#x27;Note about fast-forwards&#x27;</span> <span class="keyword">in</span> <span class="string">&#x27;git push --help&#x27;</span> <span class="keyword">for</span> details.</span><br></pre></td></tr></table></figure>
 <p>可以用下述强制命令.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --force-with-lease origin dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --force-with-lease origin dev  </span><br></pre></td></tr></table></figure>
 <h1 id="参考">参考</h1>
 <ol type="1">
-<li><a href="http://blog.csdn.net/lihuanshuai/article/details/37345565" target="_blank" rel="noopener">git
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/lihuanshuai/article/details/37345565">git
 gc功能</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/100214931" target="_blank" rel="noopener">Git子仓库深入浅出 -
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/100214931">Git子仓库深入浅出 -
 知乎</a>****</li>
 <li></li>
 </ol>
@@ -384,7 +388,7 @@ gc功能</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-10-26T12:51:00.110Z" itemprop="dateUpdated">2022-10-26 20:51:00</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.882Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -406,7 +410,7 @@ gc功能</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
 
 
             
@@ -419,7 +423,7 @@ gc功能</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/02/21/git笔记/&title=《git笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/&title=《git笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -429,7 +433,7 @@ gc功能</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/02/21/git笔记/&title=《git笔记》 — 行路中.&source=常用命令
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/&title=《git笔记》 — 行路中.&source=常用命令
 切换分支
 git reset --hard ## 查看操作历史，寻找之前记录的分支
 git reflog ## 查找指定行的commit log..." data-title=" QQ">
@@ -437,17 +441,17 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/02/21/git笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记》 — 行路中.&url=https://sean10.github.io/2017/02/21/git笔记/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记》 — 行路中.&url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/02/21/git笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -470,7 +474,7 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/06/15/Qt学习汇总遇到的问题/" id="post-prev" class="post-nav-link">
+      <a href="/2017/06/15/Qt%E5%AD%A6%E4%B9%A0%E6%B1%87%E6%80%BB%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Qt学习汇总遇到的问题</h4>
       </a>
@@ -503,7 +507,7 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -524,6 +528,9 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -556,11 +563,11 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -578,7 +585,7 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/02/21/git笔记/&title=《git笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/&title=《git笔记》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -588,7 +595,7 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/02/21/git笔记/&title=《git笔记》 — 行路中.&source=常用命令
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/&title=《git笔记》 — 行路中.&source=常用命令
 切换分支
 git reset --hard ## 查看操作历史，寻找之前记录的分支
 git reflog ## 查找指定行的commit log..." data-title=" QQ">
@@ -596,17 +603,17 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/02/21/git笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记》 — 行路中.&url=https://sean10.github.io/2017/02/21/git笔记/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记》 — 行路中.&url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/02/21/git笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -617,7 +624,7 @@ git reflog ## 查找指定行的commit log..." data-title=" QQ">
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/02/21/git笔记/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2017/02/21/git%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
 </div>
 
 
@@ -633,7 +640,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -653,7 +660,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

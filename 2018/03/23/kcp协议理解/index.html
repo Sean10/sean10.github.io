@@ -22,17 +22,19 @@
     
     <meta name="keywords" content="网络,kcp,tcp">
     <meta name="description" content="TCP Qos 问题 TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并不遵循这个规则，TCP迫于流量控制，检测到端到端阻塞就会减小自己的窗口，然后被UDP等占据闲置出的带宽，导致饿死。 由于这个TCP在阻塞情况下迫于大环境无法保证传输质量，就有大批转而使用UDP协议加速的方式。">
-<meta name="keywords" content="网络,kcp,tcp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kcp协议理解">
-<meta property="og:url" content="https://sean10.github.io/2018/03/23/kcp协议理解/index.html">
+<meta property="og:url" content="https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="TCP Qos 问题 TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并不遵循这个规则，TCP迫于流量控制，检测到端到端阻塞就会减小自己的窗口，然后被UDP等占据闲置出的带宽，导致饿死。 由于这个TCP在阻塞情况下迫于大环境无法保证传输质量，就有大批转而使用UDP协议加速的方式。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.977Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-23T06:24:38.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.875Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="kcp">
+<meta property="article:tag" content="tcp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kcp协议理解">
-<meta name="twitter:description" content="TCP Qos 问题 TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并不遵循这个规则，TCP迫于流量控制，检测到端到端阻塞就会减小自己的窗口，然后被UDP等占据闲置出的带宽，导致饿死。 由于这个TCP在阻塞情况下迫于大环境无法保证传输质量，就有大批转而使用UDP协议加速的方式。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +42,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,8 +162,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tcp-qos-问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP Qos 问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#udp-加速"><span class="post-toc-number">2.</span> <span class="post-toc-text">UDP 加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rttround-trip-time-rtoretransmission-timeout"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">RTT(round trip
-time) &amp;&amp; RTO(Retransmission timeout)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据链路层arq与传输层arq区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据链路层ARQ与传输层ARQ区别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tcp-qos-%E9%97%AE%E9%A2%98"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP Qos 问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#udp-%E5%8A%A0%E9%80%9F"><span class="post-toc-number">2.</span> <span class="post-toc-text">UDP 加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rttround-trip-time-rtoretransmission-timeout"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">RTT(round trip
+time) &amp;&amp; RTO(Retransmission timeout)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82arq%E4%B8%8E%E4%BC%A0%E8%BE%93%E5%B1%82arq%E5%8C%BA%E5%88%AB"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据链路层ARQ与传输层ARQ区别</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -190,7 +192,7 @@ time) &amp;&amp; RTO(Retransmission timeout)</span></a></li></ol></li><li class=
             <h1 id="tcp-qos-问题">TCP Qos 问题</h1>
 <p>TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并不遵循这个规则，TCP迫于流量控制，检测到端到端阻塞就会减小自己的窗口，然后被UDP等占据闲置出的带宽，导致饿死。</p>
 <p>由于这个TCP在阻塞情况下迫于大环境无法保证传输质量，就有大批转而使用UDP协议加速的方式。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h1 id="udp-加速">UDP 加速</h1>
 <p>kcp的设计是为了解决在网络拥堵情况下tcp协议的网络速度慢的问题。(包括BBR等，还有很多)一般使用udp作为下层传输协议。</p>
 <blockquote>
@@ -219,10 +221,10 @@ time) &amp;&amp; RTO(Retransmission timeout)</h2>
 <p>如A-B-C，数据链路层只能保证A-B不丢包，但是B会不会由于传输窗口满而丢弃包就无法保证，A-C之间传输的可靠就需要上层传输层协议来确认，这就叫做端到端的可靠性。</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a href="https://www.oschina.net/p/kcp" target="_blank" rel="noopener">kcp 详解</a></li>
-<li><a href="http://weakyon.com/2015/07/30/the-impact-fo-rto-to-tcp-timeout.html" target="_blank" rel="noopener">RTO
+<li><a target="_blank" rel="noopener" href="https://www.oschina.net/p/kcp">kcp 详解</a></li>
+<li><a target="_blank" rel="noopener" href="http://weakyon.com/2015/07/30/the-impact-fo-rto-to-tcp-timeout.html">RTO
 对TCP超时的影响</a></li>
-<li><a href="https://sheepbao.github.io/post/tcp_rto_research_and_golang_implement/" target="_blank" rel="noopener">TCP
+<li><a target="_blank" rel="noopener" href="https://sheepbao.github.io/post/tcp_rto_research_and_golang_implement/">TCP
 RTO 计算方法及Go实现验证</a></li>
 </ol>
 
@@ -233,7 +235,7 @@ RTO 计算方法及Go实现验证</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.977Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.875Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -255,7 +257,7 @@ RTO 计算方法及Go实现验证</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kcp/">kcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kcp/" rel="tag">kcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/" rel="tag">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
 
 
             
@@ -268,7 +270,7 @@ RTO 计算方法及Go实现验证</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/23/kcp协议理解/&title=《kcp协议理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/&title=《kcp协议理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -278,23 +280,23 @@ RTO 计算方法及Go实现验证</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/23/kcp协议理解/&title=《kcp协议理解》 — 行路中.&source=TCP Qos 问题
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/&title=《kcp协议理解》 — 行路中.&source=TCP Qos 问题
 TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并不遵循这个规则，TCP迫于流量控制，检测到端到端阻塞就会减小自..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/23/kcp协议理解/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《kcp协议理解》 — 行路中.&url=https://sean10.github.io/2018/03/23/kcp协议理解/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《kcp协议理解》 — 行路中.&url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/23/kcp协议理解/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -317,7 +319,7 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/23/virtualwrapper管理环境/" id="post-prev" class="post-nav-link">
+      <a href="/2018/03/23/virtualwrapper%E7%AE%A1%E7%90%86%E7%8E%AF%E5%A2%83/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">virtualwrapper管理环境</h4>
       </a>
@@ -326,7 +328,7 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/03/19/travis-CI-部署/" id="post-next" class="post-nav-link">
+      <a href="/2018/03/19/travis-CI-%E9%83%A8%E7%BD%B2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">travis CI 部署</h4>
       </a>
@@ -350,7 +352,7 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -371,6 +373,9 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -403,11 +408,11 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -425,7 +430,7 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/23/kcp协议理解/&title=《kcp协议理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/&title=《kcp协议理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -435,23 +440,23 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/23/kcp协议理解/&title=《kcp协议理解》 — 行路中.&source=TCP Qos 问题
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/&title=《kcp协议理解》 — 行路中.&source=TCP Qos 问题
 TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并不遵循这个规则，TCP迫于流量控制，检测到端到端阻塞就会减小自..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/23/kcp协议理解/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《kcp协议理解》 — 行路中.&url=https://sean10.github.io/2018/03/23/kcp协议理解/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《kcp协议理解》 — 行路中.&url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/23/kcp协议理解/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -462,7 +467,7 @@ TCP的流量控制仅针对单条TCP连接，而在网络中UDP、ICMP等包并�
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/03/23/kcp协议理解/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2018/03/23/kcp%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3/" alt="微信分享二维码">
 </div>
 
 
@@ -478,7 +483,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -498,7 +503,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

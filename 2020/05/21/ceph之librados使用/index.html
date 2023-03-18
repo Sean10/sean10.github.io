@@ -22,17 +22,19 @@
     
     <meta name="keywords" content="ceph,rados,存储">
     <meta name="description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
-<meta name="keywords" content="ceph,rados,存储">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之librados使用">
-<meta property="og:url" content="https://sean10.github.io/2020/05/21/ceph之librados使用/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-10-12T07:29:40.388Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-20T19:43:44.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.896Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="ceph">
+<meta property="article:tag" content="rados">
+<meta property="article:tag" content="存储">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ceph之librados使用">
-<meta name="twitter:description" content="librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +42,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,8 +162,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发者模式2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">async模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#radosstripper理解"><span class="post-toc-number">3.</span> <span class="post-toc-text">radosstripper理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados连接过程"><span class="post-toc-number"></span> <span class="post-toc-text">rados连接过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超时参数"><span class="post-toc-number">2.</span> <span class="post-toc-text">超时参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados-lock"><span class="post-toc-number"></span> <span class="post-toc-text">rados lock</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sambactdb_mutex_ceph_rados_helper.c-at-master-samba-teamsamba"><span class="post-toc-number">1.</span> <span class="post-toc-text">samba/ctdb_mutex_ceph_rados_helper.c
-at master · samba-team/samba</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F2"><span class="post-toc-number">1.</span> <span class="post-toc-text">开发者模式[^2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">2.</span> <span class="post-toc-text">async模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#radosstripper%E7%90%86%E8%A7%A3"><span class="post-toc-number">3.</span> <span class="post-toc-text">radosstripper理解</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B"><span class="post-toc-number"></span> <span class="post-toc-text">rados连接过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%BA%90%E7%A0%81"><span class="post-toc-number">1.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B6%85%E6%97%B6%E5%8F%82%E6%95%B0"><span class="post-toc-number">2.</span> <span class="post-toc-text">超时参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#rados-lock"><span class="post-toc-number"></span> <span class="post-toc-text">rados lock</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sambactdb_mutex_ceph_rados_helper.c-at-master-samba-teamsamba"><span class="post-toc-number">1.</span> <span class="post-toc-text">samba&#x2F;ctdb_mutex_ceph_rados_helper.c
+at master · samba-team&#x2F;samba</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -188,12 +190,12 @@ at master · samba-team/samba</span></a></li><li class="post-toc-item post-toc-l
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。</p>
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rados</span><br><span class="line">cluster = rados.Rados(conffile = <span class="string">'ceph.conf'</span>, conf = dict (keyring = <span class="string">'/path/to/keyring'</span>))</span><br><span class="line">cluster.connect()</span><br><span class="line">cmd = json.dumps(&#123;<span class="string">"prefix"</span>: <span class="string">"osd safe-to-destroy"</span>, <span class="string">"ids"</span>: [<span class="string">"2"</span>], <span class="string">"format"</span>: <span class="string">"json"</span>&#125;)</span><br><span class="line">c.mon_command(cmd, <span class="string">b''</span>)</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> rados</span><br><span class="line">cluster = rados.Rados(conffile = <span class="string">&#x27;ceph.conf&#x27;</span>, conf = <span class="built_in">dict</span> (keyring = <span class="string">&#x27;/path/to/keyring&#x27;</span>))</span><br><span class="line">cluster.connect()</span><br><span class="line">cmd = json.dumps(&#123;<span class="string">&quot;prefix&quot;</span>: <span class="string">&quot;osd safe-to-destroy&quot;</span>, <span class="string">&quot;ids&quot;</span>: [<span class="string">&quot;2&quot;</span>], <span class="string">&quot;format&quot;</span>: <span class="string">&quot;json&quot;</span>&#125;)</span><br><span class="line">c.mon_command(cmd, <span class="string">b&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>这里的conf=keyring主要用于当打开了cephx等认证措施时，ceph.conf中又没有记录认证所用到的keyring文件路径时，进行额外设置使用。</p>
 <p>最近我在参照python的librados使用，调用C的接口时，就一直遇到cephx认证打开之后，无法成功<code>rados_connect</code>的情况，具体原理还得细看，但应该和cephx及这个keyring存在强相关性是可以确认的了。</p>
 <p>连接成功之后，主要使用下属这几个接口来查询<code>pool</code>,<code>osd</code>,<code>pg</code>等一些信息。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Rados.mon_command(self, cmd, inbuf, timeout=<span class="number">0</span>, target=<span class="keyword">None</span>)</span><br><span class="line">Rados.osd_command(self, osdid, cmd, inbuf, timeout=<span class="number">0</span>)</span><br><span class="line">Rados.mgr_command(self, cmd, inbuf, timeout=<span class="number">0</span>, target=<span class="keyword">None</span>)</span><br><span class="line">Rados.pg_command(self, pgid, cmd, inbuf, timeout=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Rados.mon_command(self, cmd, inbuf, timeout=<span class="number">0</span>, target=<span class="literal">None</span>)</span><br><span class="line">Rados.osd_command(self, osdid, cmd, inbuf, timeout=<span class="number">0</span>)</span><br><span class="line">Rados.mgr_command(self, cmd, inbuf, timeout=<span class="number">0</span>, target=<span class="literal">None</span>)</span><br><span class="line">Rados.pg_command(self, pgid, cmd, inbuf, timeout=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p>就目前而言，我在抓取IO等指标时，用的比较多的接口是<code>mon_command</code>和<code>mgr_command</code>，使用这几个接口能进行的操作，都有提供cli和rest接口。我主要是在使用cli熟悉接口之后，会去代码中的<code>MonCommands.h</code>和<code>MgrCommands.h</code>文件中去找相近的prefix，然后参照着使用。</p>
 <p>但是偶尔也是会遇到像<code>ceph osd pool stats</code>和<code>ceph pg ls-by-pools</code>这类没怎么能找到相关prefix的情况。这个时候可以充分利用起ceph这个cli入口其实是个python文本的功能了。</p>
 <p><code>python -m pgd /bin/ceph osd pool stats</code>执行，在<code>new_style_command</code>函数内的<code>json_command</code>处打断点，进入后，打印<code>cmddict</code>就可以看到cli发送出去的prefix拼接出来是什么样子的了，然后再拿着这个去代码里搜就好了。</p>
@@ -217,7 +219,7 @@ at master · samba-team/samba</span></a></li><li class="post-toc-item post-toc-l
 <ul>
 <li>global_pre_init里调用的似乎就是这个.</li>
 </ul></li>
-<li><p>“cdef class Rados(object):”-&gt;“name = ‘client.admin’”</p>
+<li><p>"cdef class Rados(object):"-&gt;"name = 'client.admin'"</p>
 <ul>
 <li>默认name client.admin</li>
 </ul></li>
@@ -241,21 +243,30 @@ at master · samba-team/samba</span></a></li><li class="post-toc-item post-toc-l
 </ul>
 <h2 id="超时参数">超时参数</h2>
 <ul>
-<li>client_mount_timeout</li>
-<li>rados_osd_op_timeout</li>
-<li>rados_mon_op_timeout</li>
+<li>client_mount_timeout
+<ul>
+<li>client</li>
+</ul></li>
+<li>rados_osd_op_timeout
+<ul>
+<li>连接上osd后, osd断开的时间</li>
+</ul></li>
+<li>rados_mon_op_timeout
+<ul>
+<li>连接上mon后,mon响应的超时时间</li>
+</ul></li>
 </ul>
 <h1 id="rados-lock">rados lock</h1>
-<h2 id="sambactdb_mutex_ceph_rados_helper.c-at-master-samba-teamsamba"><a href="https://github.com/samba-team/samba/blob/master/ctdb/utils/ceph/ctdb_mutex_ceph_rados_helper.c" target="_blank" rel="noopener">samba/ctdb_mutex_ceph_rados_helper.c
+<h2 id="sambactdb_mutex_ceph_rados_helper.c-at-master-samba-teamsamba"><a target="_blank" rel="noopener" href="https://github.com/samba-team/samba/blob/master/ctdb/utils/ceph/ctdb_mutex_ceph_rados_helper.c">samba/ctdb_mutex_ceph_rados_helper.c
 at master · samba-team/samba</a></h2>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="https://docs.ceph.com/docs/master/rados/api/python/" target="_blank" rel="noopener">Librados
+<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/docs/master/rados/api/python/">Librados
 (Python) — Ceph Documentation</a></li>
-<li><a href="https://www.dovefi.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3crush2%E6%89%8B%E5%8A%A8%E7%BC%96%E8%AF%91ceph%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8librados%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6/" target="_blank" rel="noopener">深入理解ceph
+<li><a target="_blank" rel="noopener" href="https://www.dovefi.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3crush2%E6%89%8B%E5%8A%A8%E7%BC%96%E8%AF%91ceph%E9%9B%86%E7%BE%A4%E5%B9%B6%E4%BD%BF%E7%94%A8librados%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6/">深入理解ceph
 crush(2)—-手动编译ceph集群并使用librados读写文件 · Dovefi never
 stop</a></li>
-<li><a href="https://blog.csdn.net/CSND_PAN/article/details/78707756" target="_blank" rel="noopener">Ceph学习——Librados与Osdc实现源码解析_SEU_PAN的博客-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/CSND_PAN/article/details/78707756">Ceph学习——Librados与Osdc实现源码解析_SEU_PAN的博客-CSDN博客</a></li>
 </ol>
 
         </div>
@@ -265,7 +276,7 @@ stop</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-10-12T07:29:40.388Z" itemprop="dateUpdated">2022-10-12 15:29:40</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.896Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -287,7 +298,7 @@ stop</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rados/">rados</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储/">存储</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rados/" rel="tag">rados</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/" rel="tag">存储</a></li></ul>
 
 
             
@@ -300,7 +311,7 @@ stop</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/21/ceph之librados使用/&title=《ceph之librados使用》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/&title=《ceph之librados使用》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -310,22 +321,22 @@ stop</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/21/ceph之librados使用/&title=《ceph之librados使用》 — 行路中.&source=librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/&title=《ceph之librados使用》 — 行路中.&source=librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/21/ceph之librados使用/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之librados使用》 — 行路中.&url=https://sean10.github.io/2020/05/21/ceph之librados使用/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之librados使用》 — 行路中.&url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/21/ceph之librados使用/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -348,7 +359,7 @@ stop</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/05/24/ceph之df原理/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">ceph之df原理</h4>
       </a>
@@ -357,7 +368,7 @@ stop</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/16/正则表达式BRE-ERE-PRE/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8FBRE-ERE-PRE/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">正则表达式BRE/ERE/PRE</h4>
       </a>
@@ -381,7 +392,7 @@ stop</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -402,6 +413,9 @@ stop</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -434,11 +448,11 @@ stop</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -456,7 +470,7 @@ stop</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/21/ceph之librados使用/&title=《ceph之librados使用》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/&title=《ceph之librados使用》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -466,22 +480,22 @@ stop</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/21/ceph之librados使用/&title=《ceph之librados使用》 — 行路中.&source=librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/&title=《ceph之librados使用》 — 行路中.&source=librados是ceph各组件对外暴露的模块，藉由librados接口，可以高效的使用ceph内的组件进行CRUD等操作。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/21/ceph之librados使用/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之librados使用》 — 行路中.&url=https://sean10.github.io/2020/05/21/ceph之librados使用/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ceph之librados使用》 — 行路中.&url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/21/ceph之librados使用/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -492,7 +506,7 @@ stop</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/21/ceph之librados使用/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/21/ceph%E4%B9%8Blibrados%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
 </div>
 
 
@@ -508,7 +522,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -528,7 +542,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

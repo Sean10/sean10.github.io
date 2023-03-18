@@ -22,17 +22,19 @@
     
     <meta name="keywords" content="windows,terminal,tmux">
     <meta name="description" content="前段时间, windows Terminal 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linux设备做开发。">
-<meta name="keywords" content="windows,terminal,tmux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows terminal1.0暂时还无法替代tmux">
-<meta property="og:url" content="https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="前段时间, windows Terminal 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linux设备做开发。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.827Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-25T05:57:05.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.825Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="terminal">
+<meta property="article:tag" content="tmux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows terminal1.0暂时还无法替代tmux">
-<meta name="twitter:description" content="前段时间, windows Terminal 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linux设备做开发。">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +42,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +162,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">1.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tmux"><span class="post-toc-number">1.</span> <span class="post-toc-text">tmux</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -188,7 +190,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>前段时间, windows Terminal
 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linux设备做开发。
-<a id="more"></a></p>
+<span id="more"></span></p>
 <p>我之前的方案是自己搭了个本地虚拟机做跳板，这个虚拟机里装了tmux，然后我通过windows上可以ssh的工具ssh上去使用<code>tmux</code>，
 再开多个<code>pane</code>ssh开发机。</p>
 <p>tmux通过快捷键切换、创建、分割、临时全屏化pane来操作还是非常便捷的。</p>
@@ -201,11 +203,13 @@ devetop的sync功能将就将就，对于偶尔才会有代码以外的文件需
 terminal的文档[^2]中所说的快捷键使用，基本上我用到的tmux功能都可以修改windows
 terminal的profile来模拟一致。且针对windows上需要临时复制单pane的内容时，这个相比putty能够不用单独全屏化窗口再复制，算是一个优势。</p>
 <p>不过现在唯一的不足就在于，在这个版本暂时没有临时zoom全屏化单个pane的功能，根据[^1]中说的，<code>#996</code>暂时也没有纳入<code>1.x</code>的计划中，在<code>2.0</code>中才会发布。这就有点可惜了，只能再期待了。</p>
+<h2 id="tmux">tmux</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm</span><br><span class="line"></span><br><span class="line">~/.tmux.conf</span><br><span class="line">set -g mode-keys vi</span><br><span class="line">set -g @plugin &#x27;tmux-plugins/tpm&#x27;</span><br><span class="line">set -g @plugin &#x27;tmux-plugins/tmux-resurrect&#x27;</span><br><span class="line">set -g @plugin &#x27;tmux-plugins/tmux-continuum&#x27;</span><br><span class="line">​</span><br><span class="line">set -g @continuum-save-interval &#x27;15&#x27;</span><br><span class="line">set -g @continuum-restore &#x27;on&#x27;</span><br><span class="line">set -g @resurrect-capture-pane-contents &#x27;on&#x27;</span><br><span class="line">​</span><br><span class="line"># Other config ...</span><br><span class="line">​</span><br><span class="line">run -b &#x27;~/.tmux/plugins/tpm/tpm&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="https://github.com/microsoft/terminal/issues/1000" target="_blank" rel="noopener">Scenario: Add
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/terminal/issues/1000">Scenario: Add
 support for panes · Issue #1000 · microsoft/terminal</a></li>
-<li><a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/key-bindings#tab-management-commands" target="_blank" rel="noopener">Windows
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/key-bindings#tab-management-commands">Windows
 Terminal Key Bindings | Microsoft Docs</a></li>
 </ol>
 
@@ -216,7 +220,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.827Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.825Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -238,7 +242,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/">terminal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/">tmux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/" rel="tag">terminal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/" rel="tag">tmux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
 
 
             
@@ -251,7 +255,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -261,23 +265,23 @@ Terminal Key Bindings | Microsoft Docs</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal
 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linu..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -300,7 +304,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/05/28/ceph之df的MAX-AVAIL/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/28/ceph%E4%B9%8Bdf%E7%9A%84MAX-AVAIL/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">ceph之df的MAX AVAIL</h4>
       </a>
@@ -309,7 +313,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/24/ceph之df原理/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/24/ceph%E4%B9%8Bdf%E5%8E%9F%E7%90%86/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">ceph之df原理</h4>
       </a>
@@ -333,7 +337,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -354,6 +358,9 @@ Terminal Key Bindings | Microsoft Docs</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -386,11 +393,11 @@ Terminal Key Bindings | Microsoft Docs</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -408,7 +415,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -418,23 +425,23 @@ Terminal Key Bindings | Microsoft Docs</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/&title=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&source=前段时间, windows Terminal
 1.0发布了，其实我知道这个的时候，还是非常期待的。毕竟公司的开发机是windows，需要一直连接着linu..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《windows terminal1.0暂时还无法替代tmux》 — 行路中.&url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -445,7 +452,7 @@ Terminal Key Bindings | Microsoft Docs</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/25/windows-terminal1-0暂时还无法替代tmux/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/25/windows-terminal1-0%E6%9A%82%E6%97%B6%E8%BF%98%E6%97%A0%E6%B3%95%E6%9B%BF%E4%BB%A3tmux/" alt="微信分享二维码">
 </div>
 
 
@@ -461,7 +468,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -481,7 +488,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

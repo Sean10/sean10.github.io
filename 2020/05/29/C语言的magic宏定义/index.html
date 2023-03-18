@@ -21,18 +21,19 @@
     
     
     <meta name="keywords" content="C,macro">
-    <meta name="description" content="可变参…和 ##__VA_ARGS 基本使用方式如下，我主要用来记日志了">
-<meta name="keywords" content="C,macro">
+    <meta name="description" content="可变参...和 ##__VA_ARGS 基本使用方式如下，我主要用来记日志了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言的magic宏定义">
-<meta property="og:url" content="https://sean10.github.io/2020/05/29/C语言的magic宏定义/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="可变参…和 ##__VA_ARGS 基本使用方式如下，我主要用来记日志了">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:46.082Z">
+<meta property="og:description" content="可变参...和 ##__VA_ARGS 基本使用方式如下，我主要用来记日志了">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-28T17:07:01.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.894Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="macro">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言的magic宏定义">
-<meta name="twitter:description" content="可变参…和 ##__VA_ARGS 基本使用方式如下，我主要用来记日志了">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可变参和-__va_args"><span class="post-toc-number">1.</span> <span class="post-toc-text">可变参…和 ##__VA_ARGS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串化"><span class="post-toc-number">2.</span> <span class="post-toc-text">#字符串化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#token拼接符号4"><span class="post-toc-number">3.</span> <span class="post-toc-text">##Token拼接符号[^4]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#延迟展开"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">延迟展开</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#generic6"><span class="post-toc-number">4.</span> <span class="post-toc-text">_Generic[^6]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82...%E5%92%8C-__va_args"><span class="post-toc-number">1.</span> <span class="post-toc-text">可变参...和 ##__VA_ARGS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%96"><span class="post-toc-number">2.</span> <span class="post-toc-text">#字符串化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#token%E6%8B%BC%E6%8E%A5%E7%AC%A6%E5%8F%B74"><span class="post-toc-number">3.</span> <span class="post-toc-text">##Token拼接符号[^4]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BB%B6%E8%BF%9F%E5%B1%95%E5%BC%80"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">延迟展开</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#generic6"><span class="post-toc-number">4.</span> <span class="post-toc-text">_Generic[^6]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -186,31 +187,31 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="可变参和-__va_args">可变参…和 ##__VA_ARGS</h2>
+            <h2 id="可变参...和-__va_args">可变参...和 ##__VA_ARGS</h2>
 <p>基本使用方式如下，我主要用来记日志了</p>
-<a id="more"></a>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;syslog.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUFF_LEN_O 1024</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LOGGER(priority, format, ...) do&#123; \</span></span><br><span class="line">            logger(priority, format, __FUNCTION__, __LINE__, ##__VA_ARGS__); \</span><br><span class="line">            &#125;<span class="keyword">while</span>(<span class="number">0</span>)</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRINT(x, a)  printf(<span class="meta-string">"\n"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">logger</span><span class="params">(<span class="keyword">int</span> priority, <span class="keyword">const</span> <span class="keyword">char</span> *format, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    openlog(<span class="string">"test_log"</span>, LOG_PID | LOG_NDELAY, LOG_LOCAL0);</span><br><span class="line">    va_list ap;</span><br><span class="line">    <span class="keyword">char</span> buff[BUFF_LEN_O] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> placeholder[] = <span class="string">"function&#123;%s&#125;,line&#123;%d&#125;"</span>;</span><br><span class="line">    va_start(ap, format);</span><br><span class="line">    <span class="built_in">snprintf</span>(buff, <span class="keyword">sizeof</span>(buff) - <span class="number">1</span>, <span class="string">"%s %s"</span>, placeholder, format);</span><br><span class="line">    vsyslog(priority, buff, ap);</span><br><span class="line">    va_end(ap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LOGGER(LOG_INFO, <span class="string">"hello world %s"</span>, <span class="string">"123"</span>);</span><br><span class="line">    LOGGER(LOG_ERR, <span class="string">"new"</span>);</span><br><span class="line">    logger(LOG_INFO, <span class="string">"hello world %s"</span>, __FUNCTION__, __LINE__, <span class="string">"123"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;syslog.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdarg.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUFF_LEN_O 1024</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOGGER(priority, format, ...) do&#123; \</span></span><br><span class="line"><span class="meta">            logger(priority, format, __FUNCTION__, __LINE__, ##__VA_ARGS__); \</span></span><br><span class="line"><span class="meta">            &#125;while(0)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRINT(x, a)  printf(<span class="string">&quot;\n&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">logger</span><span class="params">(<span class="type">int</span> priority, <span class="type">const</span> <span class="type">char</span> *format, ...)</span></span><br><span class="line">&#123;</span><br><span class="line">    openlog(<span class="string">&quot;test_log&quot;</span>, LOG_PID | LOG_NDELAY, LOG_LOCAL0);</span><br><span class="line">    va_list ap;</span><br><span class="line">    <span class="type">char</span> buff[BUFF_LEN_O] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="type">char</span> placeholder[] = <span class="string">&quot;function&#123;%s&#125;,line&#123;%d&#125;&quot;</span>;</span><br><span class="line">    va_start(ap, format);</span><br><span class="line">    <span class="built_in">snprintf</span>(buff, <span class="keyword">sizeof</span>(buff) - <span class="number">1</span>, <span class="string">&quot;%s %s&quot;</span>, placeholder, format);</span><br><span class="line">    vsyslog(priority, buff, ap);</span><br><span class="line">    va_end(ap);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    LOGGER(LOG_INFO, <span class="string">&quot;hello world %s&quot;</span>, <span class="string">&quot;123&quot;</span>);</span><br><span class="line">    LOGGER(LOG_ERR, <span class="string">&quot;new&quot;</span>);</span><br><span class="line">    logger(LOG_INFO, <span class="string">&quot;hello world %s&quot;</span>, __FUNCTION__, __LINE__, <span class="string">&quot;123&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="字符串化">#字符串化</h2>
 <p>会直接把表达式按照字符串输出，并过滤掉注释部分以及前后的空白。
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRINT(x)  do &#123;printf(<span class="meta-string">"\n"</span>#x<span class="meta-string">"\n"</span>);&#125;while(0)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PRINT(print(<span class="string">"hello world"</span>)<span class="comment">/*new*/</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PRINT(x)  do &#123;printf(<span class="string">&quot;\n&quot;</span>#x<span class="string">&quot;\n&quot;</span>);&#125;while(0)</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    PRINT(print(<span class="string">&quot;hello world&quot;</span>)<span class="comment">/*new*/</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="token拼接符号4">##Token拼接符号[^4]</h2>
 <p>这个就比较有意思了，可以通过这个结合gcc的typeof模拟出不少泛型的方式，在编译前预处理时扩展出不少函数或变量定义。参考[^4]文章的大佬用宏扩展出了弱图灵完备的函数。</p>
-<p>按照大佬说的，这个库<a href="https://github.com/pfultz2/Cloak/blob/master/cloak.h" target="_blank" rel="noopener">Cloak/cloak.h
+<p>按照大佬说的，这个库<a target="_blank" rel="noopener" href="https://github.com/pfultz2/Cloak/blob/master/cloak.h">Cloak/cloak.h
 at master · pfultz2/Cloak</a>非常多的例子</p>
 <h3 id="延迟展开">延迟展开</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXPAND(...) __VA_ARGS__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EMPTY()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEFER(id) id EMPTY()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOO() printf(<span class="meta-string">"macro\n"</span>);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DEFER(FOO)() <span class="comment">/*这个解到最后就是FOO()*/</span></span><br><span class="line"><span class="comment">//    DEFER(FOO)();</span></span><br><span class="line">EXPAND(DEFER(FOO)()); <span class="comment">/*这个最后输出macro*/</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> EXPAND(...) __VA_ARGS__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EMPTY()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEFER(id) id EMPTY()</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FOO() printf(<span class="string">&quot;macro\n&quot;</span>);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DEFER(FOO)() <span class="comment">/*这个解到最后就是FOO()*/</span></span><br><span class="line"><span class="comment">//    DEFER(FOO)();</span></span><br><span class="line">EXPAND(DEFER(FOO)()); <span class="comment">/*这个最后输出macro*/</span></span><br></pre></td></tr></table></figure>
 <h2 id="generic6">_Generic[^6]</h2>
 <p>使用方式，<code>_Generic((var), type1 : ..., type2 : ..., ……, default : ...)</code>，感觉果然和大佬们说的一样，比较像是对基本类型进行switch。</p>
 <p>比起这个，可能gcc内建的像typeof这些关键字用起来更具有扩展性。
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;complex.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CUSTOM_GENERIC(_var_) _Generic((_var_), \</span></span><br><span class="line"><span class="comment">/*signed char*/</span>                 <span class="keyword">signed</span> <span class="keyword">char</span> : <span class="built_in">printf</span>(<span class="string">"type signed char, var:%d\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*signed short*/</span>                <span class="keyword">signed</span> <span class="keyword">short</span> : <span class="built_in">printf</span>(<span class="string">"type signed short, var:%hd\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*signed int*/</span>                  <span class="keyword">signed</span> <span class="keyword">int</span> : <span class="built_in">printf</span>(<span class="string">"type signed int, var:%d\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*signed long int */</span>            <span class="keyword">signed</span> <span class="keyword">long</span> <span class="keyword">int</span> : <span class="built_in">printf</span>(<span class="string">"type signed long int, var:%ld\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*signed long long int*/</span>        <span class="keyword">signed</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> : <span class="built_in">printf</span>(<span class="string">"type signed long long int, var:%lld\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*unsigned char*/</span>               <span class="keyword">unsigned</span> <span class="keyword">char</span> : <span class="built_in">printf</span>(<span class="string">"type unsigned char, var:%c\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*unsigned short*/</span>              <span class="keyword">unsigned</span> <span class="keyword">short</span> : <span class="built_in">printf</span>(<span class="string">"type unsigned short, var:%hu\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*unsigned int*/</span>                <span class="keyword">unsigned</span> <span class="keyword">int</span> : <span class="built_in">printf</span>(<span class="string">"type unsigned int, var:%u\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*unsigned long int*/</span>           <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">int</span> : <span class="built_in">printf</span>(<span class="string">"type unsigned long int, var:%lu\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*unsigned long long int*/</span>      <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> : <span class="built_in">printf</span>(<span class="string">"type unsigned long long int, var:%llu\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*float*/</span>                       <span class="keyword">float</span> : <span class="built_in">printf</span>(<span class="string">"type float, var:%f\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*double*/</span>                      <span class="keyword">double</span> : <span class="built_in">printf</span>(<span class="string">"type double, var:%lf\n"</span>, _var_), \</span><br><span class="line"><span class="comment">/*long double*/</span>                 <span class="keyword">long</span> <span class="keyword">double</span> : <span class="built_in">printf</span>(<span class="string">"type long double, var:%llf\n"</span>, _var_),  \</span><br><span class="line"><span class="comment">/*_Bool*/</span>                       <span class="keyword">_Bool</span> : <span class="built_in">printf</span>(<span class="string">"type _Bool, var:%d\n"</span>, _var_),  \</span><br><span class="line"><span class="comment">/*float _Complex*/</span>              <span class="keyword">float</span> <span class="keyword">_Complex</span> : <span class="built_in">printf</span>(<span class="string">"type float _Complex, var:%f+%fi\n"</span>, crealf(_var_), cimagf(_var_)),  \</span><br><span class="line"><span class="comment">/*double _Complex*/</span>             <span class="keyword">double</span> <span class="keyword">_Complex</span> : <span class="built_in">printf</span>(<span class="string">"type double _Complex, var:%f+%fi\n"</span>, creal(_var_), cimag(_var_)),  \</span><br><span class="line"><span class="comment">/*long double _Complex*/</span>        <span class="keyword">long</span> <span class="keyword">double</span> <span class="keyword">_Complex</span> : <span class="built_in">printf</span>(<span class="string">"type long double _Complex, var:%lf+%lfi\n"</span>, creall(_var_), cimagl(_var_)),  \</span><br><span class="line"><span class="comment">/*default*/</span>                     <span class="keyword">default</span> : <span class="built_in">printf</span>(<span class="string">"type default!"</span>) \</span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">float</span> f = <span class="number">100.0f</span>;</span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">_Complex</span> fCex = <span class="number">100.0f</span> + <span class="number">1.0</span><span class="keyword">if</span>;</span><br><span class="line"> </span><br><span class="line">    CUSTOM_GENERIC(a);              <span class="comment">//type signed int, var:10</span></span><br><span class="line">    CUSTOM_GENERIC(f);              <span class="comment">//type float, var:100.000000</span></span><br><span class="line">    CUSTOM_GENERIC(fCex);           <span class="comment">//type float _Complex, var:100.000000+1.000000i</span></span><br><span class="line">    CUSTOM_GENERIC(<span class="number">12</span>);             <span class="comment">//type signed int, var:12</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;complex.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CUSTOM_GENERIC(_var_) _Generic((_var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*signed char*/</span>                 signed char : printf(<span class="string">&quot;type signed char, var:%d\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*signed short*/</span>                signed short : printf(<span class="string">&quot;type signed short, var:%hd\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*signed int*/</span>                  signed int : printf(<span class="string">&quot;type signed int, var:%d\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*signed long int */</span>            signed long int : printf(<span class="string">&quot;type signed long int, var:%ld\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*signed long long int*/</span>        signed long long int : printf(<span class="string">&quot;type signed long long int, var:%lld\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*unsigned char*/</span>               unsigned char : printf(<span class="string">&quot;type unsigned char, var:%c\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*unsigned short*/</span>              unsigned short : printf(<span class="string">&quot;type unsigned short, var:%hu\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*unsigned int*/</span>                unsigned int : printf(<span class="string">&quot;type unsigned int, var:%u\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*unsigned long int*/</span>           unsigned long int : printf(<span class="string">&quot;type unsigned long int, var:%lu\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*unsigned long long int*/</span>      unsigned long long int : printf(<span class="string">&quot;type unsigned long long int, var:%llu\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*float*/</span>                       float : printf(<span class="string">&quot;type float, var:%f\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*double*/</span>                      double : printf(<span class="string">&quot;type double, var:%lf\n&quot;</span>, _var_), \</span></span><br><span class="line"><span class="meta"><span class="comment">/*long double*/</span>                 long double : printf(<span class="string">&quot;type long double, var:%llf\n&quot;</span>, _var_),  \</span></span><br><span class="line"><span class="meta"><span class="comment">/*_Bool*/</span>                       _Bool : printf(<span class="string">&quot;type _Bool, var:%d\n&quot;</span>, _var_),  \</span></span><br><span class="line"><span class="meta"><span class="comment">/*float _Complex*/</span>              float _Complex : printf(<span class="string">&quot;type float _Complex, var:%f+%fi\n&quot;</span>, crealf(_var_), cimagf(_var_)),  \</span></span><br><span class="line"><span class="meta"><span class="comment">/*double _Complex*/</span>             double _Complex : printf(<span class="string">&quot;type double _Complex, var:%f+%fi\n&quot;</span>, creal(_var_), cimag(_var_)),  \</span></span><br><span class="line"><span class="meta"><span class="comment">/*long double _Complex*/</span>        long double _Complex : printf(<span class="string">&quot;type long double _Complex, var:%lf+%lfi\n&quot;</span>, creall(_var_), cimagl(_var_)),  \</span></span><br><span class="line"><span class="meta"><span class="comment">/*default*/</span>                     default : printf(<span class="string">&quot;type default!&quot;</span>) \</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">float</span> f = <span class="number">100.0f</span>;</span><br><span class="line">    <span class="type">float</span> <span class="type">_Complex</span> fCex = <span class="number">100.0f</span> + <span class="number">1.0</span><span class="keyword">if</span>;</span><br><span class="line"> </span><br><span class="line">    CUSTOM_GENERIC(a);              <span class="comment">//type signed int, var:10</span></span><br><span class="line">    CUSTOM_GENERIC(f);              <span class="comment">//type float, var:100.000000</span></span><br><span class="line">    CUSTOM_GENERIC(fCex);           <span class="comment">//type float _Complex, var:100.000000+1.000000i</span></span><br><span class="line">    CUSTOM_GENERIC(<span class="number">12</span>);             <span class="comment">//type signed int, var:12</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="https://onevcat.com/2014/01/black-magic-in-macro/" target="_blank" rel="noopener">宏定义的黑魔法
+<li><a target="_blank" rel="noopener" href="https://onevcat.com/2014/01/black-magic-in-macro/">宏定义的黑魔法
 - 宏菜鸟起飞手册</a></li>
-<li><a href="https://en.wikipedia.org/wiki/C_preprocessor#Token_concatenation" target="_blank" rel="noopener">C
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/C_preprocessor#Token_concatenation">C
 preprocessor - Wikipedia</a></li>
-<li><a href="https://blog.csdn.net/qq_31243065/article/details/80904613" target="_blank" rel="noopener">C11新增关键字：_Generic(泛型)_c/c++_南雨兮-CSDN博客</a></li>
-<li><a href="http://feng.zone/2017/05/20/%E5%AE%8F%E5%AE%9A%E4%B9%89%E9%BB%91%E9%AD%94%E6%B3%95-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7-3/" target="_blank" rel="noopener">宏定义黑魔法-从入门到奇技淫巧
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31243065/article/details/80904613">C11新增关键字：_Generic(泛型)_c/c++_南雨兮-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="http://feng.zone/2017/05/20/%E5%AE%8F%E5%AE%9A%E4%B9%89%E9%BB%91%E9%AD%94%E6%B3%95-%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7-3/">宏定义黑魔法-从入门到奇技淫巧
 (3) | Feng.Zone</a></li>
 </ol>
 
@@ -221,7 +222,7 @@ preprocessor - Wikipedia</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:46.082Z" itemprop="dateUpdated">2021-04-05 19:24:46</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.894Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -243,7 +244,7 @@ preprocessor - Wikipedia</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macro/">macro</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macro/" rel="tag">macro</a></li></ul>
 
 
             
@@ -256,7 +257,7 @@ preprocessor - Wikipedia</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/&title=《C语言的magic宏定义》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/&title=《C语言的magic宏定义》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -266,23 +267,23 @@ preprocessor - Wikipedia</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/&title=《C语言的magic宏定义》 — 行路中.&source=可变参…和 ##__VA_ARGS
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/&title=《C语言的magic宏定义》 — 行路中.&source=可变参...和 ##__VA_ARGS
 基本使用方式如下，我主要用来记日志了" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/29/C语言的magic宏定义/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言的magic宏定义》 — 行路中.&url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言的magic宏定义》 — 行路中.&url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -305,7 +306,7 @@ preprocessor - Wikipedia</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/05/30/上海新版社保卡办理因支付宝被迫踩坑/" id="post-prev" class="post-nav-link">
+      <a href="/2020/05/30/%E4%B8%8A%E6%B5%B7%E6%96%B0%E7%89%88%E7%A4%BE%E4%BF%9D%E5%8D%A1%E5%8A%9E%E7%90%86%E5%9B%A0%E6%94%AF%E4%BB%98%E5%AE%9D%E8%A2%AB%E8%BF%AB%E8%B8%A9%E5%9D%91/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">上海新版社保卡办理因支付宝被迫踩坑</h4>
       </a>
@@ -314,7 +315,7 @@ preprocessor - Wikipedia</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/05/28/黑苹果AMD显卡风扇降速/" id="post-next" class="post-nav-link">
+      <a href="/2020/05/28/%E9%BB%91%E8%8B%B9%E6%9E%9CAMD%E6%98%BE%E5%8D%A1%E9%A3%8E%E6%89%87%E9%99%8D%E9%80%9F/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">黑苹果AMD显卡风扇降速</h4>
       </a>
@@ -338,7 +339,7 @@ preprocessor - Wikipedia</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -359,6 +360,9 @@ preprocessor - Wikipedia</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -391,11 +395,11 @@ preprocessor - Wikipedia</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -413,7 +417,7 @@ preprocessor - Wikipedia</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/&title=《C语言的magic宏定义》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/&title=《C语言的magic宏定义》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -423,23 +427,23 @@ preprocessor - Wikipedia</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/&title=《C语言的magic宏定义》 — 行路中.&source=可变参…和 ##__VA_ARGS
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/&title=《C语言的magic宏定义》 — 行路中.&source=可变参...和 ##__VA_ARGS
 基本使用方式如下，我主要用来记日志了" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/29/C语言的magic宏定义/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言的magic宏定义》 — 行路中.&url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言的magic宏定义》 — 行路中.&url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/29/C语言的magic宏定义/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -450,7 +454,7 @@ preprocessor - Wikipedia</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/29/C语言的magic宏定义/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/05/29/C%E8%AF%AD%E8%A8%80%E7%9A%84magic%E5%AE%8F%E5%AE%9A%E4%B9%89/" alt="微信分享二维码">
 </div>
 
 
@@ -466,7 +470,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -486,7 +490,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

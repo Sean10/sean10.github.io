@@ -22,17 +22,21 @@
     
     <meta name="keywords" content="python,编程范式,code,paradigm,exception">
     <meta name="description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 面向切面编程(AOP)[^6] Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1exc">
-<meta name="keywords" content="python,编程范式,code,paradigm,exception">
 <meta property="og:type" content="article">
 <meta property="og:title" content="异常处理实践初探">
-<meta property="og:url" content="https://sean10.github.io/2020/06/25/异常处理实践初探/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 面向切面编程(AOP)[^6] Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1exc">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-11T07:14:56.384Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-24T16:26:46.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.888Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="编程范式">
+<meta property="article:tag" content="code">
+<meta property="article:tag" content="paradigm">
+<meta property="article:tag" content="exception">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异常处理实践初探">
-<meta name="twitter:description" content="背景 在用异常的时候,会有这么几个疑问 * 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 * 异常的代码影响到了代码的可读性, 有没有更合适的解决方式? 异常的使用场景 详见if-else与try-catch初理解 面向切面编程(AOP)[^6] Todo:异常的代码可读性 像是如果一个业务逻辑里要执行多种封装的接口调用 123456789try:    # code 1exc">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +44,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,7 +164,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#异常的使用场景"><span class="post-toc-number">2.</span> <span class="post-toc-text">异常的使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#面向切面编程aop6"><span class="post-toc-number">3.</span> <span class="post-toc-text">面向切面编程(AOP)[^6]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo异常的代码可读性"><span class="post-toc-number">4.</span> <span class="post-toc-text">Todo:异常的代码可读性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#捕获异常记录到日志里"><span class="post-toc-number">5.</span> <span class="post-toc-text">捕获异常记录到日志里</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意点"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">注意点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单元测试不可疏忽"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">单元测试不可疏忽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">样例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口拟定正常"><span class="post-toc-number">6.</span> <span class="post-toc-text">接口拟定正常</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#直接抛出exception打断运行"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">直接抛出Exception打断运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exception作为返回值"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">exception作为返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#不捕获异常上层也不做捕获直接抛出"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">不捕获异常,上层也不做捕获,直接抛出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#section"><span class="post-toc-number">7.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">8.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-number">2.</span> <span class="post-toc-text">异常的使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8Baop6"><span class="post-toc-number">3.</span> <span class="post-toc-text">面向切面编程(AOP)[^6]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#todo%E5%BC%82%E5%B8%B8%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8F%AF%E8%AF%BB%E6%80%A7"><span class="post-toc-number">4.</span> <span class="post-toc-text">Todo:异常的代码可读性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8D%95%E8%8E%B7%E5%BC%82%E5%B8%B8%E8%AE%B0%E5%BD%95%E5%88%B0%E6%97%A5%E5%BF%97%E9%87%8C"><span class="post-toc-number">5.</span> <span class="post-toc-text">捕获异常记录到日志里</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">注意点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E4%B8%8D%E5%8F%AF%E7%96%8F%E5%BF%BD"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">单元测试不可疏忽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B7%E4%BE%8B"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">样例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%8B%9F%E5%AE%9A%E6%AD%A3%E5%B8%B8"><span class="post-toc-number">6.</span> <span class="post-toc-text">接口拟定正常</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B4%E6%8E%A5%E6%8A%9B%E5%87%BAexception%E6%89%93%E6%96%AD%E8%BF%90%E8%A1%8C"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">直接抛出Exception打断运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#exception%E4%BD%9C%E4%B8%BA%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">exception作为返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8D%E6%8D%95%E8%8E%B7%E5%BC%82%E5%B8%B8%E4%B8%8A%E5%B1%82%E4%B9%9F%E4%B8%8D%E5%81%9A%E6%8D%95%E8%8E%B7%E7%9B%B4%E6%8E%A5%E6%8A%9B%E5%87%BA"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">不捕获异常,上层也不做捕获,直接抛出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#section"><span class="post-toc-number">7.</span> <span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#reference"><span class="post-toc-number">8.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -218,7 +222,7 @@
 <p>那么,怎么才能把<code>traceback</code>栈信息记录到日志里呢?</p>
 <p>目前我用的比较多的是<code>python3.6</code>,
 这个版本的<code>logging.log</code>提供了<code>exc_info</code>的选项</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># coode in here</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    logging.error(e, exc_info=<span class="keyword">True</span>)</span><br><span class="line">    <span class="comment"># or</span></span><br><span class="line">    logging.exception(e)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="comment"># coode in here</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    logging.error(e, exc_info=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># or</span></span><br><span class="line">    logging.exception(e)</span><br></pre></td></tr></table></figure>
 <h2 id="接口拟定正常">接口拟定正常</h2>
 <h3 id="直接抛出exception打断运行">直接抛出Exception打断运行</h3>
 <p>正常来说,我们提供接口时,会约定一套返回值及内容格式,以及这个接口执行出现问题时的反应,如抛出什么异常,来让调用者捕获.这是<code>Python</code>的推荐做法.</p>
@@ -244,13 +248,13 @@ exception checking. The only thing possibly under discussion here is
 whether there is some other use of stubs (maybe an IDE suggesting a
 raise or try/except) that might benefit from declaring exceptions. But
 so far everything brought up has just been about the relative advantages
-of checked exceptions, and on that issue is close. We won’t do it.</p>
+of checked exceptions, and on that issue is close. We won't do it.</p>
 </blockquote>
 <blockquote>
-<p>The PEP doesn’t mandate any particular behavior from a type checker,
-so I’m not prohibiting you from doing something you find useful. Whether
+<p>The PEP doesn't mandate any particular behavior from a type checker,
+so I'm not prohibiting you from doing something you find useful. Whether
 it is actually useful may well depend on the codebase you are checking.
-I just don’t want to have to put anything in the PEP that would seem to
+I just don't want to have to put anything in the PEP that would seem to
 make checked exceptions part of the signature of a function. Maybe as a
 compromise we can just say in the PEP that a conformant type checker
 should not interpret the body of functions in stubs, and you can have a
@@ -262,21 +266,21 @@ bodies.</p>
 <p>Never throw an exception of my own Always catch any possible
 exception that might be thrown by a library I’m using on the same line
 as it is thrown and deal with it immediately.</p>
-<p>It’s all well and good that exceptions are widely used in core Python
+<p>It's all well and good that exceptions are widely used in core Python
 constructs, but why is a different question.</p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a href="https://stackoverflow.com/questions/1508467/log-exception-with-traceback" target="_blank" rel="noopener">python
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1508467/log-exception-with-traceback">python
 - Log exception with traceback - Stack Overflow</a></li>
-<li><a href="https://docs.python.org/3/library/logging.html" target="_blank" rel="noopener">logging —
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/logging.html">logging —
 Logging facility for Python — Python 3.8.3 documentation</a></li>
-<li><a href="https://juejin.im/post/5c85a09e518825657a3d6b4a" target="_blank" rel="noopener">Python
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5c85a09e518825657a3d6b4a">Python
 工匠： 异常处理的三个好习惯 - 掘金</a></li>
-<li><a href="https://dev.to/wemake-services/python-exceptions-considered-an-anti-pattern-17o9" target="_blank" rel="noopener">Python
+<li><a target="_blank" rel="noopener" href="https://dev.to/wemake-services/python-exceptions-considered-an-anti-pattern-17o9">Python
 exceptions considered an anti-pattern - DEV</a></li>
-<li><a href="https://github.com/python/typing/issues/71" target="_blank" rel="noopener">declaring
+<li><a target="_blank" rel="noopener" href="https://github.com/python/typing/issues/71">declaring
 exceptions in stubs · Issue #71 · python/typing</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/65889466" target="_blank" rel="noopener">Python小书4-统一异常处理 -
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/65889466">Python小书4-统一异常处理 -
 知乎</a></li>
 </ol>
 
@@ -287,7 +291,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-11T07:14:56.384Z" itemprop="dateUpdated">2021-04-11 15:14:56</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.888Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -309,7 +313,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exception/">exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paradigm/">paradigm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程范式/">编程范式</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exception/" rel="tag">exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paradigm/" rel="tag">paradigm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/" rel="tag">编程范式</a></li></ul>
 
 
             
@@ -322,7 +326,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/25/异常处理实践初探/&title=《异常处理实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《异常处理实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -332,22 +336,22 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/25/异常处理实践初探/&title=《异常处理实践初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《异常处理实践初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/25/异常处理实践初探/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《异常处理实践初探》 — 行路中.&url=https://sean10.github.io/2020/06/25/异常处理实践初探/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《异常处理实践初探》 — 行路中.&url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/25/异常处理实践初探/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -370,7 +374,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/06/27/hexo开启atom订阅/" id="post-prev" class="post-nav-link">
+      <a href="/2020/06/27/hexo%E5%BC%80%E5%90%AFatom%E8%AE%A2%E9%98%85/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">hexo开启atom订阅</h4>
       </a>
@@ -379,7 +383,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/24/静态类型检查价值初认识/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/24/%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5%E4%BB%B7%E5%80%BC%E5%88%9D%E8%AE%A4%E8%AF%86/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">静态类型检查价值初认识</h4>
       </a>
@@ -403,7 +407,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -424,6 +428,9 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -456,11 +463,11 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -478,7 +485,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/25/异常处理实践初探/&title=《异常处理实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《异常处理实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -488,22 +495,22 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/25/异常处理实践初探/&title=《异常处理实践初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《异常处理实践初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/25/异常处理实践初探/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《异常处理实践初探》 — 行路中.&url=https://sean10.github.io/2020/06/25/异常处理实践初探/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《异常处理实践初探》 — 行路中.&url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/25/异常处理实践初探/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -514,7 +521,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/06/25/异常处理实践初探/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/06/25/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" alt="微信分享二维码">
 </div>
 
 
@@ -530,7 +537,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -550,7 +557,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

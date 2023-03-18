@@ -22,17 +22,18 @@
     
     <meta name="keywords" content="高可用,keepalived">
     <meta name="description" content="定义上, 高可用其实分为以下几种.  冗余  以及可以基于这个剩下的节点提供除冗余外的完整的服务.  降级  关闭某些功能的情况下继续提供服务.  熔断  熔断更多指检测到连续故障, 让后续的也先拦截掉, 避免无法提供服务但依旧冲击服务压力. 检测到恢复之后再自愈那种. ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时候应该是阻塞, 而并没有通过熔断中断io. 但是如果是业">
-<meta name="keywords" content="高可用,keepalived">
 <meta property="og:type" content="article">
 <meta property="og:title" content="高可用初理解">
-<meta property="og:url" content="https://sean10.github.io/2021/11/27/高可用初理解/index.html">
+<meta property="og:url" content="https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="定义上, 高可用其实分为以下几种.  冗余  以及可以基于这个剩下的节点提供除冗余外的完整的服务.  降级  关闭某些功能的情况下继续提供服务.  熔断  熔断更多指检测到连续故障, 让后续的也先拦截掉, 避免无法提供服务但依旧冲击服务压力. 检测到恢复之后再自愈那种. ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时候应该是阻塞, 而并没有通过熔断中断io. 但是如果是业">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-07-15T00:46:00.000Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-27T15:17:08.000Z">
+<meta property="article:modified_time" content="2022-07-15T00:46:00.000Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="高可用">
+<meta property="article:tag" content="keepalived">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高可用初理解">
-<meta name="twitter:description" content="定义上, 高可用其实分为以下几种.  冗余  以及可以基于这个剩下的节点提供除冗余外的完整的服务.  降级  关闭某些功能的情况下继续提供服务.  熔断  熔断更多指检测到连续故障, 让后续的也先拦截掉, 避免无法提供服务但依旧冲击服务压力. 检测到恢复之后再自愈那种. ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时候应该是阻塞, 而并没有通过熔断中断io. 但是如果是业">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,15 +161,15 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义上-高可用其实分为以下几种."><span class="post-toc-number">1.</span> <span class="post-toc-text">定义上,
-高可用其实分为以下几种.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完整高可用方案的分类"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">完整高可用方案的分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用级高可用方案细分"><span class="post-toc-number">2.</span> <span class="post-toc-text">应用级高可用方案细分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务之间"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">服务之间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#中间件"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">中间件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#脑裂问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">脑裂问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常见解决方案ha高可用集群中脑裂问题解决---运维总结---散尽浮华---博客园"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">常见解决方案[^HA高可用集群中”脑裂”问题解决
-- 运维总结 - 散尽浮华 - 博客园]</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#场景"><span class="post-toc-number"></span> <span class="post-toc-text">场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#以ceph-2节点举例."><span class="post-toc-number">1.</span> <span class="post-toc-text">以ceph 2节点举例.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是否有可能让ceph在无法与mon通信的情况下-依旧支持根据现有的osdmap去建立通信的方案"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">1.
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%8A-%E9%AB%98%E5%8F%AF%E7%94%A8%E5%85%B6%E5%AE%9E%E5%88%86%E4%B8%BA%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D."><span class="post-toc-number">1.</span> <span class="post-toc-text">定义上,
+高可用其实分为以下几种.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%8C%E6%95%B4%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">完整高可用方案的分类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BA%94%E7%94%A8%E7%BA%A7%E9%AB%98%E5%8F%AF%E7%94%A8%E6%96%B9%E6%A1%88%E7%BB%86%E5%88%86"><span class="post-toc-number">2.</span> <span class="post-toc-text">应用级高可用方案细分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">客户端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">服务之间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">中间件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%84%91%E8%A3%82%E9%97%AE%E9%A2%98"><span class="post-toc-number">3.</span> <span class="post-toc-text">脑裂问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88ha%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4%E4%B8%AD%E8%84%91%E8%A3%82%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3---%E8%BF%90%E7%BB%B4%E6%80%BB%E7%BB%93---%E6%95%A3%E5%B0%BD%E6%B5%AE%E5%8D%8E---%E5%8D%9A%E5%AE%A2%E5%9B%AD"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">常见解决方案[^HA高可用集群中&quot;脑裂&quot;问题解决
+- 运维总结 - 散尽浮华 - 博客园]</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="post-toc-number"></span> <span class="post-toc-text">场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%A5ceph-2%E8%8A%82%E7%82%B9%E4%B8%BE%E4%BE%8B."><span class="post-toc-number">1.</span> <span class="post-toc-text">以ceph 2节点举例.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%98%AF%E5%90%A6%E6%9C%89%E5%8F%AF%E8%83%BD%E8%AE%A9ceph%E5%9C%A8%E6%97%A0%E6%B3%95%E4%B8%8Emon%E9%80%9A%E4%BF%A1%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B-%E4%BE%9D%E6%97%A7%E6%94%AF%E6%8C%81%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E7%9A%84osdmap%E5%8E%BB%E5%BB%BA%E7%AB%8B%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E6%A1%88"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">1.
 是否有可能让ceph在无法与mon通信的情况下,
-依旧支持根据现有的osdmap去建立通信的方案?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#是否可以在2节点情况下-让存活足够数量的mon"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">2.
-是否可以在2节点情况下, 让存活足够数量的mon</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#比如2节点运行3个mon"><span class="post-toc-number">1.0.2.1.</span> <span class="post-toc-text">比如2节点运行3个mon?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#比如就拉起2个mon"><span class="post-toc-number">1.0.2.2.</span> <span class="post-toc-text">比如就拉起2个mon?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#思路"><span class="post-toc-number">1.0.2.3.</span> <span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#todo-这里存在一个疑问项-网关按rfc协议如何响应呢"><span class="post-toc-number">1.0.2.4.</span> <span class="post-toc-text">TODO:
-这里存在一个疑问项, 网关按RFC协议如何响应呢?</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#双控服务器-则是特例"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">双控服务器 则是特例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#现实化场景"><span class="post-toc-number">2.</span> <span class="post-toc-text">现实化场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#业务运行在本节点上如计算存储一体-此时存储的前后端网络其实都是节点的后端网络"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">业务运行在本节点上(如计算/存储一体,
-此时存储的前后端网络其实都是节点的后端网络)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#前端网络断开"><span class="post-toc-number">2.0.1.1.</span> <span class="post-toc-text">前端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#后端网络断开"><span class="post-toc-number">2.0.1.2.</span> <span class="post-toc-text">后端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#全断开"><span class="post-toc-number">2.0.1.3.</span> <span class="post-toc-text">全断开</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#业务是外部节点-通过存储的前端网络通信"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">业务是外部节点
-通过存储的前端网络通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#前端网络断开-1"><span class="post-toc-number">2.0.2.1.</span> <span class="post-toc-text">前端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#后端网络断开-1"><span class="post-toc-number">2.0.2.2.</span> <span class="post-toc-text">后端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#全断开-1"><span class="post-toc-number">2.0.2.3.</span> <span class="post-toc-text">全断开</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol></li></ol>
+依旧支持根据现有的osdmap去建立通信的方案?</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%9C%A82%E8%8A%82%E7%82%B9%E6%83%85%E5%86%B5%E4%B8%8B-%E8%AE%A9%E5%AD%98%E6%B4%BB%E8%B6%B3%E5%A4%9F%E6%95%B0%E9%87%8F%E7%9A%84mon"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">2.
+是否可以在2节点情况下, 让存活足够数量的mon</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%AF%94%E5%A6%822%E8%8A%82%E7%82%B9%E8%BF%90%E8%A1%8C3%E4%B8%AAmon"><span class="post-toc-number">1.0.2.1.</span> <span class="post-toc-text">比如2节点运行3个mon?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%AF%94%E5%A6%82%E5%B0%B1%E6%8B%89%E8%B5%B72%E4%B8%AAmon"><span class="post-toc-number">1.0.2.2.</span> <span class="post-toc-text">比如就拉起2个mon?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="post-toc-number">1.0.2.3.</span> <span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#todo-%E8%BF%99%E9%87%8C%E5%AD%98%E5%9C%A8%E4%B8%80%E4%B8%AA%E7%96%91%E9%97%AE%E9%A1%B9-%E7%BD%91%E5%85%B3%E6%8C%89rfc%E5%8D%8F%E8%AE%AE%E5%A6%82%E4%BD%95%E5%93%8D%E5%BA%94%E5%91%A2"><span class="post-toc-number">1.0.2.4.</span> <span class="post-toc-text">TODO:
+这里存在一个疑问项, 网关按RFC协议如何响应呢?</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%8C%E6%8E%A7%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%88%99%E6%98%AF%E7%89%B9%E4%BE%8B"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">双控服务器 则是特例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%8E%B0%E5%AE%9E%E5%8C%96%E5%9C%BA%E6%99%AF"><span class="post-toc-number">2.</span> <span class="post-toc-text">现实化场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E8%BF%90%E8%A1%8C%E5%9C%A8%E6%9C%AC%E8%8A%82%E7%82%B9%E4%B8%8A%E5%A6%82%E8%AE%A1%E7%AE%97%E5%AD%98%E5%82%A8%E4%B8%80%E4%BD%93-%E6%AD%A4%E6%97%B6%E5%AD%98%E5%82%A8%E7%9A%84%E5%89%8D%E5%90%8E%E7%AB%AF%E7%BD%91%E7%BB%9C%E5%85%B6%E5%AE%9E%E9%83%BD%E6%98%AF%E8%8A%82%E7%82%B9%E7%9A%84%E5%90%8E%E7%AB%AF%E7%BD%91%E7%BB%9C"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">业务运行在本节点上(如计算&#x2F;存储一体,
+此时存储的前后端网络其实都是节点的后端网络)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E7%AB%AF%E7%BD%91%E7%BB%9C%E6%96%AD%E5%BC%80"><span class="post-toc-number">2.0.1.1.</span> <span class="post-toc-text">前端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%90%8E%E7%AB%AF%E7%BD%91%E7%BB%9C%E6%96%AD%E5%BC%80"><span class="post-toc-number">2.0.1.2.</span> <span class="post-toc-text">后端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%85%A8%E6%96%AD%E5%BC%80"><span class="post-toc-number">2.0.1.3.</span> <span class="post-toc-text">全断开</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%9A%E5%8A%A1%E6%98%AF%E5%A4%96%E9%83%A8%E8%8A%82%E7%82%B9-%E9%80%9A%E8%BF%87%E5%AD%98%E5%82%A8%E7%9A%84%E5%89%8D%E7%AB%AF%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">业务是外部节点
+通过存储的前端网络通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E7%AB%AF%E7%BD%91%E7%BB%9C%E6%96%AD%E5%BC%80-1"><span class="post-toc-number">2.0.2.1.</span> <span class="post-toc-text">前端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%90%8E%E7%AB%AF%E7%BD%91%E7%BB%9C%E6%96%AD%E5%BC%80-1"><span class="post-toc-number">2.0.2.2.</span> <span class="post-toc-text">后端网络断开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%85%A8%E6%96%AD%E5%BC%80-1"><span class="post-toc-number">2.0.2.3.</span> <span class="post-toc-text">全断开</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -223,10 +224,10 @@ ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时
 <li>针对自身能提供的能力通过限流拦住.</li>
 </ol></li>
 </ol>
-<p><a href="https://blog.51cto.com/u_13626762/4132114" target="_blank" rel="noopener">高并发整体可用性：一文详解降级、限流和熔断_Hollis的技术博客_51CTO博客</a></p>
-<p><a href="https://juejin.cn/post/6844903838231576589" target="_blank" rel="noopener">面试官：说说降级、熔断、限流
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_13626762/4132114">高并发整体可用性：一文详解降级、限流和熔断_Hollis的技术博客_51CTO博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903838231576589">面试官：说说降级、熔断、限流
 - 掘金</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/341939685" target="_blank" rel="noopener">服务降级与服务熔断区别 -
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/341939685">服务降级与服务熔断区别 -
 知乎</a></p>
 <h3 id="完整高可用方案的分类">完整高可用方案的分类</h3>
 <p>完整的高可用方案目前理随着当前发展主要分为以下几类.</p>
@@ -261,7 +262,7 @@ ceph-osd假设重构降级了, 这个情况下业务io继续打下来, 这个时
 <p>或是提供dns层级的</p>
 <h2 id="脑裂问题">脑裂问题</h2>
 <p>脑裂问题按目前理解, 算是高可用问题中存在风险较大的一个了</p>
-<h3 id="常见解决方案ha高可用集群中脑裂问题解决---运维总结---散尽浮华---博客园">常见解决方案[^HA高可用集群中”脑裂”问题解决
+<h3 id="常见解决方案ha高可用集群中脑裂问题解决---运维总结---散尽浮华---博客园">常见解决方案[^HA高可用集群中"脑裂"问题解决
 - 运维总结 - 散尽浮华 - 博客园]</h3>
 <ol type="1">
 <li>添加冗余的心跳线路
@@ -283,7 +284,7 @@ ping不通则代表本节点有问题, 需要自行停止服务</li>
 </ol></li>
 <li>存在奇数节点的选举算法</li>
 </ol></li>
-<li>fense(屏蔽)机制 –硬件设备
+<li>fense(屏蔽)机制 --硬件设备
 <ol type="1">
 <li>利用ipmi的fence设备, 将故障节点踢出集群? 为啥不是局部组件踢出?</li>
 <li>RHCS的Fence设备分为内部和外部两种Fence。内部fence有IBMRSAII卡，HP的ILO卡，以及IPMI设备等；外部FENCE设备有UPS，SANswitch
@@ -301,12 +302,12 @@ ping不通则代表本节点有问题, 需要自行停止服务</li>
 <li>在 Pacemaker 群集中，节点级别屏蔽的实施方式是
 STONITH（关闭其他节点）</li>
 </ol></li>
-<li><a href="https://documentation.suse.com/zh-cn/sle-ha/15-SP1/html/SLE-HA-all/cha-ha-fencing.html" target="_blank" rel="noopener">屏障和
+<li><a target="_blank" rel="noopener" href="https://documentation.suse.com/zh-cn/sle-ha/15-SP1/html/SLE-HA-all/cha-ha-fencing.html">屏障和
 STONITH | 管理指南 | SUSE Linux Enterprise High Availability Extension
 15 SP1</a></li>
 </ol></li>
 </ol>
-<p>[^HA高可用集群中”脑裂”问题解决 - 运维总结 - 散尽浮华 -
+<p>[^HA高可用集群中"脑裂"问题解决 - 运维总结 - 散尽浮华 -
 博客园](https://www.cnblogs.com/kevingrace/p/7205846.html)</p>
 <h1 id="场景">场景</h1>
 <p>目前主要是以下场景</p>
@@ -464,7 +465,7 @@ C和A在此时互相冲突.</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keepalived/">keepalived</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高可用/">高可用</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keepalived/" rel="tag">keepalived</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/" rel="tag">高可用</a></li></ul>
 
 
             
@@ -477,7 +478,7 @@ C和A在此时互相冲突.</p>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/11/27/高可用初理解/&title=《高可用初理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/&title=《高可用初理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -487,22 +488,22 @@ C和A在此时互相冲突.</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/11/27/高可用初理解/&title=《高可用初理解》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/&title=《高可用初理解》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/11/27/高可用初理解/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高可用初理解》 — 行路中.&url=https://sean10.github.io/2021/11/27/高可用初理解/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高可用初理解》 — 行路中.&url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/11/27/高可用初理解/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -525,7 +526,7 @@ C和A在此时互相冲突.</p>
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2021/12/02/ceph之dashboard/" id="post-prev" class="post-nav-link">
+      <a href="/2021/12/02/ceph%E4%B9%8Bdashboard/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">ceph之dashboard社区状态小探</h4>
       </a>
@@ -534,7 +535,7 @@ C和A在此时互相冲突.</p>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2021/10/24/团队管理初探/" id="post-next" class="post-nav-link">
+      <a href="/2021/10/24/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86%E5%88%9D%E6%8E%A2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">团队管理初探</h4>
       </a>
@@ -558,7 +559,7 @@ C和A在此时互相冲突.</p>
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -579,6 +580,9 @@ C和A在此时互相冲突.</p>
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -611,11 +615,11 @@ C和A在此时互相冲突.</p>
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -633,7 +637,7 @@ C和A在此时互相冲突.</p>
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/11/27/高可用初理解/&title=《高可用初理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/&title=《高可用初理解》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -643,22 +647,22 @@ C和A在此时互相冲突.</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/11/27/高可用初理解/&title=《高可用初理解》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/&title=《高可用初理解》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/11/27/高可用初理解/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高可用初理解》 — 行路中.&url=https://sean10.github.io/2021/11/27/高可用初理解/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《高可用初理解》 — 行路中.&url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/11/27/高可用初理解/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -669,7 +673,7 @@ C和A在此时互相冲突.</p>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/11/27/高可用初理解/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2021/11/27/%E9%AB%98%E5%8F%AF%E7%94%A8%E5%88%9D%E7%90%86%E8%A7%A3/" alt="微信分享二维码">
 </div>
 
 
@@ -685,7 +689,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -705,7 +709,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

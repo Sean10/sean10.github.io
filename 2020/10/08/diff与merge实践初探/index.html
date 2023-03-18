@@ -20,19 +20,22 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="linux,diff,merge,git">
+    <meta name="keywords" content="linux,git,diff,merge">
     <meta name="description" content="概念 diff和merge是一回事吗? 实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容, 自动merge, 那属于diff可以做到的内容. 但是如果想要手动merge, 比如展示开来, 然后一行行比较人工决定使用哪份, 这个就不属于diff提供的功能了, 需要一个展示diff结果然后保存回原始文件中的工具, 这个就属于编辑器的范畴了. 像beyond compare这种更像">
-<meta name="keywords" content="linux,diff,merge,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="diff与merge实践初探">
-<meta property="og:url" content="https://sean10.github.io/2020/10/08/diff与merge实践初探/index.html">
+<meta property="og:url" content="https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/index.html">
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="概念 diff和merge是一回事吗? 实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容, 自动merge, 那属于diff可以做到的内容. 但是如果想要手动merge, 比如展示开来, 然后一行行比较人工决定使用哪份, 这个就不属于diff提供的功能了, 需要一个展示diff结果然后保存回原始文件中的工具, 这个就属于编辑器的范畴了. 像beyond compare这种更像">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-05T11:24:45.803Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-08T14:14:57.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.810Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="diff">
+<meta property="article:tag" content="merge">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="diff与merge实践初探">
-<meta name="twitter:description" content="概念 diff和merge是一回事吗? 实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容, 自动merge, 那属于diff可以做到的内容. 但是如果想要手动merge, 比如展示开来, 然后一行行比较人工决定使用哪份, 这个就不属于diff提供的功能了, 需要一个展示diff结果然后保存回原始文件中的工具, 这个就属于编辑器的范畴了. 像beyond compare这种更像">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +43,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,8 +163,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#diff和merge是一回事吗"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">diff和merge是一回事吗?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#diff和patch和rcs版本控制关系"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">diff和patch和RCS版本控制关系?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cvs和subvision的诞生"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">CVS和Subvision的诞生</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git和mercurial"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Git和Mercurial</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#diff"><span class="post-toc-number">2.</span> <span class="post-toc-text">diff</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持格式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">支持格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#merge5"><span class="post-toc-number">3.</span> <span class="post-toc-text">merge[^5]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#样例文件"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">样例文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#a.txt"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">a.txt</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#b.txt"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">b.txt</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自带的配合c语言的"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">自带的配合C语言的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#group-line-format-gfmt-gtype"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">group line format (GFMT
-GTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#格式符"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">格式符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">输出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#line-format-lfmt-ltype"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Line Format (LFMT LTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-1"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#格式符-1"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">格式符</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义需求"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">自定义需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并两个文件-比如跨平台编辑笔记时-多个文本都出现了新增内容-同步盘创建了conflict文件的时候"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">合并两个文件,
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="post-toc-number">1.</span> <span class="post-toc-text">概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#diff%E5%92%8Cmerge%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B%E5%90%97"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">diff和merge是一回事吗?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#diff%E5%92%8Cpatch%E5%92%8Crcs%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%85%B3%E7%B3%BB"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">diff和patch和RCS版本控制关系?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cvs%E5%92%8Csubvision%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">CVS和Subvision的诞生</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git%E5%92%8Cmercurial"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Git和Mercurial</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#diff"><span class="post-toc-number">2.</span> <span class="post-toc-text">diff</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">支持格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#merge5"><span class="post-toc-number">3.</span> <span class="post-toc-text">merge[^5]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B7%E4%BE%8B%E6%96%87%E4%BB%B6"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">样例文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#a.txt"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">a.txt</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#b.txt"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">b.txt</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%87%AA%E5%B8%A6%E7%9A%84%E9%85%8D%E5%90%88c%E8%AF%AD%E8%A8%80%E7%9A%84"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">自带的配合C语言的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#group-line-format-gfmt-gtype"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">group line format (GFMT
+GTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%BC%E5%BC%8F%E7%AC%A6"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">格式符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">输出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#line-format-lfmt-ltype"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Line Format (LFMT LTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%BC%E5%BC%8F%E7%AC%A6-1"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">格式符</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9C%80%E6%B1%82"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">自定义需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6-%E6%AF%94%E5%A6%82%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%BE%91%E7%AC%94%E8%AE%B0%E6%97%B6-%E5%A4%9A%E4%B8%AA%E6%96%87%E6%9C%AC%E9%83%BD%E5%87%BA%E7%8E%B0%E4%BA%86%E6%96%B0%E5%A2%9E%E5%86%85%E5%AE%B9-%E5%90%8C%E6%AD%A5%E7%9B%98%E5%88%9B%E5%BB%BA%E4%BA%86conflict%E6%96%87%E4%BB%B6%E7%9A%84%E6%97%B6%E5%80%99"><span class="post-toc-number">3.5.1.</span> <span class="post-toc-text">合并两个文件,
 比如跨平台编辑笔记时, 多个文本都出现了新增内容,
 同步盘创建了Conflict文件的时候</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
@@ -199,7 +202,7 @@ GTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-le
 需要一个展示<code>diff</code>结果然后保存回原始文件中的工具,
 这个就属于编辑器的范畴了.
 像<code>beyond compare</code>这种更像是一个集成了差异比较功能的编辑器了.</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="diff和patch和rcs版本控制关系"><code>diff</code>和<code>patch</code>和<code>RCS</code>版本控制关系?</h2>
 <p>unified输出的diff就是一个patch, 然后通过patch命令打入.
 基于上面的开发出了<code>Source Code Control System</code>和<code>Revision Control System</code>(RCS).RCS新增了<code>lock</code>的功能,
@@ -241,30 +244,30 @@ GTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-le
 <p><code>diff</code>自身也支持一定的<code>if-then-else</code>的<code>merge</code>操作</p>
 <h2 id="样例文件">样例文件</h2>
 <h3 id="a.txt">a.txt</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The Way that can be told of is not the eternal Way;</span><br><span class="line">The name that can be named is not the eternal name.</span><br><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">The Named is the mother of all things.</span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">  they have different names.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">The Way that can be told of is not the eternal Way;</span><br><span class="line">The name that can be named is not the eternal name.</span><br><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">The Named is the mother of all things.</span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">  they have different names.</span><br></pre></td></tr></table></figure>
 <h3 id="b.txt">b.txt</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">The named is the mother of all things.</span><br><span class="line"></span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">  they have different names.</span><br><span class="line">They both may be called deep and profound.</span><br><span class="line">Deeper and more profound,</span><br><span class="line">The door of all subtleties!</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">The named is the mother of all things.</span><br><span class="line"></span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">  they have different names.</span><br><span class="line">They both may be called deep and profound.</span><br><span class="line">Deeper and more profound,</span><br><span class="line">The door of all subtleties!</span><br></pre></td></tr></table></figure>
 <h2 id="自带的配合c语言的">自带的配合<code>C</code>语言的</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff -DTWO a.txt b.txt</span><br></pre></td></tr></table></figure>
 <p>等价于下面这段,这段等后面的自定义掌握之后比较好看懂.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--old-group-format=<span class="string">'#ifndef name</span></span><br><span class="line"><span class="string">%&lt;#endif /* ! name */</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">--new-group-format=<span class="string">'#ifdef name</span></span><br><span class="line"><span class="string">%&gt;#endif /* name */</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">--unchanged-group-format=<span class="string">'%='</span> \</span><br><span class="line">--changed-group-format=<span class="string">'#ifndef name</span></span><br><span class="line"><span class="string">%&lt;#else /* name */</span></span><br><span class="line"><span class="string">%&gt;#endif /* name */</span></span><br><span class="line"><span class="string">'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">--old-group-format=<span class="string">&#x27;#ifndef name</span></span><br><span class="line"><span class="string">%&lt;#endif /* ! name */</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">--new-group-format=<span class="string">&#x27;#ifdef name</span></span><br><span class="line"><span class="string">%&gt;#endif /* name */</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">--unchanged-group-format=<span class="string">&#x27;%=&#x27;</span> \</span><br><span class="line">--changed-group-format=<span class="string">&#x27;#ifndef name</span></span><br><span class="line"><span class="string">%&lt;#else /* name */</span></span><br><span class="line"><span class="string">%&gt;#endif /* name */</span></span><br><span class="line"><span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>输出得到的是以第二个文件为基础的<code>ifndef</code>之类的分支.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#ifndef TWO</span><br><span class="line">The Way that can be told of is not the eternal Way;</span><br><span class="line">The name that can be named is not the eternal name.</span><br><span class="line">#endif /* ! TWO */</span><br><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">#ifndef TWO</span><br><span class="line">The Named is the mother of all things.</span><br><span class="line">#else /* TWO */</span><br><span class="line">The named is the mother of all things.</span><br><span class="line"></span><br><span class="line">#endif /* TWO */</span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">#ifndef TWO</span><br><span class="line">  they have different names.</span><br><span class="line">#else /* TWO */</span><br><span class="line">  they have different names.</span><br><span class="line">They both may be called deep and profound.</span><br><span class="line">Deeper and more profound,</span><br><span class="line">The door of all subtleties!</span><br><span class="line">#endif /* TWO */</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#ifndef TWO</span><br><span class="line">The Way that can be told of is not the eternal Way;</span><br><span class="line">The name that can be named is not the eternal name.</span><br><span class="line">#endif /* ! TWO */</span><br><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">#ifndef TWO</span><br><span class="line">The Named is the mother of all things.</span><br><span class="line">#else /* TWO */</span><br><span class="line">The named is the mother of all things.</span><br><span class="line"></span><br><span class="line">#endif /* TWO */</span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">#ifndef TWO</span><br><span class="line">  they have different names.</span><br><span class="line">#else /* TWO */</span><br><span class="line">  they have different names.</span><br><span class="line">They both may be called deep and profound.</span><br><span class="line">Deeper and more profound,</span><br><span class="line">The door of all subtleties!</span><br><span class="line">#endif /* TWO */</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="group-line-format-gfmt-gtype">group line format (GFMT
 GTYPE)</h2>
 <p>基本上这里的区分主要就是多行匹配和单行匹配的区别了.
 和<code>LFMT</code>同时运行的时候, 匹配了单行之后, 多行匹配也会触发一次.
 具体暂时不知道运行时是先按多行还是单行扫,
 总之看到的结果是两项修改均会触发.</p>
-<p>主要会有以下几种结果. * –old-group-format=format *
-–new-group-format=format * –changed-group-format=format *
+<p>主要会有以下几种结果. * --old-group-format=format *
+--new-group-format=format * --changed-group-format=format *
 目前来看,如果配置了这条,
 则<code>--new-group-format</code>基本上会被替换成这个. *
 只有当这条没设置的时候, 可以让<code>new</code>生效. *
-–unchanged-group-format=format</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">diff \</span><br><span class="line">   --old-group-format=<span class="string">'\begin&#123;old&#125;</span></span><br><span class="line"><span class="string">%&lt;\end&#123;old&#125;</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">   --new-group-format=<span class="string">'\begin&#123;bf&#125;</span></span><br><span class="line"><span class="string">%&gt;\end&#123;bf&#125;</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">--unchanged-group-format=<span class="string">'%='</span> \</span><br><span class="line">   --changed-group-format=<span class="string">'\begin&#123;em&#125;</span></span><br><span class="line"><span class="string">%&lt;\end&#123;em&#125;</span></span><br><span class="line"><span class="string">\begin&#123;bf&#125;</span></span><br><span class="line"><span class="string">%&gt;\end&#123;bf&#125;</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">   a.txt b.txt </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">diff \</span><br><span class="line">   --unchanged-group-format=<span class="string">'%%'</span> \</span><br><span class="line">   --old-group-format=<span class="string">'-------- %dn line%(n=1?:s) deleted at %df:</span></span><br><span class="line"><span class="string">%&lt;'</span> \</span><br><span class="line">   --new-group-format=<span class="string">'-------- %dN line%(N=1?:s) added after %de:</span></span><br><span class="line"><span class="string">%&gt;'</span> \</span><br><span class="line">   --changed-group-format=<span class="string">'-------- %dn line%(n=1?:s) changed at %df:</span></span><br><span class="line"><span class="string">%&lt;-------- to:</span></span><br><span class="line"><span class="string">%&gt;'</span> \</span><br><span class="line">   a.txt b.txt &gt; output.4</span><br></pre></td></tr></table></figure>
+--unchanged-group-format=format</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">diff \</span><br><span class="line">   --old-group-format=<span class="string">&#x27;\begin&#123;old&#125;</span></span><br><span class="line"><span class="string">%&lt;\end&#123;old&#125;</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">   --new-group-format=<span class="string">&#x27;\begin&#123;bf&#125;</span></span><br><span class="line"><span class="string">%&gt;\end&#123;bf&#125;</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">--unchanged-group-format=<span class="string">&#x27;%=&#x27;</span> \</span><br><span class="line">   --changed-group-format=<span class="string">&#x27;\begin&#123;em&#125;</span></span><br><span class="line"><span class="string">%&lt;\end&#123;em&#125;</span></span><br><span class="line"><span class="string">\begin&#123;bf&#125;</span></span><br><span class="line"><span class="string">%&gt;\end&#123;bf&#125;</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">   a.txt b.txt </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">diff \</span><br><span class="line">   --unchanged-group-format=<span class="string">&#x27;%%&#x27;</span> \</span><br><span class="line">   --old-group-format=<span class="string">&#x27;-------- %dn line%(n=1?:s) deleted at %df:</span></span><br><span class="line"><span class="string">%&lt;&#x27;</span> \</span><br><span class="line">   --new-group-format=<span class="string">&#x27;-------- %dN line%(N=1?:s) added after %de:</span></span><br><span class="line"><span class="string">%&gt;&#x27;</span> \</span><br><span class="line">   --changed-group-format=<span class="string">&#x27;-------- %dn line%(n=1?:s) changed at %df:</span></span><br><span class="line"><span class="string">%&lt;-------- to:</span></span><br><span class="line"><span class="string">%&gt;&#x27;</span> \</span><br><span class="line">   a.txt b.txt &gt; output.4</span><br></pre></td></tr></table></figure>
 <p>上面这段的<code>%(n=1?:s)</code>一开始一点都不理解是啥意思,
-突然才反应过来是<code>line</code>和<code>lines</code>的区别…还以为这个<code>N</code>是和前面的<code>%dn</code>有关的…</p>
+突然才反应过来是<code>line</code>和<code>lines</code>的区别...还以为这个<code>N</code>是和前面的<code>%dn</code>有关的...</p>
 <h3 id="格式符">格式符</h3>
 <blockquote>
 <p>‘%&lt;’ stands for the lines from the first file, including the
@@ -303,16 +306,16 @@ lines’ if N (the number of lines in the group in the new file) is 0, to
 <p>单纯格式符和行号这部分,
 基本按照<code>printf</code>的使用方式就可以了.</p>
 <h3 id="输出">输出</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;old&#125;</span><br><span class="line">The Way that can be told of is not the eternal Way;</span><br><span class="line">The name that can be named is not the eternal name.</span><br><span class="line">\end&#123;old&#125;</span><br><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">\begin&#123;old&#125;</span><br><span class="line">The Named is the mother of all things.</span><br><span class="line">\end&#123;old&#125;</span><br><span class="line">\begin&#123;bf&#125;</span><br><span class="line">The named is the mother of all things.</span><br><span class="line"></span><br><span class="line">\end&#123;bf&#125;</span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">\begin&#123;old&#125;</span><br><span class="line">  they have different names.</span><br><span class="line">\end&#123;old&#125;</span><br><span class="line">\begin&#123;bf&#125;</span><br><span class="line">  they have different names.</span><br><span class="line">They both may be called deep and profound.</span><br><span class="line">Deeper and more profound,</span><br><span class="line">The door of all subtleties!</span><br><span class="line">\end&#123;bf&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;old&#125;</span><br><span class="line">The Way that can be told of is not the eternal Way;</span><br><span class="line">The name that can be named is not the eternal name.</span><br><span class="line">\end&#123;old&#125;</span><br><span class="line">The Nameless is the origin of Heaven and Earth;</span><br><span class="line">\begin&#123;old&#125;</span><br><span class="line">The Named is the mother of all things.</span><br><span class="line">\end&#123;old&#125;</span><br><span class="line">\begin&#123;bf&#125;</span><br><span class="line">The named is the mother of all things.</span><br><span class="line"></span><br><span class="line">\end&#123;bf&#125;</span><br><span class="line">Therefore let there always be non-being,</span><br><span class="line">  so we may see their subtlety,</span><br><span class="line">And let there always be being,</span><br><span class="line">  so we may see their outcome.</span><br><span class="line">The two are the same,</span><br><span class="line">But after they are produced,</span><br><span class="line">\begin&#123;old&#125;</span><br><span class="line">  they have different names.</span><br><span class="line">\end&#123;old&#125;</span><br><span class="line">\begin&#123;bf&#125;</span><br><span class="line">  they have different names.</span><br><span class="line">They both may be called deep and profound.</span><br><span class="line">Deeper and more profound,</span><br><span class="line">The door of all subtleties!</span><br><span class="line">\end&#123;bf&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="line-format-lfmt-ltype">Line Format (LFMT LTYPE)</h2>
-<p>主要做差异有这几种结果. * –old-line-format=format *
-–new-line-format=format * –unchanged-line-format=format</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">diff \</span><br><span class="line">   --old-line-format=<span class="string">'&lt; %l</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">   --new-line-format=<span class="string">'&gt; %l</span></span><br><span class="line"><span class="string">'</span> \</span><br><span class="line">   --old-group-format=<span class="string">'%df%(f=l?:,%dl)d%dE</span></span><br><span class="line"><span class="string">%&lt;'</span> \</span><br><span class="line">   --new-group-format=<span class="string">'%dea%dF%(F=L?:,%dL)</span></span><br><span class="line"><span class="string">%&gt;'</span> \</span><br><span class="line">   --changed-group-format=<span class="string">'%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)</span></span><br><span class="line"><span class="string">%&lt;---</span></span><br><span class="line"><span class="string">%&gt;'</span> \</span><br><span class="line">   --unchanged-group-format=<span class="string">''</span> \</span><br><span class="line">   a.txt b.txt</span><br></pre></td></tr></table></figure>
+<p>主要做差异有这几种结果. * --old-line-format=format *
+--new-line-format=format * --unchanged-line-format=format</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">diff \</span><br><span class="line">   --old-line-format=<span class="string">&#x27;&lt; %l</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">   --new-line-format=<span class="string">&#x27;&gt; %l</span></span><br><span class="line"><span class="string">&#x27;</span> \</span><br><span class="line">   --old-group-format=<span class="string">&#x27;%df%(f=l?:,%dl)d%dE</span></span><br><span class="line"><span class="string">%&lt;&#x27;</span> \</span><br><span class="line">   --new-group-format=<span class="string">&#x27;%dea%dF%(F=L?:,%dL)</span></span><br><span class="line"><span class="string">%&gt;&#x27;</span> \</span><br><span class="line">   --changed-group-format=<span class="string">&#x27;%df%(f=l?:,%dl)c%dF%(F=L?:,%dL)</span></span><br><span class="line"><span class="string">%&lt;---</span></span><br><span class="line"><span class="string">%&gt;&#x27;</span> \</span><br><span class="line">   --unchanged-group-format=<span class="string">&#x27;&#x27;</span> \</span><br><span class="line">   a.txt b.txt</span><br></pre></td></tr></table></figure>
 <p>使用这个的时候,发生这样一个问题,
 只能看到触发了<code>--old-group-format</code>和<code>--changed-group-format</code>,
 没变化的那种倒是没发现</p>
 <h3 id="输出-1">输出</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1,2d0</span><br><span class="line">&lt; The Way that can be told of is not the eternal Way;</span><br><span class="line">&lt; The name that can be named is not the eternal name.</span><br><span class="line">4c2,3</span><br><span class="line">&lt; The Named is the mother of all things.</span><br><span class="line">---</span><br><span class="line">&gt; The named is the mother of all things.</span><br><span class="line">&gt; </span><br><span class="line">11c10,13</span><br><span class="line">&lt;   they have different names.</span><br><span class="line">---</span><br><span class="line">&gt;   they have different names.</span><br><span class="line">&gt; They both may be called deep and profound.</span><br><span class="line">&gt; Deeper and more profound,</span><br><span class="line">&gt; The door of all subtleties!</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1,2d0</span><br><span class="line">&lt; The Way that can be told of is not the eternal Way;</span><br><span class="line">&lt; The name that can be named is not the eternal name.</span><br><span class="line">4c2,3</span><br><span class="line">&lt; The Named is the mother of all things.</span><br><span class="line">---</span><br><span class="line">&gt; The named is the mother of all things.</span><br><span class="line">&gt; </span><br><span class="line">11c10,13</span><br><span class="line">&lt;   they have different names.</span><br><span class="line">---</span><br><span class="line">&gt;   they have different names.</span><br><span class="line">&gt; They both may be called deep and profound.</span><br><span class="line">&gt; Deeper and more profound,</span><br><span class="line">&gt; The door of all subtleties!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="格式符-1">格式符</h3>
 <blockquote>
 <p>In a line format, ordinary characters represent themselves;
@@ -325,14 +328,14 @@ See Incomplete Lines.</p>
 newline (if any). If a line is incomplete, this format preserves its
 incompleteness.</p>
 <p>‘%%’ stands for ‘%’.</p>
-<p>‘%c’C’’ where C is a single character, stands for C. C may not be a
-backslash or an apostrophe. For example, ‘%c’:’’ stands for a colon.</p>
-<p>‘%c’’’ where O is a string of 1, 2, or 3 octal digits, stands for the
-character with octal code O. For example, ‘%c’\0’’ stands for a null
+<p>‘%c'C'’ where C is a single character, stands for C. C may not be a
+backslash or an apostrophe. For example, ‘%c':'’ stands for a colon.</p>
+<p>‘%c''’ where O is a string of 1, 2, or 3 octal digits, stands for the
+character with octal code O. For example, ‘%c'\0'’ stands for a null
 character.</p>
 <p>‘Fn’ where F is a printf conversion specification, stands for the
 line number formatted with F. For example, ‘%.5dn’ prints the line
-number using the printf format “%.5d”. See Line Group Formats, for more
+number using the printf format "%.5d". See Line Group Formats, for more
 about printf conversion specifications.</p>
 </blockquote>
 <h2 id="自定义需求">自定义需求</h2>
@@ -344,12 +347,12 @@ about printf conversion specifications.</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
 <li>man diff</li>
-<li><a href="https://stackoverflow.com/questions/16902001/manually-merge-two-files-using-diff" target="_blank" rel="noopener">linux
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16902001/manually-merge-two-files-using-diff">linux
 - Manually merge two files using diff - Stack Overflow</a></li>
-<li><a href="https://www.ibm.com/developerworks/cn/linux/l-diffp/?lnk=hmhmhmhm" target="_blank" rel="noopener">用Diff和Patch工具维护源码</a></li>
-<li><a href="http://conanblog.me/Unix-as-IDE--Chinese-/revisions.html" target="_blank" rel="noopener">版本控制
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/l-diffp/?lnk=hmhmhmhm">用Diff和Patch工具维护源码</a></li>
+<li><a target="_blank" rel="noopener" href="http://conanblog.me/Unix-as-IDE--Chinese-/revisions.html">版本控制
 — Unix 即集成开发环境 1.0 文档</a></li>
-<li><a href="https://www.gnu.org/software/diffutils/manual/html_node/If_002dthen_002delse.html" target="_blank" rel="noopener">If-then-else
+<li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/diffutils/manual/html_node/If_002dthen_002delse.html">If-then-else
 (Comparing and Merging Files)</a></li>
 </ol>
 
@@ -360,7 +363,7 @@ about printf conversion specifications.</p>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2021-04-05T11:24:45.803Z" itemprop="dateUpdated">2021-04-05 19:24:45</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.810Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -382,7 +385,7 @@ about printf conversion specifications.</p>
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diff/">diff</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/merge/">merge</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diff/" rel="tag">diff</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/merge/" rel="tag">merge</a></li></ul>
 
 
             
@@ -395,7 +398,7 @@ about printf conversion specifications.</p>
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/08/diff与merge实践初探/&title=《diff与merge实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《diff与merge实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -405,7 +408,7 @@ about printf conversion specifications.</p>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/08/diff与merge实践初探/&title=《diff与merge实践初探》 — 行路中.&source=概念
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《diff与merge实践初探》 — 行路中.&source=概念
 diff和merge是一回事吗?
 实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容,
 自动merge, 那属于diff可以做到..." data-title=" QQ">
@@ -413,17 +416,17 @@ diff和merge是一回事吗?
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/08/diff与merge实践初探/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《diff与merge实践初探》 — 行路中.&url=https://sean10.github.io/2020/10/08/diff与merge实践初探/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《diff与merge实践初探》 — 行路中.&url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/08/diff与merge实践初探/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -446,7 +449,7 @@ diff和merge是一回事吗?
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/10/17/ceph之clion的cmake-md/" id="post-prev" class="post-nav-link">
+      <a href="/2020/10/17/ceph%E4%B9%8Bclion%E7%9A%84cmake-md/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">ceph之clion的cmake.md</h4>
       </a>
@@ -455,7 +458,7 @@ diff和merge是一回事吗?
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/09/12/vscode之增加quote实现/" id="post-next" class="post-nav-link">
+      <a href="/2020/09/12/vscode%E4%B9%8B%E5%A2%9E%E5%8A%A0quote%E5%AE%9E%E7%8E%B0/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">vscode之增加quote实现</h4>
       </a>
@@ -479,7 +482,7 @@ diff和merge是一回事吗?
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -500,6 +503,9 @@ diff和merge是一回事吗?
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -532,11 +538,11 @@ diff和merge是一回事吗?
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -554,7 +560,7 @@ diff和merge是一回事吗?
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/08/diff与merge实践初探/&title=《diff与merge实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《diff与merge实践初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -564,7 +570,7 @@ diff和merge是一回事吗?
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/08/diff与merge实践初探/&title=《diff与merge实践初探》 — 行路中.&source=概念
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&title=《diff与merge实践初探》 — 行路中.&source=概念
 diff和merge是一回事吗?
 实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容,
 自动merge, 那属于diff可以做到..." data-title=" QQ">
@@ -572,17 +578,17 @@ diff和merge是一回事吗?
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/08/diff与merge实践初探/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《diff与merge实践初探》 — 行路中.&url=https://sean10.github.io/2020/10/08/diff与merge实践初探/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《diff与merge实践初探》 — 行路中.&url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/08/diff与merge实践初探/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -593,7 +599,7 @@ diff和merge是一回事吗?
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/10/08/diff与merge实践初探/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2020/10/08/diff%E4%B8%8Emerge%E5%AE%9E%E8%B7%B5%E5%88%9D%E6%8E%A2/" alt="微信分享二维码">
 </div>
 
 
@@ -609,7 +615,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -629,7 +635,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 

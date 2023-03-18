@@ -21,18 +21,19 @@
     
     
     <meta name="keywords" content="项目,流程">
-    <meta name="description" content="问题背景 写本文的背景, 主要来源于项目开发过程中的一些问题, 属于是十分影响进度的那类.  联调期间发现一些与约定接口文档不同问题, 导致存在的重新联调.  变更比例相对较大.  业务的开发/调试需要等待平台上游功能开发完.  如OS组和集群组的平台功能完毕后, 依赖这俩部分提供的基础系统与数据库的业务组件方能开工. 这部分过程中, 其他组其实无法投入这部分的开发. 但是联调又基本就是同一时间各">
-<meta name="keywords" content="项目,流程">
+    <meta name="description" content="问题背景 写本文的背景, 主要来源于项目开发过程中的一些问题, 属于是十分影响进度的那类.  联调期间发现一些与约定接口文档不同问题, 导致存在的重新联调.  变更比例相对较大.  业务的开发&#x2F;调试需要等待平台上游功能开发完.  如OS组和集群组的平台功能完毕后, 依赖这俩部分提供的基础系统与数据库的业务组件方能开工. 这部分过程中, 其他组其实无法投入这部分的开发. 但是联调又基本就是同一时间各">
 <meta property="og:type" content="article">
 <meta property="og:title" content="联调集成质量小思">
-<meta property="og:url" content="https://sean10.github.io/2022/10/30/联调集成质量小思/index.html">
+<meta property="og:url" content="https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/index.html">
 <meta property="og:site_name" content="行路中.">
-<meta property="og:description" content="问题背景 写本文的背景, 主要来源于项目开发过程中的一些问题, 属于是十分影响进度的那类.  联调期间发现一些与约定接口文档不同问题, 导致存在的重新联调.  变更比例相对较大.  业务的开发/调试需要等待平台上游功能开发完.  如OS组和集群组的平台功能完毕后, 依赖这俩部分提供的基础系统与数据库的业务组件方能开工. 这部分过程中, 其他组其实无法投入这部分的开发. 但是联调又基本就是同一时间各">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-10-30T15:50:15.401Z">
+<meta property="og:description" content="问题背景 写本文的背景, 主要来源于项目开发过程中的一些问题, 属于是十分影响进度的那类.  联调期间发现一些与约定接口文档不同问题, 导致存在的重新联调.  变更比例相对较大.  业务的开发&#x2F;调试需要等待平台上游功能开发完.  如OS组和集群组的平台功能完毕后, 依赖这俩部分提供的基础系统与数据库的业务组件方能开工. 这部分过程中, 其他组其实无法投入这部分的开发. 但是联调又基本就是同一时间各">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-29T17:01:47.000Z">
+<meta property="article:modified_time" content="2023-03-18T15:11:14.864Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="项目">
+<meta property="article:tag" content="流程">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="联调集成质量小思">
-<meta name="twitter:description" content="问题背景 写本文的背景, 主要来源于项目开发过程中的一些问题, 属于是十分影响进度的那类.  联调期间发现一些与约定接口文档不同问题, 导致存在的重新联调.  变更比例相对较大.  业务的开发/调试需要等待平台上游功能开发完.  如OS组和集群组的平台功能完毕后, 依赖这俩部分提供的基础系统与数据库的业务组件方能开工. 这部分过程中, 其他组其实无法投入这部分的开发. 但是联调又基本就是同一时间各">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -40,10 +41,10 @@
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
-    <!-- custom head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!-- custom head -->
     
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
@@ -160,12 +161,12 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题理解"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需求设计变更"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1. 需求/设计变更</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基于平台的业务功能的开发过程"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.
-基于平台的业务功能的开发过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组装开源组件时的集成测试"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3. 组装开源组件时的集成测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部署类代码"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">部署类代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#io路径的核心逻辑代码"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">IO路径的核心逻辑代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#管理的web前后端代码"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">管理的web前后端代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#后端"><span class="post-toc-number">2.3.3.1.</span> <span class="post-toc-text">后端</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#前端"><span class="post-toc-number">2.3.3.2.</span> <span class="post-toc-text">前端</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#藉由新版本需求-同时进行功能开发"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4. 藉由新版本需求,
-同时进行功能开发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多任务同时派发-与-分批次派发"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5. 多任务同时派发 与
-分批次派发</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">3.</span> <span class="post-toc-text">TODO</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#企业集成网站架构中大型网站如何防止项目延期敏捷开发在实际项目如何应用_停止重构的博客-csdn博客"><span class="post-toc-number">4.</span> <span class="post-toc-text">企业集成[^【网站架构】中大型网站如何防止项目延期？敏捷开发在实际项目如何应用？\_停止重构的博客\-CSDN博客]</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#openeuler"><span class="post-toc-number">5.</span> <span class="post-toc-text">OpenEuler</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#日常构建测试范围"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">日常构建测试范围</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#alpha版本"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">alpha版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#beta版本"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">beta版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#release"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">release</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件包-测试标准"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">软件包 测试标准</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#todo潜在的问题-如何解决那种依赖较多的包-如ceph-暂未找到"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">TODO:潜在的问题,
-如何解决那种依赖较多的包? 如ceph? 暂未找到</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试代码"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">测试代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#openeulerintegration-test---码云---开源中国-系统基础包命令的集成测试"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">openEuler/integration-test
-- 码云 - 开源中国 系统基础包/命令的集成测试</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9C%80%E6%B1%82%E8%AE%BE%E8%AE%A1%E5%8F%98%E6%9B%B4"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1. 需求&#x2F;设计变更</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%B9%B3%E5%8F%B0%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD%E7%9A%84%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.
+基于平台的业务功能的开发过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%84%E8%A3%85%E5%BC%80%E6%BA%90%E7%BB%84%E4%BB%B6%E6%97%B6%E7%9A%84%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3. 组装开源组件时的集成测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%83%A8%E7%BD%B2%E7%B1%BB%E4%BB%A3%E7%A0%81"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">部署类代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#io%E8%B7%AF%E5%BE%84%E7%9A%84%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E4%BB%A3%E7%A0%81"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">IO路径的核心逻辑代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E7%9A%84web%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="post-toc-number">2.3.3.</span> <span class="post-toc-text">管理的web前后端代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%90%8E%E7%AB%AF"><span class="post-toc-number">2.3.3.1.</span> <span class="post-toc-text">后端</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="post-toc-number">2.3.3.2.</span> <span class="post-toc-text">前端</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%97%89%E7%94%B1%E6%96%B0%E7%89%88%E6%9C%AC%E9%9C%80%E6%B1%82-%E5%90%8C%E6%97%B6%E8%BF%9B%E8%A1%8C%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4. 藉由新版本需求,
+同时进行功能开发</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%90%8C%E6%97%B6%E6%B4%BE%E5%8F%91-%E4%B8%8E-%E5%88%86%E6%89%B9%E6%AC%A1%E6%B4%BE%E5%8F%91"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5. 多任务同时派发 与
+分批次派发</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#todo"><span class="post-toc-number">3.</span> <span class="post-toc-text">TODO</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BC%81%E4%B8%9A%E9%9B%86%E6%88%90%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E4%B8%AD%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E5%A6%82%E4%BD%95%E9%98%B2%E6%AD%A2%E9%A1%B9%E7%9B%AE%E5%BB%B6%E6%9C%9F%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91%E5%9C%A8%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E5%A6%82%E4%BD%95%E5%BA%94%E7%94%A8_%E5%81%9C%E6%AD%A2%E9%87%8D%E6%9E%84%E7%9A%84%E5%8D%9A%E5%AE%A2-csdn%E5%8D%9A%E5%AE%A2"><span class="post-toc-number">4.</span> <span class="post-toc-text">企业集成[^【网站架构】中大型网站如何防止项目延期？敏捷开发在实际项目如何应用？\_停止重构的博客\-CSDN博客]</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#openeuler"><span class="post-toc-number">5.</span> <span class="post-toc-text">OpenEuler</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%A5%E5%B8%B8%E6%9E%84%E5%BB%BA%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">日常构建测试范围</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#alpha%E7%89%88%E6%9C%AC"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">alpha版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#beta%E7%89%88%E6%9C%AC"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">beta版本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#release"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">release</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85-%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">软件包 测试标准</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#todo%E6%BD%9C%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%82%A3%E7%A7%8D%E4%BE%9D%E8%B5%96%E8%BE%83%E5%A4%9A%E7%9A%84%E5%8C%85-%E5%A6%82ceph-%E6%9A%82%E6%9C%AA%E6%89%BE%E5%88%B0"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">TODO:潜在的问题,
+如何解决那种依赖较多的包? 如ceph? 暂未找到</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">测试代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#openeulerintegration-test---%E7%A0%81%E4%BA%91---%E5%BC%80%E6%BA%90%E4%B8%AD%E5%9B%BD-%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E5%8C%85%E5%91%BD%E4%BB%A4%E7%9A%84%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="post-toc-number">5.3.1.</span> <span class="post-toc-text">openEuler&#x2F;integration-test
+- 码云 - 开源中国 系统基础包&#x2F;命令的集成测试</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -250,11 +251,11 @@
 <h3 id="部署类代码">部署类代码</h3>
 <p>ceph产品的<code>cluster-&gt;osd-&gt;pool-&gt;rbd|cephfs|rgw-&gt;iSCSi|nfs|samba</code>的部署就是一个链式关系,
 这部分角度上来说, 关键是开源组件之间的接口依赖关系的联调测试的问题.</p>
-<p>根据ceph-ansible的情况来看<a href="https://docs.ceph.com/projects/ceph-ansible/en/latest/testing/scenarios.html#test-scenarios" target="_blank" rel="noopener">Test
+<p>根据ceph-ansible的情况来看<a target="_blank" rel="noopener" href="https://docs.ceph.com/projects/ceph-ansible/en/latest/testing/scenarios.html#test-scenarios">Test
 Scenarios — ceph-ansible documentation</a>, 是通过vagrant搭建虚拟机,
 然后拉起不同规格虚拟机来测试集群部署.</p>
 <p>vagrant根据测试功能所需配置拉起对应盘的虚拟机, 然后运行.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">NOSDS           = settings[&apos;osd_vms&apos;]</span><br><span class="line">...</span><br><span class="line">(0..NOSDS - 1).each do |i|</span><br><span class="line">    config.vm.define &quot;#&#123;LABEL_PREFIX&#125;osd#&#123;i&#125;&quot; do |osd|</span><br><span class="line">      osd.vm.hostname = &quot;#&#123;LABEL_PREFIX&#125;osd#&#123;i&#125;&quot;</span><br><span class="line">      if ASSIGN_STATIC_IP</span><br><span class="line">        osd.vm.network :private_network,</span><br><span class="line">          ip: &quot;#&#123;PUBLIC_SUBNET&#125;.#&#123;$last_ip_pub_digit+=1&#125;&quot;</span><br><span class="line">        osd.vm.network :private_network,</span><br><span class="line">          ip: &quot;#&#123;CLUSTER_SUBNET&#125;.#&#123;$last_ip_cluster_digit+=1&#125;&quot;</span><br><span class="line">      end</span><br><span class="line">      # Virtualbox</span><br><span class="line">      osd.vm.provider :virtualbox do |vb|</span><br><span class="line">        # Create our own controller for consistency and to remove VM dependency</span><br><span class="line">        unless File.exist?(&quot;disk-#&#123;i&#125;-0.vdi&quot;)</span><br><span class="line">          # Adding OSD Controller;</span><br><span class="line">          # once the first disk is there assuming we don&apos;t need to do this</span><br><span class="line">          vb.customize [&apos;storagectl&apos;, :id,</span><br><span class="line">                        &apos;--name&apos;, &apos;OSD Controller&apos;,</span><br><span class="line">                        &apos;--add&apos;, &apos;scsi&apos;]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        (0..2).each do |d|</span><br><span class="line">          vb.customize [&apos;createhd&apos;,</span><br><span class="line">                        &apos;--filename&apos;, &quot;disk-#&#123;i&#125;-#&#123;d&#125;&quot;,</span><br><span class="line">                        &apos;--size&apos;, &apos;11000&apos;] unless File.exist?(&quot;disk-#&#123;i&#125;-#&#123;d&#125;.vdi&quot;)</span><br><span class="line">          vb.customize [&apos;storageattach&apos;, :id,</span><br><span class="line">                        &apos;--storagectl&apos;, &apos;OSD Controller&apos;,</span><br><span class="line">                        &apos;--port&apos;, 3 + d,</span><br><span class="line">                        &apos;--device&apos;, 0,</span><br><span class="line">                        &apos;--type&apos;, &apos;hdd&apos;,</span><br><span class="line">                        &apos;--medium&apos;, &quot;disk-#&#123;i&#125;-#&#123;d&#125;.vdi&quot;]</span><br><span class="line">        end</span><br><span class="line">        vb.customize [&apos;modifyvm&apos;, :id, &apos;--memory&apos;, &quot;#&#123;MEMORY&#125;&quot;]</span><br><span class="line">      end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">NOSDS           = settings[&#x27;osd_vms&#x27;]</span><br><span class="line">...</span><br><span class="line">(0..NOSDS - 1).each do |i|</span><br><span class="line">    config.vm.define &quot;#&#123;LABEL_PREFIX&#125;osd#&#123;i&#125;&quot; do |osd|</span><br><span class="line">      osd.vm.hostname = &quot;#&#123;LABEL_PREFIX&#125;osd#&#123;i&#125;&quot;</span><br><span class="line">      if ASSIGN_STATIC_IP</span><br><span class="line">        osd.vm.network :private_network,</span><br><span class="line">          ip: &quot;#&#123;PUBLIC_SUBNET&#125;.#&#123;$last_ip_pub_digit+=1&#125;&quot;</span><br><span class="line">        osd.vm.network :private_network,</span><br><span class="line">          ip: &quot;#&#123;CLUSTER_SUBNET&#125;.#&#123;$last_ip_cluster_digit+=1&#125;&quot;</span><br><span class="line">      end</span><br><span class="line">      # Virtualbox</span><br><span class="line">      osd.vm.provider :virtualbox do |vb|</span><br><span class="line">        # Create our own controller for consistency and to remove VM dependency</span><br><span class="line">        unless File.exist?(&quot;disk-#&#123;i&#125;-0.vdi&quot;)</span><br><span class="line">          # Adding OSD Controller;</span><br><span class="line">          # once the first disk is there assuming we don&#x27;t need to do this</span><br><span class="line">          vb.customize [&#x27;storagectl&#x27;, :id,</span><br><span class="line">                        &#x27;--name&#x27;, &#x27;OSD Controller&#x27;,</span><br><span class="line">                        &#x27;--add&#x27;, &#x27;scsi&#x27;]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        (0..2).each do |d|</span><br><span class="line">          vb.customize [&#x27;createhd&#x27;,</span><br><span class="line">                        &#x27;--filename&#x27;, &quot;disk-#&#123;i&#125;-#&#123;d&#125;&quot;,</span><br><span class="line">                        &#x27;--size&#x27;, &#x27;11000&#x27;] unless File.exist?(&quot;disk-#&#123;i&#125;-#&#123;d&#125;.vdi&quot;)</span><br><span class="line">          vb.customize [&#x27;storageattach&#x27;, :id,</span><br><span class="line">                        &#x27;--storagectl&#x27;, &#x27;OSD Controller&#x27;,</span><br><span class="line">                        &#x27;--port&#x27;, 3 + d,</span><br><span class="line">                        &#x27;--device&#x27;, 0,</span><br><span class="line">                        &#x27;--type&#x27;, &#x27;hdd&#x27;,</span><br><span class="line">                        &#x27;--medium&#x27;, &quot;disk-#&#123;i&#125;-#&#123;d&#125;.vdi&quot;]</span><br><span class="line">        end</span><br><span class="line">        vb.customize [&#x27;modifyvm&#x27;, :id, &#x27;--memory&#x27;, &quot;#&#123;MEMORY&#125;&quot;]</span><br><span class="line">      end</span><br></pre></td></tr></table></figure>
 <p>根据ceph-ansible和openEuler的做法来看,
 部署类代码均藉由对虚拟机的控制的CICD来完成质量保障.</p>
 <p>这些操作, 关键是属于资源的调度, 如果撇去虚拟机提供的资源,
@@ -364,7 +365,7 @@ Scenarios — ceph-ansible documentation</a>, 是通过vagrant搭建虚拟机,
 <p>[^【网站架构】中大型网站如何防止项目延期？敏捷开发在实际项目如何应用？\_停止重构的博客\-CSDN博客](https://blog.csdn.net/Daniel_Leung/article/details/122347803)</p>
 <h1 id="openeuler">OpenEuler</h1>
 <h2 id="日常构建测试范围">日常构建测试范围</h2>
-<p><a href="https://gitee.com/openeuler/QA" target="_blank" rel="noopener">QA: QA repo provides rules
+<p><a target="_blank" rel="noopener" href="https://gitee.com/openeuler/QA">QA: QA repo provides rules
 about how QA team runs and how contributors to this project, also
 includes test cases and framework</a></p>
 <h3 id="alpha版本">alpha版本</h3>
@@ -397,14 +398,14 @@ includes test cases and framework</a></p>
 <li>文档测试</li>
 </ul>
 <h2 id="软件包-测试标准">软件包 测试标准</h2>
-<p>基本总结可以理解为, 是基于<a href="https://gitee.com/openeuler/mugen" target="_blank" rel="noopener">mugen: Test framework and test
+<p>基本总结可以理解为, 是基于<a target="_blank" rel="noopener" href="https://gitee.com/openeuler/mugen">mugen: Test framework and test
 suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
 并完成安装卸载的. 有无痕要求.</p>
 <h3 id="todo潜在的问题-如何解决那种依赖较多的包-如ceph-暂未找到">TODO:潜在的问题,
 如何解决那种依赖较多的包? 如ceph? 暂未找到</h3>
-<p><a href="https://www.openeuler.org/zh/blog/20220629-sig-qa/20220629.html" target="_blank" rel="noopener">开源实习经验分享：openEuler软件包加固测试</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.openeuler.org/zh/blog/20220629-sig-qa/20220629.html">开源实习经验分享：openEuler软件包加固测试</a></p>
 <h2 id="测试代码">测试代码</h2>
-<h3 id="openeulerintegration-test---码云---开源中国-系统基础包命令的集成测试"><a href="https://gitee.com/openeuler/integration-test/tree/master/" target="_blank" rel="noopener">openEuler/integration-test
+<h3 id="openeulerintegration-test---码云---开源中国-系统基础包命令的集成测试"><a target="_blank" rel="noopener" href="https://gitee.com/openeuler/integration-test/tree/master/">openEuler/integration-test
 - 码云 - 开源中国</a> 系统基础包/命令的集成测试</h3>
 
         </div>
@@ -414,7 +415,7 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2022-10-30T15:50:15.401Z" itemprop="dateUpdated">2022-10-30 23:50:15</time>
+    最后更新时间：<time datetime="2023-03-18T15:11:14.864Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
 </span><br>
 
 
@@ -436,7 +437,7 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/流程/">流程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%81%E7%A8%8B/" rel="tag">流程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
 
 
             
@@ -449,7 +450,7 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2022/10/30/联调集成质量小思/&title=《联调集成质量小思》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/&title=《联调集成质量小思》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -459,22 +460,22 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2022/10/30/联调集成质量小思/&title=《联调集成质量小思》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/&title=《联调集成质量小思》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2022/10/30/联调集成质量小思/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《联调集成质量小思》 — 行路中.&url=https://sean10.github.io/2022/10/30/联调集成质量小思/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《联调集成质量小思》 — 行路中.&url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2022/10/30/联调集成质量小思/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -494,12 +495,19 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2023/03/18/vscode%E4%B9%8Bmarkless%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2022/04/18/ceph社区进展跟进2022Q1+Q2/" id="post-next" class="post-nav-link">
+      <a href="/2022/04/18/ceph%E7%A4%BE%E5%8C%BA%E8%BF%9B%E5%B1%95%E8%B7%9F%E8%BF%9B2022Q1+Q2/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">ceph社区进展跟进2022Q1+Q2</h4>
       </a>
@@ -523,7 +531,7 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
 
     <!-- Valine Comments -->
     <div class="comments vcomment" id="comments"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
     <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
     <!-- Valine Comments script -->
     <script>
@@ -544,6 +552,9 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
         })
     </script>
     <!-- Valine Comments end -->
+
+
+
 
 
 
@@ -576,11 +587,11 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2022</span>
+        <p><span>Sean10 &copy; 2015 - 2023</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -598,7 +609,7 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2022/10/30/联调集成质量小思/&title=《联调集成质量小思》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/&title=《联调集成质量小思》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -608,22 +619,22 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2022/10/30/联调集成质量小思/&title=《联调集成质量小思》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/&title=《联调集成质量小思》 — 行路中.&source=笔记 随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2022/10/30/联调集成质量小思/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《联调集成质量小思》 — 行路中.&url=https://sean10.github.io/2022/10/30/联调集成质量小思/&via=https://sean10.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《联调集成质量小思》 — 行路中.&url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/&via=https://sean10.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2022/10/30/联调集成质量小思/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -634,7 +645,7 @@ suites</a>框架, 对软件包提供的<code>CLI</code>接口进行测试验证,
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2022/10/30/联调集成质量小思/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2022/10/30/%E8%81%94%E8%B0%83%E9%9B%86%E6%88%90%E8%B4%A8%E9%87%8F%E5%B0%8F%E6%80%9D/" alt="微信分享二维码">
 </div>
 
 
@@ -650,7 +661,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+<script src="/js/main.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -670,7 +681,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/js/search.js?v=1.7.2" async></script>
 
 
 
