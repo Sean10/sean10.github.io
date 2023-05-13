@@ -339,3 +339,5 @@ search_dir-->create_links
 # 常用编码错误
 
 ![](Linux%20OS小记/Linux%20OS小记_2023-01-08-16-33-04.png)
+
+

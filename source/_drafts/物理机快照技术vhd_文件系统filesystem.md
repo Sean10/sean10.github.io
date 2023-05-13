@@ -135,6 +135,14 @@ boot loader -> kernel -> initrd -> rootfs
 
 
 
+# vsan 快照 vsansparse
+
+写 通过 ROW机制优化
+读, 通过ROW写入的delta文件的缓存进行优化.
+
+[VMware 替代专题｜VMware 与 SmartX 快照原理浅析与 I/O 性能对比](https://www.zhihu.com/tardis/zm/art/555072314?source_id=1003)
+
+[Data Protection for VMware vSAN \| VMware](https://core.vmware.com/resource/data-protection-vmware-vsan#sec9839-sub1)
 
 ## Reference
 1. [差分磁盘：从“恢复出厂设置”说起 \| Bojie Li](https://ring0.me/2014/02/how-factory-reset-works/)

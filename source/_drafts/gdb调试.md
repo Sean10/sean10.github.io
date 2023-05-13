@@ -63,6 +63,23 @@ info r 打印寄存器内
 
 
 # addr2line
+
+一般生产环境推荐的定位方案有哪些呢? debuginfo可以解决具体库的问题? 或者存档core? 其实这个如果空间够, 是个更好的方案?
+
+但是触发入口? 比如跨语言的呢?
+
+另外, 我们的差异就是我们会维持很多个版本的代码在外面跑, 所以需要存档
+
+python哪个目前定位需要靠faulthandler
+
+这里的一个问题可能是因为借用了内核的逻辑, 所以python本身不被认可为一个进程. 
+
+可以参考ceph的crash设计? 打印最近的日志, 然后backtrace.
+
+ceph内是backtrace.cc
+
+demangle的条件是具有一定的debuginfo? 具体是否有dwarf的约束要求?
+
 调试segfault问题
 
 将ip后面地址减去 行最后的 库后面的地址 取得地址
@@ -196,3 +213,157 @@ Reading symbols from /home/work/gdb/.debug/t.debug...done.
 
 从这里下载stl-views.gdb然后重命名成~/.gdbinit, 然后正常gdb的时候pset, pvector即可
 
+
+# python处理库
+
+# python使用的动态库 段错误
+
+
+
+python程序的可观测维度?
+
+python内和引入c++库的情况下, 可观测性角度?
+
+
+需要写单元测试用例.
+
+
+[Python Profilers: Learn the Basics of a profiler for Python in this blog](https://stackify.com/how-to-use-python-profilers-learn-the-basics/)
+
+
+
+# 分类
+
+
+## debuginfo包归档, 用于addr2line定位c库异常点
+
+
+分离debug使用方案
+
+
+[深入理解debuginfo_make install 如何把debuginfo信息保存起来_ayang1986的博客-CSDN博客](https://blog.csdn.net/ayang1986/article/details/121522938)
+
+[为什么没有 debuginfo-xxx.rpm ？ – Blog](https://jayce.github.io/public/posts/misc/why-no-debuginfo-rpm/)
+
+
+
+
+通过读取对应的二进制的build-id, 即可得到对应的debuginfo所需放置的路径, 一般放到下述对应路径即可
+
+``` bash
+readelf -n /lib64/librados.so.2 | grep build
+2f2c45a19a079f1289911963852a37ce4df66377
+```
+
+```
+/usr/lib/debug/.build-id/2f/2c45a19a079f1289911963852a37ce4df66377.debug
+/usr/lib/debug/usr/lib64/librados.so.2.debug
+```
+通过放到对应位置的debuginfo文件, 确实可以加载成功
+
+
+
+``` log
+
+May 06 16:22:02 node1 kernel: python3[1838301]: segfault at 0 ip 00007f5af1f7b34d sp 00007ffed959a080 error 6 in librados.so.2[7f5af1ec9000+18f000]
+
+[root@localhost build]# strace -f addr2line -f -e /lib64/librados.so.2 b234d -C
+lstat("/usr/lib64/librados.so.2", {st_mode=S_IFREG|0755, st_size=1738840, ...}) = 0
+openat(AT_FDCWD, ".build-id/2f/2c45a19a079f1289911963852a37ce4df66377.debug", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, ".debug/.build-id/2f/2c45a19a079f1289911963852a37ce4df66377.debug", O_RDONLY) = -1 ENOENT (No such file or directory)                                                                openat(AT_FDCWD, "/usr/lib/debug/.build-id/2f/2c45a19a079f1289911963852a37ce4df66377.debug", O_RDONLY) = 4
+
+
+[root@localhost build]#  addr2line -f -e lib/librados.so.2 b234d -C
+librados::v14_2_0::RadosClient::pool_list(std::__cxx11::list<std::pair<long, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<lon
+g, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >&)
+/home/wangchao/rpmbuild/BUILD/ceph-16.2.10/src/librados/RadosClient.cc:603
+
+```
+
+###  不开启debug时段错误的地址都不对?
+客观问题是, 为什么没有debuginfo 的时候, 会输出一个并非`?:0`的结果呢?
+
+``` bash
+[root@node3 ~]# addr2line -f -e ./librados.so b234d -C
+librados::v14_2_0::RadosClient::pool_list(std::__cxx11::list<std::pair<long, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<lon
+g, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >&)
+/home/wangchao/rpmbuild/BUILD/ceph-16.2.10/src/librados/RadosClient.cc:603
+[root@node3 ~]# addr2line -f -e ./librados.so b234d -C^C
+[root@node3 ~]# strip librados.so
+[root@node3 ~]# addr2line -f -e ./librados.so b234d -C
+ceph::buffer::v15_2_0::list::iterator_impl<false>::copy(unsigned int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+??:?
+```
+## python 中的exception退出 --通过traceback上下文拦截记录日志
+
+
+### 同步单进程下的.
+
+推荐实现
+
+``` python
+from contextlib import contextmanager
+import faulthandler
+import traceback
+import syslog
+import sys
+
+@contextmanager
+def ignored(*exceptions):
+        try:
+                fd = open("/var/log/ceph/ceph_segfault.log", "a+")
+                faulthandler.enable(fd)
+                yield
+        except Exception as e:
+                syslog.syslog(traceback.format_exc())
+                raise
+        finally:
+                fd.close()
+
+
+
+
+with ignored(Exception):
+	# simulate segfault
+	import ctypes
+    ctypes.string_at(0)
+    # simulate exception
+    # xxx
+
+
+```
+
+
+
+### TODO: multiprocessing
+
+### TODO: threading
+
+如mgr的prometheus等插件? 
+
+## python调用的C库中段错误 --通过faulthandler进行信号拦截, 记录日志
+
+
+>-   捕获同步错误是没有意义的，例如 [`SIGFPE`](https://docs.python.org/zh-cn/3/library/signal.html#signal.SIGFPE "signal.SIGFPE") 或 [`SIGSEGV`](https://docs.python.org/zh-cn/3/library/signal.html#signal.SIGSEGV "signal.SIGSEGV") ，它们是由 C 代码中的无效操作引起的。Python 将从信号处理程序返回到 C 代码，这可能会再次引发相同的信号，导致 Python 显然的挂起。 从Python 3.3开始，你可以使用 [`faulthandler`](https://docs.python.org/zh-cn/3/library/faulthandler.html#module-faulthandler "faulthandler: Dump the Python traceback.") 模块来报告同步错误。
+[signal --- 设置异步事件处理程序 — Python 3.11.3 文档](https://docs.python.org/zh-cn/3/library/signal.html)
+
+根据上述可知, C库中的SIGSEGV信号, python解释器中的signal函数是无法捕获的. 
+
+
+
+``` python
+import faulthandler
+        fd = open("/var/log/ceph/ceph_segfault.log", "a+")
+        faulthandler.enable(fd)
+```
+
+
+## TODO:python死锁等 --基于faulthandler设置类似ceph daemon 的当时主动dump_traceback方案
+
+
+## TODO:python 内存追踪 --基于objgraph/pympler进行运行时捕获
+
+
+
+
+ 

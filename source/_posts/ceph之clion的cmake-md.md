@@ -190,6 +190,7 @@ OSD=3 MON=3 MGR=1 CEPH_BUILD_ROOT=/ceph/build bash -x ./vstart.sh -n
 
 
 
+
 ### 官方文档方案
 
 

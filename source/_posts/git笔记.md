@@ -30,6 +30,11 @@ git diff
 git branch -r --contains xxx
 ```
 
+## 查找指定commit后面的commit
+
+``` bash
+git log --oneline --reverse master..REF | head -n 10
+```
 
 ## 查看被删除的文件相关的commit
 
@@ -305,6 +310,24 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 git push --force-with-lease origin dev  
 ```
 
+# gh (github CLI)
+
+``` bash
+
+# 登录, 使用token生成
+gh auth login 
+# 配置该token缺失的权限
+gh auth refresh -h github.com -s admin:public_key
+gh repo set-default
+gh pr view 18276
+```
+
+
+# gitlens 使用
+
+## search commits 唯一遇到问题是有多个repo时, 每次都需要选择一下
+
+手动在git的`remotes`界面右键关闭Repo, 下次搜索就不用手动选择了, 不会搜那个repo了.
 # 参考
 1. [git gc功能](http://blog.csdn.net/lihuanshuai/article/details/37345565)
 2. [Git子仓库深入浅出 \- 知乎](https://zhuanlan.zhihu.com/p/100214931)****
