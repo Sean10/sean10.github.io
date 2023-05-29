@@ -213,6 +213,20 @@ Reading symbols from /home/work/gdb/.debug/t.debug...done.
 
 从这里下载stl-views.gdb然后重命名成~/.gdbinit, 然后正常gdb的时候pset, pvector即可
 
+# c/c++ backtrace和backtrace_symbol
+
+static函数[backtrace\(3\) \- Linux manual page](https://man7.org/linux/man-pages/man3/backtrace.3.html) 这里说的是无法打印出symbol
+
+
+且只支持直接能查到的那种符号表, 像DWARF这种好像是不支持
+
+所以最好还是用libunwind之类的苦
+
+
+根据[unw_init_local(3)](https://www.nongnu.org/libunwind/man/unw_init_local%283%29.html)接口文档可知返回值非0也存在多种可能, 建议日志中记录下来具体错误码.
+
+可以参考https://github.com/libunwind/libunwind/issues/113 这个代码把返回值对应的错误码也直接记录到日志里 
+
 
 # python处理库
 

@@ -561,7 +561,11 @@ tasks:
 
 > A boolean indicating if the task had to make changes to the target or delegated host.
 
+### dynamic playbook hosts
 
+[How to dynamically set the hosts field in Ansible playbooks with a variable generated during execution? \- Stack Overflow](https://stackoverflow.com/questions/60020584/how-to-dynamically-set-the-hosts-field-in-ansible-playbooks-with-a-variable-gene)
+
+通过`hostvars['localhost']['xxx']`可以实现
 
 
 # Reference

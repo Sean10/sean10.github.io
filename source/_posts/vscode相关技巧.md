@@ -34,6 +34,10 @@ categories: [专业]
 
 ## 搜索窗口 search tab , 在主窗口显示出搜出内容的上下文, 基本类似source insight和clion了
 
+search editor: Default number of context lines
+
+然后触发Open in Editor就可以了.
+
 ### (done20220601)目前vscode似乎还没有支持一个当前文件所有搜索项的列表显示的功能
 * 以前是通过左侧的全局搜索, 定位到当前文件来进行搜索的.
 * 现在通过下述方案即可

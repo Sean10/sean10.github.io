@@ -131,3 +131,16 @@ void MonClient::_reopen_session(int rank)
 的确找到了对应的,我把这个size改成`mon_host`的`size`, 一开始就一定能选中主节点, 就不卡了.
 
 
+
+# kernel 的mon client选择mon逻辑相近
+
+`net/ceph/mon_clinet.c:pick_new_mon`中, 主要支持多个mon选择是在这条提交[libceph: pick a different monitor when reconnecting · torvalds/linux@0e04dc2](https://github.com/torvalds/linux/commit/0e04dc26cc594d31ee6b1382b452b6bc83b57937)
+
+对应的patch [\[4/9\] libceph: pick a different monitor when reconnecting \- Patchwork](https://patchwork.kernel.org/project/ceph-devel/patch/1453721381-20612-5-git-send-email-idryomov@gmail.com/)
+
+
+
+
+
+
+

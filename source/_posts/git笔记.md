@@ -331,4 +331,15 @@ gh pr view 18276
 # 参考
 1. [git gc功能](http://blog.csdn.net/lihuanshuai/article/details/37345565)
 2. [Git子仓库深入浅出 \- 知乎](https://zhuanlan.zhihu.com/p/100214931)****
-3. 
+
+
+
+# 快速在commit间切换  [hutusi/git\-paging: Treat git log as a book, exec \`git next\` or \`git prev\` to checkout the next or the previous commit\.](https://github.com/hutusi/git-paging)
+
+### 查看上次和本次之间的diff
+``` bash
+git diff HEAD^ HEAD
+```
+
+
+[阅读开源代码小技巧 \| 胡涂说](https://hutusi.com/articles/git-paging)
