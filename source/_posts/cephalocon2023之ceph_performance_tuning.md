@@ -12,6 +12,9 @@ categories: [专业]
 ## [Ceph Performance Tuning: From Bluestore to RBD \- Mark Nelson, Clyso GmbH \- YouTube](https://www.youtube.com/watch?v=7D5Bgd5TuYw&list=PLrBUGiINAakPd9nuoorqeOuS9P9MTWos3&index=37)
 
 
+  
+Mark Nelson: Performance / CBT模块成员
+
 #### 推荐性能优化时使用工具
 
 
