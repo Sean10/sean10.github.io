@@ -10,6 +10,7 @@ date: 2023-06-05 00:16:06
 updated:
 ---
 
+TODO: 找到对应的PR, 从而将口语化难以理解的内容转换为正确的描述.
 
 ## [BlueStore V2 \- an Evolutionary Step Forward \- Adam Kupczyk, IBM & Mark Nelson, Clyso GmbH \- YouTube](https://www.youtube.com/watch?v=FVUoGw6kY5k)
 
