@@ -1,5 +1,5 @@
 ---
-title: [施工中]cephalocon2023之bluestore_v2
+title: (施工中)cephalocon2023之bluestore_v2
 tags:
   - ceph
   - cephalocon
