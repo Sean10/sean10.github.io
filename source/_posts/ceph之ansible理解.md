@@ -164,6 +164,10 @@ categories: [专业]
   * 达到这个等级的时候, library里写的logging日志就能输出了.
 * 设置ANSIBLE_KEEP_REMOTTE_FILES=1, 然后再运行Ansbile命令
   * ansible运行前生成的临时脚本就会保存下来, 不会被删除了.
+  * 有时候还是用syslog比较省事
+  * 其次这次说的raise Exception, 像是facts/system/distribution.py里的依旧没打印出来, 看着像是被拦截直接跳过的
+
+[Debugging modules — Ansible Documentation](https://docs.ansible.com/ansible/latest/dev_guide/debugging.html) 
 
 ## tower付费部分
 
