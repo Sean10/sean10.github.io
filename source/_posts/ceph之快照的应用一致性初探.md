@@ -1,11 +1,16 @@
 ---
 title: ceph之快照的应用一致性初探
+tags:
+  - ceph
+  - consistency
+  - snapshot
+categories:
+  - 专业
 subtitle: tech
 date: 2023-06-11 23:52:15
 updated:
-tags: [ceph, consistency, snapshot]
-categories: [专业]
 ---
+
 
 以下讨论都是基于存储系统上的, 主要描述的为对块存储进行快照.
 
