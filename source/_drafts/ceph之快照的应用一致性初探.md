@@ -85,6 +85,12 @@ ceph在16版本librbd提供了`quiesce`能力, 主要描述的就是在创建快
 
 然后暴露给上层用户, 可能就比较完善了. 
 
+- rbd device --device-type nbd map --quiesce --quiesce-hook ${QUIESCE_HOOK} \
+	- 看了下16版本有提供rbd quiesce 逻辑, 针对snap create时可以主动block rbd块的io, 并提供静默io前后的hook. 没找着有写测试/使用样例, 不过rbd-nbd那边有写用例, 可以提供脚本做前置/后置检查.
+
+* PR: [librbd: API for quiesce callbacks · idryomov/ceph@269f4d2](https://github.com/idryomov/ceph/commit/269f4d233a17cffc774897660cf60f1b0acf077e)
+* commit: [librbd: API for quiesce callbacks · idryomov/ceph@269f4d2](https://github.com/idryomov/ceph/commit/269f4d233a17cffc774897660cf60f1b0acf077e)
+
 ## 方案比较
 
 参考
