@@ -7,14 +7,58 @@ tags: [ceph, consistency, snapshot]
 categories: [专业]
 ---
 
+以下讨论都是基于存储系统上的, 主要描述的为对块存储进行快照.
+
+根据目前理解, 应用一致性可以粗分为
+
+* 基于时间点的快照
+	* 没有明确的一致性等级支持
+* 支持崩溃一致性的快照(Crash-consistent backup)
+* 应用一致性快照. (Application-consistent backup) (包含内存中pending IO)
+	* 包含内存(pending IO)的快照
+		* (存在大量停机时间)
+	* mirror的同步技术的, 包含pending IO
+	* 较通用的实现方案
+		* (存在少量停机时间, 主要取决于内存缓了多少?)
+
+## 基于时间点的快照(不一定一致/不一致)
+
+很简单粗暴, 不管是否有 pending IO, 直接保存当前的硬盘状态, 做COW/ROW链接, 完成快照.
+
+## 支持崩溃一致性的快照
+
+
+> 采用崩溃一致性的备份来恢复云服务器，在数据恢复后，由于没有保证数据库事务的一致性，通常需要依赖数据自身的保护机制做自动的日志回滚，数据才能正常启动，数据是恢复到离备份时间点最近的一个一致性状态，相比应用一致性备份的恢复，RPO（Recovery Point Objective，指的是最多可能丢失的数据的时长）会更大，RTO（Recovery Time Objective 指的是从灾难发生到整个系统恢复正常所需要的最大时长）也更长。
+
+基本上表达的一种实现方式可能就是会建多个快照, 然后会识别多个快照内业务的可用性, 无法通过数据库/文件系统修复工具回滚继续提供服务, 则去触发下一个快照. 直到找到一个能用的快照?
+## 应用一致性快照. (Application-consistent backup)
+
+### 包含内存(pending IO)的快照
+
+以qemu和qcow2为例, qcow2支持内存快照, 但是是依赖于虚拟机先由qemu控制进入paused状态的. 这部分一般由于内存一般划的比较大, 内存完整写入, 一般比较慢. 停机时间特别长, 一般都是不太能接受的. 虽然应用一致性确实保障了.
+
+### mirror的同步技术的快照
+
+TODO: 这个暂时还支持猜想, 还没去细找是否有基于这类实现的.
+
+诸如drbd/rbd mirror等, 本身除了这个业务本身, 还提供了其他设备进行备份, 其实应该算得上是备份技术了. 它确实能保障应用一致性, 但是其实是双活了. 针对快照时间点, 是在对端做flush, 然后创建快照了. 
+
+这个快照点, 基本上可以是在mirror对端按事件进行冻结, 然后flush, 然后创建快照了. 对本端无影响.
 
 
 
-当我们提供的是文件系统的时候, 则确实通过上面提到的文件系统的解决方案就可以规避. 这部分提供澄清的接口遭遇异常时的响应, 从而让用户自己可以知晓在何种情况下会存在快照创建出来, 但是实际数据却无法保障一致性.
+### 应用一致性快照
 
-所以其实这个问题对应的其实是快照的应用一致性, 包括文件系统内而已
+按照目前的认知, 这个可能是目前用的比较多的方案. 
 
-> 除了虚拟硬盘上的数据之外，**文件系统一致性快照**还会记录内存和待处理I/O操作中的所有数据。在拍摄文件系统一致性快照之前，访客操作系统上的文件系统会进入静默状态，内存中的所有文件系统缓存数据和待处理I/O操作都会刷新到硬盘。
+主要就是在创建快照前和后分别提供了一个hook接口. 针对文件系统类具有一定的通用约束的, 可以直接默认使用`fsfreeze` 类的偏通用的接口完成静默, 然后再进行对应的pending IO的持久化. 
+
+非文件系统类业务, 则需要上层业务自己去触发了, 就是根据对应的数据库开发对应的持久化方式, 完成快照的一致性保障. 如果是明确指定类型的数据库, 可能还能直接配合对应的方案做自动化检测和识别去完成对应数据库内的持久化快照, 无需用户自己实现. 
+
+不过当客户机上是windows 时, 则直接可以通过VSS来实现应用一致性快照. 无需开发介入了.
+
+
+看到阿里云的文档里也写的很清楚, 如下表格.
 
 | 类型        | 说明                                                                                                                                                                                      | 实现方式                                                                                                                                      |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
@@ -24,41 +68,37 @@ categories: [专业]
 
 看到阿里云的描述, 基本就知道了, 也是通过由用户自身的shell脚本内的行为来完成在创建快照前内存缓存持久化到硬盘, 确保硬盘此刻是完整的. 文件系统侧则通过默认的fsfreeze等通用方案来进行持久化.
 
-针对数据库类业务, 如果我没理解错, 其实就是根据对应的数据库开发对应的持久化方式, 完成快照的一致性保障.
 
-> 所谓应用一致性备份，就是指除了崩溃一致性做到的云服务器所有数据在同一时间点创建备份外，还在数据备份前触发数据库提交所有事务，并刷新OS内存脏数据，保证磁盘上保存的数据库数据是一致的。
+#### rbd的用例
 
-> 采用崩溃一致性的备份来恢复云服务器，在数据恢复后，由于没有保证数据库事务的一致性，通常需要依赖数据自身的保护机制做自动的日志回滚，数据才能正常启动，数据是恢复到离备份时间点最近的一个一致性状态，相比应用一致性备份的恢复，RPO（Recovery Point Objective，指的是最多可能丢失的数据的时长）会更大，RTO（Recovery Time Objective 指的是从灾难发生到整个系统恢复正常所需要的最大时长）也更长。
+> If the volume contains a file system, the file system should be in an internally consistent state before a snapshot is taken. Snapshots taken without write quiescing could need an fsck pass before they are mounted again. To quiesce I/O you can use fsfreeze command. See the fsfreeze(8) man page for more details.
 
-这里其实描述的都是快照的一致性保障. 都是由上层触发接口落盘. 
+[Snapshots — Ceph Documentation](https://docs.ceph.com/en/quincy/rbd/rbd-snapshot/)
 
-所以这段解释通了快照的一致性保障
-
-包括快照技术所谓的静默同理.
-
-fsfreeze这个倒是感觉有可行性, 毕竟是能感知到文件系统内的行为的.
-
-1、一致性级别不适用，表示备份的对象不是Windows系统；
-
-2、应用程序一致备份（Application-Consistent Backup），表示备份了内存和IO栈中数据；
-
-3、崩溃一致备份（Crash-consistent backup），表示只备份成功了硬盘状态；
+rbd的文档里已经提供了fsfreeze的方案.
 
 
-| Operation                                              | Crash-consistent | Application-consistent |
-|--------------------------------------------------------|------------------|------------------------|
-| Consistent point in time backup of files               | Yes              | Yes                    |
-| Utilizes Volume Shadow Copy for block-level backup     | Yes              | Yes                    |
-| Application consistency                                | No               | Yes                    |
-| Aware of in memory and pending I/O                     | No               | Yes                    |
-| Utilizes VSS writers                                   | No               | Yes                    |
-| Requires no special steps for application data restore | No               | Yes                    |
 
-# ceph rbd内的实现
+#### ceph rbd内的实现
 
 ceph在16版本librbd提供了`quiesce`能力, 主要描述的就是在创建快照前和后分别提供了一个hook接口.
+
+然后暴露给上层用户, 可能就比较完善了. 
+
+## 方案比较
+
+参考
+
+| Operation                                              | timebased (inconsistent) | Crash-consistent | Application-consistent |
+| ------------------------------------------------------ | ------------------------ | ---------------- | ---------------------- |
+| Consistent point in time backup of files               | No                       | Yes              | Yes                    |
+| Application consistency                                | No                       | yes              | Yes                    |
+| Aware of in memory and pending I/O                     | No                       | no               | Yes                    |
+| Requires no special steps for application data restore | No                       | yes              | Yes                    |                                                       |                          |                  |                        |
+
 
 
 # Reference
 1.  [通过Go SDK创建应用一致性快照](https://www.alibabacloud.com/help/zh/elastic-compute-service/latest/create-application-consistent-snapshots-by-using-ecs-sdk-for-go)
 2. [云备份技术解析 （三）应用一致性备份\-云社区\-华为云](https://bbs.huaweicloud.com/blogs/100341)
+3. [What is Application Consistent Backup and How to Achieve It](https://www.ubackup.com/enterprise-backup/application-consistent-backups.html)
