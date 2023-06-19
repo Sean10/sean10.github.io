@@ -371,3 +371,14 @@ EOF
 source /etc/bashrc
 echo OK 
 ```
+
+
+# scp替代sftp
+
+linux上后续使用, 可以学习用下sftp.   
+
+sftp  10.192.55.195  ;  
+lls (看本地文件)
+ls (看远端文件)
+put xxx上传xxx
+get  xxx 从远端下载xxx 

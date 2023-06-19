@@ -327,6 +327,18 @@ sudo pmset -b tcpkeepalive 0
 
 [有没有办法限制某个程序进程的 CPU 占用率呢？ \- V2EX](https://v2ex.com/t/775774)
 
+``` bash
+for i in `ps -ef | grep ceph-osd | grep -v grep | awk '{print $2}' `; do nohup cpulimit -l 500 -p $i &>/dev/null & done 
+
+for i in `ps -ef | grep ceph-osd | grep -v grep | awk '{print $2}' `; do kill -SIGCONT $i  & done  
+```
+
+> cpulimit works by continuously sending SIGSTOP and SIGCONT to the target process to limit it's cpu time. So the program in this case doesn't hang, it's doing it's job.
+
+需要注意cpulimit进程退出时, 需要及时发送SIGCONT信号恢复
+
+[linux \- cpulimit not working correctly \- Stack Overflow](https://stackoverflow.com/questions/21221343/cpulimit-not-working-correctly)
+
 ### 作废, cputhrottle的task_for_pid函数无法使用, appPolice无法显示出我想限制的指定进程
 通过`appPolice`或者`cputhrottle`等限制指定进程的cpu
 `cputhrottle`好像不能用, 源码编译后, `sudo`运行还是报这个

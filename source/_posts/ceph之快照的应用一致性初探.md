@@ -98,7 +98,7 @@ ceph在16版本librbd提供了`quiesce`能力, 主要描述的就是在创建快
 
 ## 方案比较
 
-参考
+参考[What is Application Consistent Backup and How to Achieve It](https://www.ubackup.com/enterprise-backup/application-consistent-backups.html) 可知几个方案的比较结果
 
 | Operation                                              | timebased (inconsistent) | Crash-consistent | Application-consistent |
 | ------------------------------------------------------ | ------------------------ | ---------------- | ---------------------- |
