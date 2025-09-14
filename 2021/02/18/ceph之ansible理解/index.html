@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="linux,ceph,ansible">
+    <meta name="keywords" content="ceph,linux,ansible">
     <meta name="description" content="理解 大家最受影响的就是一半时间开发, 一半时间运维的这个问题. 利用一个成熟的配置文件, 快速部署起自己需要的环境, 而不是一步步通过页面控制点击, 这是一个很省力的事情. 将运维中与部署相关的事情通过一些成熟的模板化的配置文件来提供, 最好不过了. ansible比较大的几个优点  由于是开源框架, 基于ansible的针对其他开源软件的配套代价较多  比如集成钉钉等  配置文件化管理部署成熟">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ceph之ansible理解">
@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="理解 大家最受影响的就是一半时间开发, 一半时间运维的这个问题. 利用一个成熟的配置文件, 快速部署起自己需要的环境, 而不是一步步通过页面控制点击, 这是一个很省力的事情. 将运维中与部署相关的事情通过一些成熟的模板化的配置文件来提供, 最好不过了. ansible比较大的几个优点  由于是开源框架, 基于ansible的针对其他开源软件的配套代价较多  比如集成钉钉等  配置文件化管理部署成熟">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sean10.github.io/.io//ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3_2020-11-12-00-49-50.png">
+<meta property="og:image" content="https://sean10.github.io/2021/02/18/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3_2020-11-12-00-49-50.png">
 <meta property="article:published_time" content="2021-02-18T11:36:07.000Z">
-<meta property="article:modified_time" content="2023-03-18T15:11:14.885Z">
+<meta property="article:modified_time" content="2025-02-23T22:31:43.813Z">
 <meta property="article:author" content="Sean10">
-<meta property="article:tag" content="linux">
 <meta property="article:tag" content="ceph">
+<meta property="article:tag" content="linux">
 <meta property="article:tag" content="ansible">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sean10.github.io/.io//ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3_2020-11-12-00-49-50.png">
+<meta name="twitter:image" content="https://sean10.github.io/2021/02/18/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3_2020-11-12-00-49-50.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -164,8 +164,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%90%86%E8%A7%A3"><span class="post-toc-number">1.</span> <span class="post-toc-text">理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ansible%E6%AF%94%E8%BE%83%E5%A4%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E4%BC%98%E7%82%B9"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ansible比较大的几个优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">不建议的操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tidb%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">tidb开发计划</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B9%B6%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%BC%95%E6%93%8E"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">并行任务引擎</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%8C%E7%B1%BB%E6%AF%94%E8%BE%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">同类比较</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">最佳实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E8%AF%95%E9%80%BB%E8%BE%91---start-at-task"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">重试逻辑
---start-at-task</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">插件开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#callback"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">callback</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rolling-upgrade%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">rolling upgrade什么意思</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.3.0.1.</span> <span class="post-toc-text">继承的方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%90%86%E8%A7%A3%E5%BC%80%E5%8F%91%E6%96%B9%E5%BC%8F"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">理解开发方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python%E8%B0%83%E7%94%A8ansible"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">python调用ansible</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ansible%E4%BD%BF%E7%94%A8"><span class="post-toc-number">3.</span> <span class="post-toc-text">ansible使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开源许可证</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95%E6%96%B9%E5%BC%8F"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">调试方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tower%E4%BB%98%E8%B4%B9%E9%83%A8%E5%88%86"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">tower付费部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%83%E4%B9%A0%E6%96%B9%E5%BC%8F"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">练习方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">执行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#playbook"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">playbook</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#delegate_to"><span class="post-toc-number">3.6.2.</span> <span class="post-toc-text">delegate_to</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#run_once"><span class="post-toc-number">3.6.3.</span> <span class="post-toc-text">run_once</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#group_vars-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="post-toc-number">3.6.4.</span> <span class="post-toc-text">group_vars 自定义相对路径?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#roles%E6%90%9C%E6%90%9C%E8%B7%AF%E5%BE%84"><span class="post-toc-number">3.6.5.</span> <span class="post-toc-text">roles搜搜路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell%E6%A8%A1%E5%9D%97%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84"><span class="post-toc-number">3.6.6.</span> <span class="post-toc-text">shell模块指定路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#role"><span class="post-toc-number">3.6.7.</span> <span class="post-toc-text">role</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="post-toc-number">3.6.7.1.</span> <span class="post-toc-text">依赖管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#include_task"><span class="post-toc-number">3.6.7.2.</span> <span class="post-toc-text">include_task</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E5%90%88tags%E9%9C%80%E6%B3%A8%E6%84%8F%E4%BD%BF%E7%94%A8apply"><span class="post-toc-number">3.6.7.2.1.</span> <span class="post-toc-text">配合tags需注意使用apply</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ad-hoc"><span class="post-toc-number">3.6.8.</span> <span class="post-toc-text">ad-hoc</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ceph-ansile"><span class="post-toc-number">4.</span> <span class="post-toc-text">ceph-ansile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">二次开发问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E9%97%AE"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">实践中的一些疑问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#command%E5%92%8C-debug%E5%86%B2%E7%AA%81"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">command和 debug冲突?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell%E5%92%8Ccommand%E6%9C%89%E6%B2%A1%E6%9C%89%E5%8C%BA%E5%88%AB"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">shell和command有没有区别?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#changed-%E6%98%AF%E7%94%A8%E6%9D%A5%E6%A0%87%E8%AE%B0task%E7%9A%84%E5%B9%82%E7%AD%89%E6%80%A7%E6%BB%A1%E8%B6%B3%E4%B8%8E%E5%90%A6"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">changed
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%90%86%E8%A7%A3"><span class="post-toc-number">1.</span> <span class="post-toc-text">理解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ansible%E6%AF%94%E8%BE%83%E5%A4%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E4%BC%98%E7%82%B9"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ansible比较大的几个优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">不建议的操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tidb%E5%BC%80%E5%8F%91%E8%AE%A1%E5%88%92"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">tidb开发计划</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B9%B6%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%BC%95%E6%93%8E"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">并行任务引擎</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%8C%E7%B1%BB%E6%AF%94%E8%BE%83"><span class="post-toc-number">2.</span> <span class="post-toc-text">同类比较</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%81%B5%E5%BE%AA%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%90%86%E5%BF%B5"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">遵循的设计模式理念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">最佳实践</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E8%AF%95%E9%80%BB%E8%BE%91---start-at-task"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">重试逻辑
+--start-at-task</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">插件开发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#callback"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">callback</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rolling-upgrade%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">rolling upgrade什么意思</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.4.0.1.</span> <span class="post-toc-text">继承的方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%90%86%E8%A7%A3%E5%BC%80%E5%8F%91%E6%96%B9%E5%BC%8F"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">理解开发方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python%E8%B0%83%E7%94%A8ansible"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">python调用ansible</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ansible%E4%BD%BF%E7%94%A8"><span class="post-toc-number">3.</span> <span class="post-toc-text">ansible使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">开源许可证</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95%E6%96%B9%E5%BC%8F"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">调试方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tower%E4%BB%98%E8%B4%B9%E9%83%A8%E5%88%86"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">tower付费部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%83%E4%B9%A0%E6%96%B9%E5%BC%8F"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">练习方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%89%A7%E8%A1%8C"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">执行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#playbook"><span class="post-toc-number">3.6.1.</span> <span class="post-toc-text">playbook</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#delegate_to"><span class="post-toc-number">3.6.2.</span> <span class="post-toc-text">delegate_to</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#run_once"><span class="post-toc-number">3.6.3.</span> <span class="post-toc-text">run_once</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#group_vars-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="post-toc-number">3.6.4.</span> <span class="post-toc-text">group_vars 自定义相对路径?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#roles%E6%90%9C%E6%90%9C%E8%B7%AF%E5%BE%84"><span class="post-toc-number">3.6.5.</span> <span class="post-toc-text">roles搜搜路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell%E6%A8%A1%E5%9D%97%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84"><span class="post-toc-number">3.6.6.</span> <span class="post-toc-text">shell模块指定路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#role"><span class="post-toc-number">3.6.7.</span> <span class="post-toc-text">role</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="post-toc-number">3.6.7.1.</span> <span class="post-toc-text">依赖管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#include_task"><span class="post-toc-number">3.6.7.2.</span> <span class="post-toc-text">include_task</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E9%85%8D%E5%90%88tags%E9%9C%80%E6%B3%A8%E6%84%8F%E4%BD%BF%E7%94%A8apply"><span class="post-toc-number">3.6.7.2.1.</span> <span class="post-toc-text">配合tags需注意使用apply</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ad-hoc"><span class="post-toc-number">3.6.8.</span> <span class="post-toc-text">ad-hoc</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ceph-ansile"><span class="post-toc-number">4.</span> <span class="post-toc-text">ceph-ansile</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">二次开发问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%9E%E8%B7%B5%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E9%97%AE"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">实践中的一些疑问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#command%E5%92%8C-debug%E5%86%B2%E7%AA%81"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">command和 debug冲突?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shell%E5%92%8Ccommand%E6%9C%89%E6%B2%A1%E6%9C%89%E5%8C%BA%E5%88%AB"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">shell和command有没有区别?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#changed-%E6%98%AF%E7%94%A8%E6%9D%A5%E6%A0%87%E8%AE%B0task%E7%9A%84%E5%B9%82%E7%AD%89%E6%80%A7%E6%BB%A1%E8%B6%B3%E4%B8%8E%E5%90%A6"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">changed
 是用来标记task的幂等性满足与否?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#groups%E4%BF%9D%E7%95%99%E5%AD%97"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">groups保留字</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%98%E9%87%8F%E5%92%8Cinventory%E8%BF%98%E6%98%AF%E6%9C%89%E7%82%B9%E5%8C%BA%E5%88%AB%E7%9A%84-%E8%99%BD%E7%84%B6%E6%98%AF%E8%BF%99%E4%B8%AA%E4%B8%BB%E6%9C%BA%E7%BB%84%E7%9A%84-%E4%BD%86%E6%98%AF%E5%8D%95%E7%BA%AF%E7%9A%84%E5%8F%98%E9%87%8F%E5%85%B6%E5%AE%9E%E6%B2%A1%E6%9C%89%E4%B8%BB%E6%9C%BA%E7%BB%84%E7%9A%84%E6%A6%82%E5%BF%B5%E7%9A%84."><span class="post-toc-number">4.2.5.</span> <span class="post-toc-text">变量和inventory还是有点区别的,
 虽然是这个主机组的, 但是单纯的变量其实没有主机组的概念的.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88ceph%E6%B2%A1%E6%9C%89%E6%8F%90%E4%BE%9B%E7%BB%99ansible%E5%9F%BA%E4%BA%8Erados%E7%9A%84%E6%8E%A5%E5%8F%A3%E5%91%A2"><span class="post-toc-number">4.2.6.</span> <span class="post-toc-text">为什么ceph没有提供给ansible基于rados的接口呢?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#you-cannot-register-a-variable-but-you-can-set-a-fact-which-in-most-use-cases-including-yours-will-be-equivalent-to-a-variable"><span class="post-toc-number">4.2.7.</span> <span class="post-toc-text">You
 cannot register a variable, but you can set a fact (which in most use
@@ -187,7 +187,7 @@ ansible_facts应该是上层概念, 对于使用的应该直接填key就可以�
 , 配合delegate_to疑问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="post-toc-number">4.2.31.1.</span> <span class="post-toc-text">查找</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%8C%E6%AD%A5%E8%BF%9C%E7%A8%8B%E8%8A%82%E7%82%B9%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%B0%E6%8C%87%E5%AE%9A%E8%8A%82%E7%82%B9-synchronize"><span class="post-toc-number">4.2.32.</span> <span class="post-toc-text">同步远程节点的配置文件到指定节点
 synchronize</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%88%B0%E6%9C%AC%E5%9C%B0-fetch"><span class="post-toc-number">4.2.33.</span> <span class="post-toc-text">复制文件到本地 fetch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A2%AB%E8%B7%B3%E8%BF%87%E7%9A%84%E4%BB%BB%E5%8A%A1%E4%BE%9D%E6%97%A7%E6%B3%A8%E5%86%8C%E4%BA%86%E5%8F%98%E9%87%8F-%E5%AF%BC%E8%87%B4%E8%A6%86%E7%9B%96%E4%BA%86"><span class="post-toc-number">4.2.34.</span> <span class="post-toc-text">被跳过的任务依旧注册了变量,
 导致覆盖了</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gather_fact-%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E5%A4%B1%E6%95%88"><span class="post-toc-number">4.2.35.</span> <span class="post-toc-text">gather_fact 缓存数据失效</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ansible%E7%9A%84changed_when%E5%B1%9E%E6%80%A7-%E8%AE%BE%E7%BD%AE%E4%B8%BAfalse%E6%97%B6-%E5%BD%93%E6%9F%90%E4%B8%AA%E8%8A%82%E7%82%B9%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5-%E4%BC%9A%E8%AE%A9%E8%BF%99%E4%B8%AA%E8%8A%82%E7%82%B9%E9%80%80%E5%87%BA%E5%90%8E%E7%BB%AD%E7%9A%84%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C"><span class="post-toc-number">4.2.36.</span> <span class="post-toc-text">ansible的changed_when属性,
-设置为false时, 当某个节点任务失败, 会让这个节点退出后续的任务执行?</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+设置为false时, 当某个节点任务失败, 会让这个节点退出后续的任务执行?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dynamic-playbook-hosts"><span class="post-toc-number">4.2.37.</span> <span class="post-toc-text">dynamic playbook hosts</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">5.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -347,11 +347,23 @@ Ceph clusters using cephadm</a></li>
 </ul></li>
 </ul></li>
 </ul>
+<h2 id="遵循的设计模式理念">遵循的设计模式理念</h2>
+<ul>
+<li>开闭原则
+<ul>
+<li>将分配策略, osd与故障域拓扑的关联, 更改为基于osd的属性进行策略分配,
+策略为可扩展</li>
+<li>借助ansible, 使各个团队之间的组件, 仅基于yaml的定义进行插拔,
+配置文件存在对应key, 触发对应的role. 且各个模块上下文之间存在公用属性,
+直接从基础变量中加载. 扁平化传递, 无需封装.</li>
+</ul></li>
+</ul>
 <h2 id="最佳实践">最佳实践</h2>
 <h3 id="重试逻辑---start-at-task">重试逻辑
 <code>--start-at-task</code></h3>
 <p>这里采用的方案是自定义一个<code>callback</code>的插件,
-将<code>failed</code>的<code>task</code>记录下来,见<a href="#callback">callback</a>, 然后封装一个<code>CLI</code>,
+将<code>failed</code>的<code>task</code>记录下来,见<a
+href="#callback">callback</a>, 然后封装一个<code>CLI</code>,
 在下次执行的时候增加<code>--start-at-task &#123;task_name&#125;</code>来进行调度.
 ### 优化方案 和一开始调研时的目的有点不一样,
 现在发现的主要问题在于ansible做的预处理的逻辑太多了,
@@ -415,8 +427,15 @@ Issue #8864 · ansible/ansible</a>可知,
 <li>设置ANSIBLE_KEEP_REMOTTE_FILES=1, 然后再运行Ansbile命令
 <ul>
 <li>ansible运行前生成的临时脚本就会保存下来, 不会被删除了.</li>
+<li>有时候还是用syslog比较省事</li>
+<li>其次这次说的raise Exception,
+像是facts/system/distribution.py里的依旧没打印出来,
+看着像是被拦截直接跳过的</li>
 </ul></li>
 </ul>
+<p><a
+target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/dev_guide/debugging.html">Debugging
+modules — Ansible Documentation</a> </p>
 <h2 id="tower付费部分">tower付费部分</h2>
 <ul>
 <li>workflow?
@@ -426,9 +445,11 @@ Issue #8864 · ansible/ansible</a>可知,
 </ul></li>
 </ul>
 <h2 id="练习方式">练习方式</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/chusiang/ansible-jupyter.dockerfile">chusiang/ansible-jupyter.dockerfile:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/chusiang/ansible-jupyter.dockerfile">chusiang/ansible-jupyter.dockerfile:
 Building the Docker image with Ansible and Jupyter.</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/automate_with_ansible/automate_with_ansible-7wir27p7.html">Ansible
+<p><a
+target="_blank" rel="noopener" href="https://www.w3cschool.cn/automate_with_ansible/automate_with_ansible-7wir27p7.html">Ansible
 用 Docker Compose 练习 Ansible_w3cschool</a></p>
 <h2 id="执行">执行</h2>
 <p>通过<code>playbook</code>调度<code>role</code>的<code>task</code>,
@@ -469,7 +490,8 @@ Building the Docker image with Ansible and Jupyter.</a></p>
 而<code>import_task</code>可以</p>
 <h5 id="配合tags需注意使用apply">配合tags需注意使用apply</h5>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Include</span> <span class="string">and</span> <span class="string">run</span> <span class="string">an</span> <span class="string">inner</span> <span class="string">and</span> <span class="string">an</span> <span class="string">outer</span> <span class="string">task</span></span><br><span class="line">  <span class="attr">include_tasks:</span></span><br><span class="line">    <span class="attr">file:</span> <span class="string">install.yml</span></span><br><span class="line">    <span class="attr">apply:</span></span><br><span class="line">      <span class="attr">tags:</span> <span class="string">install</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">install</span></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65464394/ansible-include-tasks-will-not-run-when-tags-are-specified">Ansible
+<p><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65464394/ansible-include-tasks-will-not-run-when-tags-are-specified">Ansible
 include_tasks will not run when tags are specified - Stack
 Overflow</a></p>
 <h3 id="ad-hoc">ad-hoc</h3>
@@ -491,11 +513,13 @@ osd层无法支持用于db,wal分区之后剩余空间创建osd * crush rule无�
 都是从一个裸机开始呢?怎么里面就不能装好ceph依赖吗?</li>
 </ul>
 <p>姑且按照[^5]先启动看看.`</p>
-<p><a target="_blank" rel="noopener" href="https://hub.docker.com/r/osism/ceph-ansible/tags">osism/ceph-ansible
+<p><a
+target="_blank" rel="noopener" href="https://hub.docker.com/r/osism/ceph-ansible/tags">osism/ceph-ansible
 Tags - Docker Hub</a></p>
 <p>vagrant 启动失败了, 似乎我用的centos景象不太一样, 找个docker
 hub里的试试</p>
-<p><a target="_blank" rel="noopener" href="https://docs.osism.de/configuration/environments/ceph.html">Ceph —
+<p><a
+target="_blank" rel="noopener" href="https://docs.osism.de/configuration/environments/ceph.html">Ceph —
 OSISM documentation</a></p>
 <p>所以library其实完成的任务就是拼接command?</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ec1e4d8438e9">AnsibleAPI 开发 -
@@ -513,39 +537,47 @@ OSISM documentation</a></p>
 <p>的确, 用来标记这个任务是否对环境产生了修改?</p>
 <h3 id="groups保留字">groups保留字</h3>
 <p>属于ansible自身的保留字段</p>
-<h3 id="变量和inventory还是有点区别的-虽然是这个主机组的-但是单纯的变量其实没有主机组的概念的.">变量和inventory还是有点区别的,
+<h3
+id="变量和inventory还是有点区别的-虽然是这个主机组的-但是单纯的变量其实没有主机组的概念的.">变量和inventory还是有点区别的,
 虽然是这个主机组的, 但是单纯的变量其实没有主机组的概念的.</h3>
-<h3 id="为什么ceph没有提供给ansible基于rados的接口呢">为什么ceph没有提供给ansible基于rados的接口呢?</h3>
+<h3
+id="为什么ceph没有提供给ansible基于rados的接口呢">为什么ceph没有提供给ansible基于rados的接口呢?</h3>
 <p>是否是因为使用的是ssh等协议, 所以用Rados其实并不太方便?
 并没有设计这个connection?如果要开发, 其实是开发一个connection机制吧?</p>
 <p>主要用途是部署, 而在部署阶段, rados得在mon部署完毕后才能工作,
 因此如果要切换connection, 还必须分阶段. 还不如直接ssh全套</p>
-<h3 id="you-cannot-register-a-variable-but-you-can-set-a-fact-which-in-most-use-cases-including-yours-will-be-equivalent-to-a-variable">You
+<h3
+id="you-cannot-register-a-variable-but-you-can-set-a-fact-which-in-most-use-cases-including-yours-will-be-equivalent-to-a-variable">You
 cannot register a variable, but you can set a fact (which in most use
 cases, including yours, will be equivalent to a variable):</h3>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">set_fact:</span></span><br><span class="line">  <span class="attr">the_output:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; restdata.json.parameter[1] &#125;&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
 <p>set_fact 是注册到hostvars , 即注册到不同的host里变量.</p>
 <h3 id="要使用json_query-需要安装jmespath">要使用json_query ,
 需要安装jmespath</h3>
-<h3 id="ansible使用register就会被标记成changed">ansible使用register就会被标记成changed?</h3>
-<h3 id="为什么我用filter-带上2个大括号就无法识别出对象了呢">为什么我用filter,
+<h3
+id="ansible使用register就会被标记成changed">ansible使用register就会被标记成changed?</h3>
+<h3
+id="为什么我用filter-带上2个大括号就无法识别出对象了呢">为什么我用filter,
 带上2个大括号就无法识别出对象了呢?</h3>
 <p>因为filter是jinja2语法, 外面需要先带上双引号. * You are using the
 debug: module with the option var: and this expects a variable, not a
 jinja2 template.</p>
-<h3 id="对于您的模块支持检查模式您必须在实例化ansiblemodule对象时传递supports_check_mode-true-当启用检查模式时ansiblemodule.check_mode属性将计算为true">对于您的模块支持检查模式，您必须在实例化AnsibleModule对象时传递supports_check_mode
+<h3
+id="对于您的模块支持检查模式您必须在实例化ansiblemodule对象时传递supports_check_mode-true-当启用检查模式时ansiblemodule.check_mode属性将计算为true">对于您的模块支持检查模式，您必须在实例化AnsibleModule对象时传递supports_check_mode
 = True。
 当启用检查模式时，AnsibleModule.check_mode属性将计算为True。</h3>
 <p>对task进行检查模式 ### ansible的模块里打印大量内容,
 即便他不显示,也会记录到warning里? 有垃圾产生?</p>
-<h3 id="ansible的library不允许使用print-居然就会报错.-没有日志-需要之后再找怎么记录日志的方式">ansible的library不允许使用print,
+<h3
+id="ansible的library不允许使用print-居然就会报错.-没有日志-需要之后再找怎么记录日志的方式">ansible的library不允许使用print,
 居然就会报错. 没有日志, 需要之后再找怎么记录日志的方式</h3>
 <p>通过logging直接往其他文件, 或者通过Syslog协议等输出是一种方案.</p>
 <p>或者可以记录到stderr中, ansible只检查stdout是否被污染, 然后报错.</p>
 <p>不推荐用这个library, 将来自改造都不方便.</p>
 <h3 id="out不能是变量-只能是字符串">out不能是变量? 只能是字符串?</h3>
 <p>这个还需要找一下</p>
-<h3 id="通过debug可以打印出ansible_facts-但是直接引用就一直打印不出来-忽然脑子过了一下-想通了-ansible_facts应该是上层概念-对于使用的应该直接填key就可以了-然后的确拿出来了.">通过debug可以打印出Ansible_facts,
+<h3
+id="通过debug可以打印出ansible_facts-但是直接引用就一直打印不出来-忽然脑子过了一下-想通了-ansible_facts应该是上层概念-对于使用的应该直接填key就可以了-然后的确拿出来了.">通过debug可以打印出Ansible_facts,
 但是直接引用就一直打印不出来, 忽然脑子过了一下, 想通了,
 ansible_facts应该是上层概念, 对于使用的应该直接填key就可以了,
 然后的确拿出来了.</h3>
@@ -557,17 +589,19 @@ ansible_facts应该是上层概念, 对于使用的应该直接填key就可以�
 <li><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/44897">Double
 quotes are converted to single quotes on variable assignment if contents
 look like JSON · Issue #44897 · ansible/ansible</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41144922/ansible-passing-json-string-in-environment-to-shell-module">Ansible
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41144922/ansible-passing-json-string-in-environment-to-shell-module">Ansible
 - passing JSON string in environment to shell module - Stack
 Overflow</a></li>
 </ul>
 <h3 id="ansiblesequence是什么东西">ansibleSequence是什么东西?</h3>
-<h3 id="字典的key索引不会被jinja2解析-这个真的是深坑">字典的key索引不会被Jinja2解析,
+<h3
+id="字典的key索引不会被jinja2解析-这个真的是深坑">字典的key索引不会被Jinja2解析,
 这个真的是深坑</h3>
 <ul>
 <li>感觉看了下, 这个坑很大啊...一点都不方便debug</li>
 </ul>
-<p><img src="/.io//ceph之ansible理解_2020-11-12-00-49-50.png"></p>
+<img src="/2021/02/18/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3/ceph%E4%B9%8Bansible%E7%90%86%E8%A7%A3_2020-11-12-00-49-50.png" class="">
 <h3 id="莫名其妙的module-failure">莫名其妙的module failure</h3>
 <p>没有提示的时候, 实际上问题就是在于你的模块里用了print...</p>
 <p>ansible 是只检测stdout是否被污染,
@@ -582,9 +616,11 @@ Overflow</a></li>
 我用的<code>2.6</code>通过<code>ansible.cfg</code>中的设置, 并没能生效,
 而通过<code>-e</code>传入的参数倒是有效.
 暂时通过上层传入来覆盖下层使用的解释器</p>
-<h3 id="group_vars的读取时间是什么时候嗯">group_vars的读取时间是什么时候嗯</h3>
+<h3
+id="group_vars的读取时间是什么时候嗯">group_vars的读取时间是什么时候嗯</h3>
 <p><del>只会在执行role的时候去读取对应的<code>group_vars</code>中的变量</del></p>
-<p>以上是错误的, 根据<a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html">Ansible
+<p>以上是错误的, 根据<a
+target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html">Ansible
 Configuration Settings — Ansible
 Documentation</a>通过<code>ansible.cfg</code>里增加<code>debug = True</code>,
 发现group_vars的load过程,
@@ -592,28 +628,33 @@ Documentation</a>通过<code>ansible.cfg</code>里增加<code>debug = True</code
 实际上在初始化阶段, 就根据每个执行任务的节点在哪些主机组里,
 把对应的group_vars目录下的主机组的配置给load了.
 并不是运行阶段才进行...</p>
-<h3 id="怎么将当前读入的配置及收集到的facts配置导出呢">怎么将当前读入的配置及收集到的<code>facts</code>配置导出呢</h3>
+<h3
+id="怎么将当前读入的配置及收集到的facts配置导出呢">怎么将当前读入的配置及收集到的<code>facts</code>配置导出呢</h3>
 <ul>
 <li>怎么执行Export呢?</li>
 <li><blockquote>
 <p>template - Templates a file out to a remote server</p>
 </blockquote></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/34595#issuecomment-356091161">copy
+<li><a
+target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/34595#issuecomment-356091161">copy
 content output from json and a variable is not idempotent under py3 ·
 Issue #34595 · ansible/ansible</a></li>
 </ul>
-<h3 id="另外-其实我并不需要ansible原生的gather_facts-因为他能够给出来的ip-现在我知道一些python的原生库获取-重点在于-我怎么把多个节点的数据给聚合到一个节点上.">另外,
+<h3
+id="另外-其实我并不需要ansible原生的gather_facts-因为他能够给出来的ip-现在我知道一些python的原生库获取-重点在于-我怎么把多个节点的数据给聚合到一个节点上.">另外,
 其实我并不需要ansible原生的gather_facts, 因为他能够给出来的ip,
 现在我知道一些python的原生库获取, 重点在于,
 我怎么把多个节点的数据给聚合到一个节点上.</h3>
 <ul>
 <li>通过set_fact去一起设置到一个字典里?</li>
 <li>我通过vars聚合完了. 有个map('extract'功能可以满足这套 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">all</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">uuids:</span> <span class="string">|</span></span><br><span class="line"><span class="string">      &#123;%- set o=[] %&#125;</span></span><br><span class="line"><span class="string">      &#123;%- for i in play_hosts %&#125;</span></span><br><span class="line"><span class="string">        &#123;%- if o.append(hostvars[i].uuid) %&#125;</span></span><br><span class="line"><span class="string">        &#123;%- endif %&#125;</span></span><br><span class="line"><span class="string">      &#123;%- endfor %&#125;</span></span><br><span class="line"><span class="string">      &#123;&#123; o &#125;&#125;</span></span><br><span class="line"><span class="string"></span>  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">get</span> <span class="string">uuids</span> <span class="string">for</span> <span class="string">existing</span> <span class="string">cluster</span> <span class="string">nodes</span></span><br><span class="line">      <span class="attr">shell:</span> <span class="string">mysql</span> <span class="string">-N</span> <span class="string">-B</span> <span class="string">-u</span> &#123;&#123; <span class="string">db_user</span> &#125;&#125; <span class="string">-p</span> &#123;&#123; <span class="string">db_user_password</span> &#125;&#125; <span class="string">-e</span> <span class="string">&quot;SHOW GLOBAL STATUS LIKE &#x27;wsrep_cluster_state_uuid&#x27;;&quot;</span> <span class="string">|</span> <span class="string">sed</span> <span class="string">&#x27;s/\t/,/g&#x27;</span> <span class="string">|</span> <span class="string">cut</span> <span class="string">-f2</span> <span class="string">-d&#x27;,&#x27;</span></span><br><span class="line">      <span class="attr">register:</span> <span class="string">maria_cluster_uuids</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">set_fact:</span></span><br><span class="line">        <span class="attr">uuid:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; maria_cluster_uuids.stdout &#125;&#125;</span>&quot;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">        <span class="attr">var:</span> <span class="string">uuids</span></span><br><span class="line">      <span class="attr">run_once:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">delegate_to:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<a target="_blank" rel="noopener" href="https://serverfault.com/questions/710010/is-it-possible-combine-remote-results-to-local-a-register-in-ansible/714455">Is
+<a
+target="_blank" rel="noopener" href="https://serverfault.com/questions/710010/is-it-possible-combine-remote-results-to-local-a-register-in-ansible/714455">Is
 it possible combine remote results to local a register in Ansible? -
 Server Fault</a></li>
 </ul>
-<h3 id="vars选项的运行时间是什么时候呢-如果我采用task-他能在我指定task前自动运行吗">vars选项的运行时间是什么时候呢?
+<h3
+id="vars选项的运行时间是什么时候呢-如果我采用task-他能在我指定task前自动运行吗">vars选项的运行时间是什么时候呢?
 如果我采用task, 他能在我指定task前自动运行吗?</h3>
 <ul>
 <li>vars的调用时间是什么时候呢? 写个代码模拟一下?</li>
@@ -624,9 +665,11 @@ Server Fault</a></li>
 <p>并不能自动识别缩进. 需要自己来控制order,
 使用<code>Jinja2</code>的<code>filter</code>可以完成这个步骤.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pools:</span><br><span class="line">&#123;&#123; pools | to_yaml | indent(2, true) &#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/16707">to_nice_yaml
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/16707">to_nice_yaml
 output not as expected · Issue #16707 · ansible/ansible</a></p>
-<h3 id="当我需要with_items内部针对每个循环做一个检查-然后这个检查结果给下一个任务的每个循环使用时-应该怎么做呢">当我需要with_items内部针对每个循环做一个检查,
+<h3
+id="当我需要with_items内部针对每个循环做一个检查-然后这个检查结果给下一个任务的每个循环使用时-应该怎么做呢">当我需要with_items内部针对每个循环做一个检查,
 然后这个检查结果给下一个任务的每个循环使用时, 应该怎么做呢?</h3>
 <p>如果我把这个封装成一个block, 然后每个block只处理其中一个任务的时候,
 这个每个循环的变量怎么穿进去呢?</p>
@@ -635,19 +678,25 @@ output not as expected · Issue #16707 · ansible/ansible</a></p>
 <p><code>when</code>和<code>with_items</code>一起使用时,
 是每次都执行一次when</p>
 <p>好像可以利用changed这个</p>
-<h3 id="import_playbook可以组合多个playbook">import_playbook可以组合多个playbook</h3>
+<h3
+id="import_playbook可以组合多个playbook">import_playbook可以组合多个playbook</h3>
 <p>import_playbook不支持传入指定参数.</p>
 <h3 id="refresh_inventory">refresh_inventory</h3>
 <p>强制重新读取inventory</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">refresh</span></span><br><span class="line">  <span class="attr">meta:</span> <span class="string">refresh_inventory</span></span><br></pre></td></tr></table></figure>
-<h3 id="如何将set_fact的host级别的变量转发到其他host里">如何将set_fact的host级别的变量转发到其他host里</h3>
+<h3
+id="如何将set_fact的host级别的变量转发到其他host里">如何将set_fact的host级别的变量转发到其他host里</h3>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">set</span> <span class="string">fact</span> <span class="string">on</span> <span class="string">swarm</span> <span class="string">nodes</span></span><br><span class="line">  <span class="attr">set_fact:</span> <span class="string">docker_worker_token=&quot;&#123;&#123;</span> <span class="string">some_var</span> <span class="string">&#125;&#125;&quot;</span></span><br><span class="line">  <span class="attr">delegate_to:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; item &#125;&#125;</span>&quot;</span></span><br><span class="line">  <span class="attr">delegate_facts:</span> <span class="literal">True</span></span><br><span class="line">  <span class="attr">with_items:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; groups[&#x27;all&#x27;] &#125;&#125;</span>&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39207616/if-set-fact-is-scoped-to-a-host-can-i-use-dummy-host-as-a-global-variable-map">ansible
+<p><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39207616/if-set-fact-is-scoped-to-a-host-can-i-use-dummy-host-as-a-global-variable-map">ansible
 - If set_fact is scoped to a host, can I use 'dummy' host as a global
 variable map? - Stack Overflow</a></p>
-<h3 id="all.yml里的group_vars能被其他host的task读取吗">all.yml里的group_vars能被其他host的task读取吗?</h3>
-<h3 id="修改hosts文件之后的refresh_inventory之后的task没有输出在日志中">修改hosts文件之后的refresh_inventory之后的task没有输出在日志中</h3>
-<p>根据这个<a target="_blank" rel="noopener" href="https://www.reddit.com/r/ansible/comments/caawtb/meta_refresh_inventory_does_not_include/">(1)
+<h3
+id="all.yml里的group_vars能被其他host的task读取吗">all.yml里的group_vars能被其他host的task读取吗?</h3>
+<h3
+id="修改hosts文件之后的refresh_inventory之后的task没有输出在日志中">修改hosts文件之后的refresh_inventory之后的task没有输出在日志中</h3>
+<p>根据这个<a
+target="_blank" rel="noopener" href="https://www.reddit.com/r/ansible/comments/caawtb/meta_refresh_inventory_does_not_include/">(1)
 meta: refresh_inventory does not include previously absent hosts in task
 execution : ansible</a></p>
 <p>和我的实际结果,
@@ -658,12 +707,14 @@ playbook倒是还会执行.</p>
 <p>解决方案目前是知道了, 写两个host,
 上一个playbook的最后一步就是<code>refresh_inventory</code>,
 下一个playbook再使用这个group</p>
-<h3 id="include_vars加载远程节点的配置-配合delegate_to疑问">include_vars加载远程节点的配置
+<h3
+id="include_vars加载远程节点的配置-配合delegate_to疑问">include_vars加载远程节点的配置
 , 配合delegate_to疑问</h3>
 <p>结论, 不支持远程节点. 所以只能自己先把文件复制到本节点,
 再进行导入</p>
 <h4 id="查找">查找</h4>
-<p><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html">Controlling
+<p><a
+target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html">Controlling
 where tasks run: delegation and local actions — Ansible
 Documentation</a></p>
 <p>好像有<code>remote_src</code>选项</p>
@@ -671,7 +722,8 @@ Documentation</a></p>
 <p>To assign included variables to a different host than
 inventory_hostname, use delegate_to and set delegate_facts=yes.</p>
 </blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/58169">include_vars is
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/58169">include_vars is
 unable to load files from remote · Issue #58169 ·
 ansible/ansible</a></p>
 <p>根据上面这篇<code>issue</code>可以知道,
@@ -683,11 +735,13 @@ they missed the confusion possible for other actions. We should fix the
 error message, but i would not try to personalize it too much or we will
 end up with similar ticket for other actions.</p>
 </blockquote>
-<h3 id="同步远程节点的配置文件到指定节点-synchronize">同步远程节点的配置文件到指定节点
+<h3
+id="同步远程节点的配置文件到指定节点-synchronize">同步远程节点的配置文件到指定节点
 synchronize</h3>
 <h3 id="复制文件到本地-fetch">复制文件到本地 fetch</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tasks:</span><br><span class="line">     - name: Fetch the file from the mwiapp01 to master</span><br><span class="line">       run_once: yes</span><br><span class="line">       fetch: src=/tmp/app01-to-app02.jar dest=buffer/ flat=yes</span><br><span class="line">       when: &quot;&#123;&#123; inventory_hostname == &#x27;mwiapp01&#x27; &#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="被跳过的任务依旧注册了变量-导致覆盖了">被跳过的任务依旧注册了变量,
+<h3
+id="被跳过的任务依旧注册了变量-导致覆盖了">被跳过的任务依旧注册了变量,
 导致覆盖了</h3>
 <p>ansible skipped task still register value</p>
 <p>可以用以下方式绕过, 或者register不同名字变量,
@@ -700,7 +754,8 @@ set_fact到同一个上(set_fact支持when) <figure class="highlight yaml"><tabl
 重新创建<code>playbook</code>即便是同主机组好像也清理不干净,
 我直接在原来的playbook里加了下述任务, 然后再注释掉重新执行就可以了.</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">clear</span> <span class="string">facts</span></span><br><span class="line">    <span class="attr">meta:</span> <span class="string">clear_facts</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="ansible的changed_when属性-设置为false时-当某个节点任务失败-会让这个节点退出后续的任务执行">ansible的changed_when属性,
+<h3
+id="ansible的changed_when属性-设置为false时-当某个节点任务失败-会让这个节点退出后续的任务执行">ansible的changed_when属性,
 设置为false时, 当某个节点任务失败, 会让这个节点退出后续的任务执行?</h3>
 <p>目前是遇到这样一个问题, 直接导致后续的任务执行时节点缺失.</p>
 <p>看概念就只是:</p>
@@ -708,42 +763,61 @@ set_fact到同一个上(set_fact支持when) <figure class="highlight yaml"><tabl
 <p>A boolean indicating if the task had to make changes to the target or
 delegated host.</p>
 </blockquote>
+<h3 id="dynamic-playbook-hosts">dynamic playbook hosts</h3>
+<p><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/60020584/how-to-dynamically-set-the-hosts-field-in-ansible-playbooks-with-a-variable-gene">How
+to dynamically set the hosts field in Ansible playbooks with a variable
+generated during execution? - Stack Overflow</a></p>
+<p>通过<code>hostvars['localhost']['xxx']</code>可以实现</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://zhoubofsy.github.io/2019/09/28/storage/ceph/ceph-ansible-usage/">ceph-ansible
+<li><a
+target="_blank" rel="noopener" href="https://zhoubofsy.github.io/2019/09/28/storage/ceph/ceph-ansible-usage/">ceph-ansible
 使用 | Bolog</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/O4dC8OjO7ZL6/article/details/78464441">干货｜基于Ansible的Ceph自动化部署解析_中兴开发者社区-CSDN博客</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/O4dC8OjO7ZL6/article/details/78464441">干货｜基于Ansible的Ceph自动化部署解析_中兴开发者社区-CSDN博客</a></li>
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015953427">第八章:
 扩展ansible_个人文章 - SegmentFault 思否</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph-ansible/issues/2195">Full
 support for  · Issue #2195 ·
 ceph/ceph-ansible</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.sebastien-han.fr/blog/2016/02/08/easily-deploy-containerized-ceph-daemons-with-vagrant/">Easily
+<li><a
+target="_blank" rel="noopener" href="https://www.sebastien-han.fr/blog/2016/02/08/easily-deploy-containerized-ceph-daemons-with-vagrant/">Easily
 deploy containerized Ceph daemons with Vagrant | Sébastien Han</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.51cto.com/hy2009/1843232">ansible
 debug模块学习笔记-行者之路-51CTO博客</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biglittleant/p/13072981.html">一文搞懂
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/biglittleant/p/13072981.html">一文搞懂
 ansible 变量配置 - biglittleant - 博客园</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.ibm.com/zh/depmodels/cloud/articles/cl-lo-ansible-large-scale-use-of-enterprises-explore/">Ansible
+<li><a
+target="_blank" rel="noopener" href="https://developer.ibm.com/zh/depmodels/cloud/articles/cl-lo-ansible-large-scale-use-of-enterprises-explore/">Ansible
 面向企业大规模使用探究 – IBM Developer</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147242775">可能是最强网工ansible入门及深入教程之
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147242775">可能是最强网工ansible入门及深入教程之
 ansible杂谈 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://zdyxry.github.io/2018/11/24/Ansible%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">Ansible最佳实践
+<li><a
+target="_blank" rel="noopener" href="https://zdyxry.github.io/2018/11/24/Ansible%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">Ansible最佳实践
 | Yiran's Blog</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/blob/stable-2.6/docs/docsite/rst/reference_appendices/python_3_support.rst">ansible/python_3_support.rst
+<li><a
+target="_blank" rel="noopener" href="https://github.com/ansible/ansible/blob/stable-2.6/docs/docsite/rst/reference_appendices/python_3_support.rst">ansible/python_3_support.rst
 at stable-2.6 · ansible/ansible</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/reference_appendices/interpreter_discovery.html">Interpreter
+<li><a
+target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/reference_appendices/interpreter_discovery.html">Interpreter
 Discovery — Ansible Documentation</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/issues/69494">Wrong
 python2 interpreter instead of python3 · Issue #69494 ·
 ansible/ansible</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.didispace.com/devops-for-small-team/">一些小团队的自动化运维实践经验
+<li><a
+target="_blank" rel="noopener" href="https://blog.didispace.com/devops-for-small-team/">一些小团队的自动化运维实践经验
 | 程序猿DD</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-manage-multistage-environments-with-ansible">How
+<li><a
+target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-manage-multistage-environments-with-ansible">How
 to Manage Multistage Environments with Ansible | DigitalOcean</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/291348171">基于Ansible自研的可视化和并行自动化运维引擎
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/291348171">基于Ansible自研的可视化和并行自动化运维引擎
 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.gaott.top/dive-into-ansible-source-code/">Ansible
+<li><a
+target="_blank" rel="noopener" href="https://www.gaott.top/dive-into-ansible-source-code/">Ansible
 实现原理（源码分析） – Tiantian Gao ( gtt116 )</a></li>
 </ol>
 
@@ -754,7 +828,7 @@ to Manage Multistage Environments with Ansible | DigitalOcean</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2023-03-18T15:11:14.885Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
+    最后更新时间：<time datetime="2025-02-23T22:31:43.813Z" itemprop="dateUpdated">2025-02-24 06:31:43</time>
 </span><br>
 
 
@@ -930,7 +1004,7 @@ to Manage Multistage Environments with Ansible | DigitalOcean</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

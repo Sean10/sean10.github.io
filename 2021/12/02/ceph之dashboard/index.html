@@ -28,16 +28,16 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="本篇主要是把旧文重新整理一下. 定位 目前已经为唯一的非自研的开源对接ceph的, 已将grafana嵌入.  监控&#x2F;告警  支持大部分想看到的数据  实施方面, 对接cephadm?  那是否对接ceph-ansible?  不对接, 但是ceph-ansible似乎也对接了cephadm, 作为cephadm的上层统一管理?  ceph-orch的能力?  Orchestrator CLI —">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sean10.github.io/.io//ceph%E4%B9%8Bdashboard_2021-12-02-16-03-44.png">
-<meta property="og:image" content="https://sean10.github.io/.io//ceph%E4%B9%8Bdashboard_2021-12-02-16-40-00.png">
-<meta property="og:image" content="https://sean10.github.io/.io//ceph%E4%B9%8Bdashboard_2021-12-02-16-40-35.png">
+<meta property="og:image" content="https://sean10.github.io/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-03-44.png">
+<meta property="og:image" content="https://sean10.github.io/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-40-00.png">
+<meta property="og:image" content="https://sean10.github.io/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-40-35.png">
 <meta property="article:published_time" content="2021-12-02T11:26:04.000Z">
 <meta property="article:modified_time" content="2023-03-18T15:11:14.811Z">
 <meta property="article:author" content="Sean10">
 <meta property="article:tag" content="ceph">
 <meta property="article:tag" content="dashboard">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sean10.github.io/.io//ceph%E4%B9%8Bdashboard_2021-12-02-16-03-44.png">
+<meta name="twitter:image" content="https://sean10.github.io/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-03-44.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -211,7 +211,8 @@ size&#x2F;objects&#x2F;object size, snap概念</span></a></li><li class="post-to
 </ul></li>
 <li>ceph-orch的能力?
 <ul>
-<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/mgr/orchestrator/#configuring-the-orchestrator-cli">Orchestrator
+<li><a
+target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/mgr/orchestrator/#configuring-the-orchestrator-cli">Orchestrator
 CLI — Ceph Documentation</a></li>
 <li>根据这里看到的, 对接了cephadm后支持了基本上所有的服务能力</li>
 </ul></li>
@@ -234,14 +235,16 @@ for users that prefer a WebUI over the CLI.</p>
 <p>On 9 November 2016, SUSE announced the acquisition of assets relating
 to the OpenAttic storage management assets from the German IT firm
 it-novum.[16] OpenAttic was integrated into SUSE Enterprise Storage as a
-graphical tool to manage and monitor Ceph-based storage clusters. --<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SUSE#Acquisition_of_OpenAttic">SUSE
+graphical tool to manage and monitor Ceph-based storage clusters. --<a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SUSE#Acquisition_of_OpenAttic">SUSE
 - Wikipedia</a></p>
 </blockquote>
 <p>Suse以前提供<code>Calamari</code>的管理页面,
 在<code>Luminos</code>发布前一年收购了<code>OpenATTIC</code>(当时就是提供ceph支持的web
 UI)替换<code>Calamari</code>, 在<code>Luminous</code>在2017-08-01发布时,
 社区自己也开发了一个只读的<code>dashboard_v1</code>.</p>
-<p>在<code>Nautilus</code>发布时2019-03-19, <a target="_blank" rel="noopener" href="https://openattic.org/posts/the-openattic-project-enters-maintenance-mode/">The
+<p>在<code>Nautilus</code>发布时2019-03-19, <a
+target="_blank" rel="noopener" href="https://openattic.org/posts/the-openattic-project-enters-maintenance-mode/">The
 openATTIC project enters maintenance mode |
 openATTIC</a>在2019-08-22正式宣布,<code>openATTIC</code>只做维护,
 所有开发直接在上游ceph进行. 实际上,
@@ -250,7 +253,8 @@ openATTIC</a>在2019-08-22正式宣布,<code>openATTIC</code>只做维护,
 <a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/20103">mgr/dashboard_v2:
 Initial submission of a web-based management UI (replacement for the
 existing dashboard) by LenzGr · Pull Request #20103 · ceph/ceph</a></p>
-<p>2020年末suse在渠道中<a target="_blank" rel="noopener" href="https://lists.ceph.io/hyperkitty/list/ceph-users@ceph.io/thread/KCDYH55OLK6N46HV6VSDRFRR5W2NX245/">SUSE
+<p>2020年末suse在渠道中<a
+target="_blank" rel="noopener" href="https://lists.ceph.io/hyperkitty/list/ceph-users@ceph.io/thread/KCDYH55OLK6N46HV6VSDRFRR5W2NX245/">SUSE
 POC - Dead in the water - ceph-users -
 lists.ceph.io</a>宣布最后一个基于ceph的企业存储版本,
 同期收购了<code>Rancher Labs</code>, 后续将投入<code>Longhorn</code></p>
@@ -263,13 +267,7 @@ RedHat等人依旧在维护.</p>
 要拆分Python和js框架, 不太确认.</p>
 <p>grafana在21年修改为AGPL3.0, Grafana
 8版本以前还是<code>Apache 2.0</code>可以使用</p>
-<p>初步来看, 是支持<code>cephadm</code>提供的所有能力. <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//ceph之dashboard_2021-12-02-16-03-44.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p>初步来看, 是支持<code>cephadm</code>提供的所有能力. <img src="/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-03-44.png" class=""></p>
 <h2 id="api来源">API来源</h2>
 <blockquote>
 <p>The dashboard module’s backend code uses the CherryPy framework and
@@ -280,34 +278,25 @@ implements a custom REST API.</p>
 <code>src/pybind/mgr/dashboard/controllers/crush_rule.py</code>比如这里就可以看到</p>
 <p>一个计划做的: crush map的自定义能力. 目前依旧不支持自定义能力.</p>
 <p>osd的实施界面, 计划仿2004</p>
-<p><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/cephadm/design/storage_devices_and_osds/">Storage
+<p><a
+target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/cephadm/design/storage_devices_and_osds/">Storage
 Devices and OSDs Management Workflows — Ceph Documentation</a>
 这里的设计也是类2004那种, 需要手动指定db,wal的. 2020年9月时的设计,
 目前未更新.</p>
 <p>目前的, 看到的主要是将cephadm集成入dashboard</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//ceph之dashboard_2021-12-02-16-40-00.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//ceph之dashboard_2021-12-02-16-40-35.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-40-00.png" class="">
+<img src="/2021/12/02/ceph%E4%B9%8Bdashboard/ceph%E4%B9%8Bdashboard_2021-12-02-16-40-35.png" class="">
 <p>根据service来看, 是将所有进程同等管理?</p>
-<p>SUSE的文档基本足够了<a target="_blank" rel="noopener" href="https://documentation.suse.com/ses/7/html/ses-all/dashboard-about.html">About
+<p>SUSE的文档基本足够了<a
+target="_blank" rel="noopener" href="https://documentation.suse.com/ses/7/html/ses-all/dashboard-about.html">About
 the Ceph Dashboard | Administration and Operations Guide | SUSE
-Enterprise Storage 7</a> RH也是这个界面的文档<a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/cephadm/design/storage_devices_and_osds/">Storage
+Enterprise Storage 7</a> RH也是这个界面的文档<a
+target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/cephadm/design/storage_devices_and_osds/">Storage
 Devices and OSDs Management Workflows — Ceph Documentation</a>
 ceph-ansible似乎也对接了cephadm. 具体还没看</p>
 <h1 id="运行一个带cephadm的dashboard">运行一个带cephadm的dashboard</h1>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">MON=1 MGR=1 OSD=3 MDS=1 ../src/vstart.sh -d -n -x --cephadm -i 0.0.0.0</span><br><span class="line"></span><br><span class="line">0.0.0.0不行, 因为这里还设置mon的绑定ip.</span><br><span class="line"></span><br><span class="line"><span class="comment"># cephadm需要asyncssh</span></span><br><span class="line">pip3 install asyncssh</span><br><span class="line"><span class="comment"># 配置ssh免密</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh/ &amp;&amp; ssh-keygen  </span><br><span class="line"><span class="built_in">chmod</span> 600 ~/.ssh/id_rsa</span><br><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_host</span><br><span class="line"><span class="comment"># cephadm需要部署docker或者podman</span></span><br><span class="line">dnf install docker-ce</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ceph config <span class="built_in">set</span> mgr mgr/dashboard/server_addr 0.0.0.0</span><br><span class="line">ceph mgr module <span class="built_in">disable</span> dashboard</span><br><span class="line">ceph mgr module <span class="built_in">enable</span> dashboard</span><br></pre></td></tr></table></figure>
-<hr>
+<hr />
 <p>以下为旧文, 当时针对<code>Luminous</code>版本分析</p>
 <h2 id="luminous版本局限功能">Luminous版本局限功能</h2>
 <h3 id="health">health</h3>
@@ -515,11 +504,14 @@ latency.[^1]</p>
 </ul>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://ceph.io/rbd/new-in-nautilus-rbd-performance-monitoring/">Ceph
+<li><a
+target="_blank" rel="noopener" href="https://ceph.io/rbd/new-in-nautilus-rbd-performance-monitoring/">Ceph
 New in Nautilus: RBD Performance Monitoring - Ceph</a></li>
-<li><a target="_blank" rel="noopener" href="https://documentation.suse.com/ses/6/html/ses-all/ceph-dashboard.html">Ceph
+<li><a
+target="_blank" rel="noopener" href="https://documentation.suse.com/ses/6/html/ses-all/ceph-dashboard.html">Ceph
 Dashboard | Administration Guide | SUSE Enterprise Storage 6</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/mgr/dashboard/#enabling-the-embedding-of-grafana-dashboards">Ceph
+<li><a
+target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/mgr/dashboard/#enabling-the-embedding-of-grafana-dashboards">Ceph
 Dashboard — Ceph Documentation</a></li>
 </ol>
 
@@ -706,7 +698,7 @@ Dashboard — Ceph Documentation</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

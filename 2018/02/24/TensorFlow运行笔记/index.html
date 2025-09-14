@@ -191,7 +191,7 @@
             <p>为了防止环境问题，所以使用了docker配置的TensorFlow环境，</p>
 <span id="more"></span>
 <p>为了防止万一被收录，论文查重问题，这篇之前一直没发布。</p>
-<hr>
+<hr />
 <h1 id="部署">部署</h1>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull tensorflow/tensorflow</span><br><span class="line">docker run -it tensorflow/tensorflow bash</span><br><span class="line"></span><br><span class="line">发现这个仓库只能在1.1版本下跑，重新下载了个</span><br><span class="line">docker pull tensorflow/tensorflow:1.1.0-py3</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -199,7 +199,7 @@
 compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA</p>
 </blockquote>
 <p>一开始在使用tf.Session()时就报了这个错误。暂时没理会。</p>
-<hr>
+<hr />
 <p>但是对docker
 不那么熟悉，不知道代码和数据应该存在哪个位置，在那还是决定代码通过volume挂载到docker内。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 --name=tensorflow_sean10 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow  bash</span><br><span class="line"></span><br><span class="line">这个版本tensorflow支持python3</span><br><span class="line">docker run -p 7777:8888 --name=tensorflow_sean10_py3 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:latest-py3  bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker ps -a -l</span><br><span class="line">docker rm $container_id</span><br><span class="line">docker rmi $image_id</span><br><span class="line">docker stop tensorflow_sean10_1.1.0_py3</span><br><span class="line">docker start -i tensorflow_sean10_1.1.0_py3</span><br><span class="line"></span><br><span class="line">docker attach tensorflow_sean10_1.1.0_py3</span><br><span class="line">docker exec -t -i tensorflow_sean10_1.1.0_py3 bash</span><br><span class="line"></span><br><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -210,15 +210,15 @@ compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA</p>
 <p>然后运行代码时，显示已经使用了python3的内核，但实际运行弹出的错误来源始终是python2.7，查到的说是默认的tensorflow
 image只有python2.7安装了tensorflow包，需要pull
 python3-latest版本才行。的确更换后就可以了……</p>
-<hr>
+<hr />
 <p>jupyter默认没有配置自动wrap,</p>
 <p>创建~/.jupyter/nbconfig/notebook.json配置文件，追加这一段
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;MarkdownCell&quot;: &#123;</span><br><span class="line">    &quot;cm_config&quot;: &#123;</span><br><span class="line">      &quot;lineWrapping&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;CodeCell&quot;: &#123;</span><br><span class="line">    &quot;cm_config&quot;: &#123;</span><br><span class="line">      &quot;lineWrapping&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<hr>
+<hr />
 <p><code>No module named ipykernel</code></p>
 <p>jupyter install 后 无法找到ipykernel_launcher</p>
 <p>解决方法： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 install pykernel</span><br><span class="line">python -m ipykernel install --user</span><br></pre></td></tr></table></figure></p>
-<hr>
+<hr />
 <h1 id="tensorflow错误记录">Tensorflow错误记录</h1>
 <h2 id="输入维度错误">输入维度错误</h2>
 <blockquote>
@@ -257,14 +257,15 @@ sequence_length为[20,13]，表示第一个example有效长度为20，第二个e
 <p>模型暂时和原本的初版差别不大，训练集也还是原本的随机出的，测试集顺序理论上应该没有影响才对</p>
 <p>就是上面那个weight和bias复用的问题……我定义在def
 model里了，导致reuse根本没有可以存下来</p>
-<hr>
+<hr />
 <h1 id="tf.truncated_normal">tf.truncated_normal()</h1>
 <p>这个函数产生正太分布，均值和标准差自己设定。这是一个截断的产生正太分布的函数，就是说产生正太分布的值如果与均值的差值大于两倍的标准差，那就重新生成。</p>
 <h1 id="bi-lstm实现">bi-lstm实现</h1>
 <p>参考了[8][9][重点10]</p>
 <h1 id="weight初始化导致无法梯度下降">weight初始化导致无法梯度下降</h1>
 <p>使用Xavier initialization[11]</p>
-<h1 id="basicrnncell使用上需要在lstmcell基础上修改一些地方">basicRNNCell使用上需要在LSTMCell基础上修改一些地方</h1>
+<h1
+id="basicrnncell使用上需要在lstmcell基础上修改一些地方">basicRNNCell使用上需要在LSTMCell基础上修改一些地方</h1>
 <p>参考[13]的代码修改的，原来在rnncell的时候就直接取当前state计算就可以ile</p>
 <h1 id="使用multirnncell的时候">使用MultiRNNCell的时候</h1>
 <blockquote>
@@ -273,11 +274,13 @@ for 'rnn/while/rnn/multi_rnn_cell/cell_0/basic_rnn_cell/MatMul_1' (op:
 'MatMul') with input shapes: [24,128], [464,64].</p>
 </blockquote>
 <p>要用python迭代器生成list，而不能直接用乘法，并且需要从函数来获取多个cell,不能直接对一个cell进行迭代</p>
-<h1 id="tf.metric.recall使用前需要initilizer">tf.metric.recall使用前需要initilizer</h1>
+<h1
+id="tf.metric.recall使用前需要initilizer">tf.metric.recall使用前需要initilizer</h1>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sess.run(tf.local_variables_initializer())</span><br></pre></td></tr></table></figure>
 <p>使用完 发现
 这个值依旧是不能用的，因为这个统计的是整个session周期内的</p>
-<h1 id="梯度消失和梯度爆炸如何从指标上判断出来">梯度消失和梯度爆炸，如何从指标上判断出来</h1>
+<h1
+id="梯度消失和梯度爆炸如何从指标上判断出来">梯度消失和梯度爆炸，如何从指标上判断出来</h1>
 <p>梯度消失似乎主要指的是多层效果反而没有浅层的好</p>
 <h1 id="关于recallf1等指标计算">关于recall,f1等指标计算</h1>
 <p>按照[16]条执行，成功跑出来了。</p>
@@ -294,34 +297,47 @@ they are in different while loops. See info log for more details.</p>
 <p>发现问题，由于最初对tensorflow认识不足，导致训练集和测试集虽然复用了weight和bias，但是实际是运行在不同的网络中的，而IndRNN可能由于没能针对Tensorflow处理好这些问题，因此无法应用。在修改后的代码中，复用同一个网络后，这个参数添加后就没有报错了。</p>
 <h1 id="参考资料">参考资料</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="http://yuenshome.cn/?p=4633">本地访问远程服务器的Docker容器的Jupyter
+<li><a
+target="_blank" rel="noopener" href="http://yuenshome.cn/?p=4633">本地访问远程服务器的Docker容器的Jupyter
 Notebook</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/ivictor/p/4834864.html">关于Docker目录挂载的总结</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36419342/how-to-wrap-code-text-in-jupyter-notebooks">wrap
+<li><a
+target="_blank" rel="noopener" href="http://www.cnblogs.com/ivictor/p/4834864.html">关于Docker目录挂载的总结</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36419342/how-to-wrap-code-text-in-jupyter-notebooks">wrap
 jupyter config</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/jupyter/notebook/issues/1558">No module
 named ipykernel</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq1483661204/article/details/78997644">tensorflow中dynamic_rnn与static_rnn区别</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010223750/article/details/71079036">tensorflow高阶教程:tf.dynamic_rnn</a>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq1483661204/article/details/78997644">tensorflow中dynamic_rnn与static_rnn区别</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u010223750/article/details/71079036">tensorflow高阶教程:tf.dynamic_rnn</a>
 # Reference</li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/rocketfan/p/5773373.html">Tensorflow
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/rocketfan/p/5773373.html">Tensorflow
 变量的共享</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/linyx/p/6979119.html">tensorflow
 bilstm官方示例</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Felaim/article/details/70300362">TensorFlow实战12：Bidirectional
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Felaim/article/details/70300362">TensorFlow实战12：Bidirectional
 LSTM Classifier</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012436149/article/details/71080601">tensorflow学习笔记(三十九)
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/u012436149/article/details/71080601">tensorflow学习笔记(三十九)
 : 双向rnn (BiRNN)</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.leiphone.com/news/201703/3qMp45aQtbxTdzmK.html">谷歌工程师：聊一聊深度学习的weight
+<li><a
+target="_blank" rel="noopener" href="https://www.leiphone.com/news/201703/3qMp45aQtbxTdzmK.html">谷歌工程师：聊一聊深度学习的weight
 initialization</a></li>
-<li><a target="_blank" rel="noopener" href="https://lguduy.github.io/2017/05/20/TensorFlow%E6%95%99%E7%A8%8B-%E5%A4%84%E7%90%86%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE/">ensorFlow教程：利用TensorFlow处理自己的数据</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e96b7ee1421">RNN入门：利用TF的API（二）</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://lguduy.github.io/2017/05/20/TensorFlow%E6%95%99%E7%A8%8B-%E5%A4%84%E7%90%86%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE/">ensorFlow教程：利用TensorFlow处理自己的数据</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e96b7ee1421">RNN入门：利用TF的API（二）</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues/14897">A
 bug in tensorflow r1.4 when applying MultiRNNCell</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/dennybritz/cnn-text-classification-tf/issues/71">Add
+<li><a
+target="_blank" rel="noopener" href="https://github.com/dennybritz/cnn-text-classification-tf/issues/71">Add
 precision and recall summaries</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/appleml/article/details/58647585">tensorflow中precision,recall和F1</a></li>
-<li><a href></a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/appleml/article/details/58647585">tensorflow中precision,recall和F1</a></li>
+<li><a href=""></a></li>
 </ol>
 
         </div>
@@ -507,7 +523,7 @@ precision and recall summaries</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

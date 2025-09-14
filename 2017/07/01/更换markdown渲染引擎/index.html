@@ -193,14 +193,14 @@
 <p>INFO Start processing FATAL Something's wrong. Maybe you can find the
 solution here: http://hexo.io/docs/troubleshooting.html</p>
 <p>Error: [pandoc warning] YAML header is not an object "source" (line
-67, column 1)<br>
+67, column 1)<br />
 at ChildProcess.<anonymous>
-(/Users/sean10/Code/sean10.github.io/node_modules/hexo-renderer-pandoc/index.js:73:20)<br>
-at emitTwo (events.js:106:13)<br>
-at ChildProcess.emit (events.js:191:7)<br>
-at maybeClose (internal/child_process.js:877:16)<br>
+(/Users/sean10/Code/sean10.github.io/node_modules/hexo-renderer-pandoc/index.js:73:20)<br />
+at emitTwo (events.js:106:13)<br />
+at ChildProcess.emit (events.js:191:7)<br />
+at maybeClose (internal/child_process.js:877:16)<br />
 at Process.ChildProcess._handle.onexit
-(internal/child_process.js:226:5)</anonymous></p>
+(internal/child_process.js:226:5)</p>
 </blockquote>
 <p>经过搜查，这似乎属于pandoc解析时的错误，找到了以下类似内容。</p>
 <blockquote>
@@ -210,7 +210,7 @@ http://johnmacfarlane.net/pandoc/README.html#yaml-metadata-block</p>
 metadata block, but isn't. Such a block would start with---on a line by
 itself and end with---or...on a line by itself. The line numbers in the
 error message refer to lines inside the metadata block, not to lines of
-the document.<br>
+the document.<br />
 By the way, you can turn off YAML metadata block parsing entirely by
 putting <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--from markdown-yaml_metadata_block</span><br></pre></td></tr></table></figure> in your pandoc command line.</p>
 </blockquote>
@@ -226,7 +226,8 @@ putting <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><
 </blockquote>
 <h1 id="参考文献">参考文献</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19520463/pandoc-cannot-parse-yaml-header-when-converting-md-to-pdf">parse
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19520463/pandoc-cannot-parse-yaml-header-when-converting-md-to-pdf">parse
 yaml</a></li>
 </ol>
 
@@ -413,7 +414,7 @@ yaml</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

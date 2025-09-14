@@ -190,11 +190,13 @@
 <span id="more"></span>
 <p>首先，id/secret/token设置需要记录下。测试接口似乎可以使用ngrok这样工具。</p>
 <p>未认证的订阅号的被动回复权限理论上是满足我的需求了的。</p>
-<hr>
+<hr />
 <h1 id="遇到问题">遇到问题:</h1>
-<h2 id="在用搬瓦工服务器处理消息时似乎那边收不到我的消息但是认证token那个收发包过程还是通过了的暂时怀疑是服务器端口冲突了但是iptables并没有查到冲突问题用nginx映射时倒是才提示端口已占用">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</h2>
+<h2
+id="在用搬瓦工服务器处理消息时似乎那边收不到我的消息但是认证token那个收发包过程还是通过了的暂时怀疑是服务器端口冲突了但是iptables并没有查到冲突问题用nginx映射时倒是才提示端口已占用">在用搬瓦工服务器处理消息时，似乎那边收不到我的消息，但是认证token那个收发包过程还是通过了的，暂时怀疑是服务器端口冲突了。但是iptables并没有查到冲突问题，用nginx映射时倒是才提示端口已占用。</h2>
 <h2 id="在centos6安装python时出现了">在centos6安装python时，出现了</h2>
-<p><code>ModuleNotFoundError: No module named '_sqlite3'</code>,在<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1210664/no-module-named-sqlite3">SF</a>，似乎是python3.6移除了3.5中的_sqlite3.so，不过按照最高票的cp
+<p><code>ModuleNotFoundError: No module named '_sqlite3'</code>,在<a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1210664/no-module-named-sqlite3">SF</a>，似乎是python3.6移除了3.5中的_sqlite3.so，不过按照最高票的cp
 python2的module过去再altinstall会引发新的<code>ImportError: dynamic module does not define module export function (PyInit__sqlite3)</code></p>
 <p>最后，只是configure时(添加个动态库选项)[http://blog.csdn.net/jaket5219999/article/details/53512071]就可以了。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enable-loadable-sqlite-extensions</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
@@ -304,9 +306,9 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/03/05/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/" id="post-next" class="post-nav-link">
+      <a href="/2018/02/26/%E9%94%AF%E9%BD%BF%E6%95%B0%E7%8B%AC-%E6%8E%A8%E7%90%86%E6%95%B0%E7%8B%AC-%E7%90%86%E8%A7%A3/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">算法学习目录</h4>
+        <h4 class="title">锯齿数独_推理数独 解法</h4>
       </a>
     </div>
   
@@ -388,7 +390,7 @@ python2的module过去再altinstall会引发新的<code>ImportError: dynamic mod
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

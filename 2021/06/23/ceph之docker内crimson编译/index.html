@@ -215,7 +215,8 @@ found.</h3>
 <p>我看了下<code>gcc</code>已经装了8.4版本,
 那就是<code>cmake</code>没能识别到gcc的环境变量?</p>
 <p>嗯, 我没装<code>gcc-c++</code>, 所以的确识别不到.</p>
-<h3 id="target-seastar-links-to-target-lz4lz4-but-the-target-was-not-found.">target
+<h3
+id="target-seastar-links-to-target-lz4lz4-but-the-target-was-not-found.">target
 "seastar" links to target "lz4::lz4" but the target was not found.</h3>
 <p>好像缺失的<code>lz4</code>的库?</p>
 <p>姑且试了下,
@@ -225,17 +226,17 @@ found.</h3>
 <p>CMake Warning (dev) at
 /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:273
 (message): The package name passed to
-<code>find_package_handle_standard_args</code> (LZ4) does<br>
+<code>find_package_handle_standard_args</code> (LZ4) does<br />
 not match the name of the calling package (lz4). This can lead to
-problems<br>
+problems<br />
 in calling code that expects <code>find_package</code> result variables
-(e.g.,<br>
-<code>_FOUND</code>) to follow a certain pattern.<br>
+(e.g.,<br />
+<code>_FOUND</code>) to follow a certain pattern.<br />
 Call Stack (most recent call first): cmake/modules/Findlz4.cmake:30
-(find_package_handle_standard_args)<br>
+(find_package_handle_standard_args)<br />
 src/CMakeLists.txt:335 (_find_package)
-src/seastar/cmake/SeastarDependencies.cmake:98 (find_package)<br>
-src/seastar/CMakeLists.txt:330 (seastar_find_dependencies)<br>
+src/seastar/cmake/SeastarDependencies.cmake:98 (find_package)<br />
+src/seastar/CMakeLists.txt:330 (seastar_find_dependencies)<br />
 This warning is for project developers. Use -Wno-dev to suppress it.</p>
 <h3 id="could-not-find-lz4-missing-lz4_library">Could NOT find LZ4
 (missing: LZ4_LIBRARY)</h3>
@@ -300,14 +301,17 @@ template arguments for 'tuple'</h3>
 <h2 id="stream-9-编译">stream 9 编译</h2>
 <p><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/51156">Feature #51156: qa:
 Teuthology Testing on Centos 9 Stream - Ceph - Ceph</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ktdreyer/ceph-el9">ktdreyer/ceph-el9</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ktdreyer/ceph-el9">ktdreyer/ceph-el9</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf copr enable -y ceph/el9 centos-stream-9</span><br></pre></td></tr></table></figure>
 <p>通过操作该项即可正常执行install-deps.sh</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/crimson/index.html">Crimson
+<li><a
+target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/crimson/index.html">Crimson
 developer documentation — Ceph Documentation</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/crimson/crimson/">crimson —
+<li><a
+target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/crimson/crimson/">crimson —
 Ceph Documentation</a></li>
 </ol>
 
@@ -410,9 +414,9 @@ Ceph Documentation</a></li>
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2021/05/15/ceph%E4%B9%8Bluminous-github%E7%89%88%E6%9C%AC%E7%BC%96%E8%AF%91undefined-reference/" id="post-next" class="post-nav-link">
+      <a href="/2021/05/15/ceph%E4%B9%8Bluminous-github%E7%89%88%E6%9C%AC%E7%BC%96%E8%AF%91/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">ceph之luminous_github版本编译undefined_reference</h4>
+        <h4 class="title">ceph之luminous_github版本编译问题整理</h4>
       </a>
     </div>
   
@@ -494,7 +498,7 @@ Ceph Documentation</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

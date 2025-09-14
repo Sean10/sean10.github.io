@@ -29,7 +29,7 @@
 <meta property="og:description" content="为了管理论文文献，方便引用导出等等，要用zotero,但是单纯这个导出的bibtex又无法直接给xelatex使用，就试着使用一下jabref这个工具">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-05-16T06:52:06.000Z">
-<meta property="article:modified_time" content="2023-03-18T15:11:14.877Z">
+<meta property="article:modified_time" content="2024-05-03T10:22:35.513Z">
 <meta property="article:author" content="Sean10">
 <meta property="article:tag" content="zotero">
 <meta property="article:tag" content="jabref">
@@ -163,7 +163,7 @@
             <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题集锦</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#xelatex%E5%AF%BC%E5%87%BAbib%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F%E4%B8%8D%E6%AD%A3%E7%A1%AE%E8%BE%93%E5%87%BA%E6%9C%89%E4%BA%9B%E6%B7%B7%E4%B9%B12"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">xelatex导出bib参考文献，格式不正确，输出有些混乱[2]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#zotero%E4%B8%AD%E6%96%87%E6%96%87%E7%8C%AE%E4%BD%9C%E8%80%85%E5%8F%AA%E6%98%BE%E7%A4%BA%E5%A7%931"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Zotero中文文献作者只显示姓[1]</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jabref-%E5%9C%A8%E6%89%93%E5%BC%80finder%E6%97%B6%E7%BB%8F%E5%B8%B8%E8%BF%9B%E5%85%A5-not-responding%E7%8A%B6%E6%80%81"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">JabRef
 在打开finder时，经常进入 not responding状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8zotfile%E8%BF%9B%E8%A1%8Cpdf%E6%8F%90%E5%8F%96%E5%88%B0%E7%8B%AC%E7%AB%8B%E7%9B%AE%E5%BD%95"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">使用Zotfile进行pdf提取到独立目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%85%B1%E4%BA%AB%E7%9B%98%E9%87%8C%E8%AE%BE%E7%BD%AE%E8%BD%AF%E9%93%BE"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用共享盘里设置软链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8scite-zotero-plugin%E8%BF%9B%E8%A1%8C%E5%88%86%E6%9E%90%E6%96%87%E7%8C%AE"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">使用scite-zotero-plugin进行分析文献</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8sci-hub%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">使用sci-hub自动下载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webdav%E5%AF%B9%E6%8E%A5-%E7%94%A8%E4%BA%8Ezotero-6.0%E7%9A%84ipad%E7%89%88%E6%9C%AC.20230227%E4%BB%8Ezotfile%E8%BF%81%E7%A7%BB%E5%88%B0%E5%9D%9A%E6%9E%9C%E4%BA%91"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">webdav对接
-用于zotero 6.0的ipad版本.(20230227从zotfile迁移到坚果云)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%9A%E6%9E%9C%E4%BA%91"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">坚果云</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98-%E8%87%AA%E5%B7%B1%E9%83%A8%E7%BD%B2webdav"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">阿里云盘 自己部署webdav</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dropbox-%E8%87%AA%E5%B7%B1%E9%83%A8%E7%BD%B2webdav"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">dropbox 自己部署webdav</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">2.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+用于zotero 6.0的ipad版本.(20230227从zotfile迁移到坚果云)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%9A%E6%9E%9C%E4%BA%91"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">坚果云</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98-%E8%87%AA%E5%B7%B1%E9%83%A8%E7%BD%B2webdav"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">阿里云盘 自己部署webdav</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dropbox-%E8%87%AA%E5%B7%B1%E9%83%A8%E7%BD%B2webdav"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">dropbox 自己部署webdav</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E9%9B%86%E9%94%A6"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方案集锦</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#zotero%E9%98%85%E8%AF%BBpdf"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">zotero阅读pdf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#zotero%E7%BB%93%E5%90%88ipad"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">zotero结合ipad</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%93%E5%90%88%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">结合思维导图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%93%E5%90%88markdown%E6%A3%80%E7%B4%A2."><span class="post-toc-number">2.4.</span> <span class="post-toc-text">结合markdown检索.</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
         </nav>
     </aside>
 
@@ -192,7 +192,8 @@
             <p>为了管理论文文献，方便引用导出等等，要用zotero,但是单纯这个导出的bibtex又无法直接给xelatex使用，就试着使用一下jabref这个工具</p>
 <span id="more"></span>
 <h1 id="问题集锦">问题集锦</h1>
-<h2 id="xelatex导出bib参考文献格式不正确输出有些混乱2">xelatex导出bib参考文献，格式不正确，输出有些混乱[2]</h2>
+<h2
+id="xelatex导出bib参考文献格式不正确输出有些混乱2">xelatex导出bib参考文献，格式不正确，输出有些混乱[2]</h2>
 <p>使用zotero导出的bib中，文献类型同样是学位论文，但是bib中是phdThesis,而我本科的模板上是MasterThesis,暂时没找到如何让zotero修改这个的方法，倒是找到了在JabRef上修正这个的方法，看来暂时只能用JabRef了.</p>
 <p>不过在LaTex的bst格式文件中也找到了phdthesis的输出样式，所以错误原因究竟是什么呢？</p>
 <p>经过一个个与模板bib文件比照，发现是由于缺少了<code>language=&#123;Chinese&#125;</code>这行设置，补充后即可输出了，搞定。</p>
@@ -208,7 +209,8 @@
 在打开finder时，经常进入 not responding状态</h2>
 <p>按照issue里说的换成4.3
 beta版本就可以正常使用了,唔，在新建entry的时候还是和issue一样Freeze了。</p>
-<h2 id="使用zotfile进行pdf提取到独立目录">使用Zotfile进行pdf提取到独立目录</h2>
+<h2
+id="使用zotfile进行pdf提取到独立目录">使用Zotfile进行pdf提取到独立目录</h2>
 <p>根据[^4]这篇文章操作了下, 现在在一个独立目录里有所有的pdf了,
 至少可以跨平台阅读了. 但是这样就出现了一个新的问题, 删除文献时,
 是无法把已经被<code>rename</code>出去的pdf也给删掉的.</p>
@@ -219,27 +221,40 @@ beta版本就可以正常使用了,唔，在新建entry的时候还是和issue�
 我就是因为用ipad访问同步盘的时候,
 <code>zotero</code>的<code>storage</code>目录结构不好找,
 根本找不到想看的文献, 所以才引入<code>zotfile</code>的方案的呀?</p>
-<h2 id="使用scite-zotero-plugin进行分析文献">使用scite-zotero-plugin进行分析文献</h2>
+<h2
+id="使用scite-zotero-plugin进行分析文献">使用scite-zotero-plugin进行分析文献</h2>
 <h2 id="使用sci-hub自动下载">使用sci-hub自动下载</h2>
-<p>按照<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QMSG24tgn4z8ShfE9pVYMg">更新版｜Zotero搭配Sci-Hub，真香！</a>这篇文章中的配置,
+<p>按照<a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QMSG24tgn4z8ShfE9pVYMg">更新版｜Zotero搭配Sci-Hub，真香！</a>这篇文章中的配置,
 找一个当前<code>sci-hub</code>最新的域名即可.</p>
-<h2 id="webdav对接-用于zotero-6.0的ipad版本.20230227从zotfile迁移到坚果云">webdav对接
+<h2
+id="webdav对接-用于zotero-6.0的ipad版本.20230227从zotfile迁移到坚果云">webdav对接
 用于zotero 6.0的ipad版本.(20230227从zotfile迁移到坚果云)</h2>
 <h3 id="坚果云">坚果云</h3>
-<p><a target="_blank" rel="noopener" href="https://iloveocean.top/index.php/archives/16/">使用Zotero进行从未有过的畅快学术体验
+<p><a
+target="_blank" rel="noopener" href="https://iloveocean.top/index.php/archives/16/">使用Zotero进行从未有过的畅快学术体验
 - Eddy's World</a></p>
 <h3 id="阿里云盘-自己部署webdav">阿里云盘 自己部署webdav</h3>
 <h3 id="dropbox-自己部署webdav">dropbox 自己部署webdav</h3>
+<h1 id="解决方案集锦">解决方案集锦</h1>
+<h2 id="zotero阅读pdf">zotero阅读pdf</h2>
+<h2 id="zotero结合ipad">zotero结合ipad</h2>
+<h2 id="结合思维导图">结合思维导图</h2>
+<h2 id="结合markdown检索.">结合markdown检索.</h2>
 <h1 id="reference">Reference</h1>
 <ol type="1">
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/58599043">Zotero
 作者按西文的方式显示，如何调整为中式？</a></li>
-<li><a target="_blank" rel="noopener" href="http://muchong.com/html/201410/7981977.html">参考文献管理工具zotero的使用经验分享</a></li>
-<li><a target="_blank" rel="noopener" href="https://iseex.github.io/2020-03/zotfile-linked-file/">ZotFile +
+<li><a
+target="_blank" rel="noopener" href="http://muchong.com/html/201410/7981977.html">参考文献管理工具zotero的使用经验分享</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://iseex.github.io/2020-03/zotfile-linked-file/">ZotFile +
 同步盘，实现Zotero文献跨平台同步！</a></li>
-<li><a target="_blank" rel="noopener" href="https://gaolei.xyz/2020/04/%E5%9C%A8-ipad-%E4%B8%8A%E4%BC%98%E9%9B%85%E5%9C%B0%E7%9C%8B%E6%96%87%E7%8C%AE-zotero-zotfile-%E5%9D%9A%E6%9E%9C%E4%BA%91/">在
+<li><a
+target="_blank" rel="noopener" href="https://gaolei.xyz/2020/04/%E5%9C%A8-ipad-%E4%B8%8A%E4%BC%98%E9%9B%85%E5%9C%B0%E7%9C%8B%E6%96%87%E7%8C%AE-zotero-zotfile-%E5%9D%9A%E6%9E%9C%E4%BA%91/">在
 iPad 上优雅地看文献：Zotero + ZotFile + 坚果云</a></li>
-<li><a target="_blank" rel="noopener" href="https://iloveocean.top/index.php/archives/16/">使用Zotero进行从未有过的畅快学术体验
+<li><a
+target="_blank" rel="noopener" href="https://iloveocean.top/index.php/archives/16/">使用Zotero进行从未有过的畅快学术体验
 - Eddy's World</a></li>
 </ol>
 
@@ -250,7 +265,7 @@ iPad 上优雅地看文献：Zotero + ZotFile + 坚果云</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2023-03-18T15:11:14.877Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
+    最后更新时间：<time datetime="2024-05-03T10:22:35.513Z" itemprop="dateUpdated">2024-05-03 18:22:35</time>
 </span><br>
 
 
@@ -426,7 +441,7 @@ iPad 上优雅地看文献：Zotero + ZotFile + 坚果云</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

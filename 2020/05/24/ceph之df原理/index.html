@@ -240,7 +240,7 @@ pool_stat.get_user_bytes(1.0, per_pool) *
 这里应该是统计store_stats.data_stored的时候一些down的osd就不统计了,
 所以为1.0的<code>raw_used_rate</code>. * new bytes used
 实际这个资源池里的OSD分配的空间大小(这里应该是不包含其他资源池因为复用osd占用的空间吧?)
-* pool_stat.get_allocated_bytes * store_stats.allocated;<br>
+* pool_stat.get_allocated_bytes * store_stats.allocated;<br />
 * compress_bytes_used compress的数据 ,
 分配的空间大小(包含副本/EC的开销),
 也就是说除去副本数就是用户数据实际在设备里存储吧 *
@@ -256,7 +256,8 @@ compress的用户数据大小? * statfs.compressed_original</p>
 <li>per_pool
 <ul>
 <li>osd_sum.num_osds == osd_sum.num_per_pool_osds</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/5dcb6d81bbc2a4c4d0da4a33d9f6bbba5065a1ad">mon:
+<li><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/5dcb6d81bbc2a4c4d0da4a33d9f6bbba5065a1ad">mon:
 use per-pool stats only when all OSDs are reporting ·
 ceph/ceph@5dcb6d8</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/19454">osd: per-pool osd
@@ -302,9 +303,11 @@ id对应的归一化结果，取得资源池原始的最大可用空间。</p>
 <p>现在要根据当前配置的副本数来获得对于资源池来说可用的空间，在<code>PGMapDigest::dump_pool_stats_full</code>函数中副本数变量为<code>raw_used_rate</code>。</p>
 <ul>
 <li>针对<code>Replicated</code>类型，直接赋为资源池<code>size</code></li>
-<li>针对<code>Erasure</code>类型，从<code>erasure_code_profile</code>中获取到<code>k</code>和<code>m</code>，赋为<span class="math inline">\((k+m)/k\)</span></li>
+<li>针对<code>Erasure</code>类型，从<code>erasure_code_profile</code>中获取到<code>k</code>和<code>m</code>，赋为<span
+class="math inline">\((k+m)/k\)</span></li>
 </ul>
-<p>最后直接得到资源池可用空间<span class="math inline">\(\frac{max_avail}{raw_used_rate}\)</span></p>
+<p>最后直接得到资源池可用空间<span
+class="math inline">\(\frac{max_avail}{raw_used_rate}\)</span></p>
 <h4 id="pool使用量计算">pool使用量计算</h4>
 <p>在<code>PGMapDigest</code>的成员变量<code>mempool::pgmap::unordered_map&lt;int32_t,pool_stat_t&gt; pg_pool_sum</code>中保存着pool的pg的对应资源池中的使用量<code>num_bytes</code>的和。该数据在<code>ceph df detail</code>中进行汇总</p>
 <p>可以用下面这个命令看到这些统计 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ceph report</span><br></pre></td></tr></table></figure></p>
@@ -384,7 +387,8 @@ pg_stat里.</p>
 json-pretty是可以导出<code>num_bytes</code>的,
 而<code>daemon osd.x perf dump</code>反而拿不到.</p>
 <p>通过<code>ceph-objectstore-tool</code>可以拿到<code>OSD里存的pg</code>的信息</p>
-<h4 id="ceph-objectstore-tool查看osd数据库中bluestore-pg信息">ceph-objectstore-tool查看OSD数据库中bluestore
+<h4
+id="ceph-objectstore-tool查看osd数据库中bluestore-pg信息">ceph-objectstore-tool查看OSD数据库中bluestore
 pg信息</h4>
 <p>如何解密然后修改呢</p>
 <p>export pg信息似乎走的是<code>RadosDump</code></p>
@@ -549,22 +553,29 @@ size阶段可继续使用的pool，只有osd正式out了，容量才会变更。
 <p>仅当被从crush中挪走或不存在in的osd，才会真的容量变化。</p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44389885/article/details/101478537?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=ceph%20df&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-101478537">Ceph
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44389885/article/details/101478537?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=ceph%20df&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-101478537">Ceph
 df分析_运维_weixin_44389885的博客-CSDN博客</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/pansaky/article/details/86690230?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase">ceph全局GLOBAL容量和POOLS级别容量计算_awk_pansaky的博客-CSDN博客</a>$$</li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/goldd/p/6610618.html">Ceph中的容量计算与管理
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/pansaky/article/details/86690230?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase">ceph全局GLOBAL容量和POOLS级别容量计算_awk_pansaky的博客-CSDN博客</a>$$</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/goldd/p/6610618.html">Ceph中的容量计算与管理
 - gold叠 - 博客园</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55962248/how-to-explain-ceph-space-usage">kubernetes
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55962248/how-to-explain-ceph-space-usage">kubernetes
 - How to explain Ceph space usage - Stack Overflow</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/19454/files">osd:
 per-pool osd stats collection by ifed01 · Pull Request #19454 ·
 ceph/ceph</a></li>
 <li><a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/16671">Bug #16671: "ceph
 df"object num is negative - Ceph - Ceph</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/goldd/p/6610618.html">Ceph中的容量计算与管理
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/goldd/p/6610618.html">Ceph中的容量计算与管理
 - gold叠 - 博客园</a></li>
-<li><a target="_blank" rel="noopener" href="https://runsisi.com/2019-02-27/ceph-pg-stat">https://runsisi.com/2019-02-27/ceph-pg-stat</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/174c9d376b83">pglog出错导致osd启动失败的解决办法
+<li><a
+target="_blank" rel="noopener" href="https://runsisi.com/2019-02-27/ceph-pg-stat">https://runsisi.com/2019-02-27/ceph-pg-stat</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.jianshu.com/p/174c9d376b83">pglog出错导致osd启动失败的解决办法
 - 简书</a></li>
 </ol>
 
@@ -751,7 +762,7 @@ df"object num is negative - Ceph - Ceph</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

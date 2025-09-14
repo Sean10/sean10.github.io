@@ -195,7 +195,8 @@
 异常是直接raise,让程序退出,还是捕获记录到日志中后继续运行 *
 异常的代码影响到了代码的可读性, 有没有更合适的解决方式?</p>
 <h2 id="异常的使用场景">异常的使用场景</h2>
-<p>详见<a href="/2020/06/24/if-else与try-catch初理解/">if-else与try-catch初理解</a></p>
+<p>详见<a
+href="/2020/06/24/if-else与try-catch初理解/">if-else与try-catch初理解</a></p>
 <h2 id="面向切面编程aop6">面向切面编程(AOP)[^6]</h2>
 <h2 id="todo异常的代码可读性">Todo:异常的代码可读性</h2>
 <p>像是如果一个业务逻辑里要执行多种封装的接口调用</p>
@@ -235,7 +236,8 @@
 <p>但是,又有一个问题,程序调用栈可能就会被破坏了,就像下面说的.</p>
 <p>我调用一个库要一个<code>int</code>类型的结果,结果这个库里的接口在失败时并不会直接抛出,打断运行,而是返回一个<code>Exception</code>,我必须增加额外的判断检查,才能使用,否则一定会让调用者出错,这样其实也是违背了静态类型的接口设计的吧.
 谁的问题应该由谁抛出更合适吧.</p>
-<h3 id="不捕获异常上层也不做捕获直接抛出">不捕获异常,上层也不做捕获,直接抛出</h3>
+<h3
+id="不捕获异常上层也不做捕获直接抛出">不捕获异常,上层也不做捕获,直接抛出</h3>
 <p>但是又看到一种说法[^5],有人说是由于python底层针对各种语句,存在各式各样的异常,基本不可能捕获,这个语言就是这么脆弱,捕获异常也只能做到非常有限的效果的话,
 直接让程序出错直接退出就好了,如果这个场景没有考虑到的话.</p>
 <p>但是按照我的理解,
@@ -270,17 +272,20 @@ as it is thrown and deal with it immediately.</p>
 constructs, but why is a different question.</p>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1508467/log-exception-with-traceback">python
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1508467/log-exception-with-traceback">python
 - Log exception with traceback - Stack Overflow</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/logging.html">logging —
 Logging facility for Python — Python 3.8.3 documentation</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.im/post/5c85a09e518825657a3d6b4a">Python
 工匠： 异常处理的三个好习惯 - 掘金</a></li>
-<li><a target="_blank" rel="noopener" href="https://dev.to/wemake-services/python-exceptions-considered-an-anti-pattern-17o9">Python
+<li><a
+target="_blank" rel="noopener" href="https://dev.to/wemake-services/python-exceptions-considered-an-anti-pattern-17o9">Python
 exceptions considered an anti-pattern - DEV</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/python/typing/issues/71">declaring
 exceptions in stubs · Issue #71 · python/typing</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/65889466">Python小书4-统一异常处理 -
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/65889466">Python小书4-统一异常处理 -
 知乎</a></li>
 </ol>
 
@@ -467,7 +472,7 @@ exceptions in stubs · Issue #71 · python/typing</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

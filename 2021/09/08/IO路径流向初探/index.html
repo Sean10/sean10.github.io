@@ -28,30 +28,30 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="todo ceph-fuse是如何将系统调用注册成自己的程序的呢?  libcephfs 是ceph-fuse通信的内核模块 ceph-fuse来处理真实的逻辑 本文提到为了系统实现概念的统一性、设计的一致性以及层次抽象与共用，操作系统将iscsi协议对接到scsi中间层。这种实现对性能的损失有多大？如果我们在device-mapper之下实现又会怎么样 https:&#x2F;&#x2F;www.kernel.or">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-21-08.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-26-18.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-12-39-32.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-05-05.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-58-04.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-59-01.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-01-11-50.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-20-26-59.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-22-04-15.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-23-32-24.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-50-33.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-24-41.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-15-52.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-18-39.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-21-55.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-40-56.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-21-08.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-26-18.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-12-39-32.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-05-05.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-58-04.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-59-01.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-01-11-50.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-20-26-59.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-22-04-15.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-23-32-24.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-50-33.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-24-41.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-15-52.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-18-39.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-21-55.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-40-56.png">
 <meta property="og:image" content="https://www.thomas-krenn.com/de/wikiDE/images/7/72/Linux-storage-stack-diagram_v4.10.svg">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-19-57.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-22-23.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-40-32.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-41-04.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-16-32.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-06-03.png">
-<meta property="og:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-06-42.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-19-57.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-22-23.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-40-32.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-41-04.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-16-32.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-06-03.png">
+<meta property="og:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-06-42.png">
 <meta property="article:published_time" content="2021-09-08T03:59:38.000Z">
 <meta property="article:modified_time" content="2023-03-18T15:11:14.882Z">
 <meta property="article:author" content="Sean10">
@@ -59,7 +59,7 @@
 <meta property="article:tag" content="IO">
 <meta property="article:tag" content="存储">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sean10.github.io/.io//IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-21-08.png">
+<meta name="twitter:image" content="https://sean10.github.io/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-21-08.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -237,7 +237,8 @@ IO聚合, 随机IO转顺序, 或缓存命中直接返回, 存在一致性风险<
 <li><p>磁盘Cache 是否是在硬盘驱动哪层</p></li>
 <li><p>avgrq-sz这个东西应该有个上限, 好像是512K</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://martincarstenbach.wordpress.com/2013/07/03/increasing-the-maximum-io-size-in-linux/">Increasing
+<li><a
+target="_blank" rel="noopener" href="https://martincarstenbach.wordpress.com/2013/07/03/increasing-the-maximum-io-size-in-linux/">Increasing
 the maximum I/O size in Linux | Martins Blog</a></li>
 <li><blockquote>
 <p>The default maximum IO size set by Max_Sectors_KB restricts the
@@ -296,7 +297,7 @@ cache
 地址空间映射到用户空间，应用程序像操作应用层内存一样，写文件。省去了系统调用开销。
 &gt; &gt; 那如果继续刨根问底，如果想绕过page
 cache，直接把数据送到磁盘设备上怎么办。通过open文件带上O_DIRECT参数，这是write该文件。就是直接写到设备上。
-&gt; &gt;<br>
+&gt; &gt;<br />
 &gt; &gt;
 如果继续较劲，直接写扇区有没有办法。这就是所谓的RAW设备写，绕开了文件系统，直接写扇区，想fdsik，dd，cpio之类的工具就是这一类操作。</p></li>
 <li><p>LIO</p></li>
@@ -339,34 +340,10 @@ SPDK 改造 vhost / iSCSI .</p>
 LevelDB 或 RocksDB 的单机存储引擎中。</p>
 </blockquote>
 <h2 id="iscsi">iSCSi</h2>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-10-21-08.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-26-18.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-12-39-32.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-13-00-05-05.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-21-08.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-26-18.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-12-39-32.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-05-05.png" class="">
 <h2 id="对于k8s-openstack对接的存储路径">对于K8S,
 openstack对接的存储路径</h2>
 <blockquote>
@@ -374,16 +351,11 @@ openstack对接的存储路径</h2>
 FUSE，还有一些其他比较小众的，比如 ceph 的 rbd、sheepdog 的 sbd
 等，这些的原理就是通过注册内核相关的 block device 类型来做的。</p>
 </blockquote>
-<p><a target="_blank" rel="noopener" href="https://runsisi.com/2018-12-26/ceph-iscsi-research">https://runsisi.com/2018-12-26/ceph-iscsi-research</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://runsisi.com/2018-12-26/ceph-iscsi-research">https://runsisi.com/2018-12-26/ceph-iscsi-research</a></p>
 <h1 id="工具">工具</h1>
 <h2 id="blocktrace">blocktrace</h2>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-00-58-04.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-58-04.png" class="">
 <blockquote>
 <p>第一个字段：8,0 这个字段是设备号 major device ID和minor device ID。
 第二个字段：3 表示CPU 第三个字段：11 序列号 第四个字段：0.009507758 Time
@@ -399,64 +371,16 @@ blocks，即我们常说的Offset 和 Size 第九个字段： 进程名</p>
 | D – IO请求进入driver | C – IO请求执行完毕</p>
 </blockquote>
 <h2 id="iowatcher">iowatcher</h2>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-00-59-01.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-59-01.png" class="">
 <h1 id="文件系统io路径">文件系统IO路径</h1>
 <h2 id="操作系统路径">操作系统路径</h2>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-01-11-50.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-04-20-26-59.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-04-22-04-15.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-04-23-32-24.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-00-50-33.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-10-24-41.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-15-52.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-01-11-50.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-20-26-59.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-22-04-15.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-04-23-32-24.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-00-50-33.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-24-41.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-15-52.png" class="">
 <blockquote>
 <p>当用户调用了write、read等系统调用陷入内核之后，系统会首先针对关联的file对象找到对应的file
 system，此处针对后端是否有持久化存储可将众多的file
@@ -468,31 +392,13 @@ mapper层主要完成逻辑设备到物理设备的映射工作，例如可以�
 raid1），或者是提供快照和多路径的功能，再往下是具体的block层，此处会为每个设备提供一个queue，在queue之上使用各种io
 scheduler(noop/deadline/cfq)进行请求的合并，最后调用各种不同的设备驱动完成服务。SCSI子模块就是这众多驱动中的一种，其他的还有按照协议和总线划分还有USB，ATA等等。</p>
 </blockquote>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-18-39.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-21-55.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-40-56.png" class="">
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-18-39.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-21-55.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-40-56.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://www.thomas-krenn.com/de/wikiDE/images/7/72/Linux-storage-stack-diagram_v4.10.svg" alt title>
+                    <img src="https://www.thomas-krenn.com/de/wikiDE/images/7/72/Linux-storage-stack-diagram_v4.10.svg" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -558,20 +464,8 @@ Cache层的最小单元是页（Page），所以块大小不能超过一页的</
 <p>通用块层的核心数据结构是一个称为BIO的描述符，它描述了块设备的IO操作。每个bio结构都包含一个磁盘存储区标识符（存储区中的起始扇区和扇区数目）和一个或多个描述符
 与IO操作相关的内存区的段。</p>
 <h2 id="device-mapper-layer15">Device Mapper Layer[^15]</h2>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-19-57.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-22-23.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-19-57.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-22-23.png" class="">
 <h2 id="io-scheduler-layer">I/O Scheduler Layer</h2>
 <p>I/O调度层的功能是管理块设备的请求队列。即接收通用块层发出的I/O请求，缓存请求并试图合并相邻的请求。并根据设置好的调度算法，回调驱动层提供的请求处理函数，以处理具体的I/O请求。</p>
 <p>如果简单地以内核产生请求的次序直接将请求发给块设备的话，那么块设备性能肯定让人难以接受，因为磁盘寻址是整个计算机中最慢的操作之一。为了优化寻址操作，内核不会一旦接收到I/O请求后，就按照请求的次序发起块I/O请求。为此Linux实现了几种I/O调度算法，算法基本思想就是通过合并和排序I/O请求队列中的请求，以此大大降低所需的磁盘寻道时间，从而提高整体I/O性能。</p>
@@ -586,27 +480,9 @@ Middle
 层就是管SCSI指令，下发下来都是在内存里的数据结构，每个OS都不一样，但是如果发到磁盘，发到外面的交换机，必须把它弄成标准化的，因为外面有很多厂商做硬件，你不标准，就没法做了这个硬件，你不能说为每个OS都做一个硬件。这层除了翻译成SCSI指令，这边有SCSI语义，还有管真正的SCSI的处理，比如超时了怎么办这些事情，这是中间层。</p>
 </blockquote>
 <p>　　底下这层是HBA层，首先要有驱动，在HBA上有设备发现的这么一层库，因为传统的SCSI几十年前，那时候只有SCSI这么一种物理硬件，大家可能有人见过，很粗很笨的线缆，后来出现了FC，SAS这些，更快速的、高效的物理链路类型。SCSI协议，如果想跑在这些物理链路类型说，就需要有这么一块代码，这个网络里面，把你对端的SCSI设备发现上来，如果后端改成SAS，这块代码就会往SAS网络上发出一些广播的消息，将设备探测到，然后才生成设备符号。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-10-40-32.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-10-41-04.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-05-11-16-32.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-40-32.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-10-41-04.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-05-11-16-32.png" class="">
 <h2 id="block-device-layer">Block Device Layer</h2>
 <p>硬盘缓存功能等就在硬件内了. 比如最近我们接触的希捷高速缓存.</p>
 <h1 id="块对象的io路径.">块对象的IO路径.</h1>
@@ -622,22 +498,27 @@ cache?</h3>
 <h3 id="分层缓存设备">分层缓存设备</h3>
 <h3 id="元数据分离-通过高速硬件提高元数据读取性能">元数据分离,
 通过高速硬件提高元数据读取性能</h3>
-<h3 id="根据元数据指定的地址-在低速设备上查询真实速度">根据元数据指定的地址,
+<h3
+id="根据元数据指定的地址-在低速设备上查询真实速度">根据元数据指定的地址,
 在低速设备上查询真实速度</h3>
 <h3 id="硬盘预读能力-如果命中了提高性能">硬盘预读能力,
 如果命中了提高性能</h3>
 <h2 id="写路径">写路径</h2>
 <h3 id="应用态业务程序-1">应用态业务程序</h3>
-<h3 id="应用态程序缓存-io聚合-随机io转顺序-或缓存命中直接返回-存在一致性风险">应用态程序缓存,
+<h3
+id="应用态程序缓存-io聚合-随机io转顺序-或缓存命中直接返回-存在一致性风险">应用态程序缓存,
 IO聚合, 随机IO转顺序, 或缓存命中直接返回, 存在一致性风险</h3>
 <h3 id="内核态缓-存-io聚合-或缓存命中直接返回-存在一致性风险">内核态缓
 存, IO聚合, 或缓存命中直接返回, 存在一致性风险</h3>
 <h3 id="内核态到块设备-驱动层面聚合">内核态到块设备, 驱动层面聚合</h3>
-<h3 id="分层缓存设备-写命中的对象-则可以直接返回-免去访问更底层的">分层缓存设备,
+<h3
+id="分层缓存设备-写命中的对象-则可以直接返回-免去访问更底层的">分层缓存设备,
 写命中的对象, 则可以直接返回, 免去访问更底层的</h3>
-<h3 id="元数据分离-如果是小io-直接落元数据分区所在的高速设备-如果是低速-则继续下传">元数据分离,
+<h3
+id="元数据分离-如果是小io-直接落元数据分区所在的高速设备-如果是低速-则继续下传">元数据分离,
 如果是小io, 直接落元数据分区所在的高速设备, 如果是低速, 则继续下传</h3>
-<h3 id="硬盘随机写能力-看硬盘的算法-是否有缓存进行io聚合之类的.">硬盘随机写能力,
+<h3
+id="硬盘随机写能力-看硬盘的算法-是否有缓存进行io聚合之类的.">硬盘随机写能力,
 看硬盘的算法, 是否有缓存进行IO聚合之类的.</h3>
 <h1 id="基于io路径的优化">基于IO路径的优化</h1>
 <p>采用追加写</p>
@@ -685,20 +566,8 @@ killer(OOM=out-of-memory)。它会选择杀死一些进程(用户态进程，不
 <li>$ cat /proc/sys/vm/overcommit_ratio</li>
 </ul>
 <h1 id="前沿趋势">前沿趋势</h1>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-13-00-06-03.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//IO路径流向小记_2020-12-13-00-06-42.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-06-03.png" class="">
+<img src="/2021/09/08/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%88%9D%E6%8E%A2/IO%E8%B7%AF%E5%BE%84%E6%B5%81%E5%90%91%E5%B0%8F%E8%AE%B0_2020-12-13-00-06-42.png" class="">
 <p>[^26]</p>
 <blockquote>
 <p>IO出了龙潭又入虎穴，对于基于SATA/SAS
@@ -709,22 +578,26 @@ SSD的AFA来讲，SCSI层很难绕过，因为这个协议栈太过底层，SCSI
 <h1 id="调试排查29">调试排查[^29]</h1>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2017/05/19/about-desk-io.html">磁盘I/O那些事
+<li><a
+target="_blank" rel="noopener" href="https://tech.meituan.com/2017/05/19/about-desk-io.html">磁盘I/O那些事
 - 美团技术团队</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ce43ec207ac5">通用块层 -
 简书</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96391501">浅谈Linux内核IO体系之磁盘IO
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96391501">浅谈Linux内核IO体系之磁盘IO
 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAwMDUwNDgxOA==&amp;mid=2652667287&amp;idx=1&amp;sn=0aa2f82b0f40a68314bf42da872f90d8&amp;chksm=810f3b0ab678b21c6c2a06dbb6f57cba6d55429cb20863179267e0c807146f9aa6f945dbcb64&amp;scene=27#wechat_redirect">打通IO栈：一次编译服务器性能优化实战</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAwMDUwNDgxOA==&amp;mid=2652667287&amp;idx=1&amp;sn=0aa2f82b0f40a68314bf42da872f90d8&amp;chksm=810f3b0ab678b21c6c2a06dbb6f57cba6d55429cb20863179267e0c807146f9aa6f945dbcb64&amp;scene=27#wechat_redirect">打通IO栈：一次编译服务器性能优化实战</a></li>
 <li><a target="_blank" rel="noopener" href="https://my.oschina.net/fileoptions/blog/3058792">linux
 io过程自顶向下分析 - 黑客画家的个人空间 - OSCHINA -
 中文开源技术交流社区</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.thomas-krenn.com/en/wiki/Linux_Storage_Stack_Diagram">Linux
+<li><a
+target="_blank" rel="noopener" href="https://www.thomas-krenn.com/en/wiki/Linux_Storage_Stack_Diagram">Linux
 Storage Stack Diagram - Thomas-Krenn-Wiki</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhaoyl/p/5901680.html">MMAP和DIRECT
 IO区别 - aitao - 博客园</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/48161206">(79 条消息) Linux
-中 mmap() 函数的内存映射问题理解？ - 知乎</a><br>
+中 mmap() 函数的内存映射问题理解？ - 知乎</a><br />
 </li>
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021388785">(1)
 磁盘IO瓶颈_个人文章 - SegmentFault 思否</a></li>
@@ -732,39 +605,53 @@ IO区别 - aitao - 博客园</a></li>
 IO栈和Linux IO栈对比分析-摩尔芯闻</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/39721251">Linux 的IO栈 -
 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lihualoveyou/article/details/78485313">iscsi:IO操作流程（一）_我的技术笔记-CSDN博客</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/lihualoveyou/article/details/78485313">iscsi:IO操作流程（一）_我的技术笔记-CSDN博客</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/56967013">(79 条消息) NVMe
 和 AHCI 到底是接口标准还是接口协议？ - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://thickforest.github.io/2015/04/904787940/">SCSI标准分析及linux
+<li><a
+target="_blank" rel="noopener" href="https://thickforest.github.io/2015/04/904787940/">SCSI标准分析及linux
 kernel中scsi_debug模块实现详解(1)-zhenchengjin-ChinaUnix博客 |
 Forest</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.msystechnologies.com/blog/understanding-device-mapper-and-filter-driver/">Understanding
+<li><a
+target="_blank" rel="noopener" href="https://www.msystechnologies.com/blog/understanding-device-mapper-and-filter-driver/">Understanding
 Device Mapper and Filter Driver</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/figure/Architecture-of-Linux-Kernel-I-O-stack_fig2_317952281">Architecture
+<li><a
+target="_blank" rel="noopener" href="https://www.researchgate.net/figure/Architecture-of-Linux-Kernel-I-O-stack_fig2_317952281">Architecture
 of Linux Kernel I/O stack | Download Scientific Diagram</a></li>
-<li><a target="_blank" rel="noopener" href="https://new.qq.com/omn/20180127/20180127G0D4OP.html">打造全用户态高可靠高性能的分布式存储系统-腾讯网</a></li>
-<li><a target="_blank" rel="noopener" href="https://longwhiteclouds.com/2016/03/06/default-io-size-change-in-linux-kernel/#:~:text=Some%20people%20may%20have%20noticed,increased%20from%20512KB%20to%201280KB.">Default
+<li><a
+target="_blank" rel="noopener" href="https://new.qq.com/omn/20180127/20180127G0D4OP.html">打造全用户态高可靠高性能的分布式存储系统-腾讯网</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://longwhiteclouds.com/2016/03/06/default-io-size-change-in-linux-kernel/#:~:text=Some%20people%20may%20have%20noticed,increased%20from%20512KB%20to%201280KB.">Default
 Maximum IO Size Change in Linux Kernel | Long White Virtual
 Clouds</a></li>
-<li><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/529529/why-is-the-size-of-my-io-requests-being-limited-to-about-512k">linux
+<li><a
+target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/529529/why-is-the-size-of-my-io-requests-being-limited-to-about-512k">linux
 - Why is the size of my IO requests being limited, to about 512K? - Unix
 &amp; Linux Stack Exchange</a></li>
-<li><a target="_blank" rel="noopener" href="https://support.huaweicloud.com/tngg-kunpenghpcs/kunpenghpcsolution_05_0019.html">优化磁盘IO调度方式_鲲鹏高性能计算解决方案_调优指南_IO调优_华为云</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.mimvp.com/article/44289.html">Linux磁盘I/O优化：vm.dirty_ratio
+<li><a
+target="_blank" rel="noopener" href="https://support.huaweicloud.com/tngg-kunpenghpcs/kunpenghpcsolution_05_0019.html">优化磁盘IO调度方式_鲲鹏高性能计算解决方案_调优指南_IO调优_华为云</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://blog.mimvp.com/article/44289.html">Linux磁盘I/O优化：vm.dirty_ratio
 - 米扑博客</a></li>
-<li><a target="_blank" rel="noopener" href="https://my.oschina.net/207miner/blog/2996144">Linux机器内核参数理解(二)
+<li><a
+target="_blank" rel="noopener" href="https://my.oschina.net/207miner/blog/2996144">Linux机器内核参数理解(二)
 - 207矿工的个人空间 - OSCHINA - 中文开源技术交流社区</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2ab78406e057">深入理解linux IO -
 简书</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/93803888">3.分布式存储系统的大体架构
+<li><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/93803888">3.分布式存储系统的大体架构
 - 知乎</a></li>
 <li>&lt;大话存储1/2&gt;</li>
-<li><a target="_blank" rel="noopener" href="http://www.dostor.com/article/121638064.html">冬瓜哥：IO协议栈前沿技术研究动态
+<li><a
+target="_blank" rel="noopener" href="http://www.dostor.com/article/121638064.html">冬瓜哥：IO协议栈前沿技术研究动态
 - 存储在线</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.dellemc-solution.com/light-reading/desc.html?id=150573">存储极客
+<li><a
+target="_blank" rel="noopener" href="https://www.dellemc-solution.com/light-reading/desc.html?id=150573">存储极客
 | 浅析固态介质在存储系统中的应用方式-黑科技-轻阅读-戴尔易安信(Dell
 EMC)官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.slideshare.net/mryufeng/io-12278640">了解IO协议栈</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.slideshare.net/mryufeng/io-12278640">了解IO协议栈</a></li>
 </ol>
 
         </div>
@@ -950,7 +837,7 @@ EMC)官网</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

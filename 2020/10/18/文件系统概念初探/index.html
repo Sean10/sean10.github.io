@@ -28,14 +28,12 @@
 <meta property="og:site_name" content="行路中.">
 <meta property="og:description" content="todo  为什么文件系统不默认提供每个目录的空间使用量呢?  多文件系统嵌套, 还是需要用户自己去df挂载的位置里去找所在目录在哪个分区里, 然后分区大小多少, 为什么不能直接显示出当前目录使用量及这个文件系统根的容量呢? subvolume btrfs子文件系统支持 说到这个,df默认为啥没有什么超时机制呢?卡在显示所有上? 可能df只提供基本查询, 自己有超时需求自己处理?  文件系统配额,">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sean10.github.io/.io//%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1_2020-10-18-21-27-06.png">
 <meta property="article:published_time" content="2020-10-18T13:38:26.000Z">
 <meta property="article:modified_time" content="2023-03-18T15:11:14.889Z">
 <meta property="article:author" content="Sean10">
 <meta property="article:tag" content="存储">
 <meta property="article:tag" content="文件系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sean10.github.io/.io//%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1_2020-10-18-21-27-06.png">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
     
@@ -236,7 +234,8 @@ structured File System, LFS)</span></a></li><li class="post-toc-item post-toc-le
 </ul></li>
 </ul>
 <h1 id="关键优化问题">关键优化问题</h1>
-<h3 id="存储大量小文件时-一次文件多次读取元数据信息的长尾效应">存储大量小文件时,
+<h3
+id="存储大量小文件时-一次文件多次读取元数据信息的长尾效应">存储大量小文件时,
 一次文件多次读取元数据信息的"长尾效应"</h3>
 <ul>
 <li>比如<code>Haystack</code>通过合并多个小文件成一个大文件,
@@ -335,7 +334,8 @@ inode存储了什么东西,可以让他找到对应的所有块? [^3]
 <li>复制时如果不对符号链接进行区分, 会带来重复写入问题</li>
 </ul></li>
 </ul>
-<h3 id="日志结构文件系统log-structured-file-system-lfs">日志结构文件系统(Log
+<h3
+id="日志结构文件系统log-structured-file-system-lfs">日志结构文件系统(Log
 structured File System, LFS)</h3>
 <ul>
 <li>性能问题</li>
@@ -453,13 +453,7 @@ structured File System, LFS)</h3>
 </ul></li>
 </ul>
 <h3 id="文件系统性能">文件系统性能</h3>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/.io//文件系统设计_2020-10-18-21-27-06.png" alt title>
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+
 <h4 id="高速缓存">高速缓存</h4>
 <ul>
 <li>block cache</li>
@@ -576,13 +570,16 @@ structured File System, LFS)</h3>
 <h2 id="fuse支持">FUSE支持</h2>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cxuanBlog/p/12565601.html">简直不要太硬了！一文带你彻底理解文件系统
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/cxuanBlog/p/12565601.html">简直不要太硬了！一文带你彻底理解文件系统
 - 程序员cxuan - 博客园</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19853952">(80 条消息)
 为什么NTFS系统容易产生碎片而ext系列则不会？ - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.junmajinlong.com/linux/ext_filesystem/">ext文件系统机制原理剖析
+<li><a
+target="_blank" rel="noopener" href="https://www.junmajinlong.com/linux/ext_filesystem/">ext文件系统机制原理剖析
 | 骏马金龙</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/bp7uvbnb7dbgdk2gtxl9">分布式文件系统架构对比-InfoQ</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.infoq.cn/article/bp7uvbnb7dbgdk2gtxl9">分布式文件系统架构对比-InfoQ</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138896704">分布式文件系统浅谈
 - 知乎</a></li>
 </ol>
@@ -770,7 +767,7 @@ structured File System, LFS)</h3>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

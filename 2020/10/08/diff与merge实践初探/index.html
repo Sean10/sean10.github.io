@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="linux,git,diff,merge">
+    <meta name="keywords" content="linux,diff,merge,git">
     <meta name="description" content="概念 diff和merge是一回事吗? 实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容, 自动merge, 那属于diff可以做到的内容. 但是如果想要手动merge, 比如展示开来, 然后一行行比较人工决定使用哪份, 这个就不属于diff提供的功能了, 需要一个展示diff结果然后保存回原始文件中的工具, 这个就属于编辑器的范畴了. 像beyond compare这种更像">
 <meta property="og:type" content="article">
 <meta property="og:title" content="diff与merge实践初探">
@@ -32,9 +32,9 @@
 <meta property="article:modified_time" content="2023-03-18T15:11:14.810Z">
 <meta property="article:author" content="Sean10">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="git">
 <meta property="article:tag" content="diff">
 <meta property="article:tag" content="merge">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
     
         <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
@@ -193,7 +193,8 @@ GTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-le
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="概念">概念</h1>
-<h2 id="diff和merge是一回事吗"><code>diff</code>和<code>merge</code>是一回事吗?</h2>
+<h2
+id="diff和merge是一回事吗"><code>diff</code>和<code>merge</code>是一回事吗?</h2>
 <p>实际上是两回事. 如果可以通过已知的规则, 比如同时保留双方不一致内容,
 自动merge, 那属于<code>diff</code>可以做到的内容.
 但是如果想要手动<code>merge</code>, 比如展示开来,
@@ -203,7 +204,8 @@ GTYPE)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-le
 这个就属于编辑器的范畴了.
 像<code>beyond compare</code>这种更像是一个集成了差异比较功能的编辑器了.</p>
 <span id="more"></span>
-<h2 id="diff和patch和rcs版本控制关系"><code>diff</code>和<code>patch</code>和<code>RCS</code>版本控制关系?</h2>
+<h2
+id="diff和patch和rcs版本控制关系"><code>diff</code>和<code>patch</code>和<code>RCS</code>版本控制关系?</h2>
 <p>unified输出的diff就是一个patch, 然后通过patch命令打入.
 基于上面的开发出了<code>Source Code Control System</code>和<code>Revision Control System</code>(RCS).RCS新增了<code>lock</code>的功能,
 防止文件被其他人checkout之后修改了.</p>
@@ -339,7 +341,8 @@ number using the printf format "%.5d". See Line Group Formats, for more
 about printf conversion specifications.</p>
 </blockquote>
 <h2 id="自定义需求">自定义需求</h2>
-<h3 id="合并两个文件-比如跨平台编辑笔记时-多个文本都出现了新增内容-同步盘创建了conflict文件的时候">合并两个文件,
+<h3
+id="合并两个文件-比如跨平台编辑笔记时-多个文本都出现了新增内容-同步盘创建了conflict文件的时候">合并两个文件,
 比如跨平台编辑笔记时, 多个文本都出现了新增内容,
 同步盘创建了<code>Conflict</code>文件的时候</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff --old-line-format=%L --new-line-format=%L a.txt b.txt</span><br></pre></td></tr></table></figure>
@@ -347,12 +350,16 @@ about printf conversion specifications.</p>
 <h1 id="reference">Reference</h1>
 <ol type="1">
 <li>man diff</li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16902001/manually-merge-two-files-using-diff">linux
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16902001/manually-merge-two-files-using-diff">linux
 - Manually merge two files using diff - Stack Overflow</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/l-diffp/?lnk=hmhmhmhm">用Diff和Patch工具维护源码</a></li>
-<li><a target="_blank" rel="noopener" href="http://conanblog.me/Unix-as-IDE--Chinese-/revisions.html">版本控制
+<li><a
+target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/l-diffp/?lnk=hmhmhmhm">用Diff和Patch工具维护源码</a></li>
+<li><a
+target="_blank" rel="noopener" href="http://conanblog.me/Unix-as-IDE--Chinese-/revisions.html">版本控制
 — Unix 即集成开发环境 1.0 文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/diffutils/manual/html_node/If_002dthen_002delse.html">If-then-else
+<li><a
+target="_blank" rel="noopener" href="https://www.gnu.org/software/diffutils/manual/html_node/If_002dthen_002delse.html">If-then-else
 (Comparing and Merging Files)</a></li>
 </ol>
 
@@ -542,7 +549,7 @@ diff和merge是一回事吗?
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

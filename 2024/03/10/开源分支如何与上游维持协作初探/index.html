@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>开源分支如何与上游维持协作初探 | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="开源">
+    <meta name="description" content="上游做出了破坏性变更 上游出现了一个尚未修复的 BUG 上游缺乏本项目需要的功能特性  更新 沟通 贡献  思路 目前主要推荐的方案还是将自己二次开发的代码, 这部分因为是比较熟悉的. 进行重构, 尽可能让他对上游相关文件的修改小, 然后拆分成patch形式, 这里的一个点是由于我们不太可能合并到上游, 因此后续对上游的更新是必然要合入的. 这里有一个最大的冲突, 从维护成本角度, 合入上游最低.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开源分支如何与上游维持协作初探">
+<meta property="og:url" content="https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="上游做出了破坏性变更 上游出现了一个尚未修复的 BUG 上游缺乏本项目需要的功能特性  更新 沟通 贡献  思路 目前主要推荐的方案还是将自己二次开发的代码, 这部分因为是比较熟悉的. 进行重构, 尽可能让他对上游相关文件的修改小, 然后拆分成patch形式, 这里的一个点是由于我们不太可能合并到上游, 因此后续对上游的更新是必然要合入的. 这里有一个最大的冲突, 从维护成本角度, 合入上游最低.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/image-20240310233231872.png">
+<meta property="og:image" content="https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/image-20240310234712404.png">
+<meta property="article:published_time" content="2024-03-10T06:26:12.000Z">
+<meta property="article:modified_time" content="2024-03-11T03:58:02.486Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="开源">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/image-20240310233231872.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">开源分支如何与上游维持协作初探</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">开源分支如何与上游维持协作初探</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2024-03-10T06:26:12.000Z" itemprop="datePublished" class="page-time">
+  2024-03-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="post-toc-number">1.</span> <span class="post-toc-text">思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E5%90%88%E5%85%A5%E6%9B%B4%E6%96%B0"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">如何合入更新</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8B%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98-%E6%88%91%E4%BB%AC%E7%9A%84patch%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">下一个问题,
+我们的patch应该如何管理?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%82%A3%E8%BF%99%E4%B8%AApatch%E7%9A%84%E7%94%9F%E6%88%90%E6%98%AF%E6%89%8B%E5%8A%A8%E5%90%97-%E6%98%AF%E5%90%A6%E6%9C%89%E5%8A%9E%E6%B3%95%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90patch-%E4%BB%8E%E8%80%8C%E5%87%8F%E5%B0%91%E7%BB%B4%E6%8A%A4%E6%88%90%E6%9C%AC-%E6%B2%A1%E5%8A%9E%E6%B3%95-%E6%9C%89%E5%86%B2%E7%AA%81-%E4%B8%8D%E5%AD%98%E5%9C%A8%E6%89%B9%E9%87%8F"><span class="post-toc-number">1.0.2.1.</span> <span class="post-toc-text">那这个patch的生成是手动吗?
+是否有办法批量生成patch? 从而减少维护成本? [没办法, 有冲突,
+不存在批量]</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%82%A3%E9%87%8D%E6%9E%84%E7%9A%84%E8%BF%87%E7%A8%8B-%E6%98%AF%E5%90%A6%E6%9C%89%E5%BF%85%E8%A6%81%E5%88%9D%E5%A7%8B%E5%8C%96git-svn%E6%98%AF%E5%90%A6%E6%9C%89%E5%B8%AE%E5%8A%A9-svn%E6%B2%A1%E6%9C%89%E5%B8%AE%E5%8A%A9-git-merge%E6%9C%89%E5%B8%AE%E5%8A%A9"><span class="post-toc-number">1.0.2.2.</span> <span class="post-toc-text">那重构的过程,
+是否有必要初始化git? svn是否有帮助? (svn没有帮助, git merge有帮助)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%BE%85%E7%A1%AE%E8%AE%A4%E6%95%88%E6%9E%9C-git-merge%E5%85%B7%E6%9C%89%E6%AF%94patch%E6%9B%B4%E5%BC%BA%E7%9A%84%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E8%83%BD%E5%8A%9B-%E5%AF%B9%E4%BA%8E%E8%A1%8C%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF-git-merge%E7%9A%84%E7%AE%97%E6%B3%95%E4%B8%80%E5%AE%9A%E7%A8%8B%E5%BA%A6%E4%B8%8A%E5%8F%AF%E4%BB%A5%E5%A4%84%E7%90%86%E6%88%90%E5%8A%9F.-%E5%9B%A0%E6%AD%A4-%E6%88%91%E4%BB%AC%E5%9C%A8%E5%A4%84%E7%90%86%E5%86%B2%E7%AA%81%E6%97%B6-%E6%98%AF%E9%9C%80%E8%A6%81%E6%9C%89%E4%B8%80%E4%B8%AA%E5%85%B7%E6%9C%89%E6%88%91%E4%BB%AC%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BF%AE%E6%94%B9%E7%9A%84git%E5%88%86%E6%94%AF%E7%9A%84."><span class="post-toc-number">1.0.2.3.</span> <span class="post-toc-text">待确认效果:
+git merge具有比patch更强的处理冲突能力, 对于行定位错误, git
+merge的算法一定程度上可以处理成功. 因此, 我们在处理冲突时,
+是需要有一个具有我们自己的修改的git分支的.</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE-%E5%80%BC%E5%BE%97%E4%B8%93%E9%A1%B9%E8%BF%9B%E8%A1%8C%E8%AE%A8%E8%AE%BA%E8%AE%BE%E8%AE%A1%E5%85%B6%E4%B8%AD%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E9%83%A8%E5%88%86%E5%B0%B1%E6%98%AF%E9%87%8D%E6%9E%84%E7%9A%84%E8%A7%A3%E8%80%A6%E6%80%A7%E4%BA%86.-%E5%86%B3%E5%AE%9A%E4%BA%86%E5%90%8E%E7%BB%AD%E6%AF%8F%E6%AC%A1%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86%E7%9A%84%E5%85%B1%E6%80%A7%E5%9F%BA%E6%9C%AC%E4%BB%A3%E4%BB%B7.-%E7%A4%BE%E5%8C%BA%E9%87%8D%E6%9E%84%E5%BC%95%E5%8F%91%E7%9A%84%E9%82%A3%E7%A7%8D%E5%B0%B1%E6%B2%A1%E5%8A%9E%E6%B3%95%E4%BA%86-%E5%85%B6%E5%AE%9E%E5%92%8C%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E6%80%A7%E7%9A%84%E5%85%B3%E8%81%94%E4%B9%9F%E6%AF%94%E8%BE%83%E5%A4%A7.-%E6%8B%86%E5%87%BA%E7%8B%AC%E7%AB%8B%E5%BA%93%E5%8A%A0%E8%BD%BD-%E4%B9%9F%E5%88%9A%E5%A5%BD%E7%AC%A6%E5%90%88%E4%BA%86lgpl%E7%BA%A6%E6%9D%9F."><span class="post-toc-number">1.0.2.4.</span> <span class="post-toc-text">(关键,
+值得专项进行讨论设计)其中最重要的部分就是重构的解耦性了.
+决定了后续每次冲突处理的共性基本代价. (社区重构引发的那种就没办法了),
+其实和开源合规性的关联也比较大. 拆出独立库加载,
+也刚好符合了LGPL约束.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95%E5%85%88%E8%A1%8C"><span class="post-toc-number">1.0.2.4.1.</span> <span class="post-toc-text">测试先行?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#todo-%E6%89%BE%E4%B8%80%E6%9D%A1%E8%BF%99%E4%B8%AA%E6%80%9D%E8%B7%AF%E9%87%8D%E6%9E%84%E7%9A%84"><span class="post-toc-number">1.0.2.4.2.</span> <span class="post-toc-text">TODO: 找一条这个思路重构的?</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#pr%E6%8B%86%E8%A7%A3%E6%88%90%E5%B0%8Fpr%E7%9A%84-rwl%E7%BC%93%E5%AD%98%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">1.0.2.4.3.</span> <span class="post-toc-text">PR拆解成小PR的 RWL缓存实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#backport%E7%9A%84%E8%84%9A%E6%9C%AC%E5%81%9A%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88-%E6%8F%8F%E8%BF%B0%E4%BA%86backport%E6%89%80%E9%9C%80%E9%81%B5%E5%AE%88%E7%9A%84%E8%A7%84%E5%88%99"><span class="post-toc-number">1.0.2.5.</span> <span class="post-toc-text">backport的脚本做了些什么?
+描述了backport所需遵守的规则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%88%91%E4%BB%AC%E4%BC%BC%E4%B9%8E%E6%B2%A1%E6%9C%89%E4%B8%80%E4%B8%AA%E5%85%B3%E8%81%94%E7%B3%BB%E7%BB%9F-%E7%B1%BB%E4%BC%BCgithub%E7%9A%84pr-%E5%8F%91%E8%B5%B7backport%E7%9A%84pr-%E5%85%B3%E6%B3%A8%E8%BF%9B%E5%B1%95."><span class="post-toc-number">1.0.2.6.</span> <span class="post-toc-text">我们似乎没有一个关联系统,
+类似github的PR, 发起backport的PR, 关注进展.</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%AF%B9%E4%BA%8E%E8%80%83%E8%99%91%E5%90%88%E5%85%A5%E7%9A%84%E7%82%B9-%E8%A6%81%E4%BF%9D%E6%8C%81%E5%92%8C%E4%B8%8A%E6%B8%B8%E7%9A%84%E6%B2%9F%E9%80%9A%E8%AF%9D%E8%AF%AD%E6%9D%83-%E6%96%B9%E6%A1%88%E6%98%AF%E5%90%A6%E8%A2%AB%E4%B8%8A%E6%B8%B8%E6%8E%A5%E5%8F%97%E6%8C%BA%E8%80%83%E7%A9%B6%E4%B8%8A%E6%B8%B8%E7%A4%BE%E5%8C%BA%E5%AF%B9%E4%BD%A0%E7%9A%84%E4%BF%A1%E4%BB%BB%E5%BA%A6"><span class="post-toc-number">1.0.2.7.</span> <span class="post-toc-text">对于考虑合入的点,
+要保持和上游的沟通(话语权,
+方案是否被上游接受挺考究上游社区对你的信任度)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BC%80%E6%BA%90%E4%BA%A7%E5%93%81%E7%9A%84%E7%BB%B4%E6%8A%A4%E6%80%9D%E8%B7%AF"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">开源产品的维护思路?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#todo-%E7%9C%8B%E7%9C%8Bsquid%E5%88%86%E6%94%AF%E4%B8%8A-%E5%92%8Cmaster%E5%88%86%E6%94%AF-%E4%B8%80%E4%BA%9B%E7%89%B9%E6%80%A7%E7%A9%B6%E7%AB%9F%E8%B0%81%E5%85%88%E8%B0%81%E5%90%8E"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">TODO:
+看看squid分支上, 和master分支, 一些特性究竟谁先谁后?</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#flink"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">flink</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tiflash"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">TiFlash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#android-kernel"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">android kernel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#trunk-lts-stage%E6%9A%82%E5%AD%98%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95-lts%E5%88%86%E6%94%AF"><span class="post-toc-number">1.1.3.1.</span> <span class="post-toc-text">trunk-&gt;LTS
+stage暂存进行测试-&gt;LTS分支</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E5%85%AC%E5%8F%B8%E7%9A%84%E8%80%83%E9%87%8F"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">其他公司的考量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8A%E6%B8%B8%E4%BC%98%E5%85%88%E5%8F%AF%E4%BB%A5%E6%98%BE%E8%91%97%E9%99%8D%E4%BD%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BB%B4%E6%8A%A4%E6%88%90%E6%9C%AC-%E6%8A%80%E6%9C%AF%E5%80%BA-%E5%9B%A0%E6%AD%A4%E5%AF%B9%E4%BA%8E%E9%9D%9E%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7-%E5%90%88%E5%85%A5%E4%B8%8A%E6%B8%B8%E5%AF%B9%E4%BA%8E%E9%99%8D%E4%BD%8E%E8%87%AA%E5%B7%B1%E5%B0%86%E6%9D%A5%E7%9A%84%E7%BB%B4%E6%8A%A4%E6%88%90%E6%9C%AC-%E4%BB%A5%E5%8F%8A%E5%80%9F%E5%8A%A9%E7%A4%BE%E5%8C%BA%E7%9A%84%E8%83%BD%E5%8A%9B-%E9%9D%9E%E5%B8%B8%E5%85%B3%E9%94%AE."><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">上游优先可以显著降低自己的维护成本,
+技术债, 因此对于非关键特性, 合入上游对于降低自己将来的维护成本,
+以及借助社区的能力, 非常关键.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9E%E5%BD%92%E4%B8%8A%E6%B8%B8%E4%BC%98%E5%85%88%E7%9A%84%E4%BE%8B%E5%AD%90%E8%91%97%E5%90%8D%E7%9A%84%E5%95%86%E4%B8%9A%E6%A1%88%E4%BE%8B%E6%9C%89google%E4%B9%8B%E4%BA%8Eandroid%E5%86%85%E6%A0%B8%E5%88%86%E6%94%AFaws%E7%BB%88%E7%A9%B6%E8%BF%98%E6%98%AF%E6%8B%A5%E6%8A%B1kvm%E7%8B%AC%E7%AB%8B%E7%BB%B4%E6%8A%A4xen%E5%A4%AA%E5%90%83%E5%8A%9B"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">回归上游优先的例子:著名的商业案例有Google之于Android内核分支、AWS终究还是拥抱KVM，独立维护XEN太吃力</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-开源分支如何与上游维持协作初探"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">开源分支如何与上游维持协作初探</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2024-03-10 14:26:12" datetime="2024-03-10T06:26:12.000Z"  itemprop="datePublished">2024-03-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>上游做出了破坏性变更 上游出现了一个尚未修复的 BUG
+上游缺乏本项目需要的功能特性</p>
+<ul>
+<li>更新</li>
+<li>沟通</li>
+<li>贡献</li>
+</ul>
+<h1 id="思路">思路</h1>
+<p>目前主要推荐的方案还是将自己二次开发的代码, 这部分因为是比较熟悉的.
+进行重构, 尽可能让他对上游相关文件的修改小, 然后拆分成patch形式,
+这里的一个点是由于我们不太可能合并到上游,
+因此后续对上游的更新是必然要合入的.</p>
+<p>这里有一个最大的冲突, 从维护成本角度, 合入上游最低.
+只需要处理一次冲突. 因此我们的方案里, 除了核心代码的部分, 其实缺陷部分,
+可能是推荐向上游合入的.</p>
+<h3 id="如何合入更新">如何合入更新</h3>
+<p>此时就有两种选择 1. 我们作为patch, 使用高版本社区合入时,
+处理我们的patch的冲突进行合入. 2. 社区的更新作为patch,
+我们手动合入我们的.
+这块的比较其实还是显而易见的,社区的更新人员远不止10多人,
+每历经一批小版本提交的commit 远比我们多. 而且对commit的理解程度,
+显然是维护人员更高. 我们去理解并合入社区的修改的工作量相当巨大.
+反而还不如仅维护我们自己修改的patch部分.</p>
+<p>社区其他人也是这么思考的, 我们作为下游, fork的人员,
+开发人力是没有上游多的.</p>
+<h3 id="下一个问题-我们的patch应该如何管理">下一个问题,
+我们的patch应该如何管理?</h3>
+<ol type="1">
+<li>类似centos/openEuler下游社区那种, 创建单独的patch文件,
+和社区版本的release版本压缩包放一起维护</li>
+</ol>
+<h4
+id="那这个patch的生成是手动吗-是否有办法批量生成patch-从而减少维护成本-没办法-有冲突-不存在批量">那这个patch的生成是手动吗?
+是否有办法批量生成patch? 从而减少维护成本? [没办法, 有冲突,
+不存在批量]</h4>
+<p>svn应该是可以基于commit拆分patch.</p>
+<p>但是svn的commit提交是无法覆盖的, 那么我们做重构的动作,
+也就没办法变成基于一个稳定的设备版本拉出的多条commit操作了.
+要做这个动作, 就必须是基于git完全完成重构之后, 才能往svn合入了.
+然后此时拉出patch.</p>
+<p>而这个patch, 后续会在每次更新版本时, 需要重新处理一次.</p>
+<p>那这样的话, 看着好像确实没必要单独维护一个svn来放源码了?
+因为只是为了生成patch, 完全可以本地基于release版本初始化,
+然后手动合入patch, 并修改. 修改后本地commit导出新的patch.</p>
+<h4
+id="那重构的过程-是否有必要初始化git-svn是否有帮助-svn没有帮助-git-merge有帮助">那重构的过程,
+是否有必要初始化git? svn是否有帮助? (svn没有帮助, git merge有帮助)</h4>
+<p>重构的过程, 其实也可以svn. 只需要选择指定2个版本之间输出patch即可.
+且最终这个分支就停止迭代了其实. 所以这个源码分支,
+是可以类似git的branch那样, 持久保留的.
+就是确实没有社区那种rebase的<code>git log</code>那么干净</p>
+<p>如果需要, 倒也可以除了开发分支, 拉出一个重构完成后的干净分支.
+这个比较推荐, 作为最终归档.</p>
+<h4
+id="待确认效果-git-merge具有比patch更强的处理冲突能力-对于行定位错误-git-merge的算法一定程度上可以处理成功.-因此-我们在处理冲突时-是需要有一个具有我们自己的修改的git分支的.">待确认效果:
+git merge具有比patch更强的处理冲突能力, 对于行定位错误, git
+merge的算法一定程度上可以处理成功. 因此, 我们在处理冲突时,
+是需要有一个具有我们自己的修改的git分支的.</h4>
+<p>具体差异参考下文</p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.51cto.com/u_15127516/4692821">修改开源软件以后仍保持更新同步_51CTO博客_软件源更新失败</a></p>
+<h4
+id="关键-值得专项进行讨论设计其中最重要的部分就是重构的解耦性了.-决定了后续每次冲突处理的共性基本代价.-社区重构引发的那种就没办法了-其实和开源合规性的关联也比较大.-拆出独立库加载-也刚好符合了lgpl约束.">(关键,
+值得专项进行讨论设计)其中最重要的部分就是重构的解耦性了.
+决定了后续每次冲突处理的共性基本代价. (社区重构引发的那种就没办法了),
+其实和开源合规性的关联也比较大. 拆出独立库加载,
+也刚好符合了LGPL约束.</h4>
+<h5 id="测试先行">测试先行?</h5>
+<h5 id="todo-找一条这个思路重构的">TODO: 找一条这个思路重构的?</h5>
+<h5 id="pr拆解成小pr的-rwl缓存实现">PR拆解成小PR的 RWL缓存实现</h5>
+<p>原始PR <a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/29087">Sharded
+BlueStore - 3 - resharding tool by aclamk · Pull Request #29087 ·
+ceph/ceph</a></p>
+<p>拆解小PR <a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/31279">rbd/cache:
+Replicated Write Log core codes part 1 by lixiaoy1 · Pull Request #31279
+· ceph/ceph</a> <a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/31963/">rbd/cache: Replicated
+Write Log core codes part 2 by yison · Pull Request #31963 ·
+ceph/ceph</a></p>
+<h4
+id="backport的脚本做了些什么-描述了backport所需遵守的规则">backport的脚本做了些什么?
+描述了backport所需遵守的规则</h4>
+<ul>
+<li>使用github token和trakcer.ceph.com
+token指定源PR和目标合入的里程碑分支版本, 自动化创建关联tracker
+issue单和PR</li>
+<li>自动根据需要backport的PR拉出对应的backport用分支并开发cherry-pick
+合入PR中的commit, 直到第一条冲突报错, 处理后继续调用会继续自动合入.</li>
+</ul>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/blob/main/SubmittingPatches-backports.rst">ceph/SubmittingPatches-backports.rst
+在 main ·ceph/ceph</a></p>
+<h4
+id="我们似乎没有一个关联系统-类似github的pr-发起backport的pr-关注进展.">我们似乎没有一个关联系统,
+类似github的PR, 发起backport的PR, 关注进展.</h4>
+<h4
+id="对于考虑合入的点-要保持和上游的沟通话语权-方案是否被上游接受挺考究上游社区对你的信任度">对于考虑合入的点,
+要保持和上游的沟通(话语权,
+方案是否被上游接受挺考究上游社区对你的信任度)</h4>
+<h2 id="开源产品的维护思路">开源产品的维护思路?</h2>
+<p>一般社区流程是,</p>
+<ul>
+<li>基线分支</li>
+<li>轻量开发分支(轻量级的, 短时存在, 需要临时处理的冲突一般较少)</li>
+<li>长期特性开发分支
+<ul>
+<li>独立迭代,
+分支内部评审合并轻量开发分支(这里的轻量开发分支指代的是个人branch,
+因为一般有合并的权限管理)</li>
+<li>定期合并上游的变更</li>
+<li>稳定后合入基线分支</li>
+</ul></li>
+<li>发布分支(长期, 后续只cherry-pick基线分支的一些关键必须得修改) ###
+ceph 像ceph, 基线开发, 然后到时间拉出分支,
+后续如果有要合入的功能或缺陷修复, 通过backport进行合入,
+此时负责人对代码进行微量重构. 相比我们的更新基础版本后需要做冲突处理,
+他们是在提交时就进行了.</li>
+</ul>
+<p>一般ceph在拉出新分支时, 一般这个版本要使用的功能应该</p>
+<h4 id="todo-看看squid分支上-和master分支-一些特性究竟谁先谁后">TODO:
+看看squid分支上, 和master分支, 一些特性究竟谁先谁后?</h4>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/55878">crimson: update
+seastar submodule to fix prometheus build error by athanatos · Pull
+Request #55878 · ceph/ceph</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/55907">squid: crimson:
+update seastar submodule to fix prometheus build error by idryomov ·
+Pull Request #55907 · ceph/ceph</a></li>
+</ul>
+<p>参考这两条, 从id上就很明显了, squid分支的提交是backport的</p>
+<h3 id="flink">flink</h3>
+<h3 id="tiflash">TiFlash</h3>
+<p><a
+target="_blank" rel="noopener" href="https://github.com/pingcap/tidb-engine-ext/pull/55/files">Merge
+TiKV 6.0 into Proxy by CalvinNeo · Pull Request #55 ·
+pingcap/tidb-engine-ext</a> </p>
+<h3 id="android-kernel">android kernel</h3>
+<h4 id="trunk-lts-stage暂存进行测试-lts分支">trunk-&gt;LTS
+stage暂存进行测试-&gt;LTS分支</h4>
+<img src="/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/image-20240310233231872.png" class="">
+<p><a
+target="_blank" rel="noopener" href="https://source.android.com/docs/core/architecture/kernel/linux-stable-merges?hl=zh-cn">Linux
+稳定内核版本合并  |  Android 开源项目  |  Android Open Source
+Project</a></p>
+<h2 id="其他公司的考量">其他公司的考量</h2>
+<p><a
+target="_blank" rel="noopener" href="https://www.ifanr.com/minapp/1488982">企业与开源软件：「上游优先」，与善良无关
+| 爱范儿</a></p>
+<h3
+id="上游优先可以显著降低自己的维护成本-技术债-因此对于非关键特性-合入上游对于降低自己将来的维护成本-以及借助社区的能力-非常关键.">上游优先可以显著降低自己的维护成本,
+技术债, 因此对于非关键特性, 合入上游对于降低自己将来的维护成本,
+以及借助社区的能力, 非常关键.</h3>
+<p>生产力供应不足的社区创造的 Fork
+则会在短暂的喧闹后自然地被遗忘，其收益远远不如采用 Upstream First
+战略。[^6]</p>
+<img src="/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/image-20240310234712404.png" class="">
+<h3
+id="回归上游优先的例子著名的商业案例有google之于android内核分支aws终究还是拥抱kvm独立维护xen太吃力">回归上游优先的例子:著名的商业案例有Google之于Android内核分支、AWS终究还是拥抱KVM，独立维护XEN太吃力</h3>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/832753">把开源项目新的 feature
+更新到已经魔改过的自用版本上的最佳姿势是什么？ - V2EX</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://developer.huawei.com/consumer/cn/forum/topic/41600143">【综合】上游优先地开发-华为开发者论坛
+| 华为开发者联盟</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.tisonkun.org/2023/05/19/git-branch-and-release/">Git
+分支管理与版本发布 | 夜天之书</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.tisonkun.org/2023/03/30/open-source-is-not-business-model/">开源不是商业模式
+| 夜天之书</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://town.korandoru.io/blog/upstream-first-stories">经验分享:
+上游优先的故事 | 开源小镇</a></li>
+<li><a target="_blank" rel="noopener" href="https://xuanwo.io/reports/2022-25/">2022-25:
+开源当以上游优先</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://cn.pingcap.com/article/post/893.html">我们如何消除两个开源项目之间长达
+4 年的分叉-PingCAP | 平凯星辰</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2024-03-11T03:58:02.486Z" itemprop="dateUpdated">2024-03-11 11:58:02</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/&title=《开源分支如何与上游维持协作初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/&title=《开源分支如何与上游维持协作初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《开源分支如何与上游维持协作初探》 — 行路中.&url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2024/09/28/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E5%88%9D%E6%8E%A2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">大模型使用初探</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2023/06/23/fio%E4%B9%8Biolog%E5%88%9D%E6%8E%A2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">fio之iolog回放能力初探</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2025</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/&title=《开源分支如何与上游维持协作初探》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/&title=《开源分支如何与上游维持协作初探》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《开源分支如何与上游维持协作初探》 — 行路中.&url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2024/03/10/%E5%BC%80%E6%BA%90%E5%88%86%E6%94%AF%E5%A6%82%E4%BD%95%E4%B8%8E%E4%B8%8A%E6%B8%B8%E7%BB%B4%E6%8C%81%E5%8D%8F%E4%BD%9C%E5%88%9D%E6%8E%A2/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

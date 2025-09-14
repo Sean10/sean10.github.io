@@ -150,11 +150,11 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-vscode相关技巧"
+            <article id="post-python日志模块初探"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2021-01-31 16:32:59" datetime="2021-01-31T08:32:59.000Z"  itemprop="datePublished">2021-01-31</time>
+        <time class="post-time" title="2021-08-13 19:28:12" datetime="2021-08-13T11:28:12.000Z"  itemprop="datePublished">2021-08-13</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
@@ -168,7 +168,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/31/vscode%E7%9B%B8%E5%85%B3%E6%8A%80%E5%B7%A7/">vscode相关技巧</a>
+      <a class="post-title-link" href="/2021/08/13/python%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%E5%88%9D%E6%8E%A2/">python日志模块初探</a>
     </h3>
   
 
@@ -178,27 +178,24 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        支持
-类似typora的所见即所得插件支持
-
-即时渲染
-有一些unote之类的web editor嵌入到vscode中打开,
-这样的话也算是实现了一个所见即所得的编辑器, 不过不是基于Vscode的倒是了.
-不过这种情况下有些vscode配置的快捷键应该还是可以用的.
-目前基于markless自己维护了一个markless_sean10.
-暂时用起来还是不错的.
-
-同义词模糊搜索功能(fuz...
+        标准
+支持的日志等级
+SyslogHandler的syslog协议部分主要遵循RFC5424.
+在安装了systemd和rsyslog的设备上,
+如果启用了syslog协议,
+日志一般会先经由systemd-journald管控的/dev/log套接字,
+由rsyslog从systemd-journald的socket中读取日志,
+而后根据rsyslog的过滤器写入到/var/log/me...
     
 
-        <a href="/2021/01/31/vscode%E7%9B%B8%E5%85%B3%E6%8A%80%E5%B7%A7/" class="post-more waves-effect waves-button">
+        <a href="/2021/08/13/python%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%E5%88%9D%E6%8E%A2/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library/" rel="tag">library</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/" rel="tag">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
     </div>
     
@@ -207,11 +204,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-openAPI初探"
+            <article id="post-ceph之docker内crimson编译"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2021-01-31 15:29:57" datetime="2021-01-31T07:29:57.000Z"  itemprop="datePublished">2021-01-31</time>
+        <time class="post-time" title="2021-06-23 09:21:25" datetime="2021-06-23T01:21:25.000Z"  itemprop="datePublished">2021-06-23</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
@@ -225,7 +222,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/">openAPI初探</a>
+      <a class="post-title-link" href="/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/">ceph之docker内crimson编译</a>
     </h3>
   
 
@@ -235,27 +232,19 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        todo(未理解的问题)
-
-既然作为一个规范文档, 那么引导的example肯定得提供吧?
-
-提供了之后, 那为什么不能多几个example?
-直接做成支持测试框架的呢?
-虽然现在测试框架的确支持导入openAPI的文档,
-但是这些测试框架中需要用的参数数据是另外填写的,
-为什么openAPI不集成在里面呢?
-一个初步的结论: OpenAPI只做规范特定领域的事情,
-单元测试及更进一步的测试...
+        配置
+配置了一个CentOS 8的容器, 执行下以下内容
+123456WITH_SEASTAR=true ./install-deps.shmkdir build &amp;&amp; cd build# 以下这步官网里没提, 导致失败的.# . /opt/rh/gcc-toolset-9/enablecmake -DWITH_SEASTAR=ON -DWITH_MGR_DASHBOARD_...
     
 
-        <a href="/2021/01/31/openAPI%E5%88%9D%E6%8E%A2/" class="post-more waves-effect waves-button">
+        <a href="/2021/06/23/ceph%E4%B9%8Bdocker%E5%86%85crimson%E7%BC%96%E8%AF%91/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/" rel="tag">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenAPI/" rel="tag">OpenAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDK/" rel="tag">SDK</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91/" rel="tag">编译</a></li></ul>
 
     </div>
     
@@ -264,14 +253,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-卡牌游戏之再玩ygocore-md"
+            <article id="post-ceph之luminous-github版本编译"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2021-01-17 18:59:45" datetime="2021-01-17T10:59:45.000Z"  itemprop="datePublished">2021-01-17</time>
+        <time class="post-time" title="2021-05-15 21:34:46" datetime="2021-05-15T13:34:46.000Z"  itemprop="datePublished">2021-05-15</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
 
 
 
@@ -282,7 +271,56 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/17/%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F%E4%B9%8B%E5%86%8D%E7%8E%A9ygocore-md/">卡牌游戏之再玩ygocore.md</a>
+      <a class="post-title-link" href="/2021/05/15/ceph%E4%B9%8Bluminous-github%E7%89%88%E6%9C%AC%E7%BC%96%E8%AF%91/">ceph之luminous_github版本编译问题整理</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        luminous 早起记录
+主要问题是从svn下载的最新版的luminous分支, 编译时报这个错误
+1234567891011121314151617181920undefined reference to OSD::HeartbeatInfo::HEARTBEAT_MAX_CONN``这条修复了这个问题[osd: make OSD::HEARTBEAT\_MAX\_CONN inline...
+    
+
+        <a href="/2021/05/15/ceph%E4%B9%8Bluminous-github%E7%89%88%E6%9C%AC%E7%BC%96%E8%AF%91/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ceph之mon-client时间长排查"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-04-26 19:56:42" datetime="2021-04-26T11:56:42.000Z"  itemprop="datePublished">2021-04-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/04/26/ceph%E4%B9%8Bmon-client%E6%97%B6%E9%97%B4%E9%95%BF%E6%8E%92%E6%9F%A5/">ceph之mon_client时间长排查</a>
     </h3>
   
 
@@ -293,23 +331,24 @@
 
     
         背景
-万智牌看着是不是跟D&amp;D有点关系?, 旅法师之类的.
-看起来是集卡式游戏的始祖级别? 看大家的评论中, 这个的设计师考虑的比较好,
-平衡性等都考虑的不错.
-游戏王嘛, 动画, 漫画, 实体卡的宣传都非常广,
-只不过实体卡等那部分不是官方, 而是盗版, 在国内的市场里占了很大一部分,
-相当部分的人的童年基本上都看过游戏王, 至少我是这样的.
-而万智牌我就到了大学才看到同学在玩, ...
+在使用12.2.1版本时,
+发现经常会出现需要10+秒才能返回ceph -s的现象,
+偶尔又1s内就返回了.
+排查
+首先,
+time ceph -s --debug_monc 40 --debug_ms 40看下详细日志有没有记录在哪呢?
+看了下, 应该是在跟mon通信过程, 但是好像不知道发生了什么.
+咨询了一下大神给了个关键词, objecter, 打开debug后看到一部分内容了...
     
 
-        <a href="/2021/01/17/%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F%E4%B9%8B%E5%86%8D%E7%8E%A9ygocore-md/" class="post-more waves-effect waves-button">
+        <a href="/2021/04/26/ceph%E4%B9%8Bmon-client%E6%97%B6%E9%97%B4%E9%95%BF%E6%8E%92%E6%9F%A5/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ygo/" rel="tag">ygo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E7%8E%8B/" rel="tag">游戏王</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mon/" rel="tag">mon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B6%85%E6%97%B6/" rel="tag">超时</a></li></ul>
 
     </div>
     
@@ -318,11 +357,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-vscode之markdown引用zotero参考文献"
+            <article id="post-systemd之systemd-tty-ask-password-agent卡住-md"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2021-01-17 16:40:53" datetime="2021-01-17T08:40:53.000Z"  itemprop="datePublished">2021-01-17</time>
+        <time class="post-time" title="2021-04-10 23:47:41" datetime="2021-04-10T15:47:41.000Z"  itemprop="datePublished">2021-04-10</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
@@ -336,212 +375,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/17/vscode%E4%B9%8Bmarkdown%E5%BC%95%E7%94%A8zotero%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/">vscode之markdown引用zotero参考文献</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        需求
-我的主要需求, 只是当我需要写引用时,
-排序能够自动调整,而不是我手动去填写数字.
-如果能够让最后的参考文献也能够像用Latex时一样自动生成就更好不过了.
-初步的一个思路是, 因为我主要需要的是纯文本,
-然后在使用hexo-render-pandoc生成为网页时,
-能够把索引给使用上. 预计是在使用pandoc的生成过程中,
-将markdown文件中的引用的key给转换成对应的索引....
-    
-
-        <a href="/2021/01/17/vscode%E4%B9%8Bmarkdown%E5%BC%95%E7%94%A8zotero%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zotero/" rel="tag">zotero</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-mac系统使用小记-md"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-16 19:36:07" datetime="2021-01-16T11:36:07.000Z"  itemprop="datePublished">2021-01-16</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/16/mac%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-md/">mac系统使用小记.md</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Time Machine
-mac time machine限速
-
-苹果官方直接就有给出解决方案，关闭限速即可 1sudo sysctl debug.lowpri_throttle_enabled=0
-
-
-如果想要再开启，输入以下命令即可 1sudo sysctl debug.lowpri_throttle_enabled=1
-
-清理
-不能直接删除那个硬盘里的目录, 必须得tmutils来清理...
-    
-
-        <a href="/2021/01/16/mac%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-md/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-2020年终总结"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-11 22:28:02" datetime="2021-01-11T14:28:02.000Z"  itemprop="datePublished">2021-01-11</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/11/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">2020年终总结</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        今年主要的感触在项目中, 基本上就是一些沟通与落地方面是否双向澄清,全环节负责的人是否都已经理解需求及实现了. 人月神话中的沟通的代价, 想来过程中的人员澄清应该占用了一部分. 即便简单的项目, 也存在SE, DE, 开发者三人的环节. 这种常见的一般都会一个会议, 或直接在工位旁边完成澄清的过程. 而对于今年主要遇到的跨大部门的大型项目, 一个OR基本上就存在了2倍的人员对接. 每个环境都...
-    
-
-        <a href="/2021/01/11/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-日志分析ELK部署"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-11 03:03:17" datetime="2021-01-10T19:03:17.000Z"  itemprop="datePublished">2021-01-11</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/11/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90ELK%E9%83%A8%E7%BD%B2/">日志分析ELK部署</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        部署
-12345docker pull sebp/elkdocker run -p 5601:5601 -p 9200:9200  -p 5044:5044 \    -v /Users/sean10/Code/docker-volume/elk:/var/lib/elasticsearch \    -v /Users/sean10/Code/Algorithm_code/elk/logs...
-    
-
-        <a href="/2021/01/11/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90ELK%E9%83%A8%E7%BD%B2/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/" rel="tag">ELK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-arch体验"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2021-01-02 23:03:56" datetime="2021-01-02T15:03:56.000Z"  itemprop="datePublished">2021-01-02</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2021/01/02/arch%E4%BD%93%E9%AA%8C/">arch体验</a>
+      <a class="post-title-link" href="/2021/04/10/systemd%E4%B9%8Bsystemd-tty-ask-password-agent%E5%8D%A1%E4%BD%8F-md/">systemd之systemd-tty-ask-password-agent卡住.md</a>
     </h3>
   
 
@@ -552,23 +386,22 @@ mac time machine限速
 
     
         背景
-有点用腻了mbp的mac os系统的感觉,想换arch了.
-因为总觉得mac系统里好乱, 好多感知不到的空间管理. 而且终究只是unix,
-并不是linux.
-但是嘛, 都用了一段时间之后回来想想,
-最近我比较倾向于arch的原因主要是最近工作所需一直在用linux规范下的systemd控制下的CentOS,
-用的比较熟悉了, 对目录结构比较清楚了,
-而对于自己非常不熟悉的freeBS...
+这个问题其实之前遇到的还挺多的, 简单来说, 就是某个A服务启动B服务,
+但是B服务又必须等待另一个服务启动完毕(比如A服务), 产生了一定的死锁.
+而在ps的进程表中看到的就是systemd-tty-ask-password-agent这样一个agent进程卡住.
+一般查一下当前卡住的service和他依赖的after,before的几个服务,
+就知道了, 一般就是循环死锁了.
+具体...
     
 
-        <a href="/2021/01/02/arch%E4%BD%93%E9%AA%8C/" class="post-more waves-effect waves-button">
+        <a href="/2021/04/10/systemd%E4%B9%8Bsystemd-tty-ask-password-agent%E5%8D%A1%E4%BD%8F-md/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arch/" rel="tag">arch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laptop/" rel="tag">laptop</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/service/" rel="tag">service</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/systemd/" rel="tag">systemd</a></li></ul>
 
     </div>
     
@@ -577,67 +410,11 @@ mac time machine限速
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-高铁站的技巧小记-md"
+            <article id="post-分布式时钟之向量时钟"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2020-12-21 00:51:21" datetime="2020-12-20T16:51:21.000Z"  itemprop="datePublished">2020-12-21</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/thinking/">随想</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/12/21/%E9%AB%98%E9%93%81%E7%AB%99%E7%9A%84%E6%8A%80%E5%B7%A7%E5%B0%8F%E8%AE%B0-md/">高铁站的技巧小记.md</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        背景
-最近难得的出差去了一次杭州, 到了高铁站才用高德打车,
-结果因为不知道该从什么地方去找师傅, 第一个打车的师傅说找不到这个地址,
-只好取消, 换个试试能不能遇到对路线比较熟悉的师傅.
-后来,稍微问了问这个比较熟悉录下你的师傅一些火车站的技巧.
-顺便把以前常走的火车站的一些也给记录一下.
-通用
-
-要打车又不熟悉上车地点的时候, 可以提前预约,
-接预约订单的师傅相比接马上上车的师傅要对火车...
-    
-
-        <a href="/2020/12/21/%E9%AB%98%E9%93%81%E7%AB%99%E7%9A%84%E6%8A%80%E5%B7%A7%E5%B0%8F%E8%AE%B0-md/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E9%93%81/" rel="tag">高铁</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-ceph之编译时python3-6m符号表错误"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2020-12-02 14:22:56" datetime="2020-12-02T06:22:56.000Z"  itemprop="datePublished">2020-12-02</time>
+        <time class="post-time" title="2021-04-10 20:44:10" datetime="2021-04-10T12:44:10.000Z"  itemprop="datePublished">2021-04-10</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
@@ -651,7 +428,7 @@ mac time machine限速
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2020/12/02/ceph%E4%B9%8B%E7%BC%96%E8%AF%91%E6%97%B6python3-6m%E7%AC%A6%E5%8F%B7%E8%A1%A8%E9%94%99%E8%AF%AF/">ceph之编译时python3.6m符号表错误</a>
+      <a class="post-title-link" href="/2021/04/10/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8B%E5%90%91%E9%87%8F%E6%97%B6%E9%92%9F/">分布式时钟之向量时钟</a>
     </h3>
   
 
@@ -661,20 +438,247 @@ mac time machine限速
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        今天在编译ceph时,
-发生了libpython3.6m.a: could not read symbols: Bad value的问题,
-在这附近有一个疑似相关的具体符号表的提示.
-1/usr/binld: /usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6m.a(abstract.o): relocation R_X8...
+        向量时钟 vector clock
+
+可能有人会有疑问：向量时钟到底有什么用呢？举一个常见的工程应用：数据冲突检测。分布式系统中数据一般存在多个副本，多个副本可能被同时更新，这会引起副本间数据不一致，此时冲突检测就非常重要。基于向量时钟我们可以获得任意两个事件的顺序关系，结果要么是有因果关系（先后顺序），要么是没有因果关系（同时发生）。通过向量时钟，我们能够识别到如果两个数据更新操作是同时发...
     
 
-        <a href="/2020/12/02/ceph%E4%B9%8B%E7%BC%96%E8%AF%91%E6%97%B6python3-6m%E7%AC%A6%E5%8F%B7%E8%A1%A8%E9%94%99%E8%AF%AF/" class="post-more waves-effect waves-button">
+        <a href="/2021/04/10/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8B%E5%90%91%E9%87%8F%E6%97%B6%E9%92%9F/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E8%AF%91/" rel="tag">编译</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%91%98%E5%BD%95/" rel="tag">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E9%92%9F/" rel="tag">时钟</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-分布式时钟之Lamport逻辑时钟"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-04-08 19:50:07" datetime="2021-04-08T11:50:07.000Z"  itemprop="datePublished">2021-04-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/04/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8BLamport%E9%80%BB%E8%BE%91%E6%97%B6%E9%92%9F/">分布式时钟之Lamport逻辑时钟</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        背景
+在看到这篇论文之前,
+我所知道的只是linux上自带的时间戳和ntp协议,
+以及内核里有一个每次开机启动时开始记录的monotonic clock可以用来保障时间一定是连续的.
+但是对于分布式设备之间怎么判断互相的时间先后性, 这块是未知的.
+比如针对leader节点发送一次自己的认证失效时间,
+假如自己的物理时间戳比那个时间还早, 但真实世界的时间戳已经超期了,
+到底是按失效还是有...
+    
+
+        <a href="/2021/04/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%97%B6%E9%92%9F%E4%B9%8BLamport%E9%80%BB%E8%BE%91%E6%97%B6%E9%92%9F/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%91%98%E5%BD%95/" rel="tag">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%B6%E9%92%9F/" rel="tag">时钟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-DistCache分布式缓存"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-04-07 20:29:19" datetime="2021-04-07T12:29:19.000Z"  itemprop="datePublished">2021-04-07</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/04/07/DistCache%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/">DistCache分布式缓存</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        DistCache:
+Provable Load Balancing for LargeScale Storage Systems with Distributed
+Caching[^1]
+Small Cache解决的Ball into
+bins 问题
+
+Balls into bins 问题讲的是如果有 M 个小球随机等概率地扔进 N 个垃圾桶,
+那么装球最多的那个垃圾桶大概率会有多少个球?...
+    
+
+        <a href="/2021/04/07/DistCache%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%91%98%E5%BD%95/" rel="tag">摘录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-SWIM协议"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-04-06 23:07:08" datetime="2021-04-06T15:07:08.000Z"  itemprop="datePublished">2021-04-06</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/04/06/SWIM%E5%8D%8F%E8%AE%AE/">SWIM协议</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        论文
+
+
+可扩展弱一致性感染型进程组成员协议
+进程组的成员关系协议
+
+可伸缩性
+弱一致性
+感染性
+
+用于分布式系统中进程的健康检测或者说错误检测
+SWIM是通过Gossip实现的Membership保持协议，也就是维护分布式系统节点的状态
+
+成员资格协议
+
+成员资格协议的可伸缩型和执行效率主要由以下几个方面确定：
+完备性：是不是每个失效的进程最终都能够检测到？
+失效节点的检测速度：一个节点失...
+    
+
+        <a href="/2021/04/06/SWIM%E5%8D%8F%E8%AE%AE/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gossip/" rel="tag">gossip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ceph之Arch部署Octopus版本"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-03-21 21:55:55" datetime="2021-03-21T13:55:55.000Z"  itemprop="datePublished">2021-03-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/">ceph之Arch部署Octopus版本</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        arch安装实验
+1pacman -Syy ceph
+安装完发生了一个奇怪的问题,
+ceph -v执行报缺rados库,
+python3-rados装到了python3.9的site-package里,
+但是我设备里pacman目前只装了python3.8,
+这个的包里没有看到这个库
+执行了pacman -Syy python升级到3.9,
+可以用了,
+升级过程中python3.9的库里少了...
+    
+
+        <a href="/2021/03/21/ceph%E4%B9%8BArch%E9%83%A8%E7%BD%B2Octopus%E7%89%88%E6%9C%AC/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arch/" rel="tag">arch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ceph/" rel="tag">ceph</a></li></ul>
 
     </div>
     
@@ -687,7 +691,7 @@ mac time machine限速
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
     </div>
 </nav>
 
@@ -717,7 +721,7 @@ mac time machine限速
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

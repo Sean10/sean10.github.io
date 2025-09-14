@@ -205,35 +205,43 @@ in ruleset is down and out - Ceph - Ceph</a></p>
 AVAIL in "ceph df" by liuchang0812 · Pull Request #17513 ·
 ceph/ceph</a></p>
 <p>这篇里好像是之前漏了/raw_used_rate这个副本size</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/12923/commits/f223ac92917f4bc18e5b9b3ad61afa155e4d088a">mon/PGMap:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/pull/12923/commits/f223ac92917f4bc18e5b9b3ad61afa155e4d088a">mon/PGMap:
 factor mon_osd_full_ratio into MAX AVAIL calc by liewegas · Pull Request
 #12923 · ceph/ceph</a></p>
 <p>这个操作引入的full_ratio参数到MAX AVAIL计算中</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/d10c6c26f9ef7372e2c95da79d23b07ce5f4e0e5#diff-ecab4c883be988760d61a8a883ddc23f">mon/PGMap:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/d10c6c26f9ef7372e2c95da79d23b07ce5f4e0e5#diff-ecab4c883be988760d61a8a883ddc23f">mon/PGMap:
 Fix %USED calculation bug. · ceph/ceph@d10c6c2</a></p>
 <p>修复%USED（raw的应该) 没有乘以副本数的问题。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/7ca25dfd5a4f05d1f942b73f08e82b8694a73c99#diff-ecab4c883be988760d61a8a883ddc23f">osd,os,mon:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/7ca25dfd5a4f05d1f942b73f08e82b8694a73c99#diff-ecab4c883be988760d61a8a883ddc23f">osd,os,mon:
 extend 'ceph df' report to provide both USED and RAW_USED ·
 ceph/ceph@7ca25df</a></p>
 <p>这个应该是在L之后的版本，在这次commit中引入Statfs这个中间结构用来存储total、avail，免于直接接触kb</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/738789b0577f879bb756d65b71066300902ab116#diff-ecab4c883be988760d61a8a883ddc23f">mon/PGMap:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/738789b0577f879bb756d65b71066300902ab116#diff-ecab4c883be988760d61a8a883ddc23f">mon/PGMap:
 GLOBAL -&gt; RAW STORAGE in 'df' output · ceph/ceph@738789b</a></p>
 <p>这个也是L之后的版本，把ceph df输出的GLOBAL改成了RAW，防止错误理解</p>
 <p>get_rule_weight_osd_map这个函数的新增并没有看出有立刻被用在计算资源池容量这里。</p>
 <p>应该可以从这个接口被调用的地方来分析，新增的人是否没考虑过osd异常的场景？</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/8f2521617ee31453909ddd0a6a5fd177c8fbf034">mon/PGMap:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/8f2521617ee31453909ddd0a6a5fd177c8fbf034">mon/PGMap:
 move summary information into parent PGMapDigest object ·
 ceph/ceph@8f25216</a></p>
 <p>这里被重构，挪了一下位置……</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/f223ac92917f4bc18e5b9b3ad61afa155e4d088a">mon/PGMap:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/f223ac92917f4bc18e5b9b3ad61afa155e4d088a">mon/PGMap:
 factor mon_osd_full_ratio into MAX AVAIL calc ·
 ceph/ceph@f223ac9</a></p>
 <p>这里又被做了格式化，哎</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/519a01d973f10b97e4ba497e065fdf53b6064029">mon:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/519a01d973f10b97e4ba497e065fdf53b6064029">mon:
 move "df" dump code from PGMonitor to PGMap · ceph/ceph@519a01d</a></p>
 <p>这里又重构了……</p>
 <p>在这次提交以前这部分代码在src/mon/PGMonitor.cc</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/024caa721d6632eda0cdcdd704188de209f30bd6">mon/pgmonitor:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/024caa721d6632eda0cdcdd704188de209f30bd6">mon/pgmonitor:
 use appropriate forced conversions in get_rule_avail ·
 ceph/ceph@024caa7</a></p>
 <p>哎，这次对这行改了下显式类型转换，从float改成double</p>
@@ -242,10 +250,12 @@ Ceph df doesn't report MAX AVAIL correctly when using rulesets and OSD
 in ruleset is down and out - Ceph - Ceph</a></p>
 <p>这个看起来和OSD
 out相关，但很可惜，只处理了错误计算为0的问题，并没有考虑正常场景？</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/7a9652b58ea70f9a484a135bde20d872616c5947">mon:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/7a9652b58ea70f9a484a135bde20d872616c5947">mon:
 include 'max avail' in df output · ceph/ceph@7a9652b</a></p>
 <p>终于找到了引入的地方,这里增加的max avail的值。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/04d0526718ccfc220b4fe0c9046ac58899d9dafc">PGMonitor:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph/commit/04d0526718ccfc220b4fe0c9046ac58899d9dafc">PGMonitor:
 fix bug in caculating pool avail space · ceph/ceph@04d0526</a></p>
 <p>这里处理的那个osd_map</p>
 <h2 id="提交">提交</h2>
@@ -342,7 +352,8 @@ a parent class. The child PGMap retains the detail.</p>
 call it to encode just the summary info.</p>
 <p>Squashed in here is a new num_pg_by_osd that could have been done in
 a preceding patch but I did things in the wrong order. :(</p>
-<p>Signed-off-by: Sage Weil <a href="mailto:sage@redhat.com" class="email">sage@redhat.com</a></p>
+<p>Signed-off-by: Sage Weil <a href="mailto:sage@redhat.com"
+class="email">sage@redhat.com</a></p>
 <p>所以其实这个digest就是pgmap的一个封装版本.</p>
 <p>在<code>void DaemonServer::send_report</code>这里会触发</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   cluster_state.with_osdmap([&amp;](const OSDMap&amp; osdmap) &#123;</span><br><span class="line">// FIXME: no easy way to get mon features here.  this will do for</span><br><span class="line">// now, though, as long as we don&#x27;t make a backward-incompat change.</span><br><span class="line">pg_map.encode_digest(osdmap, m-&gt;get_data(), CEPH_FEATURES_ALL);</span><br></pre></td></tr></table></figure>
@@ -581,7 +592,7 @@ out了之后，..." data-title=" QQ">
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

@@ -196,19 +196,19 @@ moc工具进行扩展 这个时候先执行qmake，再build</p>
 error: linker command failed with exit code 1 (use -v to see
 invocation)</p>
 <p>这个错误经常会出现</p>
-<hr>
+<hr />
 <p>c++跨文件或跨类传输变量参数是通过在对应文件声明类，然后调用该类获得参数的函数</p>
 <p>但是qt里我一旦这样做，就会出现上面那个系统错误。</p>
-<hr>
+<hr />
 <p>普通形参加不加const限定符对实参没有影响，引用形参和指针形参前面没有const限定符时，实参必须是非const的，而前面有const限定符时对实参也没有什么影响。</p>
 <p>为什么会出现这种情况？</p>
 <p>原因在于实参的传递方式不同，函数中的形参是普通形参的时，函数只是操纵的实参的副本，而无法去修改实参，实参会想，你形参反正改变不了我的值，那么你有没有const还有什么意义吗？引用形参和指针形参就下不同了，函数是对实参直接操纵，没有const的形参时实参的值是可以改变的，这种情况下怎能用函数来操纵const实参呢。</p>
-<hr>
+<hr />
 <p>ui文件似乎必须要建一个类通过setupUI才能使用
 主要需要新建一个dialog来show就可以了</p>
 <table style="width:10%;">
 <colgroup>
-<col style="width: 9%">
+<col style="width: 9%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -218,25 +218,25 @@ box::accepted有什么区别？</td>
 </tbody>
 </table>
 <p>QT的close没有反应，似乎要使用事件循环</p>
-<hr>
+<hr />
 <p>setAttribute (Qt::WA_DeleteOnClose);
 这个明明是解决内存泄露问题，为什么可以关闭窗口呢，而close却做不到</p>
-<hr>
+<hr />
 <p>qVector输入之后，造成implicitly deleted because base class "QObject"
 has a deleted copy constructor</p>
-<hr>
+<hr />
 <p>Qt 资源文件，可以通过添加qrc来实现路径的操作 但是
 //路径这里存在问题，为什么添加了qrc之后依旧不需要前缀就可以使用了呢？
 明明理论上说要":/db/user.db" 但只是"user.db"就可以使用了</p>
-<hr>
+<hr />
 <p>始终不能调用数据库，原因是我没有使用query.finish，以及建表语法出现了错误。</p>
-<hr>
+<hr />
 <p>事件似乎和信号有点相似，又有点不同。</p>
-<hr>
+<hr />
 <p>事件是一个新的概念，与信号不一样。</p>
 <table style="width:14%;">
 <colgroup>
-<col style="width: 13%">
+<col style="width: 13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -256,7 +256,7 @@ Output里看到问题，是client.o的问题，不过这个文件我都没有引
 </table>
 <p>遇到这个错误error: member function not viable this argument has type
 const 但是我一时忘了怎么解决的了</p>
-<hr>
+<hr />
 <p>call to implicitly-deleted copy constructor</p>
 <p>/Users/sean10/Qt/5.8/clang_64/lib/QtCore.framework/Headers/qlist.h:461:
 error: call to implicitly-deleted copy constructor of
@@ -264,11 +264,11 @@ error: call to implicitly-deleted copy constructor of
 T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 遇到这个错误，发现又是因为继承了基类QObject的原因</p>
-<hr>
+<hr />
 <p>暂时设计了从multithread发送信号到databaseControl,暂时没能测试出数据是否发送成功</p>
 <table style="width:7%;">
 <colgroup>
-<col style="width: 6%">
+<col style="width: 6%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -284,12 +284,12 @@ T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^
 </table>
 <p>优先设置spinBox的lowtem会导致workTemperature变成这个lowTem,明明是满足他的约束的
 噢，可能是因为spinBox一开始是0，没有设置，当有了约束之后，自动变成了18，满足了值变动，所以导致初始化被覆盖了。</p>
-<hr>
+<hr />
 <p>tcp粘包问题：
 怎么分也需要双方组织一个比较好的包结构，所以一般可能会在头加一个数据长度之类的包，以确保接收。</p>
 <table style="width:7%;">
 <colgroup>
-<col style="width: 6%">
+<col style="width: 6%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -299,22 +299,22 @@ T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^
 </tbody>
 </table>
 <p>connectToHost似乎是mac的问题，大大的windows执行就没有问题。</p>
-<hr>
+<hr />
 <p>找到每次修改完工作温度，室温就顺便同步的原因了，是因为信号问题，每发送一个SignalSendRequest就执行了9次SendRequest.
 但是没有找到有多次connect的函数啊。</p>
 <p>即便是用了uniqueConnection还是执行了多次。</p>
 <p>找到问题了，有另外一个函数不停发送了signal，定时发送</p>
-<hr>
+<hr />
 <p>第二次从控机开机，主控机上没有再显示出那台从控机状态？ why?</p>
 <h2 id="还有解决粘包问题">还有解决粘包问题</h2>
 <p>把室温用电子时钟模式展示出来</p>
-<hr>
+<hr />
 <p>可以使用doxygen来进行根据注释生成文档</p>
 <p>/** * 要输出成文档的注释 */</p>
 <p>或者 //!</p>
-<hr>
+<hr />
 <p>C++在类头文件中试图定义QVector的成员变量，提示错误，不能理解。</p>
-<p>std::vector<int> numList[9];</int></p>
+<p>std::vector<int> numList[9];</p>
 <p>头文件这样定义成员变量，但是在构造函数中不能对他初始化。</p>
 <p>不管是QVector还是vector都不行。</p>
 <p>问题的回答是这么说的：</p>
@@ -325,24 +325,24 @@ T(<em>reinterpret_cast&lt;T</em>&gt;(src-&gt;v)); ^
 </blockquote>
 <p>找到原因了，成员函数内不能定义，毕竟只是一个声明.
 在主函数内就可以了</p>
-<hr>
+<hr />
 <p>用QVector需要先进行resize,就像分配内存一样？因为QVector我不能直接定义一个81个单元的Vector。</p>
-<hr>
+<hr />
 <p>为什么重定向输入，结果读取不了呢？明明从控制台输入就可以。</p>
-<hr>
+<hr />
 <p>使用macro宏定义时，始终没能正确替换表达式</p>
 <p>现在虽然会了用clang编译选项，但是还是非常不对。</p>
 <p>结果居然是因为我宏用了小写……导致了错误，我居然一直没发现。</p>
-<hr>
+<hr />
 <p>tmp[] = {9,9}; //vector_2 = tmp; vector<int> vector_2(tmp,
-tmp+1);</int></p>
+tmp+1);</p>
 <p>这样就报出了 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">code.cpp:158:9: error: expected expression</span><br><span class="line">    tmp[] = &#123;9,9&#125;;</span><br><span class="line">        ^</span><br><span class="line">code.cpp:158:13: error: expected expression</span><br><span class="line">    tmp[] = &#123;9,9&#125;;</span><br><span class="line">            ^</span><br><span class="line">2 errors generated.</span><br></pre></td></tr></table></figure></p>
 <p>奇怪，用<code>vector&lt;int&gt; vector_2(begin(tmp), end(tmp));</code>
 同样也有这个问题，但是上面那个赋{1}的单项的就没有问题。</p>
 <p>发现问题了，只能初始化的时候直接赋列表值，之后就只能一个个赋，或者再定义一个了。</p>
-<hr>
+<hr />
 <p>发现segmentfault的原因了，传入指针时，得先定义或者new一下，不然传入赋完值，定义的指针位置什么都没变，就得不到你要的结果了。</p>
-<hr>
+<hr />
 <p>C++11添加的raw字符串</p>
 <p>C++允许省略C中的结构体的struct语句</p>
 <p>C++11支持数组、字符串、结构体列表初始化</p>
@@ -466,15 +466,15 @@ of return type</p>
 也是has-a关系</p>
 <p>也可以同时私有继承多个类</p>
 <p>C++11的初始化列表是通过initializer_list<char>
-il来实现的，之后可以看下</char></p>
+il来实现的，之后可以看下</p>
 <p>在头文件<memory>中 智能指针，auto _ptr,unique _ptr和shared
-_ptr，auto在C++11已经被摒弃</memory></p>
+_ptr，auto在C++11已经被摒弃</p>
 <p>throw()也被摒弃，但是这个是什么东西？</p>
 <p>unique _ptr强调对象所有权，而shared
 _ptr则添加引用计数，在最后的计数为0时才释放</p>
 <p>unique可用于数组的变体，new []，而其他2个没有</p>
 <p>在用<vector>的迭代器的时候，可以用C++11的自动推断，auto pd =
-score.begin()挺有意思的</vector></p>
+score.begin()挺有意思的</p>
 <p>for_each(),random_shuffle(),sort()都挺特别的</p>
 <p>c++11的循环类似python中的</p>
 <p>for(auto x: books) ShowReview(w)</p>
@@ -498,7 +498,7 @@ score.begin()挺有意思的</vector></p>
 C标准的，在mac平台C++中 并不支持。</p>
 <table style="width:4%;">
 <colgroup>
-<col style="width: 4%">
+<col style="width: 4%" />
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -703,7 +703,7 @@ slots，原因是我没有在槽函数的类中使用Q_OBJECT MACRO 这个的原
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

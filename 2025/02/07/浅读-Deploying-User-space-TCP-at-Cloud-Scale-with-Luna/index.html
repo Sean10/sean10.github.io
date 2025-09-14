@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    
+    
+    
+    <title>浅读&lt;Deploying User-space TCP at Cloud Scale with Luna&gt; | 行路中. | 脚踏实地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="网络,TCP">
+    <meta name="description" content="目前在个人的理解中, 在存储高带宽需求场景下, RDMA的RoCEv2方案, 在节省CPU, 使CPU用在提供更高的IOPS的处理能力上, 是显著优势了. 在不超过40Gbps的场景下, TCP还是可以用的. 按之前收集的论文数据, 大概是RDMA下, 1%的CPU消耗对比, TCP时100%+的CPU消耗, 在100Gbps以上时, CPU消耗10多个核, 对于主流服务器CPU单C超线程完也才3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅读&lt;Deploying User-space TCP at Cloud Scale with Luna&gt;">
+<meta property="og:url" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/index.html">
+<meta property="og:site_name" content="行路中.">
+<meta property="og:description" content="目前在个人的理解中, 在存储高带宽需求场景下, RDMA的RoCEv2方案, 在节省CPU, 使CPU用在提供更高的IOPS的处理能力上, 是显著优势了. 在不超过40Gbps的场景下, TCP还是可以用的. 按之前收集的论文数据, 大概是RDMA下, 1%的CPU消耗对比, TCP时100%+的CPU消耗, 在100Gbps以上时, CPU消耗10多个核, 对于主流服务器CPU单C超线程完也才3">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207213930655.png">
+<meta property="og:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207221010637.png">
+<meta property="og:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207215939882.png">
+<meta property="og:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207220603933.png">
+<meta property="og:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207220609745.png">
+<meta property="og:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207220630564.png">
+<meta property="article:published_time" content="2025-02-07T09:50:20.000Z">
+<meta property="article:modified_time" content="2025-02-07T14:30:16.709Z">
+<meta property="article:author" content="Sean10">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="TCP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207213930655.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="行路中." href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Sean10</h5>
+          <a href="mailto:sean10reborn@gmail.com" title="sean10reborn@gmail.com" class="mail">sean10reborn@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/sean10" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">浅读&lt;Deploying User-space TCP at Cloud Scale with Luna&gt;</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">浅读&lt;Deploying User-space TCP at Cloud Scale with Luna&gt;</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2025-02-07T09:50:20.000Z" itemprop="datePublished" class="page-time">
+  2025-02-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">1.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-浅读-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">浅读<Deploying User-space TCP at Cloud Scale with Luna></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2025-02-07 17:50:20" datetime="2025-02-07T09:50:20.000Z"  itemprop="datePublished">2025-02-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/pro/">专业</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>目前在个人的理解中, 在存储高带宽需求场景下, RDMA的RoCEv2方案,
+在节省CPU, 使CPU用在提供更高的IOPS的处理能力上, 是显著优势了.</p>
+<p>在不超过40Gbps的场景下, TCP还是可以用的. 按之前收集的论文数据,
+大概是RDMA下, 1%的CPU消耗对比, TCP时100%+的CPU消耗, 在100Gbps以上时,
+CPU消耗10多个核, 对于主流服务器CPU单C超线程完也才32核, 在那个量级下,
+TCP从成本上基本完全不可用了. 内存带宽,
+TCP存在成倍的内核&lt;-&gt;用户态复制的开销,
+在现在的内存通道情况下是没达到瓶颈, 但是也挺浪费. 虽然也有提到TCP
+spice方案, 但论文中觉得不是长期方案.</p>
+<blockquote>
+<p>从下图可以看出，内核 TCP 的性能远未达到我们的 SLO。具体来说，图
+2(a)表明内核 TCP 的基本 RPC 延迟中位数已经达到
+50μs。相比之下，我们的高性能类 EBS 要求端到端响应延迟为 100μs[3]。图
+2(b)进一步显示，单核上的内核网络堆栈只能提供最多 600Mbps
+的吞吐量。此外，图 2(b)还表明，通过分配更多核心无法解决内核 TCP
+的性能问题。可能的原因之一是随着 CPU
+核心数量的增加，内核开销——如跨核竞争——也会增加。</p>
+</blockquote>
+<img src="/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207213930655.png" class="">
+<p>DPDK则目前处在两者中间的感觉,
+转换到用户态确实能节省一部分TCP协议自身的CPU损耗,
+但是相比CPU压力卸载走来说, 就没什么优势了. 兼容性视角,
+当然优势还是比较大的. 只不过在存储内网下, 无法与RDMA相提并论.</p>
+<blockquote>
+<p>TCP
+仍然是许多现代大规模数据中心的核心协议。然而，随着硬件（例如，100Gbps
+链路速度网络）和软件（例如，Intel DPDK
+支持）性能要求的不断提高，基于内核的 TCP
+堆栈已不再是一个理想的选择。在过去十年中，多个机构提出了各种用户堆栈 TCP
+堆栈，提供与传统 TCP
+支持相比具有显著性能改进的功能。不幸的是，我们发现这些提案在实际应用中可能无法很好地工作，尤其是在大规模部署时。</p>
+<p>在本文中，我们介绍了 Luna，这是一种广泛部署在阿里云上的用户空间 TCP
+堆栈。我们详细阐述了设计权衡，强调了线程、内存和流量模型中的三个独特特征。此外，我们分享了从现场部署中学到的经验教训。广泛的微基准评估和从生产系统收集的性能统计数据表明，L
+在吞吐量方面比内核和其他用户空间解决方案高出 3.5 倍，并将延迟降低
+53%。</p>
+</blockquote>
+<img src="/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207221010637.png" class="">
+<p>看到本文时, 主要在内核与用户态方案的路径上, 有了以下的问题</p>
+<ul>
+<li>从上述定位视角, 阿里的这套方案, 是否落地在了盘古引擎层?
+还是哪个层级?
+<ul>
+<li>阿里的这套方案, 是否落地在了盘古引擎层? 还是哪个层级?</li>
+<li>与RDMA RoCEv2的方案相比, 定位的差异, 是主打利旧硬件场景?
+还是彻底PK的场景? 毕竟如果还是在用户态, 那就是和DPDK范畴相近的,
+CPU消耗还是不能卸载到网卡上去.</li>
+<li>还是说引入新硬件? 在RDMA网卡之外提供了其他的能力?</li>
+</ul></li>
+<li>结论: 定位在计算侧-&gt;存储端 中间的链路,
+在计算客户端-&gt;块存储/对象存储/表格存储网关前
+这条链路由于计算侧可能跨数据中心, 中间的链路就目前互联网状态,
+无法使用RDMA, 因此需要在保障通用硬件兼容性的情况下, 提供高吞吐能力.</li>
+</ul>
+<p>按照引文, 主要实现目标如下</p>
+<ul>
+<li>业务核心价值: 针对目前整套的计算段-&gt;存储端的复杂网络架构下,
+支持利旧硬件的情况下,
+在相对CPU利用率较高的效果下可以让4K,512B等小IO跑满40Gbps-100Gbps的网卡,
+相比之前的TCP吞吐量呈至多3.5倍的提升, 延时呈53%的降低.
+而针对更高100Gbps等, 会引入类似RDMA硬件卸载CPU的DPU硬件,
+来配合将CPU消耗等进一步优化.</li>
+</ul>
+<blockquote>
+<p>在本文中，我们讨论了 LUNA 可以有效地利用 50Gpbs
+NIC。但是，对于更高的带宽（例如，200 到 400Gbps），LUNA
+的运行到完成与浅缓冲区可能会导致 NIC
+队列溢出和数据包丢弃。此外，当消息大小为 4KB 时，LUNA 至少需要 8
+个内核才能使 100Gbps
+网络带宽饱和。因此，为了采用高链接速度网络，我们认为利用硬件加速是必要的。此外，虽然
+TCP 可以通过多路径 TCP 使用多路径传输，但 TCP
+中的队头阻塞问题及其在故障恢复方面的限制仍然促使我们专门为高性能云存储设计了一种新协议。我们最近的工作称为
+Solar [29]，它涉及使用与 DPU
+共同设计的新传输层协议，这说明了这一点。</p>
+</blockquote>
+<ul>
+<li>内部价值:
+<ul>
+<li>提高单核CPU可提供的吞吐量
+<ul>
+<li>解决TCP内存拷贝</li>
+<li>解决TCP硬件中断多, 上下文切换多问题</li>
+</ul></li>
+<li>降低TCP目前的长尾延时</li>
+<li>支持跨可用区网络通信</li>
+<li>对内存带宽的消耗放大减少</li>
+<li>利旧, 新程序兼容旧服务器, 使其网卡同时响应传统TCP请求,
+和本次新的流量</li>
+</ul></li>
+</ul>
+<p>主要对比mTCP和IX, 如果不是公有云这种规模, 私有云场景按照这个对比,
+可能基于mTCP和IX开发是个可行方案. 不过, 如果广域网的RDMA方案出来,
+且成本下降到可接受时, 可能还是以RDMA为主流方案了.</p>
+<p>主要核心技术</p>
+<ul>
+<li>用户态Luna替换TCP
+<ul>
+<li>TCP 堆栈。如第 3 节所述，LUNA 使用 TCP 作为传输层协议。LUNA 根据 RFC
+实现 TCP [2801234]，并支持拥塞控制、流量控制、RTT 估计和 SACK。
+<ul>
+<li>类比xsky的RDMA的ECN拥塞控制等.</li>
+</ul></li>
+</ul></li>
+<li>LibOS模式运行
+<ul>
+<li>在此设置中，应用程序和 LUNA
+在同一进程中运行并共享内存地址空间。或者，可以在单独的进程中运行网络堆栈，并通过共享内存进行通信.在这种情况下，如果每个服务器中只有一个网络进程来服务于不同的应用程序进程，则称为微内核模式（例如，Google
+Snap
+[27]）。另一种解决方案是为每个应用程序进程设置一个网络堆栈进程，称为
+Sidecar 模式。</li>
+<li>参考<a
+target="_blank" rel="noopener" href="https://irenezhang.net/blog/2019/05/21/demikernel.html">Irene Y.
+Zhang: 高层次内核绕过 I/O 抽象的案例 --- Irene Y. Zhang: The Case for a
+High-level Kernel-Bypass I/O Abstraction</a> 可知, 如果缺失该环节,
+DPDK和RDMA均需要单独实现拥塞控制和流量控制, 在该环节, 则可进行一层抽象
+<ul>
+<li>提供易用性</li>
+<li>提供可迁移性</li>
+<li>提供灵活性</li>
+</ul></li>
+</ul></li>
+<li>线程间 share nothing架构
+<ul>
+<li>run to complete模型
+<ul>
+<li>inline run to complete
+<ul>
+<li>LUNA 也逐个处理数据包。但是，LUNA
+避免将事件添加到事件队列中，而是立即调用已注册的回调函数，生成响应以及数据包的协议标头，然后将它们发送出去。简而言之，inline-r2c
+将处理每个数据包直到完成。</li>
+<li>显然，inline-r2c
+消除了事件入队和出队的开销，并提高了缓存局部性，从而提供了更好的性能。但是，inline-r2c
+还需要一个新的编程模型，并强制 upperlayer 应用程序使用类似 raw-packet
+的零拷贝读 / 写接口。此外，inline-r2c 仅在 LibOS
+模型中可用，因为应用层代码必须与网络堆栈位于同一位置</li>
+<li>一般类比应该是用在高优先级请求上, 确保该请求的低延时</li>
+</ul></li>
+<li>batch run to complete
+<ul>
+<li>LUNA 通过 TCP/IP 堆栈一次处理一个接收到的数据包，然后为每个具有 TCP
+有效负载的数据包向事件队列添加一个读取事件。在 LUNA
+处理完本轮收到的所有数据包后，应用程序将立即处理这些读取事件。然后，RPC
+框架调用注册到每个事件的回调函数，生成响应消息，并将消息发送到发送缓冲区。处理完所有事件后，LUNA
+会在发送缓冲区中添加消息的协议标头，将它们转发到
+NIC，然后开始下一轮。</li>
+<li>batch-r2c 工作在更传统的类似 epoll 或类似 libev
+的编程模型中，并且与传统的类似 BSD-Socket 的接口兼容。在实践中，我们在
+EBS 等面向性能的服务上部署 inline-r2c，出于兼容性考虑，我们将 batch-r2c
+用于对象存储等服务。</li>
+<li>一般类比应该是用在正常优先级请求上, 确保整体延时保障</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>内存 零拷贝
+<ul>
+<li>LUNA
+在接收端和发送端支持完整的数据路径零拷贝缓冲区，旨在最大限度地减少数据移动开销。LUNA
+在用户空间 slab
+子系统的帮助下实现了其全栈零拷贝。此子系统引入的开销很小，并维护传统的编程模型。</li>
+<li>Zbuf
+<ul>
+<li>用户空间 slab 子系统。Zbuf 用作用户空间 slab
+子系统，为用户预先分配内存块。图 6 显示了 Zbuf 的结构。我们可以看到 Zbuf
+保留了从 DPDK 的内存地址空间分配的几个大页面，并将它们划分为多个 2MB
+的内存区域。每个内存区域的标头记录元信息，例如物理地址。内存区进一步拆分为
+OBJS，OBJ 可以直接由户（即应用程序）。objs 的元数据（在图 6 中表示为
+ctx）与 objs 位于同一内存区中，紧跟在区域元数据之后。同一内存区中的所有
+obj 共享相同的大小，但大小可能因内存区而异（例如，图 6 中的 2KB 与
+4KB）。Obj 生命周期管理。Zbuf 使用引用计数器来管理每个 obj
+的生命周期。初始化后，计数器设置为 1。之后，每当复制相应的 obj
+时，计数器就会增加 1，每次释放 obj 时，计数器就会减少 1。一旦计数达到
+0，obj 将被放回内存区的空闲列表。</li>
+</ul></li>
+<li>DMA
+<ul>
+<li>通过 DMA 将数据包数据发送到 OBJ （（1））。网络堆栈使用网络协议
+（（2）） 处理数据包，并将指向可读有效载荷的指针（在图 7 中标记为 ）通过
+RPC 接口 （（3））
+传送到上层应用程序。应用程序可以在完成消息处理后直接释放有效负载
+（（4））。Zbuf 将找到相关的 obj 并通过减少引用计数来释放它。</li>
+</ul></li>
+</ul></li>
+<li>流量模型
+<ul>
+<li>NIC 多队列区分 内核/用户空间流量</li>
+<li>将控制平面（即 ARP 表和路由表管理）留给内核，并使用 netlink
+接口访问路由信息。
+<ul>
+<li>LUNA 使用 Flow Bifurcation 和 SR-IOV
+支持，为用户空间流量保留一定的端口范围，这样就不会干扰内核流量。内核网络堆栈直接处理
+ARP 请求和响应等控制平面消息，并管理控制平面
+<ul>
+<li>Flow Bifurcation</li>
+<li>SR-IOV 支持</li>
+</ul></li>
+</ul></li>
+<li>DPDK轮询 用户空间流量
+<ul>
+<li>PMD轮询模式驱动程序</li>
+<li>巨页管理</li>
+<li>数据结构
+<ul>
+<li>哈希映射</li>
+<li>mbuf</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<img src="/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207215939882.png" class="">
+<img src="/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207220603933.png" class="">
+<img src="/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207220609745.png" class="">
+<img src="/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/image-20250207220630564.png" class="">
+<h1 id="总结">总结</h1>
+<p>大体上, 阿里这套方案在存算分离架构下的私有云的IaaS中,
+计算侧网络可借鉴, 只不过工作量角度, 可能大幅复用DPDK/IX等方案,
+存储侧走RDMA毋庸置疑. 对于如果没有此类复杂网络场景, 在具体核算成本TCO时,
+也许有可能还是全套RDMA方案划得来?</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2025-02-07T14:30:16.709Z" itemprop="dateUpdated">2025-02-07 22:30:16</time>
+</span><br>
+
+
+        
+        欢迎评论~
+        
+    </div>
+    
+    <footer>
+        <a href="https://sean10.github.io">
+            <img src="/img/avatar.jpg" alt="Sean10">
+            Sean10
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP/" rel="tag">TCP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li></ul>
+
+
+            
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<div class="addthis_sharing_toolbox"></div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/&title=《浅读<Deploying User-space TCP at Cloud Scale with Luna>》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/&title=《浅读<Deploying User-space TCP at Cloud Scale with Luna>》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅读<Deploying User-space TCP at Cloud Scale with Luna>》 — 行路中.&url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2024/09/28/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BD%BF%E7%94%A8%E5%88%9D%E6%8E%A2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">大模型使用初探</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <!-- <script src="//code.bdstatic.com/npm/leancloud-storage@latest/dist/av-min.js"></script> -->
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'true' == 'true',
+            verify: 'false' == 'true',
+            appId: "yNexbxJmshSneppnaoo3Bd6Y-gzGzoHsz",
+            appKey: "FyxT8MxDPHbu8mQSapgjEMPC",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Sean10 &copy; 2015 - 2025</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/&title=《浅读<Deploying User-space TCP at Cloud Scale with Luna>》 — 行路中.&pic=https://sean10.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/&title=《浅读<Deploying User-space TCP at Cloud Scale with Luna>》 — 行路中.&source=笔记 随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《浅读<Deploying User-space TCP at Cloud Scale with Luna>》 — 行路中.&url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/&via=https://sean10.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://sean10.github.io/2025/02/07/%E6%B5%85%E8%AF%BB-Deploying-User-space-TCP-at-Cloud-Scale-with-Luna/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57108c0b91bea817"></script>
+
+<script src="/js/main.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.js?v=1.7.2" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+</body>
+</html>

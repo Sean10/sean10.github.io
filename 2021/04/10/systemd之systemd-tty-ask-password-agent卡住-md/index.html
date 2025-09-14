@@ -201,37 +201,39 @@ monitored, we might need a lot of fds.</span></a></li><li class="post-toc-item p
 <p>具体理论这块还没去查源码, 暂时只能给个结论.有大佬看过的话,
 希望也能分享下~</p>
 <h1 id="样例">样例</h1>
-<p>``` bash # new2.service [Unit]<br>
-Description=System Logging Service<br>
-Documentation=man:rsyslogd(8)<br>
+<p>``` bash # new2.service [Unit]<br />
+Description=System Logging Service<br />
+Documentation=man:rsyslogd(8)<br />
 Documentation=https://www.rsyslog.com/doc/</p>
-<p>[Service]<br>
-Type=forking<br>
-EnvironmentFile=-/etc/sysconfig/rsyslog<br>
+<p>[Service]<br />
+Type=forking<br />
+EnvironmentFile=-/etc/sysconfig/rsyslog<br />
 ExecStart=/root/new2.sh</p>
-<h1 id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous">Increase
+<h1
+id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous">Increase
 the default a bit in order to allow many simultaneous</h1>
 <h1 id="files-to-be-monitored-we-might-need-a-lot-of-fds.">files to be
 monitored, we might need a lot of fds.</h1>
-<p>[Install]<br>
+<p>[Install]<br />
 WantedBy=multi-user.target</p>
 <h1 id="new2.sh">new2.sh</h1>
 <p>#!/bin/bash echo "heelo" sleep 1000 &amp; systemctl restart new1</p>
 <h1 id="new1.service">new1.service</h1>
-<p>[Unit]<br>
-Description=System Logging Service<br>
-Documentation=man:rsyslogd(8)<br>
-Documentation=https://www.rsyslog.com/doc/<br>
+<p>[Unit]<br />
+Description=System Logging Service<br />
+Documentation=man:rsyslogd(8)<br />
+Documentation=https://www.rsyslog.com/doc/<br />
 After=new2.service</p>
-<p>[Service]<br>
-Type=forking<br>
-EnvironmentFile=-/etc/sysconfig/rsyslog<br>
+<p>[Service]<br />
+Type=forking<br />
+EnvironmentFile=-/etc/sysconfig/rsyslog<br />
 ExecStart=/root/new1.sh</p>
-<h1 id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous-1">Increase
+<h1
+id="increase-the-default-a-bit-in-order-to-allow-many-simultaneous-1">Increase
 the default a bit in order to allow many simultaneous</h1>
 <h1 id="files-to-be-monitored-we-might-need-a-lot-of-fds.-1">files to be
 monitored, we might need a lot of fds.</h1>
-<p>[Install]<br>
+<p>[Install]<br />
 WantedBy=multi-user.target</p>
 <h1 id="new.sh">new.sh</h1>
 <p>#!/bin/bash echo "heelo" sleep 1000 &amp; ``` bash</p>
@@ -419,7 +421,7 @@ WantedBy=multi-user.target</p>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

@@ -198,7 +198,7 @@ run来后台执行命令，感觉好微妙，每次从镜像新建一个容器�
 ENTRYPOINT相关的。</p>
 <p>RUN是在Build时运行的，先于CMD和ENTRYPOINT。Build完成了，RUN也运行完成后，再运行CMD或者ENTRYPOINT。</p>
 <p>比如这个，最后的bash会覆盖CMD指定的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 7777:8888 -v /Users/sean10/Code/LSTM-Sentiment-Analysis:/LSTM-Sentiment-Analysis -it tensorflow/tensorflow:1.1.0-py3 bash</span><br></pre></td></tr></table></figure></p>
-<hr>
+<hr />
 <h1 id="todo">todo</h1>
 <ul>
 <li>docker如何使用相对路径的文件内?</li>
@@ -209,20 +209,25 @@ ENTRYPOINT相关的。</p>
 </blockquote>
 <h1 id="docker-stage">docker stage</h1>
 <p>如何显示之前下载过的<code>stage</code>用的image ?</p>
-<h1 id="显示已下载的image的dockerfile">显示已下载的image的dockerfile</h1>
+<h1
+id="显示已下载的image的dockerfile">显示已下载的image的dockerfile</h1>
 <h1 id="systemd的docker内启动">systemd的docker内启动</h1>
 <blockquote>
 <p>docker run -tid --name test_1 --privileged=true centos:latest
 /usr/sbin/init docker exec -it test_1 /bin/bash</p>
 </blockquote>
 <h1 id="多重from-image">多重from image</h1>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dogecheng/p/11437413.html">精简Docker镜像的几个方法
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/dogecheng/p/11437413.html">精简Docker镜像的几个方法
 - 那少年和狗 - 博客园</a></p>
 <h1 id="参考">参考</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000417103">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.binss.me/blog/learn-docker-with-me-about-run-entrypoint-and-cmd/">跟我一起学Docker——RUN、ENTRYPOINT与CMD</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/61836409">Docker容器怎样更改容器内应用程序的配置文件？</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000417103">Dockerfile里指定执行命令用ENTRYPOING和用CMD有何不同？</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.binss.me/blog/learn-docker-with-me-about-run-entrypoint-and-cmd/">跟我一起学Docker——RUN、ENTRYPOINT与CMD</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/61836409">Docker容器怎样更改容器内应用程序的配置文件？</a></li>
 </ol>
 
         </div>
@@ -408,7 +413,7 @@ ENTRYPOINT相关的。</p>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

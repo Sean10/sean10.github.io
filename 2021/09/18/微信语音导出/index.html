@@ -201,7 +201,8 @@
 <p>需求是把微信多个对话里的语音全部保存下来, 保存到一个文件或者一份链接.
 指向多个文件.</p>
 <h1 id="调查">调查</h1>
-<h2 id="目前主流的方案是手动点击收藏-然后把语音转存为笔记-然后实际就变成了一份silk文件-在android或者在pc上就能够从目录里提取出来-进行编码转换.">目前主流的方案是手动点击收藏,
+<h2
+id="目前主流的方案是手动点击收藏-然后把语音转存为笔记-然后实际就变成了一份silk文件-在android或者在pc上就能够从目录里提取出来-进行编码转换.">目前主流的方案是手动点击收藏,
 然后把语音转存为笔记, 然后实际就变成了一份silk文件,
 在android或者在pc上就能够从目录里提取出来, 进行编码转换.</h2>
 <h2 id="wechatexporter导出ios设备">wechatExporter导出ios设备</h2>
@@ -215,7 +216,8 @@
 按照时间顺序重命名.</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&#x27;*.silk&#x27;</span> | xargs -L1 -I &#123;&#125; <span class="built_in">cp</span> -af &#123;&#125; ~/Downloads/voice/ </span><br><span class="line"><span class="built_in">cd</span> ~/Downloads/voice/</span><br><span class="line">i=1; <span class="keyword">for</span> x <span class="keyword">in</span> `<span class="built_in">ls</span> -<span class="built_in">tr</span> *.silk`; <span class="keyword">do</span> <span class="built_in">cp</span> -af <span class="variable">$x</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span>.silk; <span class="built_in">let</span> i=i+1; <span class="keyword">done</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="silk解码转换为mp3">2. silk解码转换为mp3</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/kn007/silk-v3-decoder">kn007/silk-v3-decoder:
+<p><a
+target="_blank" rel="noopener" href="https://github.com/kn007/silk-v3-decoder">kn007/silk-v3-decoder:
 [Skype Silk Codec SDK]Decode silk v3 audio files (like wechat amr, aud
 files, qq slk files) and convert to other format (like mp3). Batch
 conversion support.</a></p>
@@ -242,38 +244,50 @@ conversion support.</a></p>
 将ios设备进行整机备份</h2>
 <p>高版本<code>macOS</code>比如<code>10.15</code>是在<code>finder</code>里进行的备份,
 低版本则在<code>itunes</code>中.</p>
-<p>参照<code>apple</code>官方文档即可, <a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT203977">如何备份您的
+<p>参照<code>apple</code>官方文档即可, <a
+target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT203977">如何备份您的
 iPhone、iPad 和 iPod touch - Apple 支持 (中国)</a>
-备份速度通过lightning转usb-c, 最快也只有40MB/s, <a target="_blank" rel="noopener" href="https://discussions.apple.com/thread/7168951">how long should an
+备份速度通过lightning转usb-c, 最快也只有40MB/s, <a
+target="_blank" rel="noopener" href="https://discussions.apple.com/thread/7168951">how long should an
 initial backup take on… - Apple Community</a></p>
-<h2 id="备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径">3.
+<h2
+id="备份后-使用wxbackup的软件-指定ios设备在macpc里的备份数据库路径">3.
 备份后, 使用wxbackup的软件,
 指定<code>ios</code>设备在<code>mac/pc</code>里的备份数据库路径</h2>
 <p>可能因为<code>finder</code>高版本导致默认打开软件时没找到备份路径,
 手动指定到<code>~/Library/Application Support/MobileSync/Backup</code>即可.
 就立刻会显示出微信的聊天记录了.</p>
 <p>不过似乎存在一个缺憾, 不能全选导出. 只能一个个选择导出.</p>
-<h2 id="点进各个对话目录里index.html查看和微信一般的web页面来看记录吧">4.
+<h2
+id="点进各个对话目录里index.html查看和微信一般的web页面来看记录吧">4.
 点进各个对话目录里<code>index.html</code>查看和微信一般的<code>web</code>页面来看记录吧</h2>
 <h1 id="reference">Reference</h1>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="https://kn007.net/topics/batch-convert-silk-v3-audio-files-to-mp3-in-windows/">Windows下批量转换Silk
+<li><a
+target="_blank" rel="noopener" href="https://kn007.net/topics/batch-convert-silk-v3-audio-files-to-mp3-in-windows/">Windows下批量转换Silk
 v3音频文件为MP3格式 | kn007的个人博客</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/mryqu/mryqu.github.io/blob/f48df2cb1fc0e604eca4c5452b5c7498fe5717bd/content/post/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA%E5%92%8C%E8%BD%AC%E6%8D%A2.md">mryqu.github.io/微信语音导出和转换.md
+<li><a
+target="_blank" rel="noopener" href="https://github.com/mryqu/mryqu.github.io/blob/f48df2cb1fc0e604eca4c5452b5c7498fe5717bd/content/post/%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E5%AF%BC%E5%87%BA%E5%92%8C%E8%BD%AC%E6%8D%A2.md">mryqu.github.io/微信语音导出和转换.md
 at f48df2cb1fc0e604eca4c5452b5c7498fe5717bd ·
 mryqu/mryqu.github.io</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.yinxiang.com/everhub/note/1157fbcf-0363-4bd4-b015-e2a95aad59c3">关于微信语音导出，这个方法强烈建议~</a></li>
-<li><a target="_blank" rel="noopener" href="https://ds666.fun/2019/08/02/%E6%89%B9%E9%87%8F%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E6%B6%88%E6%81%AF%E4%B8%BAmp3%E5%B9%B6%E9%99%84python%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E8%84%9A%E6%9C%AC/">批量导出微信语音消息为mp3并附python修改文件名脚本
+<li><a
+target="_blank" rel="noopener" href="https://www.yinxiang.com/everhub/note/1157fbcf-0363-4bd4-b015-e2a95aad59c3">关于微信语音导出，这个方法强烈建议~</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://ds666.fun/2019/08/02/%E6%89%B9%E9%87%8F%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%AD%E9%9F%B3%E6%B6%88%E6%81%AF%E4%B8%BAmp3%E5%B9%B6%E9%99%84python%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E8%84%9A%E6%9C%AC/">批量导出微信语音消息为mp3并附python修改文件名脚本
 | 韶华尐沐</a></li>
-<li><a target="_blank" rel="noopener" href="https://vector0902.ml:5444/blog/?p=2692">批量导出微信语音的方法（技术向）
+<li><a
+target="_blank" rel="noopener" href="https://vector0902.ml:5444/blog/?p=2692">批量导出微信语音的方法（技术向）
 – vector090's blog</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.123455.xyz/2021/04/blog-post_3.html">微信聊天记录导出方案总结</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.123455.xyz/2021/04/blog-post_3.html">微信聊天记录导出方案总结</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/30112442">(1 封私信 / 20
 条消息) 如何导出微信【收藏】中的语音文件？ - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/tsycnh/WeChatExporter">tsycnh/WeChatExporter:
+<li><a
+target="_blank" rel="noopener" href="https://github.com/tsycnh/WeChatExporter">tsycnh/WeChatExporter:
 一个可以快速导出、查看你的微信聊天记录的工具</a></li>
 <li><a target="_blank" rel="noopener" href="http://wxbackup.imxfd.com/">微信聊天记录导出</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/RobertWang/Collections/blob/c9901d41cb43ba8cbb04d8331b853fd3da13a3bf/2021/06/06/GitHub%20%E5%87%BA%E5%93%81%EF%BC%9A%E4%B8%80%E9%94%AE%E5%AF%BC%E5%87%BA%E8%A7%A3%E5%AF%86%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95.md">Collections/GitHub
+<li><a
+target="_blank" rel="noopener" href="https://github.com/RobertWang/Collections/blob/c9901d41cb43ba8cbb04d8331b853fd3da13a3bf/2021/06/06/GitHub%20%E5%87%BA%E5%93%81%EF%BC%9A%E4%B8%80%E9%94%AE%E5%AF%BC%E5%87%BA%E8%A7%A3%E5%AF%86%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95.md">Collections/GitHub
 出品：一键导出解密微信聊天记录.md at
 c9901d41cb43ba8cbb04d8331b853fd3da13a3bf ·
 RobertWang/Collections</a></li>
@@ -462,7 +476,7 @@ RobertWang/Collections</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

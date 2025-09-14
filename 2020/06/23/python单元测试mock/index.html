@@ -193,7 +193,8 @@
 HTTP接口 * 对底层业务逻辑API</p>
 <p>HTTP接口相关的mock工具非常多了，暂时就不具体说了。这篇主要记录的是针对依赖的API的mock。</p>
 <p>在python单元测试数据mock有两座山，一个是<code>unittest.mock</code>，一个是<code>pytest</code>的<code>mockeypatch</code>。当然，还有一些<code>easymock</code>之类的库，但是没去研究，暂时搁置。</p>
-<p>很多文章里提到<a target="_blank" rel="noopener" href="http://xunitpatterns.com/Test%20Double.html">Test Double at
+<p>很多文章里提到<a
+target="_blank" rel="noopener" href="http://xunitpatterns.com/Test%20Double.html">Test Double at
 XUnitPatterns.com</a>，好像TDD开发中的概念，这里做了非常详细的划分。</p>
 <p>不过，主体上其实对数据的模拟主要是2点。 * mock * stub</p>
 <h2 id="mock与stub">mock与stub</h2>
@@ -226,15 +227,20 @@ XUnitPatterns.com</a>，好像TDD开发中的概念，这里做了非常详细�
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myMethod = Mock(side_effect=KeyError(<span class="string">&#x27;whatever&#x27;</span>))</span><br><span class="line"><span class="keyword">with</span> self.assertRaises(KeyError):</span><br><span class="line">    myMethod()</span><br></pre></td></tr></table></figure>
 <h2 id="reference">Reference</h2>
 <ol type="1">
-<li><a target="_blank" rel="noopener" href="http://hongyitong.github.io/2016/12/23/%E6%B5%85%E8%B0%88mock%E5%92%8Cstub/">浅谈mock和stub
+<li><a
+target="_blank" rel="noopener" href="http://hongyitong.github.io/2016/12/23/%E6%B5%85%E8%B0%88mock%E5%92%8Cstub/">浅谈mock和stub
 | 忆桐之家的博客</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/unittest.mock.html">unittest.mock
+<li><a
+target="_blank" rel="noopener" href="https://docs.python.org/3/library/unittest.mock.html">unittest.mock
 — mock object library — Python 3.8.3 documentation</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.pytest.org/en/latest/monkeypatch.html">Monkeypatching/mocking
+<li><a
+target="_blank" rel="noopener" href="https://docs.pytest.org/en/latest/monkeypatch.html">Monkeypatching/mocking
 modules and environments — pytest documentation</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.toptal.com/python/an-introduction-to-mocking-in-python">Python
+<li><a
+target="_blank" rel="noopener" href="https://www.toptal.com/python/an-introduction-to-mocking-in-python">Python
 Mocking: A Guide to Better Unit Tests | Toptal</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.woodcoding.com/%E6%B5%8B%E8%AF%95/2019/03/31/first-to-touch-unittest/">简述软件开发中的单元测试
+<li><a
+target="_blank" rel="noopener" href="https://blog.woodcoding.com/%E6%B5%8B%E8%AF%95/2019/03/31/first-to-touch-unittest/">简述软件开发中的单元测试
 | 无人之岛</a></li>
 </ol>
 
@@ -421,7 +427,7 @@ Mocking: A Guide to Better Unit Tests | Toptal</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

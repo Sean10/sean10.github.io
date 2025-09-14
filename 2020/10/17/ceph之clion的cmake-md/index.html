@@ -29,7 +29,7 @@
 <meta property="og:description" content="调查 按照一般的编译过程, 是可以在CentOS或者Debian系的环境里直接执行do_cmake.sh然后自动安装install-deps.sh, 然后关闭一堆功能触发cmake的. 不过因为暂时没找到可以进行环境隔离比如通过在docker内编译ceph(初步尝试, deps中出现了systemd, 而docker内使用使用的一个fake-systemd, 这俩产生了冲突, 不知道有没有专门针对">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-17T06:43:31.000Z">
-<meta property="article:modified_time" content="2023-03-18T15:11:14.888Z">
+<meta property="article:modified_time" content="2025-05-10T07:54:15.487Z">
 <meta property="article:author" content="Sean10">
 <meta property="article:tag" content="ceph">
 <meta property="article:tag" content="编译">
@@ -249,7 +249,8 @@ deps中出现了systemd, 而docker内使用使用的一个fake-systemd,
 看上去是<code>suse</code>的<code>tumbleweed</code>现在的源里没<code>python2</code>的包了[^14]?
 而这个仓库里的<code>master</code>分支如果编<code>ceph</code>还没去除<code>python2</code>的版本,
 就会有问题.</p>
-<p>根据这个来看<a target="_blank" rel="noopener" href="https://lists.opensuse.org/opensuse-factory/2020-01/msg00126.html">Re:
+<p>根据这个来看<a
+target="_blank" rel="noopener" href="https://lists.opensuse.org/opensuse-factory/2020-01/msg00126.html">Re:
 [opensuse-factory] Removal of Python2 from openSUSE Tumbleweed</a></p>
 <p>高版本的suse把python2彻底抛弃了, 但是是不是也有办法加回来安装呢?
 搜了一圈, 主流的思路是这种大版本迭代, 如果始终要考虑老版本兼容性,
@@ -271,15 +272,20 @@ deps中出现了systemd, 而docker内使用使用的一个fake-systemd,
 不过大多数镜像只提供了 repo-oss 和 repo-non-oss 这两个源</p>
 <p>https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
 搜出来显示这个,但是这个路径实际上已经不存在了...不知道怎么给他们提</p>
-<p><a target="_blank" rel="noopener" href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython%3AFactory&amp;package=python">Install
-package devel:languages:python:Factory / python</a> <a target="_blank" rel="noopener" href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython&amp;package=python-virtualenv">Install
+<p><a
+target="_blank" rel="noopener" href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython%3AFactory&amp;package=python">Install
+package devel:languages:python:Factory / python</a> <a
+target="_blank" rel="noopener" href="https://software.opensuse.org/download.html?project=devel%3Alanguages%3Apython&amp;package=python-virtualenv">Install
 package devel:languages:python / python-virtualenv</a></p>
-<p><a target="_blank" rel="noopener" href="https://zh.opensuse.org/openSUSE:Build_Service_%E4%BB%93%E5%BA%93%E8%AF%A6%E8%A7%A3">openSUSE:Build
+<p><a
+target="_blank" rel="noopener" href="https://zh.opensuse.org/openSUSE:Build_Service_%E4%BB%93%E5%BA%93%E8%AF%A6%E8%A7%A3">openSUSE:Build
 Service 仓库详解 - openSUSE Wiki</a></p>
 <p>看上去这上面源里的是src.rpm. 咋Search能看到, 就是提示转不上呢?
 我先配置上面这个, 给装上去了.</p>
-<h4 id="某些疑似镜像源中似乎还有python2的库">某些疑似镜像源中似乎还有python2的库</h4>
-<p><a target="_blank" rel="noopener" href="https://ftp.lysator.liu.se/pub/opensuse/tumbleweed/repo/oss/x86_64/?C=M&amp;O=A">Index
+<h4
+id="某些疑似镜像源中似乎还有python2的库">某些疑似镜像源中似乎还有python2的库</h4>
+<p><a
+target="_blank" rel="noopener" href="https://ftp.lysator.liu.se/pub/opensuse/tumbleweed/repo/oss/x86_64/?C=M&amp;O=A">Index
 of /pub/opensuse/tumbleweed/repo/oss/x86_64/</a></p>
 <p>但是下面这个源里明明也是oss, 但是却有呢?</p>
 <h3 id="稳定的leap-15版本的nautilus编译">稳定的Leap
@@ -290,18 +296,21 @@ of /pub/opensuse/tumbleweed/repo/oss/x86_64/</a></p>
 暂时不是重点,
 在<code>setup-ceph.sh</code>里设置<code>-DWITH_MGR_DASHBOARD_FRONTEND=OFF</code>,
 就可以通过编译了. 就是本地编译有点慢...</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /ceph/src</span><br><span class="line">OSD=3 MON=3 MGR=1 CEPH_BUILD_ROOT=/ceph/build bash -x ./vstart.sh -n </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /ceph/src</span><br><span class="line">OSD=1 MON=1 MGR=1 RGW=1 CEPH_BUILD_ROOT=/ceph/build bash -x ./vstart.sh -n </span><br><span class="line"></span><br><span class="line">../src/stop.sh &amp;&amp; OSD=3 MON=1 MGR=1 RGW=1 bash -x ../src/vstart.sh -n </span><br></pre></td></tr></table></figure>
 <h4 id="ccache-make--j8-ceph-mon">ccache make -j8 ceph-mon</h4>
 <blockquote>
 <p>[ 97%] Building CXX object
 src/mon/CMakeFiles/mon.dir/AuthMonitor.cc.o c++: internal compiler
 error: Killed (program cc1plus) Please submit a full bug report, with
-preprocessed source if appropriate. See <a target="_blank" rel="noopener" href="https://bugs.opensuse.org/" class="uri">https://bugs.opensuse.org/</a> for instructions. make[3]:
+preprocessed source if appropriate. See <a
+target="_blank" rel="noopener" href="https://bugs.opensuse.org/"
+class="uri">https://bugs.opensuse.org/</a> for instructions. make[3]:
 *** [src/mon/CMakeFiles/mon.dir/build.make:351:
 src/mon/CMakeFiles/mon.dir/MonmapMonitor.cc.o] Error 4</p>
 </blockquote>
 <p>看着跟<code>OOM</code>的表现有点像.</p>
-<p>根据<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30887143/make-j-8-g-internal-compiler-error-killed-program-cc1plus">linux
+<p>根据<a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30887143/make-j-8-g-internal-compiler-error-killed-program-cc1plus">linux
 - make -j 8 g++: internal compiler error: Killed (program cc1plus) -
 Stack Overflow</a>这篇说的, 可能是我开的线程太多,
 给他分配的内存又没那么多引起的? 我试试</p>
@@ -315,7 +324,8 @@ object file: No such file or directory</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╭─root@ceph-dev-nautilus /ceph </span><br><span class="line">╰─<span class="comment"># cat src/vstart.sh | grep erasure-code  </span></span><br><span class="line">        [ -z <span class="string">&quot;<span class="variable">$EC_PATH</span>&quot;</span> ] &amp;&amp; EC_PATH=<span class="variable">$CEPH_LIB</span>/erasure-code</span><br></pre></td></tr></table></figure>
 <p>暂时没找到怎么只是make ,
 生成到<code>build/lib/erasure-code</code>目录下的功能.</p>
-<h4 id="vstart.sh-error-error-creating-empty-object-store-in-datacephbuilddevosd0-22-invalid-argument">vstart.sh
+<h4
+id="vstart.sh-error-error-creating-empty-object-store-in-datacephbuilddevosd0-22-invalid-argument">vstart.sh
 ERROR: error creating empty object store in /data/ceph/build/dev/osd0:
 (22) Invalid argument</h4>
 <p>根据<a target="_blank" rel="noopener" href="https://tracker.ceph.com/issues/23433">Support #23433:
@@ -333,7 +343,8 @@ Ceph</a>这里的回复, 看起来这个是因为毕竟是虚拟化的,
 那个<code>dev</code>的镜像看起来是给调试镜像版本用的,
 并不是直接提供运行<code>vstart.sh</code>来调试编译版本的.</p>
 <h2 id="luminous">Luminous</h2>
-<h3 id="最后按照下述方案处理好软链和安装包之后的cmake选项">最后按照下述方案处理好软链和安装包之后的cmake选项</h3>
+<h3
+id="最后按照下述方案处理好软链和安装包之后的cmake选项">最后按照下述方案处理好软链和安装包之后的cmake选项</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_C_COMPILER=/usr/bin/clang   -DCMAKE_CXX_COMPILER=/usr/bin/clang++   -DCMAKE_EXE_LINKER_FLAGS=&quot;-L/usr/local/opt/llvm/lib&quot;   -DENABLE_GIT_VERSION=OFF   -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1   -DWITH_BABELTRACE=OFF   -DWITH_BLUESTORE=OFF   -DWITH_CCACHE=OFF   -DWITH_CEPHFS=OFF   -DWITH_KRBD=OFF   -DWITH_LIBCEPHFS=OFF   -DWITH_LTTNG=OFF   -DWITH_LZ4=OFF   -DWITH_MANPAGE=ON   -DWITH_MGR=OFF   -DWITH_MGR_DASHBOARD_FRONTEND=OFF   -DWITH_RADOSGW=OFF   -DWITH_RDMA=OFF   -DWITH_SPDK=OFF   -DWITH_SYSTEMD=OFF   -DWITH_TESTS=OFF  -DWITH_XFS=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=on  -DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/include/python2.7 -DPYTHON3_LIBRARY=$(python3-config --prefix)/lib/libpython3.9.dylib -DPYTHON3_INCLUDE_DIR=$(python3-config --prefix)/include/python3.9 -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl@1.1/1.1.1o/</span><br></pre></td></tr></table></figure>
 <h3 id="官方文档方案">官方文档方案</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">brew install llvm</span><br><span class="line">brew install snappy ccache cmake pkg-config</span><br><span class="line">pip install cython</span><br><span class="line">pip3 install cython</span><br><span class="line">brew cask install osxfuse</span><br><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.48/lib/pkgconfig:/usr/local/Cellar/openssl/1.0.2t/lib/pkgconfig</span><br><span class="line">cmake .. -DBOOST_J=4 \</span><br><span class="line">  -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang \</span><br><span class="line">  -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ \</span><br><span class="line">  -DCMAKE_EXE_LINKER_FLAGS=<span class="string">&quot;-L/usr/local/opt/llvm/lib&quot;</span> \</span><br><span class="line">  -DENABLE_GIT_VERSION=OFF \</span><br><span class="line">  -DSNAPPY_ROOT_DIR=/usr/local/Cellar/snappy/1.1.7_1 \</span><br><span class="line">  -DWITH_BABELTRACE=OFF \</span><br><span class="line">  -DWITH_BLUESTORE=OFF \</span><br><span class="line">  -DWITH_CCACHE=OFF \</span><br><span class="line">  -DWITH_CEPHFS=OFF \</span><br><span class="line">  -DWITH_KRBD=OFF \</span><br><span class="line">  -DWITH_LIBCEPHFS=OFF \</span><br><span class="line">  -DWITH_LTTNG=OFF \</span><br><span class="line">  -DWITH_LZ4=OFF \</span><br><span class="line">  -DWITH_MANPAGE=ON \</span><br><span class="line">  -DWITH_MGR=OFF \</span><br><span class="line">  -DWITH_MGR_DASHBOARD_FRONTEND=OFF \</span><br><span class="line">  -DWITH_RADOSGW=OFF \</span><br><span class="line">  -DWITH_RDMA=OFF \</span><br><span class="line">  -DWITH_SPDK=OFF \</span><br><span class="line">  -DWITH_SYSTEMD=OFF \</span><br><span class="line">  -DWITH_TESTS=OFF \</span><br><span class="line">  -DWITH_XFS=OFF</span><br></pre></td></tr></table></figure>
@@ -353,11 +364,13 @@ NSS_INCLUDE_DIRS: NSS_INCLUDE_DIR-NOTFOUND</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PKG_CONFIG_PATH=/usr/local/Cellar/nss/3.48/lib/pkgconfig:/usr/local/Cellar/</span><br></pre></td></tr></table></figure></p>
 <p>我采用的第一种方案.
 同理,还会出现<code>nspr</code>等需要这样处理的库.</p>
-<h4 id="not-find-pythonlibs-found-unsuitable-version-2.7.10-but-required3">NOT
+<h4
+id="not-find-pythonlibs-found-unsuitable-version-2.7.10-but-required3">NOT
 find PythonLibs: Found unsuitable version "2.7.10", but
 required[^3]</h4>
 <p>在CMake选项中增加指定下述的python库和头文件路径 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-DPYTHON_LIBRARY=$(python-config --prefix)/lib/libpython2.<span class="number">7</span>.dylib -DPYTHON_INCLUDE_DIR=$(python-config --prefix)/<span class="keyword">include</span>/python2.<span class="number">7</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="testbigendian.cmake49-message-no-suitable-type-found">TestBigEndian.cmake:49
+<h4
+id="testbigendian.cmake49-message-no-suitable-type-found">TestBigEndian.cmake:49
 (message): no suitable type found</h4>
 <p>暂时看到的资料都是说需要看测试代码和修改cmake文件的样子,
 我并不需要编译, 只是需要建立索引,
@@ -375,7 +388,8 @@ compiler: AppleClang</h4>
 <p>用来索引好像还是用的.</p>
 <h2 id="调试增加选项">调试增加选项</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure CFLAGS=&#x27;-g3 -O0&#x27; CXXFLAGS=&#x27;-g3 -O0&#x27;.</span><br></pre></td></tr></table></figure>
-<h2 id="github版本cmake报缺失rocksdb和zstd">github版本cmake报缺失rocksdb和zstd</h2>
+<h2
+id="github版本cmake报缺失rocksdb和zstd">github版本cmake报缺失rocksdb和zstd</h2>
 <p>git里面有一些submodule, 这部分我没能拖回来, 导致这些目录是空的,
 静态编译没能启动.</p>
 <ul>
@@ -413,34 +427,44 @@ ceph这种形式直接安装成果物构造image.
 <ol type="1">
 <li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/dev/macos/">build on MacOS
 — Ceph Documentation</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/flyinggod/p/12465966.html">pkg-config
+<li><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/flyinggod/p/12465966.html">pkg-config
 路径问题 - 采男孩的小蘑菇 - 博客园</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/pybind/pybind11/issues/99">CMake finding
 Python library and Python interpreter mismatch during pybind11 build ·
 Issue #99 · pybind/pybind11</a></li>
-<li><a target="_blank" rel="noopener" href="https://hypernews.slac.stanford.edu/HyperNews/geant4/get/installconfig/1889/1.html%3Finline=1.html">Re:
+<li><a
+target="_blank" rel="noopener" href="https://hypernews.slac.stanford.edu/HyperNews/geant4/get/installconfig/1889/1.html%3Finline=1.html">Re:
 Weird CMake failures building 10.4 on MacOS High Sierra (10.13)</a></li>
-<li><a target="_blank" rel="noopener" href="https://gitlab.kitware.com/cmake/cmake/-/issues/16283">TestBigEndian.cmake:51
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.kitware.com/cmake/cmake/-/issues/16283">TestBigEndian.cmake:51
 (messag no suitable type found (#16283) · Issues · CMake / CMake ·
 GitLab</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13255491/cmake-internal-error-test-big-endian">windows
+<li><a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13255491/cmake-internal-error-test-big-endian">windows
 - CMake internal error (TEST_BIG_ENDIAN) - Stack Overflow</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98625873">dockerize
 ceph集群和shell脚本编程 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.shalandis.com/original/2016/05/19/CEPH-CRUSH-algorithm-source-code-analysis/">CEPH
+<li><a
+target="_blank" rel="noopener" href="http://www.shalandis.com/original/2016/05/19/CEPH-CRUSH-algorithm-source-code-analysis/">CEPH
 CRUSH algorithm source code analysis</a></li>
 <li><a target="_blank" rel="noopener" href="https://hub.docker.com/r/ceph/daemon">ceph/daemon - Docker
 Hub</a></li>
-<li><a target="_blank" rel="noopener" href="https://quay.io/repository/ceph-ci/ceph/manifest/sha256:7d170b95bd9861be7279a1d7cda1c3a5dd39469ebc5ff94c84e5c4e1ebbce42d">Quay
+<li><a
+target="_blank" rel="noopener" href="https://quay.io/repository/ceph-ci/ceph/manifest/sha256:7d170b95bd9861be7279a1d7cda1c3a5dd39469ebc5ff94c84e5c4e1ebbce42d">Quay
 Container Registry · Quay</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ceph/ceph-container">ceph/ceph-container:
+<li><a
+target="_blank" rel="noopener" href="https://github.com/ceph/ceph-container">ceph/ceph-container:
 Docker files and images to run Ceph in containers</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/ricardoasmarques/ceph-dev-docker">ricardoasmarques/ceph-dev-docker</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/ricardoasmarques/ceph-dev-docker">ricardoasmarques/ceph-dev-docker</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/install/build-ceph/">Build
 Ceph — Ceph Documentation</a></li>
-<li><a target="_blank" rel="noopener" href="https://forums.opensuse.org/showthread.php/540286-Cant-install-python-lxml-Opensuse-Tumbleweed">TUMBLEWEED
+<li><a
+target="_blank" rel="noopener" href="https://forums.opensuse.org/showthread.php/540286-Cant-install-python-lxml-Opensuse-Tumbleweed">TUMBLEWEED
 Cant install python-lxml Opensuse Tumbleweed</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.itocm.com/a/127B85AF17F747AE9C864B7246E91248">ceph
+<li><a
+target="_blank" rel="noopener" href="http://www.itocm.com/a/127B85AF17F747AE9C864B7246E91248">ceph
 luminous版本编译及部署 | itocm.com</a></li>
 </ol>
 
@@ -451,7 +475,7 @@ luminous版本编译及部署 | itocm.com</a></li>
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2023-03-18T15:11:14.888Z" itemprop="dateUpdated">2023-03-18 23:11:14</time>
+    最后更新时间：<time datetime="2025-05-10T07:54:15.487Z" itemprop="dateUpdated">2025-05-10 15:54:15</time>
 </span><br>
 
 
@@ -627,7 +651,7 @@ luminous版本编译及部署 | itocm.com</a></li>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Sean10 &copy; 2015 - 2023</span>
+        <p><span>Sean10 &copy; 2015 - 2025</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
